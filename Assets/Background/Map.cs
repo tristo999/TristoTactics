@@ -9,6 +9,8 @@ public class Map : MonoBehaviour {
     public GameObject[] enemies;
     public GameObject masterGameObject;
     public RoundController roundController;
+    public GameObject tileClicked;
+    public bool selectedTile = false;
 
     // Use this for initialization
     void Start ()
@@ -23,26 +25,7 @@ public class Map : MonoBehaviour {
             x.transform.position = newPosition;
         }
         */
-        foreach (GameObject x in players) {
-            //Logic for if players are dead or not recruited
-            //Set player tile on
-            entityData data = x.GetComponent<entityData>();
-            foreach (GameObject y in tileMap)
-            {
-                if(data.tileOn == null)
-                {
-                    data.tileOn = y;
-                } else
-                {
-                    if(Vector3.Distance(x.transform.position,data.tileOn.transform.position) > Vector3.Distance(x.transform.position, y.transform.position))
-                    {
-                        data.tileOn = y;
-                    }
-                }
-            }
-            //FindRangeCheck
-            FindRange(x);
-        }
+        findTileOn();
         roundController = masterGameObject.GetComponent<RoundController>();
         roundController.StartUp(players, enemies);
 	}
@@ -83,6 +66,67 @@ public class Map : MonoBehaviour {
                         //current.SetActive(false);
                         SpriteRenderer rend = x.GetComponent<SpriteRenderer>();
                         rend.material.color = Color.gray;
+                        tileData.inRange = true;
+                    }
+                }
+            }
+        }
+    }
+    public bool playerTurn(GameObject player)
+    {
+        findTileOn();
+        bool turnOver = false;
+        FindRange(player);
+        if (selectedTile)
+        {
+            moveCharacter(player, tileClicked);
+            turnOver = true;
+            resetMap();
+        }
+        return turnOver;
+    }
+    public void selectTile(GameObject tileClicked)
+    {
+        selectedTile = true;
+        this.tileClicked = tileClicked; 
+
+    }
+    public void moveCharacter(GameObject player, GameObject tile)
+    {
+        player.transform.position = tile.transform.position;
+    }
+    public void resetMap()
+    {
+        foreach(GameObject x in tileMap)
+        {
+            TileData tiledata = x.GetComponent<TileData>();
+            tiledata.inRange = false;
+            SpriteRenderer rend = x.GetComponent<SpriteRenderer>();
+            rend.material.color = Color.white;
+            selectedTile = false;
+
+        }
+    }
+    public void findTileOn()
+    {
+        foreach (GameObject x in players)
+        {
+            //Logic for if players are dead or not recruited
+            //Set player tile on
+            entityData data = x.GetComponent<entityData>();
+            foreach (GameObject y in tileMap)
+            {
+                TileData tiledata = y.GetComponent<TileData>();
+                tiledata.setMap(this);
+                if (data.tileOn == null)
+                {
+                    data.tileOn = y;
+                }
+                else
+                {
+                    if (Vector3.Distance(x.transform.position, data.tileOn.transform.position) > Vector3.Distance(x.transform.position, y.transform.position))
+                    {
+                        data.tileOn = y;
                     }
                 }
             }

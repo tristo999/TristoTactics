@@ -5,12 +5,20 @@ using UnityEngine;
 public class RoundController : MonoBehaviour {
 
     public Queue<GameObject> characters;
+    public Map gameMap;
     public bool roundOver = false;
     public bool victory = false;
     public enum roundStateEnum {CharacterSelect, CharacterTurn, CharacterEnd};
     public roundStateEnum roundState = roundStateEnum.CharacterSelect;
     GameObject currentPlayer;
+    public bool roundStart = false;
+    public bool turnOver = false;
+    public void Start()
+    {
+        gameMap = gameObject.GetComponent<Map>();
+    }
     public void StartUp(GameObject[] players, GameObject[] enemies) {
+        characters = new Queue<GameObject>();
         foreach (GameObject x in players)
         {
             characters.Enqueue(x);
@@ -19,30 +27,45 @@ public class RoundController : MonoBehaviour {
         {
             characters.Enqueue(x);
         }
+        roundStart = true;
     }
 
 	void Update () {
-        /*
-		if (!roundOver)
+        if (roundStart)
         {
-            switch (roundState)
+            if (!roundOver)
             {
-                case roundStateEnum.CharacterSelect:
-                    currentPlayer = characters.Dequeue();
-                    roundState = roundStateEnum.CharacterTurn;
-                    break;
-                case roundStateEnum.CharacterTurn:
+                switch (roundState)
+                {
+                    case roundStateEnum.CharacterSelect:
+                        currentPlayer = characters.Dequeue();
+                        roundState = roundStateEnum.CharacterTurn;
+                        turnOver = false;
+                        break;
+                    case roundStateEnum.CharacterTurn: 
+                        if (currentPlayer.tag == "Player")
+                        {
+                            turnOver = gameMap.playerTurn(currentPlayer);
+                        } else
+                        {
 
-                    break;
-                case roundStateEnum.CharacterEnd:
-                    roundState = roundStateEnum.CharacterSelect;
-                    characters.Enqueue(currentPlayer);
-                    break;
+                        }
+                        if (turnOver)
+                        {
+                            roundState = roundStateEnum.CharacterEnd;
+                        }
+                        break;
+                    case roundStateEnum.CharacterEnd:
+                         
+                        roundState = roundStateEnum.CharacterSelect;
+                        characters.Enqueue(currentPlayer);
+                        break;
+                }
             }
-        } else
-        {
-
+            else
+            {
+  
+            }
         }
-        */
 	}
 }
