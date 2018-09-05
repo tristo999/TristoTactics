@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TileData : MonoBehaviour {
     public bool passable = true;
-    private SpriteRenderer renderer;
+    public SpriteRenderer renderer;
     public bool inRange;
     public Map worldMap;
     // Use this for initialization

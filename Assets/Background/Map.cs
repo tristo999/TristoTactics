@@ -11,6 +11,7 @@ public class Map : MonoBehaviour {
     public RoundController roundController;
     public GameObject tileClicked;
     public bool selectedTile = false;
+    public Queue<GameObject> shortestPath;
 
     // Use this for initialization
     void Start ()
@@ -89,11 +90,42 @@ public class Map : MonoBehaviour {
     {
         selectedTile = true;
         this.tileClicked = tileClicked; 
-
+    }
+    public Queue<GameObject> findShortestPath(GameObject[] tilemap, GameObject source, GameObject destination, int currentDistance, int minDistance)
+    {
+        /*
+        Queue<GameObject> path = new Queue<GameObject>();
+        path.Enqueue(source);
+        if (!(source.transform.position == destination.transform.position))
+        {
+            foreach (GameObject x in tileMap)
+            {
+                if (Vector3.Distance(source.transform.position, x.transform.position) < 1.1)
+                {
+                    TileData tileData = x.GetComponent<TileData>();
+                    if (tileData.inRange)
+                    {
+                        x.GetComponent<TileData>().inRange = false;
+                        path = findShortestPath(tileMap, x, tileClicked, currentDistance, minDistance);
+                        x.GetComponent<TileData>().inRange = true;
+                    }
+                }
+            }
+        } else
+        {
+            if (path.Count < minDistance)
+            {
+                minDistance = path.Count;
+                shortestPath = path;
+            }
+        }
+        return shortestPath;
+        */
     }
     public void moveCharacter(GameObject player, GameObject tile)
     {
-        player.transform.position = tile.transform.position;
+        //player.transform.position = tile.transform.position;
+        Queue<GameObject> path = findShortestPath(tileMap, player.GetComponent<entityData>().tileOn, tileClicked, int.MaxValue, int.MaxValue);
     }
     public void resetMap()
     {
