@@ -43,11 +43,9 @@ C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.ParticleS
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.PerformanceReportingModule.dll
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.Physics2DModule.dll
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.PhysicsModule.dll
-C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.Purchasing.dll
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.ScreenCaptureModule.dll
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.SharedInternalsModule.dll
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.SpatialTracking.dll
-C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.SpatialTrackingModule.dll
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.SpriteMaskModule.dll
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.SpriteShapeModule.dll
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.StandardEvents.dll
@@ -61,7 +59,6 @@ C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.Timeline.
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.TimelineModule.dll
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.TLSModule.dll
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.UI.dll
-C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.UIAutomation.dll
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.UIElementsModule.dll
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.UIModule.dll
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.UmbraModule.dll
@@ -76,7 +73,6 @@ C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.UnityWebR
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.VehiclesModule.dll
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.VideoModule.dll
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.VRModule.dll
-C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.WebModule.dll
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.WindModule.dll
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.XRModule.dll
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityScript.dll
@@ -88,13 +84,10 @@ C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\ExCSS.Unity.dll
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\Unity.Legacy.NRefactory.dll
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\Boo.Lang.Parser.dll
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\Boo.Lang.Compiler.dll
-C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\Unity.UNetWeaver.dll
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\Unity.IvyParser.dll
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\Boo.Lang.PatternMatching.dll
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\Boo.Lang.Useful.dll
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\Unity.CecilTools.dll
-C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\Unity.Cecil.Pdb.dll
-C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\Unity.Cecil.Mdb.dll
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.xml
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEditor.xml
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.AIModule.xml
@@ -126,7 +119,6 @@ C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.PhysicsMo
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.Physics2DModule.xml
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.ScreenCaptureModule.xml
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.SharedInternalsModule.xml
-C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.SpatialTrackingModule.xml
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.SpriteMaskModule.xml
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.SpriteShapeModule.xml
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.StyleSheetsModule.xml
@@ -151,13 +143,11 @@ C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.UnityWebR
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.VRModule.xml
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.VehiclesModule.xml
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.VideoModule.xml
-C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.WebModule.xml
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.WindModule.xml
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.XRModule.xml
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.UI.xml
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.Networking.xml
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.Timeline.xml
-C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.UIAutomation.xml
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.GoogleAudioSpatializer.xml
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.HoloLens.xml
 C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.SpatialTracking.xml
@@ -334,3 +324,13 @@ C:\Users\brend\OneDrive\Documents\GitHub\TristoTactics\obj\Debug\Assembly-CSharp
 C:\Users\brend\OneDrive\Documents\GitHub\TristoTactics\obj\Debug\Assembly-CSharp.csproj.CopyComplete
 C:\Users\brend\OneDrive\Documents\GitHub\TristoTactics\obj\Debug\Assembly-CSharp.dll
 C:\Users\brend\OneDrive\Documents\GitHub\TristoTactics\obj\Debug\Assembly-CSharp.pdb
+C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\Unity.TextMeshPro.dll
+C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\Unity.TextMeshPro.Editor.dll
+C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.FileSystemHttpModule.dll
+C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.LocalizationModule.dll
+C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.ProfilerModule.dll
+C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.StreamingModule.dll
+C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.FileSystemHttpModule.xml
+C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.LocalizationModule.xml
+C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.ProfilerModule.xml
+C:\Users\trist\Documents\GitHub\Tactial RPG\Temp\bin\Debug\UnityEngine.StreamingModule.xml

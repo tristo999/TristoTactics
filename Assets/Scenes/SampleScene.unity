@@ -202,6 +202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &18757330
@@ -318,6 +319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &48425104
@@ -434,6 +436,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &54422259
@@ -550,6 +553,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &58606712
@@ -666,6 +670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &81182252
@@ -782,6 +787,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &95726137
@@ -898,6 +904,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &121842668
@@ -1014,6 +1021,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &124920675
@@ -1130,6 +1138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &161443696
@@ -1246,6 +1255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &165928786
@@ -1362,6 +1372,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &178692998
@@ -1478,6 +1489,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &211571178
@@ -1594,6 +1606,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &221157218
@@ -1710,6 +1723,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &223333796
@@ -1826,6 +1840,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &242005914
@@ -1942,6 +1957,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &245031743
@@ -2058,6 +2074,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &289249871
@@ -2174,6 +2191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &291421163
@@ -2223,6 +2241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8da5a324cdf2af0449dfed18348af812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterSpeed: 0.2
   tileMap: []
   players: []
   enemies: []
@@ -2230,6 +2249,13 @@ MonoBehaviour:
   roundController: {fileID: 294759349}
   tileClicked: {fileID: 0}
   selectedTile: 0
+  pathFound: 0
+  moved: 0
+  movingNow: 0
+  action: 0
+  turnEnd: 0
+  moving: 0
+  movingToward: {fileID: 0}
 --- !u!1 &295592674
 GameObject:
   m_ObjectHideFlags: 0
@@ -2319,6 +2345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &295592678
@@ -2435,6 +2462,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &298422389
@@ -2551,6 +2579,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &304506318
@@ -2667,6 +2696,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &316449015
@@ -2783,6 +2813,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &323535639
@@ -2899,6 +2930,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &340464612
@@ -3015,6 +3047,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &372751135
@@ -3131,6 +3164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &403334957
@@ -3247,6 +3281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &481051393
@@ -3363,6 +3398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &521168806
@@ -3479,6 +3515,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &535572161
@@ -3595,6 +3632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &541312760
@@ -3711,6 +3749,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &624410258
@@ -3827,6 +3866,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &647164379
@@ -4061,6 +4101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &722816000
@@ -4177,6 +4218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &738993445
@@ -4293,6 +4335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &747249048
@@ -4409,6 +4452,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &828082154
@@ -4525,6 +4569,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &832746986
@@ -4641,6 +4686,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &841827987
@@ -4757,6 +4803,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &901698011
@@ -4873,6 +4920,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &911441504
@@ -4989,6 +5037,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &1007269956
@@ -5105,6 +5154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &1011776590
@@ -5221,6 +5271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &1022476374
@@ -5337,6 +5388,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &1042283097
@@ -5453,6 +5505,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &1082433033
@@ -5569,6 +5622,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &1084491934
@@ -5685,6 +5739,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &1104206892
@@ -5801,6 +5856,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &1120304418
@@ -5917,6 +5973,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &1135780505
@@ -6118,6 +6175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &1170430687
@@ -6234,6 +6292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &1229253655
@@ -6350,6 +6409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &1275733724
@@ -6466,6 +6526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &1278197447
@@ -6582,6 +6643,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &1305099398
@@ -6698,6 +6760,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &1306357344
@@ -6814,6 +6877,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &1417115553
@@ -6926,6 +6990,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114456237352750362, guid: e2811800ba154f743a3124175610421c,
+        type: 2}
+      propertyPath: movementRange
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2811800ba154f743a3124175610421c, type: 2}
   m_IsPrefabAsset: 0
@@ -7018,6 +7087,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &1502472335
@@ -7134,6 +7204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &1577511464
@@ -7250,6 +7321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &1603500071
@@ -7412,6 +7484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &1623592796
@@ -7528,6 +7601,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &1624045669
@@ -7644,6 +7718,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &1626595764
@@ -7760,6 +7835,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &1636242739
@@ -7876,6 +7952,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &1641376467
@@ -7992,6 +8069,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &1666443703
@@ -8108,6 +8186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &1693088701
@@ -8224,6 +8303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &1700902089
@@ -8340,6 +8420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &1711797804
@@ -8456,6 +8537,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &1715702236
@@ -8572,6 +8654,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &1718768870
@@ -8688,6 +8771,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &1746970152
@@ -8804,6 +8888,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &1789298328
@@ -8920,6 +9005,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &1798394261
@@ -9036,6 +9122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &1811047382
@@ -9152,6 +9239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &1837539111
@@ -9268,6 +9356,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &1849611002
@@ -9384,6 +9473,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &1864645592
@@ -9500,6 +9590,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &1867964542
@@ -9616,6 +9707,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &1879231880
@@ -9732,6 +9824,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &1883028342
@@ -9848,6 +9941,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &1890564986
@@ -9964,6 +10058,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &1897620173
@@ -10080,6 +10175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &1944727467
@@ -10196,6 +10292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &1951922901
@@ -10312,6 +10409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &1996787981
@@ -10428,6 +10526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &2027440516
@@ -10544,6 +10643,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &2117355228
@@ -10660,6 +10760,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &2126745778
@@ -10776,6 +10877,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &2129527328
@@ -10892,6 +10994,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passable: 1
+  renderer: {fileID: 0}
   inRange: 0
   worldMap: {fileID: 0}
 --- !u!61 &2143637887

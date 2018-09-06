@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Map : MonoBehaviour {
 
+    public float characterSpeed = 100000000;
     public GameObject[] tileMap;
     public GameObject[] players;
     public GameObject[] enemies;
@@ -12,6 +13,13 @@ public class Map : MonoBehaviour {
     public GameObject tileClicked;
     public bool selectedTile = false;
     public Queue<GameObject> shortestPath;
+    public bool pathFound = false;
+    public bool moved = false;
+    public bool movingNow = false;
+    public bool action = false;
+    public bool turnEnd = false;
+    public bool moving = false;
+    public GameObject movingToward;
 
     // Use this for initialization
     void Start ()
@@ -73,59 +81,159 @@ public class Map : MonoBehaviour {
             }
         }
     }
-    public bool playerTurn(GameObject player)
+    public RoundController.roundStateEnum playerTurn(GameObject player)
     {
         findTileOn();
-        bool turnOver = false;
-        FindRange(player);
-        if (selectedTile)
+        movingNow = false;
+        if (!moved)
         {
-            moveCharacter(player, tileClicked);
-            turnOver = true;
-            resetMap();
+            FindRange(player);
+            if (selectedTile)
+            {
+                moveCharacter(player, tileClicked);
+                movingNow = true;
+            }
         }
-        return turnOver;
+        if (Input.GetKeyDown(KeyCode.KeypadEnter))
+        {
+            action = true;
+            Debug.Log("Action!");
+        }
+        if ((moved && action) || turnEnd)
+        {
+            return RoundController.roundStateEnum.CharacterEnd;
+        } else if(movingNow)
+        {
+            return RoundController.roundStateEnum.Movement;
+        }
+        else
+        {
+            return RoundController.roundStateEnum.CharacterTurn;
+        }
     }
     public void selectTile(GameObject tileClicked)
     {
         selectedTile = true;
         this.tileClicked = tileClicked; 
     }
-    public Queue<GameObject> findShortestPath(GameObject[] tilemap, GameObject source, GameObject destination, int currentDistance, int minDistance)
+    public void findShortestPath(Dictionary<GameObject, int> distances, Dictionary<GameObject, bool> visited, Dictionary<GameObject, GameObject> parents, GameObject source, GameObject destination)
     {
-        /*
-        Queue<GameObject> path = new Queue<GameObject>();
-        path.Enqueue(source);
-        if (!(source.transform.position == destination.transform.position))
+        if (source.transform.position != destination.transform.position)
         {
             foreach (GameObject x in tileMap)
             {
-                if (Vector3.Distance(source.transform.position, x.transform.position) < 1.1)
+                if(x.GetComponent<TileData>().inRange && Vector3.Distance(x.transform.position, source.transform.position) <= 1 && !visited[x])
                 {
-                    TileData tileData = x.GetComponent<TileData>();
-                    if (tileData.inRange)
+                    if ((distances[source] + 1) < distances[x])
                     {
-                        x.GetComponent<TileData>().inRange = false;
-                        path = findShortestPath(tileMap, x, tileClicked, currentDistance, minDistance);
-                        x.GetComponent<TileData>().inRange = true;
+                        distances[x] = distances[source] + 1;
+                        parents[x] = source;
                     }
                 }
             }
-        } else
-        {
-            if (path.Count < minDistance)
+            int min = int.MaxValue;
+            GameObject minGameObject = source;
+            foreach (KeyValuePair<GameObject, int> x in distances)
             {
-                minDistance = path.Count;
-                shortestPath = path;
+                if (x.Value < min && !visited[x.Key])
+                {
+                    min = x.Value;
+                    minGameObject = x.Key;
+                }
             }
-        }
-        return shortestPath;
-        */
+            visited[minGameObject] = true;
+            findShortestPath(distances, visited, parents, minGameObject, destination);
+        } else {
+            distances[destination] = distances[source];
+            pathFound = true;
+        }   
     }
     public void moveCharacter(GameObject player, GameObject tile)
     {
         //player.transform.position = tile.transform.position;
-        Queue<GameObject> path = findShortestPath(tileMap, player.GetComponent<entityData>().tileOn, tileClicked, int.MaxValue, int.MaxValue);
+        Dictionary<GameObject, int> distances = new Dictionary<GameObject, int>();
+        Dictionary<GameObject, bool> visited = new Dictionary<GameObject, bool>();
+        Dictionary<GameObject, GameObject> parents = new Dictionary<GameObject, GameObject>();
+        shortestPath = new Queue<GameObject>();
+        foreach (GameObject x in tileMap)
+        {
+            distances.Add(x, int.MaxValue);
+            visited.Add(x, false);
+            parents.Add(x, null);
+        }
+        distances[player.GetComponent<entityData>().tileOn] = 0;
+        visited[player.GetComponent<entityData>().tileOn] = true;
+        findShortestPath(distances, visited, parents, player.GetComponent<entityData>().tileOn, tileClicked);
+        Debug.Log(distances[tileClicked].ToString());
+        GameObject path = tileClicked;
+        while(parents[path] != null)
+        {
+            shortestPath.Enqueue(path);
+            path = parents[path];
+        }
+        Stack<GameObject> tempStack = new Stack<GameObject>();
+        while(shortestPath.Count > 0)
+        {
+            tempStack.Push(shortestPath.Peek());
+            shortestPath.Dequeue();
+        }
+        while (tempStack.Count > 0)
+        {
+            shortestPath.Enqueue(tempStack.Peek());
+            tempStack.Pop();
+        }
+    }
+    public RoundController.roundStateEnum moveAlongPath(GameObject player)
+    {
+        if (shortestPath.Count > 0)
+        {
+            if (!moving)
+            {
+                movingToward = shortestPath.Dequeue();
+                moving = true;
+            } else
+            {
+                if (player.transform.position == movingToward.transform.position)
+                {
+                    moving = false;
+                } else
+                {
+                    player.transform.position = Vector3.MoveTowards(player.transform.position, movingToward.transform.position, characterSpeed);
+                }
+            }
+        } else
+        {
+            if(!moving)
+            {
+                movingToward = shortestPath.Dequeue();
+                moving = true;
+            } else
+            {
+                if (player.transform.position == movingToward.transform.position)
+                {
+                    moving = false;
+                    moved = true;
+                }
+                else
+                {
+                    player.transform.position = Vector3.MoveTowards(player.transform.position, movingToward.transform.position, characterSpeed);
+                }
+            }
+        }
+        if (moved)
+        {
+            if (action)
+            {
+                return RoundController.roundStateEnum.CharacterEnd;
+            }
+            else
+            {
+                return RoundController.roundStateEnum.CharacterTurn;
+            }
+        } else
+        {
+            return RoundController.roundStateEnum.Movement;
+        }
     }
     public void resetMap()
     {
@@ -136,6 +244,10 @@ public class Map : MonoBehaviour {
             SpriteRenderer rend = x.GetComponent<SpriteRenderer>();
             rend.material.color = Color.white;
             selectedTile = false;
+            moved = false;
+            action = false;
+            turnEnd = false;
+            shortestPath = new Queue<GameObject>();
 
         }
     }
@@ -160,6 +272,7 @@ public class Map : MonoBehaviour {
                     {
                         data.tileOn = y;
                     }
+                    
                 }
             }
         }

@@ -8,11 +8,10 @@ public class RoundController : MonoBehaviour {
     public Map gameMap;
     public bool roundOver = false;
     public bool victory = false;
-    public enum roundStateEnum {CharacterSelect, CharacterTurn, CharacterEnd};
+    public enum roundStateEnum {CharacterSelect, CharacterTurn, CharacterEnd, Movement,SpecialEvent};
     public roundStateEnum roundState = roundStateEnum.CharacterSelect;
     GameObject currentPlayer;
     public bool roundStart = false;
-    public bool turnOver = false;
     public void Start()
     {
         gameMap = gameObject.GetComponent<Map>();
@@ -40,25 +39,26 @@ public class RoundController : MonoBehaviour {
                     case roundStateEnum.CharacterSelect:
                         currentPlayer = characters.Dequeue();
                         roundState = roundStateEnum.CharacterTurn;
-                        turnOver = false;
                         break;
                     case roundStateEnum.CharacterTurn: 
                         if (currentPlayer.tag == "Player")
                         {
-                            turnOver = gameMap.playerTurn(currentPlayer);
+                            roundState = gameMap.playerTurn(currentPlayer);
+
                         } else
                         {
 
                         }
-                        if (turnOver)
-                        {
-                            roundState = roundStateEnum.CharacterEnd;
-                        }
+                        break;
+                    case roundStateEnum.Movement:
+                        roundState = gameMap.moveAlongPath(currentPlayer);
                         break;
                     case roundStateEnum.CharacterEnd:
-                         
+                        gameMap.resetMap();
                         roundState = roundStateEnum.CharacterSelect;
                         characters.Enqueue(currentPlayer);
+                        break;
+                    case roundStateEnum.SpecialEvent:
                         break;
                 }
             }
