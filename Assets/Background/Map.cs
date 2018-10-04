@@ -26,7 +26,7 @@ public class Map : MonoBehaviour {
     {
         tileMap = GameObject.FindGameObjectsWithTag("Environment");
         players = GameObject.FindGameObjectsWithTag("Player");
-        //enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
         /*
         foreach (GameObject x in tileMap)
         {
@@ -39,70 +39,86 @@ public class Map : MonoBehaviour {
         roundController.StartUp(players, enemies);
 	}
 	
-	// Update is called once per frame
-	void Update ()
-    {
-		
-	}
-   //Im going to need a BFS in here
-    void FindPath(GameObject tile1, GameObject tile2)
-    {
-
-    }
 
     void FindRange(GameObject player)
     {
         entityData data = player.GetComponent<entityData>();
         int range = data.movementRange;
-        Queue<GameObject> path = new Queue<GameObject>();
-        path.Enqueue(data.tileOn);
-        rangebfs(range, path);
+        rangebfs(range,data.tileOn);
     }
-    void rangebfs(int range, Queue<GameObject> path)
+    void rangebfs(int range, GameObject tile)
     {
-        GameObject current = path.Dequeue();
         if (range != 0)
         {
-            foreach (GameObject x in tileMap)
+            TileData tileDataX = tile.GetComponent<TileData>();
+            foreach (GameObject y in tileDataX.neighbors)
             {
-                if (Vector3.Distance(current.transform.position, x.transform.position) < 1.1)
-                {
-                    TileData tileData = x.GetComponent<TileData>();
-                    if (tileData.passable)
+                    TileData tileData = y.GetComponent<TileData>();
+                    if (tileData.passable && tileData.entityOn == null)
                     {
-                        path.Enqueue(x);
-                        rangebfs(range - 1, path);
-                        //current.SetActive(false);
-                        SpriteRenderer rend = x.GetComponent<SpriteRenderer>();
+                        rangebfs(range - 1, y);
+                        SpriteRenderer rend = y.GetComponent<SpriteRenderer>();
                         rend.material.color = Color.gray;
                         tileData.inRange = true;
-                    }
-                }
+                           
+                    } 
             }
         }
     }
-    public RoundController.roundStateEnum playerTurn(GameObject player)
+
+    public void initialPlayerTurn(GameObject player)
     {
         findTileOn();
+        FindRange(player);
+    }
+    public RoundController.roundStateEnum playerTurn(GameObject player)
+    {
         movingNow = false;
         if (!moved)
         {
-            FindRange(player);
             if (selectedTile)
             {
                 moveCharacter(player, tileClicked);
                 movingNow = true;
             }
         }
-        if (Input.GetKeyDown(KeyCode.KeypadEnter))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             action = true;
-            Debug.Log("Action!");
         }
         if ((moved && action) || turnEnd)
         {
             return RoundController.roundStateEnum.CharacterEnd;
         } else if(movingNow)
+        {
+            return RoundController.roundStateEnum.Movement;
+        }
+        else
+        {
+            return RoundController.roundStateEnum.CharacterTurn;
+        }
+    }
+
+    public RoundController.roundStateEnum enemyTurn(GameObject player)
+    {
+        movingNow = false;
+        if (!moved)
+        {
+            if (selectedTile)
+            {
+                moveCharacter(player, tileClicked);
+                movingNow = true;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            action = true;
+        }
+        if ((moved && action) || turnEnd)
+        {
+            return RoundController.roundStateEnum.CharacterEnd;
+        }
+        else if (movingNow)
         {
             return RoundController.roundStateEnum.Movement;
         }
@@ -120,9 +136,10 @@ public class Map : MonoBehaviour {
     {
         if (source.transform.position != destination.transform.position)
         {
-            foreach (GameObject x in tileMap)
+            TileData tileDataSource = source.GetComponent<TileData>();
+            foreach (GameObject x in tileDataSource.neighbors)
             {
-                if(x.GetComponent<TileData>().inRange && Vector3.Distance(x.transform.position, source.transform.position) <= 1 && !visited[x])
+                if(x.GetComponent<TileData>().inRange && !visited[x])
                 {
                     if ((distances[source] + 1) < distances[x])
                     {
@@ -134,7 +151,7 @@ public class Map : MonoBehaviour {
             int min = int.MaxValue;
             GameObject minGameObject = source;
             foreach (KeyValuePair<GameObject, int> x in distances)
-            {
+            {   
                 if (x.Value < min && !visited[x.Key])
                 {
                     min = x.Value;
@@ -146,6 +163,7 @@ public class Map : MonoBehaviour {
         } else {
             distances[destination] = distances[source];
             pathFound = true;
+            resetMap();
         }   
     }
     public void moveCharacter(GameObject player, GameObject tile)
@@ -164,7 +182,6 @@ public class Map : MonoBehaviour {
         distances[player.GetComponent<entityData>().tileOn] = 0;
         visited[player.GetComponent<entityData>().tileOn] = true;
         findShortestPath(distances, visited, parents, player.GetComponent<entityData>().tileOn, tileClicked);
-        Debug.Log(distances[tileClicked].ToString());
         GameObject path = tileClicked;
         while(parents[path] != null)
         {
@@ -182,6 +199,7 @@ public class Map : MonoBehaviour {
             shortestPath.Enqueue(tempStack.Peek());
             tempStack.Pop();
         }
+        player.GetComponent<entityData>().tileOn.GetComponent<TileData>().entityOn = null;
     }
     public RoundController.roundStateEnum moveAlongPath(GameObject player)
     {
@@ -248,7 +266,43 @@ public class Map : MonoBehaviour {
             action = false;
             turnEnd = false;
             shortestPath = new Queue<GameObject>();
-
+        }
+    }
+    public void setUpMap()
+    {
+        foreach (GameObject x in tileMap)
+        {
+            TileData tiledata = x.GetComponent<TileData>();
+            foreach (GameObject y in tileMap)
+            {
+                if (y != x)
+                {
+                    if (Vector3.Distance(x.transform.position, y.transform.position) < 1.1f)
+                    {
+                        if (x.transform.position.x < y.transform.position.x)
+                        {
+                            tiledata.tileWest = y;
+                            Debug.Log("SET WEST");
+                        }
+                        else if (x.transform.position.x > y.transform.position.x)
+                        {
+                            tiledata.tileEast = y;
+                            Debug.Log("SET EAST");
+                        }
+                        else if (x.transform.position.y < y.transform.position.y)
+                        {
+                            tiledata.tileSouth = y;
+                            Debug.Log("SET SOUTH");
+                        }
+                        else if (x.transform.position.y > y.transform.position.y)
+                        {
+                            tiledata.tileNorth = y;
+                            Debug.Log("SET NORTH");
+                        }
+                    }
+                }
+            }
+            tiledata.setNeighbors();
         }
     }
     public void findTileOn()
@@ -265,16 +319,43 @@ public class Map : MonoBehaviour {
                 if (data.tileOn == null)
                 {
                     data.tileOn = y;
+                    
                 }
                 else
                 {
                     if (Vector3.Distance(x.transform.position, data.tileOn.transform.position) > Vector3.Distance(x.transform.position, y.transform.position))
                     {
+
                         data.tileOn = y;
-                    }
-                    
+                    }        
                 }
             }
+            data.tileOn.GetComponent<TileData>().entityOn = x;
+        }
+        foreach (GameObject x in enemies)
+        {
+            //Logic for if players are dead or not recruited
+            //Set player tile on
+            entityData data = x.GetComponent<entityData>();
+            foreach (GameObject y in tileMap)
+            {
+                TileData tiledata = y.GetComponent<TileData>();
+                tiledata.setMap(this);
+                if (data.tileOn == null)
+                {
+                    data.tileOn = y;
+
+                }
+                else
+                {
+                    if (Vector3.Distance(x.transform.position, data.tileOn.transform.position) > Vector3.Distance(x.transform.position, y.transform.position))
+                    {
+
+                        data.tileOn = y;
+                    }
+                }
+            }
+            data.tileOn.GetComponent<TileData>().entityOn = x;
         }
     }
 }

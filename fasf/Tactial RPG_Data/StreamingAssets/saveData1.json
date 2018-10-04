@@ -1,0 +1,45 @@
+{
+  "General": [
+    {
+      "PlayerName": "Tristo",
+      "TimePlayed": "00:00:00",
+      "Location": "0"
+    }
+  ],
+  "StoryData": [
+    {
+      "StoryStarted" : "0"
+    }
+  ],
+  "PartyData": [
+    {
+      "1": [
+        {
+          "Enabled": "1",
+          "Name": "Tristo",
+          "HP": "5",
+          "MP": "1",
+          "Level": "1",
+          "Movement": "10",
+          "Weapon": "Sword"
+        }
+      ],
+      "2": [
+        {
+          "Enabled": "0",
+          "Name": "Brendt",
+          "HP": "10",
+          "MP": "0",
+          "Level": "1",
+          "Movement": "20",
+          "Weapon": "Sword"
+        }
+      ]
+    }
+  ],
+  "Inventory" :[
+    {
+      "Money" : "1000"
+    }
+  ]
+}

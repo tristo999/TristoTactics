@@ -7,6 +7,12 @@ public class TileData : MonoBehaviour {
     public SpriteRenderer renderer;
     public bool inRange;
     public Map worldMap;
+    public GameObject entityOn;
+    public GameObject tileNorth;
+    public GameObject tileWest;
+    public GameObject tileEast;
+    public GameObject tileSouth;
+    public List<GameObject> neighbors;
     // Use this for initialization
     void Start () {
         renderer = gameObject.GetComponent<SpriteRenderer>();
@@ -39,4 +45,24 @@ public class TileData : MonoBehaviour {
     {
         this.worldMap = map;
     }
+    public void setNeighbors()
+    {
+        neighbors = new List<GameObject>();
+        if (tileNorth != null)
+        {
+            neighbors.Add(tileNorth);
+        }
+        if (tileSouth != null)
+        {
+            neighbors.Add(tileSouth);
+        }
+        if (tileEast != null)
+        {
+            neighbors.Add(tileEast);
+        }
+        if (tileWest != null)
+        {
+            neighbors.Add(tileWest);
+        }
+    } 
 }
