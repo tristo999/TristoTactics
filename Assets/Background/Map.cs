@@ -27,13 +27,6 @@ public class Map : MonoBehaviour {
         tileMap = GameObject.FindGameObjectsWithTag("Environment");
         players = GameObject.FindGameObjectsWithTag("Player");
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        /*
-        foreach (GameObject x in tileMap)
-        {
-            Vector3 newPosition = new Vector3(Mathf.RoundToInt(x.transform.position.x), Mathf.RoundToInt(x.transform.position.y),0);
-            x.transform.position = newPosition;
-        }
-        */
         findTileOn();
         roundController = masterGameObject.GetComponent<RoundController>();
         roundController.StartUp(players, enemies);

@@ -10,12 +10,15 @@ public class RoundController : MonoBehaviour {
     public bool victory = false;
     public enum roundStateEnum {CharacterSelect, CharacterTurn, CharacterEnd, Movement,SpecialEvent, EnemyTurn};
     public roundStateEnum roundState = roundStateEnum.CharacterSelect;
-    GameObject currentPlayer;
+    public GameObject currentPlayer;
     public bool roundStart = false;
     public bool gamePause;
+    GameObject mainCamera;
     public void Start()
     {
         gameMap = gameObject.GetComponent<Map>();
+        mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+
     }
     public void StartUp(GameObject[] players, GameObject[] enemies) {
         characters = new Queue<GameObject>();
@@ -43,6 +46,7 @@ public class RoundController : MonoBehaviour {
                         currentPlayer = characters.Dequeue();
                         roundState = roundStateEnum.CharacterTurn;
                         gameMap.initialPlayerTurn(currentPlayer);
+                        mainCamera.GetComponent<CameraMovementBattle>().moveCamera(currentPlayer.transform.position);
                         break;
                     case roundStateEnum.CharacterTurn: 
                         if (currentPlayer.tag == "Player")
@@ -56,6 +60,7 @@ public class RoundController : MonoBehaviour {
                         break;
                     case roundStateEnum.Movement:
                         roundState = gameMap.moveAlongPath(currentPlayer);
+                        mainCamera.GetComponent<CameraMovementBattle>().moveCamera(currentPlayer.transform.position);
                         break;
                     case roundStateEnum.CharacterEnd:
                         gameMap.resetMap();

@@ -63,8 +63,8 @@
   <ItemGroup>
     <Compile Include="Assets\Background\Map.cs" />
     <Compile Include="Assets\Background\Tiles\Shining Force\TileData.cs" />
-    <Compile Include="Assets\CameraMovementBattle.cs" />
     <Compile Include="Assets\Characters\Test Character\entityData.cs" />
+    <Compile Include="Assets\Logic Controllers\Battle\CameraMovementBattle.cs" />
     <Compile Include="Assets\Logic Controllers\Battle\CharacterLoader.cs" />
     <Compile Include="Assets\Logic Controllers\Battle\RoundController.cs" />
     <Reference Include="UnityEditor.StandardEvents">
