@@ -7,6 +7,7 @@ public class entityData : MonoBehaviour {
 
     public GameObject tileOn;
     public int movementRange = 3;
+    public int attackRange = 1;
 	// Use this for initialization
 	void Start () {
 		

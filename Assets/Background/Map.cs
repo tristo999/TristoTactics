@@ -19,6 +19,8 @@ public class Map : MonoBehaviour {
     public bool action = false;
     public bool turnEnd = false;
     public bool moving = false;
+    public int currentMove;
+    public bool inEnemyRange = false;
     public GameObject movingToward;
 
     // Use this for initialization
@@ -36,9 +38,11 @@ public class Map : MonoBehaviour {
     void FindRange(GameObject player)
     {
         entityData data = player.GetComponent<entityData>();
-        int range = data.movementRange;
+        int range = currentMove;
         rangebfs(range,data.tileOn);
+        inEnemyRange = false;
     }
+    
     void rangebfs(int range, GameObject tile)
     {
         if (range != 0)
@@ -62,6 +66,7 @@ public class Map : MonoBehaviour {
     public void initialPlayerTurn(GameObject player)
     {
         findTileOn();
+        currentMove = player.GetComponent<entityData>().movementRange;
         FindRange(player);
     }
     public RoundController.roundStateEnum playerTurn(GameObject player)
@@ -94,31 +99,39 @@ public class Map : MonoBehaviour {
 
     public RoundController.roundStateEnum enemyTurn(GameObject player)
     {
-        movingNow = false;
-        if (!moved)
-        {
-            if (selectedTile)
+        Debug.Log("In Enemy Turn");
+        bool inRange = EnemyInRange(player);
+          if (inRange) {
+            if (action)
             {
-                moveCharacter(player, tileClicked);
-                movingNow = true;
+                return RoundController.roundStateEnum.CharacterEnd;
+            } else
+            {
+                //Do Action
+                Debug.Log("Attack!");
+                return RoundController.roundStateEnum.CharacterEnd;
             }
-        }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            action = true;
-        }
-        if ((moved && action) || turnEnd)
-        {
-            return RoundController.roundStateEnum.CharacterEnd;
-        }
-        else if (movingNow)
-        {
-            return RoundController.roundStateEnum.Movement;
-        }
-        else
-        {
-            return RoundController.roundStateEnum.CharacterTurn;
-        }
+          } else {
+               if (!moved) {
+                Debug.Log("Moving Enemy");
+                GameObject closestPlayer = GameObject.FindGameObjectWithTag("Player");
+                foreach (GameObject x in players)
+                {
+                    if (Vector3.Distance(x.transform.position, player.transform.position) < Vector3.Distance(player.transform.position, closestPlayer.transform.position))
+                    {
+                        closestPlayer = x;
+                    }
+                }
+                moveCharacter(player, closestPlayer.GetComponent<entityData>().tileOn);
+                return RoundController.roundStateEnum.EnemyMovement;
+
+               } else {
+
+                return RoundController.roundStateEnum.CharacterEnd;
+
+            }
+          }
+         
     }
     public void selectTile(GameObject tileClicked)
     {
@@ -132,7 +145,7 @@ public class Map : MonoBehaviour {
             TileData tileDataSource = source.GetComponent<TileData>();
             foreach (GameObject x in tileDataSource.neighbors)
             {
-                if(x.GetComponent<TileData>().inRange && !visited[x])
+                if(!visited[x])
                 {
                     if ((distances[source] + 1) < distances[x])
                     {
@@ -161,7 +174,6 @@ public class Map : MonoBehaviour {
     }
     public void moveCharacter(GameObject player, GameObject tile)
     {
-        //player.transform.position = tile.transform.position;
         Dictionary<GameObject, int> distances = new Dictionary<GameObject, int>();
         Dictionary<GameObject, bool> visited = new Dictionary<GameObject, bool>();
         Dictionary<GameObject, GameObject> parents = new Dictionary<GameObject, GameObject>();
@@ -174,8 +186,8 @@ public class Map : MonoBehaviour {
         }
         distances[player.GetComponent<entityData>().tileOn] = 0;
         visited[player.GetComponent<entityData>().tileOn] = true;
-        findShortestPath(distances, visited, parents, player.GetComponent<entityData>().tileOn, tileClicked);
-        GameObject path = tileClicked;
+        findShortestPath(distances, visited, parents, player.GetComponent<entityData>().tileOn, tile);
+        GameObject path = tile;
         while(parents[path] != null)
         {
             shortestPath.Enqueue(path);
@@ -196,10 +208,15 @@ public class Map : MonoBehaviour {
     }
     public RoundController.roundStateEnum moveAlongPath(GameObject player)
     {
-        if (shortestPath.Count > 0)
+        if (player.tag == "Enemy")
+        {
+            inEnemyRange = EnemyInRange(player);
+        }
+        if (shortestPath.Count > 0 && currentMove > 0 && !inEnemyRange)
         {
             if (!moving)
             {
+                currentMove -= 1;
                 movingToward = shortestPath.Dequeue();
                 moving = true;
             } else
@@ -216,6 +233,7 @@ public class Map : MonoBehaviour {
         {
             if(!moving)
             {
+                currentMove -= 1;
                 movingToward = shortestPath.Dequeue();
                 moving = true;
             } else
@@ -231,19 +249,33 @@ public class Map : MonoBehaviour {
                 }
             }
         }
-        if (moved)
+        if (player.tag == "Player")
         {
-            if (action)
+            if (moved)
             {
-                return RoundController.roundStateEnum.CharacterEnd;
+                if (action)
+                {
+                    return RoundController.roundStateEnum.CharacterEnd;
+                }
+                else
+                {
+                    return RoundController.roundStateEnum.CharacterTurn;
+                }
             }
             else
             {
-                return RoundController.roundStateEnum.CharacterTurn;
+                return RoundController.roundStateEnum.Movement;
             }
         } else
         {
-            return RoundController.roundStateEnum.Movement;
+            if (moved)
+            {
+                return RoundController.roundStateEnum.CharacterTurn;
+
+            } else
+            {
+                return RoundController.roundStateEnum.EnemyMovement;
+            }
         }
     }
     public void resetMap()
@@ -349,6 +381,25 @@ public class Map : MonoBehaviour {
                 }
             }
             data.tileOn.GetComponent<TileData>().entityOn = x;
+        }
+    }
+
+    public bool EnemyInRange(GameObject player)
+    {
+        entityData data = player.GetComponent<entityData>();
+        if (data.attackRange == 1)
+        {
+            foreach (GameObject x in players)
+            {
+                if (Vector3.Distance(player.transform.position, x.transform.position) < 1.5f) 
+                {
+                    return true;
+                }
+            }
+            return false;
+        } else
+        {
+            return false;
         }
     }
 }

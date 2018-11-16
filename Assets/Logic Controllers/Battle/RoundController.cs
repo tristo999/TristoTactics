@@ -8,11 +8,13 @@ public class RoundController : MonoBehaviour {
     public Map gameMap;
     public bool roundOver = false;
     public bool victory = false;
-    public enum roundStateEnum {CharacterSelect, CharacterTurn, CharacterEnd, Movement,SpecialEvent, EnemyTurn};
+    public enum roundStateEnum {CharacterSelect, CharacterTurn, CharacterEnd, Movement, SpecialEvent, EnemyMovement, EnemyPause};
     public roundStateEnum roundState = roundStateEnum.CharacterSelect;
     public GameObject currentPlayer;
     public bool roundStart = false;
     public bool gamePause;
+    public float enemyPauseTime = 5f;
+    public float timer;
     GameObject mainCamera;
     public void Start()
     {
@@ -55,12 +57,28 @@ public class RoundController : MonoBehaviour {
 
                         } else
                         {
-                            roundState = gameMap.enemyTurn(currentPlayer);
+                            Debug.Log("Enemy Turn");
+                            roundState = roundStateEnum.EnemyPause;
+                            timer = 0;
                         }
                         break;
                     case roundStateEnum.Movement:
                         roundState = gameMap.moveAlongPath(currentPlayer);
                         mainCamera.GetComponent<CameraMovementBattle>().moveCamera(currentPlayer.transform.position);
+                        break;
+                    case roundStateEnum.EnemyMovement:
+                        roundState = gameMap.moveAlongPath(currentPlayer);
+                        mainCamera.GetComponent<CameraMovementBattle>().moveCamera(currentPlayer.transform.position);
+                        break;
+                    case roundStateEnum.EnemyPause:
+                        Debug.Log("Waiting!");
+                        if (timer > enemyPauseTime)
+                        {
+                            roundState = gameMap.enemyTurn(currentPlayer);
+                        } else
+                        {
+                            timer += Time.deltaTime;
+                        }
                         break;
                     case roundStateEnum.CharacterEnd:
                         gameMap.resetMap();
@@ -73,7 +91,8 @@ public class RoundController : MonoBehaviour {
             }
             else
             {
-  
+                //Round Over
+                Application.Quit();
             }
         }
 	}

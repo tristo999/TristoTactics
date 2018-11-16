@@ -32,7 +32,14 @@ public class TileData : MonoBehaviour {
     }
     void OnMouseExit()
     {
-        renderer.material.color = startcolor;
+        if (inRange)
+        {
+            renderer.material.color = Color.gray;
+        }
+        else
+        {
+            renderer.material.color = startcolor;
+        }
     }
     private void OnMouseDown()
     {
