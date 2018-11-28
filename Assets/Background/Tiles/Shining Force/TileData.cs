@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TileData : MonoBehaviour {
     public bool passable = true;
-    public SpriteRenderer renderer;
+    public SpriteRenderer SRenderer;
     public bool inRange;
     public Map worldMap;
     public GameObject entityOn;
@@ -15,30 +15,24 @@ public class TileData : MonoBehaviour {
     public List<GameObject> neighbors;
     // Use this for initialization
     void Start () {
-        renderer = gameObject.GetComponent<SpriteRenderer>();
+        SRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-    
     private Color startcolor;
 
     void OnMouseEnter()
     {
-        startcolor = renderer.material.color;
-        renderer.material.color = Color.yellow;
+        SRenderer.material.color = Color.yellow;
     }
     void OnMouseExit()
     {
         if (inRange)
         {
-            renderer.material.color = Color.gray;
+            SRenderer.material.color = Color.gray;
         }
         else
         {
-            renderer.material.color = startcolor;
+            SRenderer.material.color = Color.white;
         }
     }
     private void OnMouseDown()

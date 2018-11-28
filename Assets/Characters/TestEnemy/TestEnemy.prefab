@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114173375495476640}
   m_Layer: 0
   m_Name: TestEnemy
-  m_TagString: Player
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53,7 +53,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileOn: {fileID: 0}
-  movementRange: 3
+  movementRange: 6
+  attackRange: 1
+  movementPoints: 0
+  maxHealth: 6
+  currentHealth: 0
+  maxSpells: 3
+  currentSpells: 0
 --- !u!212 &212358117716421820
 SpriteRenderer:
   m_ObjectHideFlags: 1

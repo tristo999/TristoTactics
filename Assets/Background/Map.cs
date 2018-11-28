@@ -19,10 +19,10 @@ public class Map : MonoBehaviour {
     public bool action = false;
     public bool turnEnd = false;
     public bool moving = false;
-    public int currentMove;
     public bool inEnemyRange = false;
     public GameObject movingToward;
-
+    public int maxRange = 60;
+    public entityData currentPlayerData;
     // Use this for initialization
     void Start ()
     {
@@ -32,17 +32,18 @@ public class Map : MonoBehaviour {
         findTileOn();
         roundController = masterGameObject.GetComponent<RoundController>();
         roundController.StartUp(players, enemies);
+        shortestPath = new Queue<GameObject>();
 	}
 	
 
     void FindRange(GameObject player)
     {
         entityData data = player.GetComponent<entityData>();
-        int range = currentMove;
-        rangebfs(range,data.tileOn);
+        rangebfs(currentPlayerData.movementPoints,data.tileOn);
         inEnemyRange = false;
     }
-    
+
+    // LOOPS THROUGH EVERY POSSIBLE PATH 1-RANGE LENGTH -- TOO EXPENSIVE TO WORK
     void rangebfs(int range, GameObject tile)
     {
         if (range != 0)
@@ -62,20 +63,23 @@ public class Map : MonoBehaviour {
             }
         }
     }
+    
 
     public void initialPlayerTurn(GameObject player)
     {
         findTileOn();
-        currentMove = player.GetComponent<entityData>().movementRange;
+        currentPlayerData = player.GetComponent<entityData>();
+        currentPlayerData.movementPoints = currentPlayerData.movementRange;
         FindRange(player);
     }
     public RoundController.roundStateEnum playerTurn(GameObject player)
     {
         movingNow = false;
-        if (!moved)
+        if (currentPlayerData.movementPoints != 0)
         {
             if (selectedTile)
             {
+                //shortestPath = new Queue<GameObject>();
                 moveCharacter(player, tileClicked);
                 movingNow = true;
             }
@@ -122,6 +126,18 @@ public class Map : MonoBehaviour {
                         closestPlayer = x;
                     }
                 }
+                shortestPath = new Queue<GameObject>();
+                // Find shortest path to inrange tile
+                /*
+                moveCharacter(player, closestPlayer.GetComponent<entityData>().tileOn.GetComponent<TileData>().tileWest.GetComponent<TileData>().tileNorth);
+                moveCharacter(player, closestPlayer.GetComponent<entityData>().tileOn.GetComponent<TileData>().tileWest);
+                moveCharacter(player, closestPlayer.GetComponent<entityData>().tileOn.GetComponent<TileData>().tileWest.GetComponent<TileData>().tileSouth);
+                moveCharacter(player, closestPlayer.GetComponent<entityData>().tileOn.GetComponent<TileData>().tileNorth);
+                moveCharacter(player, closestPlayer.GetComponent<entityData>().tileOn.GetComponent<TileData>().tileEast.GetComponent<TileData>().tileNorth);
+                moveCharacter(player, closestPlayer.GetComponent<entityData>().tileOn.GetComponent<TileData>().tileEast);
+                moveCharacter(player, closestPlayer.GetComponent<entityData>().tileOn.GetComponent<TileData>().tileEast.GetComponent<TileData>().tileSouth);
+                moveCharacter(player, closestPlayer.GetComponent<entityData>().tileOn.GetComponent<TileData>().tileSouth);
+                */
                 moveCharacter(player, closestPlayer.GetComponent<entityData>().tileOn);
                 return RoundController.roundStateEnum.EnemyMovement;
 
@@ -145,7 +161,7 @@ public class Map : MonoBehaviour {
             TileData tileDataSource = source.GetComponent<TileData>();
             foreach (GameObject x in tileDataSource.neighbors)
             {
-                if(!visited[x])
+                if(!visited[x] && (x.GetComponent<TileData>().entityOn == null || x == destination) && x.GetComponent<TileData>().passable)
                 {
                     if ((distances[source] + 1) < distances[x])
                     {
@@ -174,37 +190,52 @@ public class Map : MonoBehaviour {
     }
     public void moveCharacter(GameObject player, GameObject tile)
     {
-        Dictionary<GameObject, int> distances = new Dictionary<GameObject, int>();
-        Dictionary<GameObject, bool> visited = new Dictionary<GameObject, bool>();
-        Dictionary<GameObject, GameObject> parents = new Dictionary<GameObject, GameObject>();
-        shortestPath = new Queue<GameObject>();
-        foreach (GameObject x in tileMap)
+        if (tile != null)
         {
-            distances.Add(x, int.MaxValue);
-            visited.Add(x, false);
-            parents.Add(x, null);
+            Dictionary<GameObject, int> distances = new Dictionary<GameObject, int>();
+            Dictionary<GameObject, bool> visited = new Dictionary<GameObject, bool>();
+            Dictionary<GameObject, GameObject> parents = new Dictionary<GameObject, GameObject>();
+            Queue<GameObject> newShortestPath = new Queue<GameObject>();
+
+            foreach (GameObject x in tileMap)
+            {
+                distances.Add(x, int.MaxValue);
+                visited.Add(x, false);
+                parents.Add(x, null);
+            }
+            distances[player.GetComponent<entityData>().tileOn] = 0;
+            visited[player.GetComponent<entityData>().tileOn] = true;
+            findShortestPath(distances, visited, parents, player.GetComponent<entityData>().tileOn, tile);
+            GameObject path = tile;
+            while (parents[path] != null)
+            {
+                newShortestPath.Enqueue(path);
+                path = parents[path];
+            }
+            Stack<GameObject> tempStack = new Stack<GameObject>();
+            while (newShortestPath.Count > 0)
+            {
+                tempStack.Push(newShortestPath.Peek());
+                newShortestPath.Dequeue();
+            }
+            while (tempStack.Count > 0)
+            {
+                newShortestPath.Enqueue(tempStack.Peek());
+                tempStack.Pop();
+            }
+            if (shortestPath.Count != 0)
+            {
+                if (newShortestPath.Count < shortestPath.Count)
+                {
+                    shortestPath = newShortestPath;
+                }
+            }
+            else
+            {
+                shortestPath = newShortestPath;
+            }
+            player.GetComponent<entityData>().tileOn.GetComponent<TileData>().entityOn = null;
         }
-        distances[player.GetComponent<entityData>().tileOn] = 0;
-        visited[player.GetComponent<entityData>().tileOn] = true;
-        findShortestPath(distances, visited, parents, player.GetComponent<entityData>().tileOn, tile);
-        GameObject path = tile;
-        while(parents[path] != null)
-        {
-            shortestPath.Enqueue(path);
-            path = parents[path];
-        }
-        Stack<GameObject> tempStack = new Stack<GameObject>();
-        while(shortestPath.Count > 0)
-        {
-            tempStack.Push(shortestPath.Peek());
-            shortestPath.Dequeue();
-        }
-        while (tempStack.Count > 0)
-        {
-            shortestPath.Enqueue(tempStack.Peek());
-            tempStack.Pop();
-        }
-        player.GetComponent<entityData>().tileOn.GetComponent<TileData>().entityOn = null;
     }
     public RoundController.roundStateEnum moveAlongPath(GameObject player)
     {
@@ -212,11 +243,11 @@ public class Map : MonoBehaviour {
         {
             inEnemyRange = EnemyInRange(player);
         }
-        if (shortestPath.Count > 0 && currentMove > 0 && !inEnemyRange)
+        if (shortestPath.Count > 0 && currentPlayerData.movementPoints > 0 && !inEnemyRange)
         {
             if (!moving)
             {
-                currentMove -= 1;
+                currentPlayerData.movementPoints--;
                 movingToward = shortestPath.Dequeue();
                 moving = true;
             } else
@@ -233,7 +264,7 @@ public class Map : MonoBehaviour {
         {
             if(!moving)
             {
-                currentMove -= 1;
+                currentPlayerData.movementPoints--;
                 movingToward = shortestPath.Dequeue();
                 moving = true;
             } else
@@ -259,6 +290,12 @@ public class Map : MonoBehaviour {
                 }
                 else
                 {
+                    findTileOn();
+                    shortestPath = new Queue<GameObject>();
+                    if (currentPlayerData.movementPoints != 0)
+                    {
+                        FindRange(player);
+                    }
                     return RoundController.roundStateEnum.CharacterTurn;
                 }
             }
@@ -307,22 +344,18 @@ public class Map : MonoBehaviour {
                         if (x.transform.position.x < y.transform.position.x)
                         {
                             tiledata.tileWest = y;
-                            Debug.Log("SET WEST");
                         }
                         else if (x.transform.position.x > y.transform.position.x)
                         {
                             tiledata.tileEast = y;
-                            Debug.Log("SET EAST");
                         }
                         else if (x.transform.position.y < y.transform.position.y)
                         {
                             tiledata.tileSouth = y;
-                            Debug.Log("SET SOUTH");
                         }
                         else if (x.transform.position.y > y.transform.position.y)
                         {
                             tiledata.tileNorth = y;
-                            Debug.Log("SET NORTH");
                         }
                     }
                 }
