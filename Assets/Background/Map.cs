@@ -41,7 +41,14 @@ public class Map : MonoBehaviour {
     {
         entityData data = player.GetComponent<entityData>();
         rangebfs(currentPlayerData.movementPoints,data.tileOn);
-        rangebfsAttack(currentPlayerData.minAttackRange, currentPlayerData.attackRange, data.tileOn);
+        if (currentPlayerData.attackRange == 1)
+        {
+            rangebfsAttackM(currentPlayerData.minAttackRange, currentPlayerData.attackRange, data.tileOn);
+        }
+        else
+        {
+            rangebfsAttack(currentPlayerData.minAttackRange, currentPlayerData.attackRange, data.tileOn);
+        }
         inEnemyRange = false;
     }
 
@@ -66,6 +73,18 @@ public class Map : MonoBehaviour {
         }
     }
 
+    void rangebfsAttackM(int innerRange, int outerRange, GameObject tile)
+    {
+        foreach (GameObject y in tileMap)
+        {
+            if (Vector3.Distance(tile.transform.position, y.transform.position) < 1.5f) {
+                TileData tileData = y.GetComponent<TileData>();
+                SpriteRenderer rend = y.GetComponent<SpriteRenderer>();
+                rend.material.color = Color.red;
+                tileData.inRange = true;
+            }
+        }
+    }
     void rangebfsAttack(int innerRange, int outerRange, GameObject tile)
     {
         if (outerRange != 0)
@@ -74,8 +93,6 @@ public class Map : MonoBehaviour {
             foreach (GameObject y in tileDataX.neighbors)
             {
                 TileData tileData = y.GetComponent<TileData>();
-                if (tileData.passable && tileData.entityOn == null)
-                {
                     rangebfsAttack(innerRange - 1, outerRange - 1, y);
                     if (innerRange <= 0)
                     {
@@ -83,8 +100,6 @@ public class Map : MonoBehaviour {
                         rend.material.color = Color.red;
                         tileData.inRange = true;
                     }
-
-                }
             }
         }
     }
@@ -333,10 +348,10 @@ public class Map : MonoBehaviour {
         } else
         {
             if (moved)
-            { 
-
+            {
+                findTileOn();
                 FindRange(player);
-            return RoundController.roundStateEnum.CharacterTurn;
+                return RoundController.roundStateEnum.CharacterTurn;
 
             } else
             {   
