@@ -38,61 +38,65 @@ public class RoundController : MonoBehaviour {
     }
 
 	void FixedUpdate () {
-        if (roundStart)
-        {
-            if (!roundOver)
+        if (!gamePause) {
+            if (roundStart)
             {
-                switch (roundState)
+                if (!roundOver)
                 {
-                    case roundStateEnum.CharacterSelect:
-                        currentPlayer = characters.Dequeue();
-                        roundState = roundStateEnum.CharacterTurn;
-                        gameMap.initialPlayerTurn(currentPlayer);
-                        mainCamera.GetComponent<CameraMovementBattle>().moveCamera(currentPlayer.transform.position);
-                        break;
-                    case roundStateEnum.CharacterTurn: 
-                        if (currentPlayer.tag == "Player")
-                        {
-                            roundState = gameMap.playerTurn(currentPlayer);
+                    switch (roundState)
+                    {
+                        case roundStateEnum.CharacterSelect:
+                            currentPlayer = characters.Dequeue();
+                            roundState = roundStateEnum.CharacterTurn;
+                            gameMap.initialPlayerTurn(currentPlayer);
+                            mainCamera.GetComponent<CameraMovementBattle>().moveCamera(currentPlayer.transform.position);
+                            break;
+                        case roundStateEnum.CharacterTurn:
+                            if (currentPlayer.tag == "Player")
+                            {
+                                roundState = gameMap.playerTurn(currentPlayer);
 
-                        } else
-                        {
-                            Debug.Log("Enemy Turn");
-                            roundState = roundStateEnum.EnemyPause;
-                            timer = 0;
-                        }
-                        break;
-                    case roundStateEnum.Movement:
-                        roundState = gameMap.moveAlongPath(currentPlayer);
-                        mainCamera.GetComponent<CameraMovementBattle>().moveCamera(currentPlayer.transform.position);
-                        break;
-                    case roundStateEnum.EnemyMovement:
-                        roundState = gameMap.moveAlongPath(currentPlayer);
-                        mainCamera.GetComponent<CameraMovementBattle>().moveCamera(currentPlayer.transform.position);
-                        break;
-                    case roundStateEnum.EnemyPause:
-                        Debug.Log("Waiting!");
-                        if (timer > enemyPauseTime)
-                        {
-                            roundState = gameMap.enemyTurn(currentPlayer);
-                        } else
-                        {
-                            timer += Time.deltaTime;
-                        }
-                        break;
-                    case roundStateEnum.CharacterEnd:
-                        gameMap.resetMap();
-                        roundState = roundStateEnum.CharacterSelect;
-                        characters.Enqueue(currentPlayer);
-                        break;
-                    case roundStateEnum.SpecialEvent:
-                        break;
+                            }
+                            else
+                            {
+                                Debug.Log("Enemy Turn");
+                                roundState = roundStateEnum.EnemyPause;
+                                timer = 0;
+                            }
+                            break;
+                        case roundStateEnum.Movement:
+                            roundState = gameMap.moveAlongPath(currentPlayer);
+                            mainCamera.GetComponent<CameraMovementBattle>().moveCamera(currentPlayer.transform.position);
+                            break;
+                        case roundStateEnum.EnemyMovement:
+                            roundState = gameMap.moveAlongPath(currentPlayer);
+                            mainCamera.GetComponent<CameraMovementBattle>().moveCamera(currentPlayer.transform.position);
+                            break;
+                        case roundStateEnum.EnemyPause:
+                            Debug.Log("Waiting!");
+                            if (timer > enemyPauseTime)
+                            {
+                                roundState = gameMap.enemyTurn(currentPlayer);
+                            }
+                            else
+                            {
+                                timer += Time.deltaTime;
+                            }
+                            break;
+                        case roundStateEnum.CharacterEnd:
+                            gameMap.resetMap();
+                            roundState = roundStateEnum.CharacterSelect;
+                            characters.Enqueue(currentPlayer);
+                            break;
+                        case roundStateEnum.SpecialEvent:
+                            break;
+                    }
                 }
-            }
-            else
-            {
-                //Round Over
-                Application.Quit();
+                else
+                {
+                    //Round Over
+                    Application.Quit();
+                }
             }
         }
 	}

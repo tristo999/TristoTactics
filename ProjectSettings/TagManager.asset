@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Environment
   - Enemy
+  - PauseScreen
+  - ResumeButton
+  - ExitButton
   layers:
   - Default
   - TransparentFX

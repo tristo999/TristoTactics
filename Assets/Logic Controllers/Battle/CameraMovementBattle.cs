@@ -12,11 +12,16 @@ public class CameraMovementBattle : MonoBehaviour {
     public bool gamePause;
     public float autoSpeed = 4f;
     Vector3 newPosition;
+    public GameObject pauseMenu;
+    public RoundController roundController;
 	// Use this for initialization
 	void Start () {
         Cursor.lockState = CursorLockMode.Confined;
         theScreenWidth = Screen.width;
-        theScreenHeight = Screen.height;    
+        theScreenHeight = Screen.height;
+        pauseMenu = GameObject.FindGameObjectWithTag("PauseScreen");
+        roundController = GameObject.FindGameObjectWithTag("GameController").GetComponent<RoundController>();
+        pauseMenu.SetActive(false);
     }
 	
 	// Update is called once per frame
@@ -27,12 +32,16 @@ public class CameraMovementBattle : MonoBehaviour {
                 {
                     Cursor.lockState = CursorLockMode.None;
                     gamePause = true;
+                    roundController.gamePause = true;
+                    pauseMenu.SetActive(true);
                 }
                 else
                 {
                     Cursor.lockState = CursorLockMode.Confined;
                     gamePause = false;
-                }
+                    pauseMenu.SetActive(false);
+                    roundController.gamePause = false;
+            }
             }
         if (!gamePause)
         {

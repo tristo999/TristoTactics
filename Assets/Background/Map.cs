@@ -23,6 +23,7 @@ public class Map : MonoBehaviour {
     public GameObject movingToward;
     public int maxRange = 60;
     public entityData currentPlayerData;
+    public GameObject[] enitiesInRange;
     // Use this for initialization
     void Start ()
     {
@@ -40,6 +41,7 @@ public class Map : MonoBehaviour {
     {
         entityData data = player.GetComponent<entityData>();
         rangebfs(currentPlayerData.movementPoints,data.tileOn);
+        rangebfsAttack(currentPlayerData.minAttackRange, currentPlayerData.attackRange, data.tileOn);
         inEnemyRange = false;
     }
 
@@ -63,7 +65,32 @@ public class Map : MonoBehaviour {
             }
         }
     }
-    
+
+    void rangebfsAttack(int innerRange, int outerRange, GameObject tile)
+    {
+        if (outerRange != 0)
+        {
+            TileData tileDataX = tile.GetComponent<TileData>();
+            foreach (GameObject y in tileDataX.neighbors)
+            {
+                TileData tileData = y.GetComponent<TileData>();
+                if (tileData.passable && tileData.entityOn == null)
+                {
+                    rangebfsAttack(innerRange - 1, outerRange - 1, y);
+                    if (innerRange <= 0)
+                    {
+                        SpriteRenderer rend = y.GetComponent<SpriteRenderer>();
+                        rend.material.color = Color.red;
+                        tileData.inRange = true;
+                    }
+
+                }
+            }
+        }
+    }
+
+
+
 
     public void initialPlayerTurn(GameObject player)
     {
@@ -306,11 +333,13 @@ public class Map : MonoBehaviour {
         } else
         {
             if (moved)
-            {
-                return RoundController.roundStateEnum.CharacterTurn;
+            { 
+
+                FindRange(player);
+            return RoundController.roundStateEnum.CharacterTurn;
 
             } else
-            {
+            {   
                 return RoundController.roundStateEnum.EnemyMovement;
             }
         }
