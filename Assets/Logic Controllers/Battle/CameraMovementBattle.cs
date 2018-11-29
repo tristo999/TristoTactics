@@ -26,6 +26,8 @@ public class CameraMovementBattle : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        // Refactor so menu button controls pause instead of escape key
+        /*
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 if (Cursor.lockState == CursorLockMode.Confined)
@@ -41,8 +43,9 @@ public class CameraMovementBattle : MonoBehaviour {
                     gamePause = false;
                     pauseMenu.SetActive(false);
                     roundController.gamePause = false;
+                }
             }
-            }
+            */
         if (!gamePause)
         {
             if (cameraMoveEnabled)
@@ -100,4 +103,27 @@ public class CameraMovementBattle : MonoBehaviour {
         newPosition = newPos;
         cameraMoveEnabled = false;
     }
+    public void pauseGame()
+    {
+        if (!gamePause)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            gamePause = true;
+            roundController.gamePause = true;
+            pauseMenu.SetActive(true);
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+            gamePause = false;
+            pauseMenu.SetActive(false);
+            roundController.gamePause = false;
+        }
+    }
+    
+    public void exitApplication()
+    {
+        Application.Quit();
+    }
+
 }

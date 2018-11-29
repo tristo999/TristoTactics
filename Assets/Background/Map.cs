@@ -23,7 +23,10 @@ public class Map : MonoBehaviour {
     public GameObject movingToward;
     public int maxRange = 60;
     public entityData currentPlayerData;
-    public GameObject[] enitiesInRange;
+    public List<GameObject> entitiesInRange;
+    public bool initialRun;
+    public GameObject currentPlayer;
+    public GameObject playerUI;
     // Use this for initialization
     void Start ()
     {
@@ -34,6 +37,10 @@ public class Map : MonoBehaviour {
         roundController = masterGameObject.GetComponent<RoundController>();
         roundController.StartUp(players, enemies);
         shortestPath = new Queue<GameObject>();
+        entitiesInRange = new List<GameObject>();
+        playerUI = GameObject.FindGameObjectWithTag("PlayerUI");
+        playerUI.SetActive(false);
+
 	}
 	
 
@@ -41,6 +48,12 @@ public class Map : MonoBehaviour {
     {
         entityData data = player.GetComponent<entityData>();
         rangebfs(currentPlayerData.movementPoints,data.tileOn);
+        inEnemyRange = false;
+    }
+
+    void FindRangeAttack(GameObject player)
+    {
+        entityData data = player.GetComponent<entityData>();
         if (currentPlayerData.attackRange == 1)
         {
             rangebfsAttackM(currentPlayerData.minAttackRange, currentPlayerData.attackRange, data.tileOn);
@@ -81,7 +94,7 @@ public class Map : MonoBehaviour {
                 TileData tileData = y.GetComponent<TileData>();
                 SpriteRenderer rend = y.GetComponent<SpriteRenderer>();
                 rend.material.color = Color.red;
-                tileData.inRange = true;
+                tileData.inAttackRange = true;
             }
         }
     }
@@ -98,7 +111,11 @@ public class Map : MonoBehaviour {
                     {
                         SpriteRenderer rend = y.GetComponent<SpriteRenderer>();
                         rend.material.color = Color.red;
-                        tileData.inRange = true;
+                        tileData.inAttackRange = true;
+                        if (tileData.entityOn != null)
+                    {
+                        entitiesInRange.Add(tileData.entityOn);
+                    }
                     }
             }
         }
@@ -112,16 +129,25 @@ public class Map : MonoBehaviour {
         findTileOn();
         currentPlayerData = player.GetComponent<entityData>();
         currentPlayerData.movementPoints = currentPlayerData.movementRange;
-        FindRange(player);
+        currentPlayer = player;
+        playerUI.SetActive(true);
     }
-    public RoundController.roundStateEnum playerTurn(GameObject player)
+    public void initialEnemyTurn(GameObject player)
+    {
+        findTileOn();
+        currentPlayerData = player.GetComponent<entityData>();
+        currentPlayerData.movementPoints = currentPlayerData.movementRange;
+        FindRange(player);
+        initialRun = false;
+    }
+    //Break Up into indivdual actions with escape as exit, playerTurn is base waiting for user input
+    public RoundController.roundStateEnum playerTurnOld(GameObject player)
     {
         movingNow = false;
         if (currentPlayerData.movementPoints != 0)
         {
             if (selectedTile)
             {
-                //shortestPath = new Queue<GameObject>();
                 moveCharacter(player, tileClicked);
                 movingNow = true;
             }
@@ -143,52 +169,131 @@ public class Map : MonoBehaviour {
         }
     }
 
+    public RoundController.roundStateEnum playerTurn(GameObject player)
+    {
+        return RoundController.roundStateEnum.CharacterTurn;
+    }
+
+    public void changePlayerMove()
+    {
+        if (currentPlayer.GetComponent<entityData>().movementPoints != 0)
+        {
+            FindRange(currentPlayer);
+            roundController.playerRound = RoundController.playerStates.playerMove;
+            playerUI.SetActive(false);
+        }
+    }
+
+    public void changePlayerAttack()
+    {
+        FindRangeAttack(currentPlayer);
+        roundController.playerRound = RoundController.playerStates.playerAttack;
+        playerUI.SetActive(false);
+    }
+
+    public void playerEndTurn()
+    {
+        playerUI.SetActive(false);
+        roundController.roundState = RoundController.roundStateEnum.CharacterEnd;
+    }
+
+    public RoundController.roundStateEnum playerTurnMove(GameObject player)
+    {
+        if (currentPlayerData.movementPoints != 0)
+        {
+            if (selectedTile)
+            {
+                moveCharacter(player, tileClicked);
+                movingNow = true;
+            }
+        }
+        if (movingNow)
+        {
+            return RoundController.roundStateEnum.Movement;
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            resetMap();
+            roundController.playerRound = RoundController.playerStates.playerBase;
+            playerUI.SetActive(true);
+        }
+        return RoundController.roundStateEnum.CharacterTurn;
+    }
+
+    public RoundController.roundStateEnum playerTurnAttack(GameObject player)
+    {
+        action = true;
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            resetMap();
+            roundController.playerRound = RoundController.playerStates.playerBase;
+            playerUI.SetActive(true);
+        }
+        return RoundController.roundStateEnum.CharacterTurn;
+    }
+
     public RoundController.roundStateEnum enemyTurn(GameObject player)
     {
-        Debug.Log("In Enemy Turn");
-        bool inRange = EnemyInRange(player);
-          if (inRange) {
-            if (action)
+        if (!initialRun)
+        {
+            FindRange(player);
+            roundController.enemyWait(RoundController.roundStateEnum.CharacterTurn);
+            initialRun = true;
+            return RoundController.roundStateEnum.EnemyPause;
+        }
+        else
+        {
+            bool inRange = EnemyInRange(player);
+            if (inRange)
             {
-                return RoundController.roundStateEnum.CharacterEnd;
-            } else
-            {
-                //Do Action
-                Debug.Log("Attack!");
-                return RoundController.roundStateEnum.CharacterEnd;
-            }
-          } else {
-               if (!moved) {
-                Debug.Log("Moving Enemy");
-                GameObject closestPlayer = GameObject.FindGameObjectWithTag("Player");
-                foreach (GameObject x in players)
+                if (action)
                 {
-                    if (Vector3.Distance(x.transform.position, player.transform.position) < Vector3.Distance(player.transform.position, closestPlayer.transform.position))
-                    {
-                        closestPlayer = x;
-                    }
+                    return RoundController.roundStateEnum.CharacterEnd;
                 }
-                shortestPath = new Queue<GameObject>();
-                // Find shortest path to inrange tile
-                /*
-                moveCharacter(player, closestPlayer.GetComponent<entityData>().tileOn.GetComponent<TileData>().tileWest.GetComponent<TileData>().tileNorth);
-                moveCharacter(player, closestPlayer.GetComponent<entityData>().tileOn.GetComponent<TileData>().tileWest);
-                moveCharacter(player, closestPlayer.GetComponent<entityData>().tileOn.GetComponent<TileData>().tileWest.GetComponent<TileData>().tileSouth);
-                moveCharacter(player, closestPlayer.GetComponent<entityData>().tileOn.GetComponent<TileData>().tileNorth);
-                moveCharacter(player, closestPlayer.GetComponent<entityData>().tileOn.GetComponent<TileData>().tileEast.GetComponent<TileData>().tileNorth);
-                moveCharacter(player, closestPlayer.GetComponent<entityData>().tileOn.GetComponent<TileData>().tileEast);
-                moveCharacter(player, closestPlayer.GetComponent<entityData>().tileOn.GetComponent<TileData>().tileEast.GetComponent<TileData>().tileSouth);
-                moveCharacter(player, closestPlayer.GetComponent<entityData>().tileOn.GetComponent<TileData>().tileSouth);
-                */
-                moveCharacter(player, closestPlayer.GetComponent<entityData>().tileOn);
-                return RoundController.roundStateEnum.EnemyMovement;
-
-               } else {
-
-                return RoundController.roundStateEnum.CharacterEnd;
-
+                else
+                {
+                    //Do Action
+                    Debug.Log("Attack!");
+                    return RoundController.roundStateEnum.CharacterEnd;
+                }
             }
-          }
+            else
+            {
+                if (!moved)
+                {
+                    Debug.Log("Moving Enemy");
+                    GameObject closestPlayer = GameObject.FindGameObjectWithTag("Player");
+                    foreach (GameObject x in players)
+                    {
+                        if (Vector3.Distance(x.transform.position, player.transform.position) < Vector3.Distance(player.transform.position, closestPlayer.transform.position))
+                        {
+                            closestPlayer = x;
+                        }
+                    }
+                    shortestPath = new Queue<GameObject>();
+                    // Find shortest path to inrange tile
+                    /*
+                    moveCharacter(player, closestPlayer.GetComponent<entityData>().tileOn.GetComponent<TileData>().tileWest.GetComponent<TileData>().tileNorth);
+                    moveCharacter(player, closestPlayer.GetComponent<entityData>().tileOn.GetComponent<TileData>().tileWest);
+                    moveCharacter(player, closestPlayer.GetComponent<entityData>().tileOn.GetComponent<TileData>().tileWest.GetComponent<TileData>().tileSouth);
+                    moveCharacter(player, closestPlayer.GetComponent<entityData>().tileOn.GetComponent<TileData>().tileNorth);
+                    moveCharacter(player, closestPlayer.GetComponent<entityData>().tileOn.GetComponent<TileData>().tileEast.GetComponent<TileData>().tileNorth);
+                    moveCharacter(player, closestPlayer.GetComponent<entityData>().tileOn.GetComponent<TileData>().tileEast);
+                    moveCharacter(player, closestPlayer.GetComponent<entityData>().tileOn.GetComponent<TileData>().tileEast.GetComponent<TileData>().tileSouth);
+                    moveCharacter(player, closestPlayer.GetComponent<entityData>().tileOn.GetComponent<TileData>().tileSouth);
+                    */
+                    moveCharacter(player, closestPlayer.GetComponent<entityData>().tileOn);
+                    return RoundController.roundStateEnum.EnemyMovement;
+
+                }
+                else
+                {
+
+                    return RoundController.roundStateEnum.CharacterEnd;
+
+                }
+            }
+        }
          
     }
     public void selectTile(GameObject tileClicked)
@@ -332,12 +437,9 @@ public class Map : MonoBehaviour {
                 }
                 else
                 {
-                    findTileOn();
-                    shortestPath = new Queue<GameObject>();
-                    if (currentPlayerData.movementPoints != 0)
-                    {
-                        FindRange(player);
-                    }
+                    resetMap();
+                    roundController.playerRound = RoundController.playerStates.playerBase;
+                    playerUI.SetActive(true);
                     return RoundController.roundStateEnum.CharacterTurn;
                 }
             }
@@ -350,8 +452,9 @@ public class Map : MonoBehaviour {
             if (moved)
             {
                 findTileOn();
-                FindRange(player);
-                return RoundController.roundStateEnum.CharacterTurn;
+                FindRangeAttack(player);
+                roundController.enemyWait(RoundController.roundStateEnum.CharacterTurn);
+                return RoundController.roundStateEnum.EnemyPause;
 
             } else
             {   
@@ -365,14 +468,18 @@ public class Map : MonoBehaviour {
         {
             TileData tiledata = x.GetComponent<TileData>();
             tiledata.inRange = false;
+            tiledata.inAttackRange = false;
             SpriteRenderer rend = x.GetComponent<SpriteRenderer>();
-            rend.material.color = Color.white;
-            selectedTile = false;
-            moved = false;
-            action = false;
-            turnEnd = false;
-            shortestPath = new Queue<GameObject>();
+            rend.material.color = Color.white; 
         }
+        selectedTile = false;
+        moved = false;
+        action = false;
+        turnEnd = false;
+        tileClicked = null;
+        shortestPath = new Queue<GameObject>();
+        findTileOn();
+        movingNow = false;
     }
     public void setUpMap()
     {
@@ -460,7 +567,7 @@ public class Map : MonoBehaviour {
             data.tileOn.GetComponent<TileData>().entityOn = x;
         }
     }
-
+    // Does not account for ranged attacks
     public bool EnemyInRange(GameObject player)
     {
         entityData data = player.GetComponent<entityData>();

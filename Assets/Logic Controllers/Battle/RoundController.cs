@@ -9,7 +9,10 @@ public class RoundController : MonoBehaviour {
     public bool roundOver = false;
     public bool victory = false;
     public enum roundStateEnum {CharacterSelect, CharacterTurn, CharacterEnd, Movement, SpecialEvent, EnemyMovement, EnemyPause};
+    public enum playerStates {playerMove, playerAttack, playerMagic, playerInventory, playerInteract, playerBase};
     public roundStateEnum roundState = roundStateEnum.CharacterSelect;
+    public roundStateEnum prevState;
+    public playerStates playerRound = playerStates.playerBase;
     public GameObject currentPlayer;
     public bool roundStart = false;
     public bool gamePause;
@@ -48,20 +51,37 @@ public class RoundController : MonoBehaviour {
                         case roundStateEnum.CharacterSelect:
                             currentPlayer = characters.Dequeue();
                             roundState = roundStateEnum.CharacterTurn;
-                            gameMap.initialPlayerTurn(currentPlayer);
+                            if (currentPlayer.tag == "Player")
+                            {
+                                gameMap.initialPlayerTurn(currentPlayer);
+                                playerRound = playerStates.playerBase;
+                            } else
+                            {
+                                gameMap.initialEnemyTurn(currentPlayer);
+                            }
                             mainCamera.GetComponent<CameraMovementBattle>().moveCamera(currentPlayer.transform.position);
                             break;
                         case roundStateEnum.CharacterTurn:
                             if (currentPlayer.tag == "Player")
                             {
-                                roundState = gameMap.playerTurn(currentPlayer);
+                                switch (playerRound)
+                                {
+
+                                    case playerStates.playerBase:
+                                        roundState = gameMap.playerTurn(currentPlayer);
+                                        break;
+                                    case playerStates.playerMove:
+                                        roundState = gameMap.playerTurnMove(currentPlayer);
+                                        break;
+                                    case playerStates.playerAttack:
+                                        roundState = gameMap.playerTurnAttack(currentPlayer);
+                                        break;
+                                }
 
                             }
                             else
                             {
-                                Debug.Log("Enemy Turn");
-                                roundState = roundStateEnum.EnemyPause;
-                                timer = 0;
+                                roundState = gameMap.enemyTurn(currentPlayer);
                             }
                             break;
                         case roundStateEnum.Movement:
@@ -73,14 +93,14 @@ public class RoundController : MonoBehaviour {
                             mainCamera.GetComponent<CameraMovementBattle>().moveCamera(currentPlayer.transform.position);
                             break;
                         case roundStateEnum.EnemyPause:
-                            Debug.Log("Waiting!");
                             if (timer > enemyPauseTime)
                             {
-                                roundState = gameMap.enemyTurn(currentPlayer);
+                                roundState = prevState;
                             }
                             else
                             {
                                 timer += Time.deltaTime;
+                                mainCamera.GetComponent<CameraMovementBattle>().moveCamera(currentPlayer.transform.position);
                             }
                             break;
                         case roundStateEnum.CharacterEnd:
@@ -100,4 +120,10 @@ public class RoundController : MonoBehaviour {
             }
         }
 	}
+
+    public   void enemyWait(roundStateEnum nextState)
+    {
+        prevState = nextState;
+        timer = 0;
+    }
 }

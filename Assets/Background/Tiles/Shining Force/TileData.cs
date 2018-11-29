@@ -6,6 +6,7 @@ public class TileData : MonoBehaviour {
     public bool passable = true;
     public SpriteRenderer SRenderer;
     public bool inRange;
+    public bool inAttackRange;
     public Map worldMap;
     public GameObject entityOn;
     public GameObject tileNorth;
@@ -13,9 +14,11 @@ public class TileData : MonoBehaviour {
     public GameObject tileEast;
     public GameObject tileSouth;
     public List<GameObject> neighbors;
+    public RoundController rc;
     // Use this for initialization
     void Start () {
         SRenderer = gameObject.GetComponent<SpriteRenderer>();
+        rc = GameObject.FindGameObjectWithTag("GameController").GetComponent<RoundController>();
     }
 	
     private Color startcolor;

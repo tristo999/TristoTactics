@@ -7,8 +7,8 @@ TagManager:
   - Environment
   - Enemy
   - PauseScreen
-  - ResumeButton
-  - ExitButton
+  - PlayerUI
+  - MenuButton
   layers:
   - Default
   - TransparentFX
