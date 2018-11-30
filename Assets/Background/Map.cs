@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class Map : MonoBehaviour {
@@ -27,6 +28,10 @@ public class Map : MonoBehaviour {
     public bool initialRun;
     public GameObject currentPlayer;
     public GameObject playerUI;
+    public GameObject healthBar;
+    public GameObject healthUIPanel;
+    public GameObject healthImage;
+
     // Use this for initialization
     void Start ()
     {
@@ -40,6 +45,8 @@ public class Map : MonoBehaviour {
         entitiesInRange = new List<GameObject>();
         playerUI = GameObject.FindGameObjectWithTag("PlayerUI");
         playerUI.SetActive(false);
+        healthBar = GameObject.FindGameObjectWithTag("HealthBar");
+        healthUIPanel = GameObject.FindGameObjectWithTag("HealthUIPanel");
 
 	}
 	
@@ -580,10 +587,27 @@ public class Map : MonoBehaviour {
                     return true;
                 }
             }
-            return false;
+            return false;   
         } else
         {
             return false;
+        }
+    }
+
+    public void setUpHealthUI()
+    {
+        players[0].GetComponent<entityData>().healthBar = healthBar;
+        players[0].GetComponent<entityData>().healthImage = healthImage;
+        healthImage.GetComponent<Image>().sprite = players[0].GetComponent<SpriteRenderer>().sprite;
+        Vector3 lastHealthPosition = healthBar.transform.position;
+        Vector3 lastImagePosition = healthImage.transform.position;
+        for (int i = 1; i < players.Length; i++) 
+        {
+            lastHealthPosition = new Vector3(lastHealthPosition.x, lastHealthPosition.y - 70, lastHealthPosition.z);
+            players[i].GetComponent<entityData>().healthBar = Instantiate(healthBar, lastHealthPosition, new Quaternion(),healthUIPanel.transform);
+            lastImagePosition = new Vector3(lastImagePosition.x, lastImagePosition.y - 70, lastImagePosition.z);
+            GameObject healthImageNew = Instantiate(healthImage, lastImagePosition, new Quaternion(), healthUIPanel.transform);
+            healthImageNew.GetComponent<Image>().sprite = players[i].GetComponent<SpriteRenderer>().sprite;
         }
     }
 }

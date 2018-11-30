@@ -67,9 +67,7 @@
     <Compile Include="Assets\Logic Controllers\Battle\CameraMovementBattle.cs" />
     <Compile Include="Assets\Logic Controllers\Battle\CharacterLoader.cs" />
     <Compile Include="Assets\Logic Controllers\Battle\RoundController.cs" />
-    <Reference Include="Cinemachine">
-      <HintPath>C:/Users/Tristan/Documents/GitHub/TristoTactics/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
-    </Reference>
+    <Compile Include="Assets\Scripts\DiceRoller.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/Tristan/Documents/GitHub/TristoTactics/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
@@ -78,9 +76,6 @@
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
       <HintPath>C:/Users/Tristan/Documents/GitHub/TristoTactics/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="com.unity.cinemachine.editor">
-      <HintPath>C:/Users/Tristan/Documents/GitHub/TristoTactics/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>C:/Users/Tristan/Documents/GitHub/TristoTactics/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>

@@ -37,6 +37,7 @@ public class RoundController : MonoBehaviour {
         }
         roundStart = true;
         gameMap.setUpMap();
+        gameMap.setUpHealthUI();
 
     }
 

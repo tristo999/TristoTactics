@@ -14,6 +14,8 @@ public class entityData : MonoBehaviour {
     public int currentHealth;
     public int maxSpells = 3;
     public int currentSpells;
+    public GameObject healthBar;
+    public GameObject healthImage;
 	// Use this for initialization
 	void Start () {
         movementPoints = movementRange;

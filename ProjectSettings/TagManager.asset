@@ -9,6 +9,10 @@ TagManager:
   - PauseScreen
   - PlayerUI
   - MenuButton
+  - HealthUI
+  - HealthUIPanel
+  - HealthBar
+  - HealthImage
   layers:
   - Default
   - TransparentFX
