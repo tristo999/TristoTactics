@@ -14,6 +14,7 @@ public class CameraMovementBattle : MonoBehaviour {
     Vector3 newPosition;
     public GameObject pauseMenu;
     public RoundController roundController;
+    public Map map;
 	// Use this for initialization
 	void Start () {
         Cursor.lockState = CursorLockMode.Confined;
@@ -22,13 +23,14 @@ public class CameraMovementBattle : MonoBehaviour {
         pauseMenu = GameObject.FindGameObjectWithTag("PauseScreen");
         roundController = GameObject.FindGameObjectWithTag("GameController").GetComponent<RoundController>();
         pauseMenu.SetActive(false);
+        map = roundController.gameObject.GetComponent<Map>();
     }
 	
 	// Update is called once per frame
 	void Update () {
         // Refactor so menu button controls pause instead of escape key
         /*
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.Escape) && (roundController.playerRound == RoundController.playerStates.playerBase))
             {
                 if (Cursor.lockState == CursorLockMode.Confined)
                 {
@@ -66,7 +68,7 @@ public class CameraMovementBattle : MonoBehaviour {
                 {
                     transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x + speed, transform.position.y, transform.position.z), 10000);
                 }
-
+                /*
                 if (Input.mousePosition.x > theScreenWidth - boundary)
                 {
                     transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x + speed, transform.position.y, transform.position.z), 10000);
@@ -83,6 +85,7 @@ public class CameraMovementBattle : MonoBehaviour {
                 {
                     transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, transform.position.y - speed, transform.position.z), 10000);
                 }
+                */
             }
             else
             {

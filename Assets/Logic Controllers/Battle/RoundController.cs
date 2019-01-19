@@ -51,16 +51,23 @@ public class RoundController : MonoBehaviour {
                     {
                         case roundStateEnum.CharacterSelect:
                             currentPlayer = characters.Dequeue();
-                            roundState = roundStateEnum.CharacterTurn;
-                            if (currentPlayer.tag == "Player")
+                            if (currentPlayer.activeInHierarchy)
                             {
-                                gameMap.initialPlayerTurn(currentPlayer);
-                                playerRound = playerStates.playerBase;
+                                roundState = roundStateEnum.CharacterTurn;
+                                if (currentPlayer.tag == "Player")
+                                {
+                                    gameMap.initialPlayerTurn(currentPlayer);
+                                    playerRound = playerStates.playerBase;
+                                }
+                                else
+                                {
+                                    gameMap.initialEnemyTurn(currentPlayer);
+                                }
+                                mainCamera.GetComponent<CameraMovementBattle>().moveCamera(currentPlayer.transform.position);
                             } else
                             {
-                                gameMap.initialEnemyTurn(currentPlayer);
+                                roundState = roundStateEnum.CharacterEnd;
                             }
-                            mainCamera.GetComponent<CameraMovementBattle>().moveCamera(currentPlayer.transform.position);
                             break;
                         case roundStateEnum.CharacterTurn:
                             if (currentPlayer.tag == "Player")
@@ -108,6 +115,12 @@ public class RoundController : MonoBehaviour {
                             gameMap.resetMap();
                             roundState = roundStateEnum.CharacterSelect;
                             characters.Enqueue(currentPlayer);
+                            bool playersAlive = gameMap.checkPlayers();
+                            bool enemiesAlive = gameMap.checkEnemies();
+                            if (!playersAlive || !enemiesAlive)
+                            {
+                                roundOver = true;
+                            }
                             break;
                         case roundStateEnum.SpecialEvent:
                             break;

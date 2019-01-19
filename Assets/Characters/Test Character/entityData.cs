@@ -16,6 +16,11 @@ public class entityData : MonoBehaviour {
     public int currentSpells;
     public GameObject healthBar;
     public GameObject healthImage;
+    public DiceRoller diceRoller;
+    public DiceRoller.DiceType attackDice;
+    public int numDice;
+    public int attackMod;
+    public int armorClass;
 	// Use this for initialization
 	void Start () {
         movementPoints = movementRange;

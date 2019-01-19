@@ -35,7 +35,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1523320887545672}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: 0, z: 0}
+  m_LocalPosition: {x: -3, y: 5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -53,7 +53,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileOn: {fileID: 0}
-  movementRange: 3
+  movementRange: 6
+  minAttackRange: 0
+  attackRange: 1
+  movementPoints: 0
+  maxHealth: 12
+  currentHealth: 0
+  maxSpells: 3
+  currentSpells: 0
+  healthBar: {fileID: 0}
+  healthImage: {fileID: 0}
+  diceRoller: {fileID: 0}
+  attackDice: 2
+  numDice: 1
+  attackMod: 2
+  armorClass: 15
 --- !u!212 &212984901729101632
 SpriteRenderer:
   m_ObjectHideFlags: 1

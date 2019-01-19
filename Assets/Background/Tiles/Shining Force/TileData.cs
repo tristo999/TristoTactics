@@ -33,14 +33,17 @@ public class TileData : MonoBehaviour {
         {
             SRenderer.material.color = Color.gray;
         }
-        else
+        else if (inAttackRange)
+        {
+            SRenderer.material.color = Color.red;
+        } else
         {
             SRenderer.material.color = Color.white;
         }
     }
     private void OnMouseDown()
     {
-        if (inRange)
+        if (inRange || (inAttackRange && entityOn != null))
         {
             worldMap.selectTile(gameObject);
         }

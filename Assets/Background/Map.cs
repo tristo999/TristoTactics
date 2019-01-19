@@ -28,9 +28,10 @@ public class Map : MonoBehaviour {
     public bool initialRun;
     public GameObject currentPlayer;
     public GameObject playerUI;
-    public GameObject healthBar;
+    public GameObject[] healthBars;
     public GameObject healthUIPanel;
-    public GameObject healthImage;
+    public GameObject[] healthImages;
+    public DiceRoller dice;
 
     // Use this for initialization
     void Start ()
@@ -45,9 +46,8 @@ public class Map : MonoBehaviour {
         entitiesInRange = new List<GameObject>();
         playerUI = GameObject.FindGameObjectWithTag("PlayerUI");
         playerUI.SetActive(false);
-        healthBar = GameObject.FindGameObjectWithTag("HealthBar");
         healthUIPanel = GameObject.FindGameObjectWithTag("HealthUIPanel");
-
+        dice = new DiceRoller();
 	}
 	
 
@@ -138,6 +138,7 @@ public class Map : MonoBehaviour {
         currentPlayerData.movementPoints = currentPlayerData.movementRange;
         currentPlayer = player;
         playerUI.SetActive(true);
+        action = false;
     }
     public void initialEnemyTurn(GameObject player)
     {
@@ -147,35 +148,7 @@ public class Map : MonoBehaviour {
         FindRange(player);
         initialRun = false;
     }
-    //Break Up into indivdual actions with escape as exit, playerTurn is base waiting for user input
-    public RoundController.roundStateEnum playerTurnOld(GameObject player)
-    {
-        movingNow = false;
-        if (currentPlayerData.movementPoints != 0)
-        {
-            if (selectedTile)
-            {
-                moveCharacter(player, tileClicked);
-                movingNow = true;
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            action = true;
-        }
-        if ((moved && action) || turnEnd)
-        {
-            return RoundController.roundStateEnum.CharacterEnd;
-        } else if(movingNow)
-        {
-            return RoundController.roundStateEnum.Movement;
-        }
-        else
-        {
-            return RoundController.roundStateEnum.CharacterTurn;
-        }
-    }
-
+    
     public RoundController.roundStateEnum playerTurn(GameObject player)
     {
         return RoundController.roundStateEnum.CharacterTurn;
@@ -193,9 +166,12 @@ public class Map : MonoBehaviour {
 
     public void changePlayerAttack()
     {
-        FindRangeAttack(currentPlayer);
-        roundController.playerRound = RoundController.playerStates.playerAttack;
-        playerUI.SetActive(false);
+        if (!action)
+        {
+            FindRangeAttack(currentPlayer);
+            roundController.playerRound = RoundController.playerStates.playerAttack;
+            playerUI.SetActive(false);
+        }
     }
 
     public void playerEndTurn()
@@ -230,6 +206,37 @@ public class Map : MonoBehaviour {
     public RoundController.roundStateEnum playerTurnAttack(GameObject player)
     {
         action = true;
+        if (selectedTile)
+        {
+            GameObject enemy = tileClicked.GetComponent<TileData>().entityOn;
+            entityData playerData = player.GetComponent<entityData>();
+            entityData enemyData= enemy.GetComponent<entityData>();
+            if (dice.TwentyDice() + playerData.attackMod >= enemyData.armorClass)
+            {
+                //Hit
+                Debug.Log("Hit!");
+                Debug.Log("Current Enemy Health : " + enemyData.currentHealth);
+                for (int i = 0; i < playerData.numDice; i++)
+                {
+                    enemyData.currentHealth -= dice.diceRoll(playerData.attackDice);
+                }
+                enemyData.currentHealth -= playerData.attackMod;
+                Debug.Log("New Enemy Health : " + enemyData.currentHealth);
+            } else
+            {
+                //Miss
+                Debug.Log("Miss");
+            }
+            if (enemyData.currentHealth <= 0)
+            {
+                enemy.SetActive(false);
+                
+            }
+            resetMap();
+            roundController.playerRound = RoundController.playerStates.playerBase;
+            playerUI.SetActive(true);
+            resolveHealthUI();
+        }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             resetMap();
@@ -261,6 +268,40 @@ public class Map : MonoBehaviour {
                 {
                     //Do Action
                     Debug.Log("Attack!");
+                    GameObject attackedPlayer = players[0];
+                    foreach(GameObject x in players)
+                    {
+                        if (Vector3.Distance(x.transform.position, player.transform.position) < 1.5f && x.activeInHierarchy)
+                        {
+                            attackedPlayer = x;
+                        }
+                    }
+                    entityData playerData = player.GetComponent<entityData>();
+                    entityData enemyData = attackedPlayer.GetComponent<entityData>();
+                    if (dice.TwentyDice() + playerData.attackMod >= enemyData.armorClass)
+                    {
+                        //Hit
+                        Debug.Log("Hit!");
+                        Debug.Log("Current Enemy Health : " + enemyData.currentHealth);
+                        for (int i = 0; i < playerData.numDice; i++)
+                        {
+                            enemyData.currentHealth -= dice.diceRoll(playerData.attackDice);
+                        }
+                        enemyData.currentHealth -= playerData.attackMod;
+                        Debug.Log("New Enemy Health : " + enemyData.currentHealth);
+                    }
+                    else
+                    {
+                        //Miss
+                        Debug.Log("Miss");
+                    }
+                    if (enemyData.currentHealth <= 0)
+                    {
+                        attackedPlayer.SetActive(false);
+
+                    }
+                    resetMap();
+                    resolveHealthUI();
                     return RoundController.roundStateEnum.CharacterEnd;
                 }
             }
@@ -272,7 +313,7 @@ public class Map : MonoBehaviour {
                     GameObject closestPlayer = GameObject.FindGameObjectWithTag("Player");
                     foreach (GameObject x in players)
                     {
-                        if (Vector3.Distance(x.transform.position, player.transform.position) < Vector3.Distance(player.transform.position, closestPlayer.transform.position))
+                        if (Vector3.Distance(x.transform.position, player.transform.position) < Vector3.Distance(player.transform.position, closestPlayer.transform.position) && x.activeInHierarchy)
                         {
                             closestPlayer = x;
                         }
@@ -476,12 +517,12 @@ public class Map : MonoBehaviour {
             TileData tiledata = x.GetComponent<TileData>();
             tiledata.inRange = false;
             tiledata.inAttackRange = false;
+            tiledata.entityOn = null;
             SpriteRenderer rend = x.GetComponent<SpriteRenderer>();
             rend.material.color = Color.white; 
         }
         selectedTile = false;
         moved = false;
-        action = false;
         turnEnd = false;
         tileClicked = null;
         shortestPath = new Queue<GameObject>();
@@ -527,54 +568,59 @@ public class Map : MonoBehaviour {
         {
             //Logic for if players are dead or not recruited
             //Set player tile on
-            entityData data = x.GetComponent<entityData>();
-            foreach (GameObject y in tileMap)
+            if (x.activeInHierarchy)
             {
-                TileData tiledata = y.GetComponent<TileData>();
-                tiledata.setMap(this);
-                if (data.tileOn == null)
+                entityData data = x.GetComponent<entityData>();
+                foreach (GameObject y in tileMap)
                 {
-                    data.tileOn = y;
-                    
-                }
-                else
-                {
-                    if (Vector3.Distance(x.transform.position, data.tileOn.transform.position) > Vector3.Distance(x.transform.position, y.transform.position))
+                    TileData tiledata = y.GetComponent<TileData>();
+                    tiledata.setMap(this);
+                    if (data.tileOn == null)
                     {
-
                         data.tileOn = y;
-                    }        
+
+                    }
+                    else
+                    {
+                        if (Vector3.Distance(x.transform.position, data.tileOn.transform.position) > Vector3.Distance(x.transform.position, y.transform.position))
+                        {
+
+                            data.tileOn = y;
+                        }
+                    }
                 }
+                data.tileOn.GetComponent<TileData>().entityOn = x;
             }
-            data.tileOn.GetComponent<TileData>().entityOn = x;
         }
         foreach (GameObject x in enemies)
         {
             //Logic for if players are dead or not recruited
             //Set player tile on
-            entityData data = x.GetComponent<entityData>();
-            foreach (GameObject y in tileMap)
+            if (x.activeInHierarchy)
             {
-                TileData tiledata = y.GetComponent<TileData>();
-                tiledata.setMap(this);
-                if (data.tileOn == null)
+                entityData data = x.GetComponent<entityData>();
+                foreach (GameObject y in tileMap)
                 {
-                    data.tileOn = y;
-
-                }
-                else
-                {
-                    if (Vector3.Distance(x.transform.position, data.tileOn.transform.position) > Vector3.Distance(x.transform.position, y.transform.position))
+                    TileData tiledata = y.GetComponent<TileData>();
+                    tiledata.setMap(this);
+                    if (data.tileOn == null)
                     {
-
                         data.tileOn = y;
+
+                    }
+                    else
+                    {
+                        if (Vector3.Distance(x.transform.position, data.tileOn.transform.position) > Vector3.Distance(x.transform.position, y.transform.position))
+                        {
+
+                            data.tileOn = y;
+                        }
                     }
                 }
+                data.tileOn.GetComponent<TileData>().entityOn = x;
             }
-            data.tileOn.GetComponent<TileData>().entityOn = x;
         }
     }
-    // Does not account for ranged attacks
     public bool EnemyInRange(GameObject player)
     {
         entityData data = player.GetComponent<entityData>();
@@ -582,7 +628,7 @@ public class Map : MonoBehaviour {
         {
             foreach (GameObject x in players)
             {
-                if (Vector3.Distance(player.transform.position, x.transform.position) < 1.5f) 
+                if (Vector3.Distance(player.transform.position, x.transform.position) < 1.5f && x.activeInHierarchy) 
                 {
                     return true;
                 }
@@ -593,22 +639,57 @@ public class Map : MonoBehaviour {
             return false;
         }
     }
-
+    // Up to 4 players currently supported
     public void setUpHealthUI()
     {
-        players[0].GetComponent<entityData>().healthBar = healthBar;
-        players[0].GetComponent<entityData>().healthImage = healthImage;
-        healthImage.GetComponent<Image>().sprite = players[0].GetComponent<SpriteRenderer>().sprite;
-        Vector3 lastHealthPosition = healthBar.transform.position;
-        Vector3 lastImagePosition = healthImage.transform.position;
-        for (int i = 1; i < players.Length; i++) 
+        int count = 0;
+        for (int i = 0; i < players.Length; i++) 
         {
-            lastHealthPosition = new Vector3(lastHealthPosition.x, lastHealthPosition.y - 70, lastHealthPosition.z);
-            players[i].GetComponent<entityData>().healthBar = Instantiate(healthBar, lastHealthPosition, new Quaternion(),healthUIPanel.transform);
-            lastImagePosition = new Vector3(lastImagePosition.x, lastImagePosition.y - 70, lastImagePosition.z);
-            GameObject healthImageNew = Instantiate(healthImage, lastImagePosition, new Quaternion(), healthUIPanel.transform);
-            healthImageNew.GetComponent<Image>().sprite = players[i].GetComponent<SpriteRenderer>().sprite;
+            players[i].GetComponent<entityData>().healthBar = healthBars[i];
+            healthImages[i].GetComponent<Image>().sprite = players[i].GetComponent<SpriteRenderer>().sprite;
+            count++;
         }
+        for (int i = count; i < 4; i++)
+        {
+            healthBars[i].SetActive(false);
+            healthImages[i].SetActive(false);
+        }
+    }
+
+    public void resolveHealthUI()
+    {
+        foreach(GameObject x in players)
+        {
+            entityData playerData = x.GetComponent<entityData>();
+            playerData.healthBar.GetComponent<Slider>().value = (float) playerData.currentHealth / (float) playerData.maxHealth;
+        }
+    }
+
+    public bool checkPlayers ()
+    {
+        bool alive = false;
+        foreach(GameObject x in players)
+        {
+            if (x.activeInHierarchy)
+            {
+                alive = true;
+            }
+        }
+        return alive;
+    }
+
+
+    public bool checkEnemies()
+    {
+        bool alive = false;
+        foreach (GameObject x in enemies)
+        {
+            if (x.activeInHierarchy)
+            {
+                alive = true;
+            }
+        }
+        return alive;
     }
 }
 

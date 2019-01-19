@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DiceRoller : MonoBehaviour {
+public class DiceRoller {
 
+    public enum DiceType {Hundred, Twenty, Twelve, Ten, Eight, Six, Four};
     public int HundredDice()
     {
         return Random.Range(1,101);
@@ -31,5 +32,27 @@ public class DiceRoller : MonoBehaviour {
     public int FourDice()
     {
         return Random.Range(1, 5);
+    }
+
+    public int diceRoll(DiceType dice)
+    {
+        switch (dice)
+        {
+            case DiceType.Hundred:
+                return HundredDice();
+            case DiceType.Twenty:
+                return TwentyDice();
+            case DiceType.Twelve:
+                return TwelveDice();
+            case DiceType.Ten:
+                return TenDice();
+            case DiceType.Eight:
+                return EightDice();
+            case DiceType.Six:
+                return SixDice();
+            case DiceType.Four:
+                return FourDice();
+        }
+        return 0;
     }
 }
