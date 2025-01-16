@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://bouj1c13p4ja6"]
+
+[ext_resource type="Script" path="res://scripts/player_character.gd" id="1_sd4j2"]
+[ext_resource type="Texture2D" uid="uid://btwjvapwp0t8w" path="res://assets/test/World of Solaria Demo Pack Update 04/16x16/Sprites/New/Chris Idle.png" id="2_uqqyt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8eowp"]
+atlas = ExtResource("2_uqqyt")
+region = Rect2(0, 80, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nd3bq"]
+atlas = ExtResource("2_uqqyt")
+region = Rect2(80, 80, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqx66"]
+atlas = ExtResource("2_uqqyt")
+region = Rect2(160, 80, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjpru"]
+atlas = ExtResource("2_uqqyt")
+region = Rect2(240, 80, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0jnj"]
+atlas = ExtResource("2_uqqyt")
+region = Rect2(320, 80, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vk6ak"]
+atlas = ExtResource("2_uqqyt")
+region = Rect2(400, 80, 80, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ncxke"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8eowp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nd3bq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqx66")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sjpru")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d0jnj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vk6ak")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="PlayerCharacter" type="Node2D"]
+z_index = 100
+script = ExtResource("1_sd4j2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ncxke")
+autoplay = "default"
+frame_progress = 0.241604

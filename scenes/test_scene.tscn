@@ -1,26 +1,40 @@
-[gd_scene load_steps=5 format=4 uid="uid://bb1mp0g4ccklu"]
+[gd_scene load_steps=6 format=4 uid="uid://bb1mp0g4ccklu"]
 
 [ext_resource type="PackedScene" uid="uid://dgw6nanegiqld" path="res://scenes/GameManager.tscn" id="1_1n512"]
-[ext_resource type="PackedScene" uid="uid://bouj1c13p4ja6" path="res://scenes/player.tscn" id="2_2iy3v"]
+[ext_resource type="PackedScene" uid="uid://bouj1c13p4ja6" path="res://scenes/PlayerCharacter.tscn" id="2_2iy3v"]
 [ext_resource type="TileSet" uid="uid://cpiormm6cegct" path="res://assets/tilesets/tileset.tres" id="2_jvjt4"]
 [ext_resource type="PackedScene" uid="uid://bf0ia26jj2idx" path="res://scenes/ActionCamera.tscn" id="3_41arr"]
+[ext_resource type="Script" path="res://scripts/tilemap.gd" id="4_6drk1"]
 
 [node name="TestScene" type="Node2D"]
 position = Vector2(-3, 0)
 
 [node name="GameManager" parent="." instance=ExtResource("1_1n512")]
 
+[node name="TurnTimer" type="Timer" parent="GameManager"]
+wait_time = 5.0
+one_shot = true
+
 [node name="PlayerTeam" type="Node" parent="."]
 
-[node name="Player" parent="PlayerTeam" instance=ExtResource("2_2iy3v")]
-z_index = 10
-position = Vector2(-10, -9)
+[node name="PlayerCharacter" parent="PlayerTeam" instance=ExtResource("2_2iy3v")]
+position = Vector2(8, -8)
+speed = 1000
+
+[node name="PlayerCharacter2" parent="PlayerTeam" instance=ExtResource("2_2iy3v")]
+position = Vector2(103, 69)
 
 [node name="EnemyTeam" type="Node" parent="."]
 
+[node name="EnemyCharacter" parent="EnemyTeam" instance=ExtResource("2_2iy3v")]
+position = Vector2(-54, 37)
+speed = 5
+
 [node name="ActionCamera" parent="." instance=ExtResource("3_41arr")]
+zoom = Vector2(3, 3)
 
 [node name="TileMap" type="Node" parent="."]
+script = ExtResource("4_6drk1")
 
 [node name="Walls" type="TileMapLayer" parent="TileMap"]
 z_index = 2
@@ -39,3 +53,5 @@ tile_map_data = PackedByteArray("AABr/6f/AgAFAAYAAABr/6j/AgAFAAYAAABr/6n/AgAFAAY
 tile_set = ExtResource("2_jvjt4")
 
 [node name="Camera2D" parent="." instance=ExtResource("3_41arr")]
+
+[connection signal="timeout" from="GameManager/TurnTimer" to="GameManager" method="_on_turn_timer_timeout"]
