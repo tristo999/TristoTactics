@@ -5,6 +5,7 @@ var enemy_team_characters = []
 
 @onready var action_camera: Camera2D = $"../ActionCamera"
 @onready var timer: Timer = $TurnTimer
+@onready var tilemap = get_node("/root/TestScene/Node2D")
 
 var current_character
 var turn_order
@@ -45,11 +46,18 @@ func _ready() -> void:
 	
 	current_character = turn_order.front()
 	action_camera.move_camera(current_character)
-
+	# Use call_deferred to ensure all _ready() calls have finished before starting the turn
+	current_character.call_deferred("start_turn", tilemap)
 	timer.start()
 	#Grab control of the camera
 	#Begin Turns in Process
 	
+	var base_layer = tilemap.get_node("BaseGrid")
+	for character in turn_order:
+		if character.has_method("set_base_layer"):
+			character.set_base_layer(base_layer)
+			character.update_current_tile()
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -60,11 +68,13 @@ func _process(delta: float) -> void:
 
 
 func _on_turn_timer_timeout() -> void:
+	current_character.end_turn(tilemap)
 	turn_in_progress = false
 	timer.start()
 	print("Next Turn!")
 	current_character = get_next_character(current_character)
 	action_camera.move_camera(current_character)
+	current_character.start_turn(tilemap)
 	
 	
 func get_next_character(current_character: Node2D) -> Node2D:

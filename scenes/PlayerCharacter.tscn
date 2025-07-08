@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bouj1c13p4ja6"]
 
-[ext_resource type="Script" path="res://scripts/player_character.gd" id="1_sd4j2"]
+[ext_resource type="Script" uid="uid://kix03yl5mhl8" path="res://scripts/player_character.gd" id="1_sd4j2"]
 [ext_resource type="Texture2D" uid="uid://btwjvapwp0t8w" path="res://assets/test/World of Solaria Demo Pack Update 04/16x16/Sprites/New/Chris Idle.png" id="2_uqqyt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8eowp"]
