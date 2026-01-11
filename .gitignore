@@ -1,4 +1,50 @@
 # Godot 4+ specific ignores
 .godot/
-/android/
+.android/
 *.uid
+.import/
+.export/
+mono/
+.mono/
+*.import
+*.godot
+*.tmp
+*.log
+*.cfg
+*.pidb
+*.pdb
+*.sln
+*.csproj
+*.user
+*.vs/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+
+# Build and cache
+bin/
+obj/
+.cache/
+
+# Unity/other engines (if present)
+Library/
+Temp/
+Logs/
+UserSettings/
+
+# Python/other languages
+__pycache__/
+*.pyc
+
+# Misc
+*.bak
+*.swp
+*.swo
+*.tmp
+*.old
+*.orig
+*.rej

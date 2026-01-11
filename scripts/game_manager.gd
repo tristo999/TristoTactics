@@ -3,9 +3,12 @@ extends Node
 var player_team_characters = []
 var enemy_team_characters = []
 
+
 @onready var action_camera: Camera2D = $"../ActionCamera"
 @onready var timer: Timer = $TurnTimer
 @onready var tilemap = get_node("/root/TestScene/Node2D")
+# Reference to the TurnLabel UI
+@onready var turn_label = get_node("../TurnLabelCanvas/TurnLabel")
 
 var current_character
 var turn_order
@@ -14,7 +17,8 @@ var turn_in_progress = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	# Debug: print children of the scene root to verify UI node
+	print("TestScene children:", get_tree().current_scene.get_children())
 	#Get All Players and Enemies into their own arrays
 	var player_team = get_node("/root/TestScene/PlayerTeam")
 	
@@ -46,6 +50,11 @@ func _ready() -> void:
 	
 	current_character = turn_order.front()
 	action_camera.move_camera(current_character)
+	# Set the turn label at game start
+	if enemy_team_characters.has(current_character):
+		turn_label.text = "Enemy Turn"
+	else:
+		turn_label.text = "Player Turn"
 	# Use call_deferred to ensure all _ready() calls have finished before starting the turn
 	current_character.call_deferred("start_turn", tilemap)
 	timer.start()
@@ -60,20 +69,27 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(delta: float) -> void:
-	if(turn_in_progress):
-		pass
-	else:
-		turn_in_progress = true
+	if not turn_in_progress and not enemy_team_characters.has(current_character):
+		if Input.is_action_just_pressed("ui_accept"):
+			_on_turn_timer_timeout()
 
 
 func _on_turn_timer_timeout() -> void:
 	current_character.end_turn(tilemap)
 	turn_in_progress = false
-	timer.start()
 	print("Next Turn!")
 	current_character = get_next_character(current_character)
+	print("Turn: ", current_character.name)
+	# Update the turn label text
+	if enemy_team_characters.has(current_character):
+		turn_label.text = "Enemy Turn"
+	else:
+		turn_label.text = "Player Turn"
 	action_camera.move_camera(current_character)
+	if enemy_team_characters.has(current_character):
+		timer.start()
 	current_character.start_turn(tilemap)
 	
 	

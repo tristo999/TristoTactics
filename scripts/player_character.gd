@@ -8,6 +8,9 @@ var base_layer: TileMapLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	var sprite = $AnimatedSprite2D
+	sprite.position = Vector2.ZERO
+
 	# Wait for GameManager to assign base_layer
 	pass
 
@@ -17,9 +20,11 @@ func set_base_layer(layer: TileMapLayer):
 func update_current_tile():
 	if base_layer:
 		current_tile = base_layer.local_to_map(global_position)
+		move_to_tile(current_tile)
 		print("Character starting tile:", current_tile)
 	else:
 		print("BaseLayer not set for character!")
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -44,3 +49,12 @@ func start_turn(tilemap):
 func end_turn(tilemap):
 	clear_movement_range(tilemap)
 	# Add any other per-turn end logic here
+
+func move_to_tile(grid_pos: Vector2i):
+	if base_layer:
+		var tile_pos = base_layer.map_to_local(grid_pos)
+		global_position = tile_pos + Vector2(3, -2)
+		current_tile = grid_pos
+		print("Moved character to tile:", grid_pos)
+	else:
+		print("BaseLayer not set for character!")
