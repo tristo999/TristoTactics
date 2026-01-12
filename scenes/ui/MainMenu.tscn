@@ -1,15 +1,19 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://bxpfpku0ib366"]
 
-[ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_mainmenu"]
+[ext_resource type="Script" uid="uid://un0fut8752lb" path="res://scripts/ui/main_menu.gd" id="1_mainmenu"]
+[ext_resource type="Texture2D" uid="uid://dulj3x1ratwuj" path="res://menu-background.png" id="2_6jbdy"]
 
 [node name="MainMenu" type="Control"]
-script = ExtResource("1_mainmenu")
-anchor_left = 0.0
-anchor_top = 0.0
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mainmenu")
 
 [node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 0
 anchor_left = 0.3
 anchor_top = 0.2
 anchor_right = 0.7
@@ -17,17 +21,36 @@ anchor_bottom = 0.7
 alignment = 1
 
 [node name="TitleLabel" type="Label" parent="VBox"]
-text = "Tristo Tactics"
 custom_minimum_size = Vector2(0, 120)
-align = 1
-vertical_alignment = 1
+layout_mode = 2
 theme_override_font_sizes/font_size = 64
+text = "Tristo Tactics"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="StartButton" type="Button" parent="VBox"]
+layout_mode = 2
 text = "Start Game"
 
 [node name="SettingsButton" type="Button" parent="VBox"]
+layout_mode = 2
 text = "Settings"
 
 [node name="QuitButton" type="Button" parent="VBox"]
+layout_mode = 2
 text = "Quit"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -4096
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.61
+anchor_top = 0.63000005
+anchor_right = 0.61
+anchor_bottom = 0.63000005
+offset_left = -704.72003
+offset_top = -443.24002
+offset_right = 450.27997
+offset_bottom = 456.75998
+mouse_filter = 2
+texture = ExtResource("2_6jbdy")
