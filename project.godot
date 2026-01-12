@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="TristoTactics"
-run/main_scene="uid://bb1mp0g4ccklu"
+run/main_scene="res://scenes/ui/MainMenu.tscn"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [editor]
 

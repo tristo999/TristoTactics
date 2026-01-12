@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_mainmenu"]
+
+[node name="MainMenu" type="Control"]
+script = ExtResource("1_mainmenu")
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBox" type="VBoxContainer" parent="."]
+anchor_left = 0.4
+anchor_top = 0.4
+anchor_right = 0.6
+anchor_bottom = 0.6
+
+[node name="StartButton" type="Button" parent="VBox"]
+text = "Start Game"
+
+[node name="SettingsButton" type="Button" parent="VBox"]
+text = "Settings"
+
+[node name="QuitButton" type="Button" parent="VBox"]
+text = "Quit"

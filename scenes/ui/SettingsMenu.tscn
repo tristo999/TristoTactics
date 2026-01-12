@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/settings_menu.gd" id="1_settingsmenu"]
+
+[node name="SettingsMenu" type="Control"]
+script = ExtResource("1_settingsmenu")
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBox" type="VBoxContainer" parent="."]
+anchor_left = 0.4
+anchor_top = 0.4
+anchor_right = 0.6
+anchor_bottom = 0.6
+
+[node name="VolumeLabel" type="Label" parent="VBox"]
+text = "Volume:"
+
+[node name="VolumeSlider" type="HSlider" parent="VBox"]
+min_value = 0
+max_value = 100
+step = 1
+value = 50
+
+[node name="BackButton" type="Button" parent="VBox"]
+text = "Back"
