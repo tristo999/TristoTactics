@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://67csnq5gxmgl"]
+
+[ext_resource type="Texture2D" uid="uid://bbh6rxgp7t5eb" path="res://assets/test/World of Solaria Demo Pack Update 04/RPG Maker/characters/Actor2.png" id="1_28d6f"]
+[ext_resource type="Script" uid="uid://diwmffus8sm86" path="res://scripts/characters/enemy_character.gd" id="1_hrd6y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hrd6y"]
+atlas = ExtResource("1_28d6f")
+region = Rect2(50, 0, 50, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lq7pr"]
+atlas = ExtResource("1_28d6f")
+region = Rect2(0, 0, 50, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndamq"]
+atlas = ExtResource("1_28d6f")
+region = Rect2(100, 0, 50, 49)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rw545"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hrd6y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lq7pr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndamq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="EnemyCharacter" type="Node2D"]
+script = ExtResource("1_hrd6y")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_rw545")
+autoplay = "default"
+frame_progress = 0.92732155
