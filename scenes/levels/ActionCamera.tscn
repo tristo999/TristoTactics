@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bf0ia26jj2idx"]
 
-[ext_resource type="Script" uid="uid://cws2sh0nwames" path="res://scripts/camera_control.gd" id="1_sx16i"]
+[ext_resource type="Script" uid="uid://cws2sh0nwames" path="res://scripts/characters/camera_control.gd" id="1_sx16i"]
 
 [node name="ActionCamera" type="Camera2D"]
 script = ExtResource("1_sx16i")

@@ -1,3 +1,5 @@
+""" Removed duplicate class and code after line 153 """
+
 extends Node2D
 
 @onready var base_layer: TileMapLayer = $BaseGrid
@@ -8,7 +10,7 @@ var last_hovered_tile: Vector2i = Vector2i(-9999, -9999)
 # Stores previous atlas coords for each tile when mouse hovers
 var prev_highlight_atlas_coords := {}
 
-func _process(delta):
+func _process(_delta):
 	# Mouse-over tile highlight
 	var mouse_pos = highlight_layer.get_global_mouse_position()
 	var local_mouse = highlight_layer.to_local(mouse_pos)
@@ -18,23 +20,26 @@ func _process(delta):
 		if prev_highlight_atlas_coords.has(last_hovered_tile):
 			var prev_atlas = prev_highlight_atlas_coords[last_hovered_tile]
 			# Only restore if the highlight is still valid (i.e., matches current game state)
-			var current_atlas = highlight_layer.get_cell_atlas_coords(last_hovered_tile)
+			var prev_current_atlas = highlight_layer.get_cell_atlas_coords(last_hovered_tile)
 			# If the highlight was cleared (e.g., by turn switch), don't restore
 			if prev_atlas == null:
 				highlight_layer.erase_cell(last_hovered_tile)
-			elif current_atlas == Vector2i(8, 4) or current_atlas == null:
+			elif prev_current_atlas == Vector2i(8, 4) or prev_current_atlas == null:
 				# Only restore if the cell is currently mouse-over or empty
 				highlight_layer.set_cell(last_hovered_tile, 2, prev_atlas)
 			# Otherwise, do not restore (the highlight was changed by game logic)
 			prev_highlight_atlas_coords.erase(last_hovered_tile)
 		# Store the current highlight for the new tile
-		var current_atlas = highlight_layer.get_cell_atlas_coords(tile)
-		if current_atlas == Vector2i(8, 4):
+		var new_current_atlas = highlight_layer.get_cell_atlas_coords(tile)
+		if new_current_atlas == Vector2i(8, 4):
 			# Already mouse-over highlight, do nothing
 			pass
 		else:
 			# Store previous highlight (or null if none)
-			prev_highlight_atlas_coords[tile] = current_atlas if current_atlas != null else null
+			if typeof(new_current_atlas) == TYPE_VECTOR2I:
+				prev_highlight_atlas_coords[tile] = new_current_atlas
+			else:
+				prev_highlight_atlas_coords[tile] = null
 			# Set mouse-over highlight to (8, 4)
 			highlight_layer.set_cell(tile, 2, Vector2i(8, 4))
 		last_hovered_tile = tile
@@ -60,11 +65,13 @@ func add_walkable_cells_from_tilemap():
 	# Get the used cells from the TileMapLayer
 	var used_cells = base_layer.get_used_cells()
 	for cell in used_cells:
-		# Mark the cell as walkable in the AStarGrid2D
-		astar_grid.set_point_solid(cell, false) # false means walkable
+		# Only mark as walkable if in bounds
+		if astar_grid.is_in_boundsv(cell):
+			astar_grid.set_point_solid(cell, false) # false means walkable
 	for cell in wall_tilemap.get_used_cells():
-		# Mark walls as not walkable
-		astar_grid.set_point_solid(cell, true)
+		# Only mark as not walkable if in bounds
+		if astar_grid.is_in_boundsv(cell):
+			astar_grid.set_point_solid(cell, true)
 
 func get_astar_path(start: Vector2i, end: Vector2i) -> Array:
 	# Returns a list of points from start to end using the AStarGrid2D

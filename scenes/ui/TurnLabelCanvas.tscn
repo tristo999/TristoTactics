@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://gccg1ctal63h"]
+
+[node name="TurnLabelCanvas" type="CanvasLayer"]
+
+[node name="TurnLabel" type="Label" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+text = "Turn: "
+horizontal_alignment = 2

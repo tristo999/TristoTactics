@@ -60,7 +60,6 @@ func _ready() -> void:
 	timer.start()
 	#Grab control of the camera
 	#Begin Turns in Process
-	
 	var base_layer = tilemap.get_node("BaseGrid")
 	for character in turn_order:
 		if character.has_method("set_base_layer"):

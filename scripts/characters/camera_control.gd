@@ -12,14 +12,11 @@ func _process(delta: float) -> void:
 
 func handle_keyboard_input(delta: float) -> void:
 	var input_vector := Vector2.ZERO
-	
 	# WASD or Arrow Key movement
 	input_vector.x = Input.get_axis("ui_left", "ui_right")
 	input_vector.y = Input.get_axis("ui_up", "ui_down")
-	
 	if input_vector != Vector2.ZERO:
 		position += input_vector.normalized() * move_speed * delta
-
 
 func handle_zoom_input() -> void:
 	# Mouse wheel zoom 
@@ -28,7 +25,6 @@ func handle_zoom_input() -> void:
 		zoom_input -= zoom_speed
 	if Input.is_action_just_released("ui_zoom_in"):
 		zoom_input += zoom_speed
-	
 	if zoom_input != 0.0:
 		var new_zoom = zoom + Vector2(zoom_input, zoom_input)
 		new_zoom = new_zoom.clamp(Vector2(min_zoom, min_zoom), Vector2(max_zoom, max_zoom))

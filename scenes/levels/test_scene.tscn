@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=4 uid="uid://bb1mp0g4ccklu"]
 
-[ext_resource type="PackedScene" uid="uid://dgw6nanegiqld" path="res://scenes/GameManager.tscn" id="1_1n512"]
-[ext_resource type="PackedScene" uid="uid://bouj1c13p4ja6" path="res://scenes/PlayerCharacter.tscn" id="2_2iy3v"]
+[ext_resource type="PackedScene" uid="uid://dgw6nanegiqld" path="res://scenes/managers/GameManager.tscn" id="1_1n512"]
+[ext_resource type="PackedScene" uid="uid://bouj1c13p4ja6" path="res://scenes/characters/PlayerCharacter.tscn" id="2_2iy3v"]
 [ext_resource type="TileSet" uid="uid://cpiormm6cegct" path="res://assets/tilesets/tileset.tres" id="2_jvjt4"]
-[ext_resource type="PackedScene" uid="uid://bf0ia26jj2idx" path="res://scenes/ActionCamera.tscn" id="3_41arr"]
-[ext_resource type="Script" uid="uid://e76w1djf5c7j" path="res://scripts/tilemap.gd" id="4_6drk1"]
-[ext_resource type="PackedScene" path="res://scenes/TurnLabelCanvas.tscn" id="6_3qnke"]
+[ext_resource type="PackedScene" uid="uid://bf0ia26jj2idx" path="res://scenes/levels/ActionCamera.tscn" id="3_41arr"]
+[ext_resource type="Script" uid="uid://e76w1djf5c7j" path="res://scripts/levels/tilemap.gd" id="4_6drk1"]
+[ext_resource type="PackedScene" uid="uid://gccg1ctal63h" path="res://scenes/ui/TurnLabelCanvas.tscn" id="6_3qnke"]
 
 [node name="TestScene" type="Node2D"]
 
