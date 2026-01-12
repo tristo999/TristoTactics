@@ -1,9 +1,9 @@
 extends Camera2D
 
-@export var move_speed := 500.0    # Camera movement speed (pixels/second)
-@export var zoom_speed := 0.1     # Zoom speed
-@export var min_zoom := 0.5       # Minimum zoom level
-@export var max_zoom := 3.0       # Maximum zoom level
+@export var move_speed := 500.0 # Camera movement speed (pixels/second)
+@export var zoom_speed := 0.1 # Zoom speed
+@export var min_zoom := 0.5 # Minimum zoom level
+@export var max_zoom := 3.0 # Maximum zoom level
 @export var edge_threshold := 1.0 # Threshold from screen edge to start moving
 
 func _process(delta: float) -> void:
