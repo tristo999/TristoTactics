@@ -58,6 +58,8 @@ func setup_astar_grid():
 	# Set the cell size to match the tile size
 	astar_grid.cell_size = base_layer.tile_set.tile_size
 	astar_grid.jumping_enabled = false
+	# Disable diagonal movement
+	astar_grid.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
 	# Update the grid
 	astar_grid.update()
 
@@ -156,6 +158,5 @@ func _unhandled_input(event):
 			# Allow movement if the tile is reachable (27, 3) or mouse-over (8, 4) but was previously reachable
 			var prev_atlas = prev_highlight_atlas_coords.get(tile, null)
 			if atlas == Vector2i(27, 3) or (atlas == Vector2i(8, 4) and prev_atlas == Vector2i(27, 3)):
-				game_manager.current_character.move_to_tile(tile)
-				# End the turn after moving (deferred, so move is visible)
-				game_manager.call_deferred("_on_turn_timer_timeout")
+					game_manager.current_character.move_to_tile(tile)
+					# No longer end the turn automatically on click
