@@ -36,14 +36,14 @@ func _ready() -> void:
 	#Create a turn order for players and enemies
 	
 	for player in player_team_characters:
-		print(player.speed)
+		print(player.initiative)
 		
 	turn_order = []
 	turn_order.append_array(player_team_characters)
 	turn_order.append_array(enemy_team_characters)
 	
-	#turn_order.sort((a,b) -> a.speed < b.speed)
-	turn_order.sort_custom(func(a, b): return a.speed > b.speed)
+	#turn_order.sort((a,b) -> a.initiative < b.initiative)
+	turn_order.sort_custom(func(a, b): return a.initiative > b.initiative)
 
 	print("Turn Order:", turn_order)
 	

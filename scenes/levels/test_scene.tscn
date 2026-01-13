@@ -18,17 +18,19 @@ one_shot = true
 [node name="PlayerTeam" type="Node" parent="."]
 
 [node name="PlayerCharacter" parent="PlayerTeam" instance=ExtResource("2_2iy3v")]
-speed = 3
+move_speed = 100
 
 [node name="PlayerCharacter2" parent="PlayerTeam" instance=ExtResource("2_2iy3v")]
 position = Vector2(110, 70)
-speed = 4
+move_speed = 100
+initiative = 5
 
 [node name="EnemyTeam" type="Node" parent="."]
 
 [node name="EnemyCharacter" parent="EnemyTeam" instance=ExtResource("2_2iy3v")]
 position = Vector2(-222, -31)
-speed = 5
+move_speed = 100
+initiative = 20
 
 [node name="ActionCamera" parent="." instance=ExtResource("3_41arr")]
 
