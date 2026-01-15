@@ -30,8 +30,8 @@ extends Resource
 @export var defense: int = 5
 @export var magic_attack: int = 10
 @export var magic_defense: int = 5
-@export var speed: int = 10  # Affects turn order
-@export var luck: int = 5   # Affects crit chance, dodge, etc.
+@export var speed: int = 10 # Affects turn order
+@export var luck: int = 5 # Affects crit chance, dodge, etc.
 
 # =============================================================================
 # MOVEMENT
@@ -39,7 +39,7 @@ extends Resource
 
 @export_group("Movement")
 @export var move_range: int = 5
-@export var move_speed: float = 100.0  # Pixels per second for animation
+@export var move_speed: float = 100.0 # Pixels per second for animation
 @export var can_fly: bool = false
 @export var can_swim: bool = false
 
@@ -50,14 +50,14 @@ extends Resource
 @export_group("Combat")
 @export var attack_range_min: int = 1
 @export var attack_range_max: int = 1
-@export var crit_chance: float = 0.05  # 5% base crit
+@export var crit_chance: float = 0.05 # 5% base crit
 
 # =============================================================================
 # ABILITIES
 # =============================================================================
 
 @export_group("Abilities")
-@export var abilities: Array[Resource] = []  # Will be Array[AbilityData] when created
+@export var abilities: Array[Resource] = [] # Will be Array[AbilityData] when created
 
 # =============================================================================
 # GROWTH RATES (for leveling)
@@ -93,4 +93,4 @@ func get_initiative() -> int:
 
 ## Get effective crit chance
 func get_crit_chance() -> float:
-	return crit_chance + (luck * 0.005)  # +0.5% per luck point
+	return crit_chance + (luck * 0.005) # +0.5% per luck point

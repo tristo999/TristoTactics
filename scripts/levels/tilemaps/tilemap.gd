@@ -174,7 +174,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	var tile = _get_tile_at_mouse()
 	var atlas = highlight_layer.get_cell_atlas_coords(tile)
 	var prev_atlas = prev_highlight_atlas_coords.get(tile, null)
-	var is_reachable = (atlas == Constants.HIGHLIGHT_REACHABLE or 
+	var is_reachable = (atlas == Constants.HIGHLIGHT_REACHABLE or
 		(atlas == Constants.HIGHLIGHT_MOUSE_OVER and prev_atlas == Constants.HIGHLIGHT_REACHABLE))
 	if is_reachable:
 		game_manager.request_move(game_manager.current_character, tile)
