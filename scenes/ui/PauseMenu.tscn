@@ -1,16 +1,15 @@
 [gd_scene load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://scripts/ui/settings_menu.gd" id="1_settingsmenu"]
+[ext_resource path="res://scripts/ui/pause_menu.gd" type="Script" id=1]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_overlay"]
 bg_color = Color(0, 0, 0, 0.5)
 
-[node name="SettingsMenu" type="Control"]
-script = ExtResource("1_settingsmenu")
-anchor_left = 0.0
-anchor_top = 0.0
+[node name="PauseMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+visible = false
+script = ExtResource( 1 )
 mouse_filter = 0
 
 [node name="Overlay" type="Panel" parent="."]
@@ -32,14 +31,10 @@ anchor_top = 0.1
 anchor_right = 0.9
 anchor_bottom = 0.9
 
-[node name="VolumeLabel" type="Label" parent="Panel/VBox"]
-text = "Volume:"
+[node name="ResumeButton" type="Button" parent="Panel/VBox"]
+text = "Resume"
+[node name="SettingsButton" type="Button" parent="Panel/VBox"]
+text = "Settings"
 
-[node name="VolumeSlider" type="HSlider" parent="Panel/VBox"]
-min_value = 0
-max_value = 100
-step = 1
-value = 50
-
-[node name="BackButton" type="Button" parent="Panel/VBox"]
-text = "Back"
+[node name="QuitButton" type="Button" parent="Panel/VBox"]
+text = "Quit to Desktop"
