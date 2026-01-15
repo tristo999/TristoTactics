@@ -113,3 +113,6 @@ func set_next_move_target():
 		# If movement left, show new range and allow more moves
 		if movement_left > 0 and tilemap_ref:
 			show_movement_range(tilemap_ref)
+
+func set_tilemap_ref(tilemap):
+	tilemap_ref = tilemap
