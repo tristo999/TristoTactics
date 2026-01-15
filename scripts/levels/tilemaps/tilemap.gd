@@ -1,162 +1,183 @@
-""" Removed duplicate class and code after line 153 """
-
+# Tilemap - Handles tile rendering, pathfinding, and tile interaction
 extends Node2D
+
+const INVALID_TILE = Vector2i(-9999, -9999)
 
 @onready var base_layer: TileMapLayer = $BaseGrid
 @onready var wall_tilemap: TileMapLayer = $Walls
 @onready var highlight_layer: TileMapLayer = $HighlightLayer
-var astar_grid: AStarGrid2D
-var last_hovered_tile: Vector2i = Vector2i(-9999, -9999)
-# Stores previous atlas coords for each tile when mouse hovers
-var prev_highlight_atlas_coords := {}
 
-func _process(_delta):
-	# Mouse-over tile highlight
+var astar_grid: AStarGrid2D
+var last_hovered_tile: Vector2i = INVALID_TILE
+var prev_highlight_atlas_coords: Dictionary = {}
+var game_manager: Node = null
+var cached_occupied_tiles: Dictionary = {}
+
+func _ready() -> void:
+	add_to_group("tilemap")
+	setup_astar_grid()
+	add_walkable_cells_from_tilemap()
+	call_deferred("_cache_game_manager")
+	EventBus.character_moved.connect(func(_c, _f, _t): _refresh_occupied_tiles())
+	EventBus.turn_started.connect(func(_c): _refresh_occupied_tiles())
+
+func _cache_game_manager() -> void:
+	var scene = get_tree().get_current_scene()
+	if scene:
+		game_manager = scene.find_child("GameManager", true, false)
+
+func _refresh_occupied_tiles() -> void:
+	cached_occupied_tiles.clear()
+	if not game_manager:
+		return
+	for c in game_manager.turn_order:
+		if "current_tile" in c:
+			cached_occupied_tiles[c.current_tile] = c
+
+# =============================================================================
+# MOUSE HOVER HANDLING
+# =============================================================================
+
+func _process(_delta: float) -> void:
+	_handle_mouse_hover()
+
+func _handle_mouse_hover() -> void:
 	var mouse_pos = highlight_layer.get_global_mouse_position()
 	var local_mouse = highlight_layer.to_local(mouse_pos)
 	var tile = highlight_layer.local_to_map(local_mouse)
-	if tile != last_hovered_tile:
-		# Restore previous highlight for the last hovered tile
-		if prev_highlight_atlas_coords.has(last_hovered_tile):
-			var prev_atlas = prev_highlight_atlas_coords[last_hovered_tile]
-			# Only restore if the highlight is still valid (i.e., matches current game state)
-			var prev_current_atlas = highlight_layer.get_cell_atlas_coords(last_hovered_tile)
-			# If the highlight was cleared (e.g., by turn switch), don't restore
-			if prev_atlas == null:
-				highlight_layer.erase_cell(last_hovered_tile)
-			elif prev_current_atlas == Vector2i(8, 4) or prev_current_atlas == null:
-				# Only restore if the cell is currently mouse-over or empty
-				highlight_layer.set_cell(last_hovered_tile, 2, prev_atlas)
-			# Otherwise, do not restore (the highlight was changed by game logic)
-			prev_highlight_atlas_coords.erase(last_hovered_tile)
-		# Store the current highlight for the new tile
-		var new_current_atlas = highlight_layer.get_cell_atlas_coords(tile)
-		if new_current_atlas == Vector2i(8, 4):
-			# Already mouse-over highlight, do nothing
-			pass
-		else:
-			# Store previous highlight (or null if none)
-			if typeof(new_current_atlas) == TYPE_VECTOR2I:
-				prev_highlight_atlas_coords[tile] = new_current_atlas
-			else:
-				prev_highlight_atlas_coords[tile] = null
-			# Set mouse-over highlight to (8, 4)
-			highlight_layer.set_cell(tile, 2, Vector2i(8, 4))
-		last_hovered_tile = tile
+	
+	if tile == last_hovered_tile:
+		return
+	
+	_restore_tile_highlight(last_hovered_tile)
+	_apply_mouse_over_highlight(tile)
+	
+	last_hovered_tile = tile
+	EventBus.tile_hovered.emit(tile)
 
+func _restore_tile_highlight(tile: Vector2i) -> void:
+	if not prev_highlight_atlas_coords.has(tile):
+		return
+	var prev_atlas = prev_highlight_atlas_coords[tile]
+	var current_atlas = highlight_layer.get_cell_atlas_coords(tile)
+	if prev_atlas == null:
+		highlight_layer.erase_cell(tile)
+	elif current_atlas == Constants.HIGHLIGHT_MOUSE_OVER or current_atlas == Vector2i(-1, -1):
+		highlight_layer.set_cell(tile, Constants.TILE_SOURCE_ID, prev_atlas)
+	prev_highlight_atlas_coords.erase(tile)
 
-func _ready():
-	# Initialize the AStarGrid2D
-	setup_astar_grid()
-	# Add walkable cells based on the TileMapLayer
-	add_walkable_cells_from_tilemap()
+func _apply_mouse_over_highlight(tile: Vector2i) -> void:
+	var current_atlas = highlight_layer.get_cell_atlas_coords(tile)
+	if current_atlas == Constants.HIGHLIGHT_MOUSE_OVER:
+		return
+	if typeof(current_atlas) == TYPE_VECTOR2I and current_atlas != Vector2i(-1, -1):
+		prev_highlight_atlas_coords[tile] = current_atlas
+	else:
+		prev_highlight_atlas_coords[tile] = null
+	highlight_layer.set_cell(tile, Constants.TILE_SOURCE_ID, Constants.HIGHLIGHT_MOUSE_OVER)
 
-func setup_astar_grid():
+# =============================================================================
+# A* PATHFINDING
+# =============================================================================
+
+func setup_astar_grid() -> void:
 	astar_grid = AStarGrid2D.new()
-	# Set the size of the grid to match the TileMapLayer
 	astar_grid.region = base_layer.get_used_rect()
-	# Set the cell size to match the tile size
 	astar_grid.cell_size = base_layer.tile_set.tile_size
 	astar_grid.jumping_enabled = false
-	# Disable diagonal movement
 	astar_grid.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
-	# Update the grid
 	astar_grid.update()
 
-func add_walkable_cells_from_tilemap():
-	# Get the used cells from the TileMapLayer
-	var used_cells = base_layer.get_used_cells()
-	for cell in used_cells:
-		# Only mark as walkable if in bounds
+func add_walkable_cells_from_tilemap() -> void:
+	for cell in base_layer.get_used_cells():
 		if astar_grid.is_in_boundsv(cell):
-			astar_grid.set_point_solid(cell, false) # false means walkable
+			astar_grid.set_point_solid(cell, false)
+	
 	for cell in wall_tilemap.get_used_cells():
-		# Only mark as not walkable if in bounds
 		if astar_grid.is_in_boundsv(cell):
 			astar_grid.set_point_solid(cell, true)
 
 func get_astar_path(start: Vector2i, end: Vector2i) -> Array:
-	# Returns a list of points from start to end using the AStarGrid2D
 	if astar_grid == null:
 		push_error("AStar grid not initialized!")
 		return []
+	
 	if not astar_grid.is_in_boundsv(start) or not astar_grid.is_in_boundsv(end):
 		push_error("Start or end point not in grid!")
 		return []
-	return astar_grid.get_id_path(start, end)
+	
+	var temporarily_blocked: Array[Vector2i] = []
+	
+	for tile in cached_occupied_tiles.keys():
+		if tile != start and astar_grid.is_in_boundsv(tile):
+			if not astar_grid.is_point_solid(tile):
+				astar_grid.set_point_solid(tile, true)
+				temporarily_blocked.append(tile)
+	
+	var path = astar_grid.get_id_path(start, end)
+	
+	for tile in temporarily_blocked:
+		astar_grid.set_point_solid(tile, false)
+	
+	return path
 
-# Highlights all tiles reachable from a start position within a given range (speed)
-func highlight_reachable_tiles(start: Vector2i, max_range: int):
-	print("[Highlight] Clearing previous highlights...")
-	var used_cells = highlight_layer.get_used_cells()
-	for cell in used_cells:
-		highlight_layer.erase_cell(cell)
-	print("[Highlight] Highlighting reachable tiles from:", start, "with range:", max_range)
-	# BFS for range-limited, obstacle-aware highlighting
-	var visited = {}
-	var queue = []
-	queue.push_back({"pos": start, "dist": 0})
-	visited[start] = true
-	var highlight_count = 0
-	# Gather all character positions (player and enemy)
-	var occupied_tiles := {}
-	var scene = get_tree().get_current_scene()
-	if scene:
-		var gm = scene.find_child("GameManager", true, false)
-		if gm:
-			for c in gm.player_team_characters:
-				occupied_tiles[c.current_tile] = true
-			for c in gm.enemy_team_characters:
-				occupied_tiles[c.current_tile] = true
+# =============================================================================
+# TILE HIGHLIGHTING
+# =============================================================================
 
+func highlight_reachable_tiles(start: Vector2i, max_range: int) -> void:
+	clear_highlights()
+	if max_range <= 0:
+		return
+	_refresh_occupied_tiles()
+	var reachable = _calculate_reachable_tiles(start, max_range)
+	for tile in reachable:
+		highlight_layer.set_cell(tile, Constants.TILE_SOURCE_ID, Constants.HIGHLIGHT_REACHABLE)
+
+func _calculate_reachable_tiles(start: Vector2i, max_range: int) -> Array:
+	var visited := {start: true}
+	var reachable: Array = []
+	var queue: Array = [[start, 0]]
 	while queue.size() > 0:
 		var current = queue.pop_front()
-		var pos = current["pos"]
-		var dist = current["dist"]
+		var pos: Vector2i = current[0]
+		var dist: int = current[1]
 		if dist > max_range:
 			continue
-		# Only highlight if not blocked, not the starting tile, and not occupied
-		if not astar_grid.is_point_solid(pos) and pos != start and not occupied_tiles.has(pos):
-			highlight_layer.set_cell(pos, 2, Vector2i(27, 3))
-			highlight_count += 1
-		# Explore neighbors
-		for dir in [Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)]:
+		if pos != start and not astar_grid.is_point_solid(pos) and not cached_occupied_tiles.has(pos):
+			reachable.append(pos)
+		for dir in Constants.CARDINAL_DIRECTIONS:
 			var neighbor = pos + dir
-			if not astar_grid.is_in_boundsv(neighbor):
+			if visited.has(neighbor) or not astar_grid.is_in_boundsv(neighbor):
 				continue
-			if visited.has(neighbor):
-				continue
-			if astar_grid.is_point_solid(neighbor):
+			if astar_grid.is_point_solid(neighbor) or cached_occupied_tiles.has(neighbor):
 				continue
 			visited[neighbor] = true
-			queue.push_back({"pos": neighbor, "dist": dist + 1})
-	print("[Highlight] Total highlighted:", highlight_count)
+			queue.push_back([neighbor, dist + 1])
+	return reachable
 
-# Optionally, a function to clear highlights
-func clear_highlights():
-	print("[Highlight] Clearing all highlights...")
-	var used_cells = highlight_layer.get_used_cells()
-	for cell in used_cells:
+func clear_highlights() -> void:
+	for cell in highlight_layer.get_used_cells():
 		highlight_layer.erase_cell(cell)
-var game_manager: Node = null
+	prev_highlight_atlas_coords.clear()
+	last_hovered_tile = INVALID_TILE
 
-func _unhandled_input(event):
-	if game_manager == null:
-		# Try to find the game manager node in the current scene
-		var scene = get_tree().get_current_scene()
-		if scene:
-			game_manager = scene.find_child("GameManager", true, false)
-		if game_manager == null:
-			return
-	# Only allow input if it's the player's turn
-	if not game_manager.enemy_team_characters.has(game_manager.current_character):
-		if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-			var mouse_pos = highlight_layer.get_global_mouse_position()
-			var local_mouse = highlight_layer.to_local(mouse_pos)
-			var tile = highlight_layer.local_to_map(local_mouse)
-			var atlas = highlight_layer.get_cell_atlas_coords(tile)
-			# Allow movement if the tile is reachable (27, 3) or mouse-over (8, 4) but was previously reachable
-			var prev_atlas = prev_highlight_atlas_coords.get(tile, null)
-			if atlas == Vector2i(27, 3) or (atlas == Vector2i(8, 4) and prev_atlas == Vector2i(27, 3)):
-					game_manager.current_character.move_to_tile(tile)
-					# No longer end the turn automatically on click
+# =============================================================================
+# INPUT HANDLING
+# =============================================================================
+
+func _unhandled_input(event: InputEvent) -> void:
+	if not event is InputEventMouseButton or not event.pressed or event.button_index != MOUSE_BUTTON_LEFT:
+		return
+	if not game_manager:
+		return
+	var tile = _get_tile_at_mouse()
+	var atlas = highlight_layer.get_cell_atlas_coords(tile)
+	var prev_atlas = prev_highlight_atlas_coords.get(tile, null)
+	var is_reachable = (atlas == Constants.HIGHLIGHT_REACHABLE or 
+		(atlas == Constants.HIGHLIGHT_MOUSE_OVER and prev_atlas == Constants.HIGHLIGHT_REACHABLE))
+	if is_reachable:
+		game_manager.request_move(game_manager.current_character, tile)
+
+func _get_tile_at_mouse() -> Vector2i:
+	return highlight_layer.local_to_map(highlight_layer.to_local(highlight_layer.get_global_mouse_position()))
