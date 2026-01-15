@@ -5,6 +5,7 @@
 [ext_resource type="TileSet" uid="uid://cpiormm6cegct" path="res://assets/tilesets/tileset.tres" id="2_jvjt4"]
 [ext_resource type="PackedScene" uid="uid://bf0ia26jj2idx" path="res://scenes/levels/ActionCamera.tscn" id="3_41arr"]
 [ext_resource type="Script" uid="uid://e76w1djf5c7j" path="res://scripts/levels/tilemaps/tilemap.gd" id="4_6drk1"]
+[ext_resource type="Script" path="res://scripts/characters/enemies/enemy_character.gd" id="5_enemy"]
 [ext_resource type="PackedScene" uid="uid://gccg1ctal63h" path="res://scenes/ui/TurnLabelCanvas.tscn" id="6_3qnke"]
 
 [node name="TestScene" type="Node2D"]
@@ -18,19 +19,16 @@ one_shot = true
 [node name="PlayerTeam" type="Node" parent="."]
 
 [node name="PlayerCharacter" parent="PlayerTeam" instance=ExtResource("2_2iy3v")]
-move_speed = 100
 
 [node name="PlayerCharacter2" parent="PlayerTeam" instance=ExtResource("2_2iy3v")]
 position = Vector2(110, 70)
-move_speed = 100
-initiative = 5
 
 [node name="EnemyTeam" type="Node" parent="."]
 
 [node name="EnemyCharacter" parent="EnemyTeam" instance=ExtResource("2_2iy3v")]
 position = Vector2(-222, -31)
-move_speed = 100
-initiative = 2
+script = ExtResource("5_enemy")
+team = "enemy_team"
 
 [node name="ActionCamera" parent="." instance=ExtResource("3_41arr")]
 
