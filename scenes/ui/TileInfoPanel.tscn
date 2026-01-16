@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/tile_info_panel.gd" id="1_tileinfo"]
+
+[node name="TileInfoPanel" type="PanelContainer"]
+script = ExtResource("1_tileinfo")
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -120.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 8
+
+[node name="VBox" type="VBoxContainer" parent="MarginContainer"]
+
+[node name="TileName" type="Label" parent="MarginContainer/VBox"]
+theme_override_font_sizes/font_size = 16
+text = "Tile Name"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBox"]
+
+[node name="StatsContainer" type="VBoxContainer" parent="MarginContainer/VBox"]
+
+[node name="DefenseLabel" type="Label" parent="MarginContainer/VBox/StatsContainer"]
+text = "Defense: +0"
+
+[node name="MoveCostLabel" type="Label" parent="MarginContainer/VBox/StatsContainer"]
+text = "Move Cost: 1"
+
+[node name="TerrainLabel" type="Label" parent="MarginContainer/VBox/StatsContainer"]
+text = "Terrain: Normal"

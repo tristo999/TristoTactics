@@ -15,6 +15,7 @@ var cached_occupied_tiles: Dictionary = {}
 
 func _ready() -> void:
 	add_to_group("tilemap")
+	set_process_unhandled_input(true)
 	setup_astar_grid()
 	add_walkable_cells_from_tilemap()
 	call_deferred("_cache_game_manager")
@@ -67,6 +68,10 @@ func _restore_tile_highlight(tile: Vector2i) -> void:
 	prev_highlight_atlas_coords.erase(tile)
 
 func _apply_mouse_over_highlight(tile: Vector2i) -> void:
+	# Only highlight walkable tiles
+	if not _is_tile_walkable(tile):
+		return
+	
 	var current_atlas = highlight_layer.get_cell_atlas_coords(tile)
 	if current_atlas == Constants.HIGHLIGHT_MOUSE_OVER:
 		return
@@ -75,6 +80,17 @@ func _apply_mouse_over_highlight(tile: Vector2i) -> void:
 	else:
 		prev_highlight_atlas_coords[tile] = null
 	highlight_layer.set_cell(tile, Constants.TILE_SOURCE_ID, Constants.HIGHLIGHT_MOUSE_OVER)
+
+func _is_tile_walkable(tile: Vector2i) -> bool:
+	# Check if tile is in the base layer (valid ground)
+	var base_atlas = base_layer.get_cell_atlas_coords(tile)
+	if base_atlas == Vector2i(-1, -1):
+		return false
+	# Check if tile is a wall
+	var wall_atlas = wall_tilemap.get_cell_atlas_coords(tile)
+	if wall_atlas != Vector2i(-1, -1):
+		return false
+	return true
 
 # =============================================================================
 # A* PATHFINDING
@@ -166,18 +182,19 @@ func clear_highlights() -> void:
 # INPUT HANDLING
 # =============================================================================
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if not event is InputEventMouseButton or not event.pressed or event.button_index != MOUSE_BUTTON_LEFT:
 		return
 	if not game_manager:
 		return
 	var tile = _get_tile_at_mouse()
-	var atlas = highlight_layer.get_cell_atlas_coords(tile)
-	var prev_atlas = prev_highlight_atlas_coords.get(tile, null)
-	var is_reachable = (atlas == Constants.HIGHLIGHT_REACHABLE or
-		(atlas == Constants.HIGHLIGHT_MOUSE_OVER and prev_atlas == Constants.HIGHLIGHT_REACHABLE))
-	if is_reachable:
+	var has_highlight = highlight_layer.get_cell_source_id(tile) != -1
+	if has_highlight:
 		game_manager.request_move(game_manager.current_character, tile)
 
 func _get_tile_at_mouse() -> Vector2i:
-	return highlight_layer.local_to_map(highlight_layer.to_local(highlight_layer.get_global_mouse_position()))
+	# Use the same coordinate conversion as hover detection
+	var mouse_pos = base_layer.get_global_mouse_position()
+	var local_mouse = base_layer.to_local(mouse_pos)
+	var tile = base_layer.local_to_map(local_mouse)
+	return tile
