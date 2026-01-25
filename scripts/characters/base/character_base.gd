@@ -11,6 +11,8 @@ signal died
 @export var override_move_speed: float = -1
 @export var override_move_range: int = -1
 @export var override_initiative: int = -1
+@export var override_attack_range_min: int = -1
+@export var override_attack_range_max: int = -1
 
 var current_hp: int
 var current_tile: Vector2i
@@ -28,6 +30,12 @@ var move_range: int:
 
 var initiative: int:
 	get: return override_initiative if override_initiative > 0 else (character_data.get_initiative() if character_data else 10)
+
+var attack_range_min: int:
+	get: return override_attack_range_min if override_attack_range_min > 0 else (character_data.attack_range_min if character_data else 1)
+
+var attack_range_max: int:
+	get: return override_attack_range_max if override_attack_range_max > 0 else (character_data.attack_range_max if character_data else 1)
 
 var max_hp: int:
 	get: return character_data.max_hp if character_data else 100

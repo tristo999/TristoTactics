@@ -5,6 +5,7 @@ const INVALID_TILE = Vector2i(-9999, -9999)
 
 @onready var base_layer: TileMapLayer = $BaseGrid
 @onready var wall_tilemap: TileMapLayer = $Walls
+@onready var objects_layer: TileMapLayer = $Objects
 @onready var highlight_layer: TileMapLayer = $HighlightLayer
 
 var astar_grid: AStarGrid2D
@@ -86,9 +87,8 @@ func _is_tile_walkable(tile: Vector2i) -> bool:
 	var base_atlas = base_layer.get_cell_atlas_coords(tile)
 	if base_atlas == Vector2i(-1, -1):
 		return false
-	# Check if tile is a wall
-	var wall_atlas = wall_tilemap.get_cell_atlas_coords(tile)
-	if wall_atlas != Vector2i(-1, -1):
+	# Check if tile is blocked by pathfinding grid (handles large tiles like 3x3 trees)
+	if astar_grid.is_in_boundsv(tile) and astar_grid.is_point_solid(tile):
 		return false
 	return true
 
@@ -109,9 +109,43 @@ func add_walkable_cells_from_tilemap() -> void:
 		if astar_grid.is_in_boundsv(cell):
 			astar_grid.set_point_solid(cell, false)
 	
-	for cell in wall_tilemap.get_used_cells():
-		if astar_grid.is_in_boundsv(cell):
-			astar_grid.set_point_solid(cell, true)
+	# Mark wall tiles as solid, including large tiles (e.g., 3x3 trees)
+	_mark_layer_cells_solid(wall_tilemap)
+	
+	# Objects layer (trees, benches, etc.) are also impassable
+	if objects_layer:
+		_mark_layer_cells_solid(objects_layer)
+
+# Marks all cells covered by tiles in a layer as solid (handles large multi-cell tiles)
+func _mark_layer_cells_solid(layer: TileMapLayer) -> void:
+	for cell in layer.get_used_cells():
+		var tile_data = layer.get_cell_tile_data(cell)
+		if tile_data == null:
+			continue
+		
+		# Get the tile size from the texture region
+		var source_id = layer.get_cell_source_id(cell)
+		var atlas_coords = layer.get_cell_atlas_coords(cell)
+		var tile_set_source = layer.tile_set.get_source(source_id)
+		
+		if tile_set_source is TileSetAtlasSource:
+			var atlas_source = tile_set_source as TileSetAtlasSource
+			var tile_size_in_atlas = atlas_source.get_tile_size_in_atlas(atlas_coords)
+			
+			# For large tiles, the origin is at the center
+			# Calculate offset from center to cover all cells
+			var offset_x = tile_size_in_atlas.x / 2
+			var offset_y = tile_size_in_atlas.y / 2
+			
+			for x in range(tile_size_in_atlas.x):
+				for y in range(tile_size_in_atlas.y):
+					var covered_cell = cell + Vector2i(x - offset_x, y - offset_y)
+					if astar_grid.is_in_boundsv(covered_cell):
+						astar_grid.set_point_solid(covered_cell, true)
+		else:
+			# Fallback for non-atlas sources - just mark the origin cell
+			if astar_grid.is_in_boundsv(cell):
+				astar_grid.set_point_solid(cell, true)
 
 func get_astar_path(start: Vector2i, end: Vector2i) -> Array:
 	if astar_grid == null:
@@ -122,10 +156,15 @@ func get_astar_path(start: Vector2i, end: Vector2i) -> Array:
 		push_error("Start or end point not in grid!")
 		return []
 	
+	# Temporarily unblock the start position if it's the character's own tile
+	var start_was_solid = astar_grid.is_point_solid(start)
+	if start_was_solid:
+		astar_grid.set_point_solid(start, false)
+	
 	var temporarily_blocked: Array[Vector2i] = []
 	
 	for tile in cached_occupied_tiles.keys():
-		if tile != start and astar_grid.is_in_boundsv(tile):
+		if tile != start and tile != end and astar_grid.is_in_boundsv(tile):
 			if not astar_grid.is_point_solid(tile):
 				astar_grid.set_point_solid(tile, true)
 				temporarily_blocked.append(tile)
@@ -134,6 +173,10 @@ func get_astar_path(start: Vector2i, end: Vector2i) -> Array:
 	
 	for tile in temporarily_blocked:
 		astar_grid.set_point_solid(tile, false)
+	
+	# Restore start position solid state
+	if start_was_solid:
+		astar_grid.set_point_solid(start, true)
 	
 	return path
 
@@ -187,9 +230,20 @@ func _input(event: InputEvent) -> void:
 		return
 	if not game_manager:
 		return
+	# Only allow input during player turn with movement remaining
+	if game_manager.is_enemy_turn():
+		return
+	if not game_manager.current_character or game_manager.current_character.movement_left <= 0:
+		return
+	if game_manager.current_character.moving:
+		return
 	var tile = _get_tile_at_mouse()
-	var has_highlight = highlight_layer.get_cell_source_id(tile) != -1
-	if has_highlight:
+	# Only allow movement to tiles with the reachable highlight (not just mouse-over)
+	var highlight_atlas = highlight_layer.get_cell_atlas_coords(tile)
+	var prev_atlas = prev_highlight_atlas_coords.get(tile, null)
+	# Accept if tile has reachable highlight, OR if it has mouse-over but was previously reachable
+	var is_reachable = highlight_atlas == Constants.HIGHLIGHT_REACHABLE or (highlight_atlas == Constants.HIGHLIGHT_MOUSE_OVER and prev_atlas == Constants.HIGHLIGHT_REACHABLE)
+	if is_reachable:
 		game_manager.request_move(game_manager.current_character, tile)
 
 func _get_tile_at_mouse() -> Vector2i:

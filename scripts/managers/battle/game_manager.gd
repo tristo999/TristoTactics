@@ -4,7 +4,6 @@ extends Node
 @export var tilemap_node: Node2D
 @export var action_camera: Camera2D
 @export var turn_label: Label
-@onready var timer: Timer = $TurnTimer
 
 var turn_order: Array = []
 var current_character: Node2D
@@ -66,8 +65,6 @@ func _start_battle() -> void:
 	_focus_camera(current_character)
 	_update_turn_label()
 	call_deferred("_start_character_turn", current_character)
-	if is_enemy_turn():
-		timer.start()
 
 # =============================================================================
 # PROCESS
@@ -87,6 +84,22 @@ func _start_character_turn(character: Node2D) -> void:
 	_show_movement_range()
 	character.on_turn_started()
 	EventBus.turn_started.emit(character)
+	
+	# If it's an enemy turn, execute their AI
+	if is_enemy_turn() and character is EnemyCharacter:
+		_execute_enemy_turn(character as EnemyCharacter)
+
+## Execute enemy AI turn sequence
+func _execute_enemy_turn(enemy: EnemyCharacter) -> void:
+	# Movement range is already shown from _start_character_turn
+	# Connect to the enemy's turn completion signal
+	enemy.ai_turn_completed.connect(_on_enemy_turn_completed.bind(enemy), CONNECT_ONE_SHOT)
+	# Start the enemy AI execution
+	enemy.execute_ai_turn()
+
+func _on_enemy_turn_completed(enemy: EnemyCharacter) -> void:
+	if enemy == current_character and battle_active:
+		_advance_turn()
 
 func _end_character_turn(character: Node2D) -> void:
 	_clear_movement_range()
@@ -99,14 +112,7 @@ func _advance_turn() -> void:
 	current_character = turn_order[index]
 	_update_turn_label()
 	_focus_camera(current_character)
-	if is_enemy_turn():
-		timer.start()
-	else:
-		timer.stop()
 	_start_character_turn(current_character)
-
-func _on_turn_timer_timeout() -> void:
-	_advance_turn()
 
 func request_move(character: Node2D, target_tile: Vector2i) -> bool:
 	if character != current_character or is_enemy_turn() or _is_moving():
@@ -153,5 +159,4 @@ func _on_character_died(character: Node2D) -> void:
 
 func _end_battle(victory: bool) -> void:
 	battle_active = false
-	timer.stop()
 	EventBus.battle_ended.emit(victory)
