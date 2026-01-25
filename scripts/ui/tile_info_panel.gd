@@ -13,9 +13,11 @@ const TERRAIN_TYPES := {
 	"grass": {"name": "Grass", "defense": 0, "move_cost": 1, "terrain": "Plains"},
 	"dirt": {"name": "Dirt Path", "defense": 0, "move_cost": 1, "terrain": "Road"},
 	"stone": {"name": "Stone Floor", "defense": 0, "move_cost": 1, "terrain": "Road"},
+	"road": {"name": "Road", "defense": -1, "move_cost": 1, "terrain": "Road"},
 	"forest": {"name": "Forest", "defense": 2, "move_cost": 2, "terrain": "Forest"},
 	"water": {"name": "Water", "defense": 0, "move_cost": 999, "terrain": "Impassable"},
 	"wall": {"name": "Wall", "defense": 0, "move_cost": 999, "terrain": "Impassable"},
+	"object": {"name": "Object", "defense": 0, "move_cost": 999, "terrain": "Impassable"},
 	"bridge": {"name": "Bridge", "defense": 0, "move_cost": 1, "terrain": "Bridge"},
 	"sand": {"name": "Sand", "defense": - 1, "move_cost": 2, "terrain": "Desert"},
 	"mountain": {"name": "Mountain", "defense": 3, "move_cost": 3, "terrain": "Mountain"},
@@ -63,12 +65,15 @@ func _get_tile_data(tile_pos: Vector2i) -> Dictionary:
 	if not tilemap:
 		return {}
 	
-	# Check walls first (impassable)
+	# Check walls first (impassable) - including large multi-cell tiles
 	var wall_layer = tilemap.get_node_or_null("Walls")
-	if wall_layer:
-		var wall_atlas = wall_layer.get_cell_atlas_coords(tile_pos)
-		if wall_atlas != Vector2i(-1, -1):
-			return TERRAIN_TYPES["wall"]
+	if wall_layer and _is_tile_covered_by_layer(wall_layer, tile_pos):
+		return TERRAIN_TYPES["wall"]
+	
+	# Check objects layer (trees, benches, etc. - impassable)
+	var objects_layer = tilemap.get_node_or_null("Objects")
+	if objects_layer and _is_tile_covered_by_layer(objects_layer, tile_pos):
+		return TERRAIN_TYPES["object"]
 	
 	# Check base layer
 	var base_layer = tilemap.get_node_or_null("BaseGrid")
@@ -82,6 +87,42 @@ func _get_tile_data(tile_pos: Vector2i) -> Dictionary:
 	# Determine terrain type from atlas coordinates
 	# Based on Solaria Demo Tiles layout
 	return _classify_tile(atlas_coords)
+
+# Check if a tile position is covered by any tile in a layer (handles large multi-cell tiles)
+func _is_tile_covered_by_layer(layer: TileMapLayer, tile_pos: Vector2i) -> bool:
+	# First check if there's a tile directly at this position
+	if layer.get_cell_atlas_coords(tile_pos) != Vector2i(-1, -1):
+		return true
+	
+	# Check surrounding cells for large tiles that might cover this position
+	# Large tiles have origin at center, so check in all directions
+	for offset_x in range(-2, 3):
+		for offset_y in range(-2, 3):
+			var check_pos = tile_pos + Vector2i(offset_x, offset_y)
+			var tile_data = layer.get_cell_tile_data(check_pos)
+			if tile_data == null:
+				continue
+			
+			var source_id = layer.get_cell_source_id(check_pos)
+			var atlas_coords = layer.get_cell_atlas_coords(check_pos)
+			var tile_set_source = layer.tile_set.get_source(source_id)
+			
+			if tile_set_source is TileSetAtlasSource:
+				var atlas_source = tile_set_source as TileSetAtlasSource
+				var tile_size = atlas_source.get_tile_size_in_atlas(atlas_coords)
+				
+				# For large tiles, origin is at center
+				var half_x = tile_size.x / 2
+				var half_y = tile_size.y / 2
+				var min_x = check_pos.x - half_x
+				var max_x = check_pos.x + (tile_size.x - 1) - half_x
+				var min_y = check_pos.y - half_y
+				var max_y = check_pos.y + (tile_size.y - 1) - half_y
+				
+				if tile_pos.x >= min_x and tile_pos.x <= max_x and tile_pos.y >= min_y and tile_pos.y <= max_y:
+					return true
+	
+	return false
 
 func _classify_tile(atlas: Vector2i) -> Dictionary:
 	var x = atlas.x
@@ -100,6 +141,11 @@ func _classify_tile(atlas: Vector2i) -> Dictionary:
 	# Forest/tree tiles (decorative elements that provide cover)
 	if (y == 4 and x >= 11 and x <= 12) or (y == 5 and x >= 6 and x <= 9):
 		return TERRAIN_TYPES["forest"]
+	
+	# Road tiles - typically paths/roads in rows 3-5
+	# Adjust these coordinates based on your specific tileset
+	if y >= 3 and y <= 5 and x >= 3 and x <= 10:
+		return TERRAIN_TYPES["road"]
 	
 	# Stone/brick paths
 	if y >= 6 and y <= 8:

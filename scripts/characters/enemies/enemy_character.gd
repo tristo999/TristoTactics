@@ -2,20 +2,33 @@
 extends CharacterBase
 class_name EnemyCharacter
 
+signal ai_turn_completed
+
 @export_group("AI Behavior")
-@export var ai_delay: float = 0.5
+@export var ai_pause_duration: float = 2.0
+
+func _ready() -> void:
+	team = Constants.TEAM_ENEMY
+	super._ready()
 
 func on_turn_started() -> void:
-	if ai_delay > 0:
-		await get_tree().create_timer(ai_delay).timeout
-	_execute_ai_turn()
+	pass
 
-func _execute_ai_turn() -> void:
+func execute_ai_turn() -> void:
+	await get_tree().create_timer(ai_pause_duration).timeout
+	
 	var target = _find_nearest_player()
-	if target:
+	if target and movement_left > 0:
 		var target_tile = _get_best_tile_toward(target)
 		if target_tile != current_tile:
+			var tilemap = get_tree().get_first_node_in_group("tilemap")
+			if tilemap:
+				tilemap.clear_highlights()
 			move_to_tile(target_tile)
+			await movement_finished
+	
+	await get_tree().create_timer(ai_pause_duration).timeout
+	ai_turn_completed.emit()
 
 func _find_nearest_player() -> Node2D:
 	var players = get_tree().get_nodes_in_group(Constants.GROUP_PLAYER_CHARACTERS)
@@ -33,8 +46,29 @@ func _find_nearest_player() -> Node2D:
 func _get_best_tile_toward(target: Node2D) -> Vector2i:
 	if movement_left <= 0:
 		return current_tile
+	
+	# Check if already in attack range
+	var current_dist = _tile_distance(current_tile, target.current_tile)
+	if current_dist >= attack_range_min and current_dist <= attack_range_max:
+		return current_tile
+	
 	var tilemap = get_tree().get_first_node_in_group("tilemap")
 	var path = tilemap.get_astar_path(current_tile, target.current_tile) if tilemap else []
 	if path.size() < 2:
 		return current_tile
-	return path[min(movement_left, path.size() - 1)]
+	
+	# Find the best tile that puts us in attack range
+	for i in range(min(movement_left, path.size() - 1), 0, -1):
+		var tile = path[i]
+		var dist = _tile_distance(tile, target.current_tile)
+		if dist >= attack_range_min and dist <= attack_range_max:
+			return tile
+	
+	# Can't reach attack range, move as close as possible without landing on target
+	var max_index = min(movement_left, path.size() - 1)
+	if path[max_index] == target.current_tile and max_index > 0:
+		max_index -= 1
+	return path[max_index]
+
+func _tile_distance(from: Vector2i, to: Vector2i) -> int:
+	return abs(from.x - to.x) + abs(from.y - to.y)
