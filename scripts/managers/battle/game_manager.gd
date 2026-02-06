@@ -1,6 +1,8 @@
 # GameManager - Manages battle flow, turn order, and game state
 extends Node
 
+enum TurnPhase { MOVE, ATTACK, DONE }
+
 @export var tilemap_node: Node2D
 @export var action_camera: Camera2D
 @export var turn_label: Label
@@ -8,6 +10,7 @@ extends Node
 var turn_order: Array = []
 var current_character: Node2D
 var battle_active: bool = false
+var current_phase: TurnPhase = TurnPhase.MOVE
 
 func _ready() -> void:
 	_find_node_references()
@@ -73,6 +76,7 @@ func _start_battle() -> void:
 func _process(_delta: float) -> void:
 	if battle_active and not is_enemy_turn() and not _is_moving():
 		if Input.is_action_just_pressed("ui_accept"):
+			# End turn early
 			_advance_turn()
 
 func _is_moving() -> bool:
@@ -81,6 +85,8 @@ func _is_moving() -> bool:
 func _start_character_turn(character: Node2D) -> void:
 	current_character = character
 	character.movement_left = character.move_range
+	character.has_attacked = false
+	current_phase = TurnPhase.MOVE
 	_show_movement_range()
 	character.on_turn_started()
 	EventBus.turn_started.emit(character)
@@ -117,17 +123,68 @@ func _advance_turn() -> void:
 func request_move(character: Node2D, target_tile: Vector2i) -> bool:
 	if character != current_character or is_enemy_turn() or _is_moving():
 		return false
+	if current_phase != TurnPhase.MOVE:
+		return false
 	_clear_movement_range()
 	character.move_to_tile(target_tile)
 	return true
 
+func request_attack(character: Node2D, target: Node2D) -> bool:
+	if character != current_character or is_enemy_turn() or _is_moving():
+		return false
+	if character.has_attacked:
+		return false
+	
+	var result = character.attack_target(target)
+	if result.success:
+		# Brief pause after attack
+		await get_tree().create_timer(0.3).timeout
+		# If out of movement and attacked, end turn
+		if character.movement_left <= 0 and battle_active:
+			_advance_turn()
+		else:
+			# Still has movement, show range again
+			_show_movement_range()
+		return true
+	return false
+
 func _on_character_movement_finished(character: Node2D) -> void:
-	if character == current_character and character.movement_left > 0:
-		call_deferred("_show_movement_range")
+	if character == current_character:
+		if is_enemy_turn():
+			# Enemy uses phase system
+			_transition_to_attack_phase()
+		else:
+			# Player can keep moving if they have movement left
+			if character.movement_left > 0:
+				_show_movement_range()
+			else:
+				# Out of movement, if already attacked, end turn
+				if character.has_attacked:
+					_advance_turn()
+				else:
+					# Show attack range only (no movement left)
+					_show_movement_range()
+
+func _transition_to_attack_phase() -> void:
+	if current_character.has_attacked:
+		# Already attacked, end turn
+		_advance_turn()
+		return
+	current_phase = TurnPhase.ATTACK
+	_clear_movement_range()
+	_show_attack_range()
+
+func _show_attack_range() -> void:
+	if tilemap_node and not current_character.has_attacked:
+		tilemap_node.highlight_attack_range(
+			current_character.current_tile,
+			current_character.attack_range_min,
+			current_character.attack_range_max
+		)
 
 func _show_movement_range() -> void:
-	if tilemap_node and current_character.movement_left > 0:
-		tilemap_node.highlight_reachable_tiles(current_character.current_tile, current_character.movement_left)
+	if tilemap_node:
+		tilemap_node.highlight_reachable_tiles(current_character.current_tile, current_character.movement_left, current_character)
 
 func _clear_movement_range() -> void:
 	if tilemap_node:
@@ -146,16 +203,21 @@ func _focus_camera(target: Node2D) -> void:
 		action_camera.move_camera(target)
 
 func _on_character_died(character: Node2D) -> void:
+	var was_current = character == current_character
+	var current_index = turn_order.find(character)
 	turn_order.erase(character)
+	
 	var players = turn_order.filter(func(c): return c.team == Constants.TEAM_PLAYER)
 	var enemies = turn_order.filter(func(c): return c.team == Constants.TEAM_ENEMY)
+	
 	if enemies.is_empty():
 		_end_battle(true)
 	elif players.is_empty():
 		_end_battle(false)
-	elif character == current_character and battle_active:
-		var index = (turn_order.find(character) + 1) % turn_order.size()
-		_start_character_turn(turn_order[index])
+	elif was_current and battle_active:
+		# Move to next character (use same index since we removed current)
+		var next_index = current_index % turn_order.size()
+		_start_character_turn(turn_order[next_index])
 
 func _end_battle(victory: bool) -> void:
 	battle_active = false

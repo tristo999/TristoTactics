@@ -3,12 +3,12 @@ extends "res://scripts/ui/base_menu.gd"
 signal settings_requested
 
 func _setup_menu():
-	$Panel/VBox/ResumeButton.connect("pressed", self._on_resume_pressed)
-	$Panel/VBox/SettingsButton.connect("pressed", self._on_settings_pressed)
-	$Panel/VBox/QuitButton.connect("pressed", self._on_quit_pressed)
+	$Panel/VBox/ResumeButton.pressed.connect(_on_resume_pressed)
+	$Panel/VBox/SettingsButton.pressed.connect(_on_settings_pressed)
+	$Panel/VBox/QuitButton.pressed.connect(_on_quit_pressed)
 
 func _on_settings_pressed():
-	emit_signal("settings_requested")
+	settings_requested.emit()
 
 func _on_resume_pressed():
 	request_back()

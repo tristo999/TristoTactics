@@ -18,6 +18,8 @@ func execute_ai_turn() -> void:
 	await get_tree().create_timer(ai_pause_duration).timeout
 	
 	var target = _find_nearest_player()
+	
+	# Move phase
 	if target and movement_left > 0:
 		var target_tile = _get_best_tile_toward(target)
 		if target_tile != current_tile:
@@ -27,7 +29,22 @@ func execute_ai_turn() -> void:
 			move_to_tile(target_tile)
 			await movement_finished
 	
-	await get_tree().create_timer(ai_pause_duration).timeout
+	# Attack phase
+	if target and not has_attacked:
+		var tilemap = get_tree().get_first_node_in_group("tilemap")
+		if tilemap:
+			tilemap.clear_highlights()
+			tilemap.highlight_attack_range(current_tile, attack_range_min, attack_range_max)
+		
+		await get_tree().create_timer(ai_pause_duration * 0.5).timeout
+		
+		if can_attack_target(target):
+			if tilemap:
+				tilemap.clear_highlights()
+			attack_target(target)
+			await get_tree().create_timer(ai_pause_duration * 0.5).timeout
+	
+	await get_tree().create_timer(ai_pause_duration * 0.5).timeout
 	ai_turn_completed.emit()
 
 func _find_nearest_player() -> Node2D:
@@ -69,6 +86,8 @@ func _get_best_tile_toward(target: Node2D) -> Vector2i:
 	if path[max_index] == target.current_tile and max_index > 0:
 		max_index -= 1
 	return path[max_index]
+
+# Note: _tile_distance() is inherited from CharacterBase
 
 func _tile_distance(from: Vector2i, to: Vector2i) -> int:
 	return abs(from.x - to.x) + abs(from.y - to.y)

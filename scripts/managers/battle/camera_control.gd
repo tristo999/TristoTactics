@@ -74,8 +74,6 @@ func handle_zoom_input() -> void:
 
 ## Move camera to focus on a character (called by GameManager)
 func move_camera(character: Node2D) -> void:
-	print("Camera focusing on: ", character.name)
-	
 	if use_smooth_focus:
 		focus_target = character
 		is_focusing = true
