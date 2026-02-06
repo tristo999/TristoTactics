@@ -18,9 +18,9 @@ var cached_reachable_tiles: Array = []
 
 func _ready() -> void:
 	add_to_group("tilemap")
-	set_process_unhandled_input(true)
 	setup_astar_grid()
 	add_walkable_cells_from_tilemap()
+	# Deferred so GameManager (a sibling node) has finished _ready() first
 	call_deferred("_cache_game_manager")
 	EventBus.character_moved.connect(func(_c, _f, _t): _refresh_occupied_tiles())
 	EventBus.turn_started.connect(func(_c): _refresh_occupied_tiles())
@@ -258,39 +258,3 @@ func _calculate_attack_range_tiles(start: Vector2i, min_range: int, max_range: i
 func get_character_at_tile(tile: Vector2i) -> Node2D:
 	_refresh_occupied_tiles()
 	return cached_occupied_tiles.get(tile, null)
-
-# =============================================================================
-# INPUT HANDLING
-# =============================================================================
-
-func _input(event: InputEvent) -> void:
-	if not event is InputEventMouseButton or not event.pressed or event.button_index != MOUSE_BUTTON_LEFT:
-		return
-	if not game_manager:
-		return
-	if game_manager.is_enemy_turn():
-		return
-	if not game_manager.current_character:
-		return
-	if game_manager.current_character.moving:
-		return
-	
-	var tile = _get_tile_at_mouse()
-	var character = game_manager.current_character
-	
-	# Check for attack on enemy (can attack anytime during player turn)
-	var target = get_character_at_tile(tile)
-	if target and character.can_attack_target(target):
-		game_manager.request_attack(character, target)
-		return
-	
-	# Check for movement using cached reachable tiles (not highlight color)
-	if character.movement_left > 0 and tile in cached_reachable_tiles:
-		game_manager.request_move(character, tile)
-
-func _get_tile_at_mouse() -> Vector2i:
-	# Use the same coordinate conversion as hover detection
-	var mouse_pos = base_layer.get_global_mouse_position()
-	var local_mouse = base_layer.to_local(mouse_pos)
-	var tile = base_layer.local_to_map(local_mouse)
-	return tile

@@ -1,7 +1,7 @@
 # GameSFXManager - Bridges game events to sound effects
-# Listens to EventBus signals and triggers appropriate SFX via MusicManager.
+# Listens to EventBus signals and triggers appropriate SFX via AudioManager.
 # Characters with a CharacterSFX resource get their own unique sounds;
-# otherwise the global defaults from MusicManager.sound_effects are used.
+# otherwise the global defaults from AudioManager.sound_effects are used.
 extends Node
 
 func _ready() -> void:
@@ -20,7 +20,7 @@ func _ready() -> void:
 
 ## Play a sound for a specific action on a character.
 ## Checks for a character-specific override first, then falls back to the
-## global SFX key registered in MusicManager.
+## global SFX key registered in AudioManager.
 func _play_character_sfx(character: Node2D, action: String) -> void:
 	# Check for per-character override
 	if character.has_method("get_sfx"):
@@ -29,11 +29,11 @@ func _play_character_sfx(character: Node2D, action: String) -> void:
 			_play_sfx_path(custom_path)
 			return
 	# Fall back to global default
-	MusicManager.play_sfx(action)
+	AudioManager.play_sfx(action)
 
 ## Directly play an SFX from a file path (for character overrides)
 func _play_sfx_path(path: String) -> void:
-	MusicManager.play_sfx_from_path(path)
+	AudioManager.play_sfx_from_path(path)
 
 # -- Combat SFX --
 
@@ -75,9 +75,8 @@ func _on_turn_started(character: Node2D) -> void:
 	else:
 		# Use team-based default
 		var action := "enemy_turn" if character.team == Constants.TEAM_ENEMY else "turn_start"
-		MusicManager.play_sfx(action)
+		AudioManager.play_sfx(action)
 
 func _on_battle_ended(_victory: bool) -> void:
-	# Victory/defeat music is handled by MusicManager already
-	pass
+	# Victory/defeat music is handled by AudioManager already
 	pass

@@ -17,14 +17,6 @@ func _on_quit_pressed():
 	get_tree().paused = false
 	get_tree().quit()
 
-func show_menu():
-	get_tree().paused = true
-	super.show_menu()
-
-func hide_menu():
-	super.hide_menu()
-	get_tree().paused = false
-
 # Aliases for compatibility
 func show_pause():
 	show_menu()

@@ -5,17 +5,28 @@ class_name CharacterBase
 signal movement_finished
 signal died
 
-@export var character_data: CharacterData
-@export var team: String = "player_team"
-@export_group("Override Stats")
-@export var override_move_speed: float = -1
-@export var override_move_range: int = -1
-@export var override_initiative: int = -1
-@export var override_attack_range_min: int = -1
-@export var override_attack_range_max: int = -1
-@export var override_attack: int = -1
-@export var override_defense: int = -1
+@export var character_data: CharacterData  ## Optional: for SFX overrides and future features
 
+# Team is set automatically by PlayerCharacter/EnemyCharacter in _ready()
+var team: String = ""
+
+# --- Stats (edit these in the Inspector!) ---
+@export_group("Stats")
+@export var max_hp: int = 25
+@export var attack_power: int = 10
+@export var defense: int = 5
+@export var initiative: int = 10
+@export var crit_chance: float = 0.05
+
+@export_group("Movement")
+@export var move_speed: float = 100.0
+@export var move_range: int = 5
+
+@export_group("Attack Range")
+@export var attack_range_min: int = 1
+@export var attack_range_max: int = 1
+
+# --- Runtime state (don't touch) ---
 var current_hp: int
 var current_tile: Vector2i
 var base_layer: TileMapLayer
@@ -25,84 +36,24 @@ var move_path: Array = []
 var move_target: Vector2 = Vector2.ZERO
 var moving: bool = false
 
-var move_speed: float:
-	get: return override_move_speed if override_move_speed > 0 else (character_data.move_speed if character_data else 100.0)
-
-var move_range: int:
-	get: return override_move_range if override_move_range > 0 else (character_data.move_range if character_data else 5)
-
-var initiative: int:
-	get: return override_initiative if override_initiative > 0 else (character_data.get_initiative() if character_data else 10)
-
-var attack_range_min: int:
-	get: return override_attack_range_min if override_attack_range_min > 0 else (character_data.attack_range_min if character_data else 1)
-
-var attack_range_max: int:
-	get: return override_attack_range_max if override_attack_range_max > 0 else (character_data.attack_range_max if character_data else 1)
-
-var attack_power: int:
-	get: return override_attack if override_attack > 0 else (character_data.attack if character_data else 10)
-
-var defense: int:
-	get: return override_defense if override_defense > 0 else (character_data.defense if character_data else 5)
-
-var crit_chance: float:
-	get: return character_data.get_crit_chance() if character_data else 0.05
-
-var max_hp: int:
-	get: return character_data.max_hp if character_data else 25
-
 var is_alive: bool:
 	get: return current_hp > 0
 
-var health_bar: ProgressBar
+var health_bar: HealthBar
 
 func _ready() -> void:
 	current_hp = max_hp
-	call_deferred("_add_to_groups")
-	call_deferred("_create_health_bar")
+	_add_to_groups()
+	_create_health_bar()
 
 func _create_health_bar() -> void:
-	health_bar = ProgressBar.new()
-	health_bar.name = "HealthBar"
-	health_bar.max_value = max_hp
-	health_bar.value = current_hp
-	health_bar.show_percentage = false
-	health_bar.size = Vector2(16, 3)
-	health_bar.position = Vector2(-8, -12)
-	
-	# Style the health bar
-	var style_bg = StyleBoxFlat.new()
-	style_bg.bg_color = Color(0.2, 0.2, 0.2, 0.8)
-	style_bg.corner_radius_top_left = 1
-	style_bg.corner_radius_top_right = 1
-	style_bg.corner_radius_bottom_left = 1
-	style_bg.corner_radius_bottom_right = 1
-	health_bar.add_theme_stylebox_override("background", style_bg)
-	
-	var style_fill = StyleBoxFlat.new()
-	style_fill.bg_color = Color.GREEN if team == Constants.TEAM_PLAYER else Color.RED
-	style_fill.corner_radius_top_left = 1
-	style_fill.corner_radius_top_right = 1
-	style_fill.corner_radius_bottom_left = 1
-	style_fill.corner_radius_bottom_right = 1
-	health_bar.add_theme_stylebox_override("fill", style_fill)
-	
-	add_child(health_bar)
+	health_bar = HealthBar.new()
+	add_child(health_bar)  # triggers _ready() which creates the fill style
+	health_bar.setup(max_hp, current_hp, team)
 
 func _update_health_bar() -> void:
 	if health_bar:
-		health_bar.value = current_hp
-		# Change color based on HP percentage
-		var hp_percent = float(current_hp) / float(max_hp)
-		var style_fill = health_bar.get_theme_stylebox("fill") as StyleBoxFlat
-		if style_fill:
-			if hp_percent > 0.5:
-				style_fill.bg_color = Color.GREEN if team == Constants.TEAM_PLAYER else Color.RED
-			elif hp_percent > 0.25:
-				style_fill.bg_color = Color.YELLOW
-			else:
-				style_fill.bg_color = Color.ORANGE_RED
+		health_bar.update_hp(current_hp, max_hp, team)
 
 func _add_to_groups() -> void:
 	add_to_group(Constants.GROUP_ALL_CHARACTERS)
