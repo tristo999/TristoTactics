@@ -15,7 +15,7 @@ func _ready():
 	add_child(menu_stack)
 	
 	# Start playing menu music
-	MusicManager.play_music("menu")
+	AudioManager.play_music("menu")
 
 func _on_stack_emptied():
 	# Show main menu content when all sub-menus are closed

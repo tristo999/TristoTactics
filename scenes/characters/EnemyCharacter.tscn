@@ -56,8 +56,6 @@ animations = [{
 [node name="EnemyCharacter" type="Node2D"]
 z_index = 100
 script = ExtResource("1_enemy")
-override_move_range = 5
-override_attack_range_max = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ncxke")

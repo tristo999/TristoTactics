@@ -13,26 +13,27 @@ var battle_active: bool = false
 var current_phase: TurnPhase = TurnPhase.MOVE
 
 func _ready() -> void:
-	_find_node_references()
 	EventBus.character_died.connect(_on_character_died)
 	EventBus.character_movement_finished.connect(_on_character_movement_finished)
+	# Deferred so all sibling nodes finish _ready() before we look for them
 	call_deferred("_initialize_battle")
 
 func _find_node_references() -> void:
 	if not tilemap_node:
-		tilemap_node = get_node_or_null("/root/TestScene/Node2D")
+		tilemap_node = get_tree().get_first_node_in_group("tilemap")
 	if not action_camera:
-		action_camera = get_node_or_null("../ActionCamera")
+		action_camera = get_tree().get_first_node_in_group("action_camera")
 	if not turn_label:
-		turn_label = get_node_or_null("../TurnLabelCanvas/TurnLabel")
+		turn_label = get_tree().get_first_node_in_group("turn_label")
 
 func _build_turn_order() -> void:
 	turn_order = get_tree().get_nodes_in_group(Constants.GROUP_ALL_CHARACTERS)
 	turn_order.sort_custom(_compare_initiative)
 
 func _initialize_battle() -> void:
-	# Wait one frame for characters to add themselves to groups
+	# Wait one frame so all nodes have fired _ready() and joined their groups
 	await get_tree().process_frame
+	_find_node_references()
 	_build_turn_order()
 	if turn_order.is_empty():
 		push_warning("No characters found in groups!")
@@ -191,7 +192,7 @@ func _clear_movement_range() -> void:
 		tilemap_node.clear_highlights()
 
 func is_enemy_turn() -> bool:
-	return current_character.team == Constants.TEAM_ENEMY
+	return current_character != null and current_character.team == Constants.TEAM_ENEMY
 
 func _update_turn_label() -> void:
 	if turn_label:

@@ -26,6 +26,7 @@ func _input(event):
 		escape_down = false
 
 func _open_pause_menu():
+	get_tree().paused = true
 	var pause_menu = pause_menu_scene.instantiate()
 	pause_menu.settings_requested.connect(_open_settings_menu)
 	menu_stack.push_menu(pause_menu)

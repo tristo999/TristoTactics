@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://bb1mp0g4ccklu"]
+[gd_scene load_steps=12 format=4 uid="uid://bb1mp0g4ccklu"]
 
 [ext_resource type="PackedScene" uid="uid://dgw6nanegiqld" path="res://scenes/managers/GameManager.tscn" id="1_1n512"]
 [ext_resource type="PackedScene" uid="uid://bouj1c13p4ja6" path="res://scenes/characters/PlayerCharacter.tscn" id="2_2iy3v"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://cdxkxm8vj40bg" path="res://scripts/levels/pause_menu_handler.gd" id="7"]
 [ext_resource type="Script" uid="uid://b7ey3qmif5m76" path="res://scripts/levels/test_scene.gd" id="8_level"]
 [ext_resource type="PackedScene" path="res://scenes/ui/TileInfoPanel.tscn" id="9_tileinfo"]
+[ext_resource type="Script" uid="uid://bb7w0gltb41yg" path="res://scripts/managers/battle/battle_input_handler.gd" id="10_input"]
 
 [node name="TestScene" type="Node2D"]
 script = ExtResource("8_level")
@@ -18,6 +19,9 @@ script = ExtResource("8_level")
 script = ExtResource("7")
 
 [node name="GameManager" parent="." instance=ExtResource("1_1n512")]
+
+[node name="BattleInputHandler" type="Node" parent="."]
+script = ExtResource("10_input")
 
 [node name="PlayerTeam" type="Node" parent="."]
 
@@ -31,6 +35,20 @@ position = Vector2(110, 70)
 [node name="EnemyCharacter" parent="EnemyTeam" instance=ExtResource("5_enemy_scene")]
 position = Vector2(-222, -31)
 ai_pause_duration = 1.2
+initiative = 5
+
+[node name="EnemyCharacter2" parent="EnemyTeam" instance=ExtResource("5_enemy_scene")]
+position = Vector2(-109, -117)
+ai_pause_duration = 1.2
+
+[node name="EnemyCharacter3" parent="EnemyTeam" instance=ExtResource("5_enemy_scene")]
+position = Vector2(-195, 44)
+ai_pause_duration = 1.2
+
+[node name="EnemyCharacter4" parent="EnemyTeam" instance=ExtResource("5_enemy_scene")]
+position = Vector2(-53, 164)
+ai_pause_duration = 1.2
+initiative = 15
 
 [node name="ActionCamera" parent="." instance=ExtResource("3_41arr")]
 

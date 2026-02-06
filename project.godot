@@ -24,7 +24,8 @@ music_volume_db=-5.200000000000003
 
 EventBus="*res://scripts/core/event_bus.gd"
 Constants="*res://scripts/core/constants.gd"
-MusicManager="*res://scripts/core/music_manager.gd"
+AudioManager="*res://scripts/core/audio_manager.gd"
+SettingsManager="*res://scripts/core/settings_manager.gd"
 GameSFXManager="*res://scripts/core/game_sfx_manager.gd"
 DamagePopupManager="*res://scripts/ui/damage_popup_manager.gd"
 

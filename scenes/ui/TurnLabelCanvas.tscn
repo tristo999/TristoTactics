@@ -2,7 +2,7 @@
 
 [node name="TurnLabelCanvas" type="CanvasLayer"]
 
-[node name="TurnLabel" type="Label" parent="."]
+[node name="TurnLabel" type="Label" parent="." groups=["turn_label"]]
 anchors_preset = 10
 anchor_right = 1.0
 text = "Turn: "

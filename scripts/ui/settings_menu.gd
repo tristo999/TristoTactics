@@ -28,29 +28,29 @@ func _ready():
 func _on_volume_slider_changed(value):
 	if _ignore_callbacks:
 		return
-	MusicManager.set_music_volume(value)
+	SettingsManager.set_music_volume(value)
 
 func _on_sfx_volume_slider_changed(value):
 	if _ignore_callbacks:
 		return
-	MusicManager.set_sfx_volume(value)
+	SettingsManager.set_sfx_volume(value)
 
 func _on_fullscreen_toggled(enabled):
 	if _ignore_callbacks:
 		return
-	MusicManager.set_fullscreen(enabled)
+	SettingsManager.set_fullscreen(enabled)
 
 func _on_vsync_toggled(enabled):
 	if _ignore_callbacks:
 		return
-	MusicManager.set_vsync(enabled)
+	SettingsManager.set_vsync(enabled)
 
 func _on_fps_selected(index):
 	if _ignore_callbacks:
 		return
 	var fps_option = $Panel/VBox/FpsContainer/FpsOption
 	var fps = fps_option.get_item_id(index)
-	MusicManager.set_fps_limit(fps)
+	SettingsManager.set_fps_limit(fps)
 
 func _on_back_pressed():
 	request_back()
@@ -64,22 +64,22 @@ func show_menu():
 	_ignore_callbacks = true
 	
 	# Sync volume slider
-	var db = MusicManager.get_music_volume_db()
+	var db = SettingsManager.get_music_volume_db()
 	var volume_value = int(clamp(inverse_lerp(-40, 0, db) * 100, 0, 100))
 	$Panel/VBox/VolumeSlider.value = volume_value
 	
 	# Sync SFX volume slider
-	var sfx_db = MusicManager.get_sfx_volume_db()
+	var sfx_db = SettingsManager.get_sfx_volume_db()
 	var sfx_value = int(clamp(inverse_lerp(-40, 0, sfx_db) * 100, 0, 100))
 	$Panel/VBox/SfxVolumeSlider.value = sfx_value
 	
 	# Sync display settings
-	$Panel/VBox/FullscreenCheck.button_pressed = MusicManager.get_fullscreen()
-	$Panel/VBox/VsyncCheck.button_pressed = MusicManager.get_vsync()
+	$Panel/VBox/FullscreenCheck.button_pressed = SettingsManager.get_fullscreen()
+	$Panel/VBox/VsyncCheck.button_pressed = SettingsManager.get_vsync()
 	
 	# Sync FPS option
 	var fps_option = $Panel/VBox/FpsContainer/FpsOption
-	var current_fps = MusicManager.get_fps_limit()
+	var current_fps = SettingsManager.get_fps_limit()
 	for i in fps_option.item_count:
 		if fps_option.get_item_id(i) == current_fps:
 			fps_option.select(i)
