@@ -6,6 +6,7 @@ func _setup_menu():
 	# Audio
 	$Panel/VBox/BackButton.pressed.connect(_on_back_pressed)
 	$Panel/VBox/VolumeSlider.value_changed.connect(_on_volume_slider_changed)
+	$Panel/VBox/SfxVolumeSlider.value_changed.connect(_on_sfx_volume_slider_changed)
 	
 	# Display
 	$Panel/VBox/FullscreenCheck.toggled.connect(_on_fullscreen_toggled)
@@ -28,6 +29,11 @@ func _on_volume_slider_changed(value):
 	if _ignore_callbacks:
 		return
 	MusicManager.set_music_volume(value)
+
+func _on_sfx_volume_slider_changed(value):
+	if _ignore_callbacks:
+		return
+	MusicManager.set_sfx_volume(value)
 
 func _on_fullscreen_toggled(enabled):
 	if _ignore_callbacks:
@@ -61,6 +67,11 @@ func show_menu():
 	var db = MusicManager.get_music_volume_db()
 	var volume_value = int(clamp(inverse_lerp(-40, 0, db) * 100, 0, 100))
 	$Panel/VBox/VolumeSlider.value = volume_value
+	
+	# Sync SFX volume slider
+	var sfx_db = MusicManager.get_sfx_volume_db()
+	var sfx_value = int(clamp(inverse_lerp(-40, 0, sfx_db) * 100, 0, 100))
+	$Panel/VBox/SfxVolumeSlider.value = sfx_value
 	
 	# Sync display settings
 	$Panel/VBox/FullscreenCheck.button_pressed = MusicManager.get_fullscreen()

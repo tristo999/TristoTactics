@@ -50,8 +50,8 @@ func push_menu(menu: Control, use_canvas_layer: bool = true):
 	
 	# Connect back signal if menu has it
 	if menu.has_signal("back_requested"):
-		if not menu.is_connected("back_requested", Callable(self, "go_back")):
-			menu.connect("back_requested", Callable(self, "go_back"))
+		if not menu.is_connected("back_requested", go_back):
+			menu.back_requested.connect(go_back)
 	
 	_menu_stack.push_back(menu)
 	
@@ -62,7 +62,7 @@ func push_menu(menu: Control, use_canvas_layer: bool = true):
 		menu.show()
 		menu.grab_focus()
 	
-	emit_signal("menu_pushed", menu)
+	menu_pushed.emit(menu)
 
 ## Pop the top menu from the stack (hides it, shows the previous one)
 func pop_menu() -> Control:
@@ -85,7 +85,7 @@ func pop_menu() -> Control:
 	else:
 		menu.queue_free()
 	
-	emit_signal("menu_popped", menu)
+	menu_popped.emit(menu)
 	
 	# Show previous menu if any
 	if not _menu_stack.is_empty():
@@ -96,7 +96,7 @@ func pop_menu() -> Control:
 			prev_menu.show()
 			prev_menu.grab_focus()
 	else:
-		emit_signal("stack_emptied")
+		stack_emptied.emit()
 	
 	return menu
 

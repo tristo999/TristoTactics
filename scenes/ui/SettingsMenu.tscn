@@ -51,6 +51,15 @@ max_value = 100
 step = 1
 value = 50
 
+[node name="SfxVolumeLabel" type="Label" parent="Panel/VBox"]
+text = "SFX Volume:"
+
+[node name="SfxVolumeSlider" type="HSlider" parent="Panel/VBox"]
+min_value = 0
+max_value = 100
+step = 1
+value = 50
+
 [node name="Separator2" type="HSeparator" parent="Panel/VBox"]
 
 [node name="DisplayLabel" type="Label" parent="Panel/VBox"]

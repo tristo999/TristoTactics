@@ -4,22 +4,36 @@ extends Node
 var music_tracks := {
 	"menu": "res://assets/audio/music/medieval-fantasy-music-462199.mp3",
 	"battle": "res://assets/audio/music/fantasy-craft-loop-431346.mp3",
+	"victory": "res://assets/audio/music/victory.mp3",
+	"defeat": "res://assets/audio/music/defeat.mp3",
 	# Add more tracks as needed: "level_1": "res://...", etc.
 }
 
 ## Sound effects registry - actions can reference these by key
 var sound_effects := {
+	# UI
 	"button_click": "res://assets/audio/sfx/button_click.wav",
-	"attack": "res://assets/audio/sfx/attack.wav",
+	"select": "res://assets/audio/sfx/select.wav",
+	# Movement
 	"move": "res://assets/audio/sfx/move.wav",
-	# Add more sound effects as needed
+	# Combat
+	"attack": "res://assets/audio/sfx/attack.wav",
+	"hit": "res://assets/audio/sfx/hit.wav",
+	"crit": "res://assets/audio/sfx/crit.wav",
+	"miss": "res://assets/audio/sfx/miss.wav",
+	# Status
+	"death": "res://assets/audio/sfx/death.wav",
+	"heal": "res://assets/audio/sfx/heal.wav",
+	# Turn flow
+	"turn_start": "res://assets/audio/sfx/turn_start.wav",
+	"enemy_turn": "res://assets/audio/sfx/enemy_turn.wav",
 }
 
 var _music_player: AudioStreamPlayer
 var _sfx_players: Array[AudioStreamPlayer] = []
 var _current_music_key: String = ""
 var _music_volume_db: float = 0
-var _sfx_volume_db: float = 0
+var _sfx_volume_db: float = -14.0
 
 # Display settings
 var _fullscreen: bool = false
@@ -119,13 +133,15 @@ func stop_music():
 ## Play a sound effect by key (e.g., "button_click", "attack")
 func play_sfx(sfx_key: String):
 	if not sound_effects.has(sfx_key):
-		push_error("MusicManager: SFX key '%s' not found in registry" % sfx_key)
+		push_warning("MusicManager: SFX key '%s' not found in registry" % sfx_key)
 		return
 	
 	var sfx_path = sound_effects[sfx_key]
+	if not ResourceLoader.exists(sfx_path):
+		return  # Silently skip missing SFX files
 	var stream = load(sfx_path)
 	if not stream:
-		push_error("MusicManager: Failed to load SFX from '%s'" % sfx_path)
+		push_warning("MusicManager: Failed to load SFX from '%s'" % sfx_path)
 		return
 	
 	# Find available player
@@ -136,6 +152,21 @@ func play_sfx(sfx_key: String):
 			return
 	
 	# All players busy, use the first one (interrupts existing sound)
+	_sfx_players[0].stream = stream
+	_sfx_players[0].play()
+
+## Play a sound effect directly from a file path (used for per-character overrides)
+func play_sfx_from_path(path: String) -> void:
+	if not ResourceLoader.exists(path):
+		return
+	var stream = load(path)
+	if not stream:
+		return
+	for player in _sfx_players:
+		if not player.playing:
+			player.stream = stream
+			player.play()
+			return
 	_sfx_players[0].stream = stream
 	_sfx_players[0].play()
 

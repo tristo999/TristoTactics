@@ -6,7 +6,9 @@ const TILE_CENTER_OFFSET = Vector2(3, -2)
 const TILE_SOURCE_ID = 2
 const HIGHLIGHT_MOUSE_OVER = Vector2i(8, 4)
 const HIGHLIGHT_REACHABLE = Vector2i(27, 3)
-const HIGHLIGHT_ATTACK_RANGE = Vector2i(28, 3)
+# Attack range uses same tile as mouse-over (yellow) since (28,3) may not exist
+# TODO: Create a red attack highlight tile in the tileset
+const HIGHLIGHT_ATTACK_RANGE = Vector2i(8, 4)
 
 # Teams
 const TEAM_PLAYER = "player_team"

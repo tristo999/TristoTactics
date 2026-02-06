@@ -1,19 +1,17 @@
 extends Control
 
-const MenuStackClass = preload("res://scripts/core/menu_stack.gd")
-
 @onready var settings_menu_scene := preload("res://scenes/ui/SettingsMenu.tscn")
 
-var menu_stack
+var menu_stack: MenuStack
 
 func _ready():
-	$VBox/StartButton.connect("pressed", self._on_start_pressed)
-	$VBox/SettingsButton.connect("pressed", self._on_settings_pressed)
-	$VBox/QuitButton.connect("pressed", self._on_quit_pressed)
+	$VBox/StartButton.pressed.connect(_on_start_pressed)
+	$VBox/SettingsButton.pressed.connect(_on_settings_pressed)
+	$VBox/QuitButton.pressed.connect(_on_quit_pressed)
 	
 	# Create menu stack for sub-menus
-	menu_stack = MenuStackClass.new()
-	menu_stack.connect("stack_emptied", Callable(self, "_on_stack_emptied"))
+	menu_stack = MenuStack.new()
+	menu_stack.stack_emptied.connect(_on_stack_emptied)
 	add_child(menu_stack)
 	
 	# Start playing menu music

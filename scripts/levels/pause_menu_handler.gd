@@ -1,17 +1,15 @@
-extends Node2D
-
-const MenuStackClass = preload("res://scripts/core/menu_stack.gd")
+extends Node
 
 @onready var pause_menu_scene := preload("res://scenes/ui/PauseMenu.tscn")
 @onready var settings_menu_scene := preload("res://scenes/ui/SettingsMenu.tscn")
 
-var menu_stack
+var menu_stack: MenuStack
 var escape_down := false
 
 func _ready():
 	# Create the menu stack manager
-	menu_stack = MenuStackClass.new()
-	menu_stack.connect("stack_emptied", Callable(self, "_on_stack_emptied"))
+	menu_stack = MenuStack.new()
+	menu_stack.stack_emptied.connect(_on_stack_emptied)
 	add_child(menu_stack)
 	
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -29,7 +27,7 @@ func _input(event):
 
 func _open_pause_menu():
 	var pause_menu = pause_menu_scene.instantiate()
-	pause_menu.connect("settings_requested", Callable(self, "_open_settings_menu"))
+	pause_menu.settings_requested.connect(_open_settings_menu)
 	menu_stack.push_menu(pause_menu)
 
 func _open_settings_menu():

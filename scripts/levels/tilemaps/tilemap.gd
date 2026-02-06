@@ -7,12 +7,14 @@ const INVALID_TILE = Vector2i(-9999, -9999)
 @onready var wall_tilemap: TileMapLayer = $Walls
 @onready var objects_layer: TileMapLayer = $Objects
 @onready var highlight_layer: TileMapLayer = $HighlightLayer
+@onready var attack_highlight_layer: TileMapLayer = $AttackHighlightLayer
 
 var astar_grid: AStarGrid2D
 var last_hovered_tile: Vector2i = INVALID_TILE
 var prev_highlight_atlas_coords: Dictionary = {}
 var game_manager: Node = null
 var cached_occupied_tiles: Dictionary = {}
+var cached_reachable_tiles: Array = []
 
 func _ready() -> void:
 	add_to_group("tilemap")
@@ -184,14 +186,26 @@ func get_astar_path(start: Vector2i, end: Vector2i) -> Array:
 # TILE HIGHLIGHTING
 # =============================================================================
 
-func highlight_reachable_tiles(start: Vector2i, max_range: int) -> void:
+func highlight_reachable_tiles(start: Vector2i, max_range: int, character: Node2D = null) -> void:
 	clear_highlights()
-	if max_range <= 0:
-		return
 	_refresh_occupied_tiles()
-	var reachable = _calculate_reachable_tiles(start, max_range)
-	for tile in reachable:
+	
+	# Calculate and cache reachable tiles
+	if max_range > 0:
+		cached_reachable_tiles = _calculate_reachable_tiles(start, max_range)
+	else:
+		cached_reachable_tiles = []
+	
+	# Show movement range (blue) on highlight_layer
+	for tile in cached_reachable_tiles:
 		highlight_layer.set_cell(tile, Constants.TILE_SOURCE_ID, Constants.HIGHLIGHT_REACHABLE)
+	
+	# Show attack range on separate attack_highlight_layer (on top)
+	if character and "attack_range_min" in character and "attack_range_max" in character:
+		if not character.has_attacked:
+			var attack_tiles = _calculate_attack_range_tiles(start, character.attack_range_min, character.attack_range_max)
+			for tile in attack_tiles:
+				attack_highlight_layer.set_cell(tile, Constants.TILE_SOURCE_ID, Constants.HIGHLIGHT_ATTACK_RANGE)
 
 func _calculate_reachable_tiles(start: Vector2i, max_range: int) -> Array:
 	var visited := {start: true}
@@ -218,8 +232,32 @@ func _calculate_reachable_tiles(start: Vector2i, max_range: int) -> Array:
 func clear_highlights() -> void:
 	for cell in highlight_layer.get_used_cells():
 		highlight_layer.erase_cell(cell)
+	for cell in attack_highlight_layer.get_used_cells():
+		attack_highlight_layer.erase_cell(cell)
 	prev_highlight_atlas_coords.clear()
 	last_hovered_tile = INVALID_TILE
+	cached_reachable_tiles = []
+
+func highlight_attack_range(start: Vector2i, min_range: int, max_range: int) -> void:
+	clear_highlights()
+	var tiles = _calculate_attack_range_tiles(start, min_range, max_range)
+	for tile in tiles:
+		attack_highlight_layer.set_cell(tile, Constants.TILE_SOURCE_ID, Constants.HIGHLIGHT_ATTACK_RANGE)
+
+func _calculate_attack_range_tiles(start: Vector2i, min_range: int, max_range: int) -> Array:
+	var tiles: Array = []
+	for x in range(-max_range, max_range + 1):
+		for y in range(-max_range, max_range + 1):
+			var dist = abs(x) + abs(y)
+			if dist >= min_range and dist <= max_range:
+				var tile = start + Vector2i(x, y)
+				if astar_grid.is_in_boundsv(tile):
+					tiles.append(tile)
+	return tiles
+
+func get_character_at_tile(tile: Vector2i) -> Node2D:
+	_refresh_occupied_tiles()
+	return cached_occupied_tiles.get(tile, null)
 
 # =============================================================================
 # INPUT HANDLING
@@ -230,21 +268,25 @@ func _input(event: InputEvent) -> void:
 		return
 	if not game_manager:
 		return
-	# Only allow input during player turn with movement remaining
 	if game_manager.is_enemy_turn():
 		return
-	if not game_manager.current_character or game_manager.current_character.movement_left <= 0:
+	if not game_manager.current_character:
 		return
 	if game_manager.current_character.moving:
 		return
+	
 	var tile = _get_tile_at_mouse()
-	# Only allow movement to tiles with the reachable highlight (not just mouse-over)
-	var highlight_atlas = highlight_layer.get_cell_atlas_coords(tile)
-	var prev_atlas = prev_highlight_atlas_coords.get(tile, null)
-	# Accept if tile has reachable highlight, OR if it has mouse-over but was previously reachable
-	var is_reachable = highlight_atlas == Constants.HIGHLIGHT_REACHABLE or (highlight_atlas == Constants.HIGHLIGHT_MOUSE_OVER and prev_atlas == Constants.HIGHLIGHT_REACHABLE)
-	if is_reachable:
-		game_manager.request_move(game_manager.current_character, tile)
+	var character = game_manager.current_character
+	
+	# Check for attack on enemy (can attack anytime during player turn)
+	var target = get_character_at_tile(tile)
+	if target and character.can_attack_target(target):
+		game_manager.request_attack(character, target)
+		return
+	
+	# Check for movement using cached reachable tiles (not highlight color)
+	if character.movement_left > 0 and tile in cached_reachable_tiles:
+		game_manager.request_move(character, tile)
 
 func _get_tile_at_mouse() -> Vector2i:
 	# Use the same coordinate conversion as hover detection

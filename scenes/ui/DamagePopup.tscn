@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpaltd55j7yea"]
+
+[ext_resource type="Script" path="res://scripts/ui/damage_popup.gd" id="1_popup"]
+
+[node name="DamagePopup" type="Label"]
+z_index = 200
+offset_left = -50.0
+offset_top = -20.0
+offset_right = 50.0
+offset_bottom = 20.0
+theme_override_font_sizes/font_size = 16
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_popup")

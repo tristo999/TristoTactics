@@ -20,6 +20,13 @@ extends Resource
 @export var battle_sprite_scale: Vector2 = Vector2.ONE
 
 # =============================================================================
+# AUDIO
+# =============================================================================
+
+## Per-character sound effect overrides. Leave null to use global defaults.
+@export var sfx: Resource  # CharacterSFX
+
+# =============================================================================
 # BASE STATS
 # =============================================================================
 
