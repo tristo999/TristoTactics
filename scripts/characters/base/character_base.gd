@@ -143,9 +143,12 @@ func attack_target(target: CharacterBase) -> Dictionary:
 	var final_damage = base_damage * 2 if is_crit else base_damage
 	
 	has_attacked = true
+	
+	# Play attack animation overlay (blocking cutscene)
+	await AttackAnimationOverlay.play_attack_animation(self , target, final_damage, is_crit)
+	
+	# Apply damage after the animation completes
 	target.take_damage(final_damage, self )
-	EventBus.character_attacked.emit(self , target, final_damage, is_crit)
-	EventBus.show_damage_popup.emit(target, final_damage, is_crit)
 	
 	return {"success": true, "damage": final_damage, "is_crit": is_crit}
 

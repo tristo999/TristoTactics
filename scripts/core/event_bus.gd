@@ -21,5 +21,4 @@ signal character_died(character: Node2D)
 signal tile_hovered(tile_pos: Vector2i)
 
 # UI Events
-signal show_damage_popup(target: Node2D, amount: int, is_crit: bool)
 signal update_turn_indicator(character: Node2D, is_enemy: bool)

@@ -27,7 +27,7 @@ Constants="*res://scripts/core/constants.gd"
 AudioManager="*res://scripts/core/audio_manager.gd"
 SettingsManager="*res://scripts/core/settings_manager.gd"
 GameSFXManager="*res://scripts/core/game_sfx_manager.gd"
-DamagePopupManager="*res://scripts/ui/damage_popup_manager.gd"
+AttackAnimationOverlay="*res://scripts/ui/attack_animation_overlay.gd"
 
 [display]
 

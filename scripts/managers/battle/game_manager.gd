@@ -132,10 +132,8 @@ func request_attack(character: CharacterBase, target: CharacterBase) -> bool:
 	if character.has_attacked:
 		return false
 	
-	var result = character.attack_target(target)
+	var result = await character.attack_target(target)
 	if result.success:
-		# Brief pause after attack
-		await get_tree().create_timer(0.3).timeout
 		# Refresh highlights — player must manually end turn
 		_show_movement_range()
 		return true

@@ -30,8 +30,7 @@ func execute_ai_turn() -> void:
 	if target and not has_attacked:
 		await get_tree().create_timer(ai_pause_duration * 0.5).timeout
 		if can_attack_target(target):
-			attack_target(target)
-			await get_tree().create_timer(ai_pause_duration * 0.5).timeout
+			await attack_target(target)
 
 	await get_tree().create_timer(ai_pause_duration * 0.5).timeout
 	ai_turn_completed.emit()

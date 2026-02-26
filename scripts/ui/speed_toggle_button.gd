@@ -9,6 +9,7 @@ var is_fast: bool = false
 
 func _ready() -> void:
 	toggle_mode = true
+	focus_mode = Control.FOCUS_NONE
 	text = "1x"
 	tooltip_text = "Toggle game speed"
 	pressed.connect(_on_toggled)
