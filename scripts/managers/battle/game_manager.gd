@@ -136,12 +136,8 @@ func request_attack(character: CharacterBase, target: CharacterBase) -> bool:
 	if result.success:
 		# Brief pause after attack
 		await get_tree().create_timer(0.3).timeout
-		# If out of movement and attacked, end turn
-		if character.movement_left <= 0 and battle_active:
-			_advance_turn()
-		else:
-			# Still has movement, show range again
-			_show_movement_range()
+		# Refresh highlights — player must manually end turn
+		_show_movement_range()
 		return true
 	return false
 
@@ -154,11 +150,8 @@ func _on_character_movement_finished(character: CharacterBase) -> void:
 			_clear_highlights()
 			_show_attack_range()
 		return
-	# Player: auto-end turn if nothing left to do, otherwise refresh highlights
-	if character.movement_left <= 0 and character.has_attacked:
-		_advance_turn()
-	else:
-		_show_movement_range()
+	# Player: refresh highlights — player must manually end turn
+	_show_movement_range()
 
 func _show_attack_range() -> void:
 	if tilemap_node and not current_character.has_attacked:

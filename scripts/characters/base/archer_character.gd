@@ -12,7 +12,7 @@ func _ready() -> void:
 	crit_chance = 0.08
 	move_speed = 90.0
 	move_range = 3
-	attack_range_min = 2
+	attack_range_min = 1
 	attack_range_max = 4
 
 	team = Constants.TEAM_PLAYER
