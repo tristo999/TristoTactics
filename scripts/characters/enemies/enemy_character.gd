@@ -16,34 +16,23 @@ func on_turn_started() -> void:
 
 func execute_ai_turn() -> void:
 	await get_tree().create_timer(ai_pause_duration).timeout
-	
+
 	var target = _find_nearest_player()
-	
+
 	# Move phase
 	if target and movement_left > 0:
 		var target_tile = _get_best_tile_toward(target)
 		if target_tile != current_tile:
-			var tilemap = get_tree().get_first_node_in_group("tilemap")
-			if tilemap:
-				tilemap.clear_highlights()
 			move_to_tile(target_tile)
 			await movement_finished
-	
+
 	# Attack phase
 	if target and not has_attacked:
-		var tilemap = get_tree().get_first_node_in_group("tilemap")
-		if tilemap:
-			tilemap.clear_highlights()
-			tilemap.highlight_attack_range(current_tile, attack_range_min, attack_range_max)
-		
 		await get_tree().create_timer(ai_pause_duration * 0.5).timeout
-		
 		if can_attack_target(target):
-			if tilemap:
-				tilemap.clear_highlights()
 			attack_target(target)
 			await get_tree().create_timer(ai_pause_duration * 0.5).timeout
-	
+
 	await get_tree().create_timer(ai_pause_duration * 0.5).timeout
 	ai_turn_completed.emit()
 
@@ -70,24 +59,50 @@ func _get_best_tile_toward(target: Node2D) -> Vector2i:
 		return current_tile
 	
 	var tilemap = get_tree().get_first_node_in_group("tilemap")
-	var path = tilemap.get_astar_path(current_tile, target.current_tile) if tilemap else []
-	if path.size() < 2:
+	if not tilemap:
 		return current_tile
 	
-	# Find the best tile that puts us in attack range
-	for i in range(min(movement_left, path.size() - 1), 0, -1):
-		var tile = path[i]
-		var dist = _tile_distance(tile, target.current_tile)
-		if dist >= attack_range_min and dist <= attack_range_max:
-			return tile
+	var path = tilemap.get_astar_path(current_tile, target.current_tile)
 	
-	# Can't reach attack range, move as close as possible without landing on target
-	var max_index = min(movement_left, path.size() - 1)
-	if path[max_index] == target.current_tile and max_index > 0:
-		max_index -= 1
-	return path[max_index]
+	# Direct path found — use it
+	if path.size() >= 2:
+		# Find the best tile that puts us in attack range
+		for i in range(min(movement_left, path.size() - 1), 0, -1):
+			var tile = path[i]
+			var dist = _tile_distance(tile, target.current_tile)
+			if dist >= attack_range_min and dist <= attack_range_max:
+				return tile
+		
+		# Can't reach attack range, move as close as possible without landing on target
+		var max_index = min(movement_left, path.size() - 1)
+		if path[max_index] == target.current_tile and max_index > 0:
+			max_index -= 1
+		return path[max_index]
+	
+	# No direct path (blocked by other characters) — pick the reachable tile
+	# closest to the target so we still make progress.
+	return _get_closest_reachable_tile_toward(tilemap, target)
 
 # Note: _tile_distance() is inherited from CharacterBase
 
-func _tile_distance(from: Vector2i, to: Vector2i) -> int:
-	return abs(from.x - to.x) + abs(from.y - to.y)
+## Fallback when direct A* path is blocked: pick the reachable tile that
+## minimises Manhattan distance to the target so the enemy still advances.
+func _get_closest_reachable_tile_toward(tilemap: Node2D, target: Node2D) -> Vector2i:
+	var reachable = tilemap.get_reachable_tiles(current_tile, movement_left)
+	if reachable.is_empty():
+		return current_tile
+	
+	var best_tile: Vector2i = current_tile
+	var best_dist: int = _tile_distance(current_tile, target.current_tile)
+	
+	for tile in reachable:
+		# Make sure we can actually path to this tile (no blocked intermediate tiles)
+		var path = tilemap.get_astar_path(current_tile, tile)
+		if path.size() < 2:
+			continue
+		var dist = _tile_distance(tile, target.current_tile)
+		if dist < best_dist:
+			best_dist = dist
+			best_tile = tile
+	
+	return best_tile

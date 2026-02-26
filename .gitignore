@@ -35,6 +35,8 @@ Library/
 Temp/
 Logs/
 UserSettings/
+Packages/
+ProjectSettings/
 
 # Python/other languages
 __pycache__/

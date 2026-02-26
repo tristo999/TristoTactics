@@ -10,7 +10,7 @@ var velocity: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	var tween = create_tween()
-	tween.tween_property(self, "modulate:a", 0.0, fade_duration)
+	tween.tween_property(self , "modulate:a", 0.0, fade_duration)
 	tween.tween_callback(queue_free)
 
 func _process(delta: float) -> void:

@@ -103,7 +103,7 @@ func _make_attack() -> PackedByteArray:
 		var progress := float(i) / length
 		# Descending frequency sweep for swoosh feel
 		var freq: float = lerp(1200.0, 300.0, progress)
-		var env := sin(progress * PI) * 0.6  # Bell curve envelope
+		var env := sin(progress * PI) * 0.6 # Bell curve envelope
 		var val := sin(t * freq * TAU) * env
 		samples[i] = int(clamp(val * 127.0 + 128.0, 0, 255))
 	return samples
@@ -193,9 +193,9 @@ func _make_turn_start() -> PackedByteArray:
 		# Two notes: C then E
 		var note: float
 		if progress < 0.5:
-			note = 523.25  # C5
+			note = 523.25 # C5
 		else:
-			note = 659.25  # E5
+			note = 659.25 # E5
 		var val := sin(t * note * TAU) * env
 		samples[i] = int(clamp(val * 127.0 + 128.0, 0, 255))
 	return samples
@@ -211,9 +211,9 @@ func _make_enemy_turn() -> PackedByteArray:
 		var env := (1.0 - progress) * 0.5
 		var note: float
 		if progress < 0.5:
-			note = 330.0  # E4
+			note = 330.0 # E4
 		else:
-			note = 262.0  # C4
+			note = 262.0 # C4
 		var val := sin(t * note * TAU) * env + sin(t * note * 0.5 * TAU) * env * 0.3
 		samples[i] = int(clamp(val * 127.0 + 128.0, 0, 255))
 	return samples

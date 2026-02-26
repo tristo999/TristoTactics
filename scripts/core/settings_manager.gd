@@ -7,7 +7,7 @@ const SETTINGS_PATH := "user://settings.cfg"
 # --- Display ---
 var _fullscreen: bool = false
 var _vsync: bool = true
-var _fps_limit: int = 0  # 0 = unlimited
+var _fps_limit: int = 0 # 0 = unlimited
 
 
 func _ready() -> void:
@@ -21,7 +21,7 @@ func _ready() -> void:
 func _load_settings() -> void:
 	var config := ConfigFile.new()
 	if config.load(SETTINGS_PATH) != OK:
-		return  # First launch — use defaults
+		return # First launch — use defaults
 
 	# Audio (apply through AudioManager)
 	var music_db: float = config.get_value("audio", "music_volume_db", 0.0)

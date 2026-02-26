@@ -95,7 +95,7 @@ func play_sfx(sfx_key: String) -> void:
 
 	var sfx_path: String = sound_effects[sfx_key]
 	if not ResourceLoader.exists(sfx_path):
-		return  # Silently skip missing placeholder files
+		return # Silently skip missing placeholder files
 
 	var stream = load(sfx_path)
 	if not stream:

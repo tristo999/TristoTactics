@@ -1,16 +1,19 @@
-[gd_scene load_steps=12 format=4 uid="uid://bb1mp0g4ccklu"]
+[gd_scene load_steps=14 format=4 uid="uid://bb1mp0g4ccklu"]
 
 [ext_resource type="PackedScene" uid="uid://dgw6nanegiqld" path="res://scenes/managers/GameManager.tscn" id="1_1n512"]
 [ext_resource type="PackedScene" uid="uid://bouj1c13p4ja6" path="res://scenes/characters/PlayerCharacter.tscn" id="2_2iy3v"]
 [ext_resource type="TileSet" uid="uid://cpiormm6cegct" path="res://assets/tilesets/tileset.tres" id="2_jvjt4"]
 [ext_resource type="PackedScene" uid="uid://bf0ia26jj2idx" path="res://scenes/levels/ActionCamera.tscn" id="3_41arr"]
 [ext_resource type="Script" uid="uid://e76w1djf5c7j" path="res://scripts/levels/tilemaps/tilemap.gd" id="4_6drk1"]
-[ext_resource type="PackedScene" uid="uid://c5enemy1char1" path="res://scenes/characters/EnemyCharacter.tscn" id="5_enemy_scene"]
 [ext_resource type="PackedScene" uid="uid://gccg1ctal63h" path="res://scenes/ui/TurnLabelCanvas.tscn" id="6_3qnke"]
 [ext_resource type="Script" uid="uid://cdxkxm8vj40bg" path="res://scripts/levels/pause_menu_handler.gd" id="7"]
 [ext_resource type="Script" uid="uid://b7ey3qmif5m76" path="res://scripts/levels/test_scene.gd" id="8_level"]
 [ext_resource type="PackedScene" path="res://scenes/ui/TileInfoPanel.tscn" id="9_tileinfo"]
 [ext_resource type="Script" uid="uid://bb7w0gltb41yg" path="res://scripts/managers/battle/battle_input_handler.gd" id="10_input"]
+[ext_resource type="PackedScene" uid="uid://c7archer1char" path="res://scenes/characters/ArcherCharacter.tscn" id="11_archer"]
+[ext_resource type="PackedScene" uid="uid://c6goblin1char" path="res://scenes/characters/GoblinCharacter.tscn" id="12_goblin"]
+[ext_resource type="PackedScene" path="res://scenes/ui/CharacterInfoPanel.tscn" id="13_charinfo"]
+[ext_resource type="PackedScene" path="res://scenes/ui/SpeedToggleButton.tscn" id="14_speed"]
 
 [node name="TestScene" type="Node2D"]
 script = ExtResource("8_level")
@@ -26,29 +29,30 @@ script = ExtResource("10_input")
 [node name="PlayerTeam" type="Node" parent="."]
 
 [node name="PlayerCharacter" parent="PlayerTeam" instance=ExtResource("2_2iy3v")]
+position = Vector2(24, -176)
 
-[node name="PlayerCharacter2" parent="PlayerTeam" instance=ExtResource("2_2iy3v")]
-position = Vector2(110, 70)
+[node name="Archer" parent="PlayerTeam" instance=ExtResource("11_archer")]
+position = Vector2(10, -207)
+
+[node name="Archer2" parent="PlayerTeam" instance=ExtResource("11_archer")]
+position = Vector2(28, -205)
 
 [node name="EnemyTeam" type="Node" parent="."]
 
-[node name="EnemyCharacter" parent="EnemyTeam" instance=ExtResource("5_enemy_scene")]
-position = Vector2(-222, -31)
-ai_pause_duration = 1.2
-initiative = 5
+[node name="Goblin1" parent="EnemyTeam" instance=ExtResource("12_goblin")]
+position = Vector2(-23, 188)
 
-[node name="EnemyCharacter2" parent="EnemyTeam" instance=ExtResource("5_enemy_scene")]
-position = Vector2(-109, -117)
-ai_pause_duration = 1.2
+[node name="Goblin2" parent="EnemyTeam" instance=ExtResource("12_goblin")]
+position = Vector2(146, 188)
 
-[node name="EnemyCharacter3" parent="EnemyTeam" instance=ExtResource("5_enemy_scene")]
-position = Vector2(-195, 44)
-ai_pause_duration = 1.2
+[node name="Goblin3" parent="EnemyTeam" instance=ExtResource("12_goblin")]
+position = Vector2(-216, 177)
 
-[node name="EnemyCharacter4" parent="EnemyTeam" instance=ExtResource("5_enemy_scene")]
-position = Vector2(-53, 164)
-ai_pause_duration = 1.2
-initiative = 15
+[node name="Goblin4" parent="EnemyTeam" instance=ExtResource("12_goblin")]
+position = Vector2(-17, 137)
+
+[node name="Goblin5" parent="EnemyTeam" instance=ExtResource("12_goblin")]
+position = Vector2(62, 140)
 
 [node name="ActionCamera" parent="." instance=ExtResource("3_41arr")]
 
@@ -56,17 +60,14 @@ initiative = 15
 position = Vector2(3, 0)
 script = ExtResource("4_6drk1")
 
+[node name="Water" type="TileMapLayer" parent="Node2D"]
+z_index = 1
+tile_map_data = PackedByteArray()
+tile_set = ExtResource("2_jvjt4")
+
 [node name="Walls" type="TileMapLayer" parent="Node2D"]
 z_index = 2
 tile_map_data = PackedByteArray("AADw//X/AgAAAA0AAADw//b/AgAAAA0AAADw//f/AgAAAA0AAADw//j/AgAAAA0AAADw//n/AgAAAA0AAADw//r/AgAAAA0AAADx//T/AgABAAwAAADy//T/AgABAAwAAADz//T/AgABAAwAAAD0//T/AgABAAwAAAD1//T/AgABAAwAAAD2//T/AgACAAwAAAD2//X/AgACAA0AAAD2//b/AgACAA0AAAD2//f/AgACAA0AAAD2//j/AgACAA0AAAD2//n/AgACAA0AAAD2//r/AgACAA0AAAD2//v/AgACAA4AAADw//v/AgAAAA4AAADz//X/AgAGAAgAAADx//f/AgAJAAUAAAD0//j/AgAJAAUAAADy//r/AgAJAAUAAAD1//X/AgAUAAgAAAD8//X/AgAAAAoAAAD8//b/AgAAAAoAAAD8//f/AgAAAAoAAAD8//j/AgAAAAsAAAD9//j/AgABAAsAAAD+//j/AgABAAsAAAD///j/AgABAAsAAAACAPj/AgABAAsAAAADAPj/AgABAAsAAAAEAPj/AgABAAsAAAAFAPj/AgACAAsAAAAFAPT/AgACAAoAAAAFAPX/AgACAAoAAAAFAPb/AgACAAoAAAAFAPf/AgACAAoAAAD8//T/AgAAAAoAAAD8//P/AgAAAAkAAAD9//P/AgABAAkAAAD+//P/AgABAAkAAAD///P/AgAAAAoAAAACAPP/AgACAAoAAAADAPP/AgABAAkAAAAEAPP/AgABAAkAAAAFAPP/AgACAAkAAAD///b/AgAAAAsAAAACAPb/AgACAAsAAAD///T/AgAAAAoAAAD///X/AgAAAAoAAAACAPT/AgACAAoAAAACAPX/AgACAAoAAAD///L/AgAAAAkAAAACAPL/AgACAAkAAAAAAPL/AgABAAYAAAABAPL/AgABAAYAAAAKAPj/AgATAAYAAAAKAPf/AgATAAUAAAALAPf/AgAUAAUAAAAMAPf/AgAVAAUAAAAMAPj/AgAVAAYAAAAMAPn/AgAVAAcAAAAKAPn/AgATAAcAAAD1//j/AgAYAAcAAAD1//n/AgAYAAgAAAD0//r/AgAYAAoAAADw//T/AgAAAAwAAAD5//3/AgAHAAAAAAAIAP//AgAHAAAAAAD4/wcAAgAHAAAAAAACAPr/AgAHAAMAAAACAPv/AgAHAAQAAAD//wMAAgAHAAMAAAD//wQAAgAHAAQAAAALAAcAAgAHAAMAAAALAAgAAgAHAAQAAAD9//n/AgAHAAUAAAD9//r/AgAHAAYAAAD+//n/AgAIAAUAAAD+//r/AgAIAAYAAAA=")
-tile_set = ExtResource("2_jvjt4")
-
-[node name="HighlightLayer" type="TileMapLayer" parent="Node2D"]
-z_index = 1
-tile_set = ExtResource("2_jvjt4")
-
-[node name="AttackHighlightLayer" type="TileMapLayer" parent="Node2D"]
-z_index = 2
 tile_set = ExtResource("2_jvjt4")
 
 [node name="BaseGrid" type="TileMapLayer" parent="Node2D"]
@@ -76,5 +77,9 @@ tile_set = ExtResource("2_jvjt4")
 [node name="UILayer" type="CanvasLayer" parent="."]
 
 [node name="TileInfoPanel" parent="UILayer" instance=ExtResource("9_tileinfo")]
+
+[node name="CharacterInfoPanel" parent="UILayer" instance=ExtResource("13_charinfo")]
+
+[node name="SpeedToggleButton" parent="UILayer" instance=ExtResource("14_speed")]
 
 [node name="TurnLabelCanvas" parent="." instance=ExtResource("6_3qnke")]

@@ -17,7 +17,7 @@ func _ready() -> void:
 	color_rect.modulate.a = 0.0
 	panel.modulate.a = 0.0
 	panel.scale = Vector2(0.8, 0.8)
-	layer = 100  # On top of everything
+	layer = 100 # On top of everything
 
 func show_result(victory: bool) -> void:
 	_is_victory = victory

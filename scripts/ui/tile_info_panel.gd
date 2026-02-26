@@ -13,7 +13,7 @@ const TERRAIN_TYPES := {
 	"grass": {"name": "Grass", "defense": 0, "move_cost": 1, "terrain": "Plains"},
 	"dirt": {"name": "Dirt Path", "defense": 0, "move_cost": 1, "terrain": "Road"},
 	"stone": {"name": "Stone Floor", "defense": 0, "move_cost": 1, "terrain": "Road"},
-	"road": {"name": "Road", "defense": -1, "move_cost": 1, "terrain": "Road"},
+	"road": {"name": "Road", "defense": - 1, "move_cost": 1, "terrain": "Road"},
 	"forest": {"name": "Forest", "defense": 2, "move_cost": 2, "terrain": "Forest"},
 	"water": {"name": "Water", "defense": 0, "move_cost": 999, "terrain": "Impassable"},
 	"wall": {"name": "Wall", "defense": 0, "move_cost": 999, "terrain": "Impassable"},
@@ -74,6 +74,11 @@ func _get_tile_data(tile_pos: Vector2i) -> Dictionary:
 	var objects_layer = tilemap.get_node_or_null("Objects")
 	if objects_layer and _is_tile_covered_by_layer(objects_layer, tile_pos):
 		return TERRAIN_TYPES["object"]
+	
+	# Check water layer (water, coast - impassable)
+	var water_layer_node = tilemap.get_node_or_null("Water")
+	if water_layer_node and water_layer_node.get_cell_atlas_coords(tile_pos) != Vector2i(-1, -1):
+		return TERRAIN_TYPES["water"]
 	
 	# Check base layer
 	var base_layer = tilemap.get_node_or_null("BaseGrid")

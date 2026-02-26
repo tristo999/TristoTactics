@@ -5,7 +5,7 @@ class_name CharacterBase
 signal movement_finished
 signal died
 
-@export var character_data: CharacterData  ## Optional: for SFX overrides and future features
+@export var character_data: CharacterData ## Optional: for SFX overrides and future features
 
 # Team is set automatically by PlayerCharacter/EnemyCharacter in _ready()
 var team: String = ""
@@ -48,7 +48,7 @@ func _ready() -> void:
 
 func _create_health_bar() -> void:
 	health_bar = HealthBar.new()
-	add_child(health_bar)  # triggers _ready() which creates the fill style
+	add_child(health_bar) # triggers _ready() which creates the fill style
 	health_bar.setup(max_hp, current_hp, team)
 
 func _update_health_bar() -> void:
@@ -83,7 +83,7 @@ func move_to_tile(grid_pos: Vector2i) -> void:
 	move_path = path.slice(1)
 	movement_left -= move_path.size()
 	moving = true
-	EventBus.character_movement_started.emit(self)
+	EventBus.character_movement_started.emit(self )
 	_advance_path()
 
 func _advance_path() -> void:
@@ -95,8 +95,8 @@ func _advance_path() -> void:
 		var old_tile = current_tile
 		current_tile = base_layer.local_to_map(global_position)
 		movement_finished.emit()
-		EventBus.character_movement_finished.emit(self)
-		EventBus.character_moved.emit(self, old_tile, current_tile)
+		EventBus.character_movement_finished.emit(self )
+		EventBus.character_moved.emit(self , old_tile, current_tile)
 
 # Override in subclasses for AI, etc.
 func on_turn_started() -> void:
@@ -108,26 +108,26 @@ func on_turn_ended() -> void:
 func take_damage(amount: int, source: Node2D = null) -> void:
 	current_hp = max(0, current_hp - amount)
 	_update_health_bar()
-	EventBus.character_damaged.emit(self, amount, source)
+	EventBus.character_damaged.emit(self , amount, source)
 	if current_hp <= 0:
 		_die()
 
 func _die() -> void:
 	died.emit()
-	EventBus.character_died.emit(self)
+	EventBus.character_died.emit(self )
 	# Remove from all groups immediately so we're not considered in targeting
 	remove_from_group(Constants.GROUP_ALL_CHARACTERS)
 	remove_from_group(Constants.GROUP_PLAYER_CHARACTERS)
 	remove_from_group(Constants.GROUP_ENEMY_CHARACTERS)
 	# Play death animation (fade out)
 	var tween = create_tween()
-	tween.tween_property(self, "modulate:a", 0.0, 0.5)
+	tween.tween_property(self , "modulate:a", 0.0, 0.5)
 	tween.tween_callback(queue_free)
 
 func heal(amount: int, _source: Node2D = null) -> void:
 	current_hp = min(current_hp + amount, max_hp)
 	_update_health_bar()
-	EventBus.character_healed.emit(self, amount, _source)
+	EventBus.character_healed.emit(self , amount, _source)
 
 func attack_target(target: CharacterBase) -> Dictionary:
 	if has_attacked:
@@ -143,8 +143,8 @@ func attack_target(target: CharacterBase) -> Dictionary:
 	var final_damage = base_damage * 2 if is_crit else base_damage
 	
 	has_attacked = true
-	target.take_damage(final_damage, self)
-	EventBus.character_attacked.emit(self, target, final_damage, is_crit)
+	target.take_damage(final_damage, self )
+	EventBus.character_attacked.emit(self , target, final_damage, is_crit)
 	EventBus.show_damage_popup.emit(target, final_damage, is_crit)
 	
 	return {"success": true, "damage": final_damage, "is_crit": is_crit}
@@ -170,7 +170,7 @@ func get_sfx(action: String) -> String:
 		var custom: String = character_data.sfx.get_sfx(action)
 		if custom != "":
 			return custom
-	return ""  # Empty means "use global default"
+	return "" # Empty means "use global default"
 
 func _tile_distance(from: Vector2i, to: Vector2i) -> int:
 	return abs(from.x - to.x) + abs(from.y - to.y)

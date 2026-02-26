@@ -1,16 +1,13 @@
 # GameManager - Manages battle flow, turn order, and game state
 extends Node
 
-enum TurnPhase { MOVE, ATTACK, DONE }
-
 @export var tilemap_node: Node2D
 @export var action_camera: Camera2D
 @export var turn_label: Label
 
-var turn_order: Array = []
-var current_character: Node2D
+var turn_order: Array[CharacterBase] = []
+var current_character: CharacterBase
 var battle_active: bool = false
-var current_phase: TurnPhase = TurnPhase.MOVE
 
 func _ready() -> void:
 	EventBus.character_died.connect(_on_character_died)
@@ -27,7 +24,10 @@ func _find_node_references() -> void:
 		turn_label = get_tree().get_first_node_in_group("turn_label")
 
 func _build_turn_order() -> void:
-	turn_order = get_tree().get_nodes_in_group(Constants.GROUP_ALL_CHARACTERS)
+	turn_order.clear()
+	for node in get_tree().get_nodes_in_group(Constants.GROUP_ALL_CHARACTERS):
+		if node is CharacterBase:
+			turn_order.append(node as CharacterBase)
 	turn_order.sort_custom(_compare_initiative)
 
 func _initialize_battle() -> void:
@@ -41,14 +41,12 @@ func _initialize_battle() -> void:
 	_setup_characters()
 	_start_battle()
 
-func _compare_initiative(a: Node2D, b: Node2D) -> bool:
-	var init_a = a.initiative if "initiative" in a else 0
-	var init_b = b.initiative if "initiative" in b else 0
-	if init_a != init_b:
-		return init_a > init_b
+func _compare_initiative(a: CharacterBase, b: CharacterBase) -> bool:
+	if a.initiative != b.initiative:
+		return a.initiative > b.initiative
 	# Tie-breaker: players go first
-	var a_is_player = a.team == Constants.TEAM_PLAYER if "team" in a else false
-	var b_is_player = b.team == Constants.TEAM_PLAYER if "team" in b else false
+	var a_is_player := a.team == Constants.TEAM_PLAYER
+	var b_is_player := b.team == Constants.TEAM_PLAYER
 	if a_is_player != b_is_player:
 		return a_is_player
 	return a.name < b.name
@@ -83,11 +81,10 @@ func _process(_delta: float) -> void:
 func _is_moving() -> bool:
 	return current_character and current_character.moving
 
-func _start_character_turn(character: Node2D) -> void:
+func _start_character_turn(character: CharacterBase) -> void:
 	current_character = character
 	character.movement_left = character.move_range
 	character.has_attacked = false
-	current_phase = TurnPhase.MOVE
 	_show_movement_range()
 	character.on_turn_started()
 	EventBus.turn_started.emit(character)
@@ -108,8 +105,8 @@ func _on_enemy_turn_completed(enemy: EnemyCharacter) -> void:
 	if enemy == current_character and battle_active:
 		_advance_turn()
 
-func _end_character_turn(character: Node2D) -> void:
-	_clear_movement_range()
+func _end_character_turn(character: CharacterBase) -> void:
+	_clear_highlights()
 	character.on_turn_ended()
 	EventBus.turn_ended.emit(character)
 
@@ -121,16 +118,15 @@ func _advance_turn() -> void:
 	_focus_camera(current_character)
 	_start_character_turn(current_character)
 
-func request_move(character: Node2D, target_tile: Vector2i) -> bool:
+func request_move(character: CharacterBase, target_tile: Vector2i) -> bool:
 	if character != current_character or is_enemy_turn() or _is_moving():
 		return false
-	if current_phase != TurnPhase.MOVE:
-		return false
-	_clear_movement_range()
+	# Highlights stay visible during movement so they persist through pausing.
+	# _on_character_movement_finished refreshes them when the move completes.
 	character.move_to_tile(target_tile)
 	return true
 
-func request_attack(character: Node2D, target: Node2D) -> bool:
+func request_attack(character: CharacterBase, target: CharacterBase) -> bool:
 	if character != current_character or is_enemy_turn() or _is_moving():
 		return false
 	if character.has_attacked:
@@ -149,31 +145,20 @@ func request_attack(character: Node2D, target: Node2D) -> bool:
 		return true
 	return false
 
-func _on_character_movement_finished(character: Node2D) -> void:
-	if character == current_character:
-		if is_enemy_turn():
-			# Enemy uses phase system
-			_transition_to_attack_phase()
-		else:
-			# Player can keep moving if they have movement left
-			if character.movement_left > 0:
-				_show_movement_range()
-			else:
-				# Out of movement, if already attacked, end turn
-				if character.has_attacked:
-					_advance_turn()
-				else:
-					# Show attack range only (no movement left)
-					_show_movement_range()
-
-func _transition_to_attack_phase() -> void:
-	if current_character.has_attacked:
-		# Already attacked, end turn
-		_advance_turn()
+func _on_character_movement_finished(character: CharacterBase) -> void:
+	if character != current_character:
 		return
-	current_phase = TurnPhase.ATTACK
-	_clear_movement_range()
-	_show_attack_range()
+	if is_enemy_turn():
+		# Show attack range while enemy AI coroutine continues
+		if not character.has_attacked:
+			_clear_highlights()
+			_show_attack_range()
+		return
+	# Player: auto-end turn if nothing left to do, otherwise refresh highlights
+	if character.movement_left <= 0 and character.has_attacked:
+		_advance_turn()
+	else:
+		_show_movement_range()
 
 func _show_attack_range() -> void:
 	if tilemap_node and not current_character.has_attacked:
@@ -187,7 +172,7 @@ func _show_movement_range() -> void:
 	if tilemap_node:
 		tilemap_node.highlight_reachable_tiles(current_character.current_tile, current_character.movement_left, current_character)
 
-func _clear_movement_range() -> void:
+func _clear_highlights() -> void:
 	if tilemap_node:
 		tilemap_node.clear_highlights()
 
@@ -203,7 +188,7 @@ func _focus_camera(target: Node2D) -> void:
 	if action_camera and target:
 		action_camera.move_camera(target)
 
-func _on_character_died(character: Node2D) -> void:
+func _on_character_died(character: CharacterBase) -> void:
 	var was_current = character == current_character
 	var current_index = turn_order.find(character)
 	turn_order.erase(character)
