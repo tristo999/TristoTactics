@@ -8,7 +8,6 @@
 extends EditorScript
 
 const SFX_DIR := "res://assets/audio/sfx/"
-const SAMPLE_RATE := 22050
 const MIX_RATE := 22050
 
 func _run() -> void:

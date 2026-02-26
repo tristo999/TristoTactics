@@ -3,8 +3,7 @@
 extends EnemyCharacter
 class_name GoblinCharacter
 
-func _ready() -> void:
-	# Override default stats for Goblin archetype
+func _init() -> void:
 	max_hp = 15
 	attack_power = 7
 	defense = 3
@@ -14,8 +13,4 @@ func _ready() -> void:
 	move_range = 6
 	attack_range_min = 1
 	attack_range_max = 1
-	ai_pause_duration = 0.8 # Goblins act faster
-
-	team = Constants.TEAM_ENEMY
-	# Call CharacterBase._ready() via EnemyCharacter
-	super._ready()
+	ai_pause_duration = 0.8

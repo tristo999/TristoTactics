@@ -4,9 +4,8 @@ extends Node
 # Battle Flow
 signal battle_started
 signal battle_ended(victory: bool)
-signal turn_started(character: Node2D)
-signal turn_ended(character: Node2D)
-signal turn_order_changed(new_order: Array)
+signal turn_started(character: CharacterBase)
+signal turn_ended(character: CharacterBase)
 
 # Character Events
 signal character_moved(character: Node2D, from_tile: Vector2i, to_tile: Vector2i)

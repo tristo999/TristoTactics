@@ -9,6 +9,9 @@ signal ai_turn_completed
 
 func _ready() -> void:
 	team = Constants.TEAM_ENEMY
+	# Apply ai_pause_duration from CharacterData if present
+	if character_data and character_data.override_stats:
+		ai_pause_duration = character_data.ai_pause_duration
 	super._ready()
 
 func on_turn_started() -> void:
@@ -38,11 +41,11 @@ func execute_ai_turn() -> void:
 func _find_nearest_player() -> Node2D:
 	var players = get_tree().get_nodes_in_group(Constants.GROUP_PLAYER_CHARACTERS)
 	var nearest: Node2D = null
-	var nearest_dist: float = INF
+	var nearest_dist: int = 9999
 	for player in players:
 		if not player.is_alive:
 			continue
-		var dist = current_tile.distance_to(player.current_tile)
+		var dist = _tile_distance(current_tile, player.current_tile)
 		if dist < nearest_dist:
 			nearest_dist = dist
 			nearest = player

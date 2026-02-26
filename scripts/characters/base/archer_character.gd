@@ -3,8 +3,7 @@
 extends PlayerCharacter
 class_name ArcherCharacter
 
-func _ready() -> void:
-	# Override default stats for Archer archetype
+func _init() -> void:
 	max_hp = 18
 	attack_power = 8
 	defense = 3
@@ -14,7 +13,3 @@ func _ready() -> void:
 	move_range = 3
 	attack_range_min = 1
 	attack_range_max = 4
-
-	team = Constants.TEAM_PLAYER
-	# Call CharacterBase._ready() via PlayerCharacter
-	super._ready()

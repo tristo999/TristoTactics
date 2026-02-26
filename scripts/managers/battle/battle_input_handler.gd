@@ -11,9 +11,11 @@ func _ready() -> void:
 	call_deferred("_cache_references")
 
 func _cache_references() -> void:
-	var scene = get_tree().get_current_scene()
-	if scene:
-		game_manager = scene.find_child("GameManager", true, false)
+	game_manager = get_tree().get_first_node_in_group("game_manager")
+	if not game_manager:
+		var scene = get_tree().get_current_scene()
+		if scene:
+			game_manager = scene.find_child("GameManager", true, false)
 	tilemap_node = get_tree().get_first_node_in_group("tilemap")
 
 
@@ -25,10 +27,12 @@ func _input(event: InputEvent) -> void:
 	if not game_manager or not tilemap_node:
 		return
 
-	var character = game_manager.current_character
-	if not character or character.moving:
+	# Only accept input when the state machine is in PLAYER_IDLE
+	if game_manager.state != game_manager.BattleState.PLAYER_IDLE:
 		return
-	if game_manager.is_enemy_turn():
+
+	var character = game_manager.current_character
+	if not character:
 		return
 
 	var tile := _get_tile_at_mouse()

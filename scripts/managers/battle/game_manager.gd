@@ -1,5 +1,24 @@
 # GameManager - Manages battle flow, turn order, and game state
+# Uses an explicit state machine to control battle phases.
 extends Node
+
+# =============================================================================
+# STATE MACHINE
+# =============================================================================
+
+enum BattleState {
+	INACTIVE, ## Battle hasn't started or has ended
+	PLAYER_IDLE, ## Waiting for player input (move / attack / end turn)
+	PLAYER_MOVING, ## Player character is moving along a path
+	PLAYER_ATTACKING, ## Player attack animation is playing
+	ENEMY_TURN, ## Enemy AI coroutine is executing
+}
+
+var state: BattleState = BattleState.INACTIVE
+
+# =============================================================================
+# EXPORTS & REFS
+# =============================================================================
 
 @export var tilemap_node: Node2D
 @export var action_camera: Camera2D
@@ -7,9 +26,9 @@ extends Node
 
 var turn_order: Array[CharacterBase] = []
 var current_character: CharacterBase
-var battle_active: bool = false
 
 func _ready() -> void:
+	add_to_group("game_manager")
 	EventBus.character_died.connect(_on_character_died)
 	EventBus.character_movement_finished.connect(_on_character_movement_finished)
 	# Deferred so all sibling nodes finish _ready() before we look for them
@@ -61,7 +80,6 @@ func _setup_characters() -> void:
 		character.global_position = base_layer.map_to_local(character.current_tile) + Constants.TILE_CENTER_OFFSET
 
 func _start_battle() -> void:
-	battle_active = true
 	EventBus.battle_started.emit()
 	current_character = turn_order.front()
 	_focus_camera(current_character)
@@ -69,17 +87,18 @@ func _start_battle() -> void:
 	call_deferred("_start_character_turn", current_character)
 
 # =============================================================================
-# PROCESS
+# PROCESS — only handles player end-turn input
 # =============================================================================
 
 func _process(_delta: float) -> void:
-	if battle_active and not is_enemy_turn() and not _is_moving():
-		if Input.is_action_just_pressed("ui_accept"):
-			# End turn early
-			_advance_turn()
+	if state != BattleState.PLAYER_IDLE:
+		return
+	if Input.is_action_just_pressed("ui_accept"):
+		_advance_turn()
 
-func _is_moving() -> bool:
-	return current_character and current_character.moving
+# =============================================================================
+# TURN FLOW
+# =============================================================================
 
 func _start_character_turn(character: CharacterBase) -> void:
 	current_character = character
@@ -88,21 +107,20 @@ func _start_character_turn(character: CharacterBase) -> void:
 	_show_movement_range()
 	character.on_turn_started()
 	EventBus.turn_started.emit(character)
-	
-	# If it's an enemy turn, execute their AI
-	if is_enemy_turn() and character is EnemyCharacter:
+
+	if character.team == Constants.TEAM_ENEMY and character is EnemyCharacter:
+		state = BattleState.ENEMY_TURN
 		_execute_enemy_turn(character as EnemyCharacter)
+	else:
+		state = BattleState.PLAYER_IDLE
 
 ## Execute enemy AI turn sequence
 func _execute_enemy_turn(enemy: EnemyCharacter) -> void:
-	# Movement range is already shown from _start_character_turn
-	# Connect to the enemy's turn completion signal
 	enemy.ai_turn_completed.connect(_on_enemy_turn_completed.bind(enemy), CONNECT_ONE_SHOT)
-	# Start the enemy AI execution
 	enemy.execute_ai_turn()
 
 func _on_enemy_turn_completed(enemy: EnemyCharacter) -> void:
-	if enemy == current_character and battle_active:
+	if enemy == current_character and state == BattleState.ENEMY_TURN:
 		_advance_turn()
 
 func _end_character_turn(character: CharacterBase) -> void:
@@ -118,38 +136,73 @@ func _advance_turn() -> void:
 	_focus_camera(current_character)
 	_start_character_turn(current_character)
 
+# =============================================================================
+# PLAYER ACTIONS (called by BattleInputHandler)
+# =============================================================================
+
 func request_move(character: CharacterBase, target_tile: Vector2i) -> bool:
-	if character != current_character or is_enemy_turn() or _is_moving():
+	if state != BattleState.PLAYER_IDLE or character != current_character:
 		return false
-	# Highlights stay visible during movement so they persist through pausing.
-	# _on_character_movement_finished refreshes them when the move completes.
+	state = BattleState.PLAYER_MOVING
 	character.move_to_tile(target_tile)
 	return true
 
 func request_attack(character: CharacterBase, target: CharacterBase) -> bool:
-	if character != current_character or is_enemy_turn() or _is_moving():
+	if state != BattleState.PLAYER_IDLE or character != current_character:
 		return false
 	if character.has_attacked:
 		return false
-	
+
+	state = BattleState.PLAYER_ATTACKING
 	var result = await character.attack_target(target)
 	if result.success:
 		# Refresh highlights — player must manually end turn
 		_show_movement_range()
+		state = BattleState.PLAYER_IDLE
 		return true
+	state = BattleState.PLAYER_IDLE
 	return false
+
+# =============================================================================
+# SIGNAL HANDLERS
+# =============================================================================
 
 func _on_character_movement_finished(character: CharacterBase) -> void:
 	if character != current_character:
 		return
-	if is_enemy_turn():
+	if state == BattleState.ENEMY_TURN:
 		# Show attack range while enemy AI coroutine continues
 		if not character.has_attacked:
 			_clear_highlights()
 			_show_attack_range()
 		return
-	# Player: refresh highlights — player must manually end turn
+	# Player movement finished — return to idle
+	state = BattleState.PLAYER_IDLE
 	_show_movement_range()
+
+func _on_character_died(character: CharacterBase) -> void:
+	var was_current = character == current_character
+	turn_order.erase(character)
+
+	var players = turn_order.filter(func(c): return c.team == Constants.TEAM_PLAYER)
+	var enemies = turn_order.filter(func(c): return c.team == Constants.TEAM_ENEMY)
+
+	if enemies.is_empty():
+		_end_battle(true)
+	elif players.is_empty():
+		_end_battle(false)
+	elif was_current and state != BattleState.INACTIVE:
+		# End the dead character's turn properly, then start the next
+		_end_character_turn(character)
+		var next_index = turn_order.find(character)
+		if next_index < 0:
+			next_index = 0
+		next_index = next_index % turn_order.size()
+		_start_character_turn(turn_order[next_index])
+
+# =============================================================================
+# HIGHLIGHTS & CAMERA
+# =============================================================================
 
 func _show_attack_range() -> void:
 	if tilemap_node and not current_character.has_attacked:
@@ -168,7 +221,7 @@ func _clear_highlights() -> void:
 		tilemap_node.clear_highlights()
 
 func is_enemy_turn() -> bool:
-	return current_character != null and current_character.team == Constants.TEAM_ENEMY
+	return state == BattleState.ENEMY_TURN
 
 func _update_turn_label() -> void:
 	if turn_label:
@@ -179,23 +232,6 @@ func _focus_camera(target: Node2D) -> void:
 	if action_camera and target:
 		action_camera.move_camera(target)
 
-func _on_character_died(character: CharacterBase) -> void:
-	var was_current = character == current_character
-	var current_index = turn_order.find(character)
-	turn_order.erase(character)
-	
-	var players = turn_order.filter(func(c): return c.team == Constants.TEAM_PLAYER)
-	var enemies = turn_order.filter(func(c): return c.team == Constants.TEAM_ENEMY)
-	
-	if enemies.is_empty():
-		_end_battle(true)
-	elif players.is_empty():
-		_end_battle(false)
-	elif was_current and battle_active:
-		# Move to next character (use same index since we removed current)
-		var next_index = current_index % turn_order.size()
-		_start_character_turn(turn_order[next_index])
-
 func _end_battle(victory: bool) -> void:
-	battle_active = false
+	state = BattleState.INACTIVE
 	EventBus.battle_ended.emit(victory)

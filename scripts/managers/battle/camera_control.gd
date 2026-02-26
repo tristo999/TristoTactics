@@ -9,7 +9,6 @@ extends Camera2D
 @export var zoom_speed: float = 0.1
 @export var min_zoom: float = 0.5
 @export var max_zoom: float = 3.0
-@export var edge_threshold: float = 1.0
 
 # Camera smoothing for focus transitions
 @export var focus_lerp_speed: float = 5.0

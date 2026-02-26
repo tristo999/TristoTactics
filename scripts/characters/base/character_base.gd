@@ -42,9 +42,25 @@ var is_alive: bool:
 var health_bar: HealthBar
 
 func _ready() -> void:
+	_apply_character_data()
 	current_hp = max_hp
 	_add_to_groups()
 	_create_health_bar()
+
+## If a CharacterData resource is assigned with override_stats enabled,
+## apply all stat values from the resource onto this character.
+func _apply_character_data() -> void:
+	if not character_data or not character_data.override_stats:
+		return
+	max_hp = character_data.max_hp
+	attack_power = character_data.attack_power
+	defense = character_data.defense
+	initiative = character_data.initiative
+	crit_chance = character_data.crit_chance
+	move_speed = character_data.move_speed
+	move_range = character_data.move_range
+	attack_range_min = character_data.attack_range_min
+	attack_range_max = character_data.attack_range_max
 
 func _create_health_bar() -> void:
 	health_bar = HealthBar.new()
@@ -137,9 +153,14 @@ func attack_target(target: CharacterBase) -> Dictionary:
 	if dist < attack_range_min or dist > attack_range_max:
 		return {"success": false, "reason": "out_of_range"}
 	
-	# Calculate damage
+	# Calculate damage (includes terrain defense bonus for the defender)
+	var terrain_def: int = 0
+	var tilemap = get_tree().get_first_node_in_group("tilemap")
+	if tilemap:
+		terrain_def = TerrainRegistry.get_defense_bonus(target.current_tile, tilemap)
 	var is_crit = randf() < crit_chance
-	var base_damage = max(1, attack_power - target.defense)
+	var effective_defense: int = target.defense + terrain_def
+	var base_damage = max(1, attack_power - effective_defense)
 	var final_damage = base_damage * 2 if is_crit else base_damage
 	
 	has_attacked = true
@@ -169,7 +190,7 @@ func get_targets_in_range() -> Array:
 ## Returns the SFX path for the given action, checking character-specific
 ## overrides first, then falling back to the global default key.
 func get_sfx(action: String) -> String:
-	if character_data and character_data.sfx and character_data.sfx.has_method("get_sfx"):
+	if character_data and character_data.sfx:
 		var custom: String = character_data.sfx.get_sfx(action)
 		if custom != "":
 			return custom

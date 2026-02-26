@@ -33,9 +33,11 @@ func _create_highlight_renderer() -> void:
 	highlight_renderer.setup(base_layer)
 
 func _cache_game_manager() -> void:
-	var scene = get_tree().get_current_scene()
-	if scene:
-		game_manager = scene.find_child("GameManager", true, false)
+	game_manager = get_tree().get_first_node_in_group("game_manager")
+	if not game_manager:
+		var scene = get_tree().get_current_scene()
+		if scene:
+			game_manager = scene.find_child("GameManager", true, false)
 
 func _refresh_occupied_tiles() -> void:
 	cached_occupied_tiles.clear()
@@ -196,25 +198,28 @@ func highlight_reachable_tiles(start: Vector2i, max_range: int, character: Chara
 		highlight_renderer.set_attack_tiles(atk_tiles)
 
 func _calculate_reachable_tiles(start: Vector2i, max_range: int) -> Array:
-	var visited := {start: true}
+	var visited := {start: 0} # tile -> cost to reach
 	var reachable: Array = []
 	var queue: Array = [[start, 0]]
 	while queue.size() > 0:
 		var current = queue.pop_front()
 		var pos: Vector2i = current[0]
-		var dist: int = current[1]
-		if dist > max_range:
-			continue
+		var cost_so_far: int = current[1]
 		if pos != start and not astar_grid.is_point_solid(pos) and not cached_occupied_tiles.has(pos):
 			reachable.append(pos)
 		for dir in Constants.CARDINAL_DIRECTIONS:
 			var neighbor = pos + dir
-			if visited.has(neighbor) or not astar_grid.is_in_boundsv(neighbor):
+			if not astar_grid.is_in_boundsv(neighbor):
 				continue
 			if astar_grid.is_point_solid(neighbor) or cached_occupied_tiles.has(neighbor):
 				continue
-			visited[neighbor] = true
-			queue.push_back([neighbor, dist + 1])
+			var step_cost: int = TerrainRegistry.get_move_cost(neighbor, self )
+			var new_cost: int = cost_so_far + step_cost
+			if new_cost > max_range:
+				continue
+			if not visited.has(neighbor) or new_cost < visited[neighbor]:
+				visited[neighbor] = new_cost
+				queue.push_back([neighbor, new_cost])
 	return reachable
 
 func clear_highlights() -> void:

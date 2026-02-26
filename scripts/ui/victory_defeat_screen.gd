@@ -1,8 +1,6 @@
 # VictoryDefeatScreen - Displayed when a battle ends in victory or defeat
 extends CanvasLayer
 
-signal return_to_menu_pressed
-
 @onready var color_rect: ColorRect = $ColorRect
 @onready var panel: PanelContainer = $Panel
 @onready var title_label: Label = $Panel/VBox/TitleLabel
@@ -45,5 +43,4 @@ func show_result(victory: bool) -> void:
 
 func _on_menu_button_pressed() -> void:
 	AudioManager.stop_music()
-	return_to_menu_pressed.emit()
 	get_tree().change_scene_to_file("res://scenes/ui/MainMenu.tscn")

@@ -16,10 +16,3 @@ func _on_resume_pressed():
 func _on_quit_pressed():
 	get_tree().paused = false
 	get_tree().quit()
-
-# Aliases for compatibility
-func show_pause():
-	show_menu()
-
-func hide_pause():
-	hide_menu()

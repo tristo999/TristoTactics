@@ -87,6 +87,3 @@ func show_menu():
 	
 	_ignore_callbacks = false
 	super.show_menu()
-
-func hide_settings():
-	hide_menu()
