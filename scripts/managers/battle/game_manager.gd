@@ -165,6 +165,8 @@ func _end_character_turn(character: CharacterBase) -> void:
 
 func _advance_turn() -> void:
 	_end_character_turn(current_character)
+	if turn_order.is_empty():
+		return
 	var index = (turn_order.find(current_character) + 1) % turn_order.size()
 	current_character = turn_order[index]
 	_focus_camera(current_character)
@@ -299,7 +301,7 @@ func _on_character_died(character: CharacterBase) -> void:
 # --- Highlights & Camera ---
 
 func _show_movement_only() -> void:
-	if not tilemap_node:
+	if not tilemap_node or not current_character:
 		return
 	_clear_highlights()
 	tilemap_node.highlight_renderer.set_current_character(current_character.current_tile)
@@ -309,7 +311,7 @@ func _show_movement_only() -> void:
 		tilemap_node.highlight_renderer.set_movement_tiles(reachable)
 
 func _show_attack_only() -> void:
-	if not tilemap_node:
+	if not tilemap_node or not current_character:
 		return
 	_clear_highlights()
 	tilemap_node.highlight_renderer.set_current_character(current_character.current_tile)

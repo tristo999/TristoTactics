@@ -101,7 +101,7 @@ func move_to_tile(grid_pos: Vector2i) -> void:
 		path_cost += TerrainRegistry.get_move_cost(tile, tilemap)
 	movement_left -= path_cost
 	moving = true
-	EventBus.character_movement_started.emit(self )
+	EventBus.character_movement_started.emit(self)
 	_advance_path()
 
 func _advance_path() -> void:
@@ -113,8 +113,8 @@ func _advance_path() -> void:
 		var old_tile = current_tile
 		current_tile = base_layer.local_to_map(global_position)
 		movement_finished.emit()
-		EventBus.character_movement_finished.emit(self )
-		EventBus.character_moved.emit(self , old_tile, current_tile)
+		EventBus.character_movement_finished.emit(self)
+		EventBus.character_moved.emit(self, old_tile, current_tile)
 
 # Override in subclasses for AI, etc.
 func on_turn_started() -> void:
@@ -126,25 +126,25 @@ func on_turn_ended() -> void:
 func take_damage(amount: int, source: Node2D = null) -> void:
 	current_hp = max(0, current_hp - amount)
 	_update_health_bar()
-	EventBus.character_damaged.emit(self , amount, source)
+	EventBus.character_damaged.emit(self, amount, source)
 	if current_hp <= 0:
 		_die()
 
 func _die() -> void:
-	EventBus.character_died.emit(self )
+	EventBus.character_died.emit(self)
 	# Remove from all groups immediately so we're not considered in targeting
 	remove_from_group(Constants.GROUP_ALL_CHARACTERS)
 	remove_from_group(Constants.GROUP_PLAYER_CHARACTERS)
 	remove_from_group(Constants.GROUP_ENEMY_CHARACTERS)
 	# Play death animation (fade out)
 	var tween = create_tween()
-	tween.tween_property(self , "modulate:a", 0.0, 0.5)
+	tween.tween_property(self, "modulate:a", 0.0, 0.5)
 	tween.tween_callback(queue_free)
 
 func heal(amount: int, source: Node2D = null) -> void:
 	current_hp = min(current_hp + amount, max_hp)
 	_update_health_bar()
-	EventBus.character_healed.emit(self , amount, source)
+	EventBus.character_healed.emit(self, amount, source)
 
 func attack_target(target: CharacterBase) -> Dictionary:
 	if has_attacked:
@@ -167,10 +167,10 @@ func attack_target(target: CharacterBase) -> Dictionary:
 	has_attacked = true
 	
 	# Play attack animation overlay (blocking cutscene)
-	await AttackAnimationOverlay.play_attack_animation(self , target, final_damage, is_crit)
+	await AttackAnimationOverlay.play_attack_animation(self, target, final_damage, is_crit)
 	
 	# Apply damage after the animation completes
-	target.take_damage(final_damage, self )
+	target.take_damage(final_damage, self)
 	
 	return {"success": true, "damage": final_damage, "is_crit": is_crit}
 
