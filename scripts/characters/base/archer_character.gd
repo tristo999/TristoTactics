@@ -10,6 +10,6 @@ func _init() -> void:
 	initiative = 12
 	crit_chance = 0.08
 	move_speed = 90.0
-	move_range = 3
+	move_range = 4
 	attack_range_min = 1
 	attack_range_max = 4

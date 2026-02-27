@@ -1,11 +1,9 @@
-# EnemyCharacter - AI-controlled enemy character
+# EnemyCharacter - AI-controlled enemy character.
 extends CharacterBase
 class_name EnemyCharacter
 
-signal ai_turn_completed
-
 @export_group("AI Behavior")
-@export var ai_pause_duration: float = 2.0
+@export var ai_pause_duration: float = 1.0
 
 func _ready() -> void:
 	team = Constants.TEAM_ENEMY
@@ -14,29 +12,21 @@ func _ready() -> void:
 		ai_pause_duration = character_data.ai_pause_duration
 	super._ready()
 
-func on_turn_started() -> void:
-	pass
+# --- AI Decision Methods (pure queries, no side effects) ---
 
-func execute_ai_turn() -> void:
-	await get_tree().create_timer(ai_pause_duration).timeout
-
+## Returns the tile the AI wants to move to.
+func get_ai_move_target() -> Vector2i:
 	var target = _find_nearest_player()
+	if not target or movement_left <= 0:
+		return current_tile
+	return _get_best_tile_toward(target)
 
-	# Move phase
-	if target and movement_left > 0:
-		var target_tile = _get_best_tile_toward(target)
-		if target_tile != current_tile:
-			move_to_tile(target_tile)
-			await movement_finished
-
-	# Attack phase
-	if target and not has_attacked:
-		await get_tree().create_timer(ai_pause_duration * 0.5).timeout
-		if can_attack_target(target):
-			await attack_target(target)
-
-	await get_tree().create_timer(ai_pause_duration * 0.5).timeout
-	ai_turn_completed.emit()
+## Returns the character to attack, or null if none in range.
+func get_ai_attack_target() -> CharacterBase:
+	var target = _find_nearest_player()
+	if target and not has_attacked and can_attack_target(target):
+		return target
+	return null
 
 func _find_nearest_player() -> Node2D:
 	var players = get_tree().get_nodes_in_group(Constants.GROUP_PLAYER_CHARACTERS)
@@ -85,10 +75,7 @@ func _get_best_tile_toward(target: Node2D) -> Vector2i:
 	# closest to the target so we still make progress.
 	return _get_closest_reachable_tile_toward(tilemap, target)
 
-# Note: _tile_distance() is inherited from CharacterBase
-
-## Fallback when direct A* path is blocked: pick the reachable tile that
-## minimises Manhattan distance to the target so the enemy still advances.
+## Fallback when A* path is blocked: pick the closest reachable tile.
 func _get_closest_reachable_tile_toward(tilemap: Node2D, target: Node2D) -> Vector2i:
 	var reachable = tilemap.get_reachable_tiles(current_tile, movement_left)
 	if reachable.is_empty():

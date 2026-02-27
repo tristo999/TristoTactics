@@ -18,6 +18,3 @@ signal character_died(character: Node2D)
 
 # Tile Events
 signal tile_hovered(tile_pos: Vector2i)
-
-# UI Events
-signal update_turn_indicator(character: Node2D, is_enemy: bool)

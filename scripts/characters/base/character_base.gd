@@ -1,9 +1,8 @@
-# CharacterBase - Base class for all characters
+# CharacterBase - Base class for all characters.
 extends Node2D
 class_name CharacterBase
 
 signal movement_finished
-signal died
 
 @export var character_data: CharacterData ## Optional: for SFX overrides and future features
 
@@ -47,8 +46,7 @@ func _ready() -> void:
 	_add_to_groups()
 	_create_health_bar()
 
-## If a CharacterData resource is assigned with override_stats enabled,
-## apply all stat values from the resource onto this character.
+## Apply stat overrides from CharacterData resource if enabled.
 func _apply_character_data() -> void:
 	if not character_data or not character_data.override_stats:
 		return
@@ -97,7 +95,11 @@ func move_to_tile(grid_pos: Vector2i) -> void:
 	if path.size() < 2:
 		return
 	move_path = path.slice(1)
-	movement_left -= move_path.size()
+	# Deduct terrain-weighted cost, not just tile count
+	var path_cost := 0
+	for tile in move_path:
+		path_cost += TerrainRegistry.get_move_cost(tile, tilemap)
+	movement_left -= path_cost
 	moving = true
 	EventBus.character_movement_started.emit(self )
 	_advance_path()
@@ -129,7 +131,6 @@ func take_damage(amount: int, source: Node2D = null) -> void:
 		_die()
 
 func _die() -> void:
-	died.emit()
 	EventBus.character_died.emit(self )
 	# Remove from all groups immediately so we're not considered in targeting
 	remove_from_group(Constants.GROUP_ALL_CHARACTERS)
@@ -140,10 +141,10 @@ func _die() -> void:
 	tween.tween_property(self , "modulate:a", 0.0, 0.5)
 	tween.tween_callback(queue_free)
 
-func heal(amount: int, _source: Node2D = null) -> void:
+func heal(amount: int, source: Node2D = null) -> void:
 	current_hp = min(current_hp + amount, max_hp)
 	_update_health_bar()
-	EventBus.character_healed.emit(self , amount, _source)
+	EventBus.character_healed.emit(self , amount, source)
 
 func attack_target(target: CharacterBase) -> Dictionary:
 	if has_attacked:
@@ -187,8 +188,6 @@ func get_targets_in_range() -> Array:
 			targets.append(enemy)
 	return targets
 
-## Returns the SFX path for the given action, checking character-specific
-## overrides first, then falling back to the global default key.
 func get_sfx(action: String) -> String:
 	if character_data and character_data.sfx:
 		var custom: String = character_data.sfx.get_sfx(action)

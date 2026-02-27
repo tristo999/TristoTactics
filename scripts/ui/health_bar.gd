@@ -1,5 +1,4 @@
-# HealthBar - Reusable HP bar for characters
-# Create via HealthBar.new(); call setup() after adding to the tree.
+# HealthBar - Reusable HP bar for characters.
 extends ProgressBar
 class_name HealthBar
 
@@ -7,7 +6,6 @@ const BAR_SIZE := Vector2(16, 3)
 const BAR_OFFSET := Vector2(-8, -12)
 const CORNER_RADIUS := 1
 
-# Each bar stores its own fill style so colours stay independent per character
 var _fill_style: StyleBoxFlat
 
 
@@ -17,10 +15,6 @@ func _ready() -> void:
 	position = BAR_OFFSET
 	_apply_background_style()
 	_create_fill_style()
-
-# =========================================================================
-# PUBLIC API
-# =========================================================================
 
 ## Call once after adding to the tree to set initial HP and team colour.
 func setup(max_hp_value: int, current_hp_value: int, team: String) -> void:
@@ -32,10 +26,6 @@ func setup(max_hp_value: int, current_hp_value: int, team: String) -> void:
 func update_hp(current_hp_value: int, max_hp_value: int, team: String) -> void:
 	value = current_hp_value
 	_fill_style.bg_color = _get_fill_color(team, current_hp_value, max_hp_value)
-
-# =========================================================================
-# STYLING
-# =========================================================================
 
 func _apply_background_style() -> void:
 	var bg := StyleBoxFlat.new()

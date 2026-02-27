@@ -3,6 +3,7 @@ extends Node
 
 # Tile
 const TILE_CENTER_OFFSET = Vector2(3, -2)
+const INVALID_TILE = Vector2i(-9999, -9999)
 
 # Teams
 const TEAM_PLAYER = "player_team"

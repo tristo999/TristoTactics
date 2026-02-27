@@ -1,17 +1,7 @@
-# TerrainRegistry - Shared terrain data for the entire game
-# Single source of truth for terrain types, defense bonuses, and move costs.
-# Both gameplay (BFS, combat) and UI (TileInfoPanel) read from here.
+# TerrainRegistry - Shared terrain data (types, defense bonuses, move costs).
 extends Node
 
-# =============================================================================
-# TERRAIN DEFINITIONS
-# =============================================================================
-
-## Each terrain type maps to a dictionary with:
-##   name      — display name for UI
-##   defense   — defense modifier applied during combat
-##   move_cost — BFS movement cost per tile (999 = impassable)
-##   terrain   — terrain category label for UI
+## Each terrain type maps to { name, defense, move_cost, terrain }.
 const TERRAIN_TYPES := {
 	"grass": {"name": "Grass", "defense": 0, "move_cost": 1, "terrain": "Plains"},
 	"dirt": {"name": "Dirt Path", "defense": 0, "move_cost": 1, "terrain": "Road"},
@@ -29,12 +19,9 @@ const TERRAIN_TYPES := {
 ## Default terrain when nothing else matches
 const DEFAULT_TERRAIN := "grass"
 
-# =============================================================================
-# LAYER-BASED LOOKUPS
-# =============================================================================
+# --- Layer-based Lookups ---
 
-## Returns the terrain data dictionary for a given tile position.
-## Requires a tilemap node (the Node2D with BaseGrid, Walls, Objects, Water children).
+## Returns terrain data for a tile position, checking layers top-down.
 func get_terrain_at(tile_pos: Vector2i, tilemap: Node2D) -> Dictionary:
 	if not tilemap:
 		return TERRAIN_TYPES[DEFAULT_TERRAIN]
@@ -65,22 +52,17 @@ func get_terrain_at(tile_pos: Vector2i, tilemap: Node2D) -> Dictionary:
 
 	return _classify_tile(atlas_coords)
 
-## Returns just the defense bonus for a tile.
 func get_defense_bonus(tile_pos: Vector2i, tilemap: Node2D) -> int:
 	var data = get_terrain_at(tile_pos, tilemap)
 	return data.get("defense", 0)
 
-## Returns just the move cost for a tile.
 func get_move_cost(tile_pos: Vector2i, tilemap: Node2D) -> int:
 	var data = get_terrain_at(tile_pos, tilemap)
 	return data.get("move_cost", 1)
 
-# =============================================================================
-# ATLAS CLASSIFICATION (Solaria Demo tileset)
-# =============================================================================
+# --- Atlas Classification (Solaria Demo tileset) ---
 
-## Classify a base-layer tile by its atlas coordinates.
-## TODO: Replace with TileSet custom data layers for a truly data-driven approach.
+## TODO: Replace with TileSet custom data layers for a data-driven approach.
 func _classify_tile(atlas: Vector2i) -> Dictionary:
 	var x = atlas.x
 	var y = atlas.y
@@ -104,9 +86,7 @@ func _classify_tile(atlas: Vector2i) -> Dictionary:
 	# Default: grass/plains
 	return TERRAIN_TYPES[DEFAULT_TERRAIN]
 
-# =============================================================================
-# MULTI-CELL TILE HELPER
-# =============================================================================
+# --- Multi-cell Tile Helper ---
 
 ## Check if a tile position is covered by any tile in a layer (handles large
 ## multi-cell tiles like 3×3 trees whose origin sits at their center).

@@ -1,13 +1,9 @@
-## Manages a stack of menus with universal back button support
-## Attach this to any scene that needs menu management (main menu, game levels, etc.)
+## Manages a stack of menus with universal back button support.
 extends Node
 class_name MenuStack
 
-## Emitted when the menu stack becomes empty (all menus closed)
 signal stack_emptied
-## Emitted when a menu is pushed onto the stack
 signal menu_pushed(menu: Control)
-## Emitted when a menu is popped from the stack
 signal menu_popped(menu: Control)
 
 var _menu_stack: Array[Control] = []
@@ -33,7 +29,7 @@ func _input(event):
 	elif event.is_action_released("ui_cancel"):
 		_escape_down = false
 
-## Push a menu onto the stack (shows it, hides the previous one)
+## Push a menu onto the stack (shows it, hides the previous one).
 func push_menu(menu: Control, use_canvas_layer: bool = true):
 	# Hide current top menu if any
 	if not _menu_stack.is_empty():
@@ -64,7 +60,7 @@ func push_menu(menu: Control, use_canvas_layer: bool = true):
 	
 	menu_pushed.emit(menu)
 
-## Pop the top menu from the stack (hides it, shows the previous one)
+## Pop the top menu (hides it, shows the previous one).
 func pop_menu() -> Control:
 	if _menu_stack.is_empty():
 		return null
@@ -100,26 +96,21 @@ func pop_menu() -> Control:
 	
 	return menu
 
-## Go back one level (pop the top menu)
 func go_back():
 	if not _menu_stack.is_empty():
 		pop_menu()
 
-## Clear all menus from the stack
 func clear_all():
 	while not _menu_stack.is_empty():
 		pop_menu()
 
-## Check if any menus are currently shown
 func has_menus() -> bool:
 	return not _menu_stack.is_empty()
 
-## Get the current top menu (or null if empty)
 func get_current_menu() -> Control:
 	if _menu_stack.is_empty():
 		return null
 	return _menu_stack.back()
 
-## Get the number of menus in the stack
 func get_stack_size() -> int:
 	return _menu_stack.size()

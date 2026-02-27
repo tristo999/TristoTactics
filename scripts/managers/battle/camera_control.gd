@@ -1,47 +1,28 @@
-# CameraControl - Battle camera with keyboard/mouse control and event-driven focusing
+# CameraControl - Battle camera with keyboard/mouse control and event-driven focusing.
 extends Camera2D
-
-# =============================================================================
-# EXPORTS
-# =============================================================================
 
 @export var move_speed: float = 500.0
 @export var zoom_speed: float = 0.1
 @export var min_zoom: float = 0.5
 @export var max_zoom: float = 3.0
-
-# Camera smoothing for focus transitions
 @export var focus_lerp_speed: float = 5.0
 @export var use_smooth_focus: bool = true
 
-# =============================================================================
-# STATE
-# =============================================================================
-
 var focus_target: Node2D = null
-var is_focusing: bool = false
-
-# =============================================================================
-# LIFECYCLE
-# =============================================================================
 
 func _ready() -> void:
 	add_to_group("action_camera")
-
-# =============================================================================
-# PROCESS
-# =============================================================================
 
 func _process(delta: float) -> void:
 	handle_keyboard_input(delta)
 	handle_zoom_input()
 	
-	# Smooth focus transition
-	if is_focusing and focus_target and use_smooth_focus:
-		position = position.lerp(focus_target.position, focus_lerp_speed * delta)
-		if position.distance_to(focus_target.position) < 1.0:
+	# Smooth focus — continuously tracks the target node
+	if focus_target and is_instance_valid(focus_target):
+		if use_smooth_focus:
+			position = position.lerp(focus_target.position, focus_lerp_speed * delta)
+		else:
 			position = focus_target.position
-			is_focusing = false
 
 func handle_keyboard_input(delta: float) -> void:
 	var input_vector := Vector2.ZERO
@@ -50,7 +31,6 @@ func handle_keyboard_input(delta: float) -> void:
 	
 	if input_vector != Vector2.ZERO:
 		# Cancel auto-focus when player manually moves camera
-		is_focusing = false
 		focus_target = null
 		position += input_vector.normalized() * move_speed * delta
 
@@ -67,20 +47,11 @@ func handle_zoom_input() -> void:
 		new_zoom = new_zoom.clamp(Vector2(min_zoom, min_zoom), Vector2(max_zoom, max_zoom))
 		zoom = new_zoom
 
-# =============================================================================
-# PUBLIC METHODS
-# =============================================================================
-
-## Move camera to focus on a character (called by GameManager)
+## Start tracking a character with damped smoothing.
 func move_camera(character: Node2D) -> void:
-	if use_smooth_focus:
-		focus_target = character
-		is_focusing = true
-	else:
-		position = character.position
+	focus_target = character
 
-## Instant snap to position
+## Instant snap to position (clears tracking)
 func snap_to(pos: Vector2) -> void:
 	position = pos
-	is_focusing = false
 	focus_target = null

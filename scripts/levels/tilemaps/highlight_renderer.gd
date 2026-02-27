@@ -1,29 +1,17 @@
-# HighlightRenderer - Custom draw-based tile highlight system
-# Replaces TileMapLayer-based highlights with distinct, visible indicators:
-#   - Green hollow square under the current character
-#   - Dark filled squares for movement range
-#   - Red smaller hollow squares for attack range (overlaid on movement)
-#   - Light hollow outline for mouse hover
+# HighlightRenderer - Custom draw-based tile highlight system.
 extends Node2D
 class_name HighlightRenderer
 
-const INVALID_TILE = Vector2i(-9999, -9999)
-
-# Reference to the base TileMapLayer for coordinate conversion
 var base_layer: TileMapLayer
 
-# =============================================================================
-# HIGHLIGHT STATE
-# =============================================================================
+# --- Highlight State ---
 
-var current_char_tile: Vector2i = INVALID_TILE
+var current_char_tile: Vector2i = Constants.INVALID_TILE
 var movement_tiles: Array = []
 var attack_tiles: Array = []
-var hover_tile: Vector2i = INVALID_TILE
+var hover_tile: Vector2i = Constants.INVALID_TILE
 
-# =============================================================================
-# STYLE CONSTANTS
-# =============================================================================
+# --- Style Constants ---
 
 # Current character: bright green hollow square
 const COLOR_CURRENT_CHAR := Color(0.1, 0.9, 0.2, 0.75)
@@ -41,16 +29,12 @@ const ATTACK_INSET := 3.0
 const COLOR_HOVER := Color(1.0, 1.0, 1.0, 0.35)
 const HOVER_LINE_WIDTH := 1.0
 
-# =============================================================================
-# SETUP
-# =============================================================================
+# --- Setup ---
 
 func setup(layer: TileMapLayer) -> void:
 	base_layer = layer
 
-# =============================================================================
-# PUBLIC API — Set highlight data, triggers redraw
-# =============================================================================
+# --- Public API ---
 
 func set_current_character(tile: Vector2i) -> void:
 	current_char_tile = tile
@@ -71,9 +55,9 @@ func set_hover(tile: Vector2i) -> void:
 	queue_redraw()
 
 func clear_hover() -> void:
-	if hover_tile == INVALID_TILE:
+	if hover_tile == Constants.INVALID_TILE:
 		return
-	hover_tile = INVALID_TILE
+	hover_tile = Constants.INVALID_TILE
 	queue_redraw()
 
 ## Clears movement + attack ranges but keeps current character indicator & hover
@@ -82,17 +66,14 @@ func clear_range_highlights() -> void:
 	attack_tiles = []
 	queue_redraw()
 
-## Clears everything
 func clear_all() -> void:
-	current_char_tile = INVALID_TILE
+	current_char_tile = Constants.INVALID_TILE
 	movement_tiles = []
 	attack_tiles = []
-	hover_tile = INVALID_TILE
+	hover_tile = Constants.INVALID_TILE
 	queue_redraw()
 
-# =============================================================================
-# DRAW
-# =============================================================================
+# --- Draw ---
 
 func _draw() -> void:
 	if not base_layer:
@@ -116,11 +97,11 @@ func _draw() -> void:
 		)
 
 	# 3. Current character — green hollow square (full tile size)
-	if current_char_tile != INVALID_TILE:
+	if current_char_tile != Constants.INVALID_TILE:
 		var center := base_layer.map_to_local(current_char_tile)
 		draw_rect(Rect2(center - half, tile_size), COLOR_CURRENT_CHAR, false, CURRENT_CHAR_LINE_WIDTH)
 
 	# 4. Mouse hover — light outline
-	if hover_tile != INVALID_TILE:
+	if hover_tile != Constants.INVALID_TILE:
 		var center := base_layer.map_to_local(hover_tile)
 		draw_rect(Rect2(center - half, tile_size), COLOR_HOVER, false, HOVER_LINE_WIDTH)

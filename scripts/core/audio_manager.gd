@@ -1,5 +1,4 @@
-# AudioManager - Handles all audio playback (music and SFX)
-# Pure audio engine: no display settings, no persistence.
+# AudioManager - Handles all audio playback (music and SFX).
 extends Node
 
 ## Music tracks registry — levels reference these by key
@@ -53,11 +52,8 @@ func _ready() -> void:
 		add_child(sfx_player)
 		_sfx_players.append(sfx_player)
 
-# =========================================================================
-# MUSIC
-# =========================================================================
+# --- Music ---
 
-## Play music by key (e.g., "menu", "battle")
 func play_music(music_key: String) -> void:
 	if _current_music_key == music_key and _music_player.playing:
 		return
@@ -74,20 +70,15 @@ func play_music(music_key: String) -> void:
 	else:
 		push_error("AudioManager: Failed to load music '%s'" % music_tracks[music_key])
 
-## Stop currently playing music
 func stop_music() -> void:
 	_music_player.stop()
 	_current_music_key = ""
 
-## Get current music key being played
 func get_current_music() -> String:
 	return _current_music_key
 
-# =========================================================================
-# SFX
-# =========================================================================
+# --- SFX ---
 
-## Play a sound effect by key (e.g., "attack", "hit")
 func play_sfx(sfx_key: String) -> void:
 	if not sound_effects.has(sfx_key):
 		push_warning("AudioManager: SFX key '%s' not found" % sfx_key)
@@ -104,7 +95,7 @@ func play_sfx(sfx_key: String) -> void:
 
 	_play_stream(stream)
 
-## Play a sound effect directly from a file path (per-character overrides)
+## Play an SFX directly from a file path (per-character overrides).
 func play_sfx_from_path(path: String) -> void:
 	if not ResourceLoader.exists(path):
 		return
@@ -113,7 +104,7 @@ func play_sfx_from_path(path: String) -> void:
 	if stream:
 		_play_stream(stream)
 
-## Internal: route a stream through the SFX player pool
+## Route a stream through the SFX player pool.
 func _play_stream(stream: AudioStream) -> void:
 	for player in _sfx_players:
 		if not player.playing:
@@ -124,25 +115,19 @@ func _play_stream(stream: AudioStream) -> void:
 	_sfx_players[0].stream = stream
 	_sfx_players[0].play()
 
-# =========================================================================
-# VOLUME
-# =========================================================================
+# --- Volume ---
 
-## Set music volume in dB (called by SettingsManager)
 func set_music_volume_db(db: float) -> void:
 	_music_volume_db = db
 	_music_player.volume_db = db
 
-## Set SFX volume in dB (called by SettingsManager)
 func set_sfx_volume_db(db: float) -> void:
 	_sfx_volume_db = db
 	for player in _sfx_players:
 		player.volume_db = db
 
-## Get current music volume in dB
 func get_music_volume_db() -> float:
 	return _music_volume_db
 
-## Get current SFX volume in dB
 func get_sfx_volume_db() -> float:
 	return _sfx_volume_db

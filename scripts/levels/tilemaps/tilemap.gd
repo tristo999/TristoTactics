@@ -1,7 +1,6 @@
-# Tilemap - Handles tile rendering, pathfinding, and tile interaction
+# Tilemap - Tile rendering, pathfinding, and tile interaction.
 extends Node2D
 
-const INVALID_TILE = Vector2i(-9999, -9999)
 const HighlightRendererScript = preload("res://scripts/levels/tilemaps/highlight_renderer.gd")
 
 @onready var base_layer: TileMapLayer = $BaseGrid
@@ -11,7 +10,7 @@ const HighlightRendererScript = preload("res://scripts/levels/tilemaps/highlight
 
 var highlight_renderer: Node2D
 var astar_grid: AStarGrid2D
-var last_hovered_tile: Vector2i = INVALID_TILE
+var last_hovered_tile: Vector2i = Constants.INVALID_TILE
 var game_manager: Node = null
 var cached_occupied_tiles: Dictionary = {}
 var cached_reachable_tiles: Array = []
@@ -46,9 +45,7 @@ func _refresh_occupied_tiles() -> void:
 	for c in game_manager.turn_order:
 		cached_occupied_tiles[c.current_tile] = c
 
-# =============================================================================
-# MOUSE HOVER HANDLING
-# =============================================================================
+# --- Mouse Hover ---
 
 func _process(_delta: float) -> void:
 	_handle_mouse_hover()
@@ -80,9 +77,7 @@ func _is_tile_walkable(tile: Vector2i) -> bool:
 		return false
 	return true
 
-# =============================================================================
-# A* PATHFINDING
-# =============================================================================
+# --- A* Pathfinding ---
 
 func setup_astar_grid() -> void:
 	astar_grid = AStarGrid2D.new()
@@ -172,9 +167,7 @@ func get_astar_path(start: Vector2i, end: Vector2i) -> Array:
 	
 	return path
 
-# =============================================================================
-# TILE HIGHLIGHTING
-# =============================================================================
+# --- Tile Highlighting ---
 
 func highlight_reachable_tiles(start: Vector2i, max_range: int, character: CharacterBase = null) -> void:
 	clear_highlights()
@@ -224,7 +217,7 @@ func _calculate_reachable_tiles(start: Vector2i, max_range: int) -> Array:
 
 func clear_highlights() -> void:
 	highlight_renderer.clear_range_highlights()
-	last_hovered_tile = INVALID_TILE
+	last_hovered_tile = Constants.INVALID_TILE
 	cached_reachable_tiles = []
 
 func highlight_attack_range(start: Vector2i, min_range: int, max_range: int) -> void:

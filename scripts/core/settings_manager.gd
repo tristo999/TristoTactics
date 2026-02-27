@@ -1,5 +1,4 @@
-# SettingsManager - Owns display settings and persists ALL user preferences
-# Audio volume is forwarded to AudioManager; display changes apply immediately.
+# SettingsManager - Owns display settings and persists all user preferences.
 extends Node
 
 const SETTINGS_PATH := "user://settings.cfg"
@@ -14,9 +13,7 @@ func _ready() -> void:
 	_load_settings()
 	_apply_display_settings()
 
-# =========================================================================
-# PERSISTENCE
-# =========================================================================
+# --- Persistence ---
 
 func _load_settings() -> void:
 	var config := ConfigFile.new()
@@ -45,35 +42,27 @@ func _save_settings() -> void:
 	config.set_value("display", "fps_limit", _fps_limit)
 	config.save(SETTINGS_PATH)
 
-# =========================================================================
-# AUDIO VOLUME (delegates to AudioManager, then persists)
-# =========================================================================
+# --- Audio Volume ---
 
-## Set music volume on a 0-100 slider scale
 func set_music_volume(value: float) -> void:
-	# lerpf converts the 0-100 slider to -40..0 decibels (how audio volume works)
-	var db: float = lerpf(-40.0, 0.0, value / 100.0)
-	AudioManager.set_music_volume_db(db)
+	AudioManager.set_music_volume_db(_slider_to_db(value))
 	_save_settings()
 
-## Set SFX volume on a 0-100 slider scale
 func set_sfx_volume(value: float) -> void:
-	# lerpf converts the 0-100 slider to -40..0 decibels (how audio volume works)
-	var db: float = lerpf(-40.0, 0.0, value / 100.0)
-	AudioManager.set_sfx_volume_db(db)
+	AudioManager.set_sfx_volume_db(_slider_to_db(value))
 	_save_settings()
 
-## Get music volume in dB (for slider sync)
 func get_music_volume_db() -> float:
 	return AudioManager.get_music_volume_db()
 
-## Get SFX volume in dB (for slider sync)
 func get_sfx_volume_db() -> float:
 	return AudioManager.get_sfx_volume_db()
 
-# =========================================================================
-# DISPLAY
-# =========================================================================
+## Convert 0-100 slider to -40..0 dB range.
+func _slider_to_db(value: float) -> float:
+	return lerpf(-40.0, 0.0, value / 100.0)
+
+# --- Display ---
 
 func set_fullscreen(enabled: bool) -> void:
 	_fullscreen = enabled

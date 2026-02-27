@@ -1,0 +1,54 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/active_stats_panel.gd" id="1_statspanel"]
+
+[node name="ActiveStatsPanel" type="PanelContainer"]
+script = ExtResource("1_statspanel")
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_bottom = 180.0
+grow_horizontal = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 8
+
+[node name="VBox" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="CharNameLabel" type="Label" parent="MarginContainer/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Character"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBox"]
+layout_mode = 2
+
+[node name="StatsContainer" type="VBoxContainer" parent="MarginContainer/VBox"]
+layout_mode = 2
+
+[node name="HPLabel" type="Label" parent="MarginContainer/VBox/StatsContainer"]
+layout_mode = 2
+text = "HP: 0 / 0"
+
+[node name="ATKLabel" type="Label" parent="MarginContainer/VBox/StatsContainer"]
+layout_mode = 2
+text = "ATK: 0"
+
+[node name="DEFLabel" type="Label" parent="MarginContainer/VBox/StatsContainer"]
+layout_mode = 2
+text = "DEF: 0"
+
+[node name="MoveLabel" type="Label" parent="MarginContainer/VBox/StatsContainer"]
+layout_mode = 2
+text = "MOV: 0 / 0"
+
+[node name="RangeLabel" type="Label" parent="MarginContainer/VBox/StatsContainer"]
+layout_mode = 2
+text = "RNG: 0"

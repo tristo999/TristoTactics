@@ -21,10 +21,6 @@ func _setup_menu():
 	fps_option.add_item("144", 144)
 	fps_option.item_selected.connect(_on_fps_selected)
 
-func _ready():
-	super._ready()
-
-# Called when the volume slider value changes
 func _on_volume_slider_changed(value):
 	if _ignore_callbacks:
 		return
@@ -55,11 +51,7 @@ func _on_fps_selected(index):
 func _on_back_pressed():
 	request_back()
 
-# Aliases for compatibility
-func show_settings():
-	show_menu()
-
-# Override show_menu to sync all controls with saved settings
+# Sync controls with saved settings before showing
 func show_menu():
 	_ignore_callbacks = true
 	
