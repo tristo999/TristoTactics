@@ -73,6 +73,7 @@ func _build_ui() -> void:
 	_portrait_rect = TextureRect.new()
 	_portrait_rect.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
 	_portrait_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	_portrait_rect.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	_portrait_rect.custom_minimum_size = Vector2(80, 80)
 	portrait_panel.add_child(_portrait_rect)
 

@@ -29,30 +29,30 @@ script = ExtResource("10_input")
 
 [node name="PlayerTeam" type="Node" parent="."]
 
-[node name="PlayerCharacter" parent="PlayerTeam" instance=ExtResource("2_2iy3v")]
+[node name="Marcus" parent="PlayerTeam" instance=ExtResource("2_2iy3v")]
 position = Vector2(24, -176)
 
-[node name="Archer" parent="PlayerTeam" instance=ExtResource("11_archer")]
+[node name="Elena" parent="PlayerTeam" instance=ExtResource("11_archer")]
 position = Vector2(10, -207)
 
-[node name="Archer2" parent="PlayerTeam" instance=ExtResource("11_archer")]
+[node name="Lyra" parent="PlayerTeam" instance=ExtResource("11_archer")]
 position = Vector2(28, -205)
 
 [node name="EnemyTeam" type="Node" parent="."]
 
-[node name="Goblin1" parent="EnemyTeam" instance=ExtResource("12_goblin")]
+[node name="Gruk" parent="EnemyTeam" instance=ExtResource("12_goblin")]
 position = Vector2(-23, 188)
 
-[node name="Goblin2" parent="EnemyTeam" instance=ExtResource("12_goblin")]
+[node name="Snik" parent="EnemyTeam" instance=ExtResource("12_goblin")]
 position = Vector2(146, 188)
 
-[node name="Goblin3" parent="EnemyTeam" instance=ExtResource("12_goblin")]
+[node name="Brak" parent="EnemyTeam" instance=ExtResource("12_goblin")]
 position = Vector2(-216, 177)
 
-[node name="Goblin4" parent="EnemyTeam" instance=ExtResource("12_goblin")]
+[node name="Zog" parent="EnemyTeam" instance=ExtResource("12_goblin")]
 position = Vector2(-17, 137)
 
-[node name="Goblin5" parent="EnemyTeam" instance=ExtResource("12_goblin")]
+[node name="Nix" parent="EnemyTeam" instance=ExtResource("12_goblin")]
 position = Vector2(62, 140)
 
 [node name="ActionCamera" parent="." instance=ExtResource("3_41arr")]
