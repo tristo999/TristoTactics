@@ -61,14 +61,18 @@ func play_music(music_key: String) -> void:
 		push_error("AudioManager: Music key '%s' not found" % music_key)
 		return
 
-	var stream = load(music_tracks[music_key])
+	var music_path: String = music_tracks[music_key]
+	if not ResourceLoader.exists(music_path):
+		push_warning("AudioManager: Music file not found '%s'" % music_path)
+		return
+	var stream = load(music_path)
 	if stream:
 		_music_player.stop()
 		_music_player.stream = stream
 		_music_player.play()
 		_current_music_key = music_key
 	else:
-		push_error("AudioManager: Failed to load music '%s'" % music_tracks[music_key])
+		push_error("AudioManager: Failed to load music '%s'" % music_path)
 
 func stop_music() -> void:
 	_music_player.stop()
