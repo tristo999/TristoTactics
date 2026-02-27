@@ -30,6 +30,7 @@ var _attacker_sprite: AnimatedSprite2D
 var _defender_sprite: AnimatedSprite2D
 var _damage_label: Label
 var _is_playing: bool = false
+signal _animation_completed
 
 func _ready() -> void:
 	layer = 100
@@ -85,9 +86,10 @@ func _build_ui() -> void:
 
 ## Main entry point — call with await.
 ## Returns after the full animation has finished.
+## If an animation is already playing, the request is queued and played in order.
 func play_attack_animation(attacker: CharacterBase, defender: CharacterBase, damage: int, is_crit: bool) -> void:
-	if _is_playing:
-		return
+	while _is_playing:
+		await _animation_completed
 	_is_playing = true
 
 	var vp_size := get_viewport().get_visible_rect().size
@@ -229,3 +231,4 @@ func _cleanup() -> void:
 		_defender_sprite.queue_free()
 		_defender_sprite = null
 	_is_playing = false
+	_animation_completed.emit()
