@@ -45,6 +45,11 @@
   - [Pause Menu](#pause-menu)
   - [Settings Menu](#settings-menu)
 - [Camera System](#camera-system)
+- [Story Events](#story-events)
+  - [StoryEvent](#storyevent)
+  - [DialogueEvent](#dialogueevent)
+  - [DialogueBox](#dialoguebox)
+  - [DialogueLine](#dialogueline)
 - [Level System](#level-system)
 - [Developer Tools](#developer-tools)
 - [File Structure](#file-structure)
@@ -149,6 +154,7 @@ Pure signal declaration node — no logic. Every signal passes through here so s
 | `character_died` | `character: Node2D` | CharacterBase | GameManager, GameSFXManager |
 | `tile_hovered` | `tile_pos: Vector2i` | Tilemap | TileInfoPanel |
 | `update_turn_indicator` | `character: Node2D, is_enemy: bool` | GameManager | UI turn label |
+| `story_event_triggered` | `event: StoryEvent` | Any script | GameManager |
 
 ### Constants
 
@@ -374,15 +380,21 @@ Orchestrates the entire battle: turn order, turn execution, win/loss detection, 
 | State | Description |
 |---|---|
 | `INACTIVE` | No battle running |
-| `PLAYER_IDLE` | Waiting for player input (movement or attack) |
-| `PLAYER_MOVING` | Player character is mid-movement |
-| `PLAYER_ATTACKING` | Player attack animation playing |
-| `ENEMY_TURN` | AI is executing its turn |
+| `PLAYER_SELECTING_MOVE` | Movement tiles highlighted — click destination or use menu |
+| `PLAYER_MOVING` | Character is animating along a path |
+| `PLAYER_SELECTING_ATTACK` | Attack range highlighted — click target or use menu |
+| `PLAYER_ATTACKING` | Attack animation is playing |
+| `PLAYER_WAITING` | Story event / tutorial lock — all input blocked |
+| `ENEMY_TURN_START` | Camera focused, brief pause before action |
+| `ENEMY_SELECTING_MOVE` | Movement range shown — AI "thinking" |
+| `ENEMY_MOVING` | Enemy character animating along a path |
+| `ENEMY_SELECTING_ATTACK` | Attack range shown — AI picking target |
+| `ENEMY_ATTACKING` | Enemy attack animation playing |
 
 **@export variables:**
 - `tilemap_node: Node2D`
 - `action_camera: Camera2D`
-- `turn_label: Label`
+- `intro_event: StoryEvent` — optional event played before the first turn (dialogue, cutscene, etc.)
 
 **Runtime state:**
 - `state: BattleState = BattleState.INACTIVE`
@@ -393,25 +405,31 @@ Orchestrates the entire battle: turn order, turn execution, win/loss detection, 
 
 | Function | Signature | Description |
 |---|---|---|
-| `request_move` | `(character: CharacterBase, target_tile: Vector2i) → bool` | Transitions `PLAYER_IDLE → PLAYER_MOVING`; highlights stay during movement |
-| `request_attack` | `(character: CharacterBase, target: CharacterBase) → bool` | Transitions `PLAYER_IDLE → PLAYER_ATTACKING → PLAYER_IDLE`; blocking `await` |
-| `is_enemy_turn` | `() → bool` | Returns `state == BattleState.ENEMY_TURN` |
+| `request_move` | `(character: CharacterBase, target_tile: Vector2i) → bool` | Transitions `PLAYER_SELECTING_MOVE → PLAYER_MOVING` |
+| `request_attack` | `(character: CharacterBase, target: CharacterBase) → bool` | Transitions `PLAYER_SELECTING_ATTACK → PLAYER_ATTACKING`; blocking `await` |
+| `play_event` | `(event: StoryEvent) → void` | Awaitable — pauses gameplay (`PLAYER_WAITING`), runs event, restores state |
+| `is_enemy_turn` | `() → bool` | Checks enemy-related states |
 
 **State transitions:**
 ```
-INACTIVE → PLAYER_IDLE (battle start, first player turn)
-PLAYER_IDLE → PLAYER_MOVING (request_move)
-PLAYER_IDLE → PLAYER_ATTACKING (request_attack)
-PLAYER_MOVING → PLAYER_IDLE (character_movement_finished)
-PLAYER_ATTACKING → PLAYER_IDLE (attack complete)
-PLAYER_IDLE → ENEMY_TURN (advance to enemy character)
-ENEMY_TURN → PLAYER_IDLE (enemy AI completes, advance to player)
-ENEMY_TURN → ENEMY_TURN (advance to next enemy)
+INACTIVE → PLAYER_WAITING (intro_event, if set)
+PLAYER_WAITING → restored state (event finishes)
+INACTIVE/PLAYER_WAITING → PLAYER_SELECTING_MOVE (first turn / best state)
+PLAYER_SELECTING_MOVE → PLAYER_MOVING (request_move)
+PLAYER_SELECTING_MOVE → PLAYER_SELECTING_ATTACK (enter_attack_selection)
+PLAYER_SELECTING_ATTACK → PLAYER_SELECTING_MOVE (cancel_action)
+PLAYER_MOVING → best state (character_movement_finished)
+PLAYER_ATTACKING → best state (attack complete)
+Any state → PLAYER_WAITING (play_event) → restored state
+PLAYER_SELECTING_* → ENEMY_TURN_START (advance to enemy)
+ENEMY_TURN_START → ENEMY_SELECTING_MOVE → ENEMY_MOVING → ENEMY_SELECTING_ATTACK → ENEMY_ATTACKING
+ENEMY_ATTACKING → PLAYER_SELECTING_MOVE (advance to player)
 ```
 
 **Signals connected to:**
 - `EventBus.character_died` → `_on_character_died`
 - `EventBus.character_movement_finished` → `_on_character_movement_finished`
+- `EventBus.story_event_triggered` → `_on_story_event_triggered` (plays event via `play_event()`)
 
 **Signals emitted:**
 - `EventBus.battle_started`, `EventBus.turn_started`, `EventBus.turn_ended`, `EventBus.battle_ended`, `EventBus.update_turn_indicator`
@@ -763,9 +781,67 @@ Added to group `"action_camera"`. WASD/arrow input cancels auto-focus. Mouse whe
 
 **Behavior:** Plays `music_key` via AudioManager on `_ready()`. Connects to `EventBus.battle_ended` → waits 0.8s → instantiates VictoryDefeatScreen.
 
-**TestScene** (`scripts/levels/test_scene.gd`) | **Extends:** `BaseLevel` — sets `music_key = "battle"`.
+**TestScene** (`scripts/levels/test_scene.gd`) | **Extends:** `BaseLevel` — sets `music_key = "battle"`. Creates a `DialogueEvent` with intro dialogue lines and assigns it to `GameManager.intro_event`.
 
 **PauseMenuHandler** (`scripts/levels/pause_menu_handler.gd`) | **Extends:** `Node` — creates `MenuStack`, handles Escape key, pauses/unpauses.
+
+---
+
+## Story Events
+
+General-purpose system for events that pause gameplay — dialogue, cutscenes, environment changes, etc. Any script can trigger events at any time via `GameManager.play_event()` or the decoupled `EventBus.story_event_triggered` signal.
+
+**Trigger patterns:**
+```gdscript
+# Direct (when you have a GameManager reference):
+await game_manager.play_event(my_event)
+
+# Decoupled (from anywhere — GameManager listens automatically):
+EventBus.story_event_triggered.emit(my_event)
+await my_event.completed  # optional — wait for it to finish
+```
+
+### StoryEvent
+
+**Script:** `scripts/story/story_event.gd` | **class_name:** `StoryEvent` | **Extends:** `Resource`
+
+Base class for all gameplay-pausing events. Subclass and override `execute()`.
+
+**Signal:** `completed` — emitted by `GameManager.play_event()` after `execute()` returns.
+
+**Virtual method:** `execute(scene_tree: SceneTree) -> void` — override with event logic. Use `await` for async operations (dialogue playback, tweens, timers).
+
+### DialogueEvent
+
+**Script:** `scripts/story/dialogue_event.gd` | **class_name:** `DialogueEvent` | **Extends:** `StoryEvent`
+
+Plays a sequence of dialogue lines through the `DialogueBox`.
+
+**@export:** `lines: Array[DialogueLine]`
+
+**execute():** Finds `dialogue_box` via group lookup, calls `await dialogue_box.play_sequence(lines)`.
+
+### DialogueBox
+
+**Script:** `scripts/story/dialogue_box.gd` | **Extends:** `CanvasLayer`
+
+Full-width bottom bar UI for dialogue sequences. Added to group `"dialogue_box"`. Layer 90, programmatic UI build.
+
+**Layout:** `PanelContainer` (anchored bottom, full width, 140px tall) → `HBoxContainer` → portrait panel (80×80 `TextureRect` placeholder for character headshot) + `VBoxContainer` (speaker `Label` in gold, `RichTextLabel` body, advance indicator).
+
+**Typewriter effect:** 30 chars/sec via `_process()`. Click / Space / Enter: first press instant-fills current line, second press advances to next line.
+
+**Signal:** `sequence_finished` — emitted when all lines have been advanced through.
+
+**Key method:** `play_sequence(lines: Array[DialogueLine]) -> void` — awaitable. Shows the box with a fade-in tween, plays all lines, waits for player to advance through each.
+
+### DialogueLine
+
+**Script:** `scripts/story/dialogue_line.gd` | **class_name:** `DialogueLine` | **Extends:** `Resource`
+
+Data resource for one line of dialogue.
+
+**@export:** `speaker: String`, `text: String`, `portrait: Texture2D` (optional character headshot).
 
 ---
 
@@ -830,6 +906,11 @@ scripts/
 │   ├── tile_info_panel.gd         # Tile hover tooltip
 │   ├── speed_toggle_button.gd     # 1×/2× speed toggle
 │   └── victory_defeat_screen.gd   # End-of-battle screen
+├── story/
+│   ├── story_event.gd          # Base gameplay-pausing event (StoryEvent)
+│   ├── dialogue_event.gd       # Dialogue sequence event (DialogueEvent)
+│   ├── dialogue_box.gd         # Full-width dialogue UI (CanvasLayer)
+│   └── dialogue_line.gd        # Single dialogue line resource (DialogueLine)
 └── tools/
     └── generate_placeholder_sfx.gd # Procedural SFX generator (@tool)
 

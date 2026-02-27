@@ -24,6 +24,9 @@ var state: BattleState = BattleState.INACTIVE
 @export var tilemap_node: Node2D
 @export var action_camera: Camera2D
 
+## Optional intro event played before the first turn (dialogue, cutscene, etc.).
+@export var intro_event: StoryEvent
+
 var turn_order: Array[CharacterBase] = []
 var current_character: CharacterBase
 
@@ -31,6 +34,7 @@ func _ready() -> void:
 	add_to_group("game_manager")
 	EventBus.character_died.connect(_on_character_died)
 	EventBus.character_movement_finished.connect(_on_character_movement_finished)
+	EventBus.story_event_triggered.connect(_on_story_event_triggered)
 	# Deferred so all sibling nodes finish _ready() before we look for them
 	call_deferred("_initialize_battle")
 
@@ -79,6 +83,11 @@ func _setup_characters() -> void:
 
 func _start_battle() -> void:
 	EventBus.battle_started.emit()
+
+	# Play intro event before the first turn (if any)
+	if intro_event:
+		await play_event(intro_event)
+
 	current_character = turn_order.front()
 	_focus_camera(current_character)
 	call_deferred("_start_character_turn", current_character)
@@ -326,6 +335,20 @@ func is_enemy_turn() -> bool:
 func _focus_camera(target: Node2D) -> void:
 	if action_camera and target:
 		action_camera.move_camera(target)
+
+# --- Story Events ---
+
+## Pause gameplay and run a story event. Awaitable — returns when the event finishes.
+func play_event(event: StoryEvent) -> void:
+	var previous_state := state
+	state = BattleState.PLAYER_WAITING
+	await event.execute(get_tree())
+	event.completed.emit()
+	if state == BattleState.PLAYER_WAITING:
+		state = previous_state
+
+func _on_story_event_triggered(event: StoryEvent) -> void:
+	await play_event(event)
 
 func _end_battle(victory: bool) -> void:
 	state = BattleState.INACTIVE
