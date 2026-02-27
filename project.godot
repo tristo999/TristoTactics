@@ -15,7 +15,23 @@ run/main_scene="res://scenes/ui/MainMenu.tscn"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+bus/default_bus_layout="res://default_bus_layout.tres"
+music_volume_db=-5.200000000000003
+
+[autoload]
+
+EventBus="*res://scripts/core/event_bus.gd"
+Constants="*res://scripts/core/constants.gd"
+TerrainRegistry="*res://scripts/core/terrain_registry.gd"
+AudioManager="*res://scripts/core/audio_manager.gd"
+SettingsManager="*res://scripts/core/settings_manager.gd"
+GameSFXManager="*res://scripts/core/game_sfx_manager.gd"
+AttackAnimationOverlay="*res://scripts/ui/attack_animation_overlay.gd"
+
 [display]
+
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 

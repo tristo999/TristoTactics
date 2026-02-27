@@ -1,6 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://bouj1c13p4ja6"]
+[gd_scene load_steps=10 format=3 uid="uid://c5enemy1char1"]
 
-[ext_resource type="Script" path="res://scripts/characters/base/player_character.gd" id="1_sd4j2"]
+[ext_resource type="Script" path="res://scripts/characters/enemies/enemy_character.gd" id="1_enemy"]
 [ext_resource type="Texture2D" uid="uid://btwjvapwp0t8w" path="res://assets/test/World of Solaria Demo Pack Update 04/16x16/Sprites/New/Chris Idle.png" id="2_uqqyt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8eowp"]
@@ -53,11 +53,10 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="PlayerCharacter" type="Node2D"]
+[node name="EnemyCharacter" type="Node2D"]
 z_index = 100
-script = ExtResource("1_sd4j2")
+script = ExtResource("1_enemy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ncxke")
 autoplay = "default"
-frame_progress = 0.241604

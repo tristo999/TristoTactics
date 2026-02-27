@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/speed_toggle_button.gd" id="1_speed"]
+
+[node name="SpeedToggleButton" type="Button"]
+script = ExtResource("1_speed")
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -40.0
+offset_right = 60.0
+offset_bottom = -10.0
+grow_vertical = 0
+text = "1x"
