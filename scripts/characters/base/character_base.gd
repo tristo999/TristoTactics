@@ -34,6 +34,8 @@ var has_attacked: bool = false
 var move_path: Array = []
 var move_target: Vector2 = Vector2.ZERO
 var moving: bool = false
+var facing: String = "down" ## Current facing direction (up/down/left/right)
+var _sprite: AnimatedSprite2D
 
 var is_alive: bool:
 	get: return current_hp > 0
@@ -45,6 +47,8 @@ func _ready() -> void:
 	current_hp = max_hp
 	_add_to_groups()
 	_create_health_bar()
+	_sprite = get_node_or_null("AnimatedSprite2D")
+	_play_anim("idle")
 
 ## Apply stat overrides from CharacterData resource if enabled.
 func _apply_character_data() -> void:
@@ -101,20 +105,48 @@ func move_to_tile(grid_pos: Vector2i) -> void:
 		path_cost += TerrainRegistry.get_move_cost(tile, tilemap)
 	movement_left -= path_cost
 	moving = true
-	EventBus.character_movement_started.emit(self)
+	EventBus.character_movement_started.emit(self )
 	_advance_path()
 
 func _advance_path() -> void:
 	if move_path.size() > 0:
 		var next_tile = move_path.pop_front()
 		move_target = base_layer.map_to_local(next_tile) + Constants.TILE_CENTER_OFFSET
+		_update_facing(move_target - global_position)
+		_play_anim("walk")
 	else:
 		moving = false
+		_play_anim("idle")
 		var old_tile = current_tile
 		current_tile = base_layer.local_to_map(global_position)
 		movement_finished.emit()
-		EventBus.character_movement_finished.emit(self)
-		EventBus.character_moved.emit(self, old_tile, current_tile)
+		EventBus.character_movement_finished.emit(self )
+		EventBus.character_moved.emit(self , old_tile, current_tile)
+
+# --- Animation Helpers ---
+
+## Update facing direction from a movement vector.
+func _update_facing(dir: Vector2) -> void:
+	if abs(dir.x) > abs(dir.y):
+		facing = "right" if dir.x > 0 else "left"
+	else:
+		facing = "down" if dir.y > 0 else "up"
+
+## Play a directional animation (e.g. "walk" -> "walk_down").
+## Falls back to the base name or "default" if directional variant doesn't exist.
+func _play_anim(base_name: String) -> void:
+	if not _sprite:
+		return
+	var anim_name := base_name + "_" + facing
+	if _sprite.sprite_frames and _sprite.sprite_frames.has_animation(anim_name):
+		if _sprite.animation != anim_name:
+			_sprite.play(anim_name)
+	elif _sprite.sprite_frames and _sprite.sprite_frames.has_animation(base_name):
+		if _sprite.animation != base_name:
+			_sprite.play(base_name)
+	elif _sprite.sprite_frames and _sprite.sprite_frames.has_animation("default"):
+		if _sprite.animation != "default":
+			_sprite.play("default")
 
 # Override in subclasses for AI, etc.
 func on_turn_started() -> void:
@@ -126,25 +158,25 @@ func on_turn_ended() -> void:
 func take_damage(amount: int, source: Node2D = null) -> void:
 	current_hp = max(0, current_hp - amount)
 	_update_health_bar()
-	EventBus.character_damaged.emit(self, amount, source)
+	EventBus.character_damaged.emit(self , amount, source)
 	if current_hp <= 0:
 		_die()
 
 func _die() -> void:
-	EventBus.character_died.emit(self)
+	EventBus.character_died.emit(self )
 	# Remove from all groups immediately so we're not considered in targeting
 	remove_from_group(Constants.GROUP_ALL_CHARACTERS)
 	remove_from_group(Constants.GROUP_PLAYER_CHARACTERS)
 	remove_from_group(Constants.GROUP_ENEMY_CHARACTERS)
 	# Play death animation (fade out)
 	var tween = create_tween()
-	tween.tween_property(self, "modulate:a", 0.0, 0.5)
+	tween.tween_property(self , "modulate:a", 0.0, 0.5)
 	tween.tween_callback(queue_free)
 
 func heal(amount: int, source: Node2D = null) -> void:
 	current_hp = min(current_hp + amount, max_hp)
 	_update_health_bar()
-	EventBus.character_healed.emit(self, amount, source)
+	EventBus.character_healed.emit(self , amount, source)
 
 func attack_target(target: CharacterBase) -> Dictionary:
 	if has_attacked:
@@ -166,11 +198,17 @@ func attack_target(target: CharacterBase) -> Dictionary:
 	
 	has_attacked = true
 	
+	# Both characters face each other before attacking
+	_update_facing(target.global_position - global_position)
+	_play_anim("idle")
+	target._update_facing(global_position - target.global_position)
+	target._play_anim("idle")
+	
 	# Play attack animation overlay (blocking cutscene)
-	await AttackAnimationOverlay.play_attack_animation(self, target, final_damage, is_crit)
+	await AttackAnimationOverlay.play_attack_animation(self , target, final_damage, is_crit)
 	
 	# Apply damage after the animation completes
-	target.take_damage(final_damage, self)
+	target.take_damage(final_damage, self )
 	
 	return {"success": true, "damage": final_damage, "is_crit": is_crit}
 

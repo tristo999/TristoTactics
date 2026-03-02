@@ -12,6 +12,7 @@ func _setup_intro_event() -> void:
 	var gm = $GameManager
 	if not gm:
 		return
+	_setup_victory_event(gm)
 
 	var line1 := DialogueLine.new()
 	line1.speaker = "Marcus"
@@ -31,3 +32,23 @@ func _setup_intro_event() -> void:
 	var event := DialogueEvent.new()
 	event.lines = [line1, line2, line3]
 	gm.intro_event = event
+
+func _setup_victory_event(gm: Node) -> void:
+	var v1 := DialogueLine.new()
+	v1.speaker = "Marcus"
+	v1.text = "That's the last of them. The pass is clear."
+	v1.portrait = PORTRAIT_MARCUS
+
+	var v2 := DialogueLine.new()
+	v2.speaker = "Elena"
+	v2.text = "Good work, everyone. That wasn't easy, but we pulled through."
+	v2.portrait = PORTRAIT_ELENA
+
+	var v3 := DialogueLine.new()
+	v3.speaker = "Marcus"
+	v3.text = "Let's keep moving. There's no telling what else lies ahead."
+	v3.portrait = PORTRAIT_MARCUS
+
+	var victory_dialogue := DialogueEvent.new()
+	victory_dialogue.lines = [v1, v2, v3]
+	gm.victory_event = victory_dialogue

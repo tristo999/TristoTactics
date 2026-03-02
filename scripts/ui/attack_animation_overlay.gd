@@ -127,8 +127,10 @@ func play_attack_animation(attacker: CharacterBase, defender: CharacterBase, dam
 	_defender_sprite.position = defender_pos
 	_defender_sprite.scale = CHARACTER_SCALE
 	_defender_sprite.z_index = 5
-	# Flip defender to face left (toward attacker)
-	_defender_sprite.flip_h = true
+
+	# Set facing for the overlay layout: attacker faces right, defender faces left
+	_set_overlay_anim(_attacker_sprite, "idle_right")
+	_set_overlay_anim(_defender_sprite, "idle_left")
 
 	_box_content.add_child(_attacker_sprite)
 	_box_content.add_child(_defender_sprite)
@@ -218,6 +220,19 @@ func _clone_sprite(character: CharacterBase) -> AnimatedSprite2D:
 	clone.flip_h = source.flip_h
 	clone.play()
 	return clone
+
+
+## Try to play a specific animation on a clone; fall back to flip_h if not available.
+func _set_overlay_anim(sprite: AnimatedSprite2D, anim_name: String) -> void:
+	if sprite.sprite_frames and sprite.sprite_frames.has_animation(anim_name):
+		sprite.play(anim_name)
+		sprite.flip_h = false
+	else:
+		# Fallback for sprites without directional animations
+		if anim_name.ends_with("_left"):
+			sprite.flip_h = true
+		else:
+			sprite.flip_h = false
 
 
 func _cleanup() -> void:

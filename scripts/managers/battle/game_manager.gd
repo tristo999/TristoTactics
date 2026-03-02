@@ -27,6 +27,12 @@ var state: BattleState = BattleState.INACTIVE
 ## Optional intro event played before the first turn (dialogue, cutscene, etc.).
 @export var intro_event: StoryEvent
 
+## Optional victory event played after all enemies are defeated, before the victory screen.
+@export var victory_event: StoryEvent
+
+## Optional defeat event played after all players are defeated, before the defeat screen.
+@export var defeat_event: StoryEvent
+
 var turn_order: Array[CharacterBase] = []
 var current_character: CharacterBase
 
@@ -354,4 +360,8 @@ func _on_story_event_triggered(event: StoryEvent) -> void:
 
 func _end_battle(victory: bool) -> void:
 	state = BattleState.INACTIVE
+	# Play post-battle story event if one exists
+	var post_event: StoryEvent = victory_event if victory else defeat_event
+	if post_event:
+		await play_event(post_event)
 	EventBus.battle_ended.emit(victory)
