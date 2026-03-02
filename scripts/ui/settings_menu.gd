@@ -1,17 +1,81 @@
-extends Control
+extends "res://scripts/ui/base_menu.gd"
 
-func _ready():
-	$VBox/BackButton.connect("pressed", self._on_back_pressed)
-	$VBox/VolumeSlider.connect("value_changed", self._on_volume_changed)
+var _ignore_callbacks := false
+
+func _setup_menu():
+	# Audio
+	$Panel/VBox/BackButton.pressed.connect(_on_back_pressed)
+	$Panel/VBox/VolumeSlider.value_changed.connect(_on_volume_slider_changed)
+	$Panel/VBox/SfxVolumeSlider.value_changed.connect(_on_sfx_volume_slider_changed)
+	
+	# Display
+	$Panel/VBox/FullscreenCheck.toggled.connect(_on_fullscreen_toggled)
+	$Panel/VBox/VsyncCheck.toggled.connect(_on_vsync_toggled)
+	
+	# FPS options
+	var fps_option = $Panel/VBox/FpsContainer/FpsOption
+	fps_option.add_item("Unlimited", 0)
+	fps_option.add_item("30", 30)
+	fps_option.add_item("60", 60)
+	fps_option.add_item("120", 120)
+	fps_option.add_item("144", 144)
+	fps_option.item_selected.connect(_on_fps_selected)
+
+func _on_volume_slider_changed(value):
+	if _ignore_callbacks:
+		return
+	SettingsManager.set_music_volume(value)
+
+func _on_sfx_volume_slider_changed(value):
+	if _ignore_callbacks:
+		return
+	SettingsManager.set_sfx_volume(value)
+
+func _on_fullscreen_toggled(enabled):
+	if _ignore_callbacks:
+		return
+	SettingsManager.set_fullscreen(enabled)
+
+func _on_vsync_toggled(enabled):
+	if _ignore_callbacks:
+		return
+	SettingsManager.set_vsync(enabled)
+
+func _on_fps_selected(index):
+	if _ignore_callbacks:
+		return
+	var fps_option = $Panel/VBox/FpsContainer/FpsOption
+	var fps = fps_option.get_item_id(index)
+	SettingsManager.set_fps_limit(fps)
 
 func _on_back_pressed():
-	# Return to main menu
-	get_tree().change_scene_to_file("res://scenes/ui/MainMenu.tscn")
+	request_back()
 
-func _on_volume_changed(value):
-	AudioServer.set_bus_volume_db(0, linear_to_db(value / 100.0))
-
-func linear_to_db(linear):
-	if linear == 0:
-		return -80
-	return 20 * log(linear) / log(10)
+# Sync controls with saved settings before showing
+func show_menu():
+	_ignore_callbacks = true
+	
+	# Sync volume slider
+	var db = SettingsManager.get_music_volume_db()
+	var volume_value = int(clamp(inverse_lerp(-40, 0, db) * 100, 0, 100))
+	$Panel/VBox/VolumeSlider.value = volume_value
+	
+	# Sync SFX volume slider
+	var sfx_db = SettingsManager.get_sfx_volume_db()
+	var sfx_value = int(clamp(inverse_lerp(-40, 0, sfx_db) * 100, 0, 100))
+	$Panel/VBox/SfxVolumeSlider.value = sfx_value
+	
+	# Sync display settings
+	$Panel/VBox/FullscreenCheck.button_pressed = SettingsManager.get_fullscreen()
+	$Panel/VBox/VsyncCheck.button_pressed = SettingsManager.get_vsync()
+	
+	# Sync FPS option
+	var fps_option = $Panel/VBox/FpsContainer/FpsOption
+	var current_fps = SettingsManager.get_fps_limit()
+	for i in fps_option.item_count:
+		if fps_option.get_item_id(i) == current_fps:
+			fps_option.select(i)
+			break
+	
+	_ignore_callbacks = false
+	super.show_menu()

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="HealAbility" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/abilities/heal_ability.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+ability_name = "Heal"
+description = "Restore 10 HP to an ally within 3 tiles."
+target_type = 0
+range_min = 1
+range_max = 3
+max_uses = 3
+heal_amount = 10

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/characters/base/character_data.gd" id="1"]
+[ext_resource type="Texture2D" path="res://assets/sprites/characters/lyra_idle.png" id="2_idle"]
+[ext_resource type="Texture2D" path="res://assets/sprites/characters/lyra_walk.png" id="3_walk"]
+[ext_resource type="Resource" path="res://data/abilities/heal.tres" id="5_heal"]
+
+[resource]
+script = ExtResource("1")
+display_name = "Lyra"
+description = "Support healer. Keeps allies alive with restorative magic."
+max_hp = 20
+attack_power = 6
+defense = 4
+initiative = 9
+crit_chance = 0.03
+move_speed = 85.0
+move_range = 4
+attack_range_min = 1
+attack_range_max = 1
+abilities = [ExtResource("5_heal")]
+idle_texture = ExtResource("2_idle")
+walk_texture = ExtResource("3_walk")

@@ -26,6 +26,7 @@ Thumbs.db
 .vscode/
 
 # Build and cache
+build/
 bin/
 obj/
 .cache/
@@ -35,6 +36,8 @@ Library/
 Temp/
 Logs/
 UserSettings/
+Packages/
+ProjectSettings/
 
 # Python/other languages
 __pycache__/
