@@ -2,13 +2,11 @@
 extends CharacterBase
 class_name EnemyCharacter
 
-@export_group("AI Behavior")
-@export var ai_pause_duration: float = 1.0
+var ai_pause_duration: float = 1.0
 
 func _ready() -> void:
 	team = Constants.TEAM_ENEMY
-	# Apply ai_pause_duration from CharacterData if present
-	if character_data and character_data.override_stats:
+	if character_data:
 		ai_pause_duration = character_data.ai_pause_duration
 	super._ready()
 
@@ -24,7 +22,7 @@ func get_ai_move_target() -> Vector2i:
 ## Returns the character to attack, or null if none in range.
 func get_ai_attack_target() -> CharacterBase:
 	var target = _find_nearest_player()
-	if target and not has_attacked and can_attack_target(target):
+	if target and not has_used_action and can_attack_target(target):
 		return target
 	return null
 

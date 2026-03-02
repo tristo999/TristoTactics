@@ -7,7 +7,7 @@ func _init() -> void:
 	max_hp = 15
 	attack_power = 7
 	defense = 3
-	initiative = 15
+	initiative = 8
 	crit_chance = 0.10
 	move_speed = 130.0
 	move_range = 6

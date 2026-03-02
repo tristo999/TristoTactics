@@ -60,6 +60,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			_handle_selecting_move(tile)
 		game_manager.BattleState.PLAYER_SELECTING_ATTACK:
 			_handle_selecting_attack(tile)
+		game_manager.BattleState.PLAYER_SELECTING_ABILITY:
+			_handle_selecting_ability(tile)
 
 # --- State Handlers ---
 
@@ -83,12 +85,30 @@ func _handle_selecting_attack(tile: Vector2i) -> void:
 		_end_turn_pending = false
 		game_manager.request_attack(character, target)
 
+## Click a valid ability target → use ability.
+func _handle_selecting_ability(tile: Vector2i) -> void:
+	var character = game_manager.current_character
+	var ability: Ability = game_manager.selected_ability
+	if not character or not ability:
+		return
+
+	var target = tilemap_node.get_character_at_tile(tile)
+	if not target or not target is CharacterBase:
+		return
+
+	# Verify this target is valid for the ability
+	var valid_targets = character.get_ability_targets(ability)
+	if target in valid_targets:
+		_end_turn_pending = false
+		game_manager.request_ability(character, ability, target)
+
 # --- End Turn (double-tap Space) ---
 
 func _handle_end_turn_request() -> void:
 	if game_manager.state not in [
 		game_manager.BattleState.PLAYER_SELECTING_MOVE,
 		game_manager.BattleState.PLAYER_SELECTING_ATTACK,
+		game_manager.BattleState.PLAYER_SELECTING_ABILITY,
 	]:
 		return
 

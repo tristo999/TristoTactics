@@ -4,33 +4,31 @@ class_name CharacterBase
 
 signal movement_finished
 
-@export var character_data: CharacterData ## Optional: for SFX overrides and future features
+## The data resource that defines this character's stats, abilities, and visuals.
+## Assign a .tres CharacterData in the Inspector — that's all you need.
+@export var character_data: CharacterData
 
 # Team is set automatically by PlayerCharacter/EnemyCharacter in _ready()
 var team: String = ""
 
-# --- Stats (edit these in the Inspector!) ---
-@export_group("Stats")
-@export var max_hp: int = 25
-@export var attack_power: int = 10
-@export var defense: int = 5
-@export var initiative: int = 10
-@export var crit_chance: float = 0.05
-
-@export_group("Movement")
-@export var move_speed: float = 100.0
-@export var move_range: int = 5
-
-@export_group("Attack Range")
-@export var attack_range_min: int = 1
-@export var attack_range_max: int = 1
+# --- Stats (populated from CharacterData in _ready) ---
+var max_hp: int = 25
+var attack_power: int = 10
+var defense: int = 5
+var initiative: int = 10
+var crit_chance: float = 0.05
+var move_speed: float = 100.0
+var move_range: int = 5
+var attack_range_min: int = 1
+var attack_range_max: int = 1
+var abilities: Array[Ability] = []
 
 # --- Runtime state (don't touch) ---
 var current_hp: int
 var current_tile: Vector2i
 var base_layer: TileMapLayer
 var movement_left: int = 0
-var has_attacked: bool = false
+var has_used_action: bool = false
 var move_path: Array = []
 var move_target: Vector2 = Vector2.ZERO
 var moving: bool = false
@@ -43,16 +41,22 @@ var is_alive: bool:
 var health_bar: HealthBar
 
 func _ready() -> void:
+	_sprite = get_node_or_null("AnimatedSprite2D")
 	_apply_character_data()
 	current_hp = max_hp
 	_add_to_groups()
 	_create_health_bar()
-	_sprite = get_node_or_null("AnimatedSprite2D")
 	_play_anim("idle")
+	_reset_ability_uses()
 
-## Apply stat overrides from CharacterData resource if enabled.
+## Reset all ability use counts (called at battle start or per battle).
+func _reset_ability_uses() -> void:
+	for ability in abilities:
+		ability.reset_uses()
+
+## Apply all configuration from CharacterData resource.
 func _apply_character_data() -> void:
-	if not character_data or not character_data.override_stats:
+	if not character_data:
 		return
 	max_hp = character_data.max_hp
 	attack_power = character_data.attack_power
@@ -63,6 +67,15 @@ func _apply_character_data() -> void:
 	move_range = character_data.move_range
 	attack_range_min = character_data.attack_range_min
 	attack_range_max = character_data.attack_range_max
+	# Duplicate abilities so each instance has its own use counters
+	abilities.clear()
+	for ability in character_data.abilities:
+		abilities.append(ability.duplicate())
+	# Build sprite frames from idle/walk textures if provided
+	if character_data.idle_texture and character_data.walk_texture and _sprite:
+		_sprite.sprite_frames = SpriteFrameBuilder.build(
+			character_data.idle_texture, character_data.walk_texture
+		)
 
 func _create_health_bar() -> void:
 	health_bar = HealthBar.new()
@@ -179,8 +192,8 @@ func heal(amount: int, source: Node2D = null) -> void:
 	EventBus.character_healed.emit(self , amount, source)
 
 func attack_target(target: CharacterBase) -> Dictionary:
-	if has_attacked:
-		return {"success": false, "reason": "already_attacked"}
+	if has_used_action:
+		return {"success": false, "reason": "already_used_action"}
 	
 	var dist = _tile_distance(current_tile, target.current_tile)
 	if dist < attack_range_min or dist > attack_range_max:
@@ -196,7 +209,7 @@ func attack_target(target: CharacterBase) -> Dictionary:
 	var base_damage = max(1, attack_power - effective_defense)
 	var final_damage = base_damage * 2 if is_crit else base_damage
 	
-	has_attacked = true
+	has_used_action = true
 	
 	# Both characters face each other before attacking
 	_update_facing(target.global_position - global_position)
@@ -213,7 +226,7 @@ func attack_target(target: CharacterBase) -> Dictionary:
 	return {"success": true, "damage": final_damage, "is_crit": is_crit}
 
 func can_attack_target(target: CharacterBase) -> bool:
-	if has_attacked or target.team == team or not target.is_alive:
+	if has_used_action or target.team == team or not target.is_alive:
 		return false
 	var dist = _tile_distance(current_tile, target.current_tile)
 	return dist >= attack_range_min and dist <= attack_range_max
@@ -232,6 +245,44 @@ func get_sfx(action: String) -> String:
 		if custom != "":
 			return custom
 	return "" # Empty means "use global default"
+
+# --- Ability Helpers ---
+
+## Returns abilities that can still be used this turn.
+func get_usable_abilities() -> Array[Ability]:
+	var usable: Array[Ability] = []
+	if has_used_action:
+		return usable
+	for ability in abilities:
+		if ability.can_use():
+			usable.append(ability)
+	return usable
+
+## Whether this character has any usable abilities right now.
+func has_abilities() -> bool:
+	return get_usable_abilities().size() > 0
+
+## Get valid targets for a specific ability.
+func get_ability_targets(ability: Ability) -> Array:
+	var targets: Array = []
+	var all_chars = get_tree().get_nodes_in_group(Constants.GROUP_ALL_CHARACTERS)
+	for character in all_chars:
+		if not character is CharacterBase or not character.is_alive:
+			continue
+		var dist = _tile_distance(current_tile, character.current_tile)
+		if dist < ability.range_min or dist > ability.range_max:
+			continue
+		match ability.target_type:
+			Ability.TargetType.ALLY:
+				if character.team == team and character != self:
+					targets.append(character)
+			Ability.TargetType.ENEMY:
+				if character.team != team:
+					targets.append(character)
+			Ability.TargetType.SELF:
+				if character == self:
+					targets.append(character)
+	return targets
 
 func _tile_distance(from: Vector2i, to: Vector2i) -> int:
 	return abs(from.x - to.x) + abs(from.y - to.y)

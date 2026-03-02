@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://bb1mp0g4ccklu"]
+[gd_scene load_steps=18 format=4 uid="uid://bb1mp0g4ccklu"]
 
 [ext_resource type="PackedScene" uid="uid://dgw6nanegiqld" path="res://scenes/managers/GameManager.tscn" id="1_1n512"]
 [ext_resource type="PackedScene" uid="uid://bouj1c13p4ja6" path="res://scenes/characters/PlayerCharacter.tscn" id="2_2iy3v"]
@@ -9,8 +9,11 @@
 [ext_resource type="Script" uid="uid://b7ey3qmif5m76" path="res://scripts/levels/test_scene.gd" id="8_level"]
 [ext_resource type="PackedScene" path="res://scenes/ui/TileInfoPanel.tscn" id="9_tileinfo"]
 [ext_resource type="Script" uid="uid://bb7w0gltb41yg" path="res://scripts/managers/battle/battle_input_handler.gd" id="10_input"]
-[ext_resource type="PackedScene" uid="uid://c7archer1char" path="res://scenes/characters/ArcherCharacter.tscn" id="11_archer"]
-[ext_resource type="PackedScene" uid="uid://c6goblin1char" path="res://scenes/characters/GoblinCharacter.tscn" id="12_goblin"]
+[ext_resource type="PackedScene" uid="uid://c5enemy1char1" path="res://scenes/characters/EnemyCharacter.tscn" id="11_enemy"]
+[ext_resource type="Resource" path="res://data/characters/marcus.tres" id="12_marcus"]
+[ext_resource type="Resource" path="res://data/characters/archer.tres" id="13_archer"]
+[ext_resource type="Resource" path="res://data/characters/healer.tres" id="14_healer"]
+[ext_resource type="Resource" path="res://data/characters/goblin.tres" id="15_goblin"]
 [ext_resource type="PackedScene" path="res://scenes/ui/BottomActionBar.tscn" id="13_actionbar"]
 [ext_resource type="PackedScene" path="res://scenes/ui/SpeedToggleButton.tscn" id="15_speed"]
 [ext_resource type="PackedScene" path="res://scenes/ui/ActiveStatsPanel.tscn" id="16_stats"]
@@ -31,29 +34,37 @@ script = ExtResource("10_input")
 
 [node name="Marcus" parent="PlayerTeam" instance=ExtResource("2_2iy3v")]
 position = Vector2(24, -176)
+character_data = ExtResource("12_marcus")
 
-[node name="Elena" parent="PlayerTeam" instance=ExtResource("11_archer")]
+[node name="Elena" parent="PlayerTeam" instance=ExtResource("2_2iy3v")]
 position = Vector2(10, -207)
+character_data = ExtResource("13_archer")
 
-[node name="Lyra" parent="PlayerTeam" instance=ExtResource("11_archer")]
+[node name="Lyra" parent="PlayerTeam" instance=ExtResource("2_2iy3v")]
 position = Vector2(28, -205)
+character_data = ExtResource("14_healer")
 
 [node name="EnemyTeam" type="Node" parent="."]
 
-[node name="Gruk" parent="EnemyTeam" instance=ExtResource("12_goblin")]
+[node name="Gruk" parent="EnemyTeam" instance=ExtResource("11_enemy")]
 position = Vector2(-23, 188)
+character_data = ExtResource("15_goblin")
 
-[node name="Snik" parent="EnemyTeam" instance=ExtResource("12_goblin")]
+[node name="Snik" parent="EnemyTeam" instance=ExtResource("11_enemy")]
 position = Vector2(146, 188)
+character_data = ExtResource("15_goblin")
 
-[node name="Brak" parent="EnemyTeam" instance=ExtResource("12_goblin")]
+[node name="Brak" parent="EnemyTeam" instance=ExtResource("11_enemy")]
 position = Vector2(-216, 177)
+character_data = ExtResource("15_goblin")
 
-[node name="Zog" parent="EnemyTeam" instance=ExtResource("12_goblin")]
+[node name="Zog" parent="EnemyTeam" instance=ExtResource("11_enemy")]
 position = Vector2(-17, 137)
+character_data = ExtResource("15_goblin")
 
-[node name="Nix" parent="EnemyTeam" instance=ExtResource("12_goblin")]
+[node name="Nix" parent="EnemyTeam" instance=ExtResource("11_enemy")]
 position = Vector2(62, 140)
+character_data = ExtResource("15_goblin")
 
 [node name="ActionCamera" parent="." instance=ExtResource("3_41arr")]
 

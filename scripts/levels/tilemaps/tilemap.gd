@@ -186,7 +186,7 @@ func highlight_reachable_tiles(start: Vector2i, max_range: int, character: Chara
 	highlight_renderer.set_movement_tiles(cached_reachable_tiles)
 
 	# Attack range (red hollow squares overlaid on movement)
-	if character and not character.has_attacked:
+	if character and not character.has_used_action:
 		var atk_tiles = _calculate_attack_range_tiles(start, character.attack_range_min, character.attack_range_max)
 		highlight_renderer.set_attack_tiles(atk_tiles)
 
@@ -206,7 +206,7 @@ func _calculate_reachable_tiles(start: Vector2i, max_range: int) -> Array:
 				continue
 			if astar_grid.is_point_solid(neighbor) or cached_occupied_tiles.has(neighbor):
 				continue
-			var step_cost: int = TerrainRegistry.get_move_cost(neighbor, self)
+			var step_cost: int = TerrainRegistry.get_move_cost(neighbor, self )
 			var new_cost: int = cost_so_far + step_cost
 			if new_cost > max_range:
 				continue

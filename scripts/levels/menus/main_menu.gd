@@ -17,7 +17,7 @@ func _ready():
 	# Fade in from black when arriving from splash screen
 	modulate.a = 0.0
 	var fade_in := create_tween()
-	fade_in.tween_property(self, "modulate:a", 1.0, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+	fade_in.tween_property(self , "modulate:a", 1.0, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 	
 	# Start playing menu music
 	AudioManager.play_music("menu")
