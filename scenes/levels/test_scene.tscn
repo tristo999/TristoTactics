@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" path="res://scenes/ui/TileInfoPanel.tscn" id="9_tileinfo"]
 [ext_resource type="Script" uid="uid://bb7w0gltb41yg" path="res://scripts/managers/battle/battle_input_handler.gd" id="10_input"]
 [ext_resource type="PackedScene" uid="uid://c5enemy1char1" path="res://scenes/characters/EnemyCharacter.tscn" id="11_enemy"]
-[ext_resource type="Resource" path="res://data/characters/marcus.tres" id="12_marcus"]
+[ext_resource type="Resource" path="res://data/characters/hero.tres" id="12_hero"]
 [ext_resource type="Resource" path="res://data/characters/archer.tres" id="13_archer"]
 [ext_resource type="Resource" path="res://data/characters/healer.tres" id="14_healer"]
 [ext_resource type="Resource" path="res://data/characters/goblin.tres" id="15_goblin"]
@@ -32,9 +32,9 @@ script = ExtResource("10_input")
 
 [node name="PlayerTeam" type="Node" parent="."]
 
-[node name="Marcus" parent="PlayerTeam" instance=ExtResource("2_2iy3v")]
+[node name="Hero" parent="PlayerTeam" instance=ExtResource("2_2iy3v")]
 position = Vector2(24, -176)
-character_data = ExtResource("12_marcus")
+character_data = ExtResource("12_hero")
 
 [node name="Elena" parent="PlayerTeam" instance=ExtResource("2_2iy3v")]
 position = Vector2(10, -207)
