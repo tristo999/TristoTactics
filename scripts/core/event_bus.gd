@@ -16,5 +16,11 @@ signal character_damaged(character: Node2D, amount: int, source: Node2D)
 signal character_healed(character: Node2D, amount: int, source: Node2D)
 signal character_died(character: Node2D)
 
+# Ability Events
+signal ability_used(caster: Node2D, target: Node2D, ability: Ability)
+
+# Story Events
+signal story_event_triggered(event: StoryEvent)
+
 # Tile Events
 signal tile_hovered(tile_pos: Vector2i)

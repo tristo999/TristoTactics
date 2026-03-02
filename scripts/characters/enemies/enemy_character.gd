@@ -2,13 +2,11 @@
 extends CharacterBase
 class_name EnemyCharacter
 
-@export_group("AI Behavior")
-@export var ai_pause_duration: float = 1.0
+var ai_pause_duration: float = 1.0
 
 func _ready() -> void:
 	team = Constants.TEAM_ENEMY
-	# Apply ai_pause_duration from CharacterData if present
-	if character_data and character_data.override_stats:
+	if character_data:
 		ai_pause_duration = character_data.ai_pause_duration
 	super._ready()
 
@@ -24,7 +22,7 @@ func get_ai_move_target() -> Vector2i:
 ## Returns the character to attack, or null if none in range.
 func get_ai_attack_target() -> CharacterBase:
 	var target = _find_nearest_player()
-	if target and not has_attacked and can_attack_target(target):
+	if target and not has_used_action and can_attack_target(target):
 		return target
 	return null
 
@@ -58,18 +56,30 @@ func _get_best_tile_toward(target: Node2D) -> Vector2i:
 	
 	# Direct path found — use it
 	if path.size() >= 2:
-		# Find the best tile that puts us in attack range
-		for i in range(min(movement_left, path.size() - 1), 0, -1):
+		# Walk the path accumulating terrain costs to find the farthest reachable index
+		var max_reachable_index := 0
+		var cost_so_far := 0
+		for i in range(1, path.size()):
+			var step_cost: int = TerrainRegistry.get_move_cost(path[i], tilemap)
+			if cost_so_far + step_cost > movement_left:
+				break
+			cost_so_far += step_cost
+			max_reachable_index = i
+		
+		if max_reachable_index == 0:
+			return current_tile
+		
+		# Find the best reachable tile that puts us in attack range
+		for i in range(max_reachable_index, 0, -1):
 			var tile = path[i]
 			var dist = _tile_distance(tile, target.current_tile)
 			if dist >= attack_range_min and dist <= attack_range_max:
 				return tile
 		
 		# Can't reach attack range, move as close as possible without landing on target
-		var max_index = min(movement_left, path.size() - 1)
-		if path[max_index] == target.current_tile and max_index > 0:
-			max_index -= 1
-		return path[max_index]
+		if path[max_reachable_index] == target.current_tile and max_reachable_index > 0:
+			max_reachable_index -= 1
+		return path[max_reachable_index]
 	
 	# No direct path (blocked by other characters) — pick the reachable tile
 	# closest to the target so we still make progress.

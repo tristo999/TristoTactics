@@ -9,6 +9,7 @@ var base_layer: TileMapLayer
 var current_char_tile: Vector2i = Constants.INVALID_TILE
 var movement_tiles: Array = []
 var attack_tiles: Array = []
+var ability_tiles: Array = []
 var hover_tile: Vector2i = Constants.INVALID_TILE
 
 # --- Style Constants ---
@@ -24,6 +25,11 @@ const COLOR_MOVEMENT := Color(0.05, 0.08, 0.18, 0.65)
 const COLOR_ATTACK := Color(0.95, 0.15, 0.1, 0.65)
 const ATTACK_LINE_WIDTH := 1.5
 const ATTACK_INSET := 3.0
+
+# Ability range: cyan/blue smaller hollow squares
+const COLOR_ABILITY := Color(0.2, 0.7, 1.0, 0.65)
+const ABILITY_LINE_WIDTH := 1.5
+const ABILITY_INSET := 3.0
 
 # Mouse hover: light outline
 const COLOR_HOVER := Color(1.0, 1.0, 1.0, 0.35)
@@ -48,6 +54,10 @@ func set_attack_tiles(tiles: Array) -> void:
 	attack_tiles = tiles
 	queue_redraw()
 
+func set_ability_tiles(tiles: Array) -> void:
+	ability_tiles = tiles
+	queue_redraw()
+
 func set_hover(tile: Vector2i) -> void:
 	if tile == hover_tile:
 		return
@@ -64,12 +74,14 @@ func clear_hover() -> void:
 func clear_range_highlights() -> void:
 	movement_tiles = []
 	attack_tiles = []
+	ability_tiles = []
 	queue_redraw()
 
 func clear_all() -> void:
 	current_char_tile = Constants.INVALID_TILE
 	movement_tiles = []
 	attack_tiles = []
+	ability_tiles = []
 	hover_tile = Constants.INVALID_TILE
 	queue_redraw()
 
@@ -94,6 +106,15 @@ func _draw() -> void:
 		draw_rect(
 			Rect2(center - half + inset_vec, tile_size - inset_vec * 2),
 			COLOR_ATTACK, false, ATTACK_LINE_WIDTH
+		)
+
+	# 2b. Ability range — cyan/blue hollow squares
+	var ability_inset_vec := Vector2(ABILITY_INSET, ABILITY_INSET)
+	for tile in ability_tiles:
+		var center := base_layer.map_to_local(tile)
+		draw_rect(
+			Rect2(center - half + ability_inset_vec, tile_size - ability_inset_vec * 2),
+			COLOR_ABILITY, false, ABILITY_LINE_WIDTH
 		)
 
 	# 3. Current character — green hollow square (full tile size)

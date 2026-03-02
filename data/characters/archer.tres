@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/characters/base/character_data.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bek7dllvhxeoy" path="res://assets/sprites/characters/archer_idle.png" id="2_idle"]
+[ext_resource type="Texture2D" path="res://assets/sprites/characters/archer_walk.png" id="3_walk"]
+[ext_resource type="Resource" path="res://assets/sprites/portraits/elena_portrait.tres" id="4_portrait"]
+
+[resource]
+script = ExtResource("1")
+display_name = "Elena"
+description = "Ranged archer. Low HP but deadly from a distance."
+portrait = ExtResource("4_portrait")
+max_hp = 18
+attack_power = 8
+defense = 3
+initiative = 12
+crit_chance = 0.08
+move_speed = 90.0
+move_range = 4
+attack_range_min = 1
+attack_range_max = 4
+idle_texture = ExtResource("2_idle")
+walk_texture = ExtResource("3_walk")
