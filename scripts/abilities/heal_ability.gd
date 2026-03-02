@@ -22,7 +22,7 @@ func execute(caster, target) -> Dictionary:
 
 	consume_use()
 
-	var actual_heal := mini(heal_amount, target_char.max_hp - target_char.current_hp)
+	var actual_heal := min(heal_amount, target_char.max_hp - target_char.current_hp)
 	target_char.heal(actual_heal, caster)
 
 	return {"success": true, "healed": actual_heal, "target": target_char.name}

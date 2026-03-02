@@ -282,6 +282,16 @@ func get_ability_targets(ability: Ability) -> Array:
 			Ability.TargetType.SELF:
 				if character == self:
 					targets.append(character)
+			Ability.TargetType.ALL_ALLIES:
+				if character.team == team:
+					targets.append(character)
+			Ability.TargetType.ALL_ENEMIES:
+				if character.team != team:
+					targets.append(character)
+			Ability.TargetType.TILE:
+				pass # Tile targeting is not resolved to character targets here
+			_:
+				push_warning("Unsupported ability target type in get_ability_targets: %s" % [str(ability.target_type)])
 	return targets
 
 func _tile_distance(from: Vector2i, to: Vector2i) -> int:

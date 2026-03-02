@@ -197,6 +197,10 @@ func _enter_best_player_state() -> void:
 		_enter_attack_state()
 	elif can_move:
 		_enter_move_state()
+	elif can_ability:
+		# Only abilities remain — stay in a selecting state so the action bar is interactive
+		state = BattleState.PLAYER_SELECTING_ABILITY
+		_clear_highlights()
 	# Don't auto-enter ability state; player picks it from the bar
 
 ## Enter movement selection.
