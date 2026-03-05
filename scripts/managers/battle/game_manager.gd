@@ -5,11 +5,9 @@ extends Node
 
 enum BattleState {
 	INACTIVE, ## Battle hasn't started or has ended
-	PLAYER_SELECTING_MOVE, ## Movement tiles highlighted — click destination or use menu
+	PLAYER_IDLE, ## Player's turn — menu active, awaiting input
 	PLAYER_MOVING, ## Character is animating along a path
-	PLAYER_SELECTING_ATTACK, ## Attack range highlighted — click target or use menu
-	PLAYER_ATTACKING, ## Attack animation is playing
-	PLAYER_SELECTING_ABILITY, ## Ability range highlighted — click target
+	PLAYER_ACTING, ## Attack / ability animation is playing
 	PLAYER_WAITING, ## Dialog / tutorial lock — all input blocked
 	ENEMY_TURN_START, ## Camera focused, brief pause before action
 	ENEMY_SELECTING_MOVE, ## Movement range shown — AI "thinking"
@@ -18,7 +16,11 @@ enum BattleState {
 	ENEMY_ATTACKING, ## Enemy attack animation playing
 }
 
+## Which action the player is currently targeting during PLAYER_IDLE.
+enum PlayerMode {MOVE, ATTACK, ABILITY}
+
 var state: BattleState = BattleState.INACTIVE
+var player_mode: PlayerMode = PlayerMode.MOVE
 
 # --- Exports & Refs ---
 
@@ -112,8 +114,8 @@ func _start_character_turn(character: CharacterBase) -> void:
 	if character.team == Constants.TEAM_ENEMY and character is EnemyCharacter:
 		_execute_enemy_turn(character as EnemyCharacter)
 	else:
-		# Player turn: auto-enter best state (movement range + bar visible)
-		_enter_best_player_state()
+		# Player turn — enter idle with movement highlights
+		_return_to_idle()
 
 ## Staged enemy AI turn that mirrors the player flow with visual pauses.
 func _execute_enemy_turn(enemy: EnemyCharacter) -> void:
@@ -182,64 +184,50 @@ func _advance_turn() -> void:
 
 # --- Player State Transitions (called by BattleInputHandler / BottomActionBar) ---
 
-## Pick the best state based on remaining actions (attack > ability > move).
-func _enter_best_player_state() -> void:
+## Return to PLAYER_IDLE after any action completes.
+## Auto-ends the turn when nothing remains.
+func _return_to_idle() -> void:
 	var can_move := current_character.movement_left > 0
-	var can_attack := not current_character.has_used_action and current_character.get_targets_in_range().size() > 0
-	var can_ability := not current_character.has_used_action and current_character.has_abilities()
-
-	if not can_move and not can_attack and not can_ability:
-		# All actions spent — auto-end turn
+	var can_act := not current_character.has_used_action
+	if not can_move and not can_act:
 		_auto_end_turn()
 		return
-
-	if can_attack:
-		_enter_attack_state()
-	elif can_move:
-		_enter_move_state()
-	# Don't auto-enter ability state; player picks it from the bar
-
-## Enter movement selection.
-func _enter_move_state() -> void:
-	state = BattleState.PLAYER_SELECTING_MOVE
-	_show_movement_only()
-
-## Enter attack selection.
-func _enter_attack_state() -> void:
-	state = BattleState.PLAYER_SELECTING_ATTACK
-	_show_attack_only()
+	state = BattleState.PLAYER_IDLE
+	player_mode = PlayerMode.MOVE
+	selected_ability = null
+	_update_highlights()
 
 ## BottomActionBar "Move" button.
 func enter_move_selection() -> void:
-	if state not in [BattleState.PLAYER_SELECTING_MOVE, BattleState.PLAYER_SELECTING_ATTACK, BattleState.PLAYER_SELECTING_ABILITY]:
+	if state != BattleState.PLAYER_IDLE:
 		return
-	if current_character.movement_left <= 0:
-		return
+	player_mode = PlayerMode.MOVE
 	selected_ability = null
-	_enter_move_state()
+	_update_highlights()
 
 ## BottomActionBar "Attack" button.
 func enter_attack_selection() -> void:
-	if state not in [BattleState.PLAYER_SELECTING_MOVE, BattleState.PLAYER_SELECTING_ATTACK, BattleState.PLAYER_SELECTING_ABILITY]:
+	if state != BattleState.PLAYER_IDLE:
 		return
 	if current_character.has_used_action:
 		return
+	player_mode = PlayerMode.ATTACK
 	selected_ability = null
-	_enter_attack_state()
+	_update_highlights()
 
-## BottomActionBar ability button — enter ability targeting mode.
+## BottomActionBar ability button — switch to ability targeting.
 func enter_ability_selection(ability: Ability) -> void:
-	if state not in [BattleState.PLAYER_SELECTING_MOVE, BattleState.PLAYER_SELECTING_ATTACK, BattleState.PLAYER_SELECTING_ABILITY]:
+	if state != BattleState.PLAYER_IDLE:
 		return
 	if current_character.has_used_action:
 		return
+	player_mode = PlayerMode.ABILITY
 	selected_ability = ability
-	state = BattleState.PLAYER_SELECTING_ABILITY
-	_show_ability_range(ability)
+	_update_highlights()
 
-## End current character's turn.
+## End current character's turn (always works from PLAYER_IDLE).
 func end_player_turn() -> void:
-	if state not in [BattleState.PLAYER_SELECTING_MOVE, BattleState.PLAYER_SELECTING_ATTACK, BattleState.PLAYER_SELECTING_ABILITY]:
+	if state != BattleState.PLAYER_IDLE:
 		return
 	selected_ability = null
 	_clear_highlights()
@@ -250,21 +238,13 @@ func _auto_end_turn() -> void:
 	_clear_highlights()
 	_advance_turn()
 
-## Right-click / cancel — go back one level.
+## Right-click / cancel — return to move mode.
 func cancel_action() -> void:
-	match state:
-		BattleState.PLAYER_SELECTING_ATTACK:
-			if current_character.movement_left > 0:
-				_enter_move_state()
-		BattleState.PLAYER_SELECTING_ABILITY:
-			selected_ability = null
-			# Go back to attack if possible, otherwise move
-			if not current_character.has_used_action and current_character.get_targets_in_range().size() > 0:
-				_enter_attack_state()
-			elif current_character.movement_left > 0:
-				_enter_move_state()
-		BattleState.PLAYER_SELECTING_MOVE:
-			pass
+	if state != BattleState.PLAYER_IDLE:
+		return
+	player_mode = PlayerMode.MOVE
+	selected_ability = null
+	_update_highlights()
 
 func has_actions_remaining() -> bool:
 	if not current_character:
@@ -276,7 +256,7 @@ func has_actions_remaining() -> bool:
 # --- Player Actions (called by BattleInputHandler) ---
 
 func request_move(character: CharacterBase, target_tile: Vector2i) -> bool:
-	if state != BattleState.PLAYER_SELECTING_MOVE or character != current_character:
+	if state != BattleState.PLAYER_IDLE or character != current_character:
 		return false
 	state = BattleState.PLAYER_MOVING
 	_clear_highlights()
@@ -284,25 +264,24 @@ func request_move(character: CharacterBase, target_tile: Vector2i) -> bool:
 	return true
 
 func request_attack(character: CharacterBase, target: CharacterBase) -> bool:
-	if state != BattleState.PLAYER_SELECTING_ATTACK or character != current_character:
+	if state != BattleState.PLAYER_IDLE or character != current_character:
 		return false
 	if character.has_used_action:
 		return false
 
-	state = BattleState.PLAYER_ATTACKING
+	state = BattleState.PLAYER_ACTING
 	_clear_highlights()
 	var result = await character.attack_target(target)
-	# After attack completes, enter best next state
-	_enter_best_player_state()
+	_return_to_idle()
 	return result.success
 
 func request_ability(character: CharacterBase, ability: Ability, target: CharacterBase) -> bool:
-	if state != BattleState.PLAYER_SELECTING_ABILITY or character != current_character:
+	if state != BattleState.PLAYER_IDLE or character != current_character:
 		return false
 	if character.has_used_action or not ability.can_use():
 		return false
 
-	state = BattleState.PLAYER_ATTACKING # Reuse attacking state to block input
+	state = BattleState.PLAYER_ACTING
 	_clear_highlights()
 
 	# Face the target
@@ -315,10 +294,10 @@ func request_ability(character: CharacterBase, ability: Ability, target: Charact
 
 	EventBus.ability_used.emit(character, target, ability)
 
-	# Brief pause so the player sees the heal effect
+	# Brief pause so the player sees the effect
 	await get_tree().create_timer(0.5).timeout
 
-	_enter_best_player_state()
+	_return_to_idle()
 	return result.get("success", false)
 
 # --- Signal Handlers ---
@@ -329,9 +308,8 @@ func _on_character_movement_finished(character: CharacterBase) -> void:
 	# Enemy movement is handled by the staged coroutine — no action needed here
 	if is_enemy_turn():
 		return
-	# Player movement finished — auto-transition to best next state
-	# (attack if targets in range, or move if movement left, or auto-end)
-	_enter_best_player_state()
+	# Player movement finished — return to idle
+	_return_to_idle()
 
 func _on_character_died(character: CharacterBase) -> void:
 	var was_current = character == current_character
@@ -351,6 +329,17 @@ func _on_character_died(character: CharacterBase) -> void:
 		_start_character_turn(turn_order[next_index])
 
 # --- Highlights & Camera ---
+
+## Refresh tile highlights based on current player_mode.
+func _update_highlights() -> void:
+	match player_mode:
+		PlayerMode.MOVE:
+			_show_movement_only()
+		PlayerMode.ATTACK:
+			_show_attack_only()
+		PlayerMode.ABILITY:
+			if selected_ability:
+				_show_ability_range(selected_ability)
 
 func _show_movement_only() -> void:
 	if not tilemap_node or not current_character:

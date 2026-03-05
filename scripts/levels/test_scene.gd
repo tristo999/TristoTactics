@@ -1,6 +1,6 @@
 extends BaseLevel
 
-const PORTRAIT_MARCUS := preload("res://assets/sprites/portraits/marcus_portrait.tres")
+const PORTRAIT_HERO := preload("res://assets/sprites/portraits/hero_portrait.tres")
 const PORTRAIT_ELENA := preload("res://assets/sprites/portraits/elena_portrait.tres")
 
 func _ready():
@@ -15,9 +15,9 @@ func _setup_intro_event() -> void:
 	_setup_victory_event(gm)
 
 	var line1 := DialogueLine.new()
-	line1.speaker = "Marcus"
+	line1.speaker = PlayerDataManager.get_player_name()
 	line1.text = "There they are... goblins blocking the mountain pass. We need to clear them out."
-	line1.portrait = PORTRAIT_MARCUS
+	line1.portrait = PORTRAIT_HERO
 
 	var line2 := DialogueLine.new()
 	line2.speaker = "Elena"
@@ -25,9 +25,9 @@ func _setup_intro_event() -> void:
 	line2.portrait = PORTRAIT_ELENA
 
 	var line3 := DialogueLine.new()
-	line3.speaker = "Marcus"
+	line3.speaker = PlayerDataManager.get_player_name()
 	line3.text = "Good plan. Let's move!"
-	line3.portrait = PORTRAIT_MARCUS
+	line3.portrait = PORTRAIT_HERO
 
 	var event := DialogueEvent.new()
 	event.lines = [line1, line2, line3]
@@ -35,9 +35,9 @@ func _setup_intro_event() -> void:
 
 func _setup_victory_event(gm: Node) -> void:
 	var v1 := DialogueLine.new()
-	v1.speaker = "Marcus"
+	v1.speaker = PlayerDataManager.get_player_name()
 	v1.text = "That's the last of them. The pass is clear."
-	v1.portrait = PORTRAIT_MARCUS
+	v1.portrait = PORTRAIT_HERO
 
 	var v2 := DialogueLine.new()
 	v2.speaker = "Elena"
@@ -45,9 +45,9 @@ func _setup_victory_event(gm: Node) -> void:
 	v2.portrait = PORTRAIT_ELENA
 
 	var v3 := DialogueLine.new()
-	v3.speaker = "Marcus"
+	v3.speaker = PlayerDataManager.get_player_name()
 	v3.text = "Let's keep moving. There's no telling what else lies ahead."
-	v3.portrait = PORTRAIT_MARCUS
+	v3.portrait = PORTRAIT_HERO
 
 	var victory_dialogue := DialogueEvent.new()
 	victory_dialogue.lines = [v1, v2, v3]

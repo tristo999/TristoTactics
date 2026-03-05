@@ -76,6 +76,9 @@ func _apply_character_data() -> void:
 		_sprite.sprite_frames = SpriteFrameBuilder.build(
 			character_data.idle_texture, character_data.walk_texture
 		)
+		# Replacing sprite_frames keeps the old animation name but stops playback.
+		# Force-play so the idle animation actually runs with the new frames.
+		_sprite.play(&"idle_" + facing)
 
 func _create_health_bar() -> void:
 	health_bar = HealthBar.new()

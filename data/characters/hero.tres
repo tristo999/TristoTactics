@@ -3,11 +3,11 @@
 [ext_resource type="Script" path="res://scripts/characters/base/character_data.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://btwjvapwp0t8w" path="res://assets/test/World of Solaria Demo Pack Update 04/16x16/Sprites/New/Chris Idle.png" id="2_idle"]
 [ext_resource type="Texture2D" path="res://assets/test/World of Solaria Demo Pack Update 04/16x16/Sprites/New/Chris Walk.png" id="3_walk"]
-[ext_resource type="Resource" path="res://assets/sprites/portraits/marcus_portrait.tres" id="4_portrait"]
+[ext_resource type="Resource" path="res://assets/sprites/portraits/hero_portrait.tres" id="4_portrait"]
 
 [resource]
 script = ExtResource("1")
-display_name = "Marcus"
+display_name = "Hero"
 description = "Frontline warrior. Balanced stats with solid HP and attack."
 portrait = ExtResource("4_portrait")
 max_hp = 25

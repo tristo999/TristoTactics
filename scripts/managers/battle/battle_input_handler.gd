@@ -55,13 +55,14 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	var tile := _get_tile_at_mouse()
 
-	match game_manager.state:
-		game_manager.BattleState.PLAYER_SELECTING_MOVE:
-			_handle_selecting_move(tile)
-		game_manager.BattleState.PLAYER_SELECTING_ATTACK:
-			_handle_selecting_attack(tile)
-		game_manager.BattleState.PLAYER_SELECTING_ABILITY:
-			_handle_selecting_ability(tile)
+	if game_manager.state == game_manager.BattleState.PLAYER_IDLE:
+		match game_manager.player_mode:
+			game_manager.PlayerMode.MOVE:
+				_handle_selecting_move(tile)
+			game_manager.PlayerMode.ATTACK:
+				_handle_selecting_attack(tile)
+			game_manager.PlayerMode.ABILITY:
+				_handle_selecting_ability(tile)
 
 # --- State Handlers ---
 
@@ -105,11 +106,7 @@ func _handle_selecting_ability(tile: Vector2i) -> void:
 # --- End Turn (double-tap Space) ---
 
 func _handle_end_turn_request() -> void:
-	if game_manager.state not in [
-		game_manager.BattleState.PLAYER_SELECTING_MOVE,
-		game_manager.BattleState.PLAYER_SELECTING_ATTACK,
-		game_manager.BattleState.PLAYER_SELECTING_ABILITY,
-	]:
+	if game_manager.state != game_manager.BattleState.PLAYER_IDLE:
 		return
 
 	if game_manager.has_actions_remaining():

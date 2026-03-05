@@ -28,6 +28,14 @@ text = "Tristo Tactics"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="NewGameButton" type="Button" parent="VBox"]
+layout_mode = 2
+text = "New Game"
+
+[node name="ContinueButton" type="Button" parent="VBox"]
+layout_mode = 2
+text = "Continue Game"
+
 [node name="StartButton" type="Button" parent="VBox"]
 layout_mode = 2
 text = "Start Game"

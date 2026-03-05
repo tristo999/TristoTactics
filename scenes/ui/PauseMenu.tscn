@@ -33,8 +33,15 @@ anchor_bottom = 0.9
 
 [node name="ResumeButton" type="Button" parent="Panel/VBox"]
 text = "Resume"
+
 [node name="SettingsButton" type="Button" parent="Panel/VBox"]
 text = "Settings"
+
+[node name="RestartButton" type="Button" parent="Panel/VBox"]
+text = "Restart Level"
+
+[node name="MainMenuButton" type="Button" parent="Panel/VBox"]
+text = "Return to Main Menu"
 
 [node name="QuitButton" type="Button" parent="Panel/VBox"]
 text = "Quit to Desktop"

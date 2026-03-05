@@ -18,6 +18,7 @@ var active_character: CharacterBase = null
 var _bound_ability: Ability = null
 
 var _last_state: int = -1
+var _last_mode: int = -1
 
 # --- Lifecycle ---
 
@@ -56,10 +57,12 @@ func _cache_references() -> void:
 func _process(_delta: float) -> void:
 	if not visible or not game_manager:
 		return
-	# Lightweight state check — only refresh highlight when state changes.
+	# Refresh highlight when state or player mode changes.
 	var current_state: int = game_manager.state
-	if current_state != _last_state:
+	var current_mode: int = game_manager.player_mode
+	if current_state != _last_state or current_mode != _last_mode:
 		_last_state = current_state
+		_last_mode = current_mode
 		_update_active_highlight()
 
 # --- Signal Handlers ---
@@ -144,12 +147,11 @@ func _refresh() -> void:
 func _update_active_highlight() -> void:
 	if not game_manager:
 		return
-	var gm_state: int = game_manager.state
-	_set_button_active(move_button, gm_state == game_manager.BattleState.PLAYER_SELECTING_MOVE)
-	_set_button_active(attack_button, gm_state == game_manager.BattleState.PLAYER_SELECTING_ATTACK)
-	# Ability button highlights when in ability selection mode
-	_set_button_active(ability_button, gm_state == game_manager.BattleState.PLAYER_SELECTING_ABILITY)
-	# End Turn is never "active" in a selection sense
+	var is_idle: bool = game_manager.state == game_manager.BattleState.PLAYER_IDLE
+	var mode: int = game_manager.player_mode
+	_set_button_active(move_button, is_idle and mode == game_manager.PlayerMode.MOVE)
+	_set_button_active(attack_button, is_idle and mode == game_manager.PlayerMode.ATTACK)
+	_set_button_active(ability_button, is_idle and mode == game_manager.PlayerMode.ABILITY)
 	_set_button_active(end_turn_button, false)
 
 func _set_button_active(button: Button, active: bool) -> void:
@@ -178,19 +180,27 @@ func _refresh_ability_button() -> void:
 		_bound_ability = null
 	elif active_character.has_used_action:
 		# Already used action this turn
+		var ab: Ability = all_abilities[0]
 		ability_button.disabled = true
-		ability_button.text = all_abilities[0].ability_name
+		ability_button.text = _ability_label(ab)
 		ability_button.tooltip_text = "Already used action"
 		_bound_ability = null
 	elif usable.is_empty():
 		# Has abilities but all uses spent
+		var ab: Ability = all_abilities[0]
 		ability_button.disabled = true
-		ability_button.text = all_abilities[0].ability_name
+		ability_button.text = _ability_label(ab)
 		ability_button.tooltip_text = "No uses remaining"
 		_bound_ability = null
 	else:
 		# Has a usable ability
 		_bound_ability = usable[0]
 		ability_button.disabled = false
-		ability_button.text = _bound_ability.ability_name
+		ability_button.text = _ability_label(_bound_ability)
 		ability_button.tooltip_text = _bound_ability.description
+
+## Format ability button label with remaining uses, e.g. "Heal (2/3)".
+func _ability_label(ability: Ability) -> String:
+	if ability.max_uses > 0:
+		return "%s (%d/%d)" % [ability.ability_name, ability.uses_left, ability.max_uses]
+	return ability.ability_name

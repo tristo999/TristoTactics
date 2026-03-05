@@ -8,6 +8,8 @@ func _ready():
 	$VBox/StartButton.pressed.connect(_on_start_pressed)
 	$VBox/SettingsButton.pressed.connect(_on_settings_pressed)
 	$VBox/QuitButton.pressed.connect(_on_quit_pressed)
+	$VBox/NewGameButton.pressed.connect(_on_new_game_pressed)
+	$VBox/ContinueButton.pressed.connect(_on_continue_game_pressed)
 	
 	# Create menu stack for sub-menus
 	menu_stack = MenuStack.new()
@@ -36,3 +38,14 @@ func _on_settings_pressed():
 
 func _on_quit_pressed():
 	get_tree().quit()
+
+func _on_new_game_pressed():
+	get_tree().change_scene_to_file("res://scenes/ui/NameEntryMenu.tscn")
+
+func _on_continue_game_pressed():
+	if not FileAccess.file_exists(PlayerDataManager.SAVE_PATH):
+		# No save found — fall through to new game name entry
+		_on_new_game_pressed()
+		return
+	PlayerDataManager.load_player_data()
+	get_tree().change_scene_to_file("res://scenes/levels/test_scene.tscn")
