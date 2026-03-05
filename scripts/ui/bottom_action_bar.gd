@@ -23,6 +23,7 @@ var _last_mode: int = -1
 # --- Lifecycle ---
 
 func _ready() -> void:
+	add_to_group("action_bar")
 	EventBus.turn_started.connect(_on_turn_started)
 	EventBus.turn_ended.connect(_on_turn_ended)
 	EventBus.character_movement_finished.connect(_on_character_updated)

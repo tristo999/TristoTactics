@@ -76,8 +76,11 @@ func _display_character(character: CharacterBase) -> void:
 		return
 
 	var display_name := character.name
-	if character.character_data and character.character_data.display_name != "":
-		display_name = character.character_data.display_name
+	if character.character_data:
+		if character.character_data.use_player_name:
+			display_name = PlayerDataManager.get_player_name()
+		elif character.character_data.display_name != "":
+			display_name = character.character_data.display_name
 
 	# Indicate if viewing a different unit vs the active character
 	if character == active_character:

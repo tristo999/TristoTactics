@@ -1,0 +1,207 @@
+# WalkingPlayer - Tile-snapped free-roam controller for walking scenes.
+# Moves one tile at a time, respecting the same walkability rules as the
+# turn-based system (base_layer must have a cell, AStar must not be solid).
+# Smoothing: input buffering, first-step speed boost, and higher base speed
+# combine to make tile movement feel nearly as fluid as free movement.
+# The embedded Camera2D follows automatically as a child node.
+extends Node2D
+class_name WalkingPlayer
+
+## Tiles per second during continuous walking.
+@export var walk_speed: float = 10.0
+## First step into a direction is this much faster (removes perceived input lag).
+@export var first_step_boost: float = 1.5
+
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+
+var current_tile: Vector2i = Vector2i.ZERO
+
+var _tilemap: Node = null
+var _base_layer: TileMapLayer = null
+var _astar: AStarGrid2D = null
+
+var _is_moving: bool = false
+var _in_dialogue: bool = false
+var _facing: String = "down"
+## Direction buffered while a tween is in flight; applied the instant it lands.
+var _queued_dir: Vector2i = Vector2i.ZERO
+## Tracks whether we are continuing a held direction or starting fresh.
+var _last_step_dir: Vector2i = Vector2i.ZERO
+
+func _ready() -> void:
+	add_to_group("walking_player")
+	# Deferred so Tilemap's _ready() (AStar setup) runs first
+	call_deferred("_init_tilemap")
+
+func _init_tilemap() -> void:
+	_tilemap = get_tree().get_first_node_in_group("tilemap")
+	if _tilemap:
+		_base_layer = _tilemap.get_node_or_null("BaseGrid")
+		_astar = _tilemap.get("astar_grid")
+	if _base_layer:
+		var local_pos := _base_layer.to_local(global_position)
+		current_tile = _base_layer.local_to_map(local_pos)
+		global_position = _base_layer.to_global(_base_layer.map_to_local(current_tile))
+
+func _process(_delta: float) -> void:
+	if _in_dialogue:
+		return
+
+	var dx := int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
+	var dy := int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
+	var dir := Vector2i(dx, dy)
+
+	if _is_moving:
+		# Buffer the current input so it fires the moment the tween finishes.
+		_queued_dir = dir
+		return
+
+	if dir == Vector2i.ZERO:
+		_queued_dir = Vector2i.ZERO
+		_last_step_dir = Vector2i.ZERO
+		sprite.play("idle_" + _facing)
+		return
+
+	_try_step(dir)
+
+## Attempt to move one tile in `dir`. Called both from _process and from the
+## tween-complete callback (for buffered input).
+func _try_step(dir: Vector2i) -> void:
+	if dir == Vector2i.ZERO:
+		sprite.play("idle_" + _facing)
+		return
+
+	_update_facing(dir)
+
+	var target_tile := current_tile + dir
+
+	if dir.x != 0 and dir.y != 0:
+		var h_tile := current_tile + Vector2i(dir.x, 0)
+		var v_tile := current_tile + Vector2i(0, dir.y)
+		if not (_is_tile_walkable(target_tile) and _is_tile_walkable(h_tile) and _is_tile_walkable(v_tile)):
+			sprite.play("idle_" + _facing)
+			return
+	else:
+		if not _is_tile_walkable(target_tile):
+			sprite.play("idle_" + _facing)
+			return
+
+	# Apply first-step boost when starting movement from rest or changing direction.
+	var speed := walk_speed
+	if dir != _last_step_dir:
+		speed *= first_step_boost
+
+	# Diagonal steps cover √2 more world distance — scale duration to match.
+	var is_diagonal := dir.x != 0 and dir.y != 0
+	if is_diagonal:
+		speed /= sqrt(2.0)
+
+	_last_step_dir = dir
+	_step_to(target_tile, speed)
+
+func _step_to(tile: Vector2i, speed: float) -> void:
+	current_tile = tile
+	_is_moving = true
+	sprite.play("walk_" + _facing)
+
+	var target_pos := _base_layer.to_global(_base_layer.map_to_local(tile))
+	var duration := 1.0 / speed
+
+	var tween := create_tween()
+	tween.tween_property(self , "global_position", target_pos, duration)
+	tween.tween_callback(func() -> void:
+		_is_moving = false
+		# Immediately consume buffered input — no dropped keystrokes.
+		var buffered := _queued_dir
+		_queued_dir = Vector2i.ZERO
+		_try_step(buffered)
+	)
+
+func _is_tile_walkable(tile: Vector2i) -> bool:
+	if not _base_layer:
+		return false
+	if _base_layer.get_cell_atlas_coords(tile) == Vector2i(-1, -1):
+		return false
+	if _astar and _astar.is_in_boundsv(tile) and _astar.is_point_solid(tile):
+		return false
+	return true
+
+func _update_facing(dir: Vector2i) -> void:
+	if dir.x > 0: _facing = "right"
+	elif dir.x < 0: _facing = "left"
+	elif dir.y > 0: _facing = "down"
+	else: _facing = "up"
+
+# --- NPC Interaction ---
+
+func _unhandled_input(event: InputEvent) -> void:
+	if _in_dialogue or not _base_layer:
+		return
+
+	# Space / ui_accept — talk to whoever is on the faced tile
+	if event.is_action_pressed("ui_accept"):
+		var faced_tile := current_tile + _facing_to_dir()
+		var npc := _npc_at_tile(faced_tile)
+		if npc:
+			get_viewport().set_input_as_handled()
+			_interact_with_npc(npc)
+		return
+
+	# Left-click — talk to an adjacent NPC that was clicked
+	if not (event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT):
+		return
+
+	var local_pos := _base_layer.to_local(get_global_mouse_position())
+	var click_tile := _base_layer.local_to_map(local_pos)
+
+	var diff := click_tile - current_tile
+	if diff == Vector2i.ZERO or abs(diff.x) > 1 or abs(diff.y) > 1:
+		return
+
+	var npc := _npc_at_tile(click_tile)
+	if not npc:
+		return
+
+	get_viewport().set_input_as_handled()
+	_interact_with_npc(npc)
+
+func _npc_at_tile(tile: Vector2i) -> WalkingNPC:
+	for n in get_tree().get_nodes_in_group("walking_npc"):
+		if (n as WalkingNPC).current_tile == tile:
+			return n as WalkingNPC
+	return null
+
+func _facing_to_dir() -> Vector2i:
+	match _facing:
+		"right": return Vector2i(1, 0)
+		"left": return Vector2i(-1, 0)
+		"down": return Vector2i(0, 1)
+		"up": return Vector2i(0, -1)
+	return Vector2i.ZERO
+
+# --- Cinematic lock / unlock ---
+
+## Lock all player movement (used by CinematicTrigger during event sequences).
+func lock_movement() -> void:
+	_in_dialogue = true
+	_is_moving = false
+	_queued_dir = Vector2i.ZERO
+	_last_step_dir = Vector2i.ZERO
+	sprite.play("idle_" + _facing)
+
+## Release movement lock after a cinematic sequence ends.
+func unlock_movement() -> void:
+	_in_dialogue = false
+
+func _interact_with_npc(npc: WalkingNPC) -> void:
+	# Face toward the NPC
+	var diff := npc.current_tile - current_tile
+	_update_facing(diff)
+
+	lock_movement()
+
+	var box: CanvasLayer = get_tree().get_first_node_in_group("dialogue_box")
+	if box and box.has_method("play_sequence"):
+		await box.play_sequence(npc.get_dialogue())
+
+	unlock_movement()

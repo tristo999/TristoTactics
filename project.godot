@@ -36,6 +36,11 @@ PlayerDataManager="*res://scripts/managers/player_data_manager.gd"
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[rendering]
+
+environment/default_clear_color=Color(0, 0, 0, 1)
+textures/canvas_textures/default_texture_filter=0
+
 [editor]
 
 version_control/plugin_name="GitPlugin"
@@ -86,6 +91,11 @@ ui_zoom_out={
 ]
 }
 
-[rendering]
+[editor]
 
-textures/canvas_textures/default_texture_filter=0
+[steam]
+
+initialization/app_id=0
+initialization/initialize_on_startup=false
+initialization/embed_callbacks=false
+multiplayer_peer/max_channels=4

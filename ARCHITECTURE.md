@@ -16,6 +16,7 @@
   - [Terrain Registry](#terrain-registry)
   - [Audio Pipeline](#audio-pipeline)
   - [Settings Manager](#settings-manager)
+  - [PlayerDataManager](#playerdatamanager)
 - [Character System](#character-system)
   - [CharacterBase](#characterbase)
   - [Player Characters](#player-characters)
@@ -32,6 +33,30 @@
   - [BFS Reachability](#bfs-reachability)
   - [HighlightRenderer](#highlightrenderer)
   - [Tile Layers](#tile-layers)
+- [Walking Scene System](#walking-scene-system)
+  - [WalkingScene](#walkingscene)
+  - [WalkingPlayer](#walkingplayer)
+  - [WalkingNPC](#walkingnpc)
+  - [CinematicTrigger](#cinematictrigger)
+  - [OpeningCorridorScene](#openingcorridorscene)
+- [Screen Effects](#screen-effects)
+  - [ScreenOverlay](#screenoverlay)
+  - [Darkness Shader](#darkness-shader)
+  - [Fog Shader](#fog-shader)
+  - [Bleed Shader](#bleed-shader)
+  - [CanvasLayer Ordering](#canvaslayer-ordering)
+- [Story Events](#story-events)
+  - [StoryEvent](#storyevent)
+  - [DialogueEvent](#dialogueevent)
+  - [DialogueBox](#dialoguebox)
+  - [DialogueLine](#dialogueline)
+  - [WaitEvent](#waitevent)
+  - [FlashEvent](#flashevent)
+  - [OverlayEvent](#overlayevent)
+  - [FogEvent](#fogevent)
+  - [GlitchTextEvent](#glitchtextevent)
+  - [NameEntryEvent](#nameentryevent)
+  - [SceneChangeEvent](#scenechangeevent)
 - [UI Systems](#ui-systems)
   - [Attack Animation Overlay](#attack-animation-overlay)
   - [Character Info Panel](#character-info-panel)
@@ -39,17 +64,14 @@
   - [Health Bars](#health-bars)
   - [Speed Toggle Button](#speed-toggle-button)
   - [Victory/Defeat Screen](#victorydefeat-screen)
+  - [GlitchTextDisplay](#glitchtextdisplay)
+  - [NameEntryDisplay](#nameentrydisplay)
 - [Menu System](#menu-system)
   - [MenuStack](#menustack)
   - [Main Menu](#main-menu)
   - [Pause Menu](#pause-menu)
   - [Settings Menu](#settings-menu)
 - [Camera System](#camera-system)
-- [Story Events](#story-events)
-  - [StoryEvent](#storyevent)
-  - [DialogueEvent](#dialogueevent)
-  - [DialogueBox](#dialoguebox)
-  - [DialogueLine](#dialogueline)
 - [Level System](#level-system)
 - [Developer Tools](#developer-tools)
 - [File Structure](#file-structure)
@@ -80,6 +102,7 @@
 │                        AUTOLOAD SINGLETONS                         │
 │  EventBus · Constants · TerrainRegistry · AudioManager              │
 │  SettingsManager · GameSFXManager · AttackAnimationOverlay          │
+│  PlayerDataManager                                                  │
 └─────────────────────────────────────────────────────────────────────┘
          │ signals                            │ direct calls
          ▼                                    ▼
@@ -91,9 +114,17 @@
          │                    │                       │
          ▼                    ▼                       ▼
 ┌─────────────────────────────────────────────────────────────────────┐
-│                     CHARACTER HIERARCHY                              │
+│                  BATTLE CHARACTER HIERARCHY                          │
 │  CharacterBase → PlayerCharacter → ArcherCharacter                  │
 │  CharacterBase → EnemyCharacter  → GoblinCharacter                  │
+└─────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────┐
+│                    WALKING SCENE SYSTEM                              │
+│  WalkingScene → OpeningCorridorScene                                │
+│  WalkingPlayer (tile movement) + WalkingNPC (dialogue)              │
+│  CinematicTrigger → StoryEvent chain (dialogue, fog, flash, etc.)   │
+│  ScreenOverlay (darkness / fog / bleed / flash shaders)             │
 └─────────────────────────────────────────────────────────────────────┘
          │
          ▼
@@ -101,6 +132,7 @@
 │                           UI LAYER                                  │
 │  CharacterInfoPanel · TileInfoPanel · HealthBar                     │
 │  AttackAnimationOverlay · VictoryDefeatScreen · SpeedToggleButton   │
+│  DialogueBox · GlitchTextDisplay · NameEntryDisplay                 │
 └─────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -126,6 +158,7 @@ Registered in `project.godot`, available globally:
 | `SettingsManager` | `scripts/core/settings_manager.gd` | Persists user preferences to `user://settings.cfg` |
 | `GameSFXManager` | `scripts/core/game_sfx_manager.gd` | Bridges game events → SFX with per-character overrides |
 | `AttackAnimationOverlay` | `scripts/ui/attack_animation_overlay.gd` | Blocking attack cutscene overlay (CanvasLayer 100) |
+| `PlayerDataManager` | `scripts/managers/player_data_manager.gd` | Player name + party persistence (`user://player_data.json`) |
 
 ---
 
@@ -265,6 +298,28 @@ Persists to `user://settings.cfg` using Godot's `ConfigFile`:
 - FPS limit (0 = unlimited, 30, 60, 120, 144)
 
 Settings auto-load on startup and apply immediately.
+
+### PlayerDataManager
+
+**Script:** `scripts/managers/player_data_manager.gd` | **Extends:** `Node` (Autoload)
+
+Holds player identity and party data for the current session. Persists to `user://player_data.json`.
+
+**Runtime state:** `player_name: String = "HERO"`, `party: Array = []`
+
+**Public functions:**
+
+| Function | Signature | Description |
+|---|---|---|
+| `set_player_name` | `(name: String) → void` | Set the player's name (in-memory) |
+| `get_player_name` | `() → String` | Get the current player name |
+| `set_party` | `(new_party: Array) → void` | Set the party array |
+| `get_party` | `() → Array` | Get the current party |
+| `save_player_data` | `() → void` | Serialize name + party to JSON on disk |
+| `load_player_data` | `() → void` | Load name + party from JSON on disk |
+| `reset_player_data` | `() → void` | Reset to defaults and delete save file |
+
+**Persistence:** `ConfigFile`-style JSON at `user://player_data.json`. The main menu calls `save_player_data()` / `load_player_data()` during Start / Continue flows. In-scene name entry (via `NameEntryDisplay`) sets the name in-memory only — the game saves to disk at the appropriate narrative checkpoint.
 
 ---
 
@@ -601,6 +656,236 @@ Custom `_draw()` based renderer — no extra TileMapLayer overlays. Uses `queue_
 
 ---
 
+## Walking Scene System
+
+Free-roam exploration mode — no turns, no battle manager. The player moves tile-by-tile with WASD, interacts with NPCs, and walks through cinematic triggers that fire story events.
+
+Walking scenes share the same `AStarGrid2D` and tilemap infrastructure as battles (the tilemap node is in group `"tilemap"`), but replace `GameManager` / `BattleInputHandler` with `WalkingPlayer` for direct movement control.
+
+### WalkingScene
+
+**Script:** `scripts/levels/walking_scene.gd` | **Extends:** `Node2D` | **class_name:** `WalkingScene`
+
+Base class for all walking scenes. Handles two things every walking scene needs:
+
+1. **Black backdrop** — Forward Plus renderer ignores `environment/default_clear_color`, so a solid black `ColorRect` on `CanvasLayer -10` prevents gray outside the tilemap.
+2. **Optional music** — plays `music_key` via `AudioManager` on `_ready()`.
+
+**@export:** `music_key: String = ""`
+
+### WalkingPlayer
+
+**Script:** `scripts/characters/walking/walking_player.gd` | **Extends:** `Node2D` | **class_name:** `WalkingPlayer`
+
+Tile-snapped free-roam controller. Added to group `"walking_player"`.
+
+**@export variables:**
+
+| Variable | Type | Default | Description |
+|---|---|---|---|
+| `walk_speed` | float | 10.0 | Tiles per second during continuous walking |
+| `first_step_boost` | float | 1.5 | Speed multiplier for the first step from rest or direction change |
+
+**Movement system:**
+- `_process()` reads WASD/arrow input every frame
+- While a tween is in flight, input is buffered in `_queued_dir` and applied the instant the tween finishes — no dropped keystrokes
+- Diagonal movement requires both the target tile and both adjacent cardinal tiles to be walkable (prevents corner-cutting through walls)
+- Diagonal steps scale duration by √2 to maintain consistent visual speed
+- `_is_tile_walkable()` checks: tile exists on `BaseGrid`, tile is not A* solid (walls, objects, water, NPCs)
+
+**NPC interaction:**
+- `_unhandled_input()` handles Space/Enter (talk to faced tile) and left-click (talk to clicked adjacent tile)
+- Reuses `lock_movement()` / `unlock_movement()` to freeze the player during dialogue
+
+**Cinematic integration:**
+- `lock_movement()` — freezes all input, clears buffers, plays idle animation. Called by `CinematicTrigger` and the opening corridor fade.
+- `unlock_movement()` — releases the lock.
+
+**Public functions:**
+
+| Function | Signature | Description |
+|---|---|---|
+| `lock_movement` | `() → void` | Freeze player (cinematic, dialogue, triggers) |
+| `unlock_movement` | `() → void` | Release movement lock |
+
+### WalkingNPC
+
+**Script:** `scripts/characters/walking/walking_npc.gd` | **Extends:** `Node2D` | **class_name:** `WalkingNPC`
+
+Stationary NPC that snaps to the nearest tile at runtime and blocks it in the A* grid. Added to group `"walking_npc"`.
+
+**@export variables:**
+
+| Variable | Type | Default | Description |
+|---|---|---|---|
+| `npc_name` | String | `"Villager"` | Speaker name shown in dialogue |
+| `dialogue_lines` | Array[String] | `["Hello there, traveller!"]` | One entry per line of spoken text |
+
+**Public function:** `get_dialogue() → Array[DialogueLine]` — builds typed `DialogueLine` objects from the exported string array.
+
+### CinematicTrigger
+
+**Script:** `scripts/story/cinematic_trigger.gd` | **Extends:** `Node2D` | **class_name:** `CinematicTrigger`
+
+The primary tool for authoring story beats in walking scenes. Place a `CinematicTrigger` node on a tile; when the player walks onto it, the trigger fires its event sequence. Added to group `"cinematic_trigger"`.
+
+**@export variables:**
+
+| Variable | Type | Default | Description |
+|---|---|---|---|
+| `events` | Array[StoryEvent] | `[]` | Ordered list of events to execute |
+| `one_shot` | bool | `true` | If true, fires once then disables |
+| `lock_player` | bool | `true` | Freeze `WalkingPlayer` during execution |
+
+**Important:** Custom `Resource` subclasses (all `StoryEvent` types) **cannot** be embedded as `sub_resource` in `.tscn` files due to a Godot ClassDB limitation. Events must be authored in code — typically in the scene script's `_setup_triggers()` method (see `OpeningCorridorScene`).
+
+**Workflow:**
+1. Add a `CinematicTrigger` `Node2D` to the scene in the editor
+2. Position it on the target tile
+3. Populate `events` from the scene script (e.g., `_setup_triggers()`)
+4. Toggle `lock_player` and `one_shot` as needed
+
+**Public function:** `reset() → void` — re-enable a one-shot trigger (for editor testing).
+
+**Detection:** `_process()` compares `_player.current_tile == our_tile` every frame. For scenes with few triggers this is fine; a signal-based approach would scale better for dozens of triggers.
+
+### OpeningCorridorScene
+
+**Script:** `scripts/levels/opening_corridor_scene.gd` | **Extends:** `WalkingScene` | **class_name:** `OpeningCorridorScene`
+
+The first playable scene. The player wakes in a dark corridor and walks upward toward a light while the Guardian makes contact through corrupted dialogue.
+
+**Sequence:**
+1. Screen starts fully black — `darkness=1.0`, `radius=0.0`, `softness=0.0`
+2. 3-second black hold (player locked)
+3. Light radius + softness tween from 0 to starting values over 3.5s
+4. Player unlocks → glitched dialogue: "...walk forward."
+5. Walking player speed is reduced (`walk_speed=4.0`, `first_step_boost=1.0`) for slow, atmospheric pacing
+6. Three `CinematicTrigger` nodes fire as the player walks:
+   - **GuardianContact1** — `"...static... ...can you hear me...?"`
+   - **GuardianContact2** — Two lines of glitched dialogue
+   - **NameAndFlash** — Asks name → name entry → echoes name → wait → flash hold → scene change
+
+**@export variables:**
+
+| Variable | Type | Default | Description |
+|---|---|---|---|
+| `start_light_radius` | float | 0.07 | Initial light bubble size |
+| `start_light_softness` | float | 0.08 | Initial edge softness |
+| `fade_in_delay` | float | 3.0 | Seconds of total black before light appears |
+| `fade_in_duration` | float | 3.5 | How long the light tween takes |
+| `fog_intensity` | float | 0.22 | Fog density inside the light circle |
+
+**Implementation detail — nested tweens:** `set_parallel(true)` in Godot 4 makes ALL subsequent tween steps parallel, including intervals. To get a delay-then-parallel-tween sequence, the outer tween uses `tween_interval()` followed by a `tween_callback()` that spawns a second parallel tween for radius + softness.
+
+---
+
+## Screen Effects
+
+### ScreenOverlay
+
+**Script:** `scripts/ui/screen_overlay.gd` | **Extends:** `CanvasLayer` | **class_name:** `ScreenOverlay`
+
+Manages all full-screen visual effects for walking scenes. Added to group `"screen_overlay"` (layer 100). Built programmatically — four `ColorRect` children with shader materials.
+
+**Render order (bottom → top):** Fog → Darkness → Bleed → Flash. Fog renders first so it's only visible inside the darkness light circle.
+
+**Darkness API:**
+
+| Function | Signature | Description |
+|---|---|---|
+| `set_darkness` | `(value: float) → void` | Set vignette intensity (0=off, 1=full black except circle) |
+| `tween_darkness` | `(to: float, duration: float) → void` | Smooth tween (awaitable) |
+| `set_light_center` | `(normalized_pos: Vector2) → void` | Light circle center in screen UV space (default `(0.5, 0.5)`) |
+| `set_light_radius` | `(r: float) → void` | Radius of the lit area |
+| `set_light_softness` | `(s: float) → void` | Edge softness of the light circle |
+
+**Fog API:**
+
+| Function | Signature | Description |
+|---|---|---|
+| `set_fog` | `(value: float) → void` | Set fog intensity (0=clear, 1=dense) |
+| `tween_fog` | `(to: float, duration: float) → void` | Smooth tween (awaitable) |
+| `set_fog_speed` | `(s: float) → void` | Drift speed |
+| `set_fog_scale` | `(s: float) → void` | Noise scale (smaller = larger cloud shapes) |
+
+**Bleed API:**
+
+| Function | Signature | Description |
+|---|---|---|
+| `set_bleed` | `(value: float) → void` | Set Act-2 tint intensity |
+| `tween_bleed` | `(to: float, duration: float) → void` | Smooth tween (awaitable) |
+
+**Flash API:**
+
+| Function | Signature | Description |
+|---|---|---|
+| `flash` | `(color, fade_in, hold, fade_out) → void` | Full flash cycle (awaitable) |
+| `flash_hold` | `(color, fade_in) → void` | Flash to full and stay (for scene transitions; awaitable) |
+
+### Darkness Shader
+
+**File:** `shaders/darkness_overlay.gdshader`
+
+Darkens everything except a soft circle around the player. Uses `smoothstep(radius, radius + softness, dist)` to create a smooth falloff from the center.
+
+**Uniforms:**
+
+| Uniform | Type | Default | Description |
+|---|---|---|---|
+| `light_center` | vec2 | `(0.5, 0.5)` | Screen-space center of the light |
+| `radius` | float | 0.12 | Lit circle radius |
+| `softness` | float | 0.06 | Edge falloff width |
+| `darkness` | float | 1.0 | Global darkness multiplier |
+
+**Gotcha:** When `radius=0` and `softness=0`, `smoothstep(0, 0, dist) = 1.0` everywhere → fully black. This is how the opening corridor starts with zero light leak.
+
+### Fog Shader
+
+**File:** `shaders/fog_overlay.gdshader`
+
+Animated procedural mist using Fractal Brownian Motion (5-octave gradient noise). Two fog layers drift in different directions for parallax depth.
+
+**Uniforms:**
+
+| Uniform | Type | Default | Description |
+|---|---|---|---|
+| `intensity` | float | 0.0 | Overall fog visibility (0=invisible) |
+| `fog_color` | vec4 | `(0.55, 0.58, 0.65, 1.0)` | Tint color of the fog |
+| `speed` | float | 0.12 | Drift speed |
+| `scale` | float | 3.5 | Noise scale (smaller = larger clouds) |
+| `density` | float | 1.8 | Power curve for edge sharpness |
+
+**Algorithm:** `fbm(uv + time_offset_1) + fbm(uv * 1.4 + time_offset_2)` → remap to 0–1 → `pow(fog, density)` → multiply by `intensity` for final alpha.
+
+### Bleed Shader
+
+**File:** `shaders/bleed_overlay.gdshader`
+
+Simple color tint overlay for the Act-2 "Bleed" palette (desaturated, earthy ruin). Placeholder — will be refined when real art assets arrive.
+
+**Uniforms:**
+
+| Uniform | Type | Default | Description |
+|---|---|---|---|
+| `bleed_color` | vec4 | `(0.18, 0.22, 0.12, 1.0)` | Tint color |
+| `intensity` | float | 0.0 | 0=invisible, 1=full tint |
+
+### CanvasLayer Ordering
+
+All layers across the game, from back to front:
+
+| Layer | Node | Purpose |
+|---|---|---|
+| -10 | WalkingScene black backdrop | Solid black behind everything (prevents gray outside tiles) |
+| 0 | *(default)* | Game world, tilemaps, characters |
+| 100 | ScreenOverlay / AttackAnimationOverlay | Full-screen effects (fog/darkness/bleed/flash) / battle cutscene |
+| 110 | DialogueBox | Dialogue bar (above effects so text is always readable) |
+| 115 | GlitchTextDisplay | Cinematic centered text (above dialogue) |
+| 116 | NameEntryDisplay | Name entry UI (topmost interactive layer) |
+
+---
+
 ## UI Systems
 
 ### Attack Animation Overlay
@@ -686,6 +971,39 @@ Sets `Engine.time_scale` between 1× and 2×. `focus_mode = Control.FOCUS_NONE` 
 **Public function:** `show_result(victory: bool) → void`
 
 Victory: gold text + `"victory"` music. Defeat: red text + `"defeat"` music. Animated tween fade-in + scale. "Return to Menu" button → `get_tree().change_scene_to_file("res://scenes/ui/MainMenu.tscn")`.
+
+### GlitchTextDisplay
+
+**Script:** `scripts/ui/glitch_text_display.gd` | **Extends:** `CanvasLayer` | **class_name:** `GlitchTextDisplay`
+
+Raw cinematic text overlay — centered on screen with a dark veil behind it (no portrait, no dialogue bar). Layer 115. Added to group `"glitch_text_display"`.
+
+Used for Guardian transmissions, system messages, lore reveals. Driven by `GlitchTextEvent`.
+
+**Layout:** Dark background `ColorRect` (55% opacity) + centered `VBoxContainer` (640px wide) with speaker label (accent green), body `RichTextLabel`, and advance prompt.
+
+**Public functions:**
+
+| Function | Signature | Description |
+|---|---|---|
+| `play_line` | `(text, speaker, glitched, wait_input) → void` | Awaitable — show one line with optional glitch typewriter |
+| `hide_now` | `() → void` | Immediately hide |
+
+**Typewriter:** Own implementation separate from `DialogueBox`. Glitch mode flickers 0–4 random glyphs per character at 0.045s intervals. Currently not skippable mid-typewriter (future enhancement). Supports `{player_name}` substitution.
+
+**Constants:** `CHARS_PER_SECOND = 18.0` (slower than DialogueBox for dramatic effect).
+
+### NameEntryDisplay
+
+**Script:** `scripts/ui/name_entry_display.gd` | **Extends:** `CanvasLayer` | **class_name:** `NameEntryDisplay`
+
+In-scene name entry UI with prompt, text field, and confirm button. Layer 116 (topmost). Added to group `"name_entry_display"`.
+
+**Layout:** Dark background `ColorRect` (65% opacity, `MOUSE_FILTER_STOP` to block interaction below) + centered `VBoxContainer` with prompt label (green), `LineEdit` (max 24 chars), and "CONFIRM" button.
+
+**Signal:** `name_confirmed(entered_name: String)`
+
+**Public function:** `prompt(prompt_text: String) → String` — awaitable. Shows the UI, waits for Enter or button click, saves to `PlayerDataManager`, returns the entered name. Defaults to `"Hero"` if submitted empty.
 
 ---
 
@@ -789,16 +1107,19 @@ Added to group `"action_camera"`. WASD/arrow input cancels auto-focus. Mouse whe
 
 ## Story Events
 
-General-purpose system for events that pause gameplay — dialogue, cutscenes, environment changes, etc. Any script can trigger events at any time via `GameManager.play_event()` or the decoupled `EventBus.story_event_triggered` signal.
+General-purpose system for events that pause gameplay — dialogue, cutscenes, environment changes, etc. Any script can trigger events at any time via `GameManager.play_event()` or the decoupled `EventBus.story_event_triggered` signal. Walking scenes use `CinematicTrigger` nodes instead.
 
 **Trigger patterns:**
 ```gdscript
-# Direct (when you have a GameManager reference):
+# Battle — via GameManager:
 await game_manager.play_event(my_event)
 
-# Decoupled (from anywhere — GameManager listens automatically):
+# Battle — decoupled (GameManager listens automatically):
 EventBus.story_event_triggered.emit(my_event)
-await my_event.completed  # optional — wait for it to finish
+await my_event.completed
+
+# Walking scene — via CinematicTrigger (fires when player steps on tile):
+trigger.events = [event1, event2, event3]
 ```
 
 ### StoryEvent
@@ -809,7 +1130,7 @@ Base class for all gameplay-pausing events. Subclass and override `execute()`.
 
 **Signal:** `completed` — emitted by `GameManager.play_event()` after `execute()` returns.
 
-**Virtual method:** `execute(scene_tree: SceneTree) -> void` — override with event logic. Use `await` for async operations (dialogue playback, tweens, timers).
+**Virtual method:** `execute(scene_tree: SceneTree) -> void` — override with event logic. Use `await` for async operations.
 
 ### DialogueEvent
 
@@ -825,15 +1146,30 @@ Plays a sequence of dialogue lines through the `DialogueBox`.
 
 **Script:** `scripts/story/dialogue_box.gd` | **Extends:** `CanvasLayer`
 
-Full-width bottom bar UI for dialogue sequences. Added to group `"dialogue_box"`. Layer 90, programmatic UI build.
+Full-width bottom bar for dialogue sequences. Added to group `"dialogue_box"`. Layer 110, programmatic UI build.
 
-**Layout:** `PanelContainer` (anchored bottom, full width, 140px tall) → `HBoxContainer` → portrait panel (80×80 `TextureRect` placeholder for character headshot) + `VBoxContainer` (speaker `Label` in gold, `RichTextLabel` body, advance indicator).
+**Layout:** `PanelContainer` (anchored bottom, full width, 140px tall) → `HBoxContainer` → portrait panel (80×80 `TextureRect`) + `VBoxContainer` (speaker `Label` in gold, `RichTextLabel` body, advance indicator `"▼"`).
 
-**Typewriter effect:** 30 chars/sec via `_process()`. Click / Space / Enter: first press instant-fills current line, second press advances to next line.
+**Typewriter modes:**
+1. **Normal** — `_process()` reveals characters at `CHARS_PER_SECOND` (30). Click/Space: first press instant-fills, second press advances.
+2. **Glitch** — async coroutine `_play_glitch_typewriter()`. Each character flickers through `GLITCH_CHARS` ("█▓▒░▄▀■□▪◆●○▸▹") at 0.04s intervals before resolving. Click/Space: skips to full text.
 
-**Signal:** `sequence_finished` — emitted when all lines have been advanced through.
+**Glitch coroutine safety — generation counter pattern:**
+- `_glitch_generation: int` incremented on each new line and on `_close()`
+- `_play_glitch_typewriter(text, gen)` checks `gen != _glitch_generation` at three points: loop start, after inner glitch loop, and after each character delay
+- This ensures stale coroutines from previous lines exit cleanly without corrupting the current line's text
 
-**Key method:** `play_sequence(lines: Array[DialogueLine]) -> void` — awaitable. Shows the box with a fade-in tween, plays all lines, waits for player to advance through each.
+**Text substitution:** `{player_name}` in line text is replaced with `PlayerDataManager.get_player_name()` at display time.
+
+**Signal:** `sequence_finished` — emitted after all lines are advanced through. Has a 0.15s debounce in `_close()` to prevent the closing click from leaking into the next event.
+
+**Constants:**
+
+| Constant | Value |
+|---|---|
+| `CHARS_PER_SECOND` | 30.0 |
+| `GLITCH_CHARS` | `"█▓▒░▄▀■□▪◆●○▸▹"` |
+| `GLITCH_CHAR_DELAY` | 0.04 |
 
 ### DialogueLine
 
@@ -841,7 +1177,96 @@ Full-width bottom bar UI for dialogue sequences. Added to group `"dialogue_box"`
 
 Data resource for one line of dialogue.
 
-**@export:** `speaker: String`, `text: String`, `portrait: Texture2D` (optional character headshot).
+**@export fields:**
+
+| Field | Type | Default | Description |
+|---|---|---|---|
+| `speaker` | String | `""` | Speaker name (empty = no label shown) |
+| `text` | String | `""` | Dialogue text (supports `{player_name}` substitution) |
+| `portrait` | Texture2D | null | Character headshot (optional) |
+| `glitched` | bool | `false` | If true, characters flicker with noise before resolving |
+
+### WaitEvent
+
+**Script:** `scripts/story/wait_event.gd` | **class_name:** `WaitEvent` | **Extends:** `StoryEvent`
+
+Pauses the event sequence for a fixed duration. Useful as a breathing moment between cinematic beats.
+
+**@export:** `duration: float = 1.0`
+
+### FlashEvent
+
+**Script:** `scripts/story/flash_event.gd` | **class_name:** `FlashEvent` | **Extends:** `StoryEvent`
+
+Full-screen color flash via `ScreenOverlay`. For warp moments, waking up, boss hits, etc.
+
+**@export fields:**
+
+| Field | Type | Default | Description |
+|---|---|---|---|
+| `color` | Color | `WHITE` | Flash color |
+| `fade_in` | float | 0.12 | Fade-to-color duration |
+| `hold` | float | 0.35 | Hold at full intensity |
+| `fade_out` | float | 0.55 | Fade-back duration |
+| `hold_and_cut` | bool | `false` | If true, flash to full and stay (for scene transitions) |
+
+### OverlayEvent
+
+**Script:** `scripts/story/overlay_event.gd` | **class_name:** `OverlayEvent` | **Extends:** `StoryEvent`
+
+Tweens darkness or bleed intensity on the `ScreenOverlay`.
+
+**@export fields:**
+
+| Field | Type | Default | Description |
+|---|---|---|---|
+| `layer` | Layer enum | `DARKNESS` | Which overlay to affect (`DARKNESS` or `BLEED`) |
+| `target` | float | 1.0 | Target intensity |
+| `duration` | float | 1.0 | Tween duration |
+
+### FogEvent
+
+**Script:** `scripts/story/fog_event.gd` | **class_name:** `FogEvent` | **Extends:** `StoryEvent`
+
+Tweens fog intensity on the `ScreenOverlay`.
+
+**@export fields:**
+
+| Field | Type | Default | Description |
+|---|---|---|---|
+| `target` | float | 0.3 | Target fog intensity |
+| `duration` | float | 2.0 | Tween duration |
+
+### GlitchTextEvent
+
+**Script:** `scripts/story/glitch_text_event.gd` | **class_name:** `GlitchTextEvent` | **Extends:** `StoryEvent`
+
+Displays cinematic text via `GlitchTextDisplay` — raw centered screen text (not the dialogue bar). For Guardian transmissions, system messages, lore reveals.
+
+**@export fields:**
+
+| Field | Type | Default | Description |
+|---|---|---|---|
+| `text` | String | `""` | Text to display (supports `{player_name}`) |
+| `speaker` | String | `""` | Optional speaker label above text |
+| `glitched` | bool | `true` | Characters flicker with noise before resolving |
+| `wait_for_input` | bool | `true` | If true, waits for click/Space to advance |
+
+### NameEntryEvent
+
+**Script:** `scripts/story/name_entry_event.gd` | **class_name:** `NameEntryEvent` | **Extends:** `StoryEvent`
+
+Prompts the player for their name via `NameEntryDisplay`. Saves to `PlayerDataManager` on confirm.
+
+**@export:** `prompt_text: String = "What is your name?"`
+
+### SceneChangeEvent
+
+**Script:** `scripts/story/scene_change_event.gd` | **class_name:** `SceneChangeEvent` | **Extends:** `StoryEvent`
+
+Transitions to a new scene. Pair with `FlashEvent(hold_and_cut=true)` immediately before for a seamless cut.
+
+**@export:** `scene_path: String = ""` (file filter: `*.tscn`)
 
 ---
 
@@ -879,40 +1304,62 @@ scripts/
 │   │   ├── character_sfx.gd      # SFX override resource (CharacterSFX)
 │   │   ├── player_character.gd   # Player team base (PlayerCharacter)
 │   │   └── archer_character.gd   # Ranged player unit (ArcherCharacter)
-│   └── enemies/
-│       ├── enemy_character.gd    # Enemy base with AI (EnemyCharacter)
-│       └── goblin_character.gd   # Fast melee enemy (GoblinCharacter)
+│   ├── enemies/
+│   │   ├── enemy_character.gd    # Enemy base with AI (EnemyCharacter)
+│   │   └── goblin_character.gd   # Fast melee enemy (GoblinCharacter)
+│   └── walking/
+│       ├── walking_player.gd     # Free-roam tile-snapped player (WalkingPlayer)
+│       └── walking_npc.gd        # Stationary NPC with dialogue (WalkingNPC)
 ├── managers/
+│   ├── player_data_manager.gd    # Player name + party persistence (autoload)
 │   └── battle/
 │       ├── game_manager.gd        # Battle orchestrator
 │       ├── battle_input_handler.gd # Player mouse click handling
 │       └── camera_control.gd      # Camera follow + zoom
 ├── levels/
-│   ├── base_level.gd           # Base level class
-│   ├── test_scene.gd           # Test battle level
-│   ├── pause_menu_handler.gd   # In-game pause system
+│   ├── base_level.gd                # Base battle level class
+│   ├── walking_scene.gd             # Base walking scene (WalkingScene)
+│   ├── opening_corridor_scene.gd    # Opening corridor (OpeningCorridorScene)
+│   ├── test_scene.gd                # Test battle level
+│   ├── pause_menu_handler.gd        # In-game pause system
 │   ├── menus/
-│   │   └── main_menu.gd        # Main menu screen
+│   │   └── main_menu.gd             # Main menu screen
 │   └── tilemaps/
-│       ├── tilemap.gd          # Tilemap manager (A*, BFS, highlights)
-│       └── highlight_renderer.gd # Custom _draw() tile highlights
-├── ui/
-│   ├── attack_animation_overlay.gd # Blocking attack cutscene (autoload)
-│   ├── base_menu.gd               # Base menu class (BaseMenu)
-│   ├── pause_menu.gd              # Pause menu
-│   ├── settings_menu.gd           # Settings menu
-│   ├── health_bar.gd              # Per-character HP bar (HealthBar)
-│   ├── character_info_panel.gd    # Current character stats HUD
-│   ├── tile_info_panel.gd         # Tile hover tooltip
-│   ├── speed_toggle_button.gd     # 1×/2× speed toggle
-│   └── victory_defeat_screen.gd   # End-of-battle screen
+│       ├── tilemap.gd               # Tilemap manager (A*, BFS, highlights)
+│       └── highlight_renderer.gd    # Custom _draw() tile highlights
 ├── story/
-│   ├── story_event.gd          # Base gameplay-pausing event (StoryEvent)
-│   ├── dialogue_event.gd       # Dialogue sequence event (DialogueEvent)
-│   ├── dialogue_box.gd         # Full-width dialogue UI (CanvasLayer)
-│   └── dialogue_line.gd        # Single dialogue line resource (DialogueLine)
+│   ├── story_event.gd          # Base event class (StoryEvent)
+│   ├── dialogue_event.gd       # Dialogue sequence (DialogueEvent)
+│   ├── dialogue_box.gd         # Full-width dialogue UI with glitch mode
+│   ├── dialogue_line.gd        # Single dialogue line resource (DialogueLine)
+│   ├── cinematic_trigger.gd    # Tile-based event trigger (CinematicTrigger)
+│   ├── wait_event.gd           # Timed pause (WaitEvent)
+│   ├── flash_event.gd          # Screen flash (FlashEvent)
+│   ├── overlay_event.gd        # Darkness/bleed tween (OverlayEvent)
+│   ├── fog_event.gd            # Fog tween (FogEvent)
+│   ├── glitch_text_event.gd    # Cinematic centered text (GlitchTextEvent)
+│   ├── name_entry_event.gd     # Name prompt (NameEntryEvent)
+│   └── scene_change_event.gd   # Scene transition (SceneChangeEvent)
+├── ui/
+│   ├── attack_animation_overlay.gd  # Blocking attack cutscene (autoload)
+│   ├── screen_overlay.gd            # Fog/darkness/bleed/flash effects (ScreenOverlay)
+│   ├── glitch_text_display.gd       # Centered cinematic text (GlitchTextDisplay)
+│   ├── name_entry_display.gd        # In-scene name entry (NameEntryDisplay)
+│   ├── base_menu.gd                 # Base menu class (BaseMenu)
+│   ├── pause_menu.gd                # Pause menu
+│   ├── settings_menu.gd             # Settings menu
+│   ├── health_bar.gd                # Per-character HP bar (HealthBar)
+│   ├── character_info_panel.gd      # Current character stats HUD
+│   ├── tile_info_panel.gd           # Tile hover tooltip
+│   ├── speed_toggle_button.gd       # 1×/2× speed toggle
+│   └── victory_defeat_screen.gd     # End-of-battle screen
 └── tools/
-    └── generate_placeholder_sfx.gd # Procedural SFX generator (@tool)
+    └── generate_placeholder_sfx.gd  # Procedural SFX generator (@tool)
+
+shaders/
+├── darkness_overlay.gdshader    # Light-circle vignette (smoothstep)
+├── fog_overlay.gdshader         # Animated FBM noise mist
+└── bleed_overlay.gdshader       # Act-2 color tint overlay
 
 scenes/
 ├── characters/     # Character .tscn scene files
@@ -936,15 +1383,15 @@ assets/
 
 | Action | Keys | Context |
 |---|---|---|
-| `ui_left` | Arrow Left, A, DPad Left | Camera pan / menu navigation |
-| `ui_right` | Arrow Right, D, DPad Right | Camera pan / menu navigation |
-| `ui_up` | Arrow Up, W, DPad Up | Camera pan / menu navigation |
-| `ui_down` | Arrow Down, S, DPad Down | Camera pan / menu navigation |
-| `ui_accept` | Space, Enter | End player turn |
+| `ui_left` | Arrow Left, A, DPad Left | Camera pan (battle) / move left (walking) / menu navigation |
+| `ui_right` | Arrow Right, D, DPad Right | Camera pan (battle) / move right (walking) / menu navigation |
+| `ui_up` | Arrow Up, W, DPad Up | Camera pan (battle) / move up (walking) / menu navigation |
+| `ui_down` | Arrow Down, S, DPad Down | Camera pan (battle) / move down (walking) / menu navigation |
+| `ui_accept` | Space, Enter | End turn (battle) / talk to NPC (walking) / advance dialogue |
 | `ui_cancel` | Escape | Open pause menu / go back |
-| `ui_zoom_in` | Mouse Wheel Up | Camera zoom in |
-| `ui_zoom_out` | Mouse Wheel Down | Camera zoom out |
-| Left Click | Mouse Button 1 | Select tile / attack target / move |
+| `ui_zoom_in` | Mouse Wheel Up | Camera zoom in (battle) |
+| `ui_zoom_out` | Mouse Wheel Down | Camera zoom out (battle) |
+| Left Click | Mouse Button 1 | Select tile / attack (battle) / talk to NPC (walking) / advance dialogue |
 
 ---
 
@@ -1027,6 +1474,54 @@ signal update_turn_indicator(character: Node2D, is_enemy: bool)        # GameMan
        super._ready()
    ```
 3. Place character scenes on the map.
+
+### Adding a Walking Scene
+
+1. Create a new `.tscn` scene with: Tilemap (BaseGrid + collision layers), `WalkingPlayer.tscn`, `DialogueBox.tscn`.
+2. Create a script extending `WalkingScene`:
+   ```gdscript
+   extends WalkingScene
+   class_name MyScene
+
+   func _ready() -> void:
+       super._ready()
+       # Add ScreenOverlay if you need fog/darkness/flash effects:
+       var overlay := ScreenOverlay.new()
+       add_child(overlay)
+       # Set up triggers:
+       call_deferred("_setup_triggers")
+
+   func _setup_triggers() -> void:
+       var trigger := get_node_or_null("MyTrigger") as CinematicTrigger
+       if not trigger: return
+       var e := DialogueEvent.new()
+       var l := DialogueLine.new()
+       l.speaker = "NPC"
+       l.text = "Hello!"
+       e.lines.append(l)
+       trigger.events.append(e)
+   ```
+3. Add `CinematicTrigger` `Node2D` children in the editor, positioned on trigger tiles.
+4. Populate their `events` arrays from the scene script (not the Inspector — custom Resources don't embed in `.tscn`).
+
+### Adding a New StoryEvent
+
+1. Create a script extending `StoryEvent`:
+   ```gdscript
+   class_name ScreenShakeEvent
+   extends StoryEvent
+
+   @export var intensity: float = 5.0
+   @export var duration: float = 0.3
+
+   func execute(scene_tree: SceneTree) -> void:
+       # Find your target node via group
+       var camera := scene_tree.get_first_node_in_group("action_camera")
+       if not camera: return
+       # ... implement the effect ...
+       await scene_tree.create_timer(duration).timeout
+   ```
+2. The event is immediately usable in any `CinematicTrigger.events` array or `GameManager.play_event()` call.
 
 ### Adding Per-Character SFX
 

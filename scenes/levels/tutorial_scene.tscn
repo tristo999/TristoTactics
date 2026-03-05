@@ -1,0 +1,62 @@
+[gd_scene load_steps=15 format=4]
+
+[ext_resource type="PackedScene" uid="uid://dgw6nanegiqld" path="res://scenes/managers/GameManager.tscn" id="1_gm"]
+[ext_resource type="PackedScene" uid="uid://bouj1c13p4ja6" path="res://scenes/characters/PlayerCharacter.tscn" id="2_player"]
+[ext_resource type="TileSet" uid="uid://cpiormm6cegct" path="res://assets/tilesets/tileset.tres" id="3_tileset"]
+[ext_resource type="PackedScene" uid="uid://bf0ia26jj2idx" path="res://scenes/levels/ActionCamera.tscn" id="4_camera"]
+[ext_resource type="Script" uid="uid://e76w1djf5c7j" path="res://scripts/levels/tilemaps/tilemap.gd" id="5_tilemap"]
+[ext_resource type="Script" path="res://scripts/levels/tilemaps/tutorial_tilemap.gd" id="5b_tutorial_tilemap"]
+[ext_resource type="Script" uid="uid://cdxkxm8vj40bg" path="res://scripts/levels/pause_menu_handler.gd" id="6_pause"]
+[ext_resource type="Script" path="res://scripts/levels/tutorial_scene.gd" id="7_level"]
+[ext_resource type="Script" uid="uid://bb7w0gltb41yg" path="res://scripts/managers/battle/battle_input_handler.gd" id="8_input"]
+[ext_resource type="Script" path="res://scripts/managers/tutorial_manager.gd" id="9_tutorial"]
+[ext_resource type="Resource" path="res://data/characters/hero.tres" id="10_hero"]
+[ext_resource type="PackedScene" path="res://scenes/ui/BottomActionBar.tscn" id="11_actionbar"]
+[ext_resource type="PackedScene" path="res://scenes/ui/ActiveStatsPanel.tscn" id="12_stats"]
+[ext_resource type="PackedScene" path="res://scenes/ui/DialogueBox.tscn" id="13_dialogue"]
+[ext_resource type="PackedScene" path="res://scenes/ui/TutorialPrompt.tscn" id="14_prompt"]
+
+[node name="TutorialScene" type="Node2D"]
+script = ExtResource("7_level")
+
+[node name="PauseMenuHandler" type="Node" parent="."]
+script = ExtResource("6_pause")
+
+[node name="GameManager" parent="." instance=ExtResource("1_gm")]
+
+[node name="BattleInputHandler" type="Node" parent="."]
+script = ExtResource("8_input")
+
+[node name="TutorialManager" type="Node" parent="."]
+script = ExtResource("9_tutorial")
+trigger_tile = Vector2i(0, 7)
+
+[node name="PlayerTeam" type="Node" parent="."]
+
+[node name="Hero" parent="PlayerTeam" instance=ExtResource("2_player")]
+position = Vector2(8, 8)
+character_data = ExtResource("10_hero")
+
+[node name="ActionCamera" parent="." instance=ExtResource("4_camera")]
+
+[node name="Tilemap" type="Node2D" parent="."]
+script = ExtResource("5b_tutorial_tilemap")
+
+[node name="BaseGrid" type="TileMapLayer" parent="Tilemap"]
+tile_set = ExtResource("3_tileset")
+tile_map_data = PackedByteArray()
+
+[node name="Walls" type="TileMapLayer" parent="Tilemap"]
+z_index = 2
+tile_set = ExtResource("3_tileset")
+tile_map_data = PackedByteArray()
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="TutorialPrompt" parent="UILayer" instance=ExtResource("14_prompt")]
+
+[node name="BottomActionBar" parent="UILayer" instance=ExtResource("11_actionbar")]
+
+[node name="ActiveStatsPanel" parent="UILayer" instance=ExtResource("12_stats")]
+
+[node name="DialogueBox" parent="." instance=ExtResource("13_dialogue")]

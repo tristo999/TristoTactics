@@ -1,17 +1,23 @@
 # DialogueBox - Full-width bottom bar for dialogue sequences.
 # Shows portrait, speaker name, and typewriter text. Click/Space/Enter to advance.
+# Supports per-line glitch mode: characters flicker through noise before resolving.
 extends CanvasLayer
 
 signal sequence_finished
 
 const CHARS_PER_SECOND := 30.0
+const GLITCH_CHARS := "█▓▒░▄▀■□▪◆●○▸▹"
+const GLITCH_CHAR_DELAY := 0.04
 
 var _lines: Array[DialogueLine] = []
 var _current_index: int = 0
 var _typing: bool = false
+var _glitch_typing: bool = false # true when running the async glitch coroutine
+var _glitch_generation: int = 0 # incremented each line to cancel stale coroutines
 var _full_text: String = ""
 var _visible_chars: int = 0
 var _char_timer: float = 0.0
+var _rng := RandomNumberGenerator.new()
 
 var _root: PanelContainer
 var _portrait_rect: TextureRect
@@ -20,7 +26,7 @@ var _text_label: RichTextLabel
 var _indicator: Label
 
 func _ready() -> void:
-	layer = 90
+	layer = 110
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	add_to_group("dialogue_box")
 	_build_ui()
@@ -109,8 +115,8 @@ func _process(delta: float) -> void:
 	if not _root.visible:
 		return
 
-	# Typewriter effect
-	if _typing:
+	# Normal (non-glitch) typewriter — glitch typing is handled by its own coroutine
+	if _typing and not _glitch_typing:
 		_char_timer += delta * CHARS_PER_SECOND
 		while _char_timer >= 1.0 and _visible_chars < _full_text.length():
 			_visible_chars += 1
@@ -136,8 +142,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	get_viewport().set_input_as_handled()
 
 	if _typing:
-		# First press — instant-fill the current line
+		# First press — instant-fill the current line (works for both normal and glitch)
+		_glitch_typing = false # signal the glitch coroutine to stop
 		_visible_chars = _full_text.length()
+		_text_label.text = _full_text
 		_text_label.visible_characters = _visible_chars
 		_typing = false
 		_indicator.visible = true
@@ -169,11 +177,16 @@ func play_sequence(lines: Array[DialogueLine]) -> void:
 
 func _show_line(line: DialogueLine) -> void:
 	_speaker_label.text = line.speaker
-	_full_text = line.text
-	_text_label.text = line.text
+	_speaker_label.visible = line.speaker != ""
+	# Substitute {player_name} with the actual player name at display time
+	var display_text := line.text.replace("{player_name}", PlayerDataManager.get_player_name())
+	_full_text = display_text
+	_text_label.text = display_text
 	_visible_chars = 0
 	_text_label.visible_characters = 0
 	_typing = true
+	_glitch_typing = false
+	_glitch_generation += 1 # invalidate any old glitch coroutine
 	_indicator.visible = false
 
 	# Portrait
@@ -182,10 +195,46 @@ func _show_line(line: DialogueLine) -> void:
 	else:
 		_portrait_rect.texture = null
 
+	# Start glitch typewriter coroutine if flagged
+	if line.glitched:
+		_play_glitch_typewriter(display_text, _glitch_generation)
+
+## Async glitch typewriter — each character flickers through random noise glyphs
+## before resolving to the real character. Runs alongside _process; skippable.
+## The `gen` parameter ensures stale coroutines from previous lines exit cleanly.
+func _play_glitch_typewriter(text: String, gen: int) -> void:
+	_glitch_typing = true
+	_rng.randomize()
+	_text_label.visible_characters = -1 # show all (we control text content directly)
+	_text_label.text = ""
+	for i in range(text.length()):
+		if gen != _glitch_generation or not _glitch_typing:
+			return # player skipped or new line started
+		var glitch_count := _rng.randi_range(0, 3) if text[i] != " " else 0
+		for _g in range(glitch_count):
+			if gen != _glitch_generation or not _glitch_typing:
+				return
+			var gc := GLITCH_CHARS[_rng.randi() % GLITCH_CHARS.length()]
+			_text_label.text = text.substr(0, i) + gc
+			await get_tree().create_timer(GLITCH_CHAR_DELAY).timeout
+		# Check again after inner loop — skip may have happened during last timer
+		if gen != _glitch_generation or not _glitch_typing:
+			return
+		_text_label.text = text.substr(0, i + 1)
+		await get_tree().create_timer(1.0 / CHARS_PER_SECOND).timeout
+	# Finished naturally
+	if gen == _glitch_generation and _glitch_typing:
+		_glitch_typing = false
+		_typing = false
+		_indicator.visible = true
+
 func _close() -> void:
+	_glitch_generation += 1 # kill any lingering glitch coroutine
 	var tween := create_tween()
 	tween.tween_property(_root, "modulate:a", 0.0, 0.1)
 	await tween.finished
 	_root.visible = false
 	_lines.clear()
+	# Small debounce — prevents the closing click from leaking into the next event
+	await get_tree().create_timer(0.15).timeout
 	sequence_finished.emit()

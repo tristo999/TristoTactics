@@ -5,7 +5,6 @@ extends Control
 var menu_stack: MenuStack
 
 func _ready():
-	$VBox/StartButton.pressed.connect(_on_start_pressed)
 	$VBox/SettingsButton.pressed.connect(_on_settings_pressed)
 	$VBox/QuitButton.pressed.connect(_on_quit_pressed)
 	$VBox/NewGameButton.pressed.connect(_on_new_game_pressed)
@@ -28,9 +27,6 @@ func _on_stack_emptied():
 	# Show main menu content when all sub-menus are closed
 	$VBox.show()
 
-func _on_start_pressed():
-	get_tree().change_scene_to_file("res://scenes/levels/test_scene.tscn")
-
 func _on_settings_pressed():
 	$VBox.hide()
 	var settings_menu = settings_menu_scene.instantiate()
@@ -40,12 +36,13 @@ func _on_quit_pressed():
 	get_tree().quit()
 
 func _on_new_game_pressed():
-	get_tree().change_scene_to_file("res://scenes/ui/NameEntryMenu.tscn")
+	PlayerDataManager.reset_player_data()
+	get_tree().change_scene_to_file("res://scenes/levels/opening_corridor_scene.tscn")
 
 func _on_continue_game_pressed():
 	if not FileAccess.file_exists(PlayerDataManager.SAVE_PATH):
-		# No save found — fall through to new game name entry
-		_on_new_game_pressed()
+		# No save found — go to name entry (corridor not ready to play yet)
+		get_tree().change_scene_to_file("res://scenes/ui/NameEntryMenu.tscn")
 		return
 	PlayerDataManager.load_player_data()
 	get_tree().change_scene_to_file("res://scenes/levels/test_scene.tscn")

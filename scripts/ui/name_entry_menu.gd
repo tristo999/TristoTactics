@@ -13,13 +13,13 @@ func _ready() -> void:
 
 func _fade_in() -> void:
 	var tween := create_tween()
-	tween.tween_property(self, "modulate:a", 1.0, 0.8).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+	tween.tween_property(self , "modulate:a", 1.0, 0.8).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 
 func _fade_out_to(scene: String) -> void:
 	$CenterContainer/Content/ConfirmButton.disabled = true
 	$CenterContainer/Content/BackButton.disabled = true
 	var tween := create_tween()
-	tween.tween_property(self, "modulate:a", 0.0, 0.6).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE)
+	tween.tween_property(self , "modulate:a", 0.0, 0.6).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE)
 	tween.tween_callback(func(): get_tree().change_scene_to_file(scene))
 
 func _on_confirm_pressed() -> void:
@@ -31,7 +31,7 @@ func _on_name_submitted(_text: String) -> void:
 func _submit_name() -> void:
 	var entered: String = $CenterContainer/Content/NameInput.text.strip_edges()
 	if entered.is_empty():
-		entered = "HERO"
+		entered = "Hero"
 	PlayerDataManager.reset_player_data()
 	PlayerDataManager.set_player_name(entered)
 	PlayerDataManager.save_player_data()

@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=4]
+
+[ext_resource type="Script" path="res://scripts/levels/summoning_room_scene.gd" id="1_script"]
+[ext_resource type="Script" path="res://scripts/levels/pause_menu_handler.gd" id="2_pause"]
+[ext_resource type="PackedScene" path="res://scenes/characters/WalkingPlayer.tscn" id="3_player"]
+[ext_resource type="PackedScene" path="res://scenes/ui/DialogueBox.tscn" id="4_dialogue"]
+
+[node name="SummoningRoomScene" type="Node2D"]
+script = ExtResource("1_script")
+music_key = ""
+
+[node name="PauseMenuHandler" type="Node" parent="."]
+script = ExtResource("2_pause")
+
+[node name="WalkingPlayer" parent="." instance=ExtResource("3_player")]
+position = Vector2(0, 0)
+
+[node name="DialogueBox" parent="." instance=ExtResource("4_dialogue")]

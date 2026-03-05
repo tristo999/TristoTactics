@@ -6,6 +6,7 @@ extends Resource
 
 @export_group("Identity")
 @export var display_name: String = "Character"
+@export var use_player_name: bool = false ## If true, display the player-entered name instead of display_name
 @export var description: String = ""
 @export var portrait: Texture2D
 
