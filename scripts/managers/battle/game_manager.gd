@@ -258,6 +258,10 @@ func has_actions_remaining() -> bool:
 func request_move(character: CharacterBase, target_tile: Vector2i) -> bool:
 	if state != BattleState.PLAYER_IDLE or character != current_character:
 		return false
+	# Validate the tile is actually reachable
+	if tilemap_node and tilemap_node.cached_reachable_tiles is Array:
+		if target_tile not in tilemap_node.cached_reachable_tiles:
+			return false
 	state = BattleState.PLAYER_MOVING
 	_clear_highlights()
 	character.move_to_tile(target_tile)
@@ -267,6 +271,11 @@ func request_attack(character: CharacterBase, target: CharacterBase) -> bool:
 	if state != BattleState.PLAYER_IDLE or character != current_character:
 		return false
 	if character.has_used_action:
+		return false
+	# Validate the target is an enemy in range
+	if target.team == character.team:
+		return false
+	if not target.is_alive:
 		return false
 
 	state = BattleState.PLAYER_ACTING

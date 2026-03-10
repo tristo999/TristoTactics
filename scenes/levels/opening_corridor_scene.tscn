@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://ds7hdv6oab5h7"]
+[gd_scene load_steps=9 format=4 uid="uid://ds7hdv6oab5h7"]
 
 [ext_resource type="Script" uid="uid://byt40cuhkct4g" path="res://scripts/levels/opening_corridor_scene.gd" id="1_script"]
 [ext_resource type="Script" uid="uid://cdxkxm8vj40bg" path="res://scripts/levels/pause_menu_handler.gd" id="2_pause"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://e76w1djf5c7j" path="res://scripts/levels/tilemaps/tilemap.gd" id="5_tilemap"]
 [ext_resource type="TileSet" uid="uid://cpiormm6cegct" path="res://assets/tilesets/tileset.tres" id="6_tileset"]
 [ext_resource type="Script" path="res://scripts/story/cinematic_trigger.gd" id="7_ctrigger"]
+[ext_resource type="Script" path="res://scripts/characters/walking/corridor_camera.gd" id="8_camera"]
 
 [node name="OpeningCorridorScene" type="Node2D"]
 script = ExtResource("1_script")
@@ -16,6 +17,9 @@ script = ExtResource("2_pause")
 
 [node name="WalkingPlayer" parent="." instance=ExtResource("3_player")]
 position = Vector2(7, 52)
+
+[node name="Camera2D" parent="WalkingPlayer" index="1"]
+script = ExtResource("8_camera")
 
 [node name="Tilemap" type="Node2D" parent="."]
 script = ExtResource("5_tilemap")
@@ -30,20 +34,32 @@ tile_set = ExtResource("6_tileset")
 
 [node name="DialogueBox" parent="." instance=ExtResource("4_dialogue")]
 
-[node name="GuardianContact1" type="Node2D" parent="."]
-position = Vector2(7, 4)
+[node name="Phase2Trigger" type="Node2D" parent="."]
+position = Vector2(0, 52)
 script = ExtResource("7_ctrigger")
-lock_player = true
+lock_player = false
 one_shot = true
 
-[node name="GuardianContact2" type="Node2D" parent="."]
-position = Vector2(7, -92)
+[node name="Phase3Trigger" type="Node2D" parent="."]
+position = Vector2(0, -320)
 script = ExtResource("7_ctrigger")
-lock_player = true
+lock_player = false
 one_shot = true
 
-[node name="NameAndFlash" type="Node2D" parent="."]
-position = Vector2(7, -188)
+[node name="Phase4Trigger" type="Node2D" parent="."]
+position = Vector2(0, -640)
+script = ExtResource("7_ctrigger")
+lock_player = false
+one_shot = true
+
+[node name="Phase5Trigger" type="Node2D" parent="."]
+position = Vector2(0, -960)
+script = ExtResource("7_ctrigger")
+lock_player = false
+one_shot = true
+
+[node name="Phase6Trigger" type="Node2D" parent="."]
+position = Vector2(0, -1280)
 script = ExtResource("7_ctrigger")
 lock_player = true
 one_shot = true

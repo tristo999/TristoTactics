@@ -19,20 +19,29 @@ mouse_filter = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_overlay")
 
 [node name="Panel" type="Panel" parent="."]
-anchor_left = 0.35
-anchor_top = 0.35
-anchor_right = 0.65
-anchor_bottom = 0.65
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110
+offset_top = -120
+offset_right = 110
+offset_bottom = 120
 z_index = 1
 
 [node name="VBox" type="VBoxContainer" parent="Panel"]
-anchor_left = 0.1
-anchor_top = 0.1
-anchor_right = 0.9
-anchor_bottom = 0.9
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12
+offset_top = 10
+offset_right = -12
+offset_bottom = -10
 
 [node name="ResumeButton" type="Button" parent="Panel/VBox"]
 text = "Resume"
+
+[node name="SaveButton" type="Button" parent="Panel/VBox"]
+text = "Save Game"
 
 [node name="SettingsButton" type="Button" parent="Panel/VBox"]
 text = "Settings"

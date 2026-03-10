@@ -27,7 +27,7 @@ func _snap_to_tile() -> void:
 	global_position = base_layer.to_global(base_layer.map_to_local(current_tile))
 
 	# Block this tile in the shared AStar grid so the player can't walk through.
-	var astar: AStarGrid2D = tilemap.get("astar_grid")
+	var astar := tilemap.get("astar_grid") as AStarGrid2D
 	if astar and astar.is_in_boundsv(current_tile):
 		astar.set_point_solid(current_tile, true)
 

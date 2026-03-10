@@ -1,6 +1,6 @@
 # TristoTactics
 
-A turn-based tactics game inspired by Fire Emblem and Final Fantasy Tactics, built with **Godot 4.5** and pixel art.
+A turn-based tactics game inspired by Fire Emblem and Final Fantasy Tactics, built with **Godot 4.6** and pixel art.
 
 <!-- TODO: Add a screenshot or GIF here -->
 
@@ -67,7 +67,7 @@ A turn-based tactics game inspired by Fire Emblem and Final Fantasy Tactics, bui
    ```
    git clone https://github.com/tristo999/TristoTactics.git
    ```
-2. **Open in Godot 4.5** (Forward+ renderer) — import via `project.godot`
+2. **Open in Godot 4.6** (Forward+ renderer) — import via `project.godot`
 3. **Press F5** to play. The game starts at the Main Menu.
 
 ---
@@ -100,7 +100,7 @@ A turn-based tactics game inspired by Fire Emblem and Final Fantasy Tactics, bui
 
 | | |
 |---|---|
-| **Engine** | Godot 4.5 (Forward+) |
+| **Engine** | Godot 4.6 (Forward+) |
 | **Language** | GDScript |
 | **Art style** | Pixel art (16×16 tiles, nearest-neighbor filtering) |
 | **Addons** | Sprout Lands Tilemap, Godot Git Plugin |

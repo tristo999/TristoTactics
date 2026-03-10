@@ -25,6 +25,9 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	add_to_group("screen_overlay")
 	_build_rects()
+	# Ensure flash rect is fully transparent at scene start
+	if _flash_rect:
+		_flash_rect.color = Color(1.0, 1.0, 1.0, 0.0)
 
 func _build_rects() -> void:
 	# --- Fog (renders first — sits beneath darkness mask) ---
@@ -104,6 +107,14 @@ func set_light_radius(r: float) -> void:
 func set_light_softness(s: float) -> void:
 	_darkness_mat.set_shader_parameter("softness", s)
 
+## Completely hide the darkness layer (called after fullly opening during Phase 5).
+func hide_darkness() -> void:
+	_darkness_rect.visible = false
+
+## Returns true if the darkness rect has been permanently hidden.
+func is_darkness_hidden() -> bool:
+	return not _darkness_rect.visible
+
 # ---------------------------------------------------------------------------
 # Fog API
 # ---------------------------------------------------------------------------
@@ -169,3 +180,15 @@ func flash_hold(color: Color = Color.WHITE, fade_in: float = 0.2) -> void:
 	var tween := create_tween()
 	tween.tween_property(_flash_rect, "color:a", 1.0, fade_in)
 	await tween.finished
+
+## Set the flash rect color (without changing alpha).
+func set_flash_color(color: Color) -> void:
+	_flash_rect.color = Color(color.r, color.g, color.b, _flash_rect.color.a)
+
+## Set the flash rect alpha directly (for manual multi-step transitions).
+func set_flash_alpha(alpha: float) -> void:
+	_flash_rect.color.a = alpha
+
+## Get the current flash rect alpha.
+func get_flash_alpha() -> float:
+	return _flash_rect.color.a

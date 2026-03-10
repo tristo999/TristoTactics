@@ -49,6 +49,8 @@ func _on_tile_hovered(tile_pos: Vector2i) -> void:
 	if not active_character or not visible or not tilemap_node:
 		return
 
+	if not tilemap_node.has_method("get_character_at_tile"):
+		return
 	var character = tilemap_node.get_character_at_tile(tile_pos)
 	if character and character is CharacterBase:
 		hovered_character = character as CharacterBase
@@ -72,7 +74,7 @@ func _on_character_attacked(attacker: Node2D, _target: Node2D, _damage: int, _is
 # --- Display ---
 
 func _display_character(character: CharacterBase) -> void:
-	if not character:
+	if not character or not is_instance_valid(character):
 		return
 
 	var display_name := character.name

@@ -20,6 +20,10 @@ func _setup_level():
 func _on_battle_ended(victory: bool) -> void:
 	# Small delay so the final death animation plays
 	await get_tree().create_timer(0.8).timeout
+	if victory:
+		# Save progress — checkpoint stays on this scene so Continue resumes here.
+		PlayerDataManager.set_checkpoint(get_tree().current_scene.scene_file_path)
+		PlayerDataManager.save_player_data()
 	var screen = VictoryDefeatScreenScene.instantiate()
 	add_child(screen)
 	screen.show_result(victory)

@@ -11,11 +11,16 @@ class_name GlitchTextDisplay
 const CHARS_PER_SECOND := 18.0
 const GLITCH_CHARS := "█▓▒░▄▀■□▪◆●○▸▹"
 
+## Emitted when a play_floating animation fully completes (typewriter + hold + fade).
+signal floating_text_done
+
 var _bg: ColorRect
 var _speaker_label: Label
 var _text_label: RichTextLabel
 var _advance_hint: Label
 var _container: VBoxContainer
+## When true, wraps all typewriter output in [center]...[/center] BBCode.
+var _text_center: bool = false
 
 func _ready() -> void:
 	layer = 115
@@ -61,6 +66,8 @@ func _build_ui() -> void:
 	_text_label.custom_minimum_size = Vector2(640, 0)
 	_text_label.add_theme_color_override("default_color", Color(0.88, 0.92, 0.88))
 	_text_label.add_theme_font_size_override("normal_font_size", 18)
+	_text_label.add_theme_constant_override("outline_size", 3)
+	_text_label.add_theme_color_override("font_outline_color", Color(0.0, 0.0, 0.0, 0.85))
 	_container.add_child(_text_label)
 
 	# Advance prompt — blinks at bottom right of box
@@ -112,6 +119,92 @@ func hide_now() -> void:
 	_container.visible = false
 	_bg.visible = false
 
+## Non-blocking floating text for Guardian transmissions.
+## Text appears at the top of the screen with no dark backdrop.
+## Plays the glitch typewriter, holds briefly, fades out.
+## Returns IMMEDIATELY — the animation runs as a background coroutine.
+func play_floating(text: String, speaker: String = "") -> void:
+	_play_float_bg(text, speaker)
+
+## Non-blocking floating text with custom pacing. Useful for interruption beats
+## where the text should fade while it is still finishing its type-on.
+func play_floating_custom(
+	text: String,
+	speaker: String = "",
+	chars_per_second: float = CHARS_PER_SECOND,
+	hold_duration: float = 0.0,
+	fade_duration: float = 0.9,
+	fade_overlap: float = 0.0,
+	glitched: bool = true
+) -> void:
+	_play_float_custom_bg(text, speaker, chars_per_second, hold_duration, fade_duration, fade_overlap, glitched)
+
+func _play_float_bg(text: String, speaker: String) -> void:
+	var display_text := text.replace("{player_name}", PlayerDataManager.get_player_name())
+	_prepare_floating_layout(speaker)
+	await _play_glitch_typewriter(display_text)
+	await get_tree().create_timer(2.2).timeout
+	var tw := create_tween()
+	tw.tween_property(_container, "modulate:a", 0.0, 0.9)
+	await tw.finished
+	_finish_floating_layout()
+
+func _play_float_custom_bg(
+	text: String,
+	speaker: String,
+	chars_per_second: float,
+	hold_duration: float,
+	fade_duration: float,
+	_fade_overlap: float,  # unused — pre-started tweens deadlock if they finish before await
+	glitched: bool
+) -> void:
+	var display_text := text.replace("{player_name}", PlayerDataManager.get_player_name())
+	_prepare_floating_layout(speaker)
+	if glitched:
+		await _play_glitch_typewriter_at_speed(display_text, chars_per_second)
+	else:
+		await _play_plain_typewriter_at_speed(display_text, chars_per_second)
+	if hold_duration > 0.0:
+		await get_tree().create_timer(hold_duration).timeout
+	var tw := create_tween()
+	tw.tween_property(_container, "modulate:a", 0.0, fade_duration)
+	await tw.finished
+	_finish_floating_layout()
+
+func _prepare_floating_layout(speaker: String) -> void:
+	_speaker_label.text = speaker.to_upper() if speaker != "" else ""
+	_speaker_label.visible = speaker != ""
+	_text_label.text = ""
+	_advance_hint.visible = false
+	_container.modulate.a = 1.0
+	_bg.visible = false
+	# Reposition container to a tall band across the full top of the screen
+	_container.set_anchors_preset(Control.PRESET_TOP_WIDE)
+	_container.offset_left = 40
+	_container.offset_right = -40
+	_container.offset_top = 28
+	_container.offset_bottom = 240
+	_text_label.custom_minimum_size = Vector2(0, 0)
+	_text_label.add_theme_font_size_override("normal_font_size", 28)
+	_text_center = true
+	_container.visible = true
+
+func _finish_floating_layout() -> void:
+	_text_center = false
+	_container.visible = false
+	_container.modulate.a = 1.0
+	# Restore centered layout and font size for regular play_line calls
+	_text_label.custom_minimum_size = Vector2(640, 0)
+	_text_label.add_theme_font_size_override("normal_font_size", 18)
+	_container.set_anchors_preset(Control.PRESET_CENTER)
+	_container.custom_minimum_size = Vector2(640, 1)
+	_container.offset_left = -320
+	_container.offset_right = 320
+	_container.offset_top = -60
+	_container.offset_bottom = 60
+	# Emit AFTER all cleanup so the next play_floating call starts clean
+	floating_text_done.emit()
+
 # ---------------------------------------------------------------------------
 # Internal typewriters
 # ---------------------------------------------------------------------------
@@ -119,7 +212,19 @@ func hide_now() -> void:
 func _play_plain_typewriter(text: String) -> void:
 	for i in range(text.length()):
 		_text_label.text = text.substr(0, i + 1)
-		await get_tree().create_timer(1.0 / CHARS_PER_SECOND).timeout
+		if text[i] != " " and text[i] != ".":
+			AudioManager.play_sfx_pitched("dialogue_type", 0.08)
+		var ellipsis := i >= 2 and text[i] == "." and text[i-1] == "." and text[i-2] == "."
+		await get_tree().create_timer(0.38 if ellipsis else 1.0 / CHARS_PER_SECOND).timeout
+
+func _play_plain_typewriter_at_speed(text: String, chars_per_second: float) -> void:
+	for i in range(text.length()):
+		var resolved := text.substr(0, i + 1)
+		_text_label.text = "[center]" + resolved + "[/center]" if _text_center else resolved
+		if text[i] != " " and text[i] != ".":
+			AudioManager.play_sfx_pitched("dialogue_type", 0.08)
+		var ellipsis := i >= 2 and text[i] == "." and text[i-1] == "." and text[i-2] == "."
+		await get_tree().create_timer(0.38 if ellipsis else 1.0 / maxf(chars_per_second, 0.01)).timeout
 
 func _play_glitch_typewriter(text: String) -> void:
 	var rng := RandomNumberGenerator.new()
@@ -130,10 +235,33 @@ func _play_glitch_typewriter(text: String) -> void:
 		var glitch_count := rng.randi_range(0, 4) if text[i] != " " else 0
 		for _g in range(glitch_count):
 			var gc := GLITCH_CHARS[rng.randi() % GLITCH_CHARS.length()]
-			_text_label.text = text.substr(0, i) + gc
+			var partial := text.substr(0, i) + gc
+			_text_label.text = "[center]" + partial + "[/center]" if _text_center else partial
 			await get_tree().create_timer(0.045).timeout
-		_text_label.text = text.substr(0, i + 1)
-		await get_tree().create_timer(1.0 / CHARS_PER_SECOND).timeout
+		var resolved := text.substr(0, i + 1)
+		_text_label.text = "[center]" + resolved + "[/center]" if _text_center else resolved
+		if text[i] != " " and text[i] != ".":
+			AudioManager.play_sfx_pitched("dialogue_type", 0.08)
+		var ellipsis := i >= 2 and text[i] == "." and text[i-1] == "." and text[i-2] == "."
+		await get_tree().create_timer(0.38 if ellipsis else 1.0 / CHARS_PER_SECOND).timeout
+
+func _play_glitch_typewriter_at_speed(text: String, chars_per_second: float) -> void:
+	var rng := RandomNumberGenerator.new()
+	rng.randomize()
+	_text_label.text = ""
+	for i in range(text.length()):
+		var glitch_count := rng.randi_range(0, 4) if text[i] != " " else 0
+		for _g in range(glitch_count):
+			var gc := GLITCH_CHARS[rng.randi() % GLITCH_CHARS.length()]
+			var partial := text.substr(0, i) + gc
+			_text_label.text = "[center]" + partial + "[/center]" if _text_center else partial
+			await get_tree().create_timer(0.045).timeout
+		var resolved := text.substr(0, i + 1)
+		_text_label.text = "[center]" + resolved + "[/center]" if _text_center else resolved
+		if text[i] != " " and text[i] != ".":
+			AudioManager.play_sfx_pitched("dialogue_type", 0.08)
+		var ellipsis := i >= 2 and text[i] == "." and text[i-1] == "." and text[i-2] == "."
+		await get_tree().create_timer(0.38 if ellipsis else 1.0 / maxf(chars_per_second, 0.01)).timeout
 
 func _wait_for_advance() -> void:
 	# Small debounce — prevents instantly skipping due to held key that opened the trigger

@@ -99,9 +99,6 @@ func add_walkable_cells_from_tilemap() -> void:
 	if objects_layer:
 		_mark_layer_cells_solid(objects_layer)
 	
-	# Water layer (water, coast, etc.) is impassable
-	if water_layer:
-		_mark_layer_cells_solid(water_layer)
 
 # Marks all cells covered by tiles in a layer as solid (handles large multi-cell tiles)
 func _mark_layer_cells_solid(layer: TileMapLayer) -> void:

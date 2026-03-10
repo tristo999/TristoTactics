@@ -22,7 +22,10 @@ var _astar: AStarGrid2D = null
 
 var _is_moving: bool = false
 var _in_dialogue: bool = false
+## When true, _step_to callbacks are suppressed so cinematic tweens aren't interrupted.
+var _cinematic_mode: bool = false
 var _facing: String = "down"
+var _forced_dir: Vector2i = Vector2i.ZERO
 ## Direction buffered while a tween is in flight; applied the instant it lands.
 var _queued_dir: Vector2i = Vector2i.ZERO
 ## Tracks whether we are continuing a held direction or starting fresh.
@@ -37,19 +40,21 @@ func _init_tilemap() -> void:
 	_tilemap = get_tree().get_first_node_in_group("tilemap")
 	if _tilemap:
 		_base_layer = _tilemap.get_node_or_null("BaseGrid")
-		_astar = _tilemap.get("astar_grid")
+		_astar = _tilemap.get("astar_grid") as AStarGrid2D
 	if _base_layer:
 		var local_pos := _base_layer.to_local(global_position)
 		current_tile = _base_layer.local_to_map(local_pos)
 		global_position = _base_layer.to_global(_base_layer.map_to_local(current_tile))
 
 func _process(_delta: float) -> void:
-	if _in_dialogue:
+	if _in_dialogue and _forced_dir == Vector2i.ZERO:
 		return
 
-	var dx := int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
-	var dy := int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
-	var dir := Vector2i(dx, dy)
+	var dir := _forced_dir
+	if dir == Vector2i.ZERO:
+		var dx := int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
+		var dy := int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
+		dir = Vector2i(dx, dy)
 
 	if _is_moving:
 		# Buffer the current input so it fires the moment the tween finishes.
@@ -110,6 +115,8 @@ func _step_to(tile: Vector2i, speed: float) -> void:
 	var tween := create_tween()
 	tween.tween_property(self , "global_position", target_pos, duration)
 	tween.tween_callback(func() -> void:
+		if _cinematic_mode:
+			return  # cinematic tween owns movement; don't interfere
 		_is_moving = false
 		# Immediately consume buffered input — no dropped keystrokes.
 		var buffered := _queued_dir
@@ -138,16 +145,21 @@ func _unhandled_input(event: InputEvent) -> void:
 	if _in_dialogue or not _base_layer:
 		return
 
-	# Space / ui_accept — talk to whoever is on the faced tile
+	# Space / ui_accept — interact with whatever is on the faced tile
 	if event.is_action_pressed("ui_accept"):
 		var faced_tile := current_tile + _facing_to_dir()
 		var npc := _npc_at_tile(faced_tile)
 		if npc:
 			get_viewport().set_input_as_handled()
 			_interact_with_npc(npc)
+			return
+		var interactable := _interactable_at_tile(faced_tile)
+		if interactable:
+			get_viewport().set_input_as_handled()
+			interactable.interact()
 		return
 
-	# Left-click — talk to an adjacent NPC that was clicked
+	# Left-click — interact with an adjacent NPC or interactable that was clicked
 	if not (event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT):
 		return
 
@@ -159,11 +171,21 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 
 	var npc := _npc_at_tile(click_tile)
-	if not npc:
+	if npc:
+		get_viewport().set_input_as_handled()
+		_interact_with_npc(npc)
 		return
 
-	get_viewport().set_input_as_handled()
-	_interact_with_npc(npc)
+	var interactable := _interactable_at_tile(click_tile)
+	if interactable:
+		get_viewport().set_input_as_handled()
+		interactable.interact()
+
+func _interactable_at_tile(tile: Vector2i) -> Node:
+	for n in get_tree().get_nodes_in_group("walking_interactable"):
+		if n.get("current_tile") == tile:
+			return n
+	return null
 
 func _npc_at_tile(tile: Vector2i) -> WalkingNPC:
 	for n in get_tree().get_nodes_in_group("walking_npc"):
@@ -184,6 +206,7 @@ func _facing_to_dir() -> Vector2i:
 ## Lock all player movement (used by CinematicTrigger during event sequences).
 func lock_movement() -> void:
 	_in_dialogue = true
+	_forced_dir = Vector2i.ZERO
 	_is_moving = false
 	_queued_dir = Vector2i.ZERO
 	_last_step_dir = Vector2i.ZERO
@@ -192,6 +215,62 @@ func lock_movement() -> void:
 ## Release movement lock after a cinematic sequence ends.
 func unlock_movement() -> void:
 	_in_dialogue = false
+	_forced_dir = Vector2i.ZERO
+
+## Force continuous walking in a fixed direction during a cinematic beat.
+func start_forced_walk(dir: Vector2i) -> void:
+	_in_dialogue = true
+	_forced_dir = dir
+	_queued_dir = dir
+	if dir != Vector2i.ZERO:
+		_update_facing(dir)
+
+## Stop any forced walking and return movement control to the scene.
+func stop_forced_walk() -> void:
+	_forced_dir = Vector2i.ZERO
+	_queued_dir = Vector2i.ZERO
+	_last_step_dir = Vector2i.ZERO
+	_in_dialogue = false
+	if not _is_moving:
+		sprite.play("idle_" + _facing)
+
+## Lock movement but keep the walk animation playing (cinematic walk-in-place).
+func walk_in_place() -> void:
+	_in_dialogue = true
+	_forced_dir = Vector2i.ZERO
+	_queued_dir = Vector2i.ZERO
+	_is_moving = false
+	sprite.play("walk_" + _facing)
+
+## Stop the walk-in-place animation and show idle. Player remains locked.
+func stop_walk_in_place() -> void:
+	sprite.play("idle_" + _facing)
+
+## Move the player northward by `tiles` tiles over `duration` seconds.
+## Bypasses all tile-walkability checks — for cinematic forced movement only.
+## Steps tile-by-tile so current_tile stays current and path tiles spawn ahead.
+## Awaitable: resolves when all steps finish.
+func cinematic_walk_north(tiles: int, duration: float) -> void:
+	if not _base_layer:
+		return
+	_cinematic_mode = true
+	_in_dialogue = true
+	_forced_dir = Vector2i.ZERO
+	_queued_dir = Vector2i.ZERO
+	_facing = "up"
+	sprite.play("walk_up")
+	var tile_duration := duration / float(max(tiles, 1))
+	for _i in range(tiles):
+		_is_moving = true
+		var target_tile := current_tile + Vector2i(0, -1)
+		var target_pos := _base_layer.to_global(_base_layer.map_to_local(target_tile))
+		var tween := create_tween()
+		tween.tween_property(self, "global_position", target_pos, tile_duration)
+		await tween.finished
+		current_tile = target_tile
+	_cinematic_mode = false
+	_is_moving = false
+	sprite.play("walk_up")
 
 func _interact_with_npc(npc: WalkingNPC) -> void:
 	# Face toward the NPC

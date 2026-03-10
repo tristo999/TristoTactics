@@ -20,6 +20,12 @@ class_name CinematicTrigger
 @export var one_shot: bool = true
 ## Lock WalkingPlayer movement for the duration of the event sequence.
 @export var lock_player: bool = true
+## If true, trigger fires whenever the player's Y tile matches, ignoring X.
+## Useful for corridor scenes where the player may walk off-centre.
+@export var match_y_only: bool = false
+## Optional story flag name. If set, this trigger is skipped on future sessions
+## if the flag is already recorded in PlayerDataManager.
+@export var save_flag: String = ""
 
 var _fired: bool = false
 var _player: WalkingPlayer = null
@@ -41,6 +47,12 @@ func _process(_delta: float) -> void:
 	if _fired and one_shot:
 		return
 
+	# Skip permanently if this flag was already recorded in a previous session.
+	if one_shot and save_flag != "" and PlayerDataManager.has_story_flag(save_flag):
+		_fired = true
+		set_process(false)
+		return
+
 	if not _player:
 		_player = get_tree().get_first_node_in_group("walking_player") as WalkingPlayer
 		if not _player:
@@ -50,9 +62,9 @@ func _process(_delta: float) -> void:
 		return
 
 	var our_tile := _base_layer.local_to_map(_base_layer.to_local(global_position))
-	# Uncomment next line to spam tile positions while walking:
-	# print("[CinematicTrigger] ", name, " player_tile=", _player.current_tile, " our_tile=", our_tile)
-	if _player.current_tile == our_tile:
+	var hit := (_player.current_tile == our_tile) if not match_y_only \
+			else (_player.current_tile.y == our_tile.y)
+	if hit:
 		_fire()
 
 func _fire() -> void:
@@ -65,6 +77,10 @@ func _fire() -> void:
 
 	for event in events:
 		await event.execute(get_tree())
+
+	# Record the story flag after all events complete.
+	if save_flag != "":
+		PlayerDataManager.set_story_flag(save_flag)
 
 	if lock_player and _player:
 		_player.unlock_movement()

@@ -85,9 +85,9 @@
 
 | Setting | Value |
 |---|---|
-| Engine | Godot 4.5, Forward+ renderer |
+| Engine | Godot 4.6, Forward+ renderer |
 | Language | GDScript |
-| Main Scene | `res://scenes/ui/MainMenu.tscn` |
+| Main Scene | `res://scenes/menus/SplashScreen.tscn` |
 | Texture Filter | Nearest (pixel art) |
 | Window Stretch | Mode: `canvas_items`, Aspect: `expand` |
 | Tile Size | 16×16 pixels |
@@ -315,8 +315,8 @@ Holds player identity and party data for the current session. Persists to `user:
 | `get_player_name` | `() → String` | Get the current player name |
 | `set_party` | `(new_party: Array) → void` | Set the party array |
 | `get_party` | `() → Array` | Get the current party |
-| `save_player_data` | `() → void` | Serialize name + party to JSON on disk |
-| `load_player_data` | `() → void` | Load name + party from JSON on disk |
+| `save_player_data` | `() → bool` | Serialize name + party to JSON on disk; returns false on failure |
+| `load_player_data` | `() → bool` | Load name + party from JSON on disk; returns false on failure |
 | `reset_player_data` | `() → void` | Reset to defaults and delete save file |
 
 **Persistence:** `ConfigFile`-style JSON at `user://player_data.json`. The main menu calls `save_player_data()` / `load_player_data()` during Start / Continue flows. In-scene name entry (via `NameEntryDisplay`) sets the name in-memory only — the game saves to disk at the appropriate narrative checkpoint.
@@ -435,10 +435,9 @@ Orchestrates the entire battle: turn order, turn execution, win/loss detection, 
 | State | Description |
 |---|---|
 | `INACTIVE` | No battle running |
-| `PLAYER_SELECTING_MOVE` | Movement tiles highlighted — click destination or use menu |
+| `PLAYER_IDLE` | Player's turn — menu active, awaiting input |
 | `PLAYER_MOVING` | Character is animating along a path |
-| `PLAYER_SELECTING_ATTACK` | Attack range highlighted — click target or use menu |
-| `PLAYER_ATTACKING` | Attack animation is playing |
+| `PLAYER_ACTING` | Attack / ability animation is playing |
 | `PLAYER_WAITING` | Story event / tutorial lock — all input blocked |
 | `ENEMY_TURN_START` | Camera focused, brief pause before action |
 | `ENEMY_SELECTING_MOVE` | Movement range shown — AI "thinking" |
@@ -460,8 +459,9 @@ Orchestrates the entire battle: turn order, turn execution, win/loss detection, 
 
 | Function | Signature | Description |
 |---|---|---|
-| `request_move` | `(character: CharacterBase, target_tile: Vector2i) → bool` | Transitions `PLAYER_SELECTING_MOVE → PLAYER_MOVING` |
-| `request_attack` | `(character: CharacterBase, target: CharacterBase) → bool` | Transitions `PLAYER_SELECTING_ATTACK → PLAYER_ATTACKING`; blocking `await` |
+| `request_move` | `(character: CharacterBase, target_tile: Vector2i) → bool` | Validates tile reachability, transitions `PLAYER_IDLE → PLAYER_MOVING` |
+| `request_attack` | `(character: CharacterBase, target: CharacterBase) → bool` | Validates target is enemy and alive, transitions `PLAYER_IDLE → PLAYER_ACTING`; blocking `await` |
+| `request_ability` | `(character: CharacterBase, ability: Ability, target: CharacterBase) → bool` | Validates ability usability, transitions `PLAYER_IDLE → PLAYER_ACTING` |
 | `play_event` | `(event: StoryEvent) → void` | Awaitable — pauses gameplay (`PLAYER_WAITING`), runs event, restores state |
 | `is_enemy_turn` | `() → bool` | Checks enemy-related states |
 
@@ -469,16 +469,15 @@ Orchestrates the entire battle: turn order, turn execution, win/loss detection, 
 ```
 INACTIVE → PLAYER_WAITING (intro_event, if set)
 PLAYER_WAITING → restored state (event finishes)
-INACTIVE/PLAYER_WAITING → PLAYER_SELECTING_MOVE (first turn / best state)
-PLAYER_SELECTING_MOVE → PLAYER_MOVING (request_move)
-PLAYER_SELECTING_MOVE → PLAYER_SELECTING_ATTACK (enter_attack_selection)
-PLAYER_SELECTING_ATTACK → PLAYER_SELECTING_MOVE (cancel_action)
-PLAYER_MOVING → best state (character_movement_finished)
-PLAYER_ATTACKING → best state (attack complete)
+INACTIVE/PLAYER_WAITING → PLAYER_IDLE (first turn / return to idle)
+PLAYER_IDLE → PLAYER_MOVING (request_move)
+PLAYER_IDLE → PLAYER_ACTING (request_attack / request_ability)
+PLAYER_MOVING → PLAYER_IDLE (character_movement_finished) or auto-end turn
+PLAYER_ACTING → PLAYER_IDLE (attack/ability complete) or auto-end turn
 Any state → PLAYER_WAITING (play_event) → restored state
-PLAYER_SELECTING_* → ENEMY_TURN_START (advance to enemy)
+PLAYER_IDLE → ENEMY_TURN_START (advance to enemy)
 ENEMY_TURN_START → ENEMY_SELECTING_MOVE → ENEMY_MOVING → ENEMY_SELECTING_ATTACK → ENEMY_ATTACKING
-ENEMY_ATTACKING → PLAYER_SELECTING_MOVE (advance to player)
+ENEMY_ATTACKING → PLAYER_IDLE (advance to player)
 ```
 
 **Signals connected to:**
@@ -497,10 +496,12 @@ ENEMY_ATTACKING → PLAYER_SELECTING_MOVE (advance to player)
 
 **Script:** `scripts/managers/battle/battle_input_handler.gd` | **Extends:** `Node`
 
-Processes left mouse clicks during player turns:
+Processes left mouse clicks and keyboard input during player turns:
 1. **Guard:** Ignores all input unless `game_manager.state == BattleState.PLAYER_IDLE`
 2. **Attack priority:** If clicking an enemy character in attack range → `game_manager.request_attack()`
-3. **Movement:** If clicking a tile in `tilemap.cached_reachable_tiles` → `game_manager.request_move()`
+3. **Ability targeting:** If in ABILITY mode and clicking a valid target → `game_manager.request_ability()`
+4. **Movement:** If clicking a tile in `tilemap.cached_reachable_tiles` → `game_manager.request_move()`
+5. **End turn:** Space/Enter with double-tap confirmation (1.5s window)
 
 Uses group lookup (`get_first_node_in_group("game_manager")`) with `find_child` fallback to cache `game_manager` and `tilemap` references.
 
@@ -526,7 +527,7 @@ _initialize_battle()
                  └─ _advance_turn() → _end_character_turn() → _start_character_turn(next)
 ```
 
-**Turn ending:** Player turns end ONLY when `ui_accept` is pressed. No auto-end after moving or attacking.
+**Turn ending:** Player can manually end turn via `ui_accept` (Space/Enter). Turns also auto-end when both movement and action are spent.
 
 **Win/loss:** `_on_character_died` removes from `turn_order`, checks if all enemies or all players are gone → `_end_battle(victory)`.
 
@@ -755,28 +756,33 @@ The primary tool for authoring story beats in walking scenes. Place a `Cinematic
 
 The first playable scene. The player wakes in a dark corridor and walks upward toward a light while the Guardian makes contact through corrupted dialogue.
 
-**Sequence:**
-1. Screen starts fully black — `darkness=1.0`, `radius=0.0`, `softness=0.0`
-2. 3-second black hold (player locked)
-3. Light radius + softness tween from 0 to starting values over 3.5s
-4. Player unlocks → glitched dialogue: "...walk forward."
-5. Walking player speed is reduced (`walk_speed=4.0`, `first_step_boost=1.0`) for slow, atmospheric pacing
-6. Three `CinematicTrigger` nodes fire as the player walks:
-   - **GuardianContact1** — `"...static... ...can you hear me...?"`
-   - **GuardianContact2** — Two lines of glitched dialogue
-   - **NameAndFlash** — Asks name → name entry → echoes name → wait → flash hold → scene change
+**Phase structure (position-triggered):**
+1. **Phase 1 — VOID:** Hero appears in total darkness, player locked. Darkness fades uniformly over 3.5s, then floating glitch text "…walk forward." appears and player unlocks.
+2. **Phase 2 — THE CALL:** Movement begins. Fragment spawning activates (max 2 clusters).
+3. **Phase 3 — THE ASSEMBLY:** Path widens to 3 tiles. Floating text "…don't be afraid." More fragments (max 4 clusters).
+4. **Phase 4 — THE CONNECTION:** Path widens to 5 tiles. Floating text "I've waited… a long time…" Unlimited fragment clusters.
+5. **Phase 5 — TITLE:** Fragment spawning stops. World bloom — radial tile wave fills the screen. "TRISTOTACTICS" title card.
+6. **Phase 6 — THE NAME:** Clean dialogue "What is your name?", name entry, Guardian echo, save checkpoint, white flash, scene change.
+
+**Programmatically added children:** `ScreenOverlay`, `NameEntryDisplay`, `GlitchTextDisplay`, `CorridorPath`, `TitleCard`
 
 **@export variables:**
 
 | Variable | Type | Default | Description |
 |---|---|---|---|
+| `void_hold_duration` | float | 1.5 | Seconds of black before fade begins |
+| `corridor_walk_speed` | float | 2.5 | Slow atmospheric walk speed |
+| `corridor_anim_speed` | float | 0.25 | Animation speed scale |
 | `start_light_radius` | float | 0.07 | Initial light bubble size |
 | `start_light_softness` | float | 0.08 | Initial edge softness |
-| `fade_in_delay` | float | 3.0 | Seconds of total black before light appears |
-| `fade_in_duration` | float | 3.5 | How long the light tween takes |
-| `fog_intensity` | float | 0.22 | Fog density inside the light circle |
+| `fade_in_duration` | float | 3.5 | How long the darkness fade takes |
+| `max_light_radius` | float | 0.45 | Maximum light radius |
+| `max_light_softness` | float | 0.20 | Maximum light softness |
 
-**Implementation detail — nested tweens:** `set_parallel(true)` in Godot 4 makes ALL subsequent tween steps parallel, including intervals. To get a delay-then-parallel-tween sequence, the outer tween uses `tween_interval()` followed by a `tween_callback()` that spawns a second parallel tween for radius + softness.
+**Key systems:**
+- **CorridorPath** — Materializes path tiles under the hero's feet, fades a trail behind. Widens from 1 to 3 to 5 tiles across phases.
+- **KingdomFragment** — Ghostly terrain sprites that breathe (sine wave), appear ahead of the player, and dissolve. Phase-aware cluster sizes and opacity.
+- **Backtrack prevention** — Rows behind the player are sealed in the A* grid to enforce forward-only movement.
 
 ---
 
@@ -1268,6 +1274,37 @@ Transitions to a new scene. Pair with `FlashEvent(hold_and_cut=true)` immediatel
 
 **@export:** `scene_path: String = ""` (file filter: `*.tscn`)
 
+### CallbackEvent
+
+**Script:** `scripts/story/callback_event.gd` | **class_name:** `CallbackEvent` | **Extends:** `StoryEvent`
+
+Calls an arbitrary `Callable` during an event sequence. For one-off effects that don't warrant their own StoryEvent subclass (toggling fragments, starting particles, etc.).
+
+**Property:** `callback: Callable` — set in code, not exportable. If the callback returns a `Signal`, it is awaited.
+
+### SaveCheckpointEvent
+
+**Script:** `scripts/story/save_checkpoint_event.gd` | **class_name:** `SaveCheckpointEvent` | **Extends:** `StoryEvent`
+
+Saves the current game state to disk via `PlayerDataManager`.
+
+**@export:** `scene_path: String = ""` — the scene path to record as the checkpoint.
+
+### TitleEvent
+
+**Script:** `scripts/story/title_event.gd` | **class_name:** `TitleEvent` | **Extends:** `StoryEvent`
+
+Displays a cinematic title card via `TitleCard`. Fire-and-forget — does not block the event sequence.
+
+**@export fields:**
+
+| Field | Type | Default | Description |
+|---|---|---|---|
+| `text` | String | `""` | Title text to display |
+| `fade_in` | float | 1.0 | Fade-in duration |
+| `hold` | float | 3.0 | Hold duration at full opacity |
+| `fade_out` | float | 1.5 | Fade-out duration |
+
 ---
 
 ## Developer Tools
@@ -1309,9 +1346,12 @@ scripts/
 │   │   └── goblin_character.gd   # Fast melee enemy (GoblinCharacter)
 │   └── walking/
 │       ├── walking_player.gd     # Free-roam tile-snapped player (WalkingPlayer)
-│       └── walking_npc.gd        # Stationary NPC with dialogue (WalkingNPC)
+│       ├── walking_npc.gd        # Stationary NPC with dialogue (WalkingNPC)
+│       └── corridor_camera.gd    # Smooth-follow camera for corridor scenes
 ├── managers/
 │   ├── player_data_manager.gd    # Player name + party persistence (autoload)
+│   ├── steam_manager.gd          # Steam integration (achievements, stats)
+│   ├── tutorial_manager.gd       # Tutorial flow and prompts
 │   └── battle/
 │       ├── game_manager.gd        # Battle orchestrator
 │       ├── battle_input_handler.gd # Player mouse click handling
@@ -1320,13 +1360,18 @@ scripts/
 │   ├── base_level.gd                # Base battle level class
 │   ├── walking_scene.gd             # Base walking scene (WalkingScene)
 │   ├── opening_corridor_scene.gd    # Opening corridor (OpeningCorridorScene)
+│   ├── summoning_room_scene.gd     # Post-corridor summoning chamber
+│   ├── corridor_path.gd            # Materializing path under the hero (CorridorPath)
+│   ├── corridor_particles.gd       # Ambient particle effects for corridor
+│   ├── kingdom_fragment.gd         # Ghostly terrain fragment sprite (KingdomFragment)
 │   ├── test_scene.gd                # Test battle level
 │   ├── pause_menu_handler.gd        # In-game pause system
 │   ├── menus/
 │   │   └── main_menu.gd             # Main menu screen
 │   └── tilemaps/
 │       ├── tilemap.gd               # Tilemap manager (A*, BFS, highlights)
-│       └── highlight_renderer.gd    # Custom _draw() tile highlights
+│       ├── highlight_renderer.gd    # Custom _draw() tile highlights
+│       └── tutorial_tilemap.gd      # Tutorial-specific tilemap generation
 ├── story/
 │   ├── story_event.gd          # Base event class (StoryEvent)
 │   ├── dialogue_event.gd       # Dialogue sequence (DialogueEvent)
@@ -1339,7 +1384,10 @@ scripts/
 │   ├── fog_event.gd            # Fog tween (FogEvent)
 │   ├── glitch_text_event.gd    # Cinematic centered text (GlitchTextEvent)
 │   ├── name_entry_event.gd     # Name prompt (NameEntryEvent)
-│   └── scene_change_event.gd   # Scene transition (SceneChangeEvent)
+│   ├── scene_change_event.gd   # Scene transition (SceneChangeEvent)
+│   ├── callback_event.gd       # Arbitrary Callable execution (CallbackEvent)
+│   ├── save_checkpoint_event.gd # Save checkpoint to PlayerDataManager (SaveCheckpointEvent)
+│   └── title_event.gd          # Display title card (TitleEvent)
 ├── ui/
 │   ├── attack_animation_overlay.gd  # Blocking attack cutscene (autoload)
 │   ├── screen_overlay.gd            # Fog/darkness/bleed/flash effects (ScreenOverlay)
@@ -1352,7 +1400,8 @@ scripts/
 │   ├── character_info_panel.gd      # Current character stats HUD
 │   ├── tile_info_panel.gd           # Tile hover tooltip
 │   ├── speed_toggle_button.gd       # 1×/2× speed toggle
-│   └── victory_defeat_screen.gd     # End-of-battle screen
+│   ├── victory_defeat_screen.gd     # End-of-battle screen
+│   └── title_card.gd               # Cinematic title display (TitleCard)
 └── tools/
     └── generate_placeholder_sfx.gd  # Procedural SFX generator (@tool)
 
