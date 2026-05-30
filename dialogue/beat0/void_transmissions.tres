@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="DialogueSequence" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scripts/story/dialogue_sequence.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/story/dialogue_line.gd" id="2"]
+
+[sub_resource type="Resource" id="line_0"]
+script = ExtResource("2")
+text = "...Hero..."
+
+[sub_resource type="Resource" id="line_1"]
+script = ExtResource("2")
+text = "...can you hear me?..."
+
+[sub_resource type="Resource" id="line_2"]
+script = ExtResource("2")
+text = "...the summoning is taking hold..."
+
+[sub_resource type="Resource" id="line_3"]
+script = ExtResource("2")
+text = "...follow the path..."
+
+[sub_resource type="Resource" id="line_4"]
+script = ExtResource("2")
+text = "...echoes of what awaits..."
+
+[sub_resource type="Resource" id="line_5"]
+script = ExtResource("2")
+text = "...this world needs you..."
+
+[resource]
+script = ExtResource("1")
+sequence_id = "corridor_glitch"
+lines = [SubResource("line_0"), SubResource("line_1"), SubResource("line_2"), SubResource("line_3"), SubResource("line_4"), SubResource("line_5")]

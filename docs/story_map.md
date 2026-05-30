@@ -218,6 +218,58 @@ Beat 1 — ARRIVAL
   Location: Authority summoning chamber / base camp
   Gameplay: Introductory, no combat yet
 
+  SCENE DESIGN (LOCKED):
+
+  Opening transition:
+  - White fade from intro holds.
+  - Blue summoning circle burns in bright over the white — one brief flash.
+  - Circle quickly fades out as white fades down into the room.
+  - Hero is on the floor. Circle is cold and dark.
+
+  Summoning chamber:
+  - Small room. Spent summoning circle on the floor.
+  - Authority ritual equipment visible — tools and containment devices
+    that suggest the circle was built to capture, not receive.
+  - Authority insignia on the walls.
+  - Signs of a rushed or violent interception — scorch marks,
+    a knocked-over object.
+  - One door. No other interactions.
+  - Guardian is completely absent. No trace, no warmth.
+    Guardian presence does not return until fragment power reveal
+    after the tutorial.
+
+  Scene structure (LOCKED):
+  - Summoning room is its own scene (summoning_room_scene.tscn).
+  - Door triggers scene change to the camp scene (camp_scene.tscn).
+  - Two scenes. No shared tilemap.
+
+  Room sequence (fully scripted):
+  - Hero gets up, looks around the room.
+  - Walks to the door and opens it.
+  - Scene changes to camp. Short scripted walk out.
+  - Camera settles on the space. A beat of the camp existing
+    around the hero — soldiers going about their business,
+    the Authority's operation running normally.
+  - Vael walks over from elsewhere in the camp, unhurried.
+    Not waiting — just the next thing on the list for them.
+  - Vael's dialogue fires. Control hands to the player after.
+
+  Camp:
+  - Active and organised — soldiers moving, fires burning.
+  - Scale establishes the Authority as a serious operation.
+  - Vael's arrival feels routine, not ceremonial.
+
+  Vael's first lines (locked):
+    Vael: "You actually made it."
+    Vael: "I was starting to wonder."
+    Vael: "You must be a little confused."
+
+  Vael does not know the Hero's name — only that someone was
+  coming. The interception was a gamble; the Hero's arrival
+  is the payoff. Vael's surprise is genuine.
+
+  Remaining Beat 1 dialogue: TBD
+
 Beat 2 — TUTORIAL / TRAINING
   Hero trains with Authority soldiers.
   No rebels present.

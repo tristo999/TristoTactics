@@ -48,6 +48,10 @@
 extends WalkingScene
 class_name OpeningCorridorScene
 
+## Dialogue resources — edit res://dialogue/beat0/ to change all spoken text.
+const _GLITCH_SEQ := preload("res://dialogue/beat0/void_transmissions.tres")
+const _PHASE6_SEQ := preload("res://dialogue/beat0/name_sequence.tres")
+
 ## Seconds of total blackness before the hero can move (Phase 1 hold).
 @export var void_hold_duration: float = 1.5
 ## Walk speed for the corridor (very slow, atmospheric).
@@ -361,12 +365,12 @@ func _run_sequence() -> void:
 	if not _sequence_running: return
 
 	# Guardian searching in the void — two lines before the hero appears.
-	_glitch_display.play_floating("...Hero...")
+	_glitch_display.play_floating(_GLITCH_SEQ.lines[0].text)
 	await _glitch_display.floating_text_done
 	if not _sequence_running: return
 	await get_tree().create_timer(0.8).timeout
 	if not _sequence_running: return
-	_glitch_display.play_floating("...can you hear me?...")
+	_glitch_display.play_floating(_GLITCH_SEQ.lines[1].text)
 	await _glitch_display.floating_text_done
 	if not _sequence_running: return
 	await get_tree().create_timer(0.6).timeout
@@ -382,7 +386,7 @@ func _run_sequence() -> void:
 	await summon_tween.finished
 	if not _sequence_running: return
 
-	_glitch_display.play_floating("...the summoning is taking hold...")
+	_glitch_display.play_floating(_GLITCH_SEQ.lines[2].text)
 	await _glitch_display.floating_text_done
 	if not _sequence_running: return
 
@@ -405,7 +409,7 @@ func _run_sequence() -> void:
 	print("[SEQUENCE] Phase 2 — unlocking player.")
 	remove_from_group("pause_blocked") # player has free control — allow pausing
 	player.unlock_movement()
-	_glitch_display.play_floating("...follow the path...")
+	_glitch_display.play_floating(_GLITCH_SEQ.lines[3].text)
 
 	var shift_tween := create_tween()
 	shift_tween.tween_method(_overlay.set_light_radius, 0.12, 0.18, 1.6)
@@ -423,7 +427,7 @@ func _run_sequence() -> void:
 	if not _sequence_running: return
 	print("[SEQUENCE] Phase 3 — triggered.")
 	_reveal_guiding_light()
-	_glitch_display.play_floating("...echoes of what awaits...")
+	_glitch_display.play_floating(_GLITCH_SEQ.lines[4].text)
 	# TODO [PLACEHOLDER]: add a line specific to the companions when they appear.
 	# TODO [PLACEHOLDER]: add an ominous line when the Act 2 character is glimpsed in the visions.
 	# Darkness has served its purpose — the player is fully in the world now.
@@ -447,7 +451,7 @@ func _run_sequence() -> void:
 	await _await_player_y(p4_y)
 	if not _sequence_running: return
 	print("[SEQUENCE] Phase 4 — triggered.")
-	_glitch_display.play_floating("...this world needs you...")
+	_glitch_display.play_floating(_GLITCH_SEQ.lines[5].text)
 	# Kingdom flanks the corridor — architecture glimpsed either side as they walk through.
 	if _vision:
 		var t4 := get_node_or_null("Phase4Trigger")
@@ -491,7 +495,7 @@ func _run_sequence() -> void:
 	print("[SEQUENCE] Phase 6 — showing name entry prompt.")
 	var name_display := get_tree().get_first_node_in_group("name_entry_display") as NameEntryDisplay
 	if name_display:
-		await name_display.prompt("Hero... Tell me your name.")
+		await name_display.prompt("Hero... tell me your name.")
 	else:
 		push_error("[SEQUENCE] Phase 6 — NameEntryDisplay not found in group 'name_entry_display'!")
 	if not _sequence_running: return
@@ -501,12 +505,7 @@ func _run_sequence() -> void:
 
 	# --- Guardian echoes the name — connection complete. ---
 	if _dialogue_box:
-		var echo_line := DialogueLine.new()
-		echo_line.text = "{player_name}..."
-		echo_line.glitched = true
-		echo_line.chars_per_second = 8.0
-		echo_line.auto_advance_delay = 0.8
-		var echo_seq: Array[DialogueLine] = [echo_line]
+		var echo_seq: Array[DialogueLine] = [_PHASE6_SEQ.lines[0]]
 		await _dialogue_box.play_sequence(echo_seq)
 	if not _sequence_running: return
 	print("[SEQUENCE] Phase 6 — name echo done.")
@@ -522,12 +521,7 @@ func _run_sequence() -> void:
 
 	# --- "...something's wrong..." ---
 	if _dialogue_box:
-		var wrong_line := DialogueLine.new()
-		wrong_line.text = "...something's wrong..."
-		wrong_line.glitched = true
-		wrong_line.chars_per_second = 10.0
-		wrong_line.auto_advance_delay = 1.0
-		var wrong_seq: Array[DialogueLine] = [wrong_line]
+		var wrong_seq: Array[DialogueLine] = [_PHASE6_SEQ.lines[1]]
 		await _dialogue_box.play_sequence(wrong_seq)
 	if not _sequence_running: return
 
@@ -552,12 +546,7 @@ func _run_sequence() -> void:
 
 	# --- "...it's too late..." ---
 	if _dialogue_box:
-		var late_line := DialogueLine.new()
-		late_line.text = "...it's too late..."
-		late_line.glitched = true
-		late_line.chars_per_second = 10.0
-		late_line.auto_advance_delay = 1.0
-		var late_seq: Array[DialogueLine] = [late_line]
+		var late_seq: Array[DialogueLine] = [_PHASE6_SEQ.lines[2]]
 		await _dialogue_box.play_sequence(late_seq)
 	if not _sequence_running: return
 
@@ -601,12 +590,7 @@ func _run_sequence() -> void:
 	fade_tween.tween_property(top_white, "color:a", 1.0, 4.0)
 
 	if _dialogue_box:
-		var find_me_line := DialogueLine.new()
-		find_me_line.text = "{player_name}... Find me..."
-		find_me_line.glitched = true
-		find_me_line.chars_per_second = 7.0
-		find_me_line.auto_advance_delay = 0.5
-		var find_me_seq: Array[DialogueLine] = [find_me_line]
+		var find_me_seq: Array[DialogueLine] = [_PHASE6_SEQ.lines[3]]
 		await _dialogue_box.play_sequence(find_me_seq)
 	if not _sequence_running: return
 	print("[SEQUENCE] Phase 6 — Find me done. Awaiting white-out.")
