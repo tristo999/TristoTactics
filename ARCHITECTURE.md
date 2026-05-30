@@ -27,6 +27,7 @@
   - [BattleInputHandler](#battleinputhandler)
   - [Turn Flow](#turn-flow)
   - [Attack Flow](#attack-flow)
+  - [Ability Framework](#ability-framework)
 - [Tilemap & Pathfinding](#tilemap--pathfinding)
   - [Tilemap Manager](#tilemap-manager)
   - [AStarGrid2D Pathfinding](#astargrid2d-pathfinding)
@@ -73,6 +74,7 @@
   - [Settings Menu](#settings-menu)
 - [Camera System](#camera-system)
 - [Level System](#level-system)
+- [Scene Flow](#scene-flow)
 - [Developer Tools](#developer-tools)
 - [File Structure](#file-structure)
 - [Input Mapping](#input-mapping)
@@ -182,6 +184,7 @@ Pure signal declaration node — no logic. Every signal passes through here so s
 | `character_movement_started` | `character: Node2D` | CharacterBase | GameSFXManager |
 | `character_movement_finished` | `character: Node2D` | CharacterBase | GameManager, CharacterInfoPanel |
 | `character_attacked` | `attacker: Node2D, target: Node2D, damage: int, is_crit: bool` | AttackAnimationOverlay | GameSFXManager, CharacterInfoPanel |
+| `ability_used` | `caster: Node2D, target: Node2D, ability: Ability` | GameManager | — (unconsumed; wire SFX/UI here) |
 | `character_damaged` | `character: Node2D, amount: int, source: Node2D` | CharacterBase | GameSFXManager |
 | `character_healed` | `character: Node2D, amount: int, source: Node2D` | CharacterBase | GameSFXManager |
 | `character_died` | `character: Node2D` | CharacterBase | GameManager, GameSFXManager |
@@ -557,6 +560,60 @@ character.attack_target(target) [async]
   ├─ target.take_damage(final_damage, self)
   └─ Return {success: true, damage: final_damage, is_crit: is_crit}
 ```
+
+### Ability Framework
+
+Abilities are `Resource` subclasses assigned per-character. Each concrete ability (heal, fireball, buff, etc.) subclasses `Ability` and overrides `execute()`. Instances are duplicated at battle start so use counters are per-character.
+
+**Ability** (`scripts/abilities/ability.gd`) | **class_name:** `Ability` | **Extends:** `Resource`
+
+**Enum:** `TargetType { ALLY, ENEMY, SELF, TILE, ALL_ALLIES, ALL_ENEMIES }`
+
+**@export fields:**
+
+| Field | Type | Default | Description |
+|---|---|---|---|
+| `ability_name` | String | "Ability" | Display name |
+| `description` | String | "" | Tooltip text |
+| `icon` | Texture2D | null | Icon for the action bar button |
+| `target_type` | TargetType | ENEMY | Targeting behavior |
+| `range_min` | int | 1 | Minimum Manhattan distance |
+| `range_max` | int | 1 | Maximum Manhattan distance |
+| `max_uses` | int | 0 | Per-battle use limit (0 = unlimited) |
+
+**Runtime state:** `uses_left: int`
+
+**Public functions:**
+
+| Function | Signature | Description |
+|---|---|---|
+| `reset_uses` | `() → void` | Restore `uses_left = max_uses`; called at battle start |
+| `can_use` | `() → bool` | `true` if unlimited or `uses_left > 0` |
+| `consume_use` | `() → void` | Decrement `uses_left` (only if `max_uses > 0`) |
+| `get_target_tiles` | `(origin: Vector2i, tilemap: Node2D) → Array` | Returns all tiles within `[range_min, range_max]` Manhattan distance that are inside the A* grid bounds |
+| `execute` | `(caster, target) → Dictionary` | **Virtual.** Override in subclass. Returns result dict (shape is ability-specific, but `{success: bool}` is required). |
+
+**HealAbility** (`scripts/abilities/heal_ability.gd`) — concrete example, `target_type = ALLY`, `range_max = 3`, heals `heal_amount` HP clamped to `max_hp`. Returns `{success: bool, healed: int, target: String}` on success or `{success: false, reason: String}` on failure (`"no_uses_left"`, `"invalid_target"`).
+
+**Character integration** (in `CharacterBase`):
+- `abilities: Array[Ability]` — populated from `character_data.abilities` at `_ready()` via `.duplicate()` (per-instance state)
+- `get_usable_abilities() → Array[Ability]` — filters by `can_use()`
+- `has_abilities() → bool`
+- `get_ability_targets(ability: Ability) → Array` — valid targets in range for the BattleInputHandler to click-validate
+
+**GameManager integration:**
+- `selected_ability: Ability` — active ability during `PLAYER_SELECTING_ABILITY` targeting mode
+- `enter_ability_selection(ability: Ability)` — fired by the `BottomActionBar` ability button; shows ability range highlights via `_show_ability_range()`
+- `request_ability(character, ability, target) → bool` — validates `has_used_action` and `ability.can_use()`, awaits `ability.execute()`, emits `EventBus.ability_used`, transitions to `PLAYER_IDLE`
+
+**Input flow** (in `BattleInputHandler`):
+1. User presses ability button in `BottomActionBar` → `game_manager.enter_ability_selection(ability)`
+2. Range highlights shown; clicking a tile invokes `_handle_selecting_ability()`
+3. Target validated against `character.get_ability_targets(ability)` → `game_manager.request_ability()`
+
+**Signal:** `EventBus.ability_used(caster: Node2D, target: Node2D, ability: Ability)` — currently unconsumed; wire SFX/UI here.
+
+**Adding a new ability:** subclass `Ability`, set defaults in `_init()`, override `execute()`. Create a `.tres` in `data/abilities/`, then reference it from a `CharacterData.abilities` array.
 
 ---
 
@@ -1039,9 +1096,15 @@ Auto-connects to `back_requested` signal on pushed menus. `process_mode = ALWAYS
 
 ### Main Menu
 
-**Script:** `scripts/levels/menus/main_menu.gd` | **Extends:** `Control`
+**Script:** `scripts/menus/main_menu.gd` | **Extends:** `Control`
 
-Creates its own `MenuStack`. Start → `change_scene_to_file("res://scenes/levels/test_scene.tscn")`. Settings hides main VBox, pushes `SettingsMenu`. Quit → `get_tree().quit()`. Plays `"menu"` music.
+Creates its own `MenuStack`. Buttons:
+- **New Game** → `PlayerDataManager.reset_player_data()`, fade to black, then `change_scene_to_file("res://scenes/levels/opening_corridor_scene.tscn")`
+- **Continue** (disabled if no save) → `PlayerDataManager.load_player_data()` then loads `current_scene` checkpoint (falls back to opening corridor)
+- **Settings** → hides main VBox, pushes `SettingsMenu` onto its `MenuStack`
+- **Quit** → `get_tree().quit()`
+
+Plays `"menu"` music on `_ready()`. Fades in from black when arriving from `SplashScreen`.
 
 ### Pause Menu
 
@@ -1105,9 +1168,67 @@ Added to group `"action_camera"`. WASD/arrow input cancels auto-focus. Mouse whe
 
 **Behavior:** Plays `music_key` via AudioManager on `_ready()`. Connects to `EventBus.battle_ended` → waits 0.8s → instantiates VictoryDefeatScreen.
 
-**TestScene** (`scripts/levels/test_scene.gd`) | **Extends:** `BaseLevel` — sets `music_key = "battle"`. Creates a `DialogueEvent` with intro dialogue lines and assigns it to `GameManager.intro_event`.
+**DevSandboxScene** (`scripts/levels/dev_sandbox_scene.gd`) | **Extends:** `BaseLevel` — sets `music_key = "battle"`. Creates a `DialogueEvent` with intro dialogue lines and assigns it to `GameManager.intro_event`. Dev-only battle playground (Hero/Archer/Healer vs goblins at mountain pass); not on the story critical path — retained as a reference sandbox for exercising the battle system end-to-end.
 
 **PauseMenuHandler** (`scripts/levels/pause_menu_handler.gd`) | **Extends:** `Node` — creates `MenuStack`, handles Escape key, pauses/unpauses.
+
+**OpeningCorridorScene** (`scripts/levels/opening_corridor_scene.gd`) | **Extends:** `WalkingScene` — the game's opening sequence. See the Walking Scene System section.
+
+**SummoningRoomScene** (`scripts/levels/summoning_room_scene.gd`) | **Extends:** `Node2D` — walking scene with a `DoorTrigger` node. On interact: locks the player, saves a checkpoint to `next_scene_path`, fades to black, changes scene. Default `next_scene_path` is the tutorial scene. (Act 1 Beat 1 target — currently atmosphere only; Vael + dialogue not yet implemented.)
+
+**TutorialScene** (`scripts/levels/tutorial_scene.gd`) | **Extends:** `BaseLevel` — 7-line stub, sets `music_key = "menu"` and calls `super._ready()`. (Act 1 Beat 2 target — content not yet implemented.)
+
+---
+
+## Scene Flow
+
+Entry point is configured in `project.godot` as `res://scenes/menus/SplashScreen.tscn`. The full main path:
+
+```
+SplashScreen ──► MainMenu ──► [New Game]
+                   │              │
+                   │              ▼
+                   │         OpeningCorridorScene ──► SummoningRoomScene ──► TutorialScene
+                   │         (6 phases,                   (door trigger,       (stub, music only)
+                   │          name entry)                  saves checkpoint)
+                   │
+                   └─ [Continue] ──► PlayerDataManager.current_scene (last saved checkpoint)
+                                     Falls back to OpeningCorridorScene if empty.
+
+DevSandboxScene (standalone) ──► dev-only battle playground; not reachable from main flow (reference sandbox)
+```
+
+**Transitions — authoritative list** (grep `change_scene_to_file`):
+
+| From | Trigger | To |
+|---|---|---|
+| `SplashScreen` | logo fade-out timer | `MainMenu.tscn` |
+| `MainMenu` → New Game | button press | `opening_corridor_scene.tscn` |
+| `MainMenu` → Continue | button press | `PlayerDataManager.current_scene` (checkpoint) |
+| `OpeningCorridorScene` | Phase 6 final fade | `next_scene_path` (default `summoning_room_scene.tscn`) |
+| `SummoningRoomScene` | `DoorTrigger` interact | `next_scene_path` (default `tutorial_scene.tscn`) |
+| `PauseMenu` → Quit to Main Menu | button press | `MainMenu.tscn` |
+| `VictoryDefeatScreen` → Main Menu | button press | `MainMenu.tscn` |
+| Any | `SceneChangeEvent` in a story event chain | configured `scene_path` |
+
+**Checkpoints:** `PlayerDataManager.set_checkpoint(scene_path)` is called:
+- In `OpeningCorridorScene` before the final "Find me" sequence (`next_scene_path`)
+- In `SummoningRoomScene._on_door_triggered()` (`next_scene_path`)
+- In `PauseMenu._on_quit_pressed()` (current scene path)
+- Via `SaveCheckpointEvent` in story event chains
+
+**Scene → Script reference table:**
+
+| Scene | Script | class_name |
+|---|---|---|
+| `scenes/menus/SplashScreen.tscn` | `scripts/menus/splash_screen.gd` | — |
+| `scenes/ui/MainMenu.tscn` | `scripts/menus/main_menu.gd` | — |
+| `scenes/levels/opening_corridor_scene.tscn` | `scripts/levels/opening_corridor_scene.gd` | `OpeningCorridorScene` |
+| `scenes/levels/summoning_room_scene.tscn` | `scripts/levels/summoning_room_scene.gd` | `SummoningRoomScene` |
+| `scenes/levels/tutorial_scene.tscn` | `scripts/levels/tutorial_scene.gd` | — |
+| `scenes/levels/dev_sandbox_scene.tscn` | `scripts/levels/dev_sandbox_scene.gd` | — |
+
+> **Implementation status by story beat:** see [`docs/implementation_status.md`](docs/implementation_status.md).
 
 ---
 
@@ -1363,15 +1484,22 @@ scripts/
 │   ├── summoning_room_scene.gd     # Post-corridor summoning chamber
 │   ├── corridor_path.gd            # Materializing path under the hero (CorridorPath)
 │   ├── corridor_particles.gd       # Ambient particle effects for corridor
+│   ├── corridor_vision.gd          # Kingdom/companion vision sprites
 │   ├── kingdom_fragment.gd         # Ghostly terrain fragment sprite (KingdomFragment)
-│   ├── test_scene.gd                # Test battle level
+│   ├── tutorial_scene.gd            # Tutorial level (Act 1 Beat 2 — stub)
+│   ├── dev_sandbox_scene.gd         # Dev-only battle playground (goblins/mountain pass; reference sandbox)
+│   ├── walking_door.gd              # Interactable door trigger
 │   ├── pause_menu_handler.gd        # In-game pause system
-│   ├── menus/
-│   │   └── main_menu.gd             # Main menu screen
 │   └── tilemaps/
 │       ├── tilemap.gd               # Tilemap manager (A*, BFS, highlights)
 │       ├── highlight_renderer.gd    # Custom _draw() tile highlights
 │       └── tutorial_tilemap.gd      # Tutorial-specific tilemap generation
+├── menus/
+│   ├── splash_screen.gd             # Studio splash (entry scene)
+│   └── main_menu.gd                 # Main menu screen
+├── abilities/
+│   ├── ability.gd                   # Base ability resource (Ability)
+│   └── heal_ability.gd              # Restore HP to an ally (HealAbility)
 ├── story/
 │   ├── story_event.gd          # Base event class (StoryEvent)
 │   ├── dialogue_event.gd       # Dialogue sequence (DialogueEvent)
@@ -1460,6 +1588,7 @@ signal character_moved(character: Node2D, from_tile: Vector2i, to_tile: Vector2i
 signal character_movement_started(character: Node2D)                    # CharacterBase → GameSFXManager
 signal character_movement_finished(character: Node2D)                   # CharacterBase → GameManager, InfoPanel
 signal character_attacked(attacker: Node2D, target: Node2D, damage: int, is_crit: bool)  # Overlay → GameSFXManager, InfoPanel
+signal ability_used(caster: Node2D, target: Node2D, ability: Ability)  # GameManager → (unconsumed — wire SFX/UI here)
 signal character_damaged(character: Node2D, amount: int, source: Node2D)  # CharacterBase → GameSFXManager
 signal character_healed(character: Node2D, amount: int, source: Node2D)   # CharacterBase → GameSFXManager
 signal character_died(character: Node2D)                                # CharacterBase → GameManager, GameSFXManager

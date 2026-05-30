@@ -1,16 +1,14 @@
 # Godot 4+ specific ignores
+# NOTE: *.import and *.uid are REQUIRED in Godot 4 — do not ignore them.
 .godot/
 .android/
-*.uid
 .import/
 .export/
 mono/
 .mono/
-*.import
-*.godot
+export_presets.cfg
 *.tmp
 *.log
-*.cfg
 *.pidb
 *.pdb
 *.sln
@@ -21,9 +19,14 @@ mono/
 # OS-specific
 .DS_Store
 Thumbs.db
+desktop.ini
 
 # VS Code
 .vscode/
+
+# Claude Code
+.claude/settings.local.json
+.claude/worktrees/
 
 # Build and cache
 build/
