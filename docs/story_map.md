@@ -271,13 +271,22 @@ Beat 1 — ARRIVAL
   Remaining Beat 1 dialogue: TBD
 
 Beat 2 — TUTORIAL / TRAINING
-  Hero trains with Authority soldiers.
-  No rebels present.
-  Vael oversees, performs warmth and competence.
-  Companions begin joining the party.
-  Camp life begins — relationship building starts.
+  Hero trains with Authority soldiers under Vael's oversight.
+  Sparring in progress — controlled, tutorial-paced.
+  Mid-sparring: insurgents attack the camp without warning.
+  The party repels them. Vael frames this as kingdom agitators
+  striking at a soft target — unprovoked aggression.
+  First taste of real, lethal combat following the tutorial warmup.
+  Companions begin joining the party. Camp life begins.
   Location: Authority training ground
-  Gameplay: Tutorial combat mechanics under Authority framing
+  Gameplay: Two-phase — sparring (tutorial) interrupted by insurgent
+             raid (first real stakes combat)
+  NOTE: In Act 2 the Act 2 party is inside the camp during this exact
+        battle — the loyalist attack is a deliberate distraction they
+        sent to pull the Act 1 party outside. The two parties are in
+        the same place at the same time, separated by the camp walls.
+        The Act 1 party never knows. They hear the same battle the
+        Act 2 party is racing against.
 
 Beat 3 — EARLY CAMPAIGN
   Party advances against kingdom defenders.
@@ -378,14 +387,66 @@ Beat 1 — ARRIVAL
   Gameplay: Establishing mission, new objectives introduced
 
 Beat 2 — OPERATING IN THE MARGINS
-  Party begins sabotage operations.
-  Supply lines disrupted, deployments disrupted,
-  civilians saved.
+  Party begins sabotage operations across multiple fronts.
+  Supply lines disrupted, deployments disrupted, civilians saved.
   Every intervention prepares the kingdom's final defense.
-  Vael becomes aware of the shadow cell — cannot identify
-  them. Frustration begins building.
-  Location: Various — mirrored Act 1 maps
-  Gameplay: Stealth, sabotage, disruption objectives
+
+  KEY OPERATION — TRAINING GROUND INFILTRATION:
+  The Act 2 party sends a small kingdom loyalist force to attack the
+  camp perimeter — enough to pull the Act 1 party and guards outside
+  to respond. While the Act 1 party fights the distraction outside,
+  the Act 2 party slips into the emptied camp.
+  The two parties are in the same place at the same time, separated
+  only by the camp walls. The sound of the battle outside is the Act 2
+  party's cover — and their clock. They must retrieve the item and
+  leave before the fighting stops and the Act 1 party returns.
+  They are never seen. They do not interact. They hear their own voices
+  through the walls.
+  What they retrieve: an item that arrived during the Guardian's
+  original summoning ritual alongside the Hero, confiscated by the
+  Authority, and never shown to the player in Act 1.
+  (What the item is: TBD. Tied to the Guardian's intent.)
+  The party passes the summoning circle during infiltration — the
+  same one that intercepted the Hero's descent. They recognize it.
+
+  VAEL OVERHEARD — AND THE SUMMONING:
+  The Hero has not yet arrived. Vael is not performing. The party
+  hears him — through a wall, around a corner, across a courtyard —
+  talking to an adjutant or officer. Casual. Not a speech.
+  Two subjects, one conversation:
+  (1) The kingdom's defense: contemptuous and dismissive. The
+      insurgents have been fighting for months and this is the best
+      they can manage. Bored contempt — swatting a fly, not fighting
+      a war. This is the main thread of the conversation.
+  (2) The incoming party (the Act 1 Hero and companions): an offhand
+      aside. A band of misfits. He's been told to work with them and
+      he finds the assignment beneath him. Not rage — he can't be
+      bothered with rage. They're a footnote.
+  Specific lines: TBD — writer to draft. The misfits comment should
+  feel like the end of a longer thought, not a standalone verdict.
+
+  Vael's contempt is interrupted mid-sentence by the summoning.
+  A bright light — the summoning circle activating. The Guardian
+  pulling the Hero across worlds, intercepted by the Authority.
+  The Act 2 party sees it. They are standing in the camp where
+  it happened, watching the moment their timeline began.
+  They cannot stop it. The loop must hold.
+
+  Vael's tone shifts instantly. The performance comes back on.
+  He goes to meet the Hero. The camp, emptied by the distraction,
+  begins to fill again — soldiers returning, attention shifting.
+  The window is closed. The Act 2 party must leave now.
+  The summoning is the exit signal. They go.
+  They carry everything they just heard and saw.
+
+  Vael becomes aware of the shadow cell — cannot identify them.
+  Frustration begins building.
+  Location: Various — mirrored Act 1 maps; training ground map is
+             the same as Act 1 Beat 2, visited at an earlier point
+             in the timeline
+  Gameplay: Stealth, sabotage, disruption objectives; training-ground
+             operation is player-directed — coordinate the loyalist
+             raid, then navigate the emptied camp to retrieve the item
 
 Beat 3 — BRIDGE EVENT
   Party destroys the bridge to hinder the Authority.
@@ -413,6 +474,9 @@ Beat 6 — VAEL UNMASKED
   transparent. The party witnesses what Vael does when
   the Hero is not watching. A specific scene of Vael's
   cruelty — quiet, routine, not theatrical.
+  NOTE: The party already overheard Vael unguarded once in
+  Beat 2. This beat escalates from words to action — they
+  see what he does, not just what he says when unobserved.
   Location: TBD — observed from shadow
   Gameplay: Narrative beat, possible stealth element
 
@@ -517,6 +581,20 @@ LOCKED DECISIONS — DO NOT CONTRADICT
 - Time travel is one-way — the party arrives before Act 1
 - Act 1 events are inevitable, cannot be prevented
 - The bridge is destroyed by the Act 2 party
+- During Act 1 Beat 2 the Act 2 party is inside the training camp
+  while the Act 1 party fights their loyalist distraction outside;
+  same place, same moment, separated by the camp walls — no contact
+- The Act 2 party witnesses the summoning from inside the camp;
+  Vael's overheard contempt is cut off mid-sentence by the flash;
+  the party watches him switch his performance on and leave to greet
+  the Hero; the summoning is what ends their infiltration window
+- The "insurgents" of Act 1 Beat 2 are a small loyalist force sent
+  deliberately by the Act 2 party as a distraction; they are not
+  a full raid, just enough to empty the camp
+- An item arrived during the Guardian's original summoning ritual
+  alongside the Hero, was confiscated by the Authority, and is never
+  shown in Act 1; the Act 2 party retrieves it from the training camp
+  (what the item is: TBD — tied to the Guardian's intent)
 - Guardian is the source of the world's magic, tied to the kingdom like Sunwell to Silvermoon
 - Authority's true goal is absorbing the Guardian to become a deity figure
 - Guardian foresaw its loss and summoned the Hero as a last act — was blindsided by the interception
