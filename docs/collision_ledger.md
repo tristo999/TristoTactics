@@ -178,8 +178,8 @@ finishable one.
 ## Open rows / to fill next
 
 - **Row 4** — the kind-mercy-that-was-a-trap collision. The set's missing shape.
-- ✓ The training-camp infiltration is now **Row 5** (migrated from the old
-  story_map). Still to lock: its retrieval cue — a fixed camp landmark — before
-  the Act 1 training-ground map is built.
+- ✓ The training-camp infiltration is now **Row 5** (migrated from the earlier
+  story_map, since removed). Still to lock: its retrieval cue — a fixed camp
+  landmark — before the Act 1 training-ground map is built.
 - For every confirmed row, lock the retrieval cue *before* the Act 1 map is
   built. Cues can't be retrofitted cheaply once the maps exist.

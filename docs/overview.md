@@ -101,27 +101,24 @@ mind — which is the tell of a real theme and not a slogan. Protect that.
 
 ## The document map
 
-- **tristotactics_overview.md** (this file) — why the game is like this. The
-  north star.
-- **tristotactics_world_bible.md** — the canon. What everything *is*. Treat as
-  ground truth for implementation. Updated with the 2026-05 revisions.
-- **tristotactics_collision_ledger.md** — the actual design blueprint. One row
-  per scene-that-happens-twice. This replaces the old 21-beat story bible as the
-  thing you build from.
+- **overview.md** (this file) — why the game is like this. The north star.
+- **world_bible.md** — the canon. What everything *is*. Treat as ground truth
+  for implementation. Carries the 2026-05 revisions.
+- **collision_ledger.md** — the design blueprint. One row per
+  scene-that-happens-twice. The thing you build from, not a beat list.
+- **implementation_status.md** — the build/process layer: what's coded, what's
+  stubbed, the MVP slice and milestones. A different job from the three above.
+- **opening_scene_report.md** — writer-facing breakdown of the opening sequence.
+- **dialogue_system.md** — technical reference for the dialogue system.
 
-**Superseded:** the old `story_map.md` and the old Story & Lore handoff were
-scaffolding from AI conversations. Their "LOCKED DECISION" tags were a way to
-track beats during brainstorming, not real constraints. Useful as raw ore; not
-authoritative. Where they conflict with these three docs, these three win.
-Specifically, the old "Guardian captured mid-summoning" and "Guardian is the
-source of all magic" are both revised — see the world bible.
-
-*Reconciliation (2026-05-31):* `story_map.md` has been reduced to a redirect
-stub pointing here; the Story & Lore handoff was folded into these three; the
-training-camp infiltration it described is now Row 5 of the ledger. The build/
-process layer still lives separately in `implementation_status.md` (MVP slice,
-milestones) — not superseded, just a different job. Nothing here is locked;
-everything stays iterable via the `[settled]/[open]` legend.
+**Superseded scaffolding (removed 2026-05-31):** an earlier `story_map.md` (a
+21-beat list with "LOCKED DECISION" tags) and a Story & Lore handoff were
+brainstorming artifacts. Their useful content was folded into the canon docs
+above — and the training-camp infiltration into ledger Row 5 — then the originals
+were removed (they live in git history). Two things they got wrong, now revised:
+the Guardian was never captured (its connection to the hero was jammed), and the
+Guardian is not the source of all magic (it guards the core). Nothing here is
+locked — everything stays iterable via the `[settled]/[open]` legend.
 
 
 ## Two things to keep honest

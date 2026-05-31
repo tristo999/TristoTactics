@@ -1,9 +1,9 @@
 # Tristo Tactics — Implementation Status
 
 > **Purpose:** maps each story beat to the scene(s) that implement it and tracks build state. Read this before picking up narrative work.
-> **Story source of truth:** [`newDocs/tristotactics_overview.md`](newDocs/tristotactics_overview.md) (north star), with the world bible & collision ledger beside it. (`story_map.md` is a retired stub.)
+> **Story source of truth:** [`overview.md`](overview.md) (north star), with [`world_bible.md`](world_bible.md) and [`collision_ledger.md`](collision_ledger.md) beside it.
 > **Technical reference:** [`../ARCHITECTURE.md`](../ARCHITECTURE.md)
-> **Last reviewed:** 2026-05-31 (docs reconciled to the collision framework; canon moved to newDocs/)
+> **Last reviewed:** 2026-05-31 (docs restructured: canon = overview/world_bible/collision_ledger; story_map and the dated code review removed)
 >
 > **Framework note:** the project is now designed around *collisions* (scenes that happen twice) rather than a linear 21-beat list — see the ledger. The MVP slice (Opening → B1 → B2 → B3, pitch-grade) and the milestone plan below still hold; just read them through the new lens. The revised Act 1 ending (the hero opens the door / the legion / the Authority's "true form") sits past the slice, so it doesn't change slice scope — but B2/B3 now also carry a duty to plant retrieval cues (see ledger).
 
@@ -65,7 +65,7 @@ Writer-facing reference: [`opening_scene_report.md`](opening_scene_report.md)
 
 ## Act 1 — THE LOYAL BLADE — Build State
 
-Beats 1–10 from [`story_map.md`](story_map.md). Mission count per beat is TBD per the story map.
+Narrative canon is [`world_bible.md`](world_bible.md) (Act 1 ending revised 2026-05); this table tracks *build state* per beat. Mission count per beat is TBD.
 
 | Beat | Narrative | Planned Scene | Current Scene File | State | Next Work |
 |---|---|---|---|---|---|
@@ -76,7 +76,7 @@ Beats 1–10 from [`story_map.md`](story_map.md). Mission count per beat is TBD 
 | 5 — BRIDGE INCIDENT | Bridge collapses mid-mission | Bridge map (battle, mirrored in Act 2 B3) | — | ⬜ | Not started. Map must be reusable with inverted objectives for Act 2. |
 | 6 — TOWN MISSION | Operation with civilian casualties, rationalized by Vael | Civilian settlement | — | ⬜ | Not started |
 | 7 — THE CHOICE | Two top-relationship companions fall, save one | Narrative beat | — | ⬜ | Blocks on companion identities being locked (Open Question 6) |
-| 8 — GUARDIAN SECURED | Campaign climax, Guardian captured | Kingdom capital | — | ⬜ | Not started |
+| 8 — THE CAPITAL / CORE TAKEN | March reaches the capital; the Authority discards the hero and takes the core, opening the door for the legion (revised canon — the hero opens the door; the Guardian is *not* captured) | Kingdom capital | — | ⬜ | Not started |
 | 9 — THE REALIZATION | Guardian's first full sentence | Narrative beat | — | ⬜ | Not started |
 | 10 — THE LAST STAND | Unwinnable battle, fragment sent forward, Unchosen Companion sent forward | Ritual site | — | ⬜ | Not started |
 
@@ -84,7 +84,7 @@ Beats 1–10 from [`story_map.md`](story_map.md). Mission count per beat is TBD 
 
 | Scene | Script | Purpose | State |
 |---|---|---|---|
-| `dev_sandbox_scene.tscn` | `dev_sandbox_scene.gd` | Goblins + Elena at mountain pass. Ad-hoc battle arena used to exercise the battle system end-to-end. Hardcoded dialogue does not align with story_map. | Playable, retained as a reference sandbox for battle-system work. Not on the story critical path. |
+| `dev_sandbox_scene.tscn` | `dev_sandbox_scene.gd` | Goblins + Elena at mountain pass. Ad-hoc battle arena used to exercise the battle system end-to-end. Hardcoded dialogue does not align with current canon. | Playable, retained as a reference sandbox for battle-system work. Not on the story critical path. |
 
 ---
 
@@ -112,9 +112,9 @@ All Act 2 beats unbuilt. Scene names below are suggestions pending Act 1 impleme
 
 Ordered by urgency (what must be decided to unblock active work).
 
-1. **Companion identities** (names, classes, regions, personalities). Open Question 6 in story_map. Blocks Beats 2–10 dialogue and Beat 7 "The Choice" mechanic. "Elena" is a working placeholder name for the Archer.
-2. **Guardian fragment power semantics.** Open Question 9. Blocks the save-one-companion mechanic (Beat 7) and the Act 2 arrival (Beat 1).
-3. **Kingdom name and cultural identity.** Open Question 10. Unblocks all Act 1+2 dialogue that references the place.
+1. **Companion identities** (names, classes, regions, personalities). See the world bible's open questions. Blocks Beats 2–10 dialogue and Beat 7 "The Choice" mechanic. The Archer & Healer cores are designed (world bible); names and home kingdoms still open.
+2. **Guardian fragment power semantics** — the finale keystone (the world bible's #1 open question). Blocks the save-one-companion mechanic (Beat 7) and the Act 2 arrival (Beat 1).
+3. **Kingdom name and cultural identity** (world bible open question). Unblocks all Act 1+2 dialogue that references the place.
 4. **Mission count per beat.** Required before level design can begin on Beats 3–6.
 > **Resolved 2026-04-20:** `test_scene` kept as a reference sandbox and renamed to `dev_sandbox_scene`. It's dev-only and not on the story critical path; Beat 2 will be built fresh rather than repurposing it.
 >
@@ -170,7 +170,7 @@ Goal: turn `tutorial_scene` into a real tutorial battle. Shape: **sparring inter
 ### Sprint D — Companion lock-in
 Goal: resolve Open Question 6 so narrative work on Beats 2–7 can begin.
 - Not a coding sprint — a writing/design session with the creative director.
-- Deliverable: update `story_map.md` with companion names/classes/regions/personalities.
+- Deliverable: update [`world_bible.md`](world_bible.md) with companion names/classes/regions/personalities.
 
 ---
 

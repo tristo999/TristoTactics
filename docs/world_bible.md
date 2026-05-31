@@ -1,7 +1,8 @@
 # TristoTactics — World Bible
 
 The canon. What everything *is*. Treat as ground truth for implementation.
-Where this conflicts with the old `story_map.md`, this wins.
+This is the canonical source. (It supersedes an earlier `story_map.md`, since
+removed — see git history for the original scaffolding.)
 
 Legend: **[settled]** firm · **[open]** actively undecided · **[inherited]**
 carried from old docs, kept but not yet re-pressure-tested against the 2026-05
