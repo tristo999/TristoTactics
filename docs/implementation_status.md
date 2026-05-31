@@ -1,9 +1,11 @@
 # Tristo Tactics — Implementation Status
 
 > **Purpose:** maps each story beat to the scene(s) that implement it and tracks build state. Read this before picking up narrative work.
-> **Story source of truth:** [`story_map.md`](story_map.md)
+> **Story source of truth:** [`newDocs/tristotactics_overview.md`](newDocs/tristotactics_overview.md) (north star), with the world bible & collision ledger beside it. (`story_map.md` is a retired stub.)
 > **Technical reference:** [`../ARCHITECTURE.md`](../ARCHITECTURE.md)
-> **Last reviewed:** 2026-05-30 (Act 2 B2 infiltration beat fully designed; Vael overheard + summoning interruption locked)
+> **Last reviewed:** 2026-05-31 (docs reconciled to the collision framework; canon moved to newDocs/)
+>
+> **Framework note:** the project is now designed around *collisions* (scenes that happen twice) rather than a linear 21-beat list — see the ledger. The MVP slice (Opening → B1 → B2 → B3, pitch-grade) and the milestone plan below still hold; just read them through the new lens. The revised Act 1 ending (the hero opens the door / the legion / the Authority's "true form") sits past the slice, so it doesn't change slice scope — but B2/B3 now also carry a duty to plant retrieval cues (see ledger).
 
 ---
 
