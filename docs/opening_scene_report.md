@@ -114,6 +114,8 @@ As soon as this text finishes, the screen **shakes harder** and a second white f
 
 The flash then pulls back slightly, leaving the player in a black void as the path dissolves.
 
+> **Canon note (not shown in-scene):** this interruption is the *Authority* intercepting the Guardian's summoning — jamming the connection and **capturing the Hero**, who wakes redirected to the Authority's camp (Act 1, Beat 1). The **Guardian itself is not captured**; it remains in the capital, cut off from the Hero it called. The player learns none of this here. See [`newDocs/tristotactics_world_bible.md`](newDocs/tristotactics_world_bible.md).
+
 ---
 
 **3. The Final Call**
