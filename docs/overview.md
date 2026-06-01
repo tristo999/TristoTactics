@@ -90,8 +90,11 @@ don't brace for them, recoverable the instant the alignment comes.
 - **Deicide and substitution.** The empire conquers by killing gods and wearing
   the corpse, then making the conquered grateful. Brainwashing the hero is the
   same move at the scale of one mind.
-- **Complicity has a price even at the top.** The collaborators who "chose the
-  winning side" were robbed too — they just don't remember it.
+- **Complicity has a price even at the top.** Standing in the empire is a
+  gradient of how early you folded — so the prosperous "winners" are just the
+  kingdoms that capitulated soonest, robbed of their own gods too and taught to
+  call it luck. Prosperity is a confession; poverty is a scar from having once
+  resisted.
 - **Broken people learning to be people again.** The companions are what the
   empire made. The personal-quest pillar is the game arguing they can be more.
 
