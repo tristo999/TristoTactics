@@ -19,8 +19,8 @@ manage. Tone: righteous warmth curdling into tragedy.
 ## The pitch
 
 A silent hero is summoned across worlds by a dying god — the Guardian — to lead
-the last resistance against an empire that has spent centuries killing gods and
-wearing their corpses. The empire intercepts the summoning. It doesn't kill the
+the last resistance against an empire that has spent centuries supplanting the
+world's gods and taking their place. The empire intercepts the summoning. It doesn't kill the
 hero. It cuts them off from the Guardian, walls their mind with a lie, and sends
 them to war against the very god that called them, certain the whole time that
 they're the righteous one. The Guardian bleeds through in glitches — half a
@@ -87,9 +87,11 @@ don't brace for them, recoverable the instant the alignment comes.
 - **Victims who believe the victim is the thief.** The empire's central lie.
   Every soldier — and the hero — is a victim taught that the wronged party is
   the villain.
-- **Deicide and substitution.** The empire conquers by killing gods and wearing
-  the corpse, then making the conquered grateful. Brainwashing the hero is the
-  same move at the scale of one mind.
+- **Deicide and substitution** *(as the empire tells it).* It claims to have
+  killed the old gods and worn the corpse — but the truth is suppression: the
+  distant, rarely-interfering gods were *blocked out*, not slain, and the empire
+  installed itself in the gap. Brainwashing the hero is the same move at the
+  scale of one mind — cut them off from the real voice, install your own.
 - **Complicity has a price even at the top.** Standing in the empire is a
   gradient of how early you folded — so the prosperous "winners" are just the
   kingdoms that capitulated soonest, robbed of their own gods too and taught to
@@ -109,6 +111,9 @@ mind — which is the tell of a real theme and not a slogan. Protect that.
   for implementation. Carries the 2026-05 revisions.
 - **collision_ledger.md** — the design blueprint. One row per
   scene-that-happens-twice. The thing you build from, not a beat list.
+- **story_beats_plan.md** — the ordering layer: every beat in sequence, both
+  acts, with collisions placed in time and retrieval cues planted. Built on the
+  ledger; must not contradict the canon.
 - **systems_design.md** — the mechanics layer: combat rules, death/stakes,
   relationships, combos, the advancing line, the hero's time powers.
 - **implementation_status.md** — the build/process layer: what's coded, what's

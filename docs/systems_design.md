@@ -19,7 +19,10 @@ with the game's structure (the two acts are welded together by the collisions; a
 character lost to a bad turn punches a hole in scenes the other act needs, which
 is unauthored studio-scale branching for a solo dev). Stakes come from elsewhere
 (below), not from the dice deleting someone you love. **Death in this game is
-authored, not rolled** — see the open thread for Act 2.
+authored, not rolled** — see the open thread for Act 2. (The one authored loss
+inside Act 1 is **Beat 7's choice**: the companion you don't save is *presumed
+dead*, though the truth — revealed in Act 2 — is the Authority took them alive
+and reforged them into the Unchosen. See the story beats plan.)
 
 ### What happens when a character hits 0 HP in Act 1
 
@@ -76,7 +79,9 @@ formalized yet. Listed so they don't get lost:
 
 - **Relationship / bonding model** — bonds built through use, story events, and
   a limited number of side quests per run. Player-driven and uneven by design.
-  Drives combos and the Beat 7 choice.
+  Drives combos and the Beat 7 choice. **Each companion's wound only fully heals
+  if the player completes their whole personal side quest** — skip it and they
+  stay partly broken (see the world bible's cast doctrine).
 - **Combo system** — follow-ups (the teachable atom; reach & shape express
   character), passives, and duo/team abilities, unlocking and deepening with
   relationships. Positioning-for-combos as the core tactical verb.

@@ -20,10 +20,20 @@ protects. It absorbed the world's many kingdoms into a single empire — by pact
 with the kings of old, who conquered their neighbors on its behalf. Betrayal
 baked into the foundation.
 
-Its method is **deicide and substitution**: as it takes each kingdom, it erases
-the local religion and deity and installs itself as the god. The conquered are
-not just beaten — they're made *grateful*, assimilated so deeply they forget
-they lost anything.
+Its method is **deicide and substitution** — *or so it claims.* As it takes each
+kingdom, it tells the world it killed the local god and became the new one, then
+installs itself in the worship. The conquered are not just beaten — they're made
+*grateful*, assimilated so deeply they forget they lost anything.
+
+The truth (revised 2026-06-01): **suppression, not murder.** The old gods were
+never killed — they were **blocked out.** The gods are distant powers who rarely
+touch the world directly; mostly they only *grant power.* The Authority got
+between the world and them and installed itself in the gap, so the magic people
+always had now looks like the Authority's gift. "Deicide" is the empire's story;
+the gods are still out there, cut off. (The Guardian is the proof — it couldn't
+be killed either, only jammed.) **[open]** when the Authority falls and the
+suppression lifts, do the gods themselves return, or only fragments of their
+power remain?
 
 **Standing in the empire is not a caste system, it's a gradient of how early
 you gave in** (revised 2026-05). The kingdoms that fell fastest — that read the
@@ -79,7 +89,9 @@ propaganda. Keep it.
 Guardian is something more specific and more precious: it **guards the core of
 the world's magic** — an object — and has stood watch over it in the kingdom's
 capital for as long as anyone remembers. The kingdom was built around the
-Guardian's presence the way Silvermoon was built around the Sunwell.
+Guardian's presence the way Silvermoon was built around the Sunwell. **[open / maybe]** whether the
+Guardian is itself one of the world's distant gods, or a separate being set to
+guard the core.
 
 The Guardian foresaw the war and its likely loss. As a last act it reached
 across worlds and summoned the hero — its final hope.
@@ -136,9 +148,16 @@ turning the Guardian's own champion against it as an insult to its resistance.
 
 ## THE CAST
 
-Six companions, all from the Authority's absorbed kingdoms. They all believe
-the lie — to some degree they must, or they couldn't serve in an elite Authority
+A party of companions (final count and class roster **[open]** — see the cast
+list below), all from the Authority's absorbed kingdoms. They all believe the
+lie — to some degree they must, or they couldn't serve in an elite Authority
 unit. Belief is the floor, not the character.
+
+**Recovery is side-quest-gated (revised 2026-06-01):** each companion carries a
+wound the empire gave them, and each only *fully* heals it by completing their
+whole personal side story. Leave it unfinished and they stay partly broken. The
+personal quests aren't optional color — they're the only path to a character's
+full resolution.
 
 **Cast doctrine (two rhyming rules):**
 
@@ -206,7 +225,13 @@ taking her faith. But what's underneath isn't emptiness — it's the real god,
 answering to the wrong name the whole time. Her collapse is a **homecoming in
 disguise**: she may be the one companion whose reckoning ultimately frees rather
 than only wounds her. In a game this dark, one liberation is worth a lot.
-**[open]** name, home kingdom.
+
+**This is her personal side quest.** The erosion runs all through Act 1; the
+capital betrayal is the crack that finally forces the question open — but she
+only *fully* recovers (discovering the god her religion actually served was never
+the Authority, only displaced by it) if the player walks her whole side story.
+Leave it unfinished and she stays caught in the conflict, unhealed. **[open]**
+name, home kingdom.
 
 Note (2026-05): the old "Healer/Archer buried predator-prey link" is retired —
 it depended on her being a conqueror caste and the Archer a conquered one, and
@@ -265,15 +290,29 @@ Archer's prosperous kingdom — the party gains two heartland children, the
 celebrated-and-emptied human girl and the shunned-and-erased dwarf, raised in
 the shadow of the same prosperity. Asymmetric, unmarked, detonatable later.
 
-### The other three [open]
+### The Warlock [for now — barely planned]
 
-Wizard, Knight, Rogue — undesigned. (Tank is now the dwarf, above.) Each needs a
-wound the empire gave them, a belief fitted to it, an origin on the gradient,
-and an Act 1→Act 2 inversion. The Rogue is the sanctioned trope exception — may
-play it straight (cat girl) as a knowing running joke, the one wink in a game
-whose whole bet is "the lie you don't notice." Decide what that wink is *for*
-before writing her; there's no neutral version. Genders unset and meant to stay
-loose until each character's origin and wound decide them.
+A bondable mage, **distinct from the (still-undesigned) Wizard** — the party has
+both. Arc: the Authority *yanks his power* as his disgust with it grows; the
+Guardian restores it by supplying the **true name** of the power (redemption with
+a scar). One of the "gifted" companions whose threads may converge on the
+keystone (alongside the Priestess and the dwarf). **[open]** everything else —
+wound, origin on the gradient, gender, name.
+
+### The remaining cast [open]
+
+**Wizard, Knight, Rogue** — undesigned, and distinct from the Warlock above.
+(Tank = the dwarf.) Each needs a wound the empire gave them, a belief fitted to
+it, an origin on the gradient, and an Act 1→Act 2 inversion. The Rogue is the
+sanctioned trope exception — may play it straight (cat girl) as a knowing running
+joke, the one wink in a game whose whole bet is "the lie you don't notice."
+Decide what that wink is *for* before writing her; there's no neutral version.
+Genders unset and meant to stay loose until each character's origin and wound
+decide them.
+
+**[open] — roster count & composition.** With the Warlock now distinct from the
+Wizard, the old "six, classes Archer/Healer/Wizard/Tank/Knight/Rogue" no longer
+holds cleanly. Final party size and which classes make the cut is undecided.
 
 ### Commander Vael [inherited]
 
@@ -286,15 +325,20 @@ motivation.
 
 ### The Unchosen Companion [inherited — needs reconciling]
 
-Determined by the hero's two highest relationship scores at the moment of the
-companion choice (Act 1): the hero saves one, the other is left for dead and
-taken by the Authority. The Unchosen returns in Act 2 as an Authority general
-hunting the party, witnesses the Authority become the monster, defects, and gets
-a silent reconciliation with the hero after the final battle.
+At the companion choice (Act 1), two of the hero's most-bonded companions fall
+and **the player must choose which one to save** — that much is settled. The
+*mechanism* is **[open]** (whether the Guardian is involved, or the hero is by
+then close enough to access their power, is a question for when that beat is
+designed). The unsaved one is **presumed dead** — the player believes they lost
+them. The truth, revealed later: the Authority **took them alive**, reforged
+them, and put them in charge of a special force **hunting the party for betraying
+the Authority.** In Act 2 the Unchosen pursues the party, witnesses the Authority
+become the monster, defects, and gets a silent reconciliation with the hero after
+the final battle.
 
 **Reconcile with two things before committing:**
 
-- *Scope.* As written, the Unchosen could be any of six companions, which means
+- *Scope.* As written, the Unchosen could be any bonded companion, which means
   the Act 2 pursuit, unmasking, defection, and silent finale must be authored six
   times with each personality intact. For a solo dev that's a second game. Strong
   recommendation: write the role **character-agnostic** — the empire reforges
@@ -432,11 +476,14 @@ Guardian was trying to bring them to all along.
 2. The kingdom's name and cultural identity.
 3. The Authority's nature (singular entity vs system) and what, if anything,
    sits above Vael now that the true form is the final boss.
-4. The other three companions — Wizard, Knight, Rogue (identities, wounds,
-   beliefs-fitted-to-wound, origins on the gradient, Act 1→Act 2 inversions).
+4. The remaining cast — the Warlock's full design (barely planned), the
+   undesigned Wizard, Knight, Rogue, and the **roster count/composition** now
+   that the Warlock and the Wizard are distinct characters.
 5. The Unchosen Companion: character-agnostic vs constrained-choice (scope).
 6. The Loved NPC — identity and fate.
 7. The core's metaphysics, only as far as the story needs.
 8. Mission counts and map locations (downstream of the ledger and companions).
 9. The missing collision: a kind Act 1 act that was secretly the cruelest thing
    you did. (See ledger — the empty row.)
+10. The gods after the Authority falls: do the suppressed gods themselves return,
+    or only fragments of their power? And is the Guardian itself a god?
