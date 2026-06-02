@@ -109,8 +109,10 @@ mind — which is the tell of a real theme and not a slogan. Protect that.
   for implementation. Carries the 2026-05 revisions.
 - **collision_ledger.md** — the design blueprint. One row per
   scene-that-happens-twice. The thing you build from, not a beat list.
+- **systems_design.md** — the mechanics layer: combat rules, death/stakes,
+  relationships, combos, the advancing line, the hero's time powers.
 - **implementation_status.md** — the build/process layer: what's coded, what's
-  stubbed, the MVP slice and milestones. A different job from the three above.
+  stubbed, the MVP slice and milestones. A different job from the story docs.
 - **opening_scene_report.md** — writer-facing breakdown of the opening sequence.
 - **dialogue_system.md** — technical reference for the dialogue system.
 

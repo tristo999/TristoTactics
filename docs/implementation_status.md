@@ -2,6 +2,7 @@
 
 > **Purpose:** maps each story beat to the scene(s) that implement it and tracks build state. Read this before picking up narrative work.
 > **Story source of truth:** [`overview.md`](overview.md) (north star), with [`world_bible.md`](world_bible.md) and [`collision_ledger.md`](collision_ledger.md) beside it.
+> **Systems design:** [`systems_design.md`](systems_design.md) (mechanics: combat, death/stakes, relationships, combos, the advancing line, time powers)
 > **Technical reference:** [`../ARCHITECTURE.md`](../ARCHITECTURE.md)
 > **Last reviewed:** 2026-05-31 (docs restructured: canon = overview/world_bible/collision_ledger; story_map and the dated code review removed)
 >
