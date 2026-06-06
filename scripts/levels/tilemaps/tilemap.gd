@@ -48,9 +48,15 @@ func _refresh_occupied_tiles() -> void:
 # --- Mouse Hover ---
 
 func _process(_delta: float) -> void:
+	# Hover is a runtime-only concern. A @tool subclass (TextMapTilemap) would
+	# otherwise run this in the editor, before highlight_renderer/astar_grid exist.
+	if Engine.is_editor_hint():
+		return
 	_handle_mouse_hover()
 
 func _handle_mouse_hover() -> void:
+	if highlight_renderer == null or astar_grid == null:
+		return
 	var mouse_pos = base_layer.get_global_mouse_position()
 	var local_mouse = base_layer.to_local(mouse_pos)
 	var tile = base_layer.local_to_map(local_mouse)
