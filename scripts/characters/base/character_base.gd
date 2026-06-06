@@ -203,31 +203,37 @@ func attack_target(target: CharacterBase) -> Dictionary:
 	if dist < attack_range_min or dist > attack_range_max:
 		return {"success": false, "reason": "out_of_range"}
 	
-	# Calculate damage (includes terrain defense bonus for the defender)
+	has_used_action = true
+
+	# Tier-1 combo: an adjacent protector (e.g. the dwarf) may take the hit instead.
+	var actual_target: CharacterBase = target
+	var interceptor = ComboSystem.get_interceptor(self , target)
+	if interceptor != null:
+		actual_target = interceptor
+
+	# Calculate damage vs whoever actually takes it (terrain + their defense).
 	var terrain_def: int = 0
 	var tilemap = get_tree().get_first_node_in_group("tilemap")
 	if tilemap:
-		terrain_def = TerrainRegistry.get_defense_bonus(target.current_tile, tilemap)
+		terrain_def = TerrainRegistry.get_defense_bonus(actual_target.current_tile, tilemap)
 	var is_crit = randf() < crit_chance
-	var effective_defense: int = target.defense + terrain_def
+	var effective_defense: int = actual_target.defense + terrain_def
 	var base_damage = max(1, attack_power - effective_defense)
 	var final_damage = base_damage * 2 if is_crit else base_damage
-	
-	has_used_action = true
-	
+
 	# Both characters face each other before attacking
-	_update_facing(target.global_position - global_position)
+	_update_facing(actual_target.global_position - global_position)
 	_play_anim("idle")
-	target._update_facing(global_position - target.global_position)
-	target._play_anim("idle")
-	
+	actual_target._update_facing(global_position - actual_target.global_position)
+	actual_target._play_anim("idle")
+
 	# Play attack animation overlay (blocking cutscene)
-	await AttackAnimationOverlay.play_attack_animation(self , target, final_damage, is_crit)
-	
+	await AttackAnimationOverlay.play_attack_animation(self , actual_target, final_damage, is_crit)
+
 	# Apply damage after the animation completes
-	target.take_damage(final_damage, self )
-	
-	return {"success": true, "damage": final_damage, "is_crit": is_crit}
+	actual_target.take_damage(final_damage, self )
+
+	return {"success": true, "damage": final_damage, "is_crit": is_crit, "intercepted": interceptor != null}
 
 func can_attack_target(target: CharacterBase) -> bool:
 	if has_used_action or target.team == team or not target.is_alive:
