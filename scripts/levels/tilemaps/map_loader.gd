@@ -16,7 +16,8 @@ const T_PAD := Vector2i(10, 6)    # stone drill pad
 const T_BRICK := Vector2i(10, 3)  # building / hard wall
 const T_TREE3 := Vector2i(7, 0)   # large 3x3 tree (multi-cell)
 const T_CLIFF := Vector2i(1, 11)  # ledge cliff face (grass top, rock drop) - impassable
-const T_STAIRS := Vector2i(3, 11) # opening/path down through the ledge - walkable
+const T_STAIRS := Vector2i(18, 5) # stairs (steps) - walkable passage down
+const T_TREE := Vector2i(7, 3)    # single-tile tree = walkable cover (not the 3x3 blocker)
 const FLOOR_ATLAS := T_GRASS
 
 # Wooden-post fence 9-slice (cols 0-2, rows 12-14). Interior = the yard side.
@@ -187,9 +188,11 @@ static func populate(parsed: Dictionary, base_layer: TileMapLayer, walls_layer: 
 					base_layer.set_cell(cell, SRC, T_GRASS)
 					walls_layer.set_cell(cell, SRC, T_BRICK)
 				"tree":
-					# 3x3 large tree on the walls layer (blocks via size_in_atlas).
+					# Single-tile tree as WALKABLE cover on the Objects layer (grass
+					# under it). Doesn't overlap neighbors or block unit movement.
 					base_layer.set_cell(cell, SRC, T_GRASS)
-					walls_layer.set_cell(cell, SRC, T_TREE3)
+					if objects_layer != null:
+						objects_layer.set_cell(cell, SRC, T_TREE)
 				_:  # walk / back -> ground tile
 					var atlas := T_GRASS
 					if ch == ",":
