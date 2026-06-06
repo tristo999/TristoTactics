@@ -1,24 +1,34 @@
 name:  Camp Training Grounds
 theme: camp
-notes: v2. North woods = raid breach source; S/E/W = camp (backdrop). Fightable yard: breach funnel -> central building splits W/E lanes -> drill pad (spar, allies 5/6/7) -> squad pocket (1/2/3). Fence autotiled, large 3x3 trees, inert decor.
+notes: v2 big-backdrop. Fightable fenced yard in center; generous woods (N, raid breach) + camp (S/E/W) backdrop so the camera never shows void. Breach funnel -> central building -> lanes -> drill pad (spar 5/6/7) -> squad pocket (1/2/3).
 ---
-wwwwwwwwwwwwwwwwwwwwwwwwww
-wTTwwEwwwTTwEwwTTwwEwwTTww
-wwwwwwwwwwwwwwwwwwwwwwwwww
-wwwwwwwwwwwwwwwwwwwwwwwwww
-CCCCC######...#######CCCCC
-CCCCC#..............#CCCCC
-CCCCC#.T........T...#CCCCC
-CCCCC#.....BBBB.....#CCCCC
-CBBCC#.....BBBB.....#CCCCC
-CBBCC#..............#CCBBC
-CCCCC#...ooooooo....#CCBBC
-CCCCC#...o5.6.7o....#CCCCC
-CCCCC#...ooooooo....#CCCCC
-CCCCC#..............#CCCCC
-CCCCC#...1...2...3..#CCCCC
-CCCCC#..............#CCCCC
-CCCCC######...#######CCCCC
-CCCCCCCCCCCCCCCCCCCCCCCCCC
-CCCBBCCCCCCCCCCCCCBBCCCCCC
-CCCCCCCCCCCCCCCCCCCCCCCCCC
+wwwwwTTwwwwwwwwwwwwwwTwwwTwwwwwwww
+wwwTTwwwwwwwwwwwwwwwwwwwwwwwwwwTww
+TwwTwwwTwTwEwwwwEwwTwEwTTwwwwwwwww
+wwwwwwwwwwwTwwTwwwwwwwwwTTwwwwwwww
+wwwwwTwwwwwwwwEwwwwEwwwwwwwTwwwwww
+wwwwTwwwwwwwwTTwwwwwwwwwwwwwwTwwwT
+wwwwwwTwwwwwwwwwwwwwwwwwwwwwwTwwTw
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+CCCCCCCCC######...#######CCCCCCCCC
+CCCCCCCCC#..............#CCCCCCCCC
+CCCCCCCCC#.T........T...#CCCCCCCCC
+CCBBCCCCC#.....BBBB.....#CCCCBBCCC
+CCBBCCCCC#.....BBBB.....#CCCCBBCCC
+CCCCCCCCC#..............#CCCCCCCCC
+CCCCCCCCC#...ooooooo....#CCCCCCCCC
+CCCCCCCCC#...o5.6.7o....#CCCCCCCCC
+CCCBBCCCC#...ooooooo....#CCCCCCCCC
+CCCBBCCCC#..............#CCCCCBBCC
+CCCCCCCCC#...1...2...3..#CCCCCBBCC
+CCCCCCCCC#..............#CCCCCCCCC
+CCCCCCCCC######...#######CCCCCCCCC
+CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+CCCCCCBBCCCCCCCCCCCCCCCCCCBBCCCCCC
+CCCCCCBBCCCCCCCBBCCCCCCCCCBBCCCCCC
+CCCCCCCCCCCCCCCBBCCCCCCCCCCCCCCCCC
+CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
