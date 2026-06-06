@@ -42,6 +42,7 @@ const DECOR_TILES := [Vector2i(6, 0), Vector2i(6, 1)]
 #   back:  backdrop (outside the fight)
 const ROLE := {
 	".": "walk", ",": "walk", "o": "walk", "S": "stairs",
+	"g": "walk",   # yard-interior grass (renders grass, but marks "inside the fence")
 	"#": "fence", "L": "ledge", "B": "block", "T": "tree",
 	"w": "back", "C": "back",
 	"P": "walk", "E": "back",
@@ -115,10 +116,10 @@ static func _is_interior(grid: Array, x: int, y: int) -> bool:
 	if x < 0 or x >= row.length():
 		return false
 	var ch := row[x]
-	# The fence wraps the ring floor (stone pad + units on it). Grass is NOT
-	# counted -- it's on the OUTSIDE of the ring too, so counting it would make
-	# corner cells think the outside is "interior" and pick edge tiles.
-	return ch == "o" or (ch >= "1" and ch <= "9")
+	# The fence's INSIDE: yard-interior grass ('g'), the stone pad ('o'), and
+	# units (digits). Plain '.' grass is OUTSIDE the fence too, so it's excluded
+	# -- counting it made corner cells pick rail tiles (the "corners" bug).
+	return ch == "g" or ch == "o" or (ch >= "1" and ch <= "9")
 
 static func _fence_piece(grid: Array, x: int, y: int) -> Vector2i:
 	# Edges face interior orthogonally; corners face interior diagonally. Check
@@ -190,11 +191,10 @@ static func populate(parsed: Dictionary, base_layer: TileMapLayer, walls_layer: 
 					base_layer.set_cell(cell, SRC, T_GRASS)
 					walls_layer.set_cell(cell, SRC, T_BRICK)
 				"tree":
-					# Single-tile tree as WALKABLE cover on the Objects layer (grass
-					# under it). Doesn't overlap neighbors or block unit movement.
+					# Big 3x3 tree (thematic). Blocks movement, so the map must space
+					# them out and keep enemy spawns/lanes clear of them.
 					base_layer.set_cell(cell, SRC, T_GRASS)
-					if objects_layer != null:
-						objects_layer.set_cell(cell, SRC, T_TREE)
+					walls_layer.set_cell(cell, SRC, T_TREE3)
 				_:  # walk / back -> ground tile
 					var atlas := T_GRASS
 					if ch == ",":

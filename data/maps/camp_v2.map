@@ -1,24 +1,26 @@
 name:  Camp Training Grounds
 theme: camp
-notes: v5. Woods (single-tile walkable trees + insurgents) UP on a ledge -> STAIRS (the only way down) -> big fenced stone sparring ring (squad 1/2/3 + partners 5/6/7). Grass around the pit; camp later. BG blue.
+notes: v6. Woods (big 3x3 trees spaced + insurgents in clear cells) UP on ledge -> stairs (PLACEHOLDER gap) down -> OPEN fenced training yard (grass) w/ central stone sparring pad (partners 5/6/7) + flanking tree cover; squad 1/2/3 in the open. Grass around; BG blue.
 ---
-........................
-...T.T..E..T....E.T.....
-...TE...T...E...T..E..T.
-..T...TT.TT.....T....T..
-......T....T....T.......
-.LLLLLLLLLLSSLLLLLLLLLL.
-........................
-..#########..#########..
-..#oooooooooooooooooo#..
-..#oTooooooooooooooTo#..
-..#oooooooooooooooooo#..
-..#oooooo5oo6oo7ooooo#..
-..#oooooooooooooooooo#..
-..#oooooooooooooooooo#..
-..#oooo1oooo2oooo3ooo#..
-..#oooooooooooooooooo#..
-..#oooooooooooooooooo#..
-..####################..
-........................
-........................
+......................
+........E.............
+.E..T..E...T..E...T...
+...............E......
+......................
+.LLLLLLLLL..LLLLLLLLL.
+......................
+..########..########..
+..#gggggggggggggggg#..
+..#gggggggggggggggg#..
+..#ggTggggggggggTgg#..
+..#gggggggggggggggg#..
+..#gggggooooooggggg#..
+..#gggggo5o6o7ggggg#..
+..#gggggooooooggggg#..
+..#gggggggggggggggg#..
+..#gggggggggggggggg#..
+..#ggg1gggg2gggg3gg#..
+..#gggggggggggggggg#..
+..##################..
+......................
+......................
