@@ -33,4 +33,18 @@ func resolve(owner, ctx: Dictionary) -> void:
 		return
 	owner.follow_up_used_this_turn = true
 	owner._update_facing(victim.global_position - owner.global_position)
+
+	# Heal only up to what's missing so the popup never overstates the restore.
+	var before: int = victim.current_hp
 	victim.heal(heal_amount, owner)
+	var restored: int = victim.current_hp - before
+	if restored <= 0:
+		return
+
+	# Show it happening: green "+N" over the ally + a brief green flash.
+	FloatingNumber.spawn(victim, "+%d" % restored, Color(0.4, 1.0, 0.5))
+	var flash: Tween = victim.create_tween()
+	flash.tween_property(victim, "modulate", Color(0.5, 1.0, 0.6), 0.12)
+	flash.tween_property(victim, "modulate", Color.WHITE, 0.25)
+	# Let the moment read before control returns to the battle flow.
+	await owner.get_tree().create_timer(0.5).timeout

@@ -7,17 +7,19 @@
 #   ALLY_DAMAGED         -> EventBus.character_damaged signal (handled here)
 #   ALLY_ABOUT_TO_BE_HIT -> (future: the dwarf's intercept, a pre-damage hook)
 #
-# Per-turn reset of follow_up_used_this_turn rides EventBus.turn_started.
+# Follow-ups are capped at ONCE PER ROUND per character: a character's reaction
+# budget refreshes only when its OWN turn starts (rides EventBus.turn_started).
+# (Resetting every character on every turn made the cap meaningless — e.g. the
+# healer could free-heal on nearly every incoming hit, an infinite-tank exploit.)
 extends Node
 
 func _ready() -> void:
 	EventBus.turn_started.connect(_on_turn_started)
 	EventBus.character_damaged.connect(_on_character_damaged)
 
-func _on_turn_started(_character) -> void:
-	for c in get_tree().get_nodes_in_group(Constants.GROUP_ALL_CHARACTERS):
-		if is_instance_valid(c) and c is CharacterBase:
-			c.follow_up_used_this_turn = false
+func _on_turn_started(character) -> void:
+	if is_instance_valid(character) and character is CharacterBase:
+		character.follow_up_used_this_turn = false
 
 ## Awaited by GameManager after a player attack lands.
 func on_attack(attacker, target) -> void:
