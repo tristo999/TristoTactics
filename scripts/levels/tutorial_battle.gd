@@ -5,11 +5,15 @@ extends BaseLevel
 
 const PORTRAIT_ELENA := preload("res://assets/sprites/portraits/elena_portrait.tres")
 
-## spawn-key -> roster entry. Named slots 1/2/3 are the squad; E = insurgents.
+## spawn-key -> roster entry. Slots 1/2/3 = your squad; 5/6/7 = AI green allies
+## (camp recruits) fighting alongside you; E = insurgents.
 const ROSTER := {
 	"1": {"data": "res://data/characters/archer.tres", "name": "Elena"},
 	"2": {"data": "res://data/characters/dwarf.tres", "name": "Borin"},
 	"3": {"data": "res://data/characters/healer.tres", "name": "Lyra"},
+	"5": {"data": "res://data/characters/hero.tres", "name": "Recruit Sten", "team": "ally"},
+	"6": {"data": "res://data/characters/hero.tres", "name": "Recruit Wynn", "team": "ally"},
+	"7": {"data": "res://data/characters/hero.tres", "name": "Recruit Bram", "team": "ally"},
 	"E": {"data": "res://data/characters/goblin.tres", "name": "Insurgent"},
 }
 
@@ -24,7 +28,7 @@ func _spawn_roster() -> void:
 	if tilemap == null:
 		push_error("TutorialBattle: no tilemap in scene.")
 		return
-	var units := BattleSpawner.spawn(tilemap, ROSTER, $PlayerTeam, $EnemyTeam)
+	var units := BattleSpawner.spawn(tilemap, ROSTER, $PlayerTeam, $EnemyTeam, $AllyTeam)
 	print("[TutorialBattle] spawned %d units onto %s" % [units.size(), tilemap.map_file])
 
 func _setup_events() -> void:

@@ -1,11 +1,17 @@
-# EnemyCharacter - AI-controlled enemy character.
+# EnemyCharacter - AI-controlled character. Drives both the enemy team and the
+# AI "green" ally team (set team_override = Constants.TEAM_ALLY); the AI seeks the
+# nearest HOSTILE unit, so the same logic serves either side.
 extends CharacterBase
 class_name EnemyCharacter
 
 var ai_pause_duration: float = 1.0
 
+## When set (e.g. TEAM_ALLY), this unit joins that team instead of the enemy team.
+## Lets a green ally reuse this AI without a separate scene/class.
+@export var team_override: String = ""
+
 func _ready() -> void:
-	team = Constants.TEAM_ENEMY
+	team = team_override if team_override != "" else Constants.TEAM_ENEMY
 	if character_data:
 		ai_pause_duration = character_data.ai_pause_duration
 	super._ready()
@@ -14,29 +20,30 @@ func _ready() -> void:
 
 ## Returns the tile the AI wants to move to.
 func get_ai_move_target() -> Vector2i:
-	var target = _find_nearest_player()
+	var target = _find_nearest_hostile()
 	if not target or movement_left <= 0:
 		return current_tile
 	return _get_best_tile_toward(target)
 
 ## Returns the character to attack, or null if none in range.
 func get_ai_attack_target() -> CharacterBase:
-	var target = _find_nearest_player()
+	var target = _find_nearest_hostile()
 	if target and not has_used_action and can_attack_target(target):
 		return target
 	return null
 
-func _find_nearest_player() -> Node2D:
-	var players = get_tree().get_nodes_in_group(Constants.GROUP_PLAYER_CHARACTERS)
+## Nearest living unit this AI is hostile to (enemies seek players+allies, allies
+## seek enemies). One method serves both teams via the hostility model.
+func _find_nearest_hostile() -> Node2D:
 	var nearest: Node2D = null
 	var nearest_dist: int = 9999
-	for player in players:
-		if not player.is_alive:
+	for other in get_tree().get_nodes_in_group(Constants.GROUP_ALL_CHARACTERS):
+		if other == self or not other.is_alive or not is_hostile_to(other):
 			continue
-		var dist = _tile_distance(current_tile, player.current_tile)
+		var dist = _tile_distance(current_tile, other.current_tile)
 		if dist < nearest_dist:
 			nearest_dist = dist
-			nearest = player
+			nearest = other
 	return nearest
 
 func _get_best_tile_toward(target: Node2D) -> Vector2i:

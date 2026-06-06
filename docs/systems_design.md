@@ -72,6 +72,26 @@ like the divine, is held off by the Authority's presence and becomes real only
 once it's gone. Not canon yet.
 
 
+## Teams & unit control [settled]
+
+Three teams, with a simple hostility model (`Constants.is_hostile`): same team is
+friendly; the **enemy** team is hostile to everyone else; **player** and **ally**
+are friendly to each other.
+
+- **Player team** — your squad. Manually controlled.
+- **Enemy team** — AI-controlled (`EnemyCharacter`), seeks the nearest *hostile*.
+- **Ally team ("green" units)** — AI-controlled, *not* part of your squad (camp
+  soldiers, sparring partners, guests). The player does **not** command them
+  (genre-standard; narratively they aren't yours). Implemented as `EnemyCharacter`
+  with `team_override = TEAM_ALLY` — the AI seeks the nearest hostile, so the same
+  logic drives both enemies and allies; no separate class/scene. Allies don't
+  count toward win/lose (battle is won when enemies are gone, lost when the player
+  squad is gone). Spawn an ally via a roster entry `{ "team": "ally", ... }`.
+
+Open: a unit may *change* team mid-battle (the Beat 2 sparring partners are
+friendly duel opponents in the spar, then allies when the raid hits) — that state
+flip is a per-scene scripting concern, not yet built.
+
 ## Other systems — homed here when ready (not yet written up)
 
 These were designed across recent sessions and belong in this doc, but aren't

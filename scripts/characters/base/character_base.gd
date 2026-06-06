@@ -96,6 +96,12 @@ func _add_to_groups() -> void:
 		add_to_group(Constants.GROUP_PLAYER_CHARACTERS)
 	elif team == Constants.TEAM_ENEMY:
 		add_to_group(Constants.GROUP_ENEMY_CHARACTERS)
+	elif team == Constants.TEAM_ALLY:
+		add_to_group(Constants.GROUP_ALLY_CHARACTERS)
+
+## True if `other` is on a team this unit can attack (and vice-versa).
+func is_hostile_to(other: CharacterBase) -> bool:
+	return other != null and Constants.is_hostile(team, other.team)
 
 func set_base_layer(layer: TileMapLayer) -> void:
 	base_layer = layer
@@ -185,6 +191,7 @@ func _die() -> void:
 	remove_from_group(Constants.GROUP_ALL_CHARACTERS)
 	remove_from_group(Constants.GROUP_PLAYER_CHARACTERS)
 	remove_from_group(Constants.GROUP_ENEMY_CHARACTERS)
+	remove_from_group(Constants.GROUP_ALLY_CHARACTERS)
 	# Play death animation (fade out)
 	var tween = create_tween()
 	tween.tween_property(self , "modulate:a", 0.0, 0.5)
@@ -236,17 +243,16 @@ func attack_target(target: CharacterBase) -> Dictionary:
 	return {"success": true, "damage": final_damage, "is_crit": is_crit, "intercepted": interceptor != null}
 
 func can_attack_target(target: CharacterBase) -> bool:
-	if has_used_action or target.team == team or not target.is_alive:
+	if has_used_action or not is_hostile_to(target) or not target.is_alive:
 		return false
 	var dist = _tile_distance(current_tile, target.current_tile)
 	return dist >= attack_range_min and dist <= attack_range_max
 
 func get_targets_in_range() -> Array:
 	var targets: Array = []
-	var enemy_group = Constants.GROUP_PLAYER_CHARACTERS if team == Constants.TEAM_ENEMY else Constants.GROUP_ENEMY_CHARACTERS
-	for enemy in get_tree().get_nodes_in_group(enemy_group):
-		if can_attack_target(enemy):
-			targets.append(enemy)
+	for other in get_tree().get_nodes_in_group(Constants.GROUP_ALL_CHARACTERS):
+		if other != self and can_attack_target(other):
+			targets.append(other)
 	return targets
 
 func get_sfx(action: String) -> String:
@@ -288,10 +294,10 @@ func get_ability_targets(ability: Ability) -> Array:
 			continue
 		match ability.target_type:
 			Ability.TargetType.ALLY:
-				if character.team == team and character != self:
+				if not is_hostile_to(character) and character != self:
 					targets.append(character)
 			Ability.TargetType.ENEMY:
-				if character.team != team:
+				if is_hostile_to(character):
 					targets.append(character)
 			Ability.TargetType.SELF:
 				if character == self:

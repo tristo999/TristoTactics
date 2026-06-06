@@ -111,7 +111,8 @@ func _start_character_turn(character: CharacterBase) -> void:
 	character.on_turn_started()
 	EventBus.turn_started.emit(character)
 
-	if character.team == Constants.TEAM_ENEMY and character is EnemyCharacter:
+	# Any EnemyCharacter (enemy OR green ally) is AI-driven; players act manually.
+	if character is EnemyCharacter:
 		_execute_enemy_turn(character as EnemyCharacter)
 	else:
 		# Player turn — enter idle with movement highlights

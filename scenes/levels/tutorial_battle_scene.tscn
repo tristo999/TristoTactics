@@ -28,6 +28,8 @@ script = ExtResource("4")
 
 [node name="EnemyTeam" type="Node" parent="."]
 
+[node name="AllyTeam" type="Node" parent="."]
+
 [node name="Arena" type="Node2D" parent="."]
 script = ExtResource("5")
 map_file = "res://data/maps/tutorial.map"
