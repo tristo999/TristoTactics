@@ -29,6 +29,7 @@ var current_tile: Vector2i
 var base_layer: TileMapLayer
 var movement_left: int = 0
 var has_used_action: bool = false
+var follow_up_used_this_turn: bool = false ## Reset each turn; gates the once-per-turn combo follow-up
 var move_path: Array = []
 var move_target: Vector2 = Vector2.ZERO
 var moving: bool = false

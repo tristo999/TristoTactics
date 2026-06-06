@@ -29,6 +29,9 @@ extends Resource
 ## Abilities this character can use. Assign Ability .tres resources here.
 @export var abilities: Array[Ability] = []
 
+## Reactive combo strike — the signature "follow-up." Null = this unit has none.
+@export var follow_up: FollowUpAbility = null
+
 @export_group("Visuals")
 ## Idle spritesheet (480×320, 6 cols × 4 rows of 80×80 frames).
 @export var idle_texture: Texture2D
