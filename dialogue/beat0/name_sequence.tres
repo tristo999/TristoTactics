@@ -1,37 +1,37 @@
-[gd_resource type="Resource" script_class="DialogueSequence" load_steps=7 format=3]
+[gd_resource type="Resource" script_class="DialogueSequence" format=3 uid="uid://bmprtbe6ihlg"]
 
-[ext_resource type="Script" path="res://scripts/story/dialogue_sequence.gd" id="1"]
-[ext_resource type="Script" path="res://scripts/story/dialogue_line.gd" id="2"]
+[ext_resource type="Script" uid="uid://dc5c2xla81xwa" path="res://scripts/story/dialogue_sequence.gd" id="1"]
+[ext_resource type="Script" uid="uid://d2f1ps126mr2e" path="res://scripts/story/dialogue_line.gd" id="2"]
 
 [sub_resource type="Resource" id="line_0"]
 script = ExtResource("2")
 text = "{player_name}..."
 glitched = true
-chars_per_second = 8.0
 auto_advance_delay = 0.8
+chars_per_second = 8.0
 
 [sub_resource type="Resource" id="line_1"]
 script = ExtResource("2")
 text = "...something's wrong..."
 glitched = true
-chars_per_second = 10.0
 auto_advance_delay = 1.0
+chars_per_second = 10.0
 
 [sub_resource type="Resource" id="line_2"]
 script = ExtResource("2")
 text = "...it's too late..."
 glitched = true
-chars_per_second = 10.0
 auto_advance_delay = 1.0
+chars_per_second = 10.0
 
 [sub_resource type="Resource" id="line_3"]
 script = ExtResource("2")
 text = "{player_name}... Find me..."
 glitched = true
-chars_per_second = 7.0
 auto_advance_delay = 0.5
+chars_per_second = 7.0
 
 [resource]
 script = ExtResource("1")
 sequence_id = "corridor_phase6"
-lines = [SubResource("line_0"), SubResource("line_1"), SubResource("line_2"), SubResource("line_3")]
+lines = Array[ExtResource("2")]([SubResource("line_0"), SubResource("line_1"), SubResource("line_2"), SubResource("line_3")])

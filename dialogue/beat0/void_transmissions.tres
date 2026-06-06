@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="DialogueSequence" load_steps=9 format=3]
+[gd_resource type="Resource" script_class="DialogueSequence" format=3 uid="uid://b3qbg5ojpu2jo"]
 
-[ext_resource type="Script" path="res://scripts/story/dialogue_sequence.gd" id="1"]
-[ext_resource type="Script" path="res://scripts/story/dialogue_line.gd" id="2"]
+[ext_resource type="Script" uid="uid://dc5c2xla81xwa" path="res://scripts/story/dialogue_sequence.gd" id="1"]
+[ext_resource type="Script" uid="uid://d2f1ps126mr2e" path="res://scripts/story/dialogue_line.gd" id="2"]
 
 [sub_resource type="Resource" id="line_0"]
 script = ExtResource("2")
@@ -30,4 +30,4 @@ text = "...this world needs you..."
 [resource]
 script = ExtResource("1")
 sequence_id = "corridor_glitch"
-lines = [SubResource("line_0"), SubResource("line_1"), SubResource("line_2"), SubResource("line_3"), SubResource("line_4"), SubResource("line_5")]
+lines = Array[ExtResource("2")]([SubResource("line_0"), SubResource("line_1"), SubResource("line_2"), SubResource("line_3"), SubResource("line_4"), SubResource("line_5")])
