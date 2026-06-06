@@ -5,6 +5,14 @@ Do not skip ahead — feel (decoration) before function (composition) is how the
 camp map became "a dressed-up open box." References: Wargroove (walls carve
 rooms/chokes), Shining Force II (elevation + geography as constraint).
 
+> **Caveat — terrain attributes are POC.** The specific def/move-cost values in
+> `TerrainRegistry` (e.g. "forest = +2 def / cost 2") are a placeholder system
+> that may not survive. **Do not design maps around those numbers.** Composition
+> and variation are based on *movement and space* — what blocks, what funnels,
+> how big a pocket is — pure geometry. "Cover" and "chokepoint" are structural/
+> positional concepts; whatever attribute system we land on later attaches to
+> those positions. The layout must not depend on the current stats.
+
 ## Stage 1 — Composition (the walkable skeleton)
 Just the bare walkable tiles + impassable terrain. Ask only: **where can you
 walk, and what are the lanes?** Output is a black-and-white skeleton — walkable
