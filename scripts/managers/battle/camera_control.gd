@@ -4,9 +4,11 @@ extends Camera2D
 @export var move_speed: float = 500.0
 @export var zoom_speed: float = 0.1
 @export var min_zoom: float = 0.5
-@export var max_zoom: float = 3.0
+@export var max_zoom: float = 8.0
 @export var focus_lerp_speed: float = 5.0
 @export var use_smooth_focus: bool = true
+## How many tiles wide the battle view shows (smaller = more zoomed in / bigger units).
+@export var TARGET_TILES_WIDE: float = 16.0
 
 var focus_target: Node2D = null
 
@@ -85,17 +87,13 @@ func apply_map_limits(tilemap: Node2D, margin_px: int = 0) -> void:
 	limit_right = int(br.x) + margin_px
 	limit_bottom = int(br.y) + margin_px
 
-	# Zoom so the map FILLS the viewport (no gray void): pick the larger axis
-	# ratio so both axes are >= the screen; the bigger overflow axis scrolls.
-	# Never clamp the fill below what's needed (raise max_zoom to fit) — otherwise
-	# a small map on a big screen floats in void.
-	var map_px := br - tl
+	# Zoom to a READABLE tactics view (~TARGET_TILES_WIDE tiles across), not to fit
+	# the whole map -- fitting everything makes units tiny. The camera follows
+	# units and scrolls; the background layer covers anything past the map edge.
 	var vp := get_viewport_rect().size
-	if map_px.x > 0 and map_px.y > 0:
-		var fit: float = maxf(vp.x / map_px.x, vp.y / map_px.y)
-		fit = maxf(fit, min_zoom)
-		max_zoom = maxf(max_zoom, fit)   # allow zooming in at least to the fill level
-		zoom = Vector2(fit, fit)
+	var z: float = vp.x / (TARGET_TILES_WIDE * ts.x)
+	z = clampf(z, min_zoom, max_zoom)
+	zoom = Vector2(z, z)
 	# Start centered on the map.
 	position = (tl + br) * 0.5
 	focus_target = null
