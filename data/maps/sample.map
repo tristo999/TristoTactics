@@ -1,0 +1,10 @@
+name:  Sample Arena
+theme: camp
+notes: tiny proof-of-concept — walls around the edge, a forest chokepoint, two teams
+---
+##########
+#P..TT..E#
+#P..,,..E#
+#1..,,..2#
+#...TT...#
+##########
