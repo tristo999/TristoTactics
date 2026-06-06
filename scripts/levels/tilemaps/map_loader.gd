@@ -18,11 +18,17 @@ const T_TREE3 := Vector2i(7, 0)   # large 3x3 tree (multi-cell)
 const FLOOR_ATLAS := T_GRASS
 
 # Wooden-post fence 9-slice (cols 0-2, rows 12-14). Interior = the yard side.
-# (Rows 9-11 are the LEDGE set, not the fence.)
 const FENCE := {
 	"tl": Vector2i(0, 12), "t": Vector2i(1, 12), "tr": Vector2i(2, 12),
 	"l": Vector2i(0, 13), "c": Vector2i(1, 12), "r": Vector2i(2, 13),
 	"bl": Vector2i(0, 14), "b": Vector2i(1, 12), "br": Vector2i(2, 14),
+}
+# Ledge / cliff-edge 9-slice (cols 0-2, rows 9-11) — the plateau's natural barrier.
+# Interior = the plateau side; the rocky edge faces out (toward the void/bg).
+const LEDGE := {
+	"tl": Vector2i(0, 9), "t": Vector2i(1, 9), "tr": Vector2i(2, 9),
+	"l": Vector2i(0, 10), "c": Vector2i(1, 11), "r": Vector2i(2, 10),
+	"bl": Vector2i(0, 11), "b": Vector2i(1, 11), "br": Vector2i(2, 11),
 }
 # Inert decoration scatter (grass tufts / flowers).
 const DECOR_TILES := [Vector2i(6, 0), Vector2i(6, 1)]
@@ -33,7 +39,7 @@ const DECOR_TILES := [Vector2i(6, 0), Vector2i(6, 1)]
 #   back:  backdrop (outside the fight)
 const ROLE := {
 	".": "walk", ",": "walk", "o": "walk",
-	"#": "fence", "B": "block", "T": "tree",
+	"#": "fence", "L": "ledge", "B": "block", "T": "tree",
 	"w": "back", "C": "back",
 	"P": "walk", "E": "back",
 }
@@ -126,6 +132,28 @@ static func _fence_piece(grid: Array, x: int, y: int) -> Vector2i:
 	if _is_interior(grid, x - 1, y - 1): return FENCE["br"]
 	return FENCE["c"]
 
+static func _is_plateau(grid: Array, x: int, y: int) -> bool:
+	# Any tile that's part of the map (not a ledge edge, not off-map void).
+	if y < 0 or y >= grid.size():
+		return false
+	var row: String = grid[y]
+	if x < 0 or x >= row.length():
+		return false
+	var ch := row[x]
+	return ch != "L" and ch != " "
+
+static func _ledge_piece(grid: Array, x: int, y: int) -> Vector2i:
+	# Edge faces the void; interior is the plateau. Same orientation as the fence.
+	if _is_plateau(grid, x, y + 1): return LEDGE["t"]
+	if _is_plateau(grid, x, y - 1): return LEDGE["b"]
+	if _is_plateau(grid, x + 1, y): return LEDGE["l"]
+	if _is_plateau(grid, x - 1, y): return LEDGE["r"]
+	if _is_plateau(grid, x + 1, y + 1): return LEDGE["tl"]
+	if _is_plateau(grid, x - 1, y + 1): return LEDGE["tr"]
+	if _is_plateau(grid, x + 1, y - 1): return LEDGE["bl"]
+	if _is_plateau(grid, x - 1, y - 1): return LEDGE["br"]
+	return LEDGE["c"]
+
 ## Place the parsed grid onto the layers.
 ## base = ground, walls = impassable, objects = (reserved), decor = inert scatter.
 static func populate(parsed: Dictionary, base_layer: TileMapLayer, walls_layer: TileMapLayer,
@@ -146,6 +174,10 @@ static func populate(parsed: Dictionary, base_layer: TileMapLayer, walls_layer: 
 					# Fence posts are transparent -> need grass under them, not void.
 					base_layer.set_cell(cell, SRC, T_GRASS)
 					walls_layer.set_cell(cell, SRC, _fence_piece(grid, x, y))
+				"ledge":
+					# Cliff edge: impassable natural barrier at the plateau's rim.
+					base_layer.set_cell(cell, SRC, T_GRASS)
+					walls_layer.set_cell(cell, SRC, _ledge_piece(grid, x, y))
 				"block":
 					base_layer.set_cell(cell, SRC, T_GRASS)
 					walls_layer.set_cell(cell, SRC, T_BRICK)
@@ -159,8 +191,6 @@ static func populate(parsed: Dictionary, base_layer: TileMapLayer, walls_layer: 
 						atlas = T_DIRT
 					elif ch == "o":
 						atlas = T_PAD
-					elif ch == "C":
-						atlas = T_DIRT   # camp = packed earth, distinct from the grass battlefield
 					base_layer.set_cell(cell, SRC, atlas)
 					# inert decor scatter on plain yard grass only
 					if decor_layer and ch == "." and rng.randf() < 0.12:

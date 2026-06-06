@@ -1,34 +1,22 @@
 name:  Camp Training Grounds
 theme: camp
-notes: v2 big-backdrop. Fightable fenced yard in center; generous woods (N, raid breach) + camp (S/E/W) backdrop so the camera never shows void. Breach funnel -> central building -> lanes -> drill pad (spar 5/6/7) -> squad pocket (1/2/3).
+notes: v3 plateau. Grass battlefield bordered by LEDGE cliffs (natural barrier) -> blue bg beyond. North woods (raid) -> fence breach chokepoint -> central building -> drill pad (spar 5/6/7) -> squad (1/2/3).
 ---
-wwwwwTTwwwwwwwwwwwwwwTwwwTwwwwwwww
-wwwTTwwwwwwwwwwwwwwwwwwwwwwwwwwTww
-TwwTwwwTwTwEwwwwEwwTwEwTTwwwwwwwww
-wwwwwwwwwwwTwwTwwwwwwwwwTTwwwwwwww
-wwwwwTwwwwwwwwEwwwwEwwwwwwwTwwwwww
-wwwwTwwwwwwwwTTwwwwwwwwwwwwwwTwwwT
-wwwwwwTwwwwwwwwwwwwwwwwwwwwwwTwwTw
-wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
-CCCCCCCCC######...#######CCCCCCCCC
-CCCCCCCCC#..............#CCCCCCCCC
-CCCCCCCCC#.T........T...#CCCCCCCCC
-CCBBCCCCC#.....BBBB.....#CCCCBBCCC
-CCBBCCCCC#.....BBBB.....#CCCCBBCCC
-CCCCCCCCC#..............#CCCCCCCCC
-CCCCCCCCC#...ooooooo....#CCCCCCCCC
-CCCCCCCCC#...o5.6.7o....#CCCCCCCCC
-CCCBBCCCC#...ooooooo....#CCCCCCCCC
-CCCBBCCCC#..............#CCCCCBBCC
-CCCCCCCCC#...1...2...3..#CCCCCBBCC
-CCCCCCCCC#..............#CCCCCCCCC
-CCCCCCCCC######...#######CCCCCCCCC
-CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-CCCCCCBBCCCCCCCCCCCCCCCCCCBBCCCCCC
-CCCCCCBBCCCCCCCBBCCCCCCCCCBBCCCCCC
-CCCCCCCCCCCCCCCBBCCCCCCCCCCCCCCCCC
-CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+LLLLLLLLLLLLLLLLLLLLLL
+L......TE...T.E..T...L
+L.T.TETT...E....E....L
+L....TT..T........T.TL
+L....................L
+L#########...########L
+L....................L
+L........BBBB........L
+L..T.....BBBB.....T..L
+L....................L
+L....................L
+L.......ooooooo......L
+L.......o5o6o7o......L
+L.......ooooooo......L
+L....................L
+L.......1..2..3......L
+L....................L
+LLLLLLLLLLLLLLLLLLLLLL

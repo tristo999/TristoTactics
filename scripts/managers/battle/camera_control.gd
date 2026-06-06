@@ -7,8 +7,9 @@ extends Camera2D
 @export var max_zoom: float = 8.0
 @export var focus_lerp_speed: float = 5.0
 @export var use_smooth_focus: bool = true
-## How many tiles wide the battle view shows (smaller = more zoomed in / bigger units).
-@export var TARGET_TILES_WIDE: float = 16.0
+## How many tiles wide the battle view shows (smaller = more zoomed in / bigger
+## units). ~14 matches the Shining Force II zoom reference.
+@export var TARGET_TILES_WIDE: float = 14.0
 
 var focus_target: Node2D = null
 
