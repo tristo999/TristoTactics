@@ -50,7 +50,7 @@ func handle_zoom_input() -> void:
 ## Bound the camera to a tilemap's used area (+ a small margin so a little
 ## backdrop shows past the playable edge before the camera stops). Reads the
 ## BaseGrid layer's used rect and sets Camera2D.limit_* in world space.
-func apply_map_limits(tilemap: Node2D, margin_px: int = 24) -> void:
+func apply_map_limits(tilemap: Node2D, margin_px: int = 0) -> void:
 	if tilemap == null:
 		return
 	var base := tilemap.get_node_or_null("BaseGrid") as TileMapLayer
@@ -65,7 +65,19 @@ func apply_map_limits(tilemap: Node2D, margin_px: int = 24) -> void:
 	limit_top = int(tl.y) - margin_px
 	limit_right = int(br.x) + margin_px
 	limit_bottom = int(br.y) + margin_px
-	print("[CameraControl] limits L%d T%d R%d B%d" % [limit_left, limit_top, limit_right, limit_bottom])
+
+	# Zoom so the map FILLS the viewport (no gray void): pick the larger axis
+	# ratio so both axes are >= the screen; the bigger overflow axis scrolls.
+	var map_px := br - tl
+	var vp := get_viewport_rect().size
+	if map_px.x > 0 and map_px.y > 0:
+		var fit: float = maxf(vp.x / map_px.x, vp.y / map_px.y)
+		fit = clampf(fit, min_zoom, max_zoom)
+		zoom = Vector2(fit, fit)
+	# Start centered on the map.
+	position = (tl + br) * 0.5
+	focus_target = null
+	print("[CameraControl] limits L%d T%d R%d B%d zoom %.2f" % [limit_left, limit_top, limit_right, limit_bottom, zoom.x])
 
 ## Start tracking a character with damped smoothing.
 func move_camera(character: Node2D) -> void:

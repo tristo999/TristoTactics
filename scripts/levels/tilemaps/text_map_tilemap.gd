@@ -50,7 +50,7 @@ func _resolve_spawns() -> void:
 		if parsed.is_empty():
 			push_error("TextMapTilemap: failed to load map " + map_file)
 			return
-		MapLoaderScript.populate(parsed, base, walls, get_node_or_null("Objects"))
+		MapLoaderScript.populate(parsed, base, walls, get_node_or_null("Objects"), get_node_or_null("Decor"))
 		spawn_data = parsed
 		print("[TextMapTilemap] %s (runtime): floor=%d wall=%d, spawns P%d/E%d named=%d" % [
 			map_file, base.get_used_cells().size(), walls.get_used_cells().size(),
@@ -99,7 +99,10 @@ func _bake_from_map() -> void:
 	var objects := get_node_or_null("Objects") as TileMapLayer
 	if objects:
 		objects.clear()
-	MapLoaderScript.populate(parsed, base, walls, objects)
+	var decor := get_node_or_null("Decor") as TileMapLayer
+	if decor:
+		decor.clear()
+	MapLoaderScript.populate(parsed, base, walls, objects, decor)
 	_bake_markers(base, parsed)
 	print("[TextMapTilemap] BAKED %s -> floor=%d wall=%d. Save the scene (Ctrl+S) to keep it." % [
 		map_file, base.get_used_cells().size(), walls.get_used_cells().size()])

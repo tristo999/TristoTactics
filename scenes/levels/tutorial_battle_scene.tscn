@@ -32,13 +32,21 @@ script = ExtResource("4")
 
 [node name="Arena" type="Node2D" parent="."]
 script = ExtResource("5")
-map_file = "res://data/maps/tutorial.map"
+map_file = "res://data/maps/camp_v2.map"
 
 [node name="BaseGrid" type="TileMapLayer" parent="Arena"]
 tile_set = ExtResource("6")
 
-[node name="Walls" type="TileMapLayer" parent="Arena"]
+[node name="Decor" type="TileMapLayer" parent="Arena"]
+z_index = 1
+tile_set = ExtResource("6")
+
+[node name="Objects" type="TileMapLayer" parent="Arena"]
 z_index = 2
+tile_set = ExtResource("6")
+
+[node name="Walls" type="TileMapLayer" parent="Arena"]
+z_index = 3
 tile_set = ExtResource("6")
 
 [node name="Water" type="TileMapLayer" parent="Arena"]

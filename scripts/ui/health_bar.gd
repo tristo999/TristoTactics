@@ -47,7 +47,11 @@ func _create_fill_style() -> void:
 func _get_fill_color(team: String, hp: int, hp_max: int) -> Color:
 	var pct := float(hp) / float(hp_max) if hp_max > 0 else 0.0
 	if pct > 0.5:
-		return Color.GREEN if team == Constants.TEAM_PLAYER else Color.RED
+		if team == Constants.TEAM_PLAYER:
+			return Color.GREEN
+		if team == Constants.TEAM_ALLY:
+			return Color.CYAN          # friendly AI units read distinct from enemies
+		return Color.RED
 	elif pct > 0.25:
 		return Color.YELLOW
 	return Color.ORANGE_RED

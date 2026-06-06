@@ -1,33 +1,43 @@
 # MapLoader - turns a plain-text ".map" file into tilemap cells + spawn data.
-# Maps are authored as ASCII grids (see docs/text_map_system.md) so they can be
-# created and iterated in chat, version-controlled, and rendered back as text.
+# Maps are ASCII grids (see docs/text_map_system.md). v2 adds: neighbor-based
+# fence autotiling (9-slice log palisade), 3x3 large trees, a drill-pad floor,
+# camp/woods backdrop, and an inert Decor scatter layer.
 #
-# Format: optional `key: value` front-matter, a `---` separator, then the grid.
-# `;` begins a comment. Each grid char maps to a layer + tile via LEGEND.
+# Atlas coords verified against the Solaria sheet (source id 2).
 class_name MapLoader
 extends RefCounted
 
-const SRC := 2  # Solaria Demo Tiles source id (see tileset.tres)
+const SRC := 2
 
-# char -> { layer: "base"|"walls", atlas: Vector2i, spawn: "player"|"enemy"|"named" }
-# Atlas coords are real, pulled from dev_sandbox. Water arrives in v1.1.
-# Atlas coords are real, verified against the Solaria sheet (source id 2). Tiles
-# with an "overlay" place a grass base on BaseGrid + a decorative tile on the
-# Objects layer (trees are transparent, so they need grass under them).
-const LEGEND := {
-	".": {"layer": "base", "atlas": Vector2i(5, 0)},                       # grass floor
-	",": {"layer": "base", "atlas": Vector2i(5, 3)},                       # dirt road/path (def -1)
-	"o": {"layer": "base", "atlas": Vector2i(10, 6)},                      # stone floor
-	"T": {"layer": "base", "atlas": Vector2i(5, 0), "overlay": Vector2i(7, 3)},  # tree on grass (cover: def +2, cost 2)
-	"#": {"layer": "walls", "atlas": Vector2i(10, 3)},                     # brick wall (impassable)
-	"P": {"layer": "base", "atlas": Vector2i(5, 0), "spawn": "player"},
-	"E": {"layer": "base", "atlas": Vector2i(5, 0), "spawn": "enemy"},
+# --- Tile atlas coords ---
+const T_GRASS := Vector2i(5, 0)
+const T_DIRT := Vector2i(5, 3)
+const T_PAD := Vector2i(10, 6)    # stone drill pad
+const T_BRICK := Vector2i(10, 3)  # building / hard wall
+const T_TREE3 := Vector2i(7, 0)   # large 3x3 tree (multi-cell)
+const FLOOR_ATLAS := T_GRASS
+
+# Log-palisade fence 9-slice (interior = the yard side).
+const FENCE := {
+	"tl": Vector2i(0, 9), "t": Vector2i(1, 9), "tr": Vector2i(2, 9),
+	"l": Vector2i(0, 10), "c": Vector2i(1, 12), "r": Vector2i(2, 10),
+	"bl": Vector2i(0, 11), "b": Vector2i(1, 11), "br": Vector2i(2, 11),
 }
-const FLOOR_ATLAS := Vector2i(5, 0)
+# Inert decoration scatter (grass tufts / flowers).
+const DECOR_TILES := [Vector2i(6, 0), Vector2i(6, 1)]
 
-## Parse text into a structured map. Returns:
-## { meta:Dictionary, grid:Array[String], size:Vector2i,
-##   player_spawns:Array[Vector2i], enemy_spawns:Array[Vector2i], named:Dictionary }
+# char -> role. Terrain placement is handled in populate() by role.
+#   walk:  walkable yard interior (counts as "interior" for fence autotiling)
+#   block: impassable
+#   back:  backdrop (outside the fight)
+const ROLE := {
+	".": "walk", ",": "walk", "o": "walk",
+	"#": "fence", "B": "block", "T": "tree",
+	"w": "back", "C": "back",
+	"P": "walk", "E": "back",
+}
+
+## Parse text into a structured map.
 static func parse(text: String) -> Dictionary:
 	var meta := {}
 	var raw_rows: Array[String] = []
@@ -45,23 +55,17 @@ static func parse(text: String) -> Dictionary:
 			if colon != -1:
 				meta[l.substr(0, colon).strip_edges()] = l.substr(colon + 1).strip_edges()
 			continue
-		# grid line: strip a trailing comment but keep interior spaces (void tiles)
 		var c2 := l.find(";")
 		if c2 != -1:
 			l = l.substr(0, c2)
 		raw_rows.append(l.rstrip(" \t\r"))
-
-	# If there was no front-matter/separator, the whole thing is the grid.
 	if raw_rows.is_empty():
 		for line in text.split("\n", false):
 			raw_rows.append(line.rstrip(" \t\r"))
-
-	# Trim leading/trailing fully-blank rows.
 	while raw_rows.size() > 0 and raw_rows[0].strip_edges() == "":
 		raw_rows.remove_at(0)
 	while raw_rows.size() > 0 and raw_rows[raw_rows.size() - 1].strip_edges() == "":
 		raw_rows.remove_at(raw_rows.size() - 1)
-
 	var width := 0
 	for r in raw_rows:
 		width = maxi(width, r.length())
@@ -83,14 +87,9 @@ static func parse(text: String) -> Dictionary:
 				enemy_spawns.append(cell)
 			elif ch >= "1" and ch <= "9":
 				named[ch] = cell
-
 	return {
-		"meta": meta,
-		"grid": grid,
-		"size": Vector2i(width, grid.size()),
-		"player_spawns": player_spawns,
-		"enemy_spawns": enemy_spawns,
-		"named": named,
+		"meta": meta, "grid": grid, "size": Vector2i(width, grid.size()),
+		"player_spawns": player_spawns, "enemy_spawns": enemy_spawns, "named": named,
 	}
 
 static func load_file(path: String) -> Dictionary:
@@ -99,28 +98,70 @@ static func load_file(path: String) -> Dictionary:
 		return {}
 	return parse(FileAccess.get_file_as_string(path))
 
-## Place the parsed grid onto the given tile layers. Spawns become floor.
-## objects_layer receives decorative overlays (trees) over a grass base.
-static func populate(parsed: Dictionary, base_layer: TileMapLayer, walls_layer: TileMapLayer, objects_layer: TileMapLayer = null) -> void:
+static func _is_interior(grid: Array, x: int, y: int) -> bool:
+	if y < 0 or y >= grid.size():
+		return false
+	var row: String = grid[y]
+	if x < 0 or x >= row.length():
+		return false
+	var ch := row[x]
+	# Yard-interior walkables (spawn digits count too).
+	return ch in ".,oP" or (ch >= "1" and ch <= "9")
+
+static func _fence_piece(grid: Array, x: int, y: int) -> Vector2i:
+	# Edges face interior orthogonally; corners face interior diagonally. Check
+	# edges first, then corners.
+	var iN := _is_interior(grid, x, y - 1)
+	var iS := _is_interior(grid, x, y + 1)
+	var iE := _is_interior(grid, x + 1, y)
+	var iW := _is_interior(grid, x - 1, y)
+	if iS: return FENCE["t"]   # interior below -> top edge
+	if iN: return FENCE["b"]
+	if iE: return FENCE["l"]
+	if iW: return FENCE["r"]
+	if _is_interior(grid, x + 1, y + 1): return FENCE["tl"]  # interior SE -> top-left corner
+	if _is_interior(grid, x - 1, y + 1): return FENCE["tr"]
+	if _is_interior(grid, x + 1, y - 1): return FENCE["bl"]
+	if _is_interior(grid, x - 1, y - 1): return FENCE["br"]
+	return FENCE["c"]
+
+## Place the parsed grid onto the layers.
+## base = ground, walls = impassable, objects = (reserved), decor = inert scatter.
+static func populate(parsed: Dictionary, base_layer: TileMapLayer, walls_layer: TileMapLayer,
+		objects_layer: TileMapLayer = null, decor_layer: TileMapLayer = null) -> void:
 	var grid: Array = parsed.get("grid", [])
+	var rng := RandomNumberGenerator.new()
+	rng.seed = 1337
 	for y in grid.size():
 		var row: String = grid[y]
 		for x in row.length():
 			var ch := row[x]
 			if ch == " ":
-				continue  # void: no tile
-			var info: Dictionary = LEGEND.get(ch, {})
-			var cell := Vector2i(x, y)
-			if (ch >= "1" and ch <= "9") or info.is_empty():
-				# named slots and unknown chars become plain floor
-				base_layer.set_cell(cell, SRC, FLOOR_ATLAS)
 				continue
-			var layer := base_layer if info.get("layer", "base") == "base" else walls_layer
-			layer.set_cell(cell, SRC, info["atlas"])
-			if info.has("overlay") and objects_layer != null:
-				objects_layer.set_cell(cell, SRC, info["overlay"])
+			var cell := Vector2i(x, y)
+			var role: String = ROLE.get(ch, "walk")
+			match role:
+				"fence":
+					walls_layer.set_cell(cell, SRC, _fence_piece(grid, x, y))
+				"block":
+					base_layer.set_cell(cell, SRC, T_GRASS)
+					walls_layer.set_cell(cell, SRC, T_BRICK)
+				"tree":
+					# 3x3 large tree on the walls layer (blocks via size_in_atlas).
+					base_layer.set_cell(cell, SRC, T_GRASS)
+					walls_layer.set_cell(cell, SRC, T_TREE3)
+				_:  # walk / back -> ground tile
+					var atlas := T_GRASS
+					if ch == ",":
+						atlas = T_DIRT
+					elif ch == "o":
+						atlas = T_PAD
+					base_layer.set_cell(cell, SRC, atlas)
+					# inert decor scatter on plain yard grass only
+					if decor_layer and ch == "." and rng.randf() < 0.12:
+						decor_layer.set_cell(cell, SRC, DECOR_TILES[rng.randi() % DECOR_TILES.size()])
 
-## Render the grid back to text (for chat + self-verification).
+## Render the grid back to text.
 static func render(parsed: Dictionary) -> String:
 	var grid: Array = parsed.get("grid", [])
 	return "\n".join(grid)
