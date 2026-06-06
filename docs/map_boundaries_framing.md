@@ -94,9 +94,19 @@ like the reason you stop.*
 - **Decision B (camera):** **limit the camera**, with a small deliberate margin so a tile or two of non-walkable world/backdrop shows past the last playable tile before it stops. Never reveal raw void.
 - **Decision C (backdrop):** lean **Option C (world + vignette)** over the tan frame for tone — TristoTactics is darker/more immersive than Wargroove, so a visible board frame likely fights the mood while a vignette kills the void with immersion intact. *Caveat:* Option A is far less work and was liked on sight; if simplicity wins or the tone reads fine, it's legitimate.
 
-## Open calls
-- **Tone (yours alone):** when the player looks at the battlefield, should they feel
-  *"I'm looking at a place in the world"* (B/C) or *"I'm looking at a tactical map of
-  an engagement"* (A)? Wargroove picks the second and owns it; TristoTactics' story
-  may want the first. That single judgment selects C-vs-A.
-- **Scope:** do the elegant terrain treatment **globally** or **only on hero maps**.
+## Decisions (settled 2026-06-06)
+- **Decision A (units):** hybrid — terrain visually bounds the world, invisible hard edge is the mechanical stop.
+- **Decision B (camera):** limit the camera with a small margin; never reveal raw void.
+- **Decision C (backdrop):** **Option C — world + vignette.** Tone call settled toward
+  *"I'm looking at a place in the world"* (immersive), not a tactical board. Real terrain
+  spills past the playable grid; a soft vignette darkens the outer margin.
+- **Scope:** **global** — build one framing system applied to all maps (not hero-maps-only).
+
+## Implementation sketch (per the decisions)
+1. **Backdrop margin** — every map gets a band of non-walkable backdrop terrain past
+   the playable edge (woods/water/sprawl), with an invisible hard edge at the playable
+   tiles underneath. In the text-map system this is an authored/auto-generated margin.
+2. **Camera limits** — a reusable component sets `Camera2D.limit_*` from the tilemap's
+   used rect + a small margin, so a tile or two of backdrop shows before the stop.
+3. **Vignette** — a screen-space CanvasLayer overlay (shader/texture) darkening the
+   edges; tone-appropriate, cheap, global.
