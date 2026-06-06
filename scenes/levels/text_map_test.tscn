@@ -5,7 +5,7 @@
 
 [node name="TextMapTilemap" type="Node2D"]
 script = ExtResource("1")
-map_file = "res://data/maps/sample.map"
+map_file = "res://data/maps/tutorial.map"
 
 [node name="BaseGrid" type="TileMapLayer" parent="."]
 tile_set = ExtResource("2")

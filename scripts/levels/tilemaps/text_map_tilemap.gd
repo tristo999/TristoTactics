@@ -35,3 +35,9 @@ func _build_from_file() -> void:
 ## Pixel position (local) for a tile, for placing units on spawns.
 func tile_to_local(tile: Vector2i) -> Vector2:
 	return ($BaseGrid as TileMapLayer).map_to_local(tile)
+
+## Global position to place a unit on a tile (matches GameManager._setup_characters
+## snapping: tile center + TILE_CENTER_OFFSET).
+func tile_to_global(tile: Vector2i) -> Vector2:
+	var base := $BaseGrid as TileMapLayer
+	return base.to_global(base.map_to_local(tile) + Constants.TILE_CENTER_OFFSET)
