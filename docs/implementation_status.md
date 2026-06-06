@@ -1,12 +1,12 @@
 # Tristo Tactics — Implementation Status
 
 > **Purpose:** maps each story beat to the scene(s) that implement it and tracks build state. Read this before picking up narrative work.
-> **Story source of truth:** [`overview.md`](overview.md) (north star), with [`world_bible.md`](world_bible.md) and [`collision_ledger.md`](collision_ledger.md) beside it.
+> **Story source of truth:** [`overview.md`](overview.md) (north star) + the four-part bible ([`bible_01_world`](bible_01_world.md) / [`bible_02_cast`](bible_02_cast.md) / [`bible_03_act1`](bible_03_act1.md) / [`bible_04_act2`](bible_04_act2.md)) + [`collision_ledger.md`](collision_ledger.md).
 > **Systems design:** [`systems_design.md`](systems_design.md) (mechanics: combat, death/stakes, relationships, combos, the advancing line, time powers)
 > **Technical reference:** [`../ARCHITECTURE.md`](../ARCHITECTURE.md)
-> **Last reviewed:** 2026-05-31 (docs restructured: canon = overview/world_bible/collision_ledger; story_map and the dated code review removed)
+> **Last reviewed:** 2026-06-05 (world_bible split into the four-part bible; slice_spec adopted; arrival-lie, Choice-at-capital, dark-pact Warlock, and Act-2-starts-at-the-Guardian all folded in)
 >
-> **Framework note:** the project is now designed around *collisions* (scenes that happen twice) rather than a linear 21-beat list — see the ledger. The MVP slice (Opening → B1 → B2 → B3, pitch-grade) and the milestone plan below still hold; just read them through the new lens. The revised Act 1 ending (the hero opens the door / the legion / the Authority's "true form") sits past the slice, so it doesn't change slice scope — but B2/B3 now also carry a duty to plant retrieval cues (see ledger).
+> **Framework note:** the project is now designed around *collisions* (scenes that happen twice) rather than a linear 21-beat list — see the ledger. The MVP slice has grown to **Opening → camp → tutorial → a mission or two → the bridge face-off**, ending on the stare across the gap — see [`slice_spec.md`](slice_spec.md) for the authoritative build spec. The slice is also where the signature systems (combos, bonding, expressive choices) get built for the first time. The revised Act 1 ending (the hero opens the door / the legion / the true form) sits past the slice. B2–B5 carry a duty to plant retrieval cues (see ledger).
 
 ---
 
@@ -66,7 +66,7 @@ Writer-facing reference: [`opening_scene_report.md`](opening_scene_report.md)
 
 ## Act 1 — THE LOYAL BLADE — Build State
 
-Narrative canon is [`world_bible.md`](world_bible.md) (Act 1 ending revised 2026-05); this table tracks *build state* per beat. Mission count per beat is TBD.
+Narrative canon is the four-part bible ([`bible_03_act1`](bible_03_act1.md) for this act); this table tracks *build state* per beat. Mission count per beat is TBD.
 
 | Beat | Narrative | Planned Scene | Current Scene File | State | Next Work |
 |---|---|---|---|---|---|
@@ -171,7 +171,7 @@ Goal: turn `tutorial_scene` into a real tutorial battle. Shape: **sparring inter
 ### Sprint D — Companion lock-in
 Goal: resolve Open Question 6 so narrative work on Beats 2–7 can begin.
 - Not a coding sprint — a writing/design session with the creative director.
-- Deliverable: update [`world_bible.md`](world_bible.md) with companion names/classes/regions/personalities.
+- Deliverable: update [`bible_02_cast.md`](bible_02_cast.md) with companion names/origins/wounds.
 
 ---
 

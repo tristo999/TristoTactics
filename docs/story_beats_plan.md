@@ -7,8 +7,8 @@ moments, and characters/gameplay noted. It is NOT a return to the old retired
 21-beat "LOCKED DECISION" bible; it's the connective tissue the ledger always
 implied you'd need, built on current canon.
 
-**Source of truth for *why*:** `overview.md` / `world_bible.md` /
-`collision_ledger.md`. This doc must not contradict them; where it adds detail,
+**Source of truth for *why*:** `overview.md` / the four-part bible
+(`bible_01_world` … `bible_04_act2`) / `collision_ledger.md`. This doc must not contradict them; where it adds detail,
 it inherits their `[settled]/[open]` discipline.
 
 Legend: **[settled]** firm · **[for now]** working answer, not canon ·
@@ -79,7 +79,7 @@ Hero wakes in the summoning chamber (Authority ritual gear, signs of a violent
 interception). Walks out into an active camp. Vael approaches, unhurried — "You
 actually made it. I was starting to wonder. You must be a little confused."
 
-- **Player believes:** recruited/rescued by a warm, competent, righteous power.
+- **Player believes:** *the Authority summoned you* to be its champion — a warm, competent, righteous power that made you. No kingdom-call, no artifact, no voice to chase; the half-felt "find me" has no object the empire allows (the player holds that thread, not the hero).
 - **Gameplay:** introductory, no combat.
 - **Plants:** Vael's warmth (the whole Act 1 lie, in one face). The summoning
   circle the hero stands on (recovered in A2·B2 when the Act 2 party passes it).
@@ -131,12 +131,17 @@ them down and move on.
 
 ### A1·B5 — BRIDGE INCIDENT [settled, build ⬜]
 
-A bridge collapses mid-mission. Blamed on saboteurs; you curse them; maybe a
-reprisal you nod along to. Dismissed in thirty seconds.
+A bridge comes down mid-mission, in the rain — and across the broken span you see
+them: cloaked figures on the far side, watching. **The first time the two parties
+truly face each other**; no contact, the gap uncrossable, and you're too war-worn
+to recognize yourselves. The Authority calls it sabotage; you curse them.
 
-- **→ Collision row 1 (plant).** The Act 2 party brought it down.
-- **Cue (plant):** the red bridge in the rain. Map must be reusable with inverted
-  objectives for the Act 2 payoff.
+- **→ Collision row 1 (plant).** The Act 2 party brought it down. This is also the
+  **slice's capstone image** — the slice ends here, on the stare across the gap
+  (see `slice_spec.md`).
+- **Cue (plant):** the red bridge in the rain. Build the map as a *territory
+  boundary* (the Act 2 objective sits mostly on the far side), not a symmetric
+  arena, so it's reusable with inverted objectives for the payoff.
 
 ### A1·B(mid) — TOWN MISSION [settled, build ⬜]
 
@@ -161,6 +166,10 @@ a companion's "nice work." The player barely looks at the face.
   Act 1 NPC you trusted (sidesteps the death/roster tangle, hits as hard).
 
 ### A1·B7 — THE CHOICE [open — do not assume]
+
+**Placement (revised 2026-06):** this happens *at the capital, inside THE TURN
+below* — not a mid-campaign beat. The save-power is the Guardian breaking through
+at the capital (its first true gift), which is *why* the hero can reach only one.
 
 Two of the hero's highest-bonded companions fall. **The only settled thing: the
 player must choose which one to save.** The other is **presumed dead** — the
@@ -191,8 +200,11 @@ bonds turned against them. Each playthrough's worst moment differs.
 The march reaches the capital. The Authority **discards the hero** — stops
 jamming the connection, not because the hero broke free but because it wants the
 anguish. The Guardian's first clear words land in the instant the hero realizes
-they doomed it: reunion and guilt in the same breath. The Authority takes the
-core →
+they doomed it: reunion and guilt in the same breath. **Here the Choice fires**
+(A1·B7 above): an orchestrated strike on the hero's two most-bonded; the
+Guardian's first gift — a surge of bent time — reaches only one. You save one;
+the other is taken, and you are meant to believe them dead. The Authority takes
+the core →
 
 - manifests its **true form** (the final boss is the empire unmasked), and
 - opens a **door** through which an **endless legion** begins to come.
@@ -234,9 +246,11 @@ who you used to be." The enemy is you.
 
 ### A2·B1 — ARRIVAL (pre-war) [settled, build ⬜]
 
-Party arrives before the summoning circle is active. They carry the fragment —
-the time powers, now understood (vs. Act 1's blind flickers). Establishing
-mission; new objective grammar (gather, sabotage, prepare).
+Party arrives **at the capital, at the Guardian, before the war reaches it** —
+the Guardian completes the summoning, landing the throw that missed. The
+connection is no longer jammed: for the first time the party and the Guardian are
+on the same side. They carry the fragment, now understood (vs. Act 1's blind
+flickers). Establishing mission; new objective grammar (gather, sabotage, prepare).
 
 ### A2·B2 — MARGINS + CAMP INFILTRATION [settled, build ⬜]
 
@@ -298,9 +312,12 @@ Woven through the shrinking-map campaign:
   then must spend).
 - **Loved NPC rescue [open identity]** — saved from a fate witnessed in Act 1;
   ends up on the kingdom flank.
-- **The Warlock arc [for now]** — the Authority yanks his power as his disgust
-  grows; the Guardian restores it by supplying the true name (redemption with a
-  scar). *Distinct from the (undesigned) Wizard — the party has both.*
+- **The Warlock arc [for now]** — bound by pact to a dark god as a disposable
+  orphan; the empire always meant to let the god collect (he has already lived the
+  discard, before the game begins). Reached deeply, the party gives him the
+  strength to **break the pact**; reached lightly, he at least starts looking for
+  the way out. His power is genuinely dark, not mislabeled-divine. *Distinct from
+  the undesigned Wizard — the party has both.*
 - **The roster is the shopping list:** every ally gathered is someone who will
   stand (and likely fall) at the finale.
 

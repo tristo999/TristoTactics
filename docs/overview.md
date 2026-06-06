@@ -18,9 +18,10 @@ manage. Tone: righteous warmth curdling into tragedy.
 
 ## The pitch
 
-A silent hero is summoned across worlds by a dying god — the Guardian — to lead
-the last resistance against an empire that has spent centuries supplanting the
-world's gods and taking their place. The empire intercepts the summoning. It doesn't kill the
+A silent hero is summoned across worlds by a failing god — the Guardian — to
+lead the last resistance against an empire that has spent centuries blocking the
+world's gods out of it and installing itself in the gap (it claims to have
+killed them; it only suppressed them). The empire intercepts the summoning. It doesn't kill the
 hero. It cuts them off from the Guardian, walls their mind with a lie, and sends
 them to war against the very god that called them, certain the whole time that
 they're the righteous one. The Guardian bleeds through in glitches — half a
@@ -107,8 +108,10 @@ mind — which is the tell of a real theme and not a slogan. Protect that.
 ## The document map
 
 - **overview.md** (this file) — why the game is like this. The north star.
-- **world_bible.md** — the canon. What everything *is*. Treat as ground truth
-  for implementation. Carries the 2026-05 revisions.
+- **bible_01_world.md / bible_02_cast.md / bible_03_act1.md / bible_04_act2.md**
+  — the canon, as a four-part standalone Story Bible (World / Hero+Cast / Act 1 /
+  Act 2). Novel-style and readable cold; treat as ground truth. `[GUESS]` tags
+  mark open inventions, consolidated in the Manifest at the end of Part Four.
 - **collision_ledger.md** — the design blueprint. One row per
   scene-that-happens-twice. The thing you build from, not a beat list.
 - **story_beats_plan.md** — the ordering layer: every beat in sequence, both
@@ -116,6 +119,9 @@ mind — which is the tell of a real theme and not a slogan. Protect that.
   ledger; must not contradict the canon.
 - **systems_design.md** — the mechanics layer: combat rules, death/stakes,
   relationships, combos, the advancing line, the hero's time powers.
+- **slice_spec.md** — the vertical-slice build spec: the Opening→bridge slice
+  built to recruit collaborators (and the first place the signature systems —
+  combos, bonding, expressive choices — actually get built).
 - **implementation_status.md** — the build/process layer: what's coded, what's
   stubbed, the MVP slice and milestones. A different job from the story docs.
 - **opening_scene_report.md** — writer-facing breakdown of the opening sequence.
@@ -129,6 +135,8 @@ were removed (they live in git history). Two things they got wrong, now revised:
 the Guardian was never captured (its connection to the hero was jammed), and the
 Guardian is not the source of all magic (it guards the core). Nothing here is
 locked — everything stays iterable via the `[settled]/[open]` legend.
+
+*(2026-06-05: the single `world_bible.md` was split into the four-part bible above and retired; `slice_spec.md` added.)*
 
 
 ## Two things to keep honest

@@ -2,7 +2,7 @@
 
 The mechanics layer: how the game plays — combat rules, stakes, relationships,
 combos, the advancing line, the hero's time powers. Distinct from the story docs
-(`overview.md` / `world_bible.md` / `collision_ledger.md`), the build tracker
+(`overview.md` / the four-part bible `bible_01`–`bible_04` / `collision_ledger.md`), the build tracker
 (`implementation_status.md`), and the writer-facing references.
 
 Legend: **[settled]** firm · **[for now]** working answer, deliberately not

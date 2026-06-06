@@ -43,6 +43,16 @@ is real.
 
 ## Craft notes per row
 
+### Row 1 — the bridge face-off
+
+The bridge is not only a collapse you curse — it's the first time the two parties
+*see* each other, across the broken span, in the rain. No contact; the gap is
+uncrossable; the Act 1 party is too war-worn to recognize themselves in the
+cloaked figures opposite. In Act 2 you stand on the far side and look back at your
+own exhausted past self, across the thing you had to destroy. Build the map as a
+*territory boundary* (the Act 2 objective sits mostly on the far side), not a
+symmetric arena. This is the slice's final image (see `slice_spec.md`).
+
 ### Row 2 — the unheard face-off (the arc)
 
 Don't play this once. It's a three-stage progression across Act 2, and each
