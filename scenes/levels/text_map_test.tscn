@@ -32,66 +32,66 @@ tile_set = ExtResource("2")
 
 [node name="Walls" type="TileMapLayer" parent="." unique_id=1271154849]
 z_index = 3
-tile_map_data = PackedByteArray("AAAEAAUAAgABAAsAAAANAAUAAgABAAsAAAAOAAUAAgABAAsAAAABAAUAAgABAAsAAAACAAUAAgABAAsAAAADAAUAAgABAAsAAAAFAAUAAgABAAsAAAAGAAUAAgABAAsAAAAHAAUAAgABAAsAAAAIAAUAAgABAAsAAAAPAAUAAgABAAsAAAAQAAUAAgABAAsAAAARAAUAAgABAAsAAAASAAUAAgABAAsAAAADAAcAAgABAAwAAAAEAAcAAgABAAwAAAAFAAcAAgABAAwAAAAGAAcAAgABAAwAAAAHAAcAAgABAAwAAAAIAAcAAgABAAwAAAANAAcAAgABAAwAAAAOAAcAAgABAAwAAAAPAAcAAgABAAwAAAAQAAcAAgABAAwAAAAJAAUAAgABAAsAAAAKAAUAAgABAAsAAAATAAUAAgABAAsAAAAUAAUAAgABAAsAAAAVAAUAAgABAAsAAAAWAAUAAgABAAsAAAACAAcAAgABAAwAAAAJAAcAAgABAAwAAAAKAAcAAgABAAwAAAARAAcAAgABAAwAAAASAAcAAgABAAwAAAATAAcAAgABAAwAAAAUAAcAAgABAAwAAAAVAAcAAgABAAwAAAACAAgAAgAAAA0AAAAVAAgAAgAAAA0AAAACAAkAAgAAAA0AAAAVAAkAAgAAAA0AAAACAAoAAgAAAA0AAAAVAAoAAgAAAA0AAAACAAsAAgAAAA0AAAAVAAsAAgAAAA0AAAACAAwAAgAAAA0AAAAVAAwAAgAAAA0AAAACAA0AAgAAAA0AAAAVAA0AAgAAAA0AAAACAA4AAgAAAA0AAAAVAA4AAgAAAA0AAAACAA8AAgAAAA0AAAAVAA8AAgAAAA0AAAACABAAAgAAAA0AAAAVABAAAgAAAA0AAAACABEAAgABAAwAAAADABEAAgABAAwAAAAEABEAAgABAAwAAAAFABEAAgABAAwAAAAGABEAAgABAAwAAAAHABEAAgABAAwAAAAIABEAAgABAAwAAAAJABEAAgABAAwAAAAKABEAAgABAAwAAAALABEAAgABAAwAAAAMABEAAgABAAwAAAANABEAAgABAAwAAAAOABEAAgABAAwAAAAPABEAAgABAAwAAAAQABEAAgABAAwAAAARABEAAgABAAwAAAASABEAAgABAAwAAAATABEAAgABAAwAAAAUABEAAgABAAwAAAAVABEAAgABAAwAAAA=")
+tile_map_data = PackedByteArray("AAAEAAUAAgABAAsAAAANAAUAAgABAAsAAAAOAAUAAgABAAsAAAABAAUAAgABAAsAAAACAAUAAgABAAsAAAADAAUAAgABAAsAAAAFAAUAAgABAAsAAAAGAAUAAgABAAsAAAAHAAUAAgABAAsAAAAIAAUAAgABAAsAAAAPAAUAAgABAAsAAAAQAAUAAgABAAsAAAARAAUAAgABAAsAAAASAAUAAgABAAsAAAADAAcAAgABAAwAAAAEAAcAAgABAAwAAAAFAAcAAgABAAwAAAAGAAcAAgABAAwAAAAHAAcAAgABAAwAAAAIAAcAAgABAAwAAAANAAcAAgABAAwAAAAOAAcAAgABAAwAAAAPAAcAAgABAAwAAAAQAAcAAgABAAwAAAAJAAUAAgABAAsAAAAKAAUAAgABAAsAAAATAAUAAgABAAsAAAAUAAUAAgABAAsAAAAVAAUAAgABAAsAAAAWAAUAAgABAAsAAAACAAcAAgAAAAwAAAAJAAcAAgABAAwAAAAKAAcAAgABAAwAAAARAAcAAgABAAwAAAASAAcAAgABAAwAAAATAAcAAgABAAwAAAAUAAcAAgABAAwAAAAVAAcAAgACAAwAAAACAAgAAgAAAA0AAAAVAAgAAgACAA0AAAACAAkAAgAAAA0AAAAVAAkAAgACAA0AAAACAAoAAgAAAA0AAAAVAAoAAgACAA0AAAACAAsAAgAAAA0AAAAVAAsAAgACAA0AAAACAAwAAgAAAA0AAAAVAAwAAgACAA0AAAACAA0AAgAAAA0AAAAVAA0AAgACAA0AAAACAA4AAgAAAA0AAAAVAA4AAgACAA0AAAACAA8AAgAAAA0AAAAVAA8AAgACAA0AAAACABAAAgAAAA0AAAAVABAAAgACAA0AAAACABEAAgAAAA4AAAADABEAAgABAAwAAAAEABEAAgABAAwAAAAFABEAAgABAAwAAAAGABEAAgABAAwAAAAHABEAAgABAAwAAAAIABEAAgABAAwAAAAJABEAAgABAAwAAAAKABEAAgABAAwAAAALABEAAgABAAwAAAAMABEAAgABAAwAAAANABEAAgABAAwAAAAOABEAAgABAAwAAAAPABEAAgABAAwAAAAQABEAAgABAAwAAAARABEAAgABAAwAAAASABEAAgABAAwAAAATABEAAgABAAwAAAAUABEAAgABAAwAAAAVABEAAgACAA4AAAA=")
 tile_set = ExtResource("2")
 
 [node name="Water" type="TileMapLayer" parent="." unique_id=1807900166]
 z_index = 1
 tile_set = ExtResource("2")
 
-[node name="Spawns" type="Node2D" parent="." unique_id=308268229]
+[node name="Spawns" type="Node2D" parent="." unique_id=522368309]
 
-[node name="Slot_5" type="Marker2D" parent="Spawns" unique_id=291898210]
+[node name="Slot_5" type="Marker2D" parent="Spawns" unique_id=317875641]
 position = Vector2(152, 184)
 metadata/spawn_team = "named"
 metadata/spawn_key = "5"
 
-[node name="Slot_6" type="Marker2D" parent="Spawns" unique_id=1169856522]
+[node name="Slot_6" type="Marker2D" parent="Spawns" unique_id=1837144846]
 position = Vector2(200, 184)
 metadata/spawn_team = "named"
 metadata/spawn_key = "6"
 
-[node name="Slot_7" type="Marker2D" parent="Spawns" unique_id=1119087833]
+[node name="Slot_7" type="Marker2D" parent="Spawns" unique_id=536578191]
 position = Vector2(248, 184)
 metadata/spawn_team = "named"
 metadata/spawn_key = "7"
 
-[node name="Slot_1" type="Marker2D" parent="Spawns" unique_id=29986454]
+[node name="Slot_1" type="Marker2D" parent="Spawns" unique_id=474162990]
 position = Vector2(120, 232)
 metadata/spawn_team = "named"
 metadata/spawn_key = "1"
 
-[node name="Slot_2" type="Marker2D" parent="Spawns" unique_id=1642648464]
+[node name="Slot_2" type="Marker2D" parent="Spawns" unique_id=1871933705]
 position = Vector2(200, 232)
 metadata/spawn_team = "named"
 metadata/spawn_key = "2"
 
-[node name="Slot_3" type="Marker2D" parent="Spawns" unique_id=176403986]
+[node name="Slot_3" type="Marker2D" parent="Spawns" unique_id=1486093800]
 position = Vector2(280, 232)
 metadata/spawn_team = "named"
 metadata/spawn_key = "3"
 
-[node name="E1" type="Marker2D" parent="Spawns" unique_id=1131882380]
+[node name="E1" type="Marker2D" parent="Spawns" unique_id=459149360]
 position = Vector2(136, 24)
 metadata/spawn_team = "enemy"
 metadata/spawn_key = "0"
 
-[node name="E2" type="Marker2D" parent="Spawns" unique_id=1863009878]
+[node name="E2" type="Marker2D" parent="Spawns" unique_id=579170690]
 position = Vector2(264, 24)
 metadata/spawn_team = "enemy"
 metadata/spawn_key = "1"
 
-[node name="E3" type="Marker2D" parent="Spawns" unique_id=1250319524]
+[node name="E3" type="Marker2D" parent="Spawns" unique_id=574809637]
 position = Vector2(72, 40)
 metadata/spawn_team = "enemy"
 metadata/spawn_key = "2"
 
-[node name="E4" type="Marker2D" parent="Spawns" unique_id=44783568]
+[node name="E4" type="Marker2D" parent="Spawns" unique_id=926924425]
 position = Vector2(200, 40)
 metadata/spawn_team = "enemy"
 metadata/spawn_key = "3"
 
-[node name="E5" type="Marker2D" parent="Spawns" unique_id=800804049]
+[node name="E5" type="Marker2D" parent="Spawns" unique_id=2036052506]
 position = Vector2(312, 40)
 metadata/spawn_team = "enemy"
 metadata/spawn_key = "4"

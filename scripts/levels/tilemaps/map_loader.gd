@@ -115,8 +115,10 @@ static func _is_interior(grid: Array, x: int, y: int) -> bool:
 	if x < 0 or x >= row.length():
 		return false
 	var ch := row[x]
-	# Yard-interior walkables (spawn digits count too).
-	return ch in ".,oP" or (ch >= "1" and ch <= "9")
+	# The fence wraps the ring floor (stone pad + units on it). Grass is NOT
+	# counted -- it's on the OUTSIDE of the ring too, so counting it would make
+	# corner cells think the outside is "interior" and pick edge tiles.
+	return ch == "o" or (ch >= "1" and ch <= "9")
 
 static func _fence_piece(grid: Array, x: int, y: int) -> Vector2i:
 	# Edges face interior orthogonally; corners face interior diagonally. Check
