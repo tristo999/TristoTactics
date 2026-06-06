@@ -159,6 +159,8 @@ static func populate(parsed: Dictionary, base_layer: TileMapLayer, walls_layer: 
 						atlas = T_DIRT
 					elif ch == "o":
 						atlas = T_PAD
+					elif ch == "C":
+						atlas = T_DIRT   # camp = packed earth, distinct from the grass battlefield
 					base_layer.set_cell(cell, SRC, atlas)
 					# inert decor scatter on plain yard grass only
 					if decor_layer and ch == "." and rng.randf() < 0.12:
