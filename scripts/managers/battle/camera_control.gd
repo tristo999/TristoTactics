@@ -4,12 +4,13 @@ extends Camera2D
 @export var move_speed: float = 500.0
 @export var zoom_speed: float = 0.1
 @export var min_zoom: float = 0.5
-@export var max_zoom: float = 8.0
+## High enough that TARGET_TILES_WIDE is honored at 2560px width (needs ~9.4).
+@export var max_zoom: float = 12.0
 @export var focus_lerp_speed: float = 5.0
 @export var use_smooth_focus: bool = true
 ## How many tiles wide the battle view shows (smaller = more zoomed in / bigger
-## units). ~17 = a slightly looser Shining Force II-style zoom.
-@export var TARGET_TILES_WIDE: float = 17.0
+## units). ~18 = a slightly looser Shining Force II-style zoom (zoomed out a touch).
+@export var TARGET_TILES_WIDE: float = 18.0
 
 var focus_target: Node2D = null
 
@@ -29,19 +30,21 @@ func _process(delta: float) -> void:
 
 	_clamp_to_limits()
 
-## Manually keep the view inside the map limits (Camera2D's built-in limit_*
-## doesn't reliably clamp an externally-driven position). If the map is smaller
-## than the view on an axis, center on it instead.
+## Keep the view loosely inside the map, but allow it to center on whatever it's
+## tracking even near the map edge (the blue background layer fills any gap past
+## the map, so we don't need a hard edge clamp). We only stop the view from
+## drifting MORE than one full screen past the map on any side.
 func _clamp_to_limits() -> void:
 	if limit_right <= limit_left:
 		return  # limits not set yet
-	var half := (get_viewport_rect().size * 0.5) / zoom
-	var min_x := limit_left + half.x
-	var max_x := limit_right - half.x
-	var min_y := limit_top + half.y
-	var max_y := limit_bottom - half.y
-	position.x = (limit_left + limit_right) * 0.5 if min_x > max_x else clampf(position.x, min_x, max_x)
-	position.y = (limit_top + limit_bottom) * 0.5 if min_y > max_y else clampf(position.y, min_y, max_y)
+	var view := get_viewport_rect().size / zoom
+	# Allow the center to roam up to half a screen past each map edge.
+	var min_x := limit_left - view.x * 0.5
+	var max_x := limit_right + view.x * 0.5
+	var min_y := limit_top - view.y * 0.5
+	var max_y := limit_bottom + view.y * 0.5
+	position.x = clampf(position.x, min_x, max_x)
+	position.y = clampf(position.y, min_y, max_y)
 
 func handle_keyboard_input(delta: float) -> void:
 	var input_vector := Vector2.ZERO
