@@ -143,6 +143,8 @@ static func populate(parsed: Dictionary, base_layer: TileMapLayer, walls_layer: 
 			var role: String = ROLE.get(ch, "walk")
 			match role:
 				"fence":
+					# Fence posts are transparent -> need grass under them, not void.
+					base_layer.set_cell(cell, SRC, T_GRASS)
 					walls_layer.set_cell(cell, SRC, _fence_piece(grid, x, y))
 				"block":
 					base_layer.set_cell(cell, SRC, T_GRASS)
