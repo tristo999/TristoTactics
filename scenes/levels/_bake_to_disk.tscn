@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://blcrd2ej2wmwk"]
+
+[ext_resource type="Script" path="res://scripts/tools/bake_to_disk.gd" id="1"]
+
+[node name="Bake" type="Node"]
+script = ExtResource("1")
