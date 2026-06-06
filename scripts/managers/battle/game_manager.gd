@@ -65,6 +65,9 @@ func _initialize_battle() -> void:
 	# Wait one frame so all nodes have fired _ready() and joined their groups
 	await get_tree().process_frame
 	_find_node_references()
+	# Bound the camera to the map so it never drifts into void past the edges.
+	if action_camera and tilemap_node and action_camera.has_method("apply_map_limits"):
+		action_camera.apply_map_limits(tilemap_node)
 	_build_turn_order()
 	if turn_order.is_empty():
 		push_warning("No characters found in groups!")
@@ -99,7 +102,8 @@ func _start_battle() -> void:
 		await play_event(intro_event)
 
 	current_character = turn_order.front()
-	_focus_camera(current_character)
+	# Don't snap the camera to the first unit at battle start -- leave it centered
+	# on the party (set by apply_map_limits). Later turns focus via _advance_turn.
 	call_deferred("_start_character_turn", current_character)
 
 # --- Turn Flow ---
@@ -111,7 +115,8 @@ func _start_character_turn(character: CharacterBase) -> void:
 	character.on_turn_started()
 	EventBus.turn_started.emit(character)
 
-	if character.team == Constants.TEAM_ENEMY and character is EnemyCharacter:
+	# Any EnemyCharacter (enemy OR green ally) is AI-driven; players act manually.
+	if character is EnemyCharacter:
 		_execute_enemy_turn(character as EnemyCharacter)
 	else:
 		# Player turn — enter idle with movement highlights
@@ -258,6 +263,10 @@ func has_actions_remaining() -> bool:
 func request_move(character: CharacterBase, target_tile: Vector2i) -> bool:
 	if state != BattleState.PLAYER_IDLE or character != current_character:
 		return false
+	# Validate the tile is actually reachable
+	if tilemap_node and tilemap_node.cached_reachable_tiles is Array:
+		if target_tile not in tilemap_node.cached_reachable_tiles:
+			return false
 	state = BattleState.PLAYER_MOVING
 	_clear_highlights()
 	character.move_to_tile(target_tile)
@@ -268,10 +277,18 @@ func request_attack(character: CharacterBase, target: CharacterBase) -> bool:
 		return false
 	if character.has_used_action:
 		return false
+	# Validate the target is an enemy in range
+	if target.team == character.team:
+		return false
+	if not target.is_alive:
+		return false
 
 	state = BattleState.PLAYER_ACTING
 	_clear_highlights()
 	var result = await character.attack_target(target)
+	# Tier-1 combo: let eligible allies chain auto follow-ups before control returns.
+	if result.get("success", false):
+		await ComboSystem.on_attack(character, target)
 	_return_to_idle()
 	return result.success
 

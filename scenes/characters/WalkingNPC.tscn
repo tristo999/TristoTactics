@@ -1,0 +1,62 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://scripts/characters/walking/walking_npc.gd" id="1_npcscript"]
+[ext_resource type="Texture2D" uid="uid://btwjvapwp0t8w" path="res://assets/test/World of Solaria Demo Pack Update 04/16x16/Sprites/New/Chris Idle.png" id="2_idle"]
+
+[sub_resource type="AtlasTexture" id="idle_down_0"]
+atlas = ExtResource("2_idle")
+region = Rect2(0, 80, 80, 80)
+
+[sub_resource type="AtlasTexture" id="idle_down_1"]
+atlas = ExtResource("2_idle")
+region = Rect2(80, 80, 80, 80)
+
+[sub_resource type="AtlasTexture" id="idle_down_2"]
+atlas = ExtResource("2_idle")
+region = Rect2(160, 80, 80, 80)
+
+[sub_resource type="AtlasTexture" id="idle_down_3"]
+atlas = ExtResource("2_idle")
+region = Rect2(240, 80, 80, 80)
+
+[sub_resource type="AtlasTexture" id="idle_down_4"]
+atlas = ExtResource("2_idle")
+region = Rect2(320, 80, 80, 80)
+
+[sub_resource type="AtlasTexture" id="idle_down_5"]
+atlas = ExtResource("2_idle")
+region = Rect2(400, 80, 80, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_npc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("idle_down_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("idle_down_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("idle_down_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("idle_down_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("idle_down_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("idle_down_5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[node name="WalkingNPC" type="Node2D"]
+z_index = 100
+script = ExtResource("1_npcscript")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_npc")
+autoplay = "idle"

@@ -48,9 +48,15 @@ func _refresh_occupied_tiles() -> void:
 # --- Mouse Hover ---
 
 func _process(_delta: float) -> void:
+	# Hover is a runtime-only concern. A @tool subclass (TextMapTilemap) would
+	# otherwise run this in the editor, before highlight_renderer/astar_grid exist.
+	if Engine.is_editor_hint():
+		return
 	_handle_mouse_hover()
 
 func _handle_mouse_hover() -> void:
+	if highlight_renderer == null or astar_grid == null:
+		return
 	var mouse_pos = base_layer.get_global_mouse_position()
 	var local_mouse = base_layer.to_local(mouse_pos)
 	var tile = base_layer.local_to_map(local_mouse)
@@ -95,24 +101,24 @@ func add_walkable_cells_from_tilemap() -> void:
 	# Mark wall tiles as solid, including large tiles (e.g., 3x3 trees)
 	_mark_layer_cells_solid(wall_tilemap)
 	
-	# Objects layer (trees, benches, etc.) are also impassable
+	# Objects layer: impassable props are solid, but walkable cover (trees) is not.
 	if objects_layer:
-		_mark_layer_cells_solid(objects_layer)
+		_mark_layer_cells_solid(objects_layer, true)
 	
-	# Water layer (water, coast, etc.) is impassable
-	if water_layer:
-		_mark_layer_cells_solid(water_layer)
 
-# Marks all cells covered by tiles in a layer as solid (handles large multi-cell tiles)
-func _mark_layer_cells_solid(layer: TileMapLayer) -> void:
+# Marks all cells covered by tiles in a layer as solid (handles large multi-cell tiles).
+# skip_cover: leave walkable-cover overlays (trees) passable.
+func _mark_layer_cells_solid(layer: TileMapLayer, skip_cover: bool = false) -> void:
 	for cell in layer.get_used_cells():
 		var tile_data = layer.get_cell_tile_data(cell)
 		if tile_data == null:
 			continue
-		
+
 		# Get the tile size from the texture region
 		var source_id = layer.get_cell_source_id(cell)
 		var atlas_coords = layer.get_cell_atlas_coords(cell)
+		if skip_cover and TerrainRegistry.is_cover_overlay(atlas_coords):
+			continue  # trees are walkable cover, not obstacles
 		var tile_set_source = layer.tile_set.get_source(source_id)
 		
 		if tile_set_source is TileSetAtlasSource:

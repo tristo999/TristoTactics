@@ -7,11 +7,15 @@ var menu_stack: MenuStack
 var escape_down := false
 
 func _ready():
-	# Create the menu stack manager
+	# Wrap menus in a high-layer CanvasLayer so they always render above everything.
+	var canvas := CanvasLayer.new()
+	canvas.layer = 200
+	add_child(canvas)
+
 	menu_stack = MenuStack.new()
 	menu_stack.stack_emptied.connect(_on_stack_emptied)
-	add_child(menu_stack)
-	
+	canvas.add_child(menu_stack)
+
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 func _input(event):
@@ -26,6 +30,9 @@ func _input(event):
 		escape_down = false
 
 func _open_pause_menu():
+	# Block pausing during cinematic sequences.
+	if get_tree().get_nodes_in_group("pause_blocked").size() > 0:
+		return
 	get_tree().paused = true
 	var pause_menu = pause_menu_scene.instantiate()
 	pause_menu.settings_requested.connect(_open_settings_menu)

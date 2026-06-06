@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/characters/base/character_data.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://btwjvapwp0t8w" path="res://assets/test/World of Solaria Demo Pack Update 04/16x16/Sprites/New/Chris Idle.png" id="2_idle"]
+[ext_resource type="Texture2D" uid="uid://cqbygnhy5mhsg" path="res://assets/test/World of Solaria Demo Pack Update 04/16x16/Sprites/New/Chris Walk.png" id="3_walk"]
+[ext_resource type="Resource" path="res://data/abilities/dwarf_followup.tres" id="4_fu"]
+
+[resource]
+script = ExtResource("1")
+display_name = "Dwarf"
+description = "Tank — burly but nimble; crosses the gap to put himself between harm and an ally. PLACEHOLDER UNIT: name, art, and the protective follow-up are TBD; sprite is temporarily reused from the Hero."
+max_hp = 34
+attack_power = 9
+defense = 9
+initiative = 7
+crit_chance = 0.05
+move_speed = 95.0
+move_range = 5
+attack_range_min = 1
+attack_range_max = 1
+idle_texture = ExtResource("2_idle")
+walk_texture = ExtResource("3_walk")
+follow_ups = Array[FollowUp]([ExtResource("4_fu")])

@@ -23,6 +23,7 @@ var _last_mode: int = -1
 # --- Lifecycle ---
 
 func _ready() -> void:
+	add_to_group("action_bar")
 	EventBus.turn_started.connect(_on_turn_started)
 	EventBus.turn_ended.connect(_on_turn_ended)
 	EventBus.character_movement_finished.connect(_on_character_updated)
@@ -55,7 +56,7 @@ func _cache_references() -> void:
 	game_manager = get_tree().get_first_node_in_group("game_manager")
 
 func _process(_delta: float) -> void:
-	if not visible or not game_manager:
+	if not visible or not is_instance_valid(game_manager):
 		return
 	# Refresh highlight when state or player mode changes.
 	var current_state: int = game_manager.state
@@ -145,7 +146,7 @@ func _refresh() -> void:
 	_update_active_highlight()
 
 func _update_active_highlight() -> void:
-	if not game_manager:
+	if not is_instance_valid(game_manager):
 		return
 	var is_idle: bool = game_manager.state == game_manager.BattleState.PLAYER_IDLE
 	var mode: int = game_manager.player_mode

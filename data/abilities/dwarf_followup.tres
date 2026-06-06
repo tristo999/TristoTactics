@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FollowUpIntercept" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/abilities/follow_up_intercept.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+display_name = "Bodyguard"
+description = "When an enemy is about to strike an adjacent ally, a chance the dwarf takes the hit instead."
+trigger_chance = 0.5
+adjacency = 1

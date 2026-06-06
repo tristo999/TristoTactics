@@ -14,6 +14,7 @@ var sound_effects := {
 	# UI
 	"button_click": "res://assets/audio/sfx/button_click.wav",
 	"select": "res://assets/audio/sfx/select.wav",
+	"dialogue_type": "res://assets/audio/sfx/button_click.wav",
 	# Movement
 	"move": "res://assets/audio/sfx/move.wav",
 	# Combat
@@ -108,15 +109,42 @@ func play_sfx_from_path(path: String) -> void:
 	if stream:
 		_play_stream(stream)
 
+## Play an SFX by key with a randomised pitch offset (semitones around 0).
+func play_sfx_pitched(sfx_key: String, pitch_variance: float = 0.1) -> void:
+	if not sound_effects.has(sfx_key):
+		return
+	var sfx_path: String = sound_effects[sfx_key]
+	if not ResourceLoader.exists(sfx_path):
+		return
+	var stream = load(sfx_path)
+	if not stream:
+		return
+	_play_stream_pitched(stream, pitch_variance)
+
+## Route a stream through the SFX player pool with pitch scale applied.
+func _play_stream_pitched(stream: AudioStream, pitch_variance: float) -> void:
+	var scale := 1.0 + randf_range(-pitch_variance, pitch_variance)
+	for player in _sfx_players:
+		if not player.playing:
+			player.stream = stream
+			player.pitch_scale = scale
+			player.play()
+			return
+	_sfx_players[0].stream = stream
+	_sfx_players[0].pitch_scale = scale
+	_sfx_players[0].play()
+
 ## Route a stream through the SFX player pool.
 func _play_stream(stream: AudioStream) -> void:
 	for player in _sfx_players:
 		if not player.playing:
 			player.stream = stream
+			player.pitch_scale = 1.0
 			player.play()
 			return
 	# All busy — interrupt the first player
 	_sfx_players[0].stream = stream
+	_sfx_players[0].pitch_scale = 1.0
 	_sfx_players[0].play()
 
 # --- Volume ---

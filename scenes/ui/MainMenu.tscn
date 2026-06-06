@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bxpfpku0ib366"]
 
-[ext_resource type="Script" path="res://scripts/levels/menus/main_menu.gd" id="1_mainmenu"]
+[ext_resource type="Script" path="res://scripts/menus/main_menu.gd" id="1_mainmenu"]
 [ext_resource type="Texture2D" uid="uid://dulj3x1ratwuj" path="res://menu-background.png" id="2_6jbdy"]
 
 [node name="MainMenu" type="Control"]
@@ -35,10 +35,6 @@ text = "New Game"
 [node name="ContinueButton" type="Button" parent="VBox"]
 layout_mode = 2
 text = "Continue Game"
-
-[node name="StartButton" type="Button" parent="VBox"]
-layout_mode = 2
-text = "Start Game"
 
 [node name="SettingsButton" type="Button" parent="VBox"]
 layout_mode = 2

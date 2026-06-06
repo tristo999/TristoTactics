@@ -8,11 +8,15 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="TristoTactics"
 run/main_scene="res://scenes/menus/SplashScreen.tscn"
-config/features=PackedStringArray("4.5", "Forward Plus")
+config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
 [audio]
@@ -30,6 +34,7 @@ SettingsManager="*res://scripts/core/settings_manager.gd"
 GameSFXManager="*res://scripts/core/game_sfx_manager.gd"
 AttackAnimationOverlay="*res://scripts/ui/attack_animation_overlay.gd"
 PlayerDataManager="*res://scripts/managers/player_data_manager.gd"
+ComboSystem="*res://scripts/managers/battle/combo_system.gd"
 
 [display]
 
@@ -89,3 +94,11 @@ ui_zoom_out={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+environment/default_clear_color=Color(0, 0, 0, 1)
+
+[steam]
+
+initialization/app_id=0
+initialization/initialize_on_startup=false
+initialization/embed_callbacks=false
+multiplayer_peer/max_channels=4
