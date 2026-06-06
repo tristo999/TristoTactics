@@ -24,6 +24,22 @@ func _process(delta: float) -> void:
 		else:
 			position = focus_target.position
 
+	_clamp_to_limits()
+
+## Manually keep the view inside the map limits (Camera2D's built-in limit_*
+## doesn't reliably clamp an externally-driven position). If the map is smaller
+## than the view on an axis, center on it instead.
+func _clamp_to_limits() -> void:
+	if limit_right <= limit_left:
+		return  # limits not set yet
+	var half := (get_viewport_rect().size * 0.5) / zoom
+	var min_x := limit_left + half.x
+	var max_x := limit_right - half.x
+	var min_y := limit_top + half.y
+	var max_y := limit_bottom - half.y
+	position.x = (limit_left + limit_right) * 0.5 if min_x > max_x else clampf(position.x, min_x, max_x)
+	position.y = (limit_top + limit_bottom) * 0.5 if min_y > max_y else clampf(position.y, min_y, max_y)
+
 func handle_keyboard_input(delta: float) -> void:
 	var input_vector := Vector2.ZERO
 	input_vector.x = Input.get_axis("ui_left", "ui_right")
@@ -59,8 +75,11 @@ func apply_map_limits(tilemap: Node2D, margin_px: int = 0) -> void:
 	var rect := base.get_used_rect()
 	if rect.size == Vector2i.ZERO:
 		return
-	var tl := base.to_global(base.map_to_local(rect.position))
-	var br := base.to_global(base.map_to_local(rect.position + rect.size))
+	# Exact pixel edges of the used area (map_to_local gives tile centers, which
+	# overshoot the true edge by half a tile).
+	var ts := Vector2(base.tile_set.tile_size)
+	var tl := base.to_global(Vector2(rect.position) * ts)
+	var br := base.to_global(Vector2(rect.position + rect.size) * ts)
 	limit_left = int(tl.x) - margin_px
 	limit_top = int(tl.y) - margin_px
 	limit_right = int(br.x) + margin_px
@@ -68,11 +87,14 @@ func apply_map_limits(tilemap: Node2D, margin_px: int = 0) -> void:
 
 	# Zoom so the map FILLS the viewport (no gray void): pick the larger axis
 	# ratio so both axes are >= the screen; the bigger overflow axis scrolls.
+	# Never clamp the fill below what's needed (raise max_zoom to fit) — otherwise
+	# a small map on a big screen floats in void.
 	var map_px := br - tl
 	var vp := get_viewport_rect().size
 	if map_px.x > 0 and map_px.y > 0:
 		var fit: float = maxf(vp.x / map_px.x, vp.y / map_px.y)
-		fit = clampf(fit, min_zoom, max_zoom)
+		fit = maxf(fit, min_zoom)
+		max_zoom = maxf(max_zoom, fit)   # allow zooming in at least to the fill level
 		zoom = Vector2(fit, fit)
 	# Start centered on the map.
 	position = (tl + br) * 0.5
