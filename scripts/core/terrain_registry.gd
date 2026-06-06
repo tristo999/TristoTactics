@@ -19,6 +19,13 @@ const TERRAIN_TYPES := {
 ## Default terrain when nothing else matches
 const DEFAULT_TERRAIN := "grass"
 
+## Objects-layer overlay atlas coords that are WALKABLE cover (trees/bushes) —
+## i.e. forest, not impassable props. Must match map_loader.gd's tree overlays.
+const COVER_OVERLAYS := [Vector2i(7, 3), Vector2i(8, 3), Vector2i(8, 4)]
+
+func is_cover_overlay(atlas: Vector2i) -> bool:
+	return atlas in COVER_OVERLAYS
+
 # --- Layer-based Lookups ---
 
 ## Returns terrain data for a tile position, checking layers top-down.
@@ -31,10 +38,15 @@ func get_terrain_at(tile_pos: Vector2i, tilemap: Node2D) -> Dictionary:
 	if wall_layer and _is_tile_covered_by_layer(wall_layer, tile_pos):
 		return TERRAIN_TYPES["wall"]
 
-	# Check objects layer (trees, benches, etc. — impassable)
+	# Check objects layer: cover overlays (trees) are walkable forest; other
+	# props (benches, rocks) are impassable.
 	var objects_layer = tilemap.get_node_or_null("Objects")
-	if objects_layer and _is_tile_covered_by_layer(objects_layer, tile_pos):
-		return TERRAIN_TYPES["object"]
+	if objects_layer:
+		var oa = objects_layer.get_cell_atlas_coords(tile_pos)
+		if oa != Vector2i(-1, -1) and is_cover_overlay(oa):
+			return TERRAIN_TYPES["forest"]
+		if _is_tile_covered_by_layer(objects_layer, tile_pos):
+			return TERRAIN_TYPES["object"]
 
 	# Check water layer (water, coast — impassable)
 	var water_layer = tilemap.get_node_or_null("Water")

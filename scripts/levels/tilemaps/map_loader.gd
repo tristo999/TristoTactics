@@ -11,12 +11,15 @@ const SRC := 2  # Solaria Demo Tiles source id (see tileset.tres)
 
 # char -> { layer: "base"|"walls", atlas: Vector2i, spawn: "player"|"enemy"|"named" }
 # Atlas coords are real, pulled from dev_sandbox. Water arrives in v1.1.
+# Atlas coords are real, verified against the Solaria sheet (source id 2). Tiles
+# with an "overlay" place a grass base on BaseGrid + a decorative tile on the
+# Objects layer (trees are transparent, so they need grass under them).
 const LEGEND := {
 	".": {"layer": "base", "atlas": Vector2i(5, 0)},                       # grass floor
-	",": {"layer": "base", "atlas": Vector2i(5, 3)},                       # road/path (def -1)
-	"o": {"layer": "base", "atlas": Vector2i(1, 7)},                       # stone floor
-	"T": {"layer": "base", "atlas": Vector2i(7, 5)},                       # forest (cover: def +2, cost 2)
-	"#": {"layer": "walls", "atlas": Vector2i(2, 10)},                     # wall (impassable)
+	",": {"layer": "base", "atlas": Vector2i(5, 3)},                       # dirt road/path (def -1)
+	"o": {"layer": "base", "atlas": Vector2i(10, 6)},                      # stone floor
+	"T": {"layer": "base", "atlas": Vector2i(5, 0), "overlay": Vector2i(7, 3)},  # tree on grass (cover: def +2, cost 2)
+	"#": {"layer": "walls", "atlas": Vector2i(10, 3)},                     # brick wall (impassable)
 	"P": {"layer": "base", "atlas": Vector2i(5, 0), "spawn": "player"},
 	"E": {"layer": "base", "atlas": Vector2i(5, 0), "spawn": "enemy"},
 }
@@ -97,7 +100,8 @@ static func load_file(path: String) -> Dictionary:
 	return parse(FileAccess.get_file_as_string(path))
 
 ## Place the parsed grid onto the given tile layers. Spawns become floor.
-static func populate(parsed: Dictionary, base_layer: TileMapLayer, walls_layer: TileMapLayer) -> void:
+## objects_layer receives decorative overlays (trees) over a grass base.
+static func populate(parsed: Dictionary, base_layer: TileMapLayer, walls_layer: TileMapLayer, objects_layer: TileMapLayer = null) -> void:
 	var grid: Array = parsed.get("grid", [])
 	for y in grid.size():
 		var row: String = grid[y]
@@ -111,8 +115,10 @@ static func populate(parsed: Dictionary, base_layer: TileMapLayer, walls_layer: 
 				# named slots and unknown chars become plain floor
 				base_layer.set_cell(cell, SRC, FLOOR_ATLAS)
 				continue
-			var layer := base_layer if info["layer"] == "base" else walls_layer
+			var layer := base_layer if info.get("layer", "base") == "base" else walls_layer
 			layer.set_cell(cell, SRC, info["atlas"])
+			if info.has("overlay") and objects_layer != null:
+				objects_layer.set_cell(cell, SRC, info["overlay"])
 
 ## Render the grid back to text (for chat + self-verification).
 static func render(parsed: Dictionary) -> String:
