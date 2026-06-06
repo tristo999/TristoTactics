@@ -10,4 +10,4 @@ trigger_chance = 1.0
 power_mult = 0.6
 shot_range_min = 1
 shot_range_max = 4
-link_range_max = 2
+link_range_max = 4

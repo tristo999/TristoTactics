@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="CharacterData" load_steps=5 format=3]
+[gd_resource type="Resource" script_class="CharacterData" load_steps=6 format=3]
 
 [ext_resource type="Script" path="res://scripts/characters/base/character_data.gd" id="1"]
 [ext_resource type="Texture2D" path="res://assets/sprites/characters/lyra_idle.png" id="2_idle"]
 [ext_resource type="Texture2D" path="res://assets/sprites/characters/lyra_walk.png" id="3_walk"]
 [ext_resource type="Resource" path="res://data/abilities/heal.tres" id="5_heal"]
+[ext_resource type="Resource" path="res://data/abilities/healer_followup.tres" id="6_fu"]
 
 [resource]
 script = ExtResource("1")
@@ -21,3 +22,4 @@ attack_range_max = 1
 abilities = [ExtResource("5_heal")]
 idle_texture = ExtResource("2_idle")
 walk_texture = ExtResource("3_walk")
+follow_ups = Array[FollowUp]([ExtResource("6_fu")])

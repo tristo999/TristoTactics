@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="FollowUpHeal" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/abilities/follow_up_heal.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+display_name = "Mending Reflex"
+description = "When a nearby ally takes damage, a small chance she instantly mends a little of it, free."
+trigger_chance = 0.3
+heal_amount = 4
+heal_range_max = 4
