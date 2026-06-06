@@ -193,6 +193,97 @@ func play_attack_animation(attacker: CharacterBase, defender: CharacterBase, dam
 	_cleanup()
 
 
+## Heal counterpart of play_attack_animation — same centered box, but the healer
+## gestures toward the ally and a green "+N" rises instead of a damage hit.
+## Used by the Healer's reactive follow-up. Await it.
+func play_heal_animation(healer: CharacterBase, target: CharacterBase, amount: int) -> void:
+	while _is_playing:
+		await _animation_completed
+	_is_playing = true
+
+	var vp_size := get_viewport().get_visible_rect().size
+	var box_w := vp_size.x * BOX_WIDTH_FRAC
+	var box_h := vp_size.y * BOX_HEIGHT_FRAC
+	_box.custom_minimum_size = Vector2(box_w, box_h)
+	_box.anchor_left = 0.5
+	_box.anchor_top = 0.5
+	_box.anchor_right = 0.5
+	_box.anchor_bottom = 0.5
+	_box.offset_left = - box_w * 0.5
+	_box.offset_top = - box_h * 0.5
+	_box.offset_right = box_w * 0.5
+	_box.offset_bottom = box_h * 0.5
+	_box_content.size = Vector2(box_w, box_h)
+
+	# Healer occupies the "attacker" slot, the mended ally the "defender" slot.
+	_attacker_sprite = _clone_sprite(healer)
+	_defender_sprite = _clone_sprite(target)
+	if _attacker_sprite == null or _defender_sprite == null:
+		_cleanup()
+		return
+
+	var healer_pos := Vector2(box_w * ATTACKER_X_FRAC, box_h * CHARACTER_Y_FRAC)
+	var ally_pos := Vector2(box_w * DEFENDER_X_FRAC, box_h * CHARACTER_Y_FRAC)
+	_attacker_sprite.position = healer_pos
+	_attacker_sprite.scale = CHARACTER_SCALE
+	_attacker_sprite.z_index = 5
+	_defender_sprite.position = ally_pos
+	_defender_sprite.scale = CHARACTER_SCALE
+	_defender_sprite.z_index = 5
+	_set_overlay_anim(_attacker_sprite, "idle_right")
+	_set_overlay_anim(_defender_sprite, "idle_left")
+	_box_content.add_child(_attacker_sprite)
+	_box_content.add_child(_defender_sprite)
+
+	# Green "+N" over the ally.
+	_damage_label.text = "+" + str(amount)
+	_damage_label.add_theme_color_override("font_color", Color(0.4, 1.0, 0.5))
+	_damage_label.add_theme_font_size_override("font_size", 36)
+	_damage_label.size = Vector2(120, 50)
+	_damage_label.position = ally_pos + Vector2(-60, -60)
+	_damage_label.visible = false
+
+	# 1. Fade in
+	_root.modulate.a = 0.0
+	_root.visible = true
+	var fade_in := create_tween()
+	fade_in.tween_property(_root, "modulate:a", 1.0, FADE_DURATION)
+	await fade_in.finished
+
+	# 2. Brief hold
+	await get_tree().create_timer(0.15).timeout
+
+	# 3. Healer gestures toward the ally (gentle forward bob, no impact)
+	var gesture := create_tween()
+	gesture.tween_property(_attacker_sprite, "position", healer_pos + Vector2(LUNGE_DISTANCE * 0.5, -6), 0.18).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+	gesture.tween_property(_attacker_sprite, "position", healer_pos, 0.2).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE)
+
+	# 4. Green glow pulse on the ally + reveal the number
+	_damage_label.visible = true
+	_damage_label.modulate.a = 1.0
+	var glow := create_tween()
+	glow.tween_property(_defender_sprite, "modulate", Color(0.5, 1.0, 0.65), 0.16)
+	glow.tween_property(_defender_sprite, "modulate", Color.WHITE, 0.32)
+	await glow.finished
+	await gesture.finished
+
+	# 5. Hold so the number is readable
+	await get_tree().create_timer(HOLD_DURATION).timeout
+
+	# 6. Float the number up and fade
+	var label_tween := create_tween().set_parallel(true)
+	label_tween.tween_property(_damage_label, "position:y", _damage_label.position.y - 30, 0.3)
+	label_tween.tween_property(_damage_label, "modulate:a", 0.0, 0.3)
+	await label_tween.finished
+
+	# 7. Fade out overlay
+	var fade_out := create_tween()
+	fade_out.tween_property(_root, "modulate:a", 0.0, FADE_DURATION)
+	await fade_out.finished
+
+	_cleanup()
+
+
 func _shake_node(node: Node2D, duration: float, intensity: float) -> void:
 	var original_pos := node.position
 	var elapsed := 0.0

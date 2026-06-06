@@ -6,6 +6,6 @@
 script = ExtResource("1")
 display_name = "Mending Reflex"
 description = "When a nearby ally takes damage, a small chance she instantly mends a little of it, free."
-trigger_chance = 0.3
+trigger_chance = 0.1
 heal_amount = 4
 heal_range_max = 4
