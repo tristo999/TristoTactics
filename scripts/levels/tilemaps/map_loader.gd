@@ -16,7 +16,7 @@ const T_PAD := Vector2i(10, 6)    # stone drill pad
 const T_BRICK := Vector2i(10, 3)  # building / hard wall
 const T_TREE3 := Vector2i(7, 0)   # large 3x3 tree (multi-cell)
 const T_CLIFF := Vector2i(1, 11)  # ledge cliff face (grass top, rock drop) - impassable
-const T_STAIRS := Vector2i(18, 5) # stairs (steps) - walkable passage down
+const T_STAIRS := Vector2i(4, 11) # ledge ramp/stairs (rock, matches the ledge) - walkable; dev_sandbox uses it in the ledge gap
 const T_TREE := Vector2i(7, 3)    # single-tile tree = walkable cover (not the 3x3 blocker)
 const FLOOR_ATLAS := T_GRASS
 
