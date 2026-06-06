@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=4]
+
+[ext_resource type="Script" path="res://scripts/levels/tilemaps/text_map_tilemap.gd" id="1"]
+[ext_resource type="TileSet" uid="uid://cpiormm6cegct" path="res://assets/tilesets/tileset.tres" id="2"]
+
+[node name="TextMapTilemap" type="Node2D"]
+script = ExtResource("1")
+map_file = "res://data/maps/sample.map"
+
+[node name="BaseGrid" type="TileMapLayer" parent="."]
+tile_set = ExtResource("2")
+
+[node name="Walls" type="TileMapLayer" parent="."]
+z_index = 2
+tile_set = ExtResource("2")
+
+[node name="Water" type="TileMapLayer" parent="."]
+z_index = 1
+tile_set = ExtResource("2")
