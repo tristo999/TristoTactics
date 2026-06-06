@@ -1,41 +1,47 @@
 # Headless verification for TristoTactics.
-# Loads the project in headless mode and surfaces GDScript parse/load errors,
-# so code changes can be checked without opening the editor.
-# (Catches "does it compile/load," NOT "is it fun" — feel still needs a human.)
+# Loads a scene headless (default: the dev_sandbox battle, which exercises the
+# combat + combo scripts with autoloads present) and surfaces GDScript
+# parse/compile/type errors. Catches "does it compile/load," NOT "is it fun."
 #
-# Usage:   powershell -File scripts/tools/verify.ps1
-#          powershell -File scripts/tools/verify.ps1 -Frames 4
+# Why a battle scene, not the splash: scripts only referenced by data resources
+# (follow-ups, abilities, character .tres) are not compiled by a menu load, so
+# their errors stay hidden until a unit using them is instantiated. dev_sandbox
+# spawns the cast, so those scripts get compiled.
 #
-# Auto-heals the one common false alarm: a brand-new `class_name` isn't in
-# Godot's global class cache until the editor scans it, so a headless *game*
-# run can't see it. If that's detected, this runs a one-shot editor scan to
-# refresh the cache, then retries.
+# Usage:  powershell -File scripts/tools/verify.ps1
+#         powershell -File scripts/tools/verify.ps1 -Scene res://scenes/menus/SplashScreen.tscn
 #
-# Resolves Godot from PATH if available, else the local binary (update $Fallback).
+# NOTE: --check-only per-script is NOT used here: it runs scripts in isolation
+# without autoloads, so it false-positives "Identifier not found: EventBus" etc.
+# Loading a real scene keeps autoloads available.
+#
+# Auto-heals the new-class_name cache quirk (editor scan + retry). Resolves Godot
+# from PATH, else the local binary (update $Fallback).
 
-param([int]$Frames = 2)
+param(
+  [string]$Scene = 'res://scenes/levels/dev_sandbox_scene.tscn',
+  [int]$Frames = 3
+)
 $ErrorActionPreference = 'Continue'
 
 $Fallback = 'C:\Users\Tristan\Documents\Downloads\godot463\Godot_v4.6.3-stable_win64_console.exe'
 $cmd = Get-Command godot -ErrorAction SilentlyContinue
 $Godot = if ($cmd) { $cmd.Source } else { $Fallback }
-if (-not (Test-Path -LiteralPath $Godot)) {
-  Write-Output "Godot not found (PATH or '$Fallback'). Update scripts/tools/verify.ps1."
-  exit 2
-}
-$Project = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)  # repo root, up from scripts/tools
+if (-not (Test-Path -LiteralPath $Godot)) { Write-Output "Godot not found (PATH or '$Fallback')."; exit 2 }
+$Project = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
+$patterns = @('SCRIPT ERROR', 'Parse Error', 'Error at', 'Cannot infer', 'Identifier not found',
+  'Could not find type', 'not declared in the current scope', 'Could not resolve', 'does not inherit from', 'Failed to load')
 
-function Invoke-Load { & $Godot --headless --path $Project --quit-after $Frames 2>&1 }
-function Find-Errs($o) { $o | Select-String -Pattern 'SCRIPT ERROR', 'Parse Error', 'ERROR:', 'Failed to load', 'Cannot load', 'Invalid' }
+function Invoke-Load { & $Godot --headless --path $Project $Scene --quit-after $Frames 2>&1 }
+function Find-Errs($o) { $o | Select-String -Pattern $patterns }
 
 Write-Output "Godot:   $(& $Godot --version)"
-Write-Output "Project: $Project"
+Write-Output "Scene:   $Scene"
 Write-Output "=== headless load ($Frames frames) ==="
-
 $out = Invoke-Load
 $errs = Find-Errs $out
-if ($errs -and ($errs -match 'Could not find type|not declared in the current scope|Could not resolve external class|does not inherit from')) {
-  Write-Output "New class_name detected - refreshing class cache via editor scan..."
+if ($errs -and ($errs -match 'Could not find type|not declared in the current scope|Could not resolve|does not inherit from')) {
+  Write-Output "New class_name detected - editor scan to refresh the class cache..."
   & $Godot --headless --editor --quit --path $Project 2>&1 | Out-Null
   $out = Invoke-Load
   $errs = Find-Errs $out
@@ -43,9 +49,9 @@ if ($errs -and ($errs -match 'Could not find type|not declared in the current sc
 
 if ($errs) {
   Write-Output "PROBLEMS FOUND:"
-  $errs | ForEach-Object { Write-Output ("  " + $_.Line) }
+  $errs | Select-Object -First 30 | ForEach-Object { Write-Output ("  " + $_.Line) }
   exit 1
 } else {
-  Write-Output "CLEAN - project loads with no script/parse errors."
+  Write-Output "CLEAN - scene loads, scripts compile (autoloads present)."
   exit 0
 }

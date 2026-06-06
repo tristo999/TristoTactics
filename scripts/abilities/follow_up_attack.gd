@@ -38,9 +38,9 @@ func resolve(owner, ctx: Dictionary) -> void:
 	var target = ctx.get("target")
 	if target == null or not is_instance_valid(target) or not target.is_alive:
 		return
-	var crit := randf() < owner.crit_chance
-	var base := maxi(1, int(round(owner.attack_power * power_mult)) - target.defense)
-	var dmg := base * 2 if crit else base
+	var crit: bool = randf() < owner.crit_chance
+	var base: int = maxi(1, int(round(owner.attack_power * power_mult)) - int(target.defense))
+	var dmg: int = base * 2 if crit else base
 	owner.follow_up_used_this_turn = true
 	owner._update_facing(target.global_position - owner.global_position)
 	await AttackAnimationOverlay.play_attack_animation(owner, target, dmg, crit)
