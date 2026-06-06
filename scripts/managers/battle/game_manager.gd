@@ -65,6 +65,9 @@ func _initialize_battle() -> void:
 	# Wait one frame so all nodes have fired _ready() and joined their groups
 	await get_tree().process_frame
 	_find_node_references()
+	# Bound the camera to the map so it never drifts into void past the edges.
+	if action_camera and tilemap_node and action_camera.has_method("apply_map_limits"):
+		action_camera.apply_map_limits(tilemap_node)
 	_build_turn_order()
 	if turn_order.is_empty():
 		push_warning("No characters found in groups!")

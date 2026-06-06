@@ -47,6 +47,26 @@ func handle_zoom_input() -> void:
 		new_zoom = new_zoom.clamp(Vector2(min_zoom, min_zoom), Vector2(max_zoom, max_zoom))
 		zoom = new_zoom
 
+## Bound the camera to a tilemap's used area (+ a small margin so a little
+## backdrop shows past the playable edge before the camera stops). Reads the
+## BaseGrid layer's used rect and sets Camera2D.limit_* in world space.
+func apply_map_limits(tilemap: Node2D, margin_px: int = 24) -> void:
+	if tilemap == null:
+		return
+	var base := tilemap.get_node_or_null("BaseGrid") as TileMapLayer
+	if base == null:
+		return
+	var rect := base.get_used_rect()
+	if rect.size == Vector2i.ZERO:
+		return
+	var tl := base.to_global(base.map_to_local(rect.position))
+	var br := base.to_global(base.map_to_local(rect.position + rect.size))
+	limit_left = int(tl.x) - margin_px
+	limit_top = int(tl.y) - margin_px
+	limit_right = int(br.x) + margin_px
+	limit_bottom = int(br.y) + margin_px
+	print("[CameraControl] limits L%d T%d R%d B%d" % [limit_left, limit_top, limit_right, limit_bottom])
+
 ## Start tracking a character with damped smoothing.
 func move_camera(character: Node2D) -> void:
 	focus_target = character
