@@ -266,6 +266,10 @@ func get_usable_abilities() -> Array[Ability]:
 func has_abilities() -> bool:
 	return get_usable_abilities().size() > 0
 
+## Tier-1 combo follow-ups this unit carries (character-specific; bond-gated later).
+func get_follow_ups() -> Array:
+	return character_data.follow_ups if character_data else []
+
 ## Get valid targets for a specific ability.
 func get_ability_targets(ability: Ability) -> Array:
 	var targets: Array = []

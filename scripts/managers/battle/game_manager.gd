@@ -281,6 +281,9 @@ func request_attack(character: CharacterBase, target: CharacterBase) -> bool:
 	state = BattleState.PLAYER_ACTING
 	_clear_highlights()
 	var result = await character.attack_target(target)
+	# Tier-1 combo: let eligible allies chain auto follow-ups before control returns.
+	if result.get("success", false):
+		await ComboSystem.on_attack(character, target)
 	_return_to_idle()
 	return result.success
 

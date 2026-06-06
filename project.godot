@@ -34,6 +34,7 @@ SettingsManager="*res://scripts/core/settings_manager.gd"
 GameSFXManager="*res://scripts/core/game_sfx_manager.gd"
 AttackAnimationOverlay="*res://scripts/ui/attack_animation_overlay.gd"
 PlayerDataManager="*res://scripts/managers/player_data_manager.gd"
+ComboSystem="*res://scripts/managers/battle/combo_system.gd"
 
 [display]
 

@@ -34,7 +34,7 @@ Write-Output "=== headless load ($Frames frames) ==="
 
 $out = Invoke-Load
 $errs = Find-Errs $out
-if ($errs -and ($errs -match 'Could not find type')) {
+if ($errs -and ($errs -match 'Could not find type|not declared in the current scope|Could not resolve external class|does not inherit from')) {
   Write-Output "New class_name detected - refreshing class cache via editor scan..."
   & $Godot --headless --editor --quit --path $Project 2>&1 | Out-Null
   $out = Invoke-Load

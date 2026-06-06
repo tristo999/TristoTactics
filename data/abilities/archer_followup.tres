@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="FollowUpAttack" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/abilities/follow_up_attack.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+display_name = "Covering Shot"
+description = "When a nearby ally strikes an enemy in her line, she chains a quick shot."
+trigger_chance = 1.0
+power_mult = 0.6
+shot_range_min = 1
+shot_range_max = 4
+link_range_max = 2

@@ -29,8 +29,10 @@ extends Resource
 ## Abilities this character can use. Assign Ability .tres resources here.
 @export var abilities: Array[Ability] = []
 
-## Reactive combo strike — the signature "follow-up." Null = this unit has none.
-@export var follow_up: FollowUpAbility = null
+## Tier-1 combo follow-ups (auto, reactive, character-specific). Assign FollowUp
+## subclass resources (FollowUpAttack, etc.). A unit can carry several; bond-gated
+## unlocks are reserved for the future via FollowUp.bond_level_required.
+@export var follow_ups: Array[FollowUp] = []
 
 @export_group("Visuals")
 ## Idle spritesheet (480×320, 6 cols × 4 rows of 80×80 frames).
