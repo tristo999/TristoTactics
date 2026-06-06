@@ -56,6 +56,23 @@ Walkability is automatic: after `populate`, the tilemap's existing
 placed cells (BaseGrid = walkable, Walls = solid, terrain cost/defense via
 `TerrainRegistry`).
 
+## Bake into the editor (text → hand-editable tiles)
+A `.map` builds at runtime by default, but you can **bake** it into real,
+hand-editable tiles. On a `TextMapTilemap` node (with `BaseGrid`/`Walls` child
+layers and `map_file` set), the inspector shows two buttons:
+
+- **Bake from .map** — writes the grid into the tile layers and drops editable
+  `Marker2D` spawn nodes under a `Spawns` child (named `Slot_1`, `E1`, `P1`…,
+  each carrying `spawn_team`/`spawn_key` metadata). **Save the scene (Ctrl+S)**
+  to keep it.
+- **Clear baked tiles** — wipes the layers + `Spawns` so you can re-bake.
+
+After baking, paint over the tiles and drag the spawn markers freely — it's a
+normal scene now. At runtime the node detects the `Spawns` child and reads spawn
+positions from the markers (using the already-placed tiles); if a scene was
+*not* baked but has a `map_file`, it falls back to building at runtime. So the
+flow is: **draft in chat → bake → hand-polish in the editor.**
+
 ## The chat iteration loop
 1. You: *"wider, forest chokepoint mid-map, water down the left."*
 2. I edit the `.map` text.
