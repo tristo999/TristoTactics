@@ -15,6 +15,8 @@ const T_DIRT := Vector2i(5, 3)
 const T_PAD := Vector2i(10, 6)    # stone drill pad
 const T_BRICK := Vector2i(10, 3)  # building / hard wall
 const T_TREE3 := Vector2i(7, 0)   # large 3x3 tree (multi-cell)
+const T_CLIFF := Vector2i(1, 11)  # ledge cliff face (grass top, rock drop) - impassable
+const T_STAIRS := Vector2i(3, 11) # opening/path down through the ledge - walkable
 const FLOOR_ATLAS := T_GRASS
 
 # Wooden-post fence 9-slice (cols 0-2, rows 12-14). Interior = the yard side.
@@ -38,7 +40,7 @@ const DECOR_TILES := [Vector2i(6, 0), Vector2i(6, 1)]
 #   block: impassable
 #   back:  backdrop (outside the fight)
 const ROLE := {
-	".": "walk", ",": "walk", "o": "walk",
+	".": "walk", ",": "walk", "o": "walk", "S": "stairs",
 	"#": "fence", "L": "ledge", "B": "block", "T": "tree",
 	"w": "back", "C": "back",
 	"P": "walk", "E": "back",
@@ -175,9 +177,12 @@ static func populate(parsed: Dictionary, base_layer: TileMapLayer, walls_layer: 
 					base_layer.set_cell(cell, SRC, T_GRASS)
 					walls_layer.set_cell(cell, SRC, _fence_piece(grid, x, y))
 				"ledge":
-					# Cliff edge: impassable natural barrier at the plateau's rim.
+					# Cliff face: impassable drop. Upper area = grass on top, rock below.
 					base_layer.set_cell(cell, SRC, T_GRASS)
-					walls_layer.set_cell(cell, SRC, _ledge_piece(grid, x, y))
+					walls_layer.set_cell(cell, SRC, T_CLIFF)
+				"stairs":
+					# The one walkable break in the cliff (down into the ring).
+					base_layer.set_cell(cell, SRC, T_STAIRS)
 				"block":
 					base_layer.set_cell(cell, SRC, T_GRASS)
 					walls_layer.set_cell(cell, SRC, T_BRICK)

@@ -102,7 +102,8 @@ func _start_battle() -> void:
 		await play_event(intro_event)
 
 	current_character = turn_order.front()
-	_focus_camera(current_character)
+	# Don't snap the camera to the first unit at battle start -- leave it centered
+	# on the party (set by apply_map_limits). Later turns focus via _advance_turn.
 	call_deferred("_start_character_turn", current_character)
 
 # --- Turn Flow ---

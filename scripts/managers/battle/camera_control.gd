@@ -8,8 +8,8 @@ extends Camera2D
 @export var focus_lerp_speed: float = 5.0
 @export var use_smooth_focus: bool = true
 ## How many tiles wide the battle view shows (smaller = more zoomed in / bigger
-## units). ~14 matches the Shining Force II zoom reference.
-@export var TARGET_TILES_WIDE: float = 14.0
+## units). ~17 = a slightly looser Shining Force II-style zoom.
+@export var TARGET_TILES_WIDE: float = 17.0
 
 var focus_target: Node2D = null
 
@@ -95,8 +95,15 @@ func apply_map_limits(tilemap: Node2D, margin_px: int = 0) -> void:
 	var z: float = vp.x / (TARGET_TILES_WIDE * ts.x)
 	z = clampf(z, min_zoom, max_zoom)
 	zoom = Vector2(z, z)
-	# Start centered on the map.
-	position = (tl + br) * 0.5
+	# Start centered on the party (or the map center if no players yet).
+	var players := get_tree().get_nodes_in_group(Constants.GROUP_PLAYER_CHARACTERS)
+	if players.size() > 0:
+		var c := Vector2.ZERO
+		for p in players:
+			c += (p as Node2D).global_position
+		position = c / players.size()
+	else:
+		position = (tl + br) * 0.5
 	focus_target = null
 	print("[CameraControl] limits L%d T%d R%d B%d zoom %.2f" % [limit_left, limit_top, limit_right, limit_bottom, zoom.x])
 
