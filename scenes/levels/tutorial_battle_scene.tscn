@@ -23,7 +23,7 @@ layer = -100
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color(0.7, 0.36, 0.21, 1)
+color = Color(0.302, 0.608, 0.902, 1)
 
 [node name="PauseMenuHandler" type="Node" parent="."]
 script = ExtResource("3")
