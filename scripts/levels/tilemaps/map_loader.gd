@@ -17,11 +17,12 @@ const T_BRICK := Vector2i(10, 3)  # building / hard wall
 const T_TREE3 := Vector2i(7, 0)   # large 3x3 tree (multi-cell)
 const FLOOR_ATLAS := T_GRASS
 
-# Log-palisade fence 9-slice (interior = the yard side).
+# Wooden-post fence 9-slice (cols 0-2, rows 12-14). Interior = the yard side.
+# (Rows 9-11 are the LEDGE set, not the fence.)
 const FENCE := {
-	"tl": Vector2i(0, 9), "t": Vector2i(1, 9), "tr": Vector2i(2, 9),
-	"l": Vector2i(0, 10), "c": Vector2i(1, 12), "r": Vector2i(2, 10),
-	"bl": Vector2i(0, 11), "b": Vector2i(1, 11), "br": Vector2i(2, 11),
+	"tl": Vector2i(0, 12), "t": Vector2i(1, 12), "tr": Vector2i(2, 12),
+	"l": Vector2i(0, 13), "c": Vector2i(1, 12), "r": Vector2i(2, 13),
+	"bl": Vector2i(0, 14), "b": Vector2i(1, 12), "br": Vector2i(2, 14),
 }
 # Inert decoration scatter (grass tufts / flowers).
 const DECOR_TILES := [Vector2i(6, 0), Vector2i(6, 1)]
