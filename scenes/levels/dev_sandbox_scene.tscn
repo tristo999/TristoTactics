@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://bb1mp0g4ccklu"]
+[gd_scene format=4 uid="uid://bb1mp0g4ccklu"]
 
 [ext_resource type="PackedScene" uid="uid://dgw6nanegiqld" path="res://scenes/managers/GameManager.tscn" id="1_1n512"]
 [ext_resource type="PackedScene" uid="uid://bouj1c13p4ja6" path="res://scenes/characters/PlayerCharacter.tscn" id="2_2iy3v"]
@@ -14,6 +14,7 @@
 [ext_resource type="Resource" path="res://data/characters/archer.tres" id="13_archer"]
 [ext_resource type="Resource" path="res://data/characters/healer.tres" id="14_healer"]
 [ext_resource type="Resource" path="res://data/characters/goblin.tres" id="15_goblin"]
+[ext_resource type="Resource" path="res://data/characters/dwarf.tres" id="18_dwarf"]
 [ext_resource type="PackedScene" path="res://scenes/ui/BottomActionBar.tscn" id="13_actionbar"]
 [ext_resource type="PackedScene" path="res://scenes/ui/SpeedToggleButton.tscn" id="15_speed"]
 [ext_resource type="PackedScene" path="res://scenes/ui/ActiveStatsPanel.tscn" id="16_stats"]
@@ -43,6 +44,10 @@ character_data = ExtResource("13_archer")
 [node name="Lyra" parent="PlayerTeam" instance=ExtResource("2_2iy3v")]
 position = Vector2(28, -205)
 character_data = ExtResource("14_healer")
+
+[node name="Borin" parent="PlayerTeam" instance=ExtResource("2_2iy3v")]
+position = Vector2(44, -190)
+character_data = ExtResource("18_dwarf")
 
 [node name="EnemyTeam" type="Node" parent="."]
 
