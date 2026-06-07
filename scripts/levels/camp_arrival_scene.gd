@@ -72,6 +72,7 @@ func _run_cutscene() -> void:
 		var mid: Vector2 = (_world(meet) + _player.global_position) * 0.5
 		_pan_to(mid, dur)          # camera eases to the meeting (parallel)
 		await _vael.walk_to(meet, dur)
+		_vael.face_tile(_player.current_tile)   # turn to face the hero, not his last step
 	await _wait(0.3)
 
 	# 4. The welcome.
