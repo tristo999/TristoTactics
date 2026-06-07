@@ -26,6 +26,8 @@ class_name SummoningRoomScene
 
 var _player: WalkingPlayer = null
 var _sequence_running: bool = false
+var _door: WalkingDoor = null
+var _exited: bool = false
 
 func _ready() -> void:
 	super._ready()
@@ -36,13 +38,22 @@ func _ready() -> void:
 	else:
 		push_warning("[SummoningRoom] WalkingPlayer not found.")
 
-	var door := get_node_or_null("DoorTrigger") as WalkingDoor
-	if door:
-		door.interacted.connect(_on_door_triggered, CONNECT_ONE_SHOT)
+	_door = get_node_or_null("DoorTrigger") as WalkingDoor
+	if _door:
+		_door.interacted.connect(_on_door_triggered, CONNECT_ONE_SHOT)  # Space fallback
+		EventBus.character_moved.connect(_on_player_moved)               # walk-through
 	else:
 		push_warning("[SummoningRoom] DoorTrigger node not found.")
 
 	call_deferred("_run_sequence")
+
+## Walk-through exit: stepping onto the doorway (or the tile just below it)
+## leaves the room — no Space needed for the player's very first interaction.
+func _on_player_moved(_c: Node2D, _from: Vector2i, to_tile: Vector2i) -> void:
+	if _exited or _door == null:
+		return
+	if to_tile == _door.current_tile or to_tile == _door.current_tile + Vector2i(0, 1):
+		_on_door_triggered()
 
 func _exit_tree() -> void:
 	_sequence_running = false
@@ -82,6 +93,9 @@ func _run_sequence() -> void:
 # Door interaction — save checkpoint, fade to black, change scene.
 # ---------------------------------------------------------------------------
 func _on_door_triggered() -> void:
+	if _exited:
+		return
+	_exited = true
 	if _player:
 		_player.lock_movement()
 
