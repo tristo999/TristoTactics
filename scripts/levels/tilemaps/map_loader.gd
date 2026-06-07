@@ -44,6 +44,7 @@ const ROLE := {
 	".": "walk", ",": "walk", "o": "walk", "S": "stairs",
 	"g": "walk",   # yard-interior grass (renders grass, but marks "inside the fence")
 	"#": "fence", "L": "ledge", "B": "block", "T": "tree",
+	"t": "cover",  # single-tile tree (walkable cover on Objects) -- forest variation
 	"w": "back", "C": "back",
 	"P": "walk", "E": "back",
 }
@@ -195,6 +196,12 @@ static func populate(parsed: Dictionary, base_layer: TileMapLayer, walls_layer: 
 					# them out and keep enemy spawns/lanes clear of them.
 					base_layer.set_cell(cell, SRC, T_GRASS)
 					walls_layer.set_cell(cell, SRC, T_TREE3)
+				"cover":
+					# Single-tile tree = walkable cover on Objects (forest variation,
+					# scattered brush). Does NOT block movement.
+					base_layer.set_cell(cell, SRC, T_GRASS)
+					if objects_layer:
+						objects_layer.set_cell(cell, SRC, T_TREE)
 				_:  # walk / back -> ground tile
 					var atlas := T_GRASS
 					if ch == ",":

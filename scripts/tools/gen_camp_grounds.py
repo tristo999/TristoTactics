@@ -1,79 +1,95 @@
-# Generator for the larger camp map: summoning (S) -> main street -> sparring
-# arena (N), forest band on top, open yards flanking the summoning. Emits a role
-# grid (the chars MapLoader understands); the fence/tree autotiling happens at
-# load. Run: python scripts/tools/gen_camp_grounds.py
-W, H = 36, 32
-OUT = "data/maps/camp_grounds.map"
+# Generator for the larger camp map.
+#   - south EDGE = where the player emerges from the (off-map) summoning room
+#   - main street north to a big fenced sparring arena (3 enemy entrances)
+#   - DEEP, ragged, varied forest across the top (raid source)
+#   - big tent footprints (placeholder) + open yards flanking
+# Emits the role chars MapLoader understands; fence/tree autotiling is at load.
+# Run: python scripts/tools/gen_camp_grounds.py
+import math, random
 
+W, H = 42, 40
+OUT = "data/maps/camp_grounds.map"
+rng = random.Random(7)
 g = [['.' for _ in range(W)] for _ in range(H)]
 
-def rect_fill(x0, y0, x1, y1, ch):
+def inb(x, y): return 0 <= x < W and 0 <= y < H
+def setc(x, y, ch):
+    if inb(x, y): g[y][x] = ch
+def rect(x0, y0, x1, y1, ch):
     for y in range(y0, y1 + 1):
         for x in range(x0, x1 + 1):
-            if 0 <= x < W and 0 <= y < H:
-                g[y][x] = ch
+            setc(x, y, ch)
+def tree3(x, y):                      # 3x3 tree origin
+    if 0 <= x < W - 2 and 0 <= y < H - 2: setc(x, y, 'T')
 
-def tree(x, y):          # 3x3 tree origin
-    if 0 <= x < W - 2 and 0 <= y < H - 2:
-        g[y][x] = 'T'
-
-# --- FOREST band (rows 0-5): dense 3x3 trees on a 3-grid, a few clearings ---
-clearings = {(15, 0), (24, 0), (15, 3), (6, 3)}   # gaps the raid emerges from
-for r in (0, 3):
-    for c in range(0, W - 2, 3):
-        if (c, r) in clearings:
+# ---------------------------------------------------------------- FOREST (top)
+# Deep band with a RAGGED southern treeline (noise-driven depth per column) and
+# a mix of 3x3 trees (T) + single-tile cover (t). Two clearings the raid uses.
+MAXD = 14                              # forest never reaches the arena (row 16)
+clearings = [13, 29]                   # column centers where the woods open
+def treeline(x):                       # ragged depth at column x
+    d = 9 + 3 * math.sin(x * 0.55) + 2 * math.sin(x * 0.21)
+    return int(d) + rng.randint(-1, 2)
+# 3x3 trees on a jittered 3-grid, gated by the per-column treeline
+for cy in range(0, MAXD, 3):
+    for cx in range(0, W - 1, 3):
+        if any(abs(cx - c) <= 3 for c in clearings) and cy >= 5:
+            continue                   # keep clearings open lower down
+        if cy > treeline(cx):
             continue
-        tree(c, r)
+        if rng.random() < 0.88:
+            tree3(min(cx + rng.randint(-1, 1), W - 3), max(cy + rng.randint(-1, 1), 0))
+# single-tree fringe softening the ragged edge + scatter inside
+for x in range(W):
+    if any(abs(x - c) <= 2 for c in clearings):
+        continue
+    for _ in range(2):
+        y = treeline(x) + rng.randint(-1, 3)
+        if rng.random() < 0.5: setc(x, min(y, MAXD + 1), 't')
+for _ in range(22):
+    setc(rng.randint(0, W - 1), rng.randint(0, MAXD), 't')
 # raid spawns in/below the clearings
-for (cx, cy) in [(16, 2), (25, 2), (7, 5), (16, 5)]:
-    g[cy][cx] = 'E'
+for (ex, ey) in [(13, 12), (29, 12), (13, 14), (29, 14)]:
+    setc(ex, ey, 'E')
 
-# --- SPARRING ARENA (fenced yard, rows 6-16, cols 11-24) ---
-ax0, ay0, ax1, ay1 = 11, 6, 24, 16
-# fence border
-for x in range(ax0, ax1 + 1):
-    g[ay0][x] = '#'; g[ay1][x] = '#'
-for y in range(ay0, ay1 + 1):
-    g[y][ax0] = '#'; g[y][ax1] = '#'
-# interior = 'g' so the fence corners close
-rect_fill(ax0 + 1, ay0 + 1, ax1 - 1, ay1 - 1, 'g')
-# gates: north breach (toward forest) + south (toward the street)
-for x in (17, 18):
-    g[ay0][x] = 'g'   # north breach gap
-    g[ay1][x] = 'g'   # south gate gap
-# stone pad (spar floor) center
-rect_fill(15, 9, 20, 12, 'o')
-# partners 5/6/7 on the pad, squad 1/2/3 forming up below
-g[10][16] = '5'; g[10][18] = '6'; g[10][20] = '7'
-g[14][14] = '1'; g[14][18] = '2'; g[14][21] = '3'
+# --------------------------------------------------------- SPARRING ARENA (big)
+ax0, ay0, ax1, ay1 = 11, 16, 30, 30
+for x in range(ax0, ax1 + 1): setc(x, ay0, '#'); setc(x, ay1, '#')
+for y in range(ay0, ay1 + 1): setc(ax0, y, '#'); setc(ax1, y, '#')
+rect(ax0 + 1, ay0 + 1, ax1 - 1, ay1 - 1, 'g')      # interior closes the fence
+# three ENEMY entrances (N breach + W + E flanks) + the S street approach
+for x in (20, 21): setc(x, ay0, 'g')               # N breach (from forest)
+for x in (20, 21): setc(x, ay1, 'g')               # S approach (street/player)
+for y in (22, 23): setc(ax0, y, 'g'); setc(ax1, y, 'g')   # W + E flank gates
+rect(18, 21, 23, 24, 'o')                          # stone spar pad
+g[22][19] = '5'; g[22][21] = '6'; g[22][23] = '7'  # partners on the pad
+g[27][15] = '1'; g[27][20] = '2'; g[27][25] = '3'  # squad forming up
 
-# --- MAIN THOROUGHFARE (rows 17-23): dirt path from the arena gate south ---
-for y in range(17, 24):
-    g[y][17] = ','; g[y][18] = ','
-# camp tents/buildings flanking the street
-for (bx, by) in [(7, 19), (9, 19), (27, 19), (29, 19), (7, 21), (28, 21)]:
-    g[by][bx] = 'B'
+# ----------------------------------------------------------- MAIN STREET + camp
+for y in range(31, 38):                            # dirt street south from S gate
+    g[y][20] = ','; g[y][21] = ','
 
-# --- SUMMONING building (rows 25-30, cols 14-21), door opening north ---
-sx0, sy0, sx1, sy1 = 14, 25, 21, 30
-for x in range(sx0, sx1 + 1):
-    g[sy0][x] = 'B'; g[sy1][x] = 'B'
-for y in range(sy0, sy1 + 1):
-    g[y][sx0] = 'B'; g[y][sx1] = 'B'
-rect_fill(sx0 + 1, sy0 + 1, sx1 - 1, sy1 - 1, ',')   # interior floor
-for x in (17, 18):
-    g[sy0][x] = ','                                   # doorway (north)
-# player enters here (just outside the door, in the plaza)
-g[24][17] = 'P'
+def tent(x0, y0, w, h):                             # big placeholder object (>tree)
+    rect(x0, y0, x0 + w - 1, y0 + h - 1, 'B')
+# tents bigger than the 3x3 trees, in the yards + flanking the street
+tent(3, 21, 6, 5)
+tent(33, 21, 6, 5)
+tent(4, 32, 5, 4)
+tent(33, 33, 6, 4)
+tent(13, 33, 5, 4)
+tent(25, 33, 5, 4)
 
-# --- a little flavor in the open flanks (single-tile walkable tree cover) ---
-# (kept sparse so the yards stay open)
+# ----------------------------------------------------- SOUTH ENTRY (no building)
+# The summoning room is the PREVIOUS scene; the player walks in from the edge.
+rect(19, 38, 22, 39, ',')                          # threshold / packed earth
+g[38][20] = 'P'
 
 with open(OUT, "w", encoding="utf-8") as f:
     f.write("name:  Camp Grounds\n")
     f.write("theme: camp\n")
-    f.write("notes: Larger camp. Summoning (S) -> main street -> sparring arena (N); "
-            "forest band on top (raid source); open yards flanking the summoning.\n")
+    f.write("notes: Larger camp. South edge = emerge from the (off-map) summoning room; "
+            "main street -> big fenced sparring arena (3 enemy entrances N/E/W + S approach); "
+            "deep ragged forest on top (raid source); big tent placeholders + open yards.\n")
     f.write("---\n")
     for row in g:
         f.write("".join(row) + "\n")

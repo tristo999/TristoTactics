@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dtc30jbh0abom"]
+[gd_scene load_steps=4 format=3 uid="uid://dtc30jbh0abom"]
 
 [ext_resource type="Script" path="res://scripts/levels/tilemaps/text_map_tilemap.gd" id="1"]
 [ext_resource type="TileSet" uid="uid://cpiormm6cegct" path="res://assets/tilesets/tileset.tres" id="2"]
@@ -35,5 +35,5 @@ tile_set = ExtResource("2")
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 anchor_mode = 1
-position = Vector2(288, 256)
-zoom = Vector2(1.1, 1.1)
+position = Vector2(336, 320)
+zoom = Vector2(0.95, 0.95)
