@@ -27,9 +27,11 @@ attack flow, enemy AI, walking scenes, the 15-event story/dialogue/glitch
 system, save/load, pause, victory screens — all ✅ and proven. What the slice
 *doesn't* have yet is every mechanic that makes TristoTactics itself:
 
-- **Combos** — the ability framework exists but only `HealAbility` is concrete;
-  follow-ups, passives, and duo abilities are unbuilt. This is the signature
-  tactical verb and it does not exist yet.
+- **Combos** — ⚠️ UPDATE 2026-06-06: tier-1 **follow-ups are now BUILT** and wired
+  (`ComboSystem` autoload; concrete archer/dwarf/healer follow-ups; 3 trigger types:
+  ally-attacks-enemy chain, ally-damaged mend, pre-hit intercept; once-per-round cap).
+  Still open: passives and *duo* abilities, and *teaching* the follow-up in the tutorial.
+  The signature verb EXISTS — Beat 2 now teaches it, it isn't a from-scratch build.
 - **Relationship / bonding system** — not built at all.
 - **Silent-hero expressive choices** — the dialogue system *plays* lines; it does
   not yet *offer the player a choice of response.* Unbuilt.
@@ -47,7 +49,7 @@ working.
 | Mechanic | Build state | Where the slice shows it |
 |---|---|---|
 | Tactics combat (move/attack/turns) | ✅ exists | Tutorial battle onward |
-| **Combos** (follow-ups first) | ❌ build | Vael *teaches* the follow-up in the tutorial; used in real fights after |
+| **Combos** (follow-ups first) | ✅ built (tier-1) | Vael *teaches* the existing follow-up in the tutorial; used in real fights after |
 | **Bonding / relationships** | ❌ build | At least 2 companions you bond with across the slice |
 | **Silent-hero expressive choices** | ❌ build | Camp/companion talk (bonding) + ≥1 *complicity* beat (believe Vael / dismiss a glitch) |
 | Glitches (low wrongness) | ✅ exists | Seeded in the campaign missions, escalating slightly toward the bridge |
@@ -75,16 +77,22 @@ room with a door — needs Vael, soldiers, torchlight, the camp atmosphere, and
 the arrival dialogue (the corrected lie: *the Authority summoned you*). No combat.
 - *Demonstrates:* tone, Vael's warmth, the silent hero, the world.
 
-### Beat 2 — TUTORIAL + RAID — build 🟥 (stub) — the big one
+### Beat 2 — TUTORIAL + RAID — build 🟡 (battle scaffold plays; sequencing unbuilt) — the big one
 Two phases. **Sparring:** Vael coaches the core verbs *and teaches the first
 combo* (the follow-up — stand close, chain your partner's strike). **Raid:**
 "insurgents" hit the camp, combat turns lethal, first real fight; companions
 join.
+> Status 2026-06-06: the battle itself is built and plays (`tutorial_battle_scene`
+> on `camp_v2.map`; combat + follow-up combos work). Remaining is the two-phase
+> *sequencing* — spar→raid split, Vael's coach→commander beat, the raid trigger,
+> and teaching the (already-built) follow-up. Author via `docs/levels/camp_v2.md`.
 - *Demonstrates:* combat, **combos (taught here)**, the coach→commander tonal
   flip, first companions.
 - *Plants:* collision row 5 (the camp raid — the distraction the Act 2 party
   will later send). The skirmish must read as a forgettable win.
-- *Builds:* the combo system's first concrete abilities; TutorialManager hookups.
+- *Builds:* the spar→raid sequencing + TutorialManager hookups that *teach* the
+  follow-up. (The combo system + its tier-1 abilities are already built — Beat 2
+  teaches them, it doesn't build them.)
 
 ### Beat 3 — EARLY CAMPAIGN mission — build ⬜
 A standard mission against kingdom "insurgents." Bonds deepen (camp/expressive

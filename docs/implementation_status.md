@@ -4,7 +4,7 @@
 > **Story source of truth:** [`overview.md`](overview.md) (north star) + the four-part bible ([`bible_01_world`](bible_01_world.md) / [`bible_02_cast`](bible_02_cast.md) / [`bible_03_act1`](bible_03_act1.md) / [`bible_04_act2`](bible_04_act2.md)) + [`collision_ledger.md`](collision_ledger.md).
 > **Systems design:** [`systems_design.md`](systems_design.md) (mechanics: combat, death/stakes, relationships, combos, the advancing line, time powers)
 > **Technical reference:** [`../ARCHITECTURE.md`](../ARCHITECTURE.md)
-> **Last reviewed:** 2026-06-05 (world_bible split into the four-part bible; slice_spec adopted; arrival-lie, Choice-at-capital, dark-pact Warlock, and Act-2-starts-at-the-Guardian all folded in)
+> **Last reviewed:** 2026-06-06 (verified build state vs code: combo/follow-up system is BUILT — corrected stale "only HealAbility" claims; Beat 2 battle scaffold now exists as `tutorial_battle_scene`/camp_v2; added map-authoring tooling + level-spec convention). Prior: 2026-06-05 (world_bible split; slice_spec adopted; arrival-lie/Choice-at-capital/dark-pact-Warlock folded in).
 >
 > **Framework note:** the project is now designed around *collisions* (scenes that happen twice) rather than a linear 21-beat list — see the ledger. The MVP slice has grown to **Opening → camp → tutorial → a mission or two → the bridge face-off**, ending on the stare across the gap — see [`slice_spec.md`](slice_spec.md) for the authoritative build spec. The slice is also where the signature systems (combos, bonding, expressive choices) get built for the first time. The revised Act 1 ending (the hero opens the door / the legion / the true form) sits past the slice. B2–B5 carry a duty to plant retrieval cues (see ledger).
 
@@ -28,7 +28,8 @@
 | Battle turn order + state machine | ✅ | `scripts/managers/battle/game_manager.gd` | Full `BattleState` FSM, initiative sorting, win/loss detection |
 | Tile-based pathfinding (A* + BFS) | ✅ | `scripts/levels/tilemaps/tilemap.gd` | AStarGrid2D + cost-aware BFS, terrain-aware |
 | Attack flow + cutscene | ✅ | `scripts/ui/attack_animation_overlay.gd` | Autoload, blocking, crit/damage overlay |
-| Ability framework | ✅ | `scripts/abilities/`, `data/abilities/` | Only `HealAbility` concrete so far; `EventBus.ability_used` unconsumed |
+| Ability framework | ✅ | `scripts/abilities/`, `data/abilities/` | `HealAbility` (active) + tier-1 follow-ups concrete; `EventBus.ability_used` unconsumed |
+| **Combo / follow-up system** | ✅ | `scripts/managers/battle/combo_system.gd`, `scripts/abilities/follow_up*.gd` | `ComboSystem` autoload, data-driven (`CharacterData.follow_ups`, no per-scene wiring). 3 triggers: ally-attacks-enemy chain (archer), ally-damaged mend (healer), pre-hit intercept (dwarf); once-per-round cap. **Open:** passives, duo combos, *teaching* it in the tutorial |
 | Enemy AI (melee) | ✅ | `scripts/characters/enemies/enemy_character.gd` | Nearest-player heuristic, A*/BFS fallbacks |
 | Walking scene base | ✅ | `scripts/levels/walking_scene.gd` | Tile-snapped movement, NPC interaction, triggers |
 | Story event system | ✅ | `scripts/story/*.gd` | 15 event types: dialogue, glitch, fog, flash, overlay, wait, name, save, scene change, callback, title |
@@ -71,7 +72,7 @@ Narrative canon is the four-part bible ([`bible_03_act1`](bible_03_act1.md) for 
 | Beat | Narrative | Planned Scene | Current Scene File | State | Next Work |
 |---|---|---|---|---|---|
 | 1 — ARRIVAL | Hero awakens, Vael greets with soldiers/torchlight | Summoning chamber (walking) | `summoning_room_scene.tscn` + `.gd` | 🟡 | Walking scene with a `DoorTrigger` exists. No Vael, no soldiers, no dialogue, no torchlight atmosphere. Needs a full cinematic introduction. |
-| 2 — TUTORIAL / TRAINING | First tactical combat, Authority framing, companions begin joining. Shape: sparring interrupted by loyalist distraction. **Mirror:** Act 2 B2 is inside this camp during this exact fight — the "insurgents" are a distraction the Act 2 party sent; both parties are here simultaneously, separated by the walls. | Training ground (battle, two-phase; map shared with Act 2 B2 infiltration) | `tutorial_scene.tscn` + `.gd` | 🟥 | 7-line stub — only sets `music_key = "menu"`. Battle layout, sparring opponents, insurgent spawn trigger, Vael dialogue (coach→commander tonal shift), TutorialManager hookups all unbuilt. See Sprint C. |
+| 2 — TUTORIAL / TRAINING | First tactical combat, Authority framing, companions begin joining. Shape: sparring interrupted by loyalist distraction. **Mirror:** Act 2 B2 is inside this camp during this exact fight — the "insurgents" are a distraction the Act 2 party sent; both parties are here simultaneously, separated by the walls. | Training ground (battle, two-phase; map shared with Act 2 B2 infiltration) | `tutorial_battle_scene.tscn` + `tutorial_battle.gd` (map `data/maps/camp_v2.map`) | 🟡 | **Battle scaffold built & plays** (2026-06-06): data-driven roster on the camp_v2 map; move/attack/turns/combos all work; click-to-move, party-centered camera, unit alignment fixed. **Unbuilt:** the two-phase spar→raid split (currently single-phase, all units spawn at once), Vael coach→commander dialogue, the raid spawn trigger, TutorialManager teaching of the follow-up. Level spec: `levels/camp_v2.md`. (Old `tutorial_scene.tscn` is a separate 7-line stub, superseded.) See Sprint C. |
 | 3 — EARLY CAMPAIGN | Missions against "insurgents", subtle anomalies begin | Kingdom outskirts (battle) | — | ⬜ | Not started |
 | 4 — SHADOWED FIGURES (first appearance) | Cloaked figures appear, called saboteurs | TBD (battle) | — | ⬜ | Not started |
 | 5 — BRIDGE INCIDENT | Bridge collapses mid-mission | Bridge map (battle, mirrored in Act 2 B3) | — | ⬜ | Not started. Map must be reusable with inverted objectives for Act 2. |
@@ -145,10 +146,12 @@ Goal: turn `summoning_room_scene` into a real cinematic introduction.
 **Why it matters:** this is the first gameplay the player sees after the opening. Currently it's just a walking scene with a door.
 
 ### Sprint C — Build Act 1 Beat 2 (TUTORIAL)
-Goal: turn `tutorial_scene` into a real tutorial battle. Shape: **sparring interrupted by insurgents** (resolved 2026-05-13).
+Goal: turn the tutorial battle into the real two-phase beat. Shape: **sparring interrupted by insurgents** (resolved 2026-05-13).
+
+> **Progress 2026-06-06:** the battle scaffold is **built and plays** — `tutorial_battle_scene.tscn` on `camp_v2.map`, data-driven roster, combat + combos working. What remains is the *sequencing*: the spar→raid two-phase split, Vael's coach→commander dialogue, the raid spawn trigger, and TutorialManager teaching of the follow-up. Author it via the level spec `docs/levels/camp_v2.md` and the regions/triggers convention (`map_generation_playbook.md` §8). This is now content/sequence wiring, not a from-scratch build.
 
 **Phase 1 — Sparring (tutorial phase):**
-- Build fresh (`dev_sandbox_scene.tscn` retained as a reference for battle-system wiring but is narratively off-canon)
+- Battle scaffold exists (`tutorial_battle_scene.tscn`); `dev_sandbox_scene.tscn` retained as a battle-wiring reference but is narratively off-canon
 - Opponents: Authority soldiers or fellow recruits (nonlethal — damage reads as stamina/yields, no death animations)
 - Hook `TutorialManager` prompts to teach the core verbs in order: move → basic attack → end turn → ability
 - Vael narrates as drill instructor via `DialogueEvent` ("show me what you've got", praise on each correct action)

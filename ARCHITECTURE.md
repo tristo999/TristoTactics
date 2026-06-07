@@ -615,6 +615,24 @@ Abilities are `Resource` subclasses assigned per-character. Each concrete abilit
 
 **Adding a new ability:** subclass `Ability`, set defaults in `_init()`, override `execute()`. Create a `.tres` in `data/abilities/`, then reference it from a `CharacterData.abilities` array.
 
+### Combo / Follow-up System (`ComboSystem`)
+
+Autoload (`scripts/managers/battle/combo_system.gd`) that dispatches battle events to characters' tier-1 **follow-ups** — reactive abilities that fire automatically off another unit's action. **Data-driven:** drop a `FollowUp` resource on `CharacterData.follow_ups` and it works with no per-scene wiring.
+
+**Follow-up base** (`scripts/abilities/follow_up.gd`) defines a `Trigger` enum and the contract subclasses override: `reacts_to() → Trigger`, `is_eligible(owner, ctx) → bool`, `rolls() → bool` (chance gate), `resolve(owner, ctx)`.
+
+**Concrete types & the live triggers:**
+
+| Type | Trigger | Behavior | Built for |
+|---|---|---|---|
+| `FollowUpAttack` | `ALLY_ATTACKED_ENEMY` | chain a strike when an ally hits an enemy | archer (`archer_followup.tres`) |
+| `FollowUpHeal` | `ALLY_DAMAGED` | mend a little when an ally takes damage | healer (`healer_followup.tres`) |
+| `FollowUpIntercept` | pre-hit (`get_interceptor`) | take an incoming hit meant for an ally | dwarf (`dwarf_followup.tres`) |
+
+**Dispatch wiring:** `_ready()` connects `EventBus.turn_started` (resets each character's `follow_up_used_this_turn` budget — **once per round**, refreshed on the character's *own* turn) and `EventBus.character_damaged` (→ `ALLY_DAMAGED`). `GameManager.request_attack` calls `await ComboSystem.on_attack(attacker, target)` (→ `ALLY_ATTACKED_ENEMY`). Pre-damage, `attack_target` calls `ComboSystem.get_interceptor(attacker, victim)` synchronously to redirect the hit.
+
+**Open:** passives, *duo* abilities, and teaching the follow-up in the Beat 2 tutorial. **Build state:** see `docs/implementation_status.md`.
+
 ---
 
 ## Tilemap & Pathfinding
