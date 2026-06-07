@@ -1,6 +1,6 @@
 # Render camp_v2.map with the CURRENT map_loader legend + dump a swatch strip of
 # the specific atlas tiles we use, so tile identity can be verified visually.
-import sys
+import sys, os
 from PIL import Image
 
 ATLAS = r"assets/test/World of Solaria Demo Pack Update 04/16x16/Tilesets/New/Solaria Demo Tiles.png"
@@ -59,8 +59,10 @@ def main():
             out.alpha_composite(tile(atlas,*base),(x*T,y*T))
             if ov: out.alpha_composite(tile(atlas,*ov),(x*T,y*T))
     big=out.resize((w*T*scale,H*T*scale),Image.NEAREST)
-    big.save("docs/maps/camp_v2_layout.png")
-    print("saved layout",big.size,"grid",w,H)
+    stem=os.path.splitext(os.path.basename(mp))[0]
+    outpath=f"docs/maps/{stem}_layout.png"
+    big.save(outpath)
+    print("saved",outpath,big.size,"grid",w,H)
 
     # swatch strip of tiles we use
     labels=[("GRASS",T_GRASS),("DIRT",T_DIRT),("PAD",T_PAD),("BRICK",T_BRICK),
