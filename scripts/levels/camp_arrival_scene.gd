@@ -53,7 +53,7 @@ func _run_cutscene() -> void:
 		if _player:
 			# Frame the camp with the south WALL along the bottom edge; the hero is
 			# off-map below it and walks up through the doorway onto the screen.
-			_cam.global_position = _player.global_position + Vector2(0, -210)
+			_cam.global_position = _player.global_position + Vector2(0, -232)
 
 	# 1. The hero walks out of the building (up through the doorway) into the camp.
 	await _fade(1.0, 0.0, fade_in_duration)

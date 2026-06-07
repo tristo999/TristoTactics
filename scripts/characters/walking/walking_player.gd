@@ -275,7 +275,7 @@ func cinematic_walk_north(tiles: int, duration: float) -> void:
 		current_tile = target_tile
 	_cinematic_mode = false
 	_is_moving = false
-	sprite.play("walk_up")
+	sprite.play("idle_up")   # settle to idle when the walk finishes
 
 func _interact_with_npc(npc: WalkingNPC) -> void:
 	# Face toward the NPC
