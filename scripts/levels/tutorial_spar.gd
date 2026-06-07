@@ -26,6 +26,8 @@ var _action_bar: Node
 var _prompt: Control
 var _fx: CanvasLayer
 var _step: int = Step.INTRO
+var _spar_attacker: Node = null   # the unit whose strike we're judging
+var _followup_fired: bool = false
 
 func _ready() -> void:
 	music_key = "battle"
@@ -100,15 +102,31 @@ func _on_character_moved(c: Node2D, _from: Vector2i, _to: Vector2i) -> void:
 	_show("Select Attack, then click a sparring partner.")
 
 func _on_character_attacked(attacker: Node2D, _target: Node2D, _dmg: int, _crit: bool) -> void:
-	if _step != Step.ATTACK or not _is_player(attacker):
+	if not _is_player(attacker):
 		return
-	_step = Step.DONE
+	if _step == Step.ATTACK:
+		# The strike the player was prompted for.
+		_step = Step.DONE
+		_spar_attacker = attacker
+		_followup_fired = false
+		_resolve_attack()
+	elif _step == Step.DONE and attacker != _spar_attacker:
+		# A second player strike in the same beat == a follow-up chained off the first.
+		_followup_fired = true
+
+func _resolve_attack() -> void:
 	_hide()
-	await get_tree().create_timer(0.4).timeout
-	await _say([
-		["Vael", "— Hah! Did you catch that? Your squad chained off the blow. A follow-up."],
-		["Vael", "Keep them close and they cover for each other. That's the whole game, recru—"],
-	])
+	await get_tree().create_timer(0.7).timeout   # give any follow-up time to chain
+	if _followup_fired:
+		await _say([
+			["Vael", "— Hah! Catch that? One of yours chained a shot off the blow. A follow-up."],
+			["Vael", "Keep your squad shoulder to shoulder and they'll do that all day. That's the whole game, recru—"],
+		])
+	else:
+		await _say([
+			["Vael", "Clean enough. But mark this, recruit —"],
+			["Vael", "keep your archer at your shoulder when someone else swings. She'll chain a free shot off it — a follow-up. You'll lean on it before the morning's out, recru—"],
+		])
 	await _raid_interrupt()
 
 ## The tonal hinge: the drill is cut short as the raid breaches. Coach → commander.
