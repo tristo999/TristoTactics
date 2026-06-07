@@ -49,6 +49,20 @@ idle_sheet = ExtResource("8")
 walk_sheet = ExtResource("9")
 tint = Color(0.7, 0.85, 1, 1)
 
+[node name="Soldier1" type="Node2D" parent="."]
+position = Vector2(392, 680)
+script = ExtResource("7")
+idle_sheet = ExtResource("8")
+walk_sheet = ExtResource("9")
+tint = Color(0.8, 0.85, 0.65, 1)
+
+[node name="Soldier2" type="Node2D" parent="."]
+position = Vector2(456, 680)
+script = ExtResource("7")
+idle_sheet = ExtResource("8")
+walk_sheet = ExtResource("9")
+tint = Color(0.8, 0.85, 0.65, 1)
+
 [node name="CineCam" type="Camera2D" parent="."]
 anchor_mode = 1
 position = Vector2(408, 808)
