@@ -68,11 +68,14 @@ func _begin() -> void:
 	_show("Select Move, then click a highlighted tile.")
 
 # Re-lock the bar each player turn while we're still gating to Move only.
-func _on_turn_started(_c: CharacterBase) -> void:
+func _on_turn_started(c: CharacterBase) -> void:
 	_frame_spar()
 	if _step == Step.MOVE:
 		await get_tree().process_frame
 		_lock_to_move()
+	elif _step == Step.ATTACK and _is_player(c):
+		await get_tree().process_frame
+		_lock_for_attack()
 
 ## Hold a stable framing on the spar pad (the drill is choreographed, not free
 ## combat — we don't want the battle camera drifting/following).
@@ -97,9 +100,13 @@ func _on_character_moved(c: Node2D, _from: Vector2i, _to: Vector2i) -> void:
 		return
 	_step = Step.ATTACK
 	_hide()
-	await _say([["Vael", "Good. Footwork keeps you breathing. Now — strike a partner. Attack, then choose one."]])
-	_unlock_attack()
-	_show("Select Attack, then click a sparring partner.")
+	await _say([["Vael", "Good — footwork keeps you breathing. Now bring the rest up and put steel on a partner. Attack, then pick one."]])
+	# End this unit's turn so the strike falls to the NEXT squadmate — the archer
+	# can then chain a follow-up off it (she can't follow up her own blow).
+	var gm := $GameManager
+	if gm and gm.has_method("end_player_turn"):
+		gm.end_player_turn()
+	_show("Select Attack, then strike a sparring partner.")
 
 func _on_character_attacked(attacker: Node2D, _target: Node2D, _dmg: int, _crit: bool) -> void:
 	if not _is_player(attacker):
@@ -154,9 +161,13 @@ func _lock_to_move() -> void:
 	_action_bar.ability_button.disabled = true
 	_action_bar.end_turn_button.disabled = true
 
-func _unlock_attack() -> void:
-	if _action_bar:
-		_action_bar.attack_button.disabled = false
+func _lock_for_attack() -> void:
+	# Attack (and Move, to step into range) available; the rest stays locked.
+	if _action_bar == null:
+		return
+	_action_bar.attack_button.disabled = false
+	_action_bar.ability_button.disabled = true
+	_action_bar.end_turn_button.disabled = true
 
 func _show(text: String) -> void:
 	if _prompt:
