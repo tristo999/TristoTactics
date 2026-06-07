@@ -40,7 +40,8 @@ notes: free text
 | `#` | fence | 9-slice log fence over grass (impassable) |
 | `L` | ledge | cliff face over grass (impassable barrier) |
 | `B` | block | brick wall over grass (impassable) |
-| `T` | tree | 3×3 tree over grass (impassable cover) |
+| `T` | tree | 3×3 tree over grass (impassable cover; only the origin cell blocks A*) |
+| `t` | cover | single-tile tree (walkable cover on Objects; forest variation) |
 | `w` `C` | back | backdrop ground (outside the fight) |
 | `1`–`9` | walk | named spawn slot (unit stands on grass) |
 | `P` | walk | generic player spawn |
@@ -49,6 +50,13 @@ notes: free text
 **Fence interior rule:** the fence autotiler treats `g`/`o`/digits as "inside". Plain `.` grass is
 *outside*. If you want the fence to wrap an area, fill that area with `g`, not `.` — otherwise corners
 pick rail tiles instead of closing.
+
+**Spawn overlay (spawns on any terrain):** a spawn char (`P`/`E`/`1`-`9`) placed in the terrain grid
+*replaces* the tile (renders grass) — so it punches holes in a pad/road. To spawn a unit **on** a
+specific tile, use the optional **spawn overlay**: a second grid after a *second* `---`, same
+dimensions, where the spawn chars live and everything else is space/`.`. The terrain grid then keeps
+its real tiles (solid pad, etc.) and spawns layer on top. Maps with no overlay still read spawns from
+the terrain grid (legacy). Generators should emit terrain, `---`, then the overlay.
 
 ---
 
