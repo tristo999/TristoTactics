@@ -10,7 +10,7 @@
 # Run: python scripts/tools/gen_camp_grounds.py
 import math, random
 
-W, H = 52, 56
+W, H = 52, 52
 OUT = "data/maps/camp_grounds.map"
 rng = random.Random(11)
 g = [['.' for _ in range(W)] for _ in range(H)]   # terrain
@@ -82,18 +82,11 @@ for (cxx, cyy) in [(17, 37), (34, 45), (33, 37), (16, 44)]:
 for (tx, ty) in [(11, 44), (40, 39), (19, 46), (32, 38), (21, 36), (31, 46)]:
     setc(tx, ty, 't')
 
-# ---- SOUTH WALL + exit vestibule: the hero starts INSIDE and walks out ----
-rect(0, 50, W - 1, 51, 'B')                            # solid outer wall (south edge)
+# ---- SOUTH WALL: the camp's edge. Only the wall shows; the hero walks up
+# through the doorway from OFF-SCREEN below (spawned off-map by the scene). ----
+rect(0, 50, W - 1, 51, 'B')                            # solid wall across the south
 rect(25, 50, 26, 51, ',')                              # doorway through the wall
-# everything below the wall is off-map (void/black) EXCEPT the building's vestibule
-for y in range(52, H):
-    for x in range(W):
-        g[y][x] = ' '
-rect(23, 52, 28, 54, ',')                              # vestibule floor (packed earth)
-for y in range(52, 55):                                # vestibule side walls
-    setc(22, y, 'B'); setc(29, y, 'B')
-rect(22, 55, 29, 55, 'B')                              # vestibule back wall
-seto(25, 54, 'P')                                      # the hero starts INSIDE, facing the door
+seto(25, 50, 'P')                                      # spawn marker at the door
 
 # ---------------------------------------------------------------- write it out
 with open(OUT, "w", encoding="utf-8") as f:

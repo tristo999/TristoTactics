@@ -51,9 +51,9 @@ func _run_cutscene() -> void:
 		_cam.make_current()
 		_cam.zoom = Vector2(1.7, 1.7)
 		if _player:
-			# Frame the doorway + lower camp; the hero is INSIDE the vestibule below,
-			# and physically walks up out of the building into the camp.
-			_cam.global_position = _player.global_position + Vector2(0, -80)
+			# Frame the camp with the south WALL along the bottom edge; the hero is
+			# off-map below it and walks up through the doorway onto the screen.
+			_cam.global_position = _player.global_position + Vector2(0, -210)
 
 	# 1. The hero walks out of the building (up through the doorway) into the camp.
 	await _fade(1.0, 0.0, fade_in_duration)
