@@ -38,7 +38,8 @@ def main():
     mp = sys.argv[1] if len(sys.argv)>1 else "data/maps/camp_v2.map"
     scale = int(sys.argv[2]) if len(sys.argv)>2 else 12
     text=open(mp,encoding="utf-8").read()
-    if "---" in text: text=text.split("---",1)[1]
+    parts=text.split("---")            # front-matter / terrain / [spawn overlay]
+    if len(parts)>1: text=parts[1]     # terrain section only
     rows=[ln.rstrip("\n").rstrip() for ln in text.splitlines() if ln.strip()!=""]
     w=max(len(r) for r in rows); rows=[r.ljust(w) for r in rows]
     atlas=Image.open(ATLAS).convert("RGBA")

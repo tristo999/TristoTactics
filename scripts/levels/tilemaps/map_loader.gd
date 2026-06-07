@@ -50,15 +50,20 @@ const ROLE := {
 }
 
 ## Parse text into a structured map.
+## Format: front-matter, "---", terrain grid, [optional "---", SPAWN OVERLAY].
+## Spawns (P / E / 1-9) live in the overlay when present, so a unit can spawn on
+## ANY terrain (e.g. the stone pad) without the spawn cell erasing the tile under
+## it. With no overlay, spawns are read from the terrain grid (legacy maps).
 static func parse(text: String) -> Dictionary:
 	var meta := {}
-	var raw_rows: Array[String] = []
-	var in_grid := false
+	var terrain_rows: Array[String] = []
+	var overlay_rows: Array[String] = []
+	var section := 0  # 0 = front-matter, 1 = terrain grid, 2 = spawn overlay
 	for line in text.split("\n", false):
 		var l := line
-		if not in_grid:
+		if section == 0:
 			if l.strip_edges() == "---":
-				in_grid = true
+				section = 1
 				continue
 			var c := l.find(";")
 			if c != -1:
@@ -67,29 +72,41 @@ static func parse(text: String) -> Dictionary:
 			if colon != -1:
 				meta[l.substr(0, colon).strip_edges()] = l.substr(colon + 1).strip_edges()
 			continue
+		if l.strip_edges() == "---":
+			section = 2  # second divider -> the rest is the spawn overlay
+			continue
 		var c2 := l.find(";")
 		if c2 != -1:
 			l = l.substr(0, c2)
-		raw_rows.append(l.rstrip(" \t\r"))
-	if raw_rows.is_empty():
+		l = l.rstrip(" \t\r")
+		if section == 1:
+			terrain_rows.append(l)
+		else:
+			overlay_rows.append(l)
+	if terrain_rows.is_empty() and overlay_rows.is_empty():
 		for line in text.split("\n", false):
-			raw_rows.append(line.rstrip(" \t\r"))
-	while raw_rows.size() > 0 and raw_rows[0].strip_edges() == "":
-		raw_rows.remove_at(0)
-	while raw_rows.size() > 0 and raw_rows[raw_rows.size() - 1].strip_edges() == "":
-		raw_rows.remove_at(raw_rows.size() - 1)
+			terrain_rows.append(line.rstrip(" \t\r"))
+	_trim_blank_edges(terrain_rows)
+	_trim_blank_edges(overlay_rows)
 	var width := 0
-	for r in raw_rows:
+	for r in terrain_rows:
+		width = maxi(width, r.length())
+	for r in overlay_rows:
 		width = maxi(width, r.length())
 	var grid: Array[String] = []
-	for r in raw_rows:
+	for r in terrain_rows:
 		grid.append(r.rpad(width, " "))
+	var overlay: Array[String] = []
+	for r in overlay_rows:
+		overlay.append(r.rpad(width, " "))
 
+	# spawns come from the overlay if present, else the terrain grid (legacy)
+	var spawn_grid: Array = overlay if overlay.size() > 0 else grid
 	var player_spawns: Array[Vector2i] = []
 	var enemy_spawns: Array[Vector2i] = []
 	var named := {}
-	for y in grid.size():
-		var row := grid[y]
+	for y in spawn_grid.size():
+		var row: String = spawn_grid[y]
 		for x in row.length():
 			var ch := row[x]
 			var cell := Vector2i(x, y)
@@ -100,9 +117,15 @@ static func parse(text: String) -> Dictionary:
 			elif ch >= "1" and ch <= "9":
 				named[ch] = cell
 	return {
-		"meta": meta, "grid": grid, "size": Vector2i(width, grid.size()),
+		"meta": meta, "grid": grid, "overlay": overlay, "size": Vector2i(width, grid.size()),
 		"player_spawns": player_spawns, "enemy_spawns": enemy_spawns, "named": named,
 	}
+
+static func _trim_blank_edges(rows: Array) -> void:
+	while rows.size() > 0 and rows[0].strip_edges() == "":
+		rows.remove_at(0)
+	while rows.size() > 0 and rows[rows.size() - 1].strip_edges() == "":
+		rows.remove_at(rows.size() - 1)
 
 static func load_file(path: String) -> Dictionary:
 	if not FileAccess.file_exists(path):
