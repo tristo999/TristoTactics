@@ -161,4 +161,47 @@ A baked preview scene (`text_map_test`) must be **re-baked** after `.map` edits.
 - [ ] Verified with a **windowed opengl3 render** (not headless) + a cell dump.
 - [ ] Walk, click-to-move, party-centered framing, and unit-in-tile alignment all confirmed.
 
-*Written 2026-06-06 from the camp_v2 tutorial-battle build.*
+---
+
+## 8. Level semantics (regions + triggers) — the authoring convention
+
+A `.map` is geometry. A **level** is geometry + intent + scripting. We capture intent in a
+short **level spec** (`docs/levels/<map>.md`) so the meaning persists between sessions and we
+edit in named terms, not raw tiles. *(Full rationale: "Level Semantics" design proposal,
+2026-06-06. The trigger engine that makes triggers *execute* is deferred — the spec is the
+shared model and works today regardless.)*
+
+**Every level gets a spec.** Worked example: `docs/levels/camp_v2.md`. Template:
+
+```
+# Level Spec — <Name>
+- Map / Scene / Beat
+Intent:        one line — what the level is about / teaches / its story place
+Composition:   lanes, chokes, pockets (prose)
+Regions:       table of region_name → rough tiles → meaning
+Roster:        slot → unit → team → role
+Triggers:      table of WHEN → THEN → status ([built] | [written])
+Current vs intended:  what actually plays now vs the design
+Open questions
+```
+
+**Vocabulary** (shared between human + agent; small on purpose, grows only on real need):
+- **Region** = a named area: `raid_spawn_north`, `chokepoint_stairs`, `defensible_pad`. We name
+  the *meaning*, not the shape. "Move the chokepoint two west" / "make the pad bigger" = edit a
+  region, and the level's understanding survives the change.
+- **Trigger** = `WHEN <condition> THEN <action>`, referencing regions by name. Conditions start
+  with: `enters(region)`, `turn >= N`, `units_in(region, team) == 0`, `unit_hp(key) <= X%`,
+  `defeated(key/group)`. Actions reuse existing systems: `story_event(id)` (the built StoryEvent
+  types), `spawn_group(key, at=region)` (BattleSpawner), `flip_team(group, to=…)` (team_override),
+  `set_objective/win/lose`, `set_music(key)`.
+- **`[written]` vs `[built]`** = the backlog. `[written]` is designed intent; `[built]` actually
+  fires. Promoting one to the other (one region + one trigger at a time) is how the engine grows —
+  never speculatively. Substrate already present: `EventBus` emits `character_moved(from,to)`
+  (→ `enters`), `turn_started`, `battle_ended`, `character_died`, `character_damaged`; and
+  `story_event_triggered(StoryEvent)` drives the dialogue/glitch/fog/flash/… events.
+
+**How we work the loop:** I hand back a level described in its regions + triggers (not a tile
+dump); you adjust in intent; I edit the named regions/triggers and keep the spec current; the
+load-bearing facts go in MEMORY so I retain the level across sessions.
+
+*Written 2026-06-06 from the camp_v2 tutorial-battle build; §8 added from the Level Semantics proposal.*
