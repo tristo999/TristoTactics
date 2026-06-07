@@ -1,12 +1,14 @@
-[gd_scene format=3 uid="uid://dtc3tjd4753om"]
+[gd_scene load_steps=10 format=3 uid="uid://dtc3tjd4753om"]
 
 [ext_resource type="Script" path="res://scripts/levels/camp_arrival_scene.gd" id="1"]
 [ext_resource type="Script" path="res://scripts/levels/pause_menu_handler.gd" id="2"]
 [ext_resource type="Script" path="res://scripts/levels/tilemaps/text_map_tilemap.gd" id="3"]
 [ext_resource type="TileSet" uid="uid://cpiormm6cegct" path="res://assets/tilesets/tileset.tres" id="4"]
 [ext_resource type="PackedScene" path="res://scenes/characters/WalkingPlayer.tscn" id="5"]
-[ext_resource type="PackedScene" path="res://scenes/characters/WalkingNPC.tscn" id="6"]
-[ext_resource type="PackedScene" path="res://scenes/ui/DialogueBox.tscn" id="7"]
+[ext_resource type="PackedScene" path="res://scenes/ui/DialogueBox.tscn" id="6"]
+[ext_resource type="Script" path="res://scripts/characters/walking/cinematic_actor.gd" id="7"]
+[ext_resource type="Texture2D" uid="uid://btwjvapwp0t8w" path="res://assets/test/World of Solaria Demo Pack Update 04/16x16/Sprites/New/Chris Idle.png" id="8"]
+[ext_resource type="Texture2D" path="res://assets/test/World of Solaria Demo Pack Update 04/16x16/Sprites/New/Chris Walk.png" id="9"]
 
 [node name="CampArrivalScene" type="Node2D"]
 script = ExtResource("1")
@@ -40,8 +42,17 @@ tile_set = ExtResource("4")
 [node name="WalkingPlayer" parent="." instance=ExtResource("5")]
 position = Vector2(408, 808)
 
-[node name="Vael" parent="." instance=ExtResource("6")]
-position = Vector2(424, 712)
-npc_name = "Vael"
+[node name="Vael" type="Node2D" parent="."]
+position = Vector2(424, 648)
+script = ExtResource("7")
+idle_sheet = ExtResource("8")
+walk_sheet = ExtResource("9")
+tint = Color(0.7, 0.85, 1, 1)
 
-[node name="DialogueBox" parent="." instance=ExtResource("7")]
+[node name="CineCam" type="Camera2D" parent="."]
+anchor_mode = 1
+position = Vector2(408, 808)
+zoom = Vector2(1.7, 1.7)
+current = true
+
+[node name="DialogueBox" parent="." instance=ExtResource("6")]

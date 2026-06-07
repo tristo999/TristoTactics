@@ -53,7 +53,7 @@ the squad defends a broad front with the camp at their back.
 
 | WHEN | THEN | Status |
 |---|---|---|
-| player walks out `south_door` & approaches Vael | Beat 1 arrival — **Vael's warm greeting** (proximity trigger) | **[built]** in `camp_arrival_scene.gd` (greeting only; camp atmosphere/soldiers TODO) |
+| arrival (Beat 1) | **scripted cutscene** — camera pans to Vael → he walks down → warm greeting → leads the hero up toward the yard | **[built]** (cutscene) in `camp_arrival_scene.gd`; placeholder Vael + no input. TODO: atmosphere/soldiers, Vael art+portrait, wire → tutorial |
 | spar begins (on `defensible_pad`) | Vael coaches the verbs + **teaches the follow-up combo** | **[written]** |
 | `turn >= N`  OR  any unit enters a `breach` | **raid:** spawn insurgents in the `raid_lane`s; recruits flip spar→ally; tense music | **[written]** |
 | all enemies defeated | Beat 2 victory → transition out | **[written]** |

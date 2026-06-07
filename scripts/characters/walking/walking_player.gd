@@ -203,6 +203,11 @@ func _facing_to_dir() -> Vector2i:
 
 # --- Cinematic lock / unlock ---
 
+## Face a direction without moving (for cutscenes). dir = up/down/left/right.
+func face(dir: String) -> void:
+	_facing = dir
+	sprite.play("idle_" + _facing)
+
 ## Lock all player movement (used by CinematicTrigger during event sequences).
 func lock_movement() -> void:
 	_in_dialogue = true
