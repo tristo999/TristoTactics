@@ -62,9 +62,10 @@ rect(ax0 + 1, ay0 + 1, ax1 - 1, ay1 - 1, 'g')
 for cx in LANES:                                        # 3 north breaches
     setc(cx, ay0, 'g'); setc(cx + 1, ay0, 'g')
 for x in (25, 26): setc(x, ay1, 'g')                   # south street approach
-rect(22, 22, 29, 26, 'o')                              # centered spar pad
-g[23][23] = '5'; g[23][25] = '6'; g[23][27] = '7'
-g[29][16] = '1'; g[29][26] = '2'; g[29][36] = '3'
+rect(22, 22, 29, 26, 'o')                              # clean centered spar pad
+# spawns sit on grass (a digit cell renders grass -> keep them OFF the stone)
+g[28][23] = '5'; g[28][25] = '6'; g[28][27] = '7'      # partners just south of the pad
+g[20][24] = '1'; g[29][16] = '2'; g[29][37] = '3'      # squad spread on the wide front
 
 # ------------------------------------------------------------- SOUTH CAMP -----
 rect(25, 32, 26, 35, ',')                              # street down from the arena
@@ -73,9 +74,12 @@ for x in range(RW, RE + 1): setc(x, RN, ','); setc(x, RS, ',')
 for y in range(RN, RS + 1): setc(RW, y, ','); setc(RE, y, ',')
 rect(24, 40, 27, 43, ',')                              # worn commons + fire pit
 rect(25, 41, 26, 42, 'o')
-rect(25, 47, 26, 52, ',')                              # entry road south to the edge
-rect(24, 51, 27, 51, ',')
-g[51][25] = 'P'
+# the SUMMONING ROOM's exterior at the south edge -- the player exits its door
+rect(22, 48, 29, 51, 'B')                              # building walls (brick)
+rect(23, 49, 28, 50, ',')                              # interior floor
+g[48][25] = ','; g[48][26] = ','                       # north-facing doorway
+g[47][25] = ','; g[47][26] = ','                       # door connects to the ring road
+g[49][25] = 'P'                                        # player spawns inside, at the door
 
 def tent(x0, y0, w, h): rect(x0, y0, x0 + w - 1, y0 + h - 1, 'B')
 # tents ringing the camp (outside the road), varied, not mirrored
