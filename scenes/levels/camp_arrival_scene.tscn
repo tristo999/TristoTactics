@@ -41,7 +41,7 @@ z_index = 1
 tile_set = ExtResource("4")
 
 [node name="WalkingPlayer" parent="." instance=ExtResource("5")]
-position = Vector2(408, 808)
+position = Vector2(408, 872)
 
 [node name="Vael" type="Node2D" parent="."]
 position = Vector2(424, 648)

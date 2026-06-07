@@ -51,15 +51,15 @@ func _run_cutscene() -> void:
 		_cam.make_current()
 		_cam.zoom = Vector2(1.7, 1.7)
 		if _player:
-			# Frame the camp with the doorway at the bottom edge: the hero starts
-			# below the frame (still "inside" the wall) and walks UP onto the screen.
-			_cam.global_position = _player.global_position + Vector2(0, -220)
+			# Frame the doorway + lower camp; the hero is INSIDE the vestibule below,
+			# and physically walks up out of the building into the camp.
+			_cam.global_position = _player.global_position + Vector2(0, -80)
 
-	# 1. The hero walks out of the doorway and up onto the screen.
+	# 1. The hero walks out of the building (up through the doorway) into the camp.
 	await _fade(1.0, 0.0, fade_in_duration)
 	await _wait(0.3)
 	if _player:
-		await _player.cinematic_walk_north(5, 2.0)
+		await _player.cinematic_walk_north(7, 2.8)
 	await _wait(0.3)
 
 	# 2. Pan up to Vael, mid-orders to his soldiers.
