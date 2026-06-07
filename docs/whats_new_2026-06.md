@@ -6,20 +6,33 @@ specs under `docs/levels/`, and `map_generation_playbook.md`.
 
 ---
 
-## 1. Beat 1 — the arrival cutscene
+## 1. The opening, end to end (Beat 1 → Beat 2)
 
-A fully **scripted cutscene** (no player input) for the hero arriving in the camp.
+The whole Act-1 opening now plays as one connected chain, all genuine movement:
+**void corridor → summoning chamber → arrival cutscene → spar → (drill breaks) → raid battle.**
+Run it from `opening_corridor_scene.tscn` or jump in at `summoning_room_scene.tscn`.
 
-- **`scenes/levels/camp_arrival_scene.tscn`** + **`scripts/levels/camp_arrival_scene.gd`** —
-  fade in at the summoning-room doorway → camera pans up to Vael → Vael walks down to
-  greet the hero → warm welcome → Vael leads the hero up toward the training ground → fade.
-- **`scripts/characters/walking/cinematic_actor.gd`** (`CinematicActor`, reusable) — a
-  script-driven cutscene character. Builds directional idle/walk anims **in code** from the
-  Chris sheets; `walk_to(tile, dur)` **steps the A* grid path** (square-to-square, no
-  diagonal slide); `face`/`face_tile`; `tint` to recolor a placeholder (Vael = blue).
-- `WalkingPlayer.face(dir)` added for cutscene facing.
-- Pattern documented in `ARCHITECTURE.md` → *Scripted Cutscenes*. Vael + dialogue are
-  placeholders; ending isn't wired to the tutorial yet (`next_scene_path`).
+- **Chamber → arrival** (`summoning_room_scene.gd`): walk-through door (walk up to the
+  doorway to leave; Space still works) → `camp_arrival_scene`.
+- **Arrival cutscene** (`camp_arrival_scene.gd`, scripted, no input): the hero is spawned
+  **off-map below the south wall** and **walks up through the doorway onto the screen** (the
+  wall is the bottom edge, void hidden — no fake "room") → Vael (giving orders to two soldiers,
+  who disperse) notices him, walks down, welcomes him → leads him up to the arena → fade to
+  the spar. Driven by a dedicated `CineCam` + `CinematicActor`s.
+- **`CinematicActor`** (`scripts/characters/walking/cinematic_actor.gd`, reusable): code-built
+  directional idle/walk anims from the Chris sheets; `walk_to` steps the A* path
+  (square-to-square); `face`/`face_tile`; `tint` to distinguish placeholders (we're not getting
+  sprites soon — tints are the accepted way to tell characters apart). `WalkingPlayer.face()`
+  + a `cinematic_walk_north` idle-on-finish fix added.
+- **Spar** (`tutorial_spar_scene` + `tutorial_spar.gd`, scripted, `arena_drill`): a "spar
+  director" gates the action bar step-by-step + prompts via `TutorialPrompt` — Vael's intro →
+  **move** → **attack** (auto-ends the first unit's turn so the strike falls to a squadmate and
+  the archer chains a **real** follow-up; credited only if one actually fired) → the **raid
+  interrupts** (flash, Vael flips coach→commander) → hands off to the raid.
+- **Raid** (`tutorial_battle_scene` on `arena_raid`): the true battle; intro picks up off the
+  spar's cliffhanger. `arena_drill`/`arena_raid` are sibling maps (only the north wall differs).
+- Pattern documented in `ARCHITECTURE.md` → *Scripted Cutscenes*. Placeholders: Vael/soldiers
+  are tinted Chris (no sprites coming); chamber is bare; dialogue is draft.
 
 ## 2. `camp_grounds` — the large camp POC
 
