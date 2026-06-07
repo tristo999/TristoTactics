@@ -39,6 +39,8 @@
   - [WalkingPlayer](#walkingplayer)
   - [WalkingNPC](#walkingnpc)
   - [CinematicTrigger](#cinematictrigger)
+  - [CinematicActor](#cinematicactor)
+  - [Scripted Cutscenes (reference: camp arrival)](#scripted-cutscenes-reference-camp-arrival)
   - [OpeningCorridorScene](#openingcorridorscene)
 - [Screen Effects](#screen-effects)
   - [ScreenOverlay](#screenoverlay)
@@ -774,8 +776,10 @@ Tile-snapped free-roam controller. Added to group `"walking_player"`.
 - Reuses `lock_movement()` / `unlock_movement()` to freeze the player during dialogue
 
 **Cinematic integration:**
-- `lock_movement()` — freezes all input, clears buffers, plays idle animation. Called by `CinematicTrigger` and the opening corridor fade.
+- `lock_movement()` — freezes all input, clears buffers, plays idle animation. Called by `CinematicTrigger`, the opening corridor fade, and the camp arrival cutscene.
 - `unlock_movement()` — releases the lock.
+- `face(dir)` — turn in place without moving (for cutscene framing).
+- `cinematic_walk_north(tiles, duration)` — awaitable; steps N tiles north, bypassing walkability (forced cutscene movement). Also `start_forced_walk(dir)`/`stop_forced_walk()` (continuous forced walk) and `walk_in_place()` (stationary walk cycle).
 
 **Public functions:**
 
@@ -783,6 +787,8 @@ Tile-snapped free-roam controller. Added to group `"walking_player"`.
 |---|---|---|
 | `lock_movement` | `() → void` | Freeze player (cinematic, dialogue, triggers) |
 | `unlock_movement` | `() → void` | Release movement lock |
+| `face` | `(dir: String) → void` | Turn in place (up/down/left/right), no movement |
+| `cinematic_walk_north` | `(tiles: int, duration: float) → void` | Awaitable; step N tiles north, bypassing walkability |
 
 ### WalkingNPC
 
@@ -822,6 +828,44 @@ The primary tool for authoring story beats in walking scenes. Place a `Cinematic
 4. Toggle `lock_player` and `one_shot` as needed
 
 **Public function:** `reset() → void` — re-enable a one-shot trigger (for editor testing).
+
+### CinematicActor
+
+**Script:** `scripts/characters/walking/cinematic_actor.gd` | **Extends:** `Node2D` | **class_name:** `CinematicActor`
+
+A script-driven character for cutscenes (no input) — e.g. an NPC who walks over to greet the hero. Builds its own directional idle/walk `SpriteFrames` **in code** from an idle sheet + a walk sheet (80×80 frames, 6 per row; rows up=0 / down=80 / left=160 / right=240 — the "Chris" layout), so no per-frame `.tscn` authoring is needed.
+
+**@export variables:**
+
+| Variable | Type | Default | Description |
+|---|---|---|---|
+| `idle_sheet` | Texture2D | — | Idle animation sheet |
+| `walk_sheet` | Texture2D | — | Walk animation sheet |
+| `tint` | Color | White | Multiplied over the sprite — recolor a placeholder apart from the hero |
+
+**Public functions:**
+
+| Function | Signature | Description |
+|---|---|---|
+| `walk_to` | `(tile: Vector2i, total_dur: float) → void` | Awaitable. Steps **tile-by-tile along the shared `AStarGrid2D` path** to `tile` over ~`total_dur` (square-to-square, not a diagonal slide); auto-faces + animates each step |
+| `face` | `(dir: String) → void` | Idle, facing a direction |
+| `face_tile` | `(tile: Vector2i) → void` | Idle, facing toward a tile |
+
+Snaps to the tile grid on `_ready` (like `WalkingNPC`) and reads the shared `astar_grid` for pathing. Placeholder note: only the "Chris" sprite exists, so distinct NPCs are tinted (e.g. Vael is blue).
+
+### Scripted Cutscenes (reference: camp arrival)
+
+`camp_arrival_scene` (`scripts/levels/camp_arrival_scene.gd`, extends `WalkingScene`) is the reference for a **fully scripted cutscene** — no player input; the camera and actors are driven entirely by an awaited sequence. Beat 1 (ARRIVAL): the hero exits the summoning-room wall, the camera pans to Vael, he walks down to greet them, then leads them up toward the training ground.
+
+**The pattern:**
+1. **Lock the hero** (`WalkingPlayer.lock_movement()`) and **disable its follow-camera** (`player.get_node("Camera2D").enabled = false`).
+2. Drive a dedicated **`CineCam`** (a `Camera2D` in the scene): `make_current()`, then tween its `global_position` between focus points (`_pan_to(world, dur)`).
+3. Move NPCs with `CinematicActor.walk_to()`; move the hero with `cinematic_walk_north()`.
+4. **Parallel beats:** start a walk and a camera pan *without* `await` (fire-and-forget coroutines), then `await _wait(dur)` so they run together (Vael walks up while the camera follows and the hero trails).
+5. After a walk, **face the target** (`face_tile`) so the actor doesn't keep its last-step direction.
+6. Dialogue via the `"dialogue_box"` group's `play_sequence(Array[DialogueLine])` (helper `_say([[speaker, text], …])`); fades via a `CanvasLayer` black `ColorRect`.
+
+`@export next_scene_path` chains to the next scene after the closing fade. (Distinct from `CinematicTrigger`, which fires a `StoryEvent` chain when the player *walks onto a tile* — used for in-exploration beats rather than a hands-off cutscene.)
 
 **Detection:** `_process()` compares `_player.current_tile == our_tile` every frame. For scenes with few triggers this is fine; a signal-based approach would scale better for dozens of triggers.
 
