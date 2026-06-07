@@ -24,6 +24,7 @@ enum Step { INTRO, MOVE, ATTACK, DONE }
 
 var _action_bar: Node
 var _prompt: Control
+var _fx: CanvasLayer
 var _step: int = Step.INTRO
 
 func _ready() -> void:
@@ -47,6 +48,9 @@ func _begin() -> void:
 	await get_tree().process_frame
 	_action_bar = get_tree().get_first_node_in_group("action_bar")
 	_prompt = get_tree().get_first_node_in_group("tutorial_prompt")
+	_fx = CanvasLayer.new()
+	_fx.layer = 120
+	add_child(_fx)
 	EventBus.turn_started.connect(_on_turn_started)
 	EventBus.character_moved.connect(_on_character_moved)
 	EventBus.character_attacked.connect(_on_character_attacked)
@@ -83,13 +87,20 @@ func _on_character_attacked(attacker: Node2D, _target: Node2D, _dmg: int, _crit:
 	await get_tree().create_timer(0.4).timeout
 	await _say([
 		["Vael", "— Hah! Did you catch that? Your squad chained off the blow. A follow-up."],
-		["Vael", "Keep them close and they cover for each other. That's the whole game, recruit."],
-		["Vael", "Enough drills. You'll do. Now form up — the morning's not done with you yet."],
+		["Vael", "Keep them close and they cover for each other. That's the whole game, recru—"],
 	])
-	_finish()
+	await _raid_interrupt()
 
-func _finish() -> void:
-	# (Later: the raid breaks in here instead of a clean cut.)
+## The tonal hinge: the drill is cut short as the raid breaches. Coach → commander.
+func _raid_interrupt() -> void:
+	await _flash(Color(1, 1, 1, 0.9), 0.06, 0.5)   # the horn, the jolt
+	await get_tree().create_timer(0.35).timeout
+	await _say([
+		["Vael", "...Those aren't ours."],
+		["Vael", "Insurgents — they're through the gate! Up, all of you! Blades out — this is no drill!"],
+		["Vael", "Recruits — you stand WITH them now, not against them. MOVE!"],
+	])
+	await _fade_black(0.8)
 	if next_scene_path != "":
 		get_tree().change_scene_to_file(next_scene_path)
 
@@ -117,6 +128,32 @@ func _show(text: String) -> void:
 func _hide() -> void:
 	if _prompt:
 		_prompt.hide()
+
+func _flash(color: Color, up: float, down: float) -> void:
+	if _fx == null:
+		return
+	var r := ColorRect.new()
+	r.color = Color(color.r, color.g, color.b, 0.0)
+	r.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_fx.add_child(r)
+	r.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	var tw := create_tween()
+	tw.tween_property(r, "color:a", color.a, up)
+	tw.tween_property(r, "color:a", 0.0, down)
+	await tw.finished
+	r.queue_free()
+
+func _fade_black(dur: float) -> void:
+	if _fx == null:
+		return
+	var r := ColorRect.new()
+	r.color = Color(0, 0, 0, 0.0)
+	r.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_fx.add_child(r)
+	r.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	var tw := create_tween()
+	tw.tween_property(r, "color:a", 1.0, dur)
+	await tw.finished
 
 func _say(rows: Array) -> void:
 	var box: CanvasLayer = get_tree().get_first_node_in_group("dialogue_box")
