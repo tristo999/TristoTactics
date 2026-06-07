@@ -18,7 +18,7 @@ extends WalkingScene
 class_name SummoningRoomScene
 
 ## Scene to load after the player exits through the door.
-@export_file("*.tscn") var next_scene_path: String = "res://scenes/levels/tutorial_scene.tscn"
+@export_file("*.tscn") var next_scene_path: String = "res://scenes/levels/camp_arrival_scene.tscn"
 ## How long the white fade-in takes on scene start.
 @export var fade_in_duration: float = 1.2
 ## Seconds of stillness before player control unlocks.

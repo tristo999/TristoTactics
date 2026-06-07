@@ -56,6 +56,7 @@ func _begin() -> void:
 	EventBus.character_attacked.connect(_on_character_attacked)
 
 	await get_tree().create_timer(0.6).timeout
+	_frame_spar()
 	await _say([
 		["Vael", "First things first. Let's see whether the circle sent us a soldier or a sack of turnips."],
 		["Vael", "Move your archer — pick a spot, get a feel for the ground. Go on."],
@@ -66,9 +67,28 @@ func _begin() -> void:
 
 # Re-lock the bar each player turn while we're still gating to Move only.
 func _on_turn_started(_c: CharacterBase) -> void:
+	_frame_spar()
 	if _step == Step.MOVE:
 		await get_tree().process_frame
 		_lock_to_move()
+
+## Hold a stable framing on the spar pad (the drill is choreographed, not free
+## combat — we don't want the battle camera drifting/following).
+func _frame_spar() -> void:
+	var cam := get_tree().get_first_node_in_group("action_camera") as Node2D
+	var tm := get_tree().get_first_node_in_group("tilemap")
+	if cam == null or tm == null:
+		return
+	var base := tm.get_node_or_null("BaseGrid") as TileMapLayer
+	if base == null:
+		return
+	var center := base.to_global(base.map_to_local(Vector2i(19, 15)))   # pad / squad
+	if "zoom" in cam:
+		cam.zoom = Vector2(4.5, 4.5)
+	if cam.has_method("snap_to"):
+		cam.snap_to(center)
+	else:
+		cam.global_position = center
 
 func _on_character_moved(c: Node2D, _from: Vector2i, _to: Vector2i) -> void:
 	if _step != Step.MOVE or not _is_player(c):

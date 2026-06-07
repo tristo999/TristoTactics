@@ -87,7 +87,8 @@ static func parse(text: String) -> Dictionary:
 		for line in text.split("\n", false):
 			terrain_rows.append(line.rstrip(" \t\r"))
 	_trim_blank_edges(terrain_rows)
-	_trim_blank_edges(overlay_rows)
+	# NB: do NOT trim the overlay — its blank top/bottom rows keep it row-aligned
+	# with the terrain. Trimming leading blanks would shift every spawn upward.
 	var width := 0
 	for r in terrain_rows:
 		width = maxi(width, r.length())

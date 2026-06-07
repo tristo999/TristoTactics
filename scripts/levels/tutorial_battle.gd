@@ -35,12 +35,11 @@ func _setup_events() -> void:
 	var gm = $GameManager
 	if gm == null:
 		return
+	# Picks up the instant the spar cuts to black — the squad is already in it.
 	gm.intro_event = _make_event([
-		["Borin", "Hah! Drop your guard like that in a real scrap, lass, and you'll—"],
-		["Elena", "Borin — the gate. Those aren't ours.", PORTRAIT_ELENA],
-		["Lyra", "Insurgents. They've breached the yard. This isn't a drill anymore."],
-		["Borin", "Then form up behind me. Elena, Lyra — you stay at my back."],
-		["Elena", "...Then I'll stop missing.", PORTRAIT_ELENA],
+		["Borin", "Backs to the pad! Let 'em break on us — Elena, Lyra, on me!"],
+		["Elena", "...The lanes are mine. Nothing gets past.", PORTRAIT_ELENA],
+		["Lyra", "Stay standing and I'll keep you that way. Go."],
 	])
 	gm.victory_event = _make_event([
 		["Lyra", "That's the last of them. Everyone still on their feet?"],
