@@ -187,6 +187,9 @@ func _execute_enemy_turn(enemy: EnemyCharacter) -> void:
 		if tilemap_node:
 			tilemap_node.highlight_renderer.set_current_character(enemy.current_tile)
 		await enemy.attack_target(attack_target)
+		# Drain reactions (e.g. the healer mending the hit ally) in sequence before
+		# the turn advances — no detached, concurrent follow-up animations.
+		await ComboSystem.resolve_reactions()
 		await get_tree().create_timer(pause * 0.3).timeout
 
 	# --- Done — advance to next turn ----------------------------------------
@@ -305,9 +308,12 @@ func request_attack(character: CharacterBase, target: CharacterBase) -> bool:
 	state = BattleState.PLAYER_ACTING
 	_clear_highlights()
 	var result = await character.attack_target(target)
-	# Tier-1 combo: let eligible allies chain auto follow-ups before control returns.
+	# Tier-1 combo: queue the attack-landed trigger (the hit's damage already queued
+	# its own ALLY_DAMAGED), then drain the whole reaction stack sequentially before
+	# control returns — every follow-up resolves one at a time, in order.
 	if result.get("success", false):
-		await ComboSystem.on_attack(character, target)
+		ComboSystem.notify_attack(character, target)
+	await ComboSystem.resolve_reactions()
 	_return_to_idle()
 	return result.success
 
@@ -329,6 +335,9 @@ func request_ability(character: CharacterBase, ability: Ability, target: Charact
 	selected_ability = null
 
 	EventBus.ability_used.emit(character, target, ability)
+
+	# Drain any reactions the ability triggered (e.g. damage → a follow-up), in order.
+	await ComboSystem.resolve_reactions()
 
 	# Brief pause so the player sees the effect
 	await get_tree().create_timer(0.5).timeout
