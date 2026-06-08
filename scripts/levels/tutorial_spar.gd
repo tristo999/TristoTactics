@@ -36,6 +36,7 @@ func _ready() -> void:
 	if gm:
 		gm.intro_event = null      # the spar runs its own scripted intro
 		gm.victory_event = null
+		gm.player_goes_first = true  # the drill opens on your squad, not a partner
 	super._ready()
 	call_deferred("_begin")
 

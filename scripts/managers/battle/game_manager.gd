@@ -36,6 +36,11 @@ var player_mode: PlayerMode = PlayerMode.MOVE
 ## Optional defeat event played after all players are defeated, before the defeat screen.
 @export var defeat_event: StoryEvent
 
+## When true, the highest-initiative PLAYER unit is moved to the front of the turn
+## order so the player always acts first (used by the tutorial scenes — you teach
+## the player by letting them move, not by making them watch the AI open).
+@export var player_goes_first: bool = false
+
 var turn_order: Array[CharacterBase] = []
 var current_character: CharacterBase
 var selected_ability: Ability = null ## Currently selected ability for targeting
@@ -60,6 +65,19 @@ func _build_turn_order() -> void:
 		if node is CharacterBase:
 			turn_order.append(node as CharacterBase)
 	turn_order.sort_custom(_compare_initiative)
+	if player_goes_first:
+		_promote_first_player()
+
+## Move the first player unit (highest initiative, thanks to the sort) to the front
+## so the battle opens on the player's turn. Other units keep their relative order.
+func _promote_first_player() -> void:
+	for i in turn_order.size():
+		if turn_order[i].team == Constants.TEAM_PLAYER:
+			if i > 0:
+				var p := turn_order[i]
+				turn_order.remove_at(i)
+				turn_order.insert(0, p)
+			return
 
 func _initialize_battle() -> void:
 	# Wait one frame so all nodes have fired _ready() and joined their groups

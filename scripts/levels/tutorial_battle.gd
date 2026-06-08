@@ -35,6 +35,7 @@ func _setup_events() -> void:
 	var gm = $GameManager
 	if gm == null:
 		return
+	gm.player_goes_first = true   # tutorial: the squad opens the fight, not the AI
 	# Picks up the instant the spar cuts to black — the squad is already in it.
 	gm.intro_event = _make_event([
 		["Borin", "Backs to the pad! Let 'em break on us — Elena, Lyra, on me!"],

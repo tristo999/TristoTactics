@@ -264,8 +264,13 @@ func play_heal_animation(healer: CharacterBase, target: CharacterBase, amount: i
 	var glow := create_tween()
 	glow.tween_property(_defender_sprite, "modulate", Color(0.5, 1.0, 0.65), 0.16)
 	glow.tween_property(_defender_sprite, "modulate", Color.WHITE, 0.32)
+	# Await the LONGER tween (glow, 0.48s) — it covers the gesture (0.38s). Do NOT
+	# await the gesture afterward: it finishes during the glow await, and awaiting an
+	# already-finished tween's `finished` signal hangs forever (the signal won't fire
+	# again) — which left the heal overlay stuck on screen and froze the battle.
 	await glow.finished
-	await gesture.finished
+	if is_instance_valid(gesture) and gesture.is_running():
+		await gesture.finished
 
 	# 5. Hold so the number is readable
 	await get_tree().create_timer(HOLD_DURATION).timeout

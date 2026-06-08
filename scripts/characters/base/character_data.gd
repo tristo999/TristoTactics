@@ -41,7 +41,10 @@ extends Resource
 @export var walk_texture: Texture2D
 
 @export_group("AI")
-@export var ai_pause_duration: float = 2.0
+## Seconds the staged AI turn pauses at each beat. One shared default so every AI
+## unit (green allies AND enemies) is paced the same; override only for an
+## intentionally faster/slower unit.
+@export var ai_pause_duration: float = 0.8
 
 @export_group("Audio")
 ## Per-character sound effect overrides. Leave null to use global defaults.
