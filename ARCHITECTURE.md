@@ -882,6 +882,21 @@ Generalizes the bespoke per-scene directors (`tutorial_spar.gd`, the cutscene ab
 
 **Status:** v1 (2026-06-07). Self-test at `scenes/dev/trigger_selftest.tscn` (F6 → `ALL PASS`). The live opening scenes still use their bespoke directors and keep working; migrate opportunistically (Beat 3 should be authored on the engine from the start).
 
+### Choosing a scripting mechanism (read before building a new scripted beat)
+
+Several mechanisms exist for "make scripted things happen." Use this order — reach for a new system only when the one above genuinely can't express the beat:
+
+1. **`TriggerEngine` (declarative WHEN/THEN)** — the default for *any* condition→action beat in a level (region entry, turn counts, deaths, flags, mid-battle defection). Most scripted beats are this. Grow `TriggerCond`/`TriggerAct` with a one-line `static func` when a real beat needs a new verb.
+2. **`StoryEvent` chain** (`DialogueEvent`, `FlashEvent`, …, run via `play_event` / `CinematicTrigger`) — for an authored, ordered *sequence* of beats (a cutscene's script). A `TriggerAct.play_event` can launch one from a trigger, so they compose.
+3. **`CineFx`** — the shared primitive layer (dialogue + flash/fade/wait) that the above two and any imperative director call. **Never re-implement a flash/fade/say/dialogue-build inline** — add to `CineFx` instead.
+4. **Bespoke director script** (e.g. `camp_arrival_scene`) — only for fully choreographed, one-off camera/actor sequences the engine can't yet express. Even then, use `CineFx` for the primitives.
+
+**Two FX backends exist** (known fork, documented so it isn't reinvented again):
+- `ScreenOverlay` (group `screen_overlay`) — shader-driven darkness/bleed + flash, **walking scenes only**; used by `FlashEvent`/`OverlayEvent`. Rich, scene-specific (the corridor).
+- `CineFx` — transient `ColorRect` flash/fade on a caller-owned `CanvasLayer`, **any scene**; used by directors + the trigger engine.
+
+**Recommended convergence (needs a deliberate pass, not done blind):** have `FlashEvent`/`OverlayEvent` fall back to `CineFx` when no `ScreenOverlay` is present, so the declarative `StoryEvent` path works in battle scenes too — removing the original reason directors forked their own FX. Deferred because the corridor relies on `ScreenOverlay`'s exact 3-phase timing; converge when a beat needs the same authored flash in both a walking and a battle scene.
+
 ### OpeningCorridorScene
 
 **Script:** `scripts/levels/opening_corridor_scene.gd` | **Extends:** `WalkingScene` | **class_name:** `OpeningCorridorScene`
