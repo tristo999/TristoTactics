@@ -1,6 +1,6 @@
-# ComboSystem reaction-stack test. Verifies follow-ups resolve SEQUENTIALLY and on a
-# stack: pushed reactions drain LIFO, and a reaction triggered by another reaction
-# (a cascade) resolves before older pending entries (depth-first). Headless-safe.
+# ComboSystem reaction-queue test. Verifies follow-ups resolve SEQUENTIALLY and FIFO:
+# enqueued reactions drain in order, and a reaction triggered by another reaction
+# (a cascade) is appended and resolves after the current entries. Headless-safe.
 extends Node
 
 # A fake follow-up that logs its id when it resolves, and can push a cascade.
@@ -28,7 +28,7 @@ func _ready() -> void:
 			passed += 1
 		print(("  PASS " if r[0] else "  FAIL ") + r[1])
 	var ok := passed == _results.size()
-	print("\n[ComboStackSelfTest] %d/%d checks passed — %s" % [passed, _results.size(), "ALL PASS" if ok else "FAILURES"])
+	print("\n[ComboReactionSelfTest] %d/%d checks passed — %s" % [passed, _results.size(), "ALL PASS" if ok else "FAILURES"])
 	await get_tree().create_timer(0.1).timeout
 	get_tree().quit(0 if ok else 1)
 
@@ -53,13 +53,13 @@ func _run() -> void:
 
 	# Empty drain is a safe no-op.
 	await ComboSystem.resolve_reactions()
-	_check(log.is_empty(), "draining an empty stack is a no-op")
+	_check(log.is_empty(), "draining an empty queue is a no-op")
 
-	# Push A then B. LIFO → B resolves first; B cascades C, which resolves before A.
+	# Enqueue A then B. FIFO → A, then B; B cascades C, appended → resolves last.
 	ComboSystem._push(0, {})
 	ComboSystem._push(1, {})
 	await ComboSystem.resolve_reactions()
-	_check(log == ["B", "C", "A"],
-		"reactions resolve LIFO with cascades depth-first (got %s)" % str(log))
+	_check(log == ["A", "B", "C"],
+		"reactions resolve FIFO with cascades appended in order (got %s)" % str(log))
 
 	unit.queue_free()
