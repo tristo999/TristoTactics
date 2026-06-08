@@ -13,13 +13,17 @@
 class_name CineFx
 extends RefCounted
 
-## Build a typed dialogue array from [[speaker, text], …] rows.
+## Build a typed dialogue array from [[speaker, text], …] rows. An optional 3rd
+## element sets the portrait, so this is the one dialogue-row builder for authored
+## sequences (richer per-line fields like glitched/cps still warrant hand-building).
 static func lines(rows: Array) -> Array[DialogueLine]:
 	var out: Array[DialogueLine] = []
 	for row in rows:
 		var dl := DialogueLine.new()
 		dl.speaker = row[0]
 		dl.text = row[1]
+		if row.size() > 2 and row[2] != null:
+			dl.portrait = row[2]
 		out.append(dl)
 	return out
 

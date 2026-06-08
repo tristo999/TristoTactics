@@ -47,16 +47,11 @@ func _on_character_moved(_character: Node2D, _from: Vector2i, to_tile: Vector2i)
 		_fire_trigger_event()
 
 func _fire_trigger_event() -> void:
-	var line1 := DialogueLine.new()
-	line1.speaker = "???"
-	line1.text = "Hey! Over here! Don't just stand there!"
-
-	var line2 := DialogueLine.new()
-	line2.speaker = PlayerDataManager.get_player_name()
-	line2.text = "Who's there...?"
-
 	var event := DialogueEvent.new()
-	event.lines = [line1, line2]
+	event.lines = CineFx.lines([
+		["???", "Hey! Over here! Don't just stand there!"],
+		[PlayerDataManager.get_player_name(), "Who's there...?"],
+	])
 	EventBus.story_event_triggered.emit(event)
 
 func _show_prompt(text: String) -> void:

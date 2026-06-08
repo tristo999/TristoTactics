@@ -49,14 +49,6 @@ func _setup_events() -> void:
 
 ## Build a DialogueEvent from [speaker, text, (optional portrait)] rows.
 func _make_event(rows: Array) -> DialogueEvent:
-	var lines: Array[DialogueLine] = []
-	for row in rows:
-		var line := DialogueLine.new()
-		line.speaker = row[0]
-		line.text = row[1]
-		if row.size() > 2:
-			line.portrait = row[2]
-		lines.append(line)
 	var event := DialogueEvent.new()
-	event.lines = lines
+	event.lines = CineFx.lines(rows)
 	return event

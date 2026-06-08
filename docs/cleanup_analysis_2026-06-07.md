@@ -45,13 +45,16 @@ trigger actions share one implementation everywhere. Bigger change; do when a wa
 source of truth; the existing call sites (`enemy_character`, `character_base`,
 follow-ups) are untouched in behavior.
 
-## P3 — `DialogueLine` hand-built in 6+ places (MEDIUM)
+## P3 — `DialogueLine` hand-built in 6+ places (MEDIUM) — (executed)
 
-Manual `DialogueLine.new(); .speaker=; .text=` appears in `tutorial_manager` (L50/54),
-`walking_npc` (L38), `dev_sandbox_scene` (×6), `tutorial_battle` (L54), plus every
-`_say` helper. **Action:** `CineFx.lines([[speaker, text], …])` now exists (used by
-the routed `_say`s); migrate the remaining hand-builders to it opportunistically. Low
-risk, do when touching those files.
+Manual `DialogueLine.new(); .speaker=; .text=` appeared in `tutorial_manager`,
+`walking_npc`, `dev_sandbox_scene` (×6), `tutorial_battle`, plus every `_say` helper.
+**Action (done):** `CineFx.lines([[speaker, text, portrait?], …])` is now the single
+row-builder (extended to take an optional portrait, covering `tutorial_battle`'s case).
+Routed `tutorial_battle._make_event` and `tutorial_manager._fire_trigger_event` through
+it. Left: `walking_npc.get_dialogue` (different shape — one shared speaker over a string
+array) and `dev_sandbox` (a throwaway demo scene); convert if they're touched. Richer
+per-line fields (glitched/cps) still warrant hand-building by design.
 
 ## P4 — Two cutscene-trigger detection styles (MEDIUM, scalability)
 
