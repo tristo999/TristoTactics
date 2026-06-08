@@ -103,6 +103,24 @@ func _add_to_groups() -> void:
 func is_hostile_to(other: CharacterBase) -> bool:
 	return other != null and Constants.is_hostile(team, other.team)
 
+## Change this unit's team at runtime (mid-battle defections, spar→ally flips).
+## Re-files group membership and recolors the health bar. AI vs player control is
+## decided by the node's class (EnemyCharacter = AI), which does not change here —
+## an AI enemy flipped to ALLY stays AI-controlled but friendly to the player.
+func set_team(new_team: String) -> void:
+	if team == new_team:
+		return
+	team = new_team
+	# team_override only exists on EnemyCharacter; set it dynamically so this stays
+	# valid for player-scene units too (set() on a missing property is a no-op).
+	if "team_override" in self:
+		set("team_override", new_team)
+	remove_from_group(Constants.GROUP_PLAYER_CHARACTERS)
+	remove_from_group(Constants.GROUP_ENEMY_CHARACTERS)
+	remove_from_group(Constants.GROUP_ALLY_CHARACTERS)
+	_add_to_groups()
+	_update_health_bar()
+
 func set_base_layer(layer: TileMapLayer) -> void:
 	base_layer = layer
 

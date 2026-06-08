@@ -869,6 +869,19 @@ Snaps to the tile grid on `_ready` (like `WalkingNPC`) and reads the shared `ast
 
 **Detection:** `_process()` compares `_player.current_tile == our_tile` every frame. For scenes with few triggers this is fine; a signal-based approach would scale better for dozens of triggers.
 
+### Trigger Engine (`TriggerEngine`) — declarative WHEN/THEN
+
+**Scripts:** `scripts/triggers/` — `trigger_engine.gd` (`TriggerEngine`, the runtime node), `trigger.gd` (`TriggerRule`, one rule — named so to avoid colliding with `FollowUp.Trigger`), `trigger_conditions.gd` (`TriggerCond`, the WHEN vocabulary), `trigger_actions.gd` (`TriggerAct`, the THEN vocabulary). **Full guide:** [`docs/trigger_engine.md`](docs/trigger_engine.md).
+
+Generalizes the bespoke per-scene directors (`tutorial_spar.gd`, the cutscene above) into **declared rules**. Add a `TriggerEngine` child to a level; in `_ready` declare **named regions** (`Rect2i` cell areas), then `add(id, condition, actions, once)` rules. The engine self-wires all 10 `EventBus` gameplay signals, normalizes each into an event `Dictionary` (`{type, who, …}`), evaluates every enabled trigger's condition, and runs the matching actions.
+
+- **Conditions** (`TriggerCond.*`): `enters/leaves(region, who?)`, `turn_start(who?)`, `turn_reached(n)`, `died/attacked(who?)`, `hp_below(who, pct)`, `battle_end(victory?)`, `on(type)`, `flag(name, value?)`; combinators `all_/any_/not_`; unit filters `is_player/is_enemy/is_ally`, `team(t)`, `named(n)` (passed by reference).
+- **Actions** (`TriggerAct.*`): `say`, `play_event(StoryEvent)` (reuses the 15 built events), `wait`, `flash`, `fade_out/in`, `change_scene`, `set_flag`, `flip_team(who, team)`, `spawn(roster)`, `enable/disable(id)`, `call_fn`. Coroutine actions are awaited; execution is **serialized** (a queue) so dialogue beats never overlap.
+- **State:** a `String→Variant` flag blackboard (`set_flag` re-evaluates flag-gated triggers immediately, enabling chains); `once` (default) self-disables after firing; `enable/disable` toggle rules at runtime.
+- **Mid-battle defection:** `TriggerAct.flip_team` + the new `CharacterBase.set_team()` re-file group membership and recolor health bars; AI enemies flipped to `TEAM_ALLY` stay AI but friendly (win/lose ignores allies) — the spar-partners-join-the-raid case in one action.
+
+**Status:** v1 (2026-06-07). Self-test at `scenes/dev/trigger_selftest.tscn` (F6 → `ALL PASS`). The live opening scenes still use their bespoke directors and keep working; migrate opportunistically (Beat 3 should be authored on the engine from the start).
+
 ### OpeningCorridorScene
 
 **Script:** `scripts/levels/opening_corridor_scene.gd` | **Extends:** `WalkingScene` | **class_name:** `OpeningCorridorScene`

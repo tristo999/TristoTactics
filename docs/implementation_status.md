@@ -39,6 +39,7 @@
 | Save/load (checkpoint) | ✅ | `scripts/managers/player_data_manager.gd` | `user://player_data.json`; tracks name + current_scene |
 | Pause menu | ✅ | `scripts/ui/pause_menu.gd`, `scripts/levels/pause_menu_handler.gd` | Works in both battle and walking |
 | Tutorial prompts | ✅ | `scripts/managers/tutorial_manager.gd`, `scripts/ui/tutorial_prompt.gd` | Prompts exist; mission that uses them does not |
+| **Trigger engine (WHEN/THEN)** | 🟡 | `scripts/triggers/` (`trigger_engine.gd`, `trigger_conditions.gd`, `trigger_actions.gd`, `trigger.gd`) | v1 built (2026-06-07): declarative per-level rules over `EventBus` — named regions, flags, `TriggerCond.*` conditions, `TriggerAct.*` actions (incl. `flip_team`/`spawn`/`play_event`). Self-test `scenes/dev/trigger_selftest.tscn` passes **10/10 headless** (4.6.3). Full guide: `docs/trigger_engine.md`. **Open:** wire into live scenes (Beat 3 first); retrofit spar/raid directors |
 | Steam integration | 🟡 | `scripts/managers/steam_manager.gd` | Manager present; achievements TBD |
 | VictoryDefeat screen | ✅ | `scripts/ui/victory_defeat_screen.gd` | Wired to `EventBus.battle_ended` |
 | Speed toggle (2×) | ✅ | `scripts/ui/speed_toggle_button.gd` | Uses `Engine.time_scale` |
