@@ -25,3 +25,7 @@ func is_hostile(team_a: String, team_b: String) -> bool:
 
 # Directions
 const CARDINAL_DIRECTIONS = [Vector2i(0, -1), Vector2i(0, 1), Vector2i(-1, 0), Vector2i(1, 0)]
+
+## Manhattan (grid) distance between two tiles — the one tactical distance metric.
+func tile_distance(a: Vector2i, b: Vector2i) -> int:
+	return absi(a.x - b.x) + absi(a.y - b.y)

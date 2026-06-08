@@ -177,45 +177,19 @@ func fx_layer() -> CanvasLayer:
 		add_child(_fx)
 	return _fx
 
+# These wrap CineFx so TriggerAct actions (which call eng.say/flash/fade/wait) and
+# the bespoke directors all share one implementation.
 func say(rows: Array) -> void:
-	var box = get_tree().get_first_node_in_group("dialogue_box")
-	if box == null or not box.has_method("play_sequence"):
-		return
-	var lines: Array[DialogueLine] = []
-	for row in rows:
-		var dl := DialogueLine.new()
-		dl.speaker = row[0]
-		dl.text = row[1]
-		lines.append(dl)
-	await box.play_sequence(lines)
+	await CineFx.say(get_tree(), rows)
 
 func wait(seconds: float) -> void:
-	await get_tree().create_timer(seconds).timeout
+	await CineFx.wait(get_tree(), seconds)
 
 func flash(color: Color, up: float, down: float) -> void:
-	var r := ColorRect.new()
-	r.color = Color(color.r, color.g, color.b, 0.0)
-	r.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	fx_layer().add_child(r)
-	r.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	var tw := create_tween()
-	tw.tween_property(r, "color:a", color.a, up)
-	tw.tween_property(r, "color:a", 0.0, down)
-	await tw.finished
-	r.queue_free()
+	await CineFx.flash(fx_layer(), color, up, down)
 
 func fade(to_alpha: float, dur: float, keep: bool = true) -> void:
-	var r := ColorRect.new()
-	var from_a := 0.0 if to_alpha > 0.0 else 1.0
-	r.color = Color(0, 0, 0, from_a)
-	r.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	fx_layer().add_child(r)
-	r.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	var tw := create_tween()
-	tw.tween_property(r, "color:a", to_alpha, dur)
-	await tw.finished
-	if to_alpha <= 0.01 and not keep:
-		r.queue_free()
+	await CineFx.fade(fx_layer(), to_alpha, dur, keep)
 
 ## Run any existing StoryEvent (DialogueEvent, FlashEvent, FogEvent, ...). This is
 ## how the engine reuses the 15 built event types as trigger actions.

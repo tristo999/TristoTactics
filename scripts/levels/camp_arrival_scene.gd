@@ -130,7 +130,7 @@ func _world(tile: Vector2i) -> Vector2:
 	return _base.to_global(_base.map_to_local(tile))
 
 func _wait(s: float) -> void:
-	await get_tree().create_timer(s).timeout
+	await CineFx.wait(get_tree(), s)
 
 func _pan_to(target: Vector2, dur: float) -> void:
 	if _cam == null:
@@ -140,26 +140,10 @@ func _pan_to(target: Vector2, dur: float) -> void:
 	tw.tween_property(_cam, "global_position", target, dur)
 	await tw.finished
 
-func _fade(from_a: float, to_a: float, dur: float) -> void:
-	var rect := ColorRect.new()
-	rect.color = Color(0, 0, 0, from_a)
-	rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_fx.add_child(rect)
-	rect.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	var tw := create_tween()
-	tw.tween_property(rect, "color:a", to_a, dur)
-	await tw.finished
-	if to_a <= 0.01:
-		rect.queue_free()
+# from_a is implied by to_a (the two camp uses fade fully in or fully out); the
+# overlay is removed when fading clear, kept when fading to black (→ scene change).
+func _fade(_from_a: float, to_a: float, dur: float) -> void:
+	await CineFx.fade(_fx, to_a, dur, to_a > 0.01)
 
 func _say(rows: Array) -> void:
-	var box: CanvasLayer = get_tree().get_first_node_in_group("dialogue_box")
-	if box == null or not box.has_method("play_sequence"):
-		return
-	var lines: Array[DialogueLine] = []
-	for row in rows:
-		var dl := DialogueLine.new()
-		dl.speaker = row[0]
-		dl.text = row[1]
-		lines.append(dl)
-	await box.play_sequence(lines)
+	await CineFx.say(get_tree(), rows)

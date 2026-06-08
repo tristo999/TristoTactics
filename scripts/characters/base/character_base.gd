@@ -323,4 +323,4 @@ func get_ability_targets(ability: Ability) -> Array:
 	return targets
 
 func _tile_distance(from: Vector2i, to: Vector2i) -> int:
-	return abs(from.x - to.x) + abs(from.y - to.y)
+	return Constants.tile_distance(from, to)

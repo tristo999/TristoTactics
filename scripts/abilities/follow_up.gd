@@ -45,4 +45,4 @@ func rolls() -> bool:
 	return trigger_chance >= 1.0 or randf() < trigger_chance
 
 func _dist(a: Vector2i, b: Vector2i) -> int:
-	return absi(a.x - b.x) + absi(a.y - b.y)
+	return Constants.tile_distance(a, b)

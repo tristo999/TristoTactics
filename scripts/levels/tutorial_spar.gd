@@ -179,39 +179,10 @@ func _hide() -> void:
 		_prompt.hide()
 
 func _flash(color: Color, up: float, down: float) -> void:
-	if _fx == null:
-		return
-	var r := ColorRect.new()
-	r.color = Color(color.r, color.g, color.b, 0.0)
-	r.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_fx.add_child(r)
-	r.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	var tw := create_tween()
-	tw.tween_property(r, "color:a", color.a, up)
-	tw.tween_property(r, "color:a", 0.0, down)
-	await tw.finished
-	r.queue_free()
+	await CineFx.flash(_fx, color, up, down)
 
 func _fade_black(dur: float) -> void:
-	if _fx == null:
-		return
-	var r := ColorRect.new()
-	r.color = Color(0, 0, 0, 0.0)
-	r.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_fx.add_child(r)
-	r.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	var tw := create_tween()
-	tw.tween_property(r, "color:a", 1.0, dur)
-	await tw.finished
+	await CineFx.fade(_fx, 1.0, dur, true)
 
 func _say(rows: Array) -> void:
-	var box: CanvasLayer = get_tree().get_first_node_in_group("dialogue_box")
-	if box == null or not box.has_method("play_sequence"):
-		return
-	var lines: Array[DialogueLine] = []
-	for row in rows:
-		var dl := DialogueLine.new()
-		dl.speaker = row[0]
-		dl.text = row[1]
-		lines.append(dl)
-	await box.play_sequence(lines)
+	await CineFx.say(get_tree(), rows)
