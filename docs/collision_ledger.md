@@ -5,7 +5,7 @@ thing you build from. A collision is a scene that happens twice — once in Act 
 under the lie, once in Act 2 from the other side. Each row is a small machine
 for breaking someone's heart on purpose.
 
-Last updated: 2026-05-31
+Last updated: 2026-06-09 — verified against the 4-part bible 2026-06-09
 
 
 ## How to read this
@@ -30,7 +30,7 @@ Four columns per collision:
 |---|---|---|---|---|
 | 1 | A bridge collapses mid-mission. Authority intel: kingdom terrorists, no warning, our people dead. You curse it. Maybe a town pays for it and you nod along. Dismissed in 30 seconds. | *You* are the hand on the charges. The bridge has to come down — what the Authority means to walk across it leads somewhere far worse. You know because you lived it. | Time the detonation. Too early and the convoy stops short; too late and it crosses. The "perfect" moment — the one whose smoke Act 1 will curse — is the one that kills the fewest inside a fall that was always going to happen. | The red bridge in the rain. (Pick one fixed, odd sensory fact and repeat it exactly.) |
 | 2 | Cloaked enemy figures hinder your advance — sneering, hostile, their shouts garbled into threats. The Authority calls them saboteurs. You cut them down and move on. | They are the Act 2 party, hoods down, faces bare, *shouting the truth.* The lie reaches into the Act 1 hero's eyes and ears and renders them as monsters. Same person, ten feet away, un-heard. | (Arc — see notes.) The grief verb: spend the Guardian's power to push a fragment *backward* to your past self. It costs your present safety. It lands as a glitch. It changes nothing. | The garbled line — the exact same phrase, heard as threat in Act 1, heard *clear* in Act 2. |
-| 3 | You defeat an enemy boss. Clean, satisfying, maybe easy. The game congratulates you. You barely look at the face. You move on, proud. | The boss was your Act 2 comrade, who peeled off to hold the line and buy you time — holding back *your own past self.* You were the hand that ended them. | (Two versions — see notes.) Possibly: you don't even get to watch. You're on the objective. You feel it complete and slowly understand where, and when, and that you already played the other side. | The boss's specific weapon, or fighting stance, or one line — unremarkable in Act 1, a fingerprint in Act 2. |
+| 3 | You defeat an enemy boss. Clean, satisfying, maybe easy. The game congratulates you. You barely look at the face. You move on, proud. | The boss was a comrade-or-trusted-NPC `[open]` of your Act 2 party, who peeled off to hold the line and buy you time — holding back *your own past self.* You were the hand that ended them. | (Two versions — see notes.) Possibly: you don't even get to watch. You're on the objective. You feel it complete and slowly understand where, and when, and that you already played the other side. | The boss's specific weapon, or fighting stance, or one line — unremarkable in Act 1, a fingerprint in Act 2. |
 | 4 | *(empty — the missing collision)* An Act 1 act that felt **good and generous** — a mercy, a gift, a kindness the game rewarded you for. | The kindness was the cruelest thing you did. A mercy that was a trap. (Undesigned — this is the shape the set is missing.) | TBD | TBD |
 | 5 | During training, a small insurgent force raids the camp; you and the squad rush out and drive them off. Authority framing: unprovoked kingdom aggression against a soft target. A brisk, winnable skirmish you barely think about. | The raid is a distraction *your own future party* arranged. While you fight outside, they're inside the emptied camp — lifting a hidden item the Authority confiscated, overhearing Vael unguarded — racing to be gone before you win and come back. Same moment, opposite sides of the wall; they hear your own voices through it. | Infiltrate under a live clock that *is* your Act 1 self's battle: the faster your past self wins outside, the less time you have inside. Your old competence becomes your present pressure. Choose what to grab vs. how long to risk lingering. | A fixed camp landmark (e.g. the cracked signal-bell over the training yard) — defended from outside in Act 1, slipped past from inside in Act 2. |
 
@@ -93,6 +93,11 @@ partly their own future self, reaching back. The call comes from inside the
 loop. Never stated. A second-playthrough gut-punch the characters never name.
 
 ### Row 3 — the comrade you celebrated killing
+
+`[open]` Whether the boss is a **party comrade** or a **well-drawn, trusted NPC** is
+itself undecided — the bible leans NPC (`bible_03_act1.md`, `bible_04_act2.md`
+Manifest). The notes below assume a comrade for the worst-case staging; an NPC works
+the same way with lower build cost.
 
 The decision that makes this devastating instead of merely sad: **does the Act 2
 party know, going in, that the boss will be their comrade?**

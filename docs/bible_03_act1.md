@@ -13,8 +13,8 @@
 It begins in a void — black, silent, a single small figure on a path of pale
 tiles that form one step ahead and dissolve one step behind. Far above, a faint
 green-white glow. A voice reaches through static, never finishing a sentence:
-*Are you there… follow the path… this world needs you…* The voice is warm and
-desperate and just out of reach. It asks your name. It says it, twice, like
+*Are you there… follow the path… stay with me… this world needs you…* The voice is
+warm and desperate and just out of reach. It asks your name. It says it, twice, like
 something it has been holding onto: *…Welcome…*
 
 And then it breaks. A second pressure floods in — a wrongness, a flash — and the

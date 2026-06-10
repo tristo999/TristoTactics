@@ -1,5 +1,10 @@
 # Level Spec — Camp Sparring
 
+> **STATUS: SUPERSEDED (level-spec) — 2026-06-09.** `camp_v2.map` is superseded by the
+> sibling maps `data/maps/arena_drill.map` (spar) + `data/maps/arena_raid.map` (raid);
+> the tutorial battle now runs on `arena_raid` (see `implementation_status.md`). Kept
+> for reference only. Not the current tutorial-battle level.
+
 - **Map:** `data/maps/camp_v2.map` (22×22)
 - **Scene:** `scenes/levels/tutorial_battle_scene.tscn` (`tutorial_battle.gd`)
 - **Beat:** Beat 2 — the tutorial battle. Tonal hinge of early game.

@@ -1,5 +1,16 @@
 # Dialogue System — Tristo Tactics
 
+> **Current tools (2026-06-09 accuracy pass).** The type/API reference below is
+> verified accurate against the codebase. Two things postdate the original doc:
+> - **`CineFx`** (`scripts/story/cine_fx.gd`) is now the shared helper for building and
+>   playing dialogue: `CineFx.lines([[speaker, text, portrait?], …])` builds the typed
+>   `Array[DialogueLine]`, and `CineFx.say(get_tree(), rows)` plays it. Prefer these over
+>   the hand-rolled `DialogueLine.new()` loops shown in the examples (which still work).
+> - For **choosing a scripting mechanism** (declarative `TriggerEngine` → `StoryEvent`
+>   chain → `CineFx` primitive → bespoke director), see `ARCHITECTURE.md` →
+>   *"Choosing a scripting mechanism"* and `trigger_engine.md`. That ladder supersedes the
+>   "recommended approach" framing in the *Long Cinematic Scenes* section below.
+
 ## Overview
 
 Dialogue and cinematic moments are authored using a **StoryEvent** pipeline.
@@ -168,8 +179,10 @@ func _run_beat1() -> void:
     await _unlock_player()
 ```
 
-This is the **recommended approach for Beat 1 and beyond** — keeps scene
-logic readable and doesn't require any new infrastructure.
+This pattern still works, but as of 2026-06 the **recommended approach** for scripted
+beats is the decision ladder in `ARCHITECTURE.md` (declarative `TriggerEngine` first,
+then `StoryEvent` chains), with `CineFx.say` / `CineFx.lines` and `CineFx.flash/fade`
+as the shared primitives the helpers above should call instead of re-implementing.
 
 ---
 

@@ -1,8 +1,8 @@
 # Map Generation Playbook
 
 The go-to reference for generating a new battle level. Follow this top-to-bottom and the
-mistakes from the camp_v2 build won't repeat. Pairs with `docs/tutorial_battle_buildlog.md`
-(the war stories) and `docs/map_design_process.md` (the design philosophy).
+mistakes from the camp_v2 build won't repeat. Pairs with `docs/archive/tutorial_battle_buildlog.md`
+(the war stories — archived) and `docs/map_design_process.md` (the design philosophy).
 
 ---
 
