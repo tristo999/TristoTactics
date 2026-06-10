@@ -1,8 +1,32 @@
 # TristoTactics — Feature Inventory (DONE / TODO)
 
-A full inventory of what's **built** vs **unbuilt**, for priority-sorting.
-Verified against code on 2026-06-07 (branch `tutorial-battle-and-level-semantics`).
-Mark/re-order TODO items as you like — the `[ ]` boxes are yours to fill.
+A full inventory of what's **built** vs **unbuilt**, plus the agreed roadmap.
+Verified against code on 2026-06-07; roadmap added 2026-06-10
+(branch `tutorial-battle-and-level-semantics`).
+
+---
+
+## 🗺️ ROADMAP (priority-sorted 2026-06; ruling: maximize unlocks/proofs, art-blocked track quarantined)
+
+The frame: **everything ahead = finish the vertical slice** (`slice_spec.md`) — the slice
+is where every remaining identity system gets built.
+
+| Phase | What | Why / proves |
+|---|---|---|
+| ~~0~~ | ~~Trigger engine~~ | ✅ DONE (the multiplier) |
+| **1** | **Beat 3 mission + Bonding v1** — `docs/levels/outskirts_road.md` (awaiting keep/kills) | engine's first real content; bonding born in use, not in the abstract |
+| 2 | Combat depth riding Beat 3: **downed consequences** (lose follow-ups + bond setback) · **first duo ability** (bond-threshold gated; Elena+Borin) + 1–2 follow-ups · **team-flip live** | bonding matters both directions; first bond *spend*; spine item #4 |
+| 3 | **Beat 4: Shadowed Figures** — the Row 2 plant (garbled-line cue) | content on the engine; glitch/tint systems already exist |
+| 4 | **Expressive choices v1 + camp interlude** — companion talks, bond bumps, ≥1 complicity beat | the third identity system. GATE: choice form (wordless vs worded) |
+| 5 | **Beat 5: THE BRIDGE** — territory-boundary map, built Act-2-reusable | the slice capstone — ends on the stare across the gap |
+| 6 | **Slice assembly + pacing pass** (chain, difficulty, swirl shader, checkpoints) | a showable vision build → recruits an artist → unblocks the art track |
+
+**Parallel/deferred:** advancing line = *taste only* (real clock parked on the Act-1
+mechanics question) · story-brain track (Row 4, cast keep/kills, Beat 7) anytime ·
+tech debt when it bites · **art quarantined**.
+
+**Decision gates (Tristan's):** ① Beat 3 keep/kills (now) · ② expressive-choice form
+(before Phase 4) · ③ Row 4 / kingdom name (whenever).
 
 ---
 
