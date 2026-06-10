@@ -275,6 +275,12 @@ delivered it the key. The apocalypse comes through because of what you did
 certain you were good. That is the thing you celebrate in Act 1 and will spend
 all of Act 2 unable to take back.
 
+(For the Priestess, the capital is the crack: every piece of temple-and-doctrine
+evidence she shelved across the campaign crashes in at once, forcing her faith
+conflict fully open. Per Part Two, her faith erodes and fights back rather than
+snapping clean — the capital is the crack, not the cure; full recovery waits on
+her personal quest.)
+
 ## The last stand, and the throw that finally lands
 
 You are no longer the Authority's weapon. In the space of a breath you have become

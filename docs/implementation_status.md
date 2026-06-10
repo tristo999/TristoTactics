@@ -77,7 +77,7 @@ Narrative canon is the four-part bible ([`bible_03_act1`](bible_03_act1.md) for 
 | 3 — EARLY CAMPAIGN | Missions against "insurgents", subtle anomalies begin | Kingdom outskirts (battle) | — | ⬜ | Not started |
 | 4 — SHADOWED FIGURES (first appearance) | Cloaked figures appear, called saboteurs | TBD (battle) | — | ⬜ | Not started |
 | 5 — BRIDGE INCIDENT | Bridge collapses mid-mission | Bridge map (battle, mirrored in Act 2 B3) | — | ⬜ | Not started. Map must be reusable with inverted objectives for Act 2. |
-| 6 — TOWN MISSION | Operation with civilian casualties, rationalized by Vael | Civilian settlement | — | ⬜ | Not started |
+| 6 — TOWN MISSION | Operation with civilian casualties, rationalized by Vael | Civilian settlement | — | ⬜ | Not started. `[open]` Candidate home for the Priestess's temple-evidence thread (a destroyed old temple near/under the town — she explains it away; see `bible_02_cast.md`) and/or collision Row 4 (see ledger) |
 | 7 — THE CHOICE | Two top-relationship companions fall, save one | Narrative beat | — | ⬜ | Blocks on companion identities being locked (Open Question 6) |
 | 8 — THE CAPITAL / CORE TAKEN | March reaches the capital; the Authority discards the hero and takes the core, opening the door for the legion (revised canon — the hero opens the door; the Guardian is *not* captured) | Kingdom capital | — | ⬜ | Not started |
 | 9 — THE REALIZATION | Guardian's first full sentence | Narrative beat | — | ⬜ | Not started |

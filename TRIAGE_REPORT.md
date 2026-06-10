@@ -12,7 +12,7 @@ superseded candidate).
 | Ruling | Status |
 |---|---|
 | **§4** Soften ledger Row 3 to "comrade-or-trusted-NPC `[open]`"; bump stamp + add bible-verified note | ✅ **DONE** — `collision_ledger.md` row 3 cell + Row 3 craft note + `Last updated` stamp |
-| **§5.1** Slim `story_beats_plan.md` to (1) pairing map + (2) bare ordering skeleton; audit prose for unique content first | ⏳ **AUDIT DONE — AWAITING RULING.** 3 unique items found (see "§5.1 audit" below); not slimmed yet (need your move-or-die call per item) |
+| **§5.1** Slim `story_beats_plan.md` to (1) pairing map + (2) bare ordering skeleton; audit prose for unique content first | ✅ **DONE (2026-06-10).** All 3 unique items MOVED per the report's recommendations (Tristan deferred): ① summoning-circle cue → ledger Row 5 cue cell; ② Town-Mission placement → ledger Row 4 "Open rows" + `implementation_status` Beat 6 row; ③ Priestess faith-crack note → `bible_03_act1.md` capital sequence (distilled from the plan's own wording). Plan slimmed to pairing map + per-act one-line skeletons; old prose in git history. Reverse any move with `git revert` if a call was wrong. |
 | **§5.2** Resolve "stay with me" nit toward the implemented scene (add line to bible) | ✅ **DONE** — added to `bible_03_act1.md` void-sequence transmission examples |
 | **§5.3** Create `docs/archive/`, move 5 historical docs, add archive README | ✅ **DONE** — `git mv` (history preserved) + `docs/archive/README.md` |
 | **§5.4** Add level-spec superseded note to `docs/levels/camp_v2.md` | ✅ **DONE** |
