@@ -19,10 +19,12 @@ const COLOR_CURRENT_CHAR := Color(0.1, 0.9, 0.2, 0.75)
 const CURRENT_CHAR_LINE_WIDTH := 2.0
 
 # Movement range: dark semi-transparent filled squares
-# Light translucent wash — terrain must stay readable underneath. (The old value,
-# a 65%-opaque near-black navy, painted the MOV range as a giant dark diamond that
-# made flat-grass maps read as broken "patchwork".)
-const COLOR_MOVEMENT := Color(0.45, 0.85, 1.0, 0.30)
+# Dark dim-fill over reachable tiles (deliberate style — reads great on textured
+# ground; Tristan ruled to keep it, 2026-06-10). KNOWN CAVEAT: on FLAT solid-color
+# ground tiles it reads as featureless dark blobs, indistinguishable from missing
+# tiles in stills (see docs/maps/highlight_evidence.png) — so battle maps should
+# use textured/varied ground, not the flat grass tile, under playable areas.
+const COLOR_MOVEMENT := Color(0.05, 0.08, 0.18, 0.65)
 
 # Attack range: red smaller hollow squares overlaid on movement
 const COLOR_ATTACK := Color(0.95, 0.15, 0.1, 0.65)

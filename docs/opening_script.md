@@ -232,6 +232,7 @@ Victory (keep, one addition — Vael's coda, warmth back on like a switch):
 the yard stays **big** with **3 skill areas + a central sparring pit** and the raid as
 **3 enemy groups through 3 north breaches** (more enemies, balancing pass); the camp
 walk is **player-walked with trigger stops** (not a cutscene) — Vael waits ahead at
-each station. Yard redesign spec: `docs/levels/training_grounds.md`. Also fixed: the
-movement-range highlight was a 65%-opaque near-black fill (the "patchwork"); now a
-light translucent wash (`highlight_renderer.gd`).
+each station. Yard redesign spec: `docs/levels/training_grounds.md`. Highlight note:
+the dark movement fill is the KEPT style (ruled after a brief light-wash detour) —
+the "patchwork" read came from flat untextured ground under it, so the new yard must
+use textured/varied ground tiles in playable areas (`highlight_renderer.gd` caveat).
