@@ -113,6 +113,21 @@ func _setup_characters() -> void:
 		character.current_tile = base_layer.local_to_map(character.global_position)
 		character.global_position = base_layer.map_to_local(character.current_tile) + Constants.TILE_CENTER_OFFSET
 
+## Register units spawned MID-battle (raid waves, late arrivals): wires them to the
+## grid and appends them to the turn order. Without this, spawned units never act.
+func register_units(units: Array) -> void:
+	if not tilemap_node:
+		return
+	var base_layer = tilemap_node.get_node_or_null("BaseGrid")
+	for u in units:
+		if not (u is CharacterBase) or u in turn_order:
+			continue
+		var c := u as CharacterBase
+		c.set_base_layer(base_layer)
+		c.current_tile = base_layer.local_to_map(c.global_position)
+		c.global_position = base_layer.map_to_local(c.current_tile) + Constants.TILE_CENTER_OFFSET
+		turn_order.append(c)
+
 func _start_battle() -> void:
 	EventBus.battle_started.emit()
 

@@ -1,0 +1,82 @@
+[gd_scene load_steps=14 format=3 uid="uid://b8traingrounds1"]
+
+[ext_resource type="Script" path="res://scripts/levels/training_grounds.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://dgw6nanegiqld" path="res://scenes/managers/GameManager.tscn" id="2"]
+[ext_resource type="Script" uid="uid://cdxkxm8vj40bg" path="res://scripts/levels/pause_menu_handler.gd" id="3"]
+[ext_resource type="Script" uid="uid://bb7w0gltb41yg" path="res://scripts/managers/battle/battle_input_handler.gd" id="4"]
+[ext_resource type="Script" path="res://scripts/levels/tilemaps/text_map_tilemap.gd" id="5"]
+[ext_resource type="TileSet" uid="uid://cpiormm6cegct" path="res://assets/tilesets/tileset.tres" id="6"]
+[ext_resource type="PackedScene" uid="uid://bf0ia26jj2idx" path="res://scenes/levels/ActionCamera.tscn" id="7"]
+[ext_resource type="PackedScene" path="res://scenes/ui/TileInfoPanel.tscn" id="8"]
+[ext_resource type="PackedScene" path="res://scenes/ui/BottomActionBar.tscn" id="9"]
+[ext_resource type="PackedScene" path="res://scenes/ui/ActiveStatsPanel.tscn" id="10"]
+[ext_resource type="PackedScene" path="res://scenes/ui/SpeedToggleButton.tscn" id="11"]
+[ext_resource type="PackedScene" path="res://scenes/ui/DialogueBox.tscn" id="12"]
+[ext_resource type="PackedScene" path="res://scenes/ui/TutorialPrompt.tscn" id="13"]
+
+[node name="TrainingGrounds" type="Node2D"]
+script = ExtResource("1")
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -100
+
+[node name="BG" type="ColorRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0.302, 0.608, 0.902, 1)
+
+[node name="PauseMenuHandler" type="Node" parent="."]
+script = ExtResource("3")
+
+[node name="GameManager" parent="." instance=ExtResource("2")]
+
+[node name="BattleInputHandler" type="Node" parent="."]
+script = ExtResource("4")
+
+[node name="PlayerTeam" type="Node" parent="."]
+
+[node name="EnemyTeam" type="Node" parent="."]
+
+[node name="AllyTeam" type="Node" parent="."]
+
+[node name="Arena" type="Node2D" parent="."]
+position = Vector2(3, 0)
+script = ExtResource("5")
+map_file = "res://data/maps/training_grounds.map"
+
+[node name="BaseGrid" type="TileMapLayer" parent="Arena"]
+tile_set = ExtResource("6")
+
+[node name="Decor" type="TileMapLayer" parent="Arena"]
+z_index = 1
+tile_set = ExtResource("6")
+
+[node name="Objects" type="TileMapLayer" parent="Arena"]
+z_index = 2
+tile_set = ExtResource("6")
+
+[node name="Walls" type="TileMapLayer" parent="Arena"]
+z_index = 3
+tile_set = ExtResource("6")
+
+[node name="Water" type="TileMapLayer" parent="Arena"]
+z_index = 1
+tile_set = ExtResource("6")
+
+[node name="ActionCamera" parent="." instance=ExtResource("7")]
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="TileInfoPanel" parent="UILayer" instance=ExtResource("8")]
+
+[node name="BottomActionBar" parent="UILayer" instance=ExtResource("9")]
+
+[node name="ActiveStatsPanel" parent="UILayer" instance=ExtResource("10")]
+
+[node name="SpeedToggleButton" parent="UILayer" instance=ExtResource("11")]
+
+[node name="TutorialPrompt" parent="UILayer" instance=ExtResource("13")]
+
+[node name="DialogueBox" parent="." instance=ExtResource("12")]
