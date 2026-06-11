@@ -63,6 +63,30 @@ def wear_path(x0, y0, x1, y1, width=1, density=0.7):
                 grid[y][x1 + dx] = ","
 
 
+def road(points, fringe=0.35):
+    """A CONTINUOUS worn road through waypoints: solid 1-wide dirt core along the
+    polyline (L-stepped), with a speckled fringe one tile out. Paths must READ as
+    paths — they connect places, they don't decorate."""
+    for (ax, ay), (bx, by) in zip(points, points[1:]):
+        x, y = ax, ay
+        while x != bx:
+            x += 1 if bx > x else -1
+            _road_cell(x, y, fringe)
+        while y != by:
+            y += 1 if by > y else -1
+            _road_cell(x, y, fringe)
+    _road_cell(points[0][0], points[0][1], fringe)
+
+
+def _road_cell(x, y, fringe):
+    if 0 <= x < W and 0 <= y < H and grid[y][x] in ("g", "."):
+        grid[y][x] = ","
+    for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+        nx, ny = x + dx, y + dy
+        if 0 <= nx < W and 0 <= ny < H and grid[ny][nx] in ("g", ".") and rng.random() < fringe:
+            grid[ny][nx] = ","
+
+
 # ---- the yard bounds (irregular) -------------------------------------------
 FY0, FY1 = 5, 28          # north / south fence rows
 FX0 = 3                   # west fence col
@@ -83,48 +107,44 @@ for y in range(FY0, FY1 + 1):
 # south fence with the gate (x 14-15, faces the camp)
 for x in range(FX0, OUT_X + 2):
     grid[FY1][x] = "g" if x in (14, 15) else "#"
-# east boundary: fence top+bottom stubs, natural rock outcrop between
-for y in range(FY0, 8):
+# east fence (continuous — the old "outcrop" cliff strips didn't read)
+for y in range(FY0, FY1 + 1):
     grid[y][OUT_X + 1] = "#"
-for y in range(21, FY1 + 1):
-    grid[y][OUT_X + 1] = "#"
-for y in range(8, 21):                      # the outcrop bulge (impassable rock)
-    for x in range(OUT_X, OUT_X + 3):
-        if x < W:
-            grid[y][x] = "L"
-    if rng.random() < 0.5 and OUT_X - 1 > 30:
-        grid[y][OUT_X - 1] = "L"            # ragged inner edge
+# rock flavor: boulder clusters OUTSIDE the east fence (props, not cliffs)
+for (bx, by) in ((42, 9), (43, 12), (42, 16), (43, 19), (42, 23)):
+    if bx < W and grid[by][bx] == ".":
+        grid[by][bx] = "r"
 
-# ---- worn ground: SPECKLED wear, never painted solids ------------------------
-wear(23, 10, 7, 0.75)                       # muster ground (heaviest use)
-wear(23, 13, 4, 0.5)
-for y in range(7, 22):                      # the range firing line (lane wear)
-    for x in (10, 11, 12):
-        if grid[y][x] == "g" and rng.random() < 0.6:
+# ---- worn ground: CONNECTED roads between places + local wear ---------------
+# The road network is the camp's daily life: gate -> pit -> muster -> stations.
+road([(14, 27), (15, 24), (19, 22), (22, 19)])          # gate -> pit SW entry
+road([(22, 19), (23, 14), (23, 10)])                    # pit -> muster center
+road([(23, 10), (23, 6)])                               # muster -> C breach gate
+road([(23, 12), (15, 12), (11, 12)])                    # muster -> the range
+road([(23, 16), (30, 17), (33, 17)])                    # pit -> dummy lane
+road([(15, 25), (12, 25)])                              # gate -> footwork course
+# local wear pads at heavy-use spots (small, ON the network, not floating)
+wear(23, 9, 4, 0.85)                        # muster ground proper
+wear(34, 18, 3, 0.7)                        # dummy-lane apron
+wear(12, 25, 2, 0.8)                        # footwork course
+for y in range(8, 20):                      # the range firing line
+    for x in (10, 11):
+        if grid[y][x] == "g" and rng.random() < 0.75:
             grid[y][x] = ","
-wear(35, 18, 4, 0.6)                        # dummy-lane apron
-wear(13, 25, 3, 0.7)                        # footwork course
-wear_path(15, 26, 22, 22, 1, 0.5)           # gate -> pit (daily traffic)
-wear_path(24, 6, 23, 15, 1, 0.45)           # C breach gate -> muster (supply route)
 
-# ---- THE PIT (stone ring, rail, two gaps) -----------------------------------
-PX0, PY0, PX1, PY1 = 20, 16, 27, 21         # outer rail rect
-rect(PX0 + 1, PY0 + 1, PX1 - 1, PY1 - 1, "o")   # sunken stone floor
-for x in range(PX0, PX1 + 1):               # rail top/bottom
-    grid[PY0][x] = "#"
-    grid[PY1][x] = "#"
-for y in range(PY0, PY1 + 1):               # rail sides
-    grid[y][PX0] = "#"
-    grid[y][PX1] = "#"
-grid[PY0][23] = "o"; grid[PY0][24] = "o"    # NORTH GAP (the bell post beside it)
-grid[PY1][PX0] = "o"                        # SW gap (corner entry)
-grid[PY1 - 1][PX0] = "o"
+# ---- THE PIT: open sparring floor with corner posts (NO internal fence — a
+# fenced ring inside a fenced yard was redundant and the autotiler corners broke)
+PX0, PY0, PX1, PY1 = 20, 16, 27, 21
+rect(PX0, PY0, PX1, PY1, "o")               # the stone sparring floor
+for (cx, cy) in ((PX0, PY0), (PX1, PY0), (PX0, PY1), (PX1, PY1)):
+    grid[cy][cx] = "B"                      # ring corner posts
 grid[PY0 - 1][22] = "B"                     # the cracked signal-bell post (Row 5 cue)
 
-# ---- THE RANGE (west): berm + targets ---------------------------------------
-for y in range(7, 20):                      # earthen berm (backstop, impassable, solid 2-wide)
-    grid[y][5] = "L"
-    grid[y][6] = "L"
+# ---- THE RANGE (west): boulder-pile berm + targets ---------------------------
+for y in range(7, 20):                      # rock-pile backstop (boulder props)
+    grid[y][6] = "r"
+    if rng.random() < 0.45:
+        grid[y][5] = "r"
 for y in (8, 11, 14, 17):                   # straw targets against the berm
     grid[y][8] = "B"
 

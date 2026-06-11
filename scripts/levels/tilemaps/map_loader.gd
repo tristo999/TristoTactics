@@ -13,6 +13,7 @@ const SRC := 2
 const T_GRASS := Vector2i(5, 0)
 const T_DIRT := Vector2i(5, 4)    # textured worn dirt (NOT 5,3 — that one is a flat solid)
 const T_BARREL := Vector2i(5, 10) # storage barrel prop (Objects layer, impassable)
+const T_ROCK := Vector2i(13, 9)   # boulder-cluster prop (Objects layer, impassable)
 const T_PAD := Vector2i(10, 6)    # stone drill pad
 const T_BRICK := Vector2i(10, 3)  # building / hard wall
 const T_TREE3 := Vector2i(7, 0)   # large 3x3 tree (multi-cell)
@@ -47,6 +48,7 @@ const ROLE := {
 	"#": "fence", "L": "ledge", "B": "block", "T": "tree",
 	"t": "cover",  # single-tile tree (walkable cover on Objects) -- forest variation
 	"x": "prop",   # barrel/crate prop on Objects: impassable, reads as storage
+	"r": "rock",   # boulder prop on Objects: impassable, reads as rocks/berm
 	"w": "back", "C": "back",
 	"P": "walk", "E": "back",
 }
@@ -234,6 +236,11 @@ static func populate(parsed: Dictionary, base_layer: TileMapLayer, walls_layer: 
 					base_layer.set_cell(cell, SRC, T_GRASS)
 					if objects_layer:
 						objects_layer.set_cell(cell, SRC, T_BARREL)
+				"rock":
+					# Boulder prop: grass under, rock cluster on Objects (impassable).
+					base_layer.set_cell(cell, SRC, T_GRASS)
+					if objects_layer:
+						objects_layer.set_cell(cell, SRC, T_ROCK)
 				_:  # walk / back -> ground tile
 					var atlas := T_GRASS
 					if ch == ",":

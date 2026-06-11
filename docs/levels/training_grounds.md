@@ -43,13 +43,15 @@
                  ↑ from the camp
 ```
 
-- **The fence is not a rectangle:** the east side is a natural **rock outcrop** (cliff
-  tiles — the camp used the terrain it had); the north fence has three structural gaps
-  (the breaches); the south gate faces the camp.
-- **The pit** (center): sunken stone ring with a low rail and **two gaps** (N + SW) —
-  the only ways in. A defensible strong point with chokepoint math: rail blocks, gaps
-  funnel. The follow-up lesson happens here, shoulder to shoulder — and it's the
-  natural fallback when the lanes collapse.
+- **The fence:** three structural gaps in the north wall (the breaches); the south gate
+  faces the camp; boulder clusters outside the east fence for terrain flavor. *(v4: the
+  earlier east "rock outcrop" cliff strips didn't read and were cut.)*
+- **The pit** (center): an **open stone sparring floor with four corner posts** — reads
+  as a ring, no internal fence. *(v4: a fenced ring inside a fenced yard was redundant,
+  and the fence autotiler can't orient a ring surrounded by interior.)* The follow-up
+  lesson happens here, shoulder to shoulder; in the raid it's open ground worth holding
+  for the bell, not a walled redoubt — the defensive chokepoints are the storage rows,
+  the well, and the berm lane.
 - **The range** (west): a long open north–south lane; straw targets against an earthen
   **berm** (impassable). Longest sightlines on the map — the archer's lane.
 - **Storage rows** (east): crates (blockers) and tarped stacks (**cover**, +2 DEF) in
