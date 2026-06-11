@@ -1,0 +1,69 @@
+name:  Training Grounds
+theme: camp
+notes: Beat 2 ONE-SCENE tutorial yard (drill -> breach -> raid). Design: docs/levels/training_grounds.md. Breaches N x3 (8-9 / 21-24 / 35-36); pit ring center; range W; storage rows E; outcrop east; gate S(14-15).
+---
+T...T.........T............t................
+....t.....t.......Tt.........t.t.Tt....t....
+t...t....................t...T........tTt...
+T..T..T....T..T.......t...T..t...t..........
+........................,...................
+...#####gg###########ggg,##########gg####...
+...#gggggggggggggggggg,,,ggggggggggggggg#...
+...#gLLggg,,gggggggggg,,,g,ggggtxtxxxggg#...
+...#gLLgBgggggggggg,,,,,,,,ggggggggggggLLL..
+...#gLLggg,,,ggggggg,,,,,,g,,ggggtgtxtgLLL..
+...#gLLggg,g,ggggg,,,,,,,,,g,,gggggggggLLL..
+...#gLLgBg,g,ggggg,,,,,,,,g,ggggBxgxtggLLL..
+.T.#gLLggg,gggggggg,g,,,,gg,gggggggggggLLL..
+...#gLLggg,,gBBgggggg,,,,,gggggggBxBttgLLL..
+...#gLLgBgg,,BBggggggg,,,g,gggggggg,ggLLLL..
+...#gLLggg,,,xggggggg,B,g,gggggggggg,ggLLL..
+...#gLLggggg,ggggggg###oo###ggggggg,,ggLLL..
+...#gLLgBg,,gggggggg#oooooo#ggggggg,,,LLLL..
+...#gLLggg,ggggggggg#oooooo#gggg,B,B,B,LLL..
+...#gLLggg,ggggggggg#oooooo#gggg,g,,ggLLLL..
+...#ggggggg,ggggggggooooooo#ggggggg,ggLLLL..
+...#ggggggg,,gggggggo#######ggggggg,gggg#...
+.T.#ggggggggg,ggggggg,,ggggggggggggggggg#...
+...#ggggggggg,,ggggggg,,gggggggggggggggg#...
+...#ggggggBgg,,gggggg,,,gggggggggggggggg#.T.
+...#gggggggg,,,,gggg,,,ggggggggggggggggg#...
+...#ggggggggBg,,,gg,g,g,gggggggggggggggg#...
+...#ggggggggg,g,,,,,g,,ggggggggggggggggg#...
+...###########gg#########################.T.
+............................................
+..T.....................................t...
+............................................
+---
+                                            
+                                            
+        E             E             E       
+        EE           EEEE          EE       
+                                            
+                                            
+                                            
+                                            
+                                            
+                      5 6                   
+                       7                    
+                                            
+          2                                 
+                                            
+                                            
+                                            
+                                            
+                                  3         
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                4                           
+              1                             
+                                            
+                                            
+                                            
+                                            

@@ -11,7 +11,8 @@ const SRC := 2
 
 # --- Tile atlas coords ---
 const T_GRASS := Vector2i(5, 0)
-const T_DIRT := Vector2i(5, 3)
+const T_DIRT := Vector2i(5, 4)    # textured worn dirt (NOT 5,3 — that one is a flat solid)
+const T_BARREL := Vector2i(5, 10) # storage barrel prop (Objects layer, impassable)
 const T_PAD := Vector2i(10, 6)    # stone drill pad
 const T_BRICK := Vector2i(10, 3)  # building / hard wall
 const T_TREE3 := Vector2i(7, 0)   # large 3x3 tree (multi-cell)
@@ -45,6 +46,7 @@ const ROLE := {
 	"g": "walk",   # yard-interior grass (renders grass, but marks "inside the fence")
 	"#": "fence", "L": "ledge", "B": "block", "T": "tree",
 	"t": "cover",  # single-tile tree (walkable cover on Objects) -- forest variation
+	"x": "prop",   # barrel/crate prop on Objects: impassable, reads as storage
 	"w": "back", "C": "back",
 	"P": "walk", "E": "back",
 }
@@ -226,6 +228,12 @@ static func populate(parsed: Dictionary, base_layer: TileMapLayer, walls_layer: 
 					base_layer.set_cell(cell, SRC, T_GRASS)
 					if objects_layer:
 						objects_layer.set_cell(cell, SRC, T_TREE)
+				"prop":
+					# Storage prop (barrel): grass under, barrel on Objects. NOT a
+					# cover overlay, so TerrainRegistry classifies it impassable.
+					base_layer.set_cell(cell, SRC, T_GRASS)
+					if objects_layer:
+						objects_layer.set_cell(cell, SRC, T_BARREL)
 				_:  # walk / back -> ground tile
 					var atlas := T_GRASS
 					if ch == ",":
@@ -233,8 +241,9 @@ static func populate(parsed: Dictionary, base_layer: TileMapLayer, walls_layer: 
 					elif ch == "o":
 						atlas = T_PAD
 					base_layer.set_cell(cell, SRC, atlas)
-					# inert decor scatter on plain yard grass only
-					if decor_layer and ch == "." and rng.randf() < 0.12:
+					# inert decor scatter on grass ('.' outside AND 'g' yard-interior) —
+					# flat grass needs texture or the dark movement highlight reads as blobs.
+					if decor_layer and (ch == "." or ch == "g") and rng.randf() < 0.12:
 						decor_layer.set_cell(cell, SRC, DECOR_TILES[rng.randi() % DECOR_TILES.size()])
 
 ## Render the grid back to text.
