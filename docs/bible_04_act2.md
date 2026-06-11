@@ -273,16 +273,19 @@ The consolidated keep/kill/claim checklist. Plain `[open]` = genuinely undecided
 
 **Big keystones**
 - **[open]** The keystone — what the fragment does at the core/door (Part Four).
-  The 2026-06-11 cosmology gives it new walls to land between (the mousetrap
-  property, the braid) — but the braid's significance clause is **[pending]**
-  (truncated decision text; get it before designing the keystone).
+  **The gate is OPEN** (2026-06-11): the braid clause is supplied — the braid is
+  the one credential that crosses the core's threshold, and the hero is a key by
+  the Throne's theft (Part One, *The braid*). The keystone now designs between
+  the mousetrap property and the braid. Still undesigned.
 - **[open]** The kingdom's name and cultural identity (Part One).
 - ~~The Throne's nature~~ — **DEFINED 2026-06-11** (current decision): a
   planes-conquering pretender, less than a god by predatory design, bodiless
-  here, hungry for godhood (Part One). Still open from that thread:
+  here, hungry for godhood (Part One). The VAEL section is **supplied** (Part
+  One, *Vael — the knowing betrayer*: partial truth, the gift = legion-stock,
+  the transformation reads as losing). Still open from that thread:
   **[open]** the old ugly name (the Guardian's people's word for it; Act 2's
-  resistance vocabulary), and **[pending]** the VAEL section of the decisions
-  (human collaborators — text never arrived).
+  resistance vocabulary). A third batch (the hunter apparatus, amplification
+  sweep, Vael-timing amendment) is expected, **not yet received**.
 - ~~The core's deepest metaphysics~~ — **DEFINED 2026-06-11**: the gate of
   ascension, the only graspable divine mass in the plane, the binding's anchor.
   The "renewable spring" `[GUESS]` is **killed** (the core is explicitly NOT

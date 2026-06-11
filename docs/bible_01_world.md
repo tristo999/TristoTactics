@@ -15,11 +15,13 @@
 >
 > **Cosmology revision (2026-06-11).** Part One was substantially rewritten from
 > a design session: the Throne (formerly "the Authority"), the planes and the
-> price of ascension, the core as the gate of divinity, the binding, and the
-> Guardian-as-piece. These are **Tristan's current decisions** — written at that
-> firmness, not yet hardened canon; iterate freely. Two pieces of that session
-> arrived incomplete and are tagged `[pending]` where they touch the text: the
-> VAEL section, and the final clause about the summoning's braid.
+> price of ascension, the core as the gate of divinity, the binding, the
+> Guardian-as-piece (and its spent, dormant state), the braid, and Vael. These
+> are **Tristan's current decisions** — written at that firmness, not yet
+> hardened canon; iterate freely. (The first batch arrived truncated; the braid
+> clause and the Vael section were re-supplied later the same day and are now
+> integrated in full. A third batch — "the hunter apparatus," an amplification
+> sweep, a Vael-timing amendment — is expected and has NOT yet arrived.)
 >
 > Draft date: 2026-06-02 · Part One revised 2026-06-11
 
@@ -111,12 +113,12 @@ practicing being a god while it waits to steal the real thing.
 
 It has **no body in this plane, and never has.** It arrived as presence, and was
 bound before its full self — or its army — could follow. It rules through
-doctrine and through human collaborators *(see VAEL — `[pending]`: that section
-of the 2026-06-11 decisions did not arrive; do not invent it)*. The "true form"
-that manifests at the capital at the end of Act 1 is **the first time it has
-ever had a face in this world.** Protect this: no Act 1 character describes it
-physically, no one quotes it directly — doctrine paraphrases, Vael relays,
-nobody has *seen*. The first face the world gets is the one the player gets.
+doctrine and through human collaborators *(see **Vael**, below — the chief
+specimen)*. The "true form" that manifests at the capital at the end of Act 1 is
+**the first time it has ever had a face in this world.** Protect this: no Act 1
+character describes it physically, no one quotes it directly — doctrine
+paraphrases, Vael relays, nobody has *seen*. The first face the world gets is
+the one the player gets.
 
 ## The core
 
@@ -168,6 +170,40 @@ Taking the core, when it finally happens at the end of Act 1, is one event with
 three faces: **the cage breaks, the true form manifests, the door opens.** The
 endless legion that pours through is not a new invasion. It is the *original*
 one, finally arriving — always scheduled, just five centuries late.
+
+## Vael — the knowing betrayer
+
+*(Supplied 2026-06-11, completing the second half of the truncated first batch —
+current decision. Note for later integration: a third batch layers "the hunter
+apparatus" on top of this section; this text lands first.)*
+
+Vael is not the Throne, and he is not a believer. He is a **knowing betrayer** —
+a current enrollee in the founding crime, the same pact the kings of old signed,
+still being signed: promised power, heart already sold.
+
+He holds **partial truth only.** He knows the faith is theater. He knows the
+summoning was a hijacking — *he ran the interception*; the scorch marks in the
+hero's first room are his operation. He knows the war's true objective is the
+core. He does **not** know about the cage, the legion, or what the door opens
+onto. The Throne tells collaborators the minimum — betrayer of betrayers,
+fractally, all the way down.
+
+His ideology, in one line: the lie is real, but the hierarchy is realer. Other
+humans are livestock, and the only sin is being livestock. His warmth is
+flawless *because* it is pure craft with zero feeling behind it — he performs it
+for assets the way you'd oil a tool.
+
+And his promised payment is real — and the payment is the trap. **"The gift"**:
+power that does not raise a collaborator toward the Throne's tier, but
+*processes him into legion-stock.* At his Act 2 boss fight he draws on the gift
+and transforms into something resembling the Throne's army — and the
+transformation reads as **losing, not powering up**: control slipping
+mid-swing, his last coherent line landing *before* the change, everything after
+it noise. The man who was all voice ends as something that cannot talk.
+
+He dies never learning the party time-traveled, never learning what the gift
+was making him, never reporting upward — wrong about everything, managed to the
+end by the exact method he believed made him superior to the herd.
 
 ## Seams in the scripture
 
@@ -310,10 +346,24 @@ dropped the champion into its own camp instead. The end of Act 1 — the Guardia
 flinging you back, before any of it happened — is not a twist. It is **the throw
 finally landing.**
 
-The summoning braided a living thread between Guardian and champion, so the two
-could stand together inside the defenses — and that braid is the one
-`[pending — the 2026-06-11 decision text cut off mid-sentence here ("...the one
-cr—"). Do not invent the braid's significance; get the rest of the sentence
-from Tristan.]`
+**The braid.** The summoning wove a living thread between the Guardian and its
+champion — made so they could stand together inside the capital's defenses, the
+binder and its called help on the same side of every ward. Two properties
+follow, and the whole war turns on the second. First: **the binder cannot close
+its hand on its own thread.** Whatever the Guardian's defenses are, they do not
+fire on a thread of itself — and it would not raise them against its champion
+regardless. Second: **the braid is the one credential that crosses the core's
+threshold.** The binding bars the *prisoner* from the core absolutely; but
+something of the Guardian's own calling can pass.
+
+The Throne intercepted the call, claimed its authorship — and **discovered both
+properties.** The one being the Guardian cannot fight, carrying the one
+credential the threshold admits, walked point-first to the lock. The hero is a
+key by the Throne's *theft*, not the Guardian's design.
+
+And be precise about what the hero is: **marked, not divine.** An ordinary
+person braided by contact. Anyone could have been called; the *calling* is
+what's special, not the called. (Protect this — nothing anywhere may imply the
+hero is a god-shard.)
 
 That champion is you.
