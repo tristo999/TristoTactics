@@ -272,6 +272,16 @@ Reframe the old line "the Guardian still stands, never beaten" accordingly: its
 combat record **is endurance.** It has kept two locks running for five hundred
 years against a thing larger than itself. Standing *is* the whole fight.
 
+And by the era the game is set in, the candle is at its stub *(current decision,
+2026-06-11 second batch)*: the great summoning failed and cost it terribly, and
+the continuing strain of reaching across the jam toward its stolen champion —
+every glitch the Act 1 hero shrugs off is this, seen from the other end — has
+spent it down to almost nothing. Through the war's years the piece is
+essentially **dormant** beside its core: barely keeping the barrier and the
+binding fed, hoarding one last reserve against the Throne's arrival. Prudence,
+not plan — what that reserve finally buys is not written until the hour it is
+spent (Part Three tells that hour).
+
 One more precision, because the words matter: the god is not dead, and it did
 not fall. **The unified being is what died** — what remains is a living
 amputation: the presence outside, the core, the will-remnant within, all alive,

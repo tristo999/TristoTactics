@@ -294,7 +294,12 @@ conflict fully open. Per Part Two, her faith erodes and fights back rather than
 snapping clean — the capital is the crack, not the cure; full recovery waits on
 her personal quest.)
 
-## The last stand, and the throw that finally lands
+## The last stand, the gamble, and the throw that finally lands
+
+> *(The Guardian beats of this sequence revised per the 2026-06-11 session,
+> second batch — current decisions, not hardened canon. The locked staging —
+> the trap, the choice, the core taken, the true form, the veil lifting for
+> everyone, the throw — does not move; these decisions slot around it.)*
 
 You are no longer the Throne's weapon. In the space of a breath you have become
 its last obstacle — the only thing awake and standing in its way. And so the
@@ -302,13 +307,64 @@ party fights, here, at the foot of the core, to stop what's coming.
 
 And you lose.
 
-The Guardian — alive, still uncaptured, but failing now as the core is torn from
-its keeping — spends its last reach on you. It gives you the **fragment**: a
-shard of itself, of the power you tasted when you saved one friend, the only thing
-that could ever reach it again. And with the last of what it has, it does the one
-thing it has been trying to do since the very first word of the game.
+And the Guardian, dying beside its core, makes **the gamble.** It has one
+reserve left in it — five centuries of upkeep have spent the rest — and exactly
+two things that reserve can buy. It can mount a doomed defense of the core:
+hours, at best, bought at full price. Or it can buy the throw. It cannot weigh
+the options honestly, because the Throne sits squarely in the hole of its sight
+— everything downstream of this moment is fog. **It does not know the loop will
+save them. It cannot know.** What it knows is that hours of defense purchase
+nothing but hours, and the throw purchases a *chance* it has no way to verify.
+
+It chooses the throw. Which means choosing everything that comes with it:
+standing down its last resistance and letting the catastrophe complete cleanly —
+the core taken, the door opened, the present surrendered in full — **as the
+price** of a second chance it will never be able to confirm. A gamble of
+self-sacrifice, not a plan. *(This is also the first performance of the game's
+whole thesis — mercy under constraint: the fall is inevitable, and the Guardian
+chooses what to spend itself on as the inevitable happens.)*
+
+So it spends. It gives you the **fragment** — a shard of itself, of the power
+you tasted when you saved one friend, the only thing that could ever reach it
+again — and with the last of what it has, it does the one thing it has been
+trying to do since the very first word of the game.
 
 It completes the summoning.
+
+**The ordering of the next two seconds is load-bearing. It decides and spends
+blind; only as the power leaves it — in the spending, never before — does its
+clearing sight register what the spending bought.** Decision in fog,
+confirmation in death. (Protect this in every retelling: if the Guardian
+glimpses what's coming *before* it throws, the gamble has verification and the
+sacrifice deflates into a transaction.)
+
+And what its clearing sight registers is this: its champion dissolving in front
+of it — and behind them, walking into the ruined hall, **the same champion, two
+years older, leading an army.** The gathered roster of everyone Act 2 fought to
+collect, arriving at the capital at this exact hour — because the second act was
+running beside the first all along, and it was always going to arrive *now*.
+The proof of the gamble is not a glimpse of the thrown. It is **the army the
+throw became, already assembled.**
+
+What crosses the Guardian's face then is **pure joy.** A being with no future
+tense — its foresight dark past the Throne, five centuries of endurance for its
+whole emotional range — has just made the first act of pure hope in its
+existence, blind, and the universe answers in the one second it has left to
+hear. Hope and proof touch exactly once in its life: at the end of it. It dies
+doing the thing it never once got to do. It rests, satisfied.
+
+**What the hero sees** — and this is a planted collision, never explained here —
+is only the expression. The dying Guardian looks *past* you, through you, at
+something behind you that you cannot turn to see (you are fading; the arrivals
+are in your blind spot and the white-out). And what crosses its face is
+unmistakable, unaccountable **joy** — wrong-feeling, even, in the worst moment
+of the world. The hero files it with the glitches. Act 1 ends clean: you carry
+out only the incomprehensible joy. *(The hero NEVER sees the arrival. Payoff:
+Part Four, the finale — the player eventually stands where that gaze pointed.)*
+
+> *(Doc-facing note, never player-facing: the gamble rhymes with Beat 7 — god
+> and hero each face "save one of two loves," one act apart. The hero never
+> learns the symmetry. The player can.)*
 
 The original call was meant to bring you to the Guardian, and the Throne
 hijacked it and dropped you in a war camp. Now, with everything ending, the

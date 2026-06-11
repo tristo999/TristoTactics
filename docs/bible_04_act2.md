@@ -20,12 +20,20 @@ it has finally completed. The whole surviving party comes through with you.
 Two things are different from the moment you open your eyes. First, **the line
 isn't jammed.** The Throne hasn't intercepted anything yet — it hasn't even
 begun its final march — so for the first time the Guardian and its champion are
-on the same side of the wall. You can be *spoken to.* You understand the
-**fragment** you carry now — the time-power that, in Act 1, was only blind
-flickers and a single desperate reach to save one friend — as a thing you can
-actually hold and use. `[GUESS — the exact terms of the party's contact with the
-Guardian in Act 2, and how much it can guide them, are open; settled is that they
-arrive at it, pre-war, carrying the fragment, no longer cut off.]`
+on the same side of the wall. But *(revised per the 2026-06-11 session, second
+batch — current decision)* an unjammed line is not a speaker. The Guardian you
+wake beside is **nearly empty** — the failed summoning, and the continuing
+strain of reaching across the jam toward its lost champion (the Act 1 glitches
+*are* this expenditure, seen from the other end), have left it essentially
+**dormant** beside its core: barely maintaining the barrier and the binding,
+hoarding the last reserve it has against the Throne's eventual arrival.
+(Prudence, not plan — what that reserve eventually buys stays unwritten until
+the hour it's spent.) Its subconscious still strains past you, toward the
+Act 1 hero, hoping to finish a summoning that already finished. **It does not
+— cannot — recognize you.** You understand the **fragment** you carry now —
+the time-power that, in Act 1, was only blind flickers and a single desperate
+reach to save one friend — as a thing you can actually hold and use; what you
+will not get is guidance. The god is here, and the god is gone.
 
 Second, and worse: **you know everything that is coming.** You lived it. You know
 the war marches to this door. You know the Throne takes the core. You know the
@@ -59,6 +67,18 @@ The party has a camp of its own — a different camp, the same idea as Act 1's:
 struck, moved, and re-pitched as the race across the shrinking map demands, the
 social home between missions. Where the Throne's camp was the lie's furniture
 (order, warmth, performance), this one is the real thing, poorer and truer.
+
+And under the whole act runs **the vigil** *(current decision, 2026-06-11)*:
+the party spends Act 2 keeping watch over the thing that kept watch for five
+centuries — tending a comatose god whose every remaining flicker reaches past
+them, toward who they used to be. The love is one-way; the warmth deposits are
+all the party's, and the Guardian does not and cannot recognize the people
+making them. They guard the gate of their salvation knowing it will never once
+say their names. `[open — dormancy depth: full coma all act, vs. rationed
+surfacings — two or three moments where it half-rises, never lucid, perhaps
+re-speaking summoning fragments ("...are you there...") to the room while the
+hero stands three feet away, each surfacing visibly costing reserve. Lean:
+rationed surfacings. Flagged, not ruled.]`
 
 The mission texture is the inversion of Act 1: what looked like atrocity from
 inside the lie was salvation from outside it. You burn a supply depot — Act 1
@@ -157,10 +177,27 @@ over. (Everything here is contingent on the Beat-7 resolution — see Part Three
 the Manifest; the cheap, on-theme version writes the reforged general
 *character-agnostic*, the empire having burned the person mostly away.)
 
-## The finale — three fronts
+## The finale — the convergence, then three fronts
 
-The capital under attack. The core being taken, the door opening, the legion
-beginning to pour through. Everything you gathered, spent here.
+*(Arrival framing revised per the 2026-06-11 session, second batch — current
+decision.)* The race ends where the loop closes: the party arrives at the
+capital **as the Act 1 climax is playing out there** — the same hour, the same
+hall, because the two acts shared a calendar all along and were always going to
+meet at this event. You walk in two years older than the self who is, at this
+moment, fading out of the world — **and you arrive inside the dying Guardian's
+clearing sightline.** The inexplicable joy that crossed its face in Act 1 — the
+look the hero filed with the glitches — was aimed *here*: at you, at the
+gathered army at your back. The proof of its blind gamble was never a glimpse of
+the thrown. It was you, arriving, already an army. (The collision is never
+announced; the retrieval cue is the smile itself. The Act 1 hero never saw you —
+they were fading, facing the Guardian, you in their blind spot and the
+white-out.) `[open — staging with real emotional weight, flagged not ruled:
+does the arriving party see their own past selves fading out — witnessing their
+own departure from the other side — or has the white-out already taken them?]`
+
+Then the event finishes what it has always finished: the core taken, the door
+opening, the legion beginning to pour through. Everything you gathered, spent
+here.
 
 - **The flanks — the unwinnable vigil.** The Guardian's last soldiers and the
   Throne's *old army* — the two sides lied into hating each other — stand
@@ -281,7 +318,27 @@ The consolidated keep/kill/claim checklist. Plain `[open]` = genuinely undecided
   from the wrong side (leans NPC).
 
 **Act 2 specifics**
-- **[GUESS]** The party's degree of contact with the Guardian in Act 2.
+- ~~The party's degree of contact with the Guardian~~ — **RESOLVED 2026-06-11
+  (second batch, current decision): the dormant vigil.** One-way warmth; it
+  does not and cannot recognize them; no guidance (see *The landing* and the
+  spine's vigil passage).
+- **[open]** Dormancy depth: full coma all act vs. **rationed surfacings**
+  (2–3 half-risings, never lucid, possibly re-speaking summoning fragments —
+  *"...are you there..."* said to the room while the hero stands three feet
+  away — each visibly costing reserve). **Lean: rationed surfacings.** Flagged,
+  not ruled.
+- **[open]** The convergence staging: does the arriving Act 2 party see their
+  own past selves fading out — witnessing their own departure from the other
+  side — or has the white-out already taken them? Real emotional weight either
+  way. Flagged, not ruled.
+- **[open]** The reunion fork — whether the will-piece "survives" to be
+  reunited with its sealed-out presence when the world's locks come off.
+  Sharpened by the second batch: **the piece is SPENT at the throw**, so
+  "survives" likely means something subtler than persistence — what a god gets
+  back when the part of it that stayed behind died satisfied. Not resolved.
+  *(Bookkeeping note: this fork was referenced as "from the previous pass" but
+  appears in no doc — it was almost certainly in the TRUNCATED portion of the
+  2026-06-11 first batch. Original wording still `[pending]` from Tristan.)*
 - **[open]** The Loved NPC's identity and fate; the confiscated camp item.
 - **[GUESS]** Act 2 death rules (resolve by feel once combat is real).
 
