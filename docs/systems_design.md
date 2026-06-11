@@ -100,7 +100,20 @@ Mid-battle team *change* is built as a primitive (`CharacterBase.set_team` /
 `TriggerAct.flip_team`); using it live in a scene (spar partners → allies at the
 breach) is wired per-scene when the combined drill→raid scene is built.
 
-## Other systems — homed here when ready (not yet written up)
+## The camp hub [settled 2026-06-10]
+
+The war camp is the game's **persistent social hub**: one camp, struck and
+re-pitched as the Authority's line advances, the party's home between missions for
+all of Act 1 (Act 2 mirrors it with the party's own camp — different camp, same
+idea). The campaign loop is **mission → camp (talk, bond, breathe) → mission**, and
+the camp re-pitching on new ground each stage is the advancing line made tangible.
+
+Build economy: ONE camp scene (the `camp_grounds` family) serves the whole act —
+re-dressed surroundings per stage (backdrop/terrain beyond the camp edge), same
+interior geography. Camp-life systems (bonding talks, expressive choices, side-quest
+hooks) get built once, in one venue, and run all campaign. Not yet built beyond the
+arrival scene; the camp-hub scene (free walk + companion talks between missions) is
+the natural home for bonding v1's spend side.
 
 These were designed across recent sessions and belong in this doc, but aren't
 formalized yet. Listed so they don't get lost:

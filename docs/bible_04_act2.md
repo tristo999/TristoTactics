@@ -55,6 +55,11 @@ Act 2 objective and Act 1 history want the same ground. The map remembers what
 mattered. (For the full list of which Act 1 plant pays off where, see the
 collision ledger.)
 
+The party has a camp of its own — a different camp, the same idea as Act 1's:
+struck, moved, and re-pitched as the race across the shrinking map demands, the
+social home between missions. Where the Authority's camp was the lie's furniture
+(order, warmth, performance), this one is the real thing, poorer and truer.
+
 The mission texture is the inversion of Act 1: what looked like atrocity from
 inside the lie was salvation from outside it. You burn a supply depot — Act 1
 reported sabotage; the supplies were poisoned and would have killed a village.

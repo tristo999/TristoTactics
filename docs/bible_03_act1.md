@@ -101,6 +101,14 @@ camp life, conversations, the building of bonds. These are the people the empire
 made — each one a true believer with a wound the belief is built on, and you'll
 come to love them without ever seeing the cracks they can't see in themselves.
 
+And the camp itself goes with you. As the Authority's line advances toward the
+capital, the army strikes the camp, marches, and pitches it again — the same
+tents, the same fires, the same drill yard, re-raised on new ground each stage of
+the war. It is the party's home between missions for the whole act: the one
+constant, familiar place while the country around it changes and the front draws
+closer. (The warmth of the same camp, all war long, is part of the lie's
+furniture — order and competence, portable, wherever the empire goes.)
+
 ## The campaign, and the cracks
 
 You march. The Authority's intelligence frames the kingdom's defenders as

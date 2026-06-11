@@ -130,7 +130,14 @@ contempt for the kingdom's "pathetic" defense, an offhand aside dismissing the
 incoming hero and companions as "a band of misfits" — cut off mid-sentence by
 the flash of the summoning. They watch his warmth switch back on as he leaves to
 greet the hero. The clock is the Act 1 battle itself; when the fighting stops,
-the window closes. **Non-negotiable, same as Row 3:** the Act 1 skirmish must
+the window closes.
+
+`[GUESS]` **The home-ground synergy** (free, via the settled mobile-camp ruling):
+the camp is the party's *home* for all of Act 1 — the same layout, re-pitched along
+the march. So when Act 2 infiltrates it (at its first pitch), the player navigates
+a space they know cold from a whole act of living in it — every shortcut, every
+blind corner — now used to sneak, not to live. Home-ground knowledge as the
+infiltration's texture. Never stated in-game. **Non-negotiable, same as Row 3:** the Act 1 skirmish must
 read as a forgettable win — no ominous scoring, no companion saying "that felt
 off" — so Act 2 can reveal you were the distraction in your own heist.
 
