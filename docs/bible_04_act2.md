@@ -158,24 +158,96 @@ and likely fall, at the finale.
 
 Without the lie to frame him, Vael is transparent. The party witnesses a scene of
 his quiet, routine cruelty from the shadows — escalating from the bored contempt
-they overheard at the camp to the thing he does when no asset is watching. Later
-he finally identifies them, and fights — not from strategy but from wounded pride
-that the footnotes he managed and dismissed dismantled his war. He dies a mid-Act-2
-boss, before he can report upward, and **never learns the party time-traveled.**
-`[open]` his final motivation.
+they overheard at the camp to the thing he does when no asset is watching.
 
-## The Unchosen returns
+He also runs a hunt he does not understand *(2026-06-11, third batch)*: Vael
+coordinates alongside the hunter force (below) but is told only that it hunts a
+"kingdom special ops team." He never learns who they are — he manages the
+pursuit of the Throne's most important enemy without being trusted with their
+identity, handled by the exact method he believes makes him superior to the
+herd. He dies wrong about one more thing. `[GUESS]` The hunter reports around
+him, directly upward.
 
-The companion you lost at the capital — the one you were *meant* to believe died —
-did not die. The Throne took them alive, reforged them, and made them the
-commander of a special force hunting your party as traitors to the empire. They
-pursue you across Act 2. And at the revelation moment they corner you **exactly as
-the Throne takes the core and becomes its true form** — and they see it, with
-their own eyes, the thing no lie can re-cover. The veil comes off them the way it
-came off the whole field at the capital. They let you go. They bring their forces
-over. (Everything here is contingent on the Beat-7 resolution — see Part Three and
-the Manifest; the cheap, on-theme version writes the reforged general
-*character-agnostic*, the empire having burned the person mostly away.)
+His death moves to **near the end of Act 2** *(timing amended 2026-06-11; was
+"mid-Act-2 boss")*. The act's sequence: **midpoint** — the hunters pin the
+party down and the Unchosen unmasks; **near-end** — Vael finally identifies the
+party himself and fights, not from strategy but from wounded pride that the
+footnotes he managed and dismissed dismantled his war. In that fight he draws
+on "the gift" and it processes him into legion-stock — the transformation reads
+as **losing, not powering up**: control slipping mid-swing, his last coherent
+line landing *before* the change, everything after it noise (see Part One,
+*Vael*). **Finale** — the Unchosen's redemption at the core. Existing canon
+preserved: he dies before reporting upward, and **never learns the party
+time-traveled.** `[open]` his final motivation.
+
+## The Unchosen apparatus
+
+*(Rewritten 2026-06-11, third batch — current decisions. The old framing — "the
+empire reforged them, burned the person mostly away" — is dead: it was
+brainwash language, and the Throne installs nothing.)*
+
+**The betrayal is real.** The companion you lost at the capital fell believing
+they were ranked and lost — *you had two of us, and you didn't pick me.* The
+Throne adds nothing to that. It **amplifies their own worst hour until it is
+the only hour.** The grievance was never programming. It is the seed, and it is
+true enough. That is why it cuts.
+
+**The origin — the panic throw.** At the convergence, as the Guardian
+evaporates into the throw, its time-power is momentarily exposed and unanchored
+— and the Throne **tastes** it, and forges a crude, degrading, one-use
+counterfeit. And then, in genuine panic — its first moment in five centuries
+facing an event it did not author — it commits its only impulsive act of the
+game: it hurls the just-captured companion back through the closing tear,
+amplified into the perfect assassin, with hastily sealed orders and a squad of
+its own assassins that had just begun coming through the gateway
+(legion-stock). The plagiarist's final theft is a counterfeit of its enemy's
+dying masterpiece. **Protect the panic register:** improvised, not contingency
+— one flinch after five hundred years of patience.
+
+**The self-sealed orders, and the Throne's blindness.** The orders the
+end-Throne scrawls in that panic *are* the orders its mid-war self received two
+years earlier and has been obeying all along. The mid-Throne never detects the
+party independently — it is briefed by its own unforgeable seal, cannot
+conceive the explanation (time is its nature-level blind spot; the loop is made
+of the one magic it has no concept of — Part One), trusts itself, tells no one,
+and files the anomaly under *mine, somehow*. The loop holds: **its one
+spontaneous act was always scripted.** The Guardian gambled freely in fog; the
+Throne moved on rails. The two blindnesses — the Guardian's Throne-shaped
+foresight shadow, the Throne's Guardian-shaped incomprehension — are mirror
+images, and the war is decided in the overlap.
+
+**The quarantine doctrine.** The hunters' standing order: contain, pursue,
+destroy if possible — but *above all* keep the impossible party **away from the
+champion**; the champion must reach the core. The hunt is quarantine. The
+collisions happen where the quarantine fails.
+
+**The midpoint reveal.** Through Act 2's first half the hunter is anonymous to
+the *characters* — special-force armor, engagement at range, and the reforging
+itself as cover — while the *player* is fed retrieval cues: a signature
+fighting style planted across Act 1's battles. The party's blindness is
+motivated, not contrived: **you do not recognize the dead; grief is the lie's
+accomplice.** At the midpoint the hunters finally pin the party down — and the
+Unchosen unmasks **deliberately.** The grievance has waited two years for the
+hero's face. The reveal *is* the attack. The bereavement lie breaks and is
+replaced in the same breath: alive, and aimed at you. `[open — the escape from
+the pin-down: the fragment spent at terrible cost / a gathered ally arrives /
+the orders were capture-not-kill (the Throne wanting anguish). Flagged, not
+ruled.]`
+
+**The redemption, amended** *(consequence of the amplification retcon)*. At the
+core, witnessing the true form breaks the **frame** — the Unchosen sees what
+amplified them, what their grief was *used for* — and the amplification
+collapses. But the betrayal-wound itself is not a lie and does not evaporate:
+it survives, human-sized, real, **theirs again.** Redemption returns the wound
+to its owner; it does not heal it. The silent reconciliation at the game's end
+is the witnessing — the cast doctrine ("healed by being witnessed, not fixed")
+arrived at from the dark side. That is why the scene has no words. Existing
+canon preserved: they let the party go; they bring their forces over.
+
+`[open — the gift in the Unchosen: if they carry the gift, freedom does not
+remove it — legion-seed remains in a freed person. Sits adjacent to the
+Warlock's pact-breaking thread (Manifest): the two debts rhyme; one may teach
+the other.]`
 
 ## The finale — the convergence, then three fronts
 
@@ -195,9 +267,25 @@ white-out.) `[open — staging with real emotional weight, flagged not ruled:
 does the arriving party see their own past selves fading out — witnessing their
 own departure from the other side — or has the white-out already taken them?]`
 
+**Convergence protections** *(2026-06-11, third batch — the first is absolute)*:
+- **The party NEVER sees the Unchosen thrown back.** Their last image of their
+  friend is the assassin's blade and the fall — the image the manufactured
+  death needs. Blocking does the work: the white-out, the true form
+  manifesting, the party's sightline forward on the Guardian and their
+  dissolving past selves — the panic-throw crosses the same light from another
+  angle. This protection preserves the burial; the midpoint reveal dies
+  without it.
+- `[open — the heaviest beat in the game, candidate: at the finale, does the
+  REDEEMED hunter stand in this hall and witness their own taking — knowing
+  everything the reforging does, unable to intervene, the loop holding?
+  Tristan authors this by hand if at all. Flag only.]`
+
 Then the event finishes what it has always finished: the core taken, the door
 opening, the legion beginning to pour through. Everything you gathered, spent
-here.
+here — and the legion arrives **pre-familiar** *(third batch; proposed ledger
+row pending)*: the hunter's assassins were legion-stock all along, so the party
+has spent two years being hunted by the apocalypse's advance guard. At the door,
+the endless thing pouring through has a silhouette they already know.
 
 - **The flanks — the unwinnable vigil.** The Guardian's last soldiers and the
   Throne's *old army* — the two sides lied into hating each other — stand
@@ -299,18 +387,62 @@ The consolidated keep/kill/claim checklist. Plain `[open]` = genuinely undecided
   eldest/first riser); **[open]** post-victory, whether anything more than clean
   current returns (see Resolution).
 
+**The amplification retcon (2026-06-11 third batch) — LOAD-BEARING**
+- The Throne's mind-power = amplification of native want, never installation
+  (Part One, *The amplifier*; swept through Parts One–Three). Everything
+  downstream of "brainwashing" reads through this now.
+- **[GUESS]** Vael's gift-transformation is amplification's terminal stage.
+- **[open / strong candidate]** Legion-stock = people reduced to a single
+  amplified want — which would connect the legion to the existing
+  the-paid-become-the-legion thread (Vael's "gift," Part One). Noted, not
+  resolved.
+- **RESOLVED** (third batch): detection timing — how the mid-war Throne found
+  the party. It never detected them; it was **briefed by its own future**
+  (the self-sealed orders, *The Unchosen apparatus*).
+
 **Cast**
 - **[GUESS]** The Knight, the Rogue, the Wizard — full proposals in Part Two,
-  awaiting keep/kill/claim. **[open]** the roster count/composition (and the
-  floated `[GUESS]` Paladin 7th).
+  awaiting keep/kill/claim.
+- ~~Roster count/composition~~ — **CURRENT DECISION 2026-06-11: EIGHT, in role
+  pairs** (Priestess+Paladin / dwarf+Knight / Wizard+Warlock / Archer+Rogue) —
+  pairs decontaminate Beat 7 and make the surviving half a standing absence
+  (Part Two). The Paladin's wound + non-treading power source still **[open]**
+  (a different erased god's current would make the healer pair theologically
+  rhyming).
 - **[open]** Genders of all companions except the Archer (woman).
 - **[GUESS]** The Warlock's pact-breaking mechanism and his tie to the keystone.
+  **[open]** (adjacent, third batch): the gift in the Unchosen — legion-seed
+  remains in a freed person; the two debts rhyme, one may teach the other.
 
 **Beat 7 / the Unchosen**
-- **[for now]** The Choice is between the two most-bonded companions, at the
-  capital (Part Three). **[open]** whether to author the Unchosen per-companion or
-  character-agnostic (scope), and whether the lost one must be a companion or
-  could be a recurring NPC.
+- **PARKED**, with the sharpened option board on record (2026-06-11):
+  1. **Two most-bonded** *(the current "for now")* — costs: six authored
+     Unchosen arcs; bonding turns adversarial once targeting is known.
+  2. **Fixed authored pair** — one perfect tragedy, pre-figured from hour one;
+     risk: the player isn't attached.
+  3. **Embedded camp NPCs, rebuilt** — decent people inside the machine, the
+     gradient at handshake distance; the only tactics-pure choice; costs: love
+     asserted via scenes rather than built via play; the grievance softens.
+  4. **(hybrid)** A fixed pool of ~3 candidates designed from birth as
+     takeable; the trap fires on the player's two deepest *within the pool* —
+     with the rider that the pool draws **at most one member per role pair**,
+     so the trap can never orphan a role.
+  NG+ note: the mutual exclusivity is the loop structure operating on
+  playthroughs — a feature candidate, not a bug.
+- **Doc-facing design notes (never player-facing):** Elena's Unchosen = the
+  dissociative trance locked permanent — cold, wordless, identified by
+  *ballistics* before any cutscene; her redemption = the trance BREAKING, the
+  stammer returning mid-battlefield. Exhibit A that authored-specific outbids
+  the character-agnostic skeleton; the compromise (agnostic skeleton +
+  wound-flavored voice per companion) is on the table.
+- **Comparison file:** *Dispatch* (AdHoc, 2025) ships the shared skeleton —
+  cut-one-of-two, defection to the villain, finale confrontation.
+  Differentiation is load-bearing and must be protected in staging: **Beat 7 is
+  a FAILED RESCUE, never a firing** — the scene must read "you couldn't reach
+  them," never "you picked the better unit."
+- **[open]** The midpoint pin-down escape (fragment spent / ally arrives /
+  capture-not-kill); the heaviest-beat superposition (the redeemed hunter
+  witnessing their own taking — Tristan authors by hand if at all).
 
 **Collisions / beats**
 - **[open]** Collision Row 4 — the kindness that was a trap (the set's missing

@@ -97,9 +97,11 @@ don't brace for them, recoverable the instant the alignment comes.
   tragedy, not aloofness; only their currents still reach in — and the Throne,
   a bodiless pretender that seeped in where gods cannot, took credit for every
   one of them, absorbing each kingdom's god-title as an "aspect" of itself.
-  Brainwashing the hero is the same move at the scale of one mind — cut them
-  off from the real voice, install your own. *(Cosmology per the 2026-06-11
-  session — current decision; full version in `bible_01_world.md`.)*
+  The veil on the hero is the same move at the scale of one mind — and it is
+  amplification, never installation: cut them off from the real voice, hand
+  them one want of their own, and raise the gain until it drowns everything
+  else. *(Cosmology per the 2026-06-11 session — current decision; full
+  version in `bible_01_world.md`.)*
 - **Complicity has a price even at the top.** Standing in the empire is a
   gradient of how early you folded — so the prosperous "winners" are just the
   kingdoms that capitulated soonest, robbed of their own gods too and taught to

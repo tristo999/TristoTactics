@@ -19,9 +19,9 @@
 > Guardian-as-piece (and its spent, dormant state), the braid, and Vael. These
 > are **Tristan's current decisions** — written at that firmness, not yet
 > hardened canon; iterate freely. (The first batch arrived truncated; the braid
-> clause and the Vael section were re-supplied later the same day and are now
-> integrated in full. A third batch — "the hunter apparatus," an amplification
-> sweep, a Vael-timing amendment — is expected and has NOT yet arrived.)
+> clause and the Vael section were re-supplied later the same day. The third
+> batch — the amplification retcon, the Unchosen apparatus, the eight-pair
+> roster — landed 2026-06-11 and is integrated across all four parts.)
 >
 > Draft date: 2026-06-02 · Part One revised 2026-06-11
 
@@ -119,6 +119,31 @@ specimen)*. The "true form" that manifests at the capital at the end of Act 1 is
 character describes it physically, no one quotes it directly — doctrine
 paraphrases, Vael relays, nobody has *seen*. The first face the world gets is
 the one the player gets.
+
+## The amplifier (how the lie actually works)
+
+*(Load-bearing retcon, 2026-06-11 third batch — current decision; sweeps all
+four parts.)* The Throne's power over minds is **not** brainwashing. It has
+never installed a single false belief — it *cannot*; it makes nothing. What it
+does is find what is already in a person and **raise the gain.** Amplification
+of native want. The veil is **volume, not a wall.**
+
+The armies don't need lies implanted: soldiers at war already want the enemy
+monstrous, and the veil amplifies that tribal fear until insurgents snarl and
+the truth arrives garbled. The plagiarist's one power, applied to the mind —
+it authors nothing there either. Every cruelty the empire's people commit under
+the veil began as something of their own. That is the horror of it, and the
+indictment: the Throne's masterpiece is made entirely of materials the victims
+supplied.
+
+And one thing more, recorded here because it decides the war *(2026-06-11,
+third batch)*: **time is the Throne's nature-level blind spot.** The loop the
+whole game runs on is made of the one magic it has no concept of — the
+Guardian's. It cannot forge what it cannot conceive; when it meets time-work,
+it can only counterfeit crudely and explain the residue to itself as "mine,
+somehow." Set this beside the Guardian's own blindness (the Throne is the hole
+in its foresight) and you have the war's true shape: **two perfect blindnesses,
+mirror images — and the war is decided in the overlap.**
 
 ## The core
 

@@ -136,6 +136,11 @@ been drawing on her own god her entire life and thanking its thief for it. The
 most faithful servant of the thing that overwrote her god is the woman still
 carrying its power in her hands.
 
+*(Amplification note, 2026-06-11: the veil never installed an ounce of her
+faith. Her devotion is real — her own — and the Throne merely raises its gain
+and keeps it misaddressed. Weaponized sincerity, not mind-control. This is why
+her arc survives the retcon untouched: everything she feels was always hers.)*
+
 Her arc turns on a distinction between **knowing and believing.** Across Act 1
 she *accumulates* the evidence — toppled temples the empire never fully scrubbed,
 doctrine that won't cohere, the one time a heal works when the invocation comes
@@ -293,10 +298,19 @@ in the game, fitting a man who needs the world to make sense. `[GUESS — gender
 open. Also flags an open question: is six companions the count, or does the
 Paladin make a seventh? See manifest.]`
 
-> **`[GUESS]` On the Paladin:** a heal/tank hybrid was floated as a possible
-> additional slot. I've left it *out* of the core six on purpose, because its
-> role (heal + tank) overlaps the Priestess and the dwarf, and the working rule
-> is that a character earns a slot through a *wound*, not a class gap. If a
-> Paladin joins, she needs a wound as distinct as the others and a power source
-> that *isn't* channeled-divinity (or she treads on the Priestess). Flagged as
-> open, not designed.
+> **The roster — EIGHT companions in role pairs** *(current decision,
+> 2026-06-11 third batch — reverses this doc's earlier Paladin-exclusion lean)*:
+> healers **Priestess + Paladin** · tanks **dwarf + Knight** · casters
+> **Wizard + Warlock** · ranged **Archer + Rogue**. The rationale, on record:
+> **pairs decontaminate Beat 7** — losing a companion never deletes a
+> capability, only a *person*, so the choice is purified of loadout math. And
+> the surviving half of a pair is a **standing absence**: every time you deploy
+> the remaining healer you field the other one too — the role itself becomes a
+> per-battle retrieval cue at zero authoring cost.
+>
+> The Paladin still **owes a wound** — the cast doctrine stands (a slot is
+> earned through a wound, not a class gap), as does the constraint that her
+> power source must not tread on the Priestess. Note that under the new
+> cosmology (Part One) a *different erased god's current* would make the healer
+> pair **theologically rhyming rather than redundant** — two stolen lights, two
+> liturgies, one crime. Wound undesigned; flagged.

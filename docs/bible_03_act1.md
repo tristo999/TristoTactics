@@ -24,8 +24,10 @@ the light: *…Find me…*
 
 That is the Guardian, reaching across worlds to pull its champion home. And that
 is the Throne, intercepting the call — not killing the Guardian, not even
-touching it, but getting *between* it and you. Jamming the line. Walling your
-mind. The summoning was meant to land you at the Guardian's side, in the capital,
+touching it, but getting *between* it and you. Jamming the line. And then — not
+walling your mind, nothing so crude *(amplification retcon, 2026-06-11)* — but
+turning up the volume on the one thing it was about to hand you, until nothing
+else could be heard over it. The summoning was meant to land you at the Guardian's side, in the capital,
 at the source. Instead the Throne catches the throw and drops you somewhere
 else entirely.
 
@@ -57,6 +59,14 @@ be brought down, and you're the weapon the Throne called up to do it. It's a
 clean story. It gives you a reason to move. You believe it, because believing it
 is the only thing on offer, and because the man telling it to you is so very
 kind.
+
+*(And here is the machine under the kindness — amplification retcon,
+2026-06-11: the hero arrives emptied by transit, and Vael's whole job in this
+scene is to hand them exactly **one want** — to be the hero, to serve the ones
+who made them. The Throne then does the only thing it can do: it raises the
+gain on that single note until it drowns everything else for an act. The lie is
+never installed. It is the hero's own borrowed wish, played back too loud to
+think over.)*
 
 (The faint half-feeling you can't place — that somewhere a voice asked you to
 *find* it — has no object the Throne will ever let you attach to it. The
@@ -128,11 +138,15 @@ And there are worse cracks than the glitches — moral ones. For half a second, 
 the middle of a battle, the *enemy* slips. The sneering insurgent resolves, just
 for an instant, into a frightened person defending their home. A face that isn't
 a fanatic's. A line of dialogue that sounds like fear instead of hatred. And then
-the lie slams back down and they're monsters again and you keep fighting. The
-player sees these flickers. The hero dismisses them. (This matters enormously
+the volume comes back up and they're monsters again and you keep fighting.
+*(Amplification retcon, 2026-06-11: nothing slams down from outside. The veil is
+the hero's own want — to be the hero, to be righteous, to serve the ones who
+made them — amplified until it drowns what they half-heard. The dismissals are
+the player's own desire to be good, weaponized. No foreign hand on the wheel.)*
+The player sees these flickers. The hero dismisses them. (This matters enormously
 later: when the truth finally lands, it won't be *new* — it'll be every dismissed
 flicker confirming at once. The player will realize they *saw*, in pieces, and
-kept fighting anyway.)
+kept fighting anyway — and that the thing that kept them fighting was theirs.)
 
 Three things happen in this stretch of the war that you will not understand until
 much later. They are planted here, deliberately, as ordinary beats:
@@ -140,9 +154,18 @@ much later. They are planted here, deliberately, as ordinary beats:
 **Cloaked figures appear in a battle.** They move wrong. They shout things that
 come through your ears as garbled threats. The Throne labels them enemy
 saboteurs and you cut them down and move on. *(They are not saboteurs. They are
-shouting the truth, and the lie in your head is turning their words to static and
-their faces to snarls. You will stand on the other side of this exact moment one
-day.)*
+shouting the truth, and the amplifier in your head — your own fear of them,
+your own need for them to be the enemy, gain raised — is turning their words to
+static and their faces to snarls. You will stand on the other side of this
+exact moment one day.)*
+
+**Friendly special assets, at a distance.** *(Plant added 2026-06-11, third
+batch — proposed ledger row pending.)* Mid-campaign, the hero's force passes
+another unit on a far ridge or across a valley — special assets, the wrong
+silhouette, wrong in a way nobody comments on. Vael, asked: *"Not ours to ask
+about."* (Literally true — they are not his, and not anyone's.) Unremarkable,
+unmarked, filed and forgotten. *(They are the hunter's squad — see Part Four.
+The silhouette is the cue, seeded here so Act 2 can recognize it.)*
 
 **The bridge — the first face-off.** Deeper into the campaign, in the rain, a
 bridge comes down mid-mission — and as the dust and water settle, you see them
@@ -205,14 +228,19 @@ since before memory.
 
 You get close enough, for the first time, to the thing the Throne has spent
 the entire war keeping from you. And proximity does what the whole campaign
-couldn't: the suppression *can't hold around you anymore.* The lie thins, and
-tears.
+couldn't *(amplification retcon, 2026-06-11)*: **the Guardian's presence
+restores the signal.** Amplification is volume, not a wall — and volume cannot
+outshout truth physically present. The gain comes down. Nothing is removed,
+nothing is added; the lie doesn't tear so much as *quiet*, and what remains in
+the silence is everything you always half-heard.
 
 The veil shatters — for you, first, alone. And you see it. The "insurgents" are
 terrified people who were defending their homes. The righteous war is a slaughter
 you led. Every dismissed glitch, every flicker of a frightened face, every crack
 you looked away from — all of it confirms at once, and you gasp in horror at what
-you have done.
+you have done. (None of it is new. That is the cruelty of amplification: there
+is no revelation here, only the volume dropping on what you carried the whole
+way.)
 
 And the Guardian *speaks.* Clearly. No static, no fragment — the first whole
 words you've ever heard from it. And it does not accuse you. It **reassures** you.
@@ -274,7 +302,9 @@ boss is the empire revealed, not an abstraction.]`
 
 And as it transforms, the veil lifts — not just for you now, but **for everyone.**
 Every soldier on the field, both sides, sees in the same instant what you saw a
-moment before. The lie comes off the whole world at once. *(Hold onto this. The
+moment before. The amplifier has turned to face its own becoming; the gain drops
+off every mind at once, and what each soldier is left holding is only what was
+always theirs. The lie comes off the whole world at once. *(Hold onto this. The
 empire's own soldiers get one clear look at the truth as their master changes —
 and that single glimpse is the seed of everything that happens at the very end of
 the game, when the two armies that spent the war killing each other stand
@@ -361,6 +391,12 @@ unmistakable, unaccountable **joy** — wrong-feeling, even, in the worst moment
 of the world. The hero files it with the glitches. Act 1 ends clean: you carry
 out only the incomprehensible joy. *(The hero NEVER sees the arrival. Payoff:
 Part Four, the finale — the player eventually stands where that gaze pointed.)*
+
+`[open — the hero's unreadable glimpse (2026-06-11 third batch; decide at
+staging): optionally, in the same dissolving seconds, something in the colossal
+new shape FLINCHES — snatches the fallen friend, hurls them into the light. If
+used, it files beside the Guardian's smile as the climax's second inexplicable
+image: one joy, one fear, both explained an act later. Optional; flag only.]`
 
 > *(Doc-facing note, never player-facing: the gamble rhymes with Beat 7 — god
 > and hero each face "save one of two loves," one act apart. The hero never
