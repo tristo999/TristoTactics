@@ -228,6 +228,13 @@ Victory (keep, one addition — Vael's coda, warmth back on like a switch):
 4. The kingdom stays unnamed ("the kingdom") until the name is ruled (slice gate 5).
 5. Vael's victory coda (the one-beat-too-long look) — flavor or too marked?
 
+**BUILT 2026-06-10:** Scenes 3–4 are now in `camp_arrival_scene` — the greeting
+delivers **the lie** in full; the camp walk is **player-walked** with one-shot
+TriggerEngine station stops (Borin/Elena/Lyra, any order; Vael waits at the yard
+gate; early arrival = a nudge); handoff → `training_grounds_scene`. Scene 5–6 =
+`training_grounds.gd`. Dialogue = this doc's draft, lightly adapted (Vael not
+present at stations — he sends you). Edit pass pending after a full playthrough.
+
 **RULED 2026-06-10 (scene/yard/walk):** drill→breach→raid = **one continuous scene**;
 the yard stays **big** with **3 skill areas + a central sparring pit** and the raid as
 **3 enemy groups through 3 north breaches** (more enemies, balancing pass); the camp

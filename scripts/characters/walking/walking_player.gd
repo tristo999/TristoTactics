@@ -105,6 +105,7 @@ func _try_step(dir: Vector2i) -> void:
 	_step_to(target_tile, speed)
 
 func _step_to(tile: Vector2i, speed: float) -> void:
+	var from_tile := current_tile
 	current_tile = tile
 	_is_moving = true
 	sprite.play("walk_" + _facing)
@@ -118,6 +119,9 @@ func _step_to(tile: Vector2i, speed: float) -> void:
 		if _cinematic_mode:
 			return  # cinematic tween owns movement; don't interfere
 		_is_moving = false
+		# Per-step movement event: feeds walk-through doors and TriggerEngine
+		# regions in walking scenes (battle units emit the same signal per move).
+		EventBus.character_moved.emit(self, from_tile, tile)
 		# Immediately consume buffered input — no dropped keystrokes.
 		var buffered := _queued_dir
 		_queued_dir = Vector2i.ZERO
