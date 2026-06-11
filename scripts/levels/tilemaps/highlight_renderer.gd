@@ -19,7 +19,10 @@ const COLOR_CURRENT_CHAR := Color(0.1, 0.9, 0.2, 0.75)
 const CURRENT_CHAR_LINE_WIDTH := 2.0
 
 # Movement range: dark semi-transparent filled squares
-const COLOR_MOVEMENT := Color(0.05, 0.08, 0.18, 0.65)
+# Light translucent wash — terrain must stay readable underneath. (The old value,
+# a 65%-opaque near-black navy, painted the MOV range as a giant dark diamond that
+# made flat-grass maps read as broken "patchwork".)
+const COLOR_MOVEMENT := Color(0.45, 0.85, 1.0, 0.30)
 
 # Attack range: red smaller hollow squares overlaid on movement
 const COLOR_ATTACK := Color(0.95, 0.15, 0.1, 0.65)

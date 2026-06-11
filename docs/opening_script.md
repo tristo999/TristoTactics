@@ -227,3 +227,11 @@ Victory (keep, one addition — Vael's coda, warmth back on like a switch):
    spar) — or a different pair?
 4. The kingdom stays unnamed ("the kingdom") until the name is ruled (slice gate 5).
 5. Vael's victory coda (the one-beat-too-long look) — flavor or too marked?
+
+**RULED 2026-06-10 (scene/yard/walk):** drill→breach→raid = **one continuous scene**;
+the yard stays **big** with **3 skill areas + a central sparring pit** and the raid as
+**3 enemy groups through 3 north breaches** (more enemies, balancing pass); the camp
+walk is **player-walked with trigger stops** (not a cutscene) — Vael waits ahead at
+each station. Yard redesign spec: `docs/levels/training_grounds.md`. Also fixed: the
+movement-range highlight was a 65%-opaque near-black fill (the "patchwork"); now a
+light translucent wash (`highlight_renderer.gd`).
