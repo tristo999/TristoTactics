@@ -147,6 +147,8 @@ The player sees these flickers. The hero dismisses them. (This matters enormousl
 later: when the truth finally lands, it won't be *new* — it'll be every dismissed
 flicker confirming at once. The player will realize they *saw*, in pieces, and
 kept fighting anyway — and that the thing that kept them fighting was theirs.)
+*(Protect that last clause — Tristan, 2026-06-11: it is the amplification
+retcon's thesis in seven words and survives every future edit.)*
 
 Three things happen in this stretch of the war that you will not understand until
 much later. They are planted here, deliberately, as ordinary beats:
@@ -160,7 +162,7 @@ static and their faces to snarls. You will stand on the other side of this
 exact moment one day.)*
 
 **Friendly special assets, at a distance.** *(Plant added 2026-06-11, third
-batch — proposed ledger row pending.)* Mid-campaign, the hero's force passes
+batch — ledger Row 8.)* Mid-campaign, the hero's force passes
 another unit on a far ridge or across a valley — special assets, the wrong
 silhouette, wrong in a way nobody comments on. Vael, asked: *"Not ours to ask
 about."* (Literally true — they are not his, and not anyone's.) Unremarkable,

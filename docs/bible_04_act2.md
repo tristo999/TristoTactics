@@ -282,8 +282,7 @@ own departure from the other side — or has the white-out already taken them?]`
 
 Then the event finishes what it has always finished: the core taken, the door
 opening, the legion beginning to pour through. Everything you gathered, spent
-here — and the legion arrives **pre-familiar** *(third batch; proposed ledger
-row pending)*: the hunter's assassins were legion-stock all along, so the party
+here — and the legion arrives **pre-familiar** *(third batch; ledger Row 7)*: the hunter's assassins were legion-stock all along, so the party
 has spent two years being hunted by the apocalypse's advance guard. At the door,
 the endless thing pouring through has a silhouette they already know.
 
@@ -392,10 +391,15 @@ The consolidated keep/kill/claim checklist. Plain `[open]` = genuinely undecided
   (Part One, *The amplifier*; swept through Parts One–Three). Everything
   downstream of "brainwashing" reads through this now.
 - **[GUESS]** Vael's gift-transformation is amplification's terminal stage.
-- **[open / strong candidate]** Legion-stock = people reduced to a single
-  amplified want — which would connect the legion to the existing
-  the-paid-become-the-legion thread (Vael's "gift," Part One). Noted, not
-  resolved.
+- **[open / strong candidate] THE LEGION'S COMPOSITION.** *(Re-supplied
+  2026-06-11 — a batch-1 truncation casualty, same loss as the braid clause and
+  the Vael section.)* Is the endless legion made of **the paid** — collaborators
+  from every conquered plane, promised power, paid in the gift, processed into
+  stock? Five hundred worlds of Vaels, still serving, still paid. Connects:
+  Vael's transformation (the gift's terminal stage), the amplification model
+  (legion-stock = a person reduced to one amplified want), and the hunter's
+  squad (ledger Rows 7–8). If ruled true, the door opens onto the game's thesis
+  at scale: **every monster that comes through once took the deal.**
 - **RESOLVED** (third batch): detection timing — how the mid-war Throne found
   the party. It never detected them; it was **briefed by its own future**
   (the self-sealed orders, *The Unchosen apparatus*).
