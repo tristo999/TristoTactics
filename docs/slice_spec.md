@@ -74,7 +74,7 @@ whether the opening plants an unreadable end-game cue; decide before finishing).
 Wake in the summoning chamber, walk out into the camp, Vael's warm greeting
 (*"You actually made it…"*). **Remaining:** the scene is currently just a walking
 room with a door — needs Vael, soldiers, torchlight, the camp atmosphere, and
-the arrival dialogue (the corrected lie: *the Authority summoned you*). No combat.
+the arrival dialogue (the corrected lie: *the Throne summoned you*). No combat.
 - *Demonstrates:* tone, Vael's warmth, the silent hero, the world.
 
 ### Beat 2 — TUTORIAL + RAID — build 🟡 (battle scaffold plays; sequencing unbuilt) — the big one
@@ -102,7 +102,7 @@ choices between missions). First **glitches** appear and are dismissed; first
 
 ### Beat 4 — SHADOWED FIGURES (first glimpse) — build ⬜
 Cloaked figures appear in a battle; their shouts come through as garbled threats;
-Authority calls them saboteurs; you move on.
+Throne calls them saboteurs; you move on.
 - *Plants:* collision row 2 (the unheard face-off) and the garbled-line cue.
 - *Demonstrates:* the escalating wrongness; sets up the bridge.
 
@@ -133,7 +133,7 @@ beginnings of bonding/preference. Almost certainly the **Archer** plus one other
 ## Asset needs (for the artists this slice is meant to recruit)
 
 - **Characters:** the silent Hero; 2 companions (Archer + 1); Commander Vael
-  (sprite + portrait, warm register); Authority soldiers; kingdom defenders /
+  (sprite + portrait, warm register); Throne soldiers; kingdom defenders /
   "insurgents" — *faction-neutral visual identity* so the Act 2 reframe lands;
   the cloaked Act-2-party figures (shadowed, unreadable).
 - **Tilesets / environments:** summoning chamber; the war camp / training ground

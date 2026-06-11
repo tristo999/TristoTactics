@@ -176,7 +176,7 @@ func _run_drill() -> void:
 			_borin.heal(missing, lyra)
 			await AttackAnimationOverlay.play_heal_animation(lyra, _borin, missing)
 		await _say([
-			["Lyra", "—and by its light be mended. Honestly, you ASK them to hit you—"],
+			["Lyra", "—and by the Light be mended. Honestly, you ASK them to hit you—"],
 			["Borin", "It's instructional!"],
 		])
 

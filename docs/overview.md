@@ -19,9 +19,11 @@ manage. Tone: righteous warmth curdling into tragedy.
 ## The pitch
 
 A silent hero is summoned across worlds by a failing god — the Guardian — to
-lead the last resistance against an empire that has spent centuries blocking the
-world's gods out of it and installing itself in the gap (it claims to have
-killed them; it only suppressed them). The empire intercepts the summoning. It doesn't kill the
+lead the last resistance against an empire ruled by **the Throne**: a bodiless
+thing from outside the plane that has spent centuries wearing the world's gods'
+stolen names (it claims to have killed them; the truth is they were never *in*
+the world to kill — divinity doesn't fit inside a plane, and the Throne simply
+took credit for everything that still flows in). The empire intercepts the summoning. It doesn't kill the
 hero. It cuts them off from the Guardian, walls their mind with a lie, and sends
 them to war against the very god that called them, certain the whole time that
 they're the righteous one. The Guardian bleeds through in glitches — half a
@@ -89,10 +91,15 @@ don't brace for them, recoverable the instant the alignment comes.
   Every soldier — and the hero — is a victim taught that the wronged party is
   the villain.
 - **Deicide and substitution** *(as the empire tells it).* It claims to have
-  killed the old gods and worn the corpse — but the truth is suppression: the
-  distant, rarely-interfering gods were *blocked out*, not slain, and the empire
-  installed itself in the gap. Brainwashing the hero is the same move at the
-  scale of one mind — cut them off from the real voice, install your own.
+  killed the old gods and worn the corpse — but the gods were never killable
+  *here*: they are the world's own ascended, and the price of rising was
+  leaving (divinity doesn't fit inside a plane). Their distance is physics and
+  tragedy, not aloofness; only their currents still reach in — and the Throne,
+  a bodiless pretender that seeped in where gods cannot, took credit for every
+  one of them, absorbing each kingdom's god-title as an "aspect" of itself.
+  Brainwashing the hero is the same move at the scale of one mind — cut them
+  off from the real voice, install your own. *(Cosmology per the 2026-06-11
+  session — current decision; full version in `bible_01_world.md`.)*
 - **Complicity has a price even at the top.** Standing in the empire is a
   gradient of how early you folded — so the prosperous "winners" are just the
   kingdoms that capitulated soonest, robbed of their own gods too and taught to

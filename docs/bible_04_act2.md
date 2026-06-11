@@ -18,7 +18,7 @@ reached it** — exactly where the summoning was always meant to put you, now th
 it has finally completed. The whole surviving party comes through with you.
 
 Two things are different from the moment you open your eyes. First, **the line
-isn't jammed.** The Authority hasn't intercepted anything yet — it hasn't even
+isn't jammed.** The Throne hasn't intercepted anything yet — it hasn't even
 begun its final march — so for the first time the Guardian and its champion are
 on the same side of the wall. You can be *spoken to.* You understand the
 **fragment** you carry now — the time-power that, in Act 1, was only blind
@@ -28,7 +28,7 @@ Guardian in Act 2, and how much it can guide them, are open; settled is that the
 arrive at it, pre-war, carrying the fragment, no longer cut off.]`
 
 Second, and worse: **you know everything that is coming.** You lived it. You know
-the war marches to this door. You know the Authority takes the core. You know the
+the war marches to this door. You know the Throne takes the core. You know the
 door opens and the legion comes through. And you know the loop is iron — you are
 not here to *prevent* Act 1. Act 1 is inevitable; it happened; it will happen.
 You are here to be **ready on the other side of the door this time.** The first
@@ -38,7 +38,7 @@ opens onto *you*, waiting, with everything you could carry there.
 ## The spine — a race to gather, across a shrinking map
 
 Act 2 is not aimless sabotage. It has a clock and a shopping list. The clock is
-**the Authority's advancing line** — the same march you led in Act 1, now seen
+**the Throne's advancing line** — the same march you led in Act 1, now seen
 from in front of it, eating the map region by region. The shopping list is
 **mostly people**: the roster that has to stand on the three fronts at the end.
 Gathering salvation *is* assembling the final-battle cast.
@@ -57,7 +57,7 @@ collision ledger.)
 
 The party has a camp of its own — a different camp, the same idea as Act 1's:
 struck, moved, and re-pitched as the race across the shrinking map demands, the
-social home between missions. Where the Authority's camp was the lie's furniture
+social home between missions. Where the Throne's camp was the lie's furniture
 (order, warmth, performance), this one is the real thing, poorer and truer.
 
 The mission texture is the inversion of Act 1: what looked like atrocity from
@@ -147,10 +147,10 @@ boss, before he can report upward, and **never learns the party time-traveled.**
 ## The Unchosen returns
 
 The companion you lost at the capital — the one you were *meant* to believe died —
-did not die. The Authority took them alive, reforged them, and made them the
+did not die. The Throne took them alive, reforged them, and made them the
 commander of a special force hunting your party as traitors to the empire. They
 pursue you across Act 2. And at the revelation moment they corner you **exactly as
-the Authority takes the core and becomes its true form** — and they see it, with
+the Throne takes the core and becomes its true form** — and they see it, with
 their own eyes, the thing no lie can re-cover. The veil comes off them the way it
 came off the whole field at the capital. They let you go. They bring their forces
 over. (Everything here is contingent on the Beat-7 resolution — see Part Three and
@@ -163,7 +163,7 @@ The capital under attack. The core being taken, the door opening, the legion
 beginning to pour through. Everything you gathered, spent here.
 
 - **The flanks — the unwinnable vigil.** The Guardian's last soldiers and the
-  Authority's *old army* — the two sides lied into hating each other — stand
+  Throne's *old army* — the two sides lied into hating each other — stand
   together against the endless legion. The reconciliation is shown as a
   **formation, not a speech**: two banners in one line *is* the lie breaking at
   the scale of an army. (This is the seed planted at the Act 1 capital, when the
@@ -195,19 +195,28 @@ longer saving everyone. Grace is **being worthy of the sacrifice** — reaching 
 door before the line they are holding runs out, so the time they bought with their
 lives doesn't go to nothing. The hardest expression of the thesis: sometimes the
 most merciful thing you can do with a sacrifice is be worth it. `[GUESS — Act 2
-death rules (authored, designed losses now that the Authority's no-death
+death rules (authored, designed losses now that the Throne's no-death
 suppression is lifting in-fiction) resolve by feel once combat is real; see
 systems_design.]`
 
 ## Resolution
 
-The door is reclosed (mechanism = the keystone). The Authority's control
-collapses. And because its mere presence was the weight pinning the world's gods,
-the **suppression lifts** — the gods, never killed, only blocked, can touch the
-world again. This is the world-scale grace, and it is the truest expression of the
-whole game: *you did not summon salvation; you removed the weight on it.* What was
-always there finally breathes. **[open]** whether the gods themselves return or
-only fragments of their power remain. The hero reaches, at last and for real, the
+The door is reclosed (mechanism = the keystone). The Throne's control collapses.
+And the world's locks finally come off — *(reframed per the 2026-06-11 cosmology,
+current decision)*: the gods were never pinned by the Throne's presence; they
+have been outside all along, because divinity does not fit inside a plane —
+that was the price of their rising. What the Throne and the binding choked were
+the **thin apertures**: the currents, the blessings, the quiet prayer-machinery
+that was always the only part of a god that fits back through. With the door
+shut and the pretender's grip broken, the currents run clean and *named* again
+— prayers reaching the gods they were always reaching, credited at last to the
+right names. This is the world-scale grace, and it is the truest expression of
+the whole game: *you did not summon salvation; you removed the weight on it.*
+What was always there finally breathes. **[open]** how much more than current
+comes back — whether any god can press a presence to the world's thin places
+again, and what becomes of the Throne and the binding once the door is reclosed
+(likely covered by the `[pending]` truncated portion of the 2026-06-11
+decisions — do not invent). The hero reaches, at last and for real, the
 destination the Guardian was bringing them to all along.
 
 ## Silent reconciliation
@@ -227,15 +236,28 @@ The consolidated keep/kill/claim checklist. Plain `[open]` = genuinely undecided
 
 **Big keystones**
 - **[open]** The keystone — what the fragment does at the core/door (Part Four).
+  The 2026-06-11 cosmology gives it new walls to land between (the mousetrap
+  property, the braid) — but the braid's significance clause is **[pending]**
+  (truncated decision text; get it before designing the keystone).
 - **[open]** The kingdom's name and cultural identity (Part One).
-- **[open]** The Authority's nature — singular entity vs. system — and what, if
-  anything, sits above Vael now the true form is the final boss (Part One).
-- **[open]** The core's deepest metaphysics (`[GUESS]`: the renewable spring).
+- ~~The Throne's nature~~ — **DEFINED 2026-06-11** (current decision): a
+  planes-conquering pretender, less than a god by predatory design, bodiless
+  here, hungry for godhood (Part One). Still open from that thread:
+  **[open]** the old ugly name (the Guardian's people's word for it; Act 2's
+  resistance vocabulary), and **[pending]** the VAEL section of the decisions
+  (human collaborators — text never arrived).
+- ~~The core's deepest metaphysics~~ — **DEFINED 2026-06-11**: the gate of
+  ascension, the only graspable divine mass in the plane, the binding's anchor.
+  The "renewable spring" `[GUESS]` is **killed** (the core is explicitly NOT
+  the source of the world's magic).
 
 **The gods**
-- **[open]** When the Authority falls: do the gods themselves return, or only
-  fragments of their power? **[open/maybe]** Is the Guardian itself a god, or a
-  separate being set to guard the core? (Part One.)
+- **DEFINED 2026-06-11** (current decision): the gods are ascended from the
+  world itself; leaving is the price of rising; only currents/blessings fit back
+  through. The Guardian IS one of them — a piece of one, inside (Part One).
+  Still open: **[open]** the Guardian's flavor (refused-to-fully-leave vs. the
+  eldest/first riser); **[open]** post-victory, whether anything more than clean
+  current returns (see Resolution).
 
 **Cast**
 - **[GUESS]** The Knight, the Rogue, the Wizard — full proposals in Part Two,

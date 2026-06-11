@@ -114,7 +114,7 @@ As soon as this text finishes, the screen **shakes harder** and a second white f
 
 The flash then pulls back slightly, leaving the player in a black void as the path dissolves.
 
-> **Canon note (not shown in-scene):** this interruption is the *Authority* intercepting the Guardian's summoning — jamming the connection and **capturing the Hero**, who wakes redirected to the Authority's camp (Act 1, Beat 1). The **Guardian itself is not captured**; it stands in the capital, cut off from the Hero it called. The Authority then **claims the summoning as its own** — it tells the Hero *the Authority summoned you*; there is no kingdom-call, no artifact, no voice to chase. The half-felt "Find me…" has no object the empire will let the Hero attach it to — only the player holds that thread. See [`bible_03_act1.md`](bible_03_act1.md).
+> **Canon note (not shown in-scene):** this interruption is the *Throne* intercepting the Guardian's summoning — jamming the connection and **capturing the Hero**, who wakes redirected to the Throne's camp (Act 1, Beat 1). The **Guardian itself is not captured**; it stands in the capital, cut off from the Hero it called. The Throne then **claims the summoning as its own** — it tells the Hero *the Throne summoned you*; there is no kingdom-call, no artifact, no voice to chase. The half-felt "Find me…" has no object the empire will let the Hero attach it to — only the player holds that thread. See [`bible_03_act1.md`](bible_03_act1.md).
 
 ---
 

@@ -69,7 +69,7 @@ Vael is mid-orders (as built), notices, comes down.
 > *(beat; he looks the hero over, unhurried, like the next item on a list)*
 > **VAEL:** You must be a little confused. That's fair. So — the short version, and the
 > rest over a hot meal.
-> **VAEL:** This is an Authority camp, and the Authority is why you're standing here.
+> **VAEL:** This is the Throne's camp, and the Throne is why you're standing here.
 > We reached across worlds for you. Took the circle's keepers the better part of a year
 > to find you and pull you through.
 > *(the hero says nothing; Vael smiles slightly)*
@@ -78,11 +78,11 @@ Vael is mid-orders (as built), notices, comes down.
 > land for years. Burning the borderlands. Killing whoever it can't keep. We've held it
 > off about as long as holding works. What comes next needs something it can't match.
 > *(he puts a hand, briefly, warm, on the hero's shoulder)*
-> **VAEL:** That's you. The Authority called, and you came, and that makes you ours —
+> **VAEL:** That's you. The Throne called, and you came, and that makes you ours —
 > and us yours. Welcome to the war, friend.
 > **VAEL:** Come. Walk with me — you should meet the people you'll be fighting beside.
 
-*(The lie, complete: the Authority summoned you; the kingdom is the enemy; you are its
+*(The lie, complete: the Throne summoned you; the kingdom is the enemy; you are its
 champion. No artifact, no voice, nothing for the half-felt "find me" to attach to.)*
 
 ## SCENE 4 — The camp walk: meeting the squad (full conversations)
@@ -123,11 +123,11 @@ looses three arrows — flat, mechanical, perfect — into the same fist of stra
 **Stop 3 — Lyra, at the infirmary tent:** *(wrapping a picket's wrist; she finishes the
 murmured invocation before looking up — the blessing first, always)*
 
-> **LYRA:** —and by its light be mended. *(looks up; her warmth is immediate and total)*
+> **LYRA:** —and by the Light be mended. *(looks up; her warmth is immediate and total)*
 > Commander. And — oh. It's *you.*
-> **VAEL:** Lyra keeps us standing. Lyra — the Authority's champion.
+> **VAEL:** Lyra keeps us standing. Lyra — the Throne's champion.
 > **LYRA:** I know what he is. *(to the hero, radiant, taking both his hands without
-> asking)* The Authority's own light reached across worlds and chose to carry *you*
+> asking)* The Throne's own Light reached across worlds and chose to carry *you*
 > back. Do you understand what an honor it is to be what it wanted? …No. You will.
 > **VAEL:** *(dry)* She'll pray on your behalf until you do.
 > **LYRA:** Someone must. *(releasing him, already turning back to her soldier, serene)*
@@ -165,7 +165,7 @@ Partners are passive during lessons (no AI turns — the lesson owns the turn fl
    **VAEL:** *"A follow-up. Stand close, move in concert, answer each other's strikes.
    Learn nothing else today, learn that."*
 4. **Lyra arrives** to fuss over Borin's bruise — invocation, the bruise fades:
-   **LYRA:** *"—and by its light be mended. Honestly, you ASK them to hit you—"*
+   **LYRA:** *"—and by the Light be mended. Honestly, you ASK them to hit you—"*
    *(her reactive heal, demonstrated in fiction.)*
 
 **The breach (in-scene, same yard):** a horn — wrong pattern. The white flash. The

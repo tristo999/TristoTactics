@@ -79,7 +79,7 @@ Narrative canon is the four-part bible ([`bible_03_act1`](bible_03_act1.md) for 
 | 5 — BRIDGE INCIDENT | Bridge collapses mid-mission | Bridge map (battle, mirrored in Act 2 B3) | — | ⬜ | Not started. Map must be reusable with inverted objectives for Act 2. |
 | 6 — TOWN MISSION | Operation with civilian casualties, rationalized by Vael | Civilian settlement | — | ⬜ | Not started. `[open]` Candidate home for the Priestess's temple-evidence thread (a destroyed old temple near/under the town — she explains it away; see `bible_02_cast.md`) and/or collision Row 4 (see ledger) |
 | 7 — THE CHOICE | Two top-relationship companions fall, save one | Narrative beat | — | ⬜ | Blocks on companion identities being locked (Open Question 6) |
-| 8 — THE CAPITAL / CORE TAKEN | March reaches the capital; the Authority discards the hero and takes the core, opening the door for the legion (revised canon — the hero opens the door; the Guardian is *not* captured) | Kingdom capital | — | ⬜ | Not started |
+| 8 — THE CAPITAL / CORE TAKEN | March reaches the capital; the Throne discards the hero and takes the core, opening the door for the legion (revised canon — the hero opens the door; the Guardian is *not* captured) | Kingdom capital | — | ⬜ | Not started |
 | 9 — THE REALIZATION | Guardian's first full sentence | Narrative beat | — | ⬜ | Not started |
 | 10 — THE LAST STAND | Unwinnable battle, fragment sent forward, Unchosen Companion sent forward | Ritual site | — | ⬜ | Not started |
 
@@ -104,7 +104,7 @@ All Act 2 beats unbuilt. Scene names below are suggestions pending Act 1 impleme
 | 5 — UNCHOSEN COMPANION first appearance | Pursuit/escape | ⬜ |
 | 6 — VAEL UNMASKED | Observed cruelty, possibly stealth | ⬜ |
 | 7 — VAEL'S FINAL CONFRONTATION | Boss battle, Vael dies | ⬜ |
-| 8 — THE REVELATION MOMENT | Unchosen witnesses Authority's transformation | ⬜ |
+| 8 — THE REVELATION MOMENT | Unchosen witnesses Throne's transformation | ⬜ |
 | 9 — FINAL BATTLE PREPARATION | Setup mission | ⬜ |
 | 10 — FINAL BATTLE | Three-front tactical battle, largest in game | ⬜ |
 | 11 — SILENT RECONCILIATION | Hero + Unchosen post-battle | ⬜ |
@@ -121,7 +121,7 @@ Ordered by urgency (what must be decided to unblock active work).
 4. **Mission count per beat.** Required before level design can begin on Beats 3–6.
 > **Resolved 2026-04-20:** `test_scene` kept as a reference sandbox and renamed to `dev_sandbox_scene`. It's dev-only and not on the story critical path; Beat 2 will be built fresh rather than repurposing it.
 >
-> **Resolved 2026-05-13:** Beat 2's combat shape is **sparring interrupted by insurgents**. Phase 1 is a controlled sparring match (Authority soldiers or fellow recruits, nonlethal, teaches the core verbs); Phase 2 starts when "insurgents" crash the training ground and the engagement becomes lethal. The interruption beat is the tonal hinge — Vael frames it as unprovoked aggression, and it doubles as the first lethal combat. Sets up an Act 2 reframe (those "insurgents" were the Guardian's loyalists).
+> **Resolved 2026-05-13:** Beat 2's combat shape is **sparring interrupted by insurgents**. Phase 1 is a controlled sparring match (Throne soldiers or fellow recruits, nonlethal, teaches the core verbs); Phase 2 starts when "insurgents" crash the training ground and the engagement becomes lethal. The interruption beat is the tonal hinge — Vael frames it as unprovoked aggression, and it doubles as the first lethal combat. Sets up an Act 2 reframe (those "insurgents" were the Guardian's loyalists).
 
 ---
 
@@ -153,7 +153,7 @@ Goal: turn the tutorial battle into the real two-phase beat. Shape: **sparring i
 
 **Phase 1 — Sparring (tutorial phase):**
 - Battle scaffold exists (`tutorial_battle_scene.tscn`); `dev_sandbox_scene.tscn` retained as a battle-wiring reference but is narratively off-canon
-- Opponents: Authority soldiers or fellow recruits (nonlethal — damage reads as stamina/yields, no death animations)
+- Opponents: Throne soldiers or fellow recruits (nonlethal — damage reads as stamina/yields, no death animations)
 - Hook `TutorialManager` prompts to teach the core verbs in order: move → basic attack → end turn → ability
 - Vael narrates as drill instructor via `DialogueEvent` ("show me what you've got", praise on each correct action)
 
@@ -170,7 +170,7 @@ Goal: turn the tutorial battle into the real two-phase beat. Shape: **sparring i
 - Wire `EventBus.battle_ended` outro → transition to Beat 3 scene (TBD)
 - Tutorial prompts must NOT fire during Phase 2 (suppress `TutorialManager` after the trigger)
 
-**Why it matters:** first tactical combat — where players learn the game AND get their first taste of "real" stakes + Authority framing. The interruption beat is the tonal hinge of the early game.
+**Why it matters:** first tactical combat — where players learn the game AND get their first taste of "real" stakes + Throne framing. The interruption beat is the tonal hinge of the early game.
 
 ### Sprint D — Companion lock-in
 Goal: resolve Open Question 6 so narrative work on Beats 2–7 can begin.

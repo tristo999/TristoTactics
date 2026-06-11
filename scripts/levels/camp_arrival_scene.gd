@@ -3,7 +3,7 @@
 # Two phases:
 #   A. SCRIPTED OPENING (no input): the hero walks out of the summoning-room wall
 #      into the camp; Vael finishes orders, notices, comes down — and DELIVERS THE
-#      LIE (the Authority summoned you; the kingdom is the enemy; you are ours).
+#      LIE (the Throne summoned you; the kingdom is the enemy; you are ours).
 #      He names the three squad stations and walks ahead to the yard gate.
 #   B. PLAYER-WALKED CAMP WALK (ruled 2026-06-10): control unlocks; the player
 #      visits Borin (armory racks), Elena (the range), Lyra (infirmary tent) in any
@@ -140,10 +140,10 @@ func _run_opening() -> void:
 	await _say([
 		["Vael", "Easy — breathe. The crossing takes it out of everyone the first time."],
 		["Vael", "You must be a little confused. That's fair. So — the short version, and the rest over a hot meal."],
-		["Vael", "This is an Authority camp, and the Authority is why you're standing here. We reached across worlds for you. Took the circle's keepers the better part of a year to find you and pull you through."],
+		["Vael", "This is the Throne's camp, and the Throne is why you're standing here. We reached across worlds for you. Took the circle's keepers the better part of a year to find you and pull you through."],
 		["Vael", "Not a talker. Good. Talkers die of it out here."],
 		["Vael", "There's a power east of us — the kingdom — and it has been bleeding this land for years. Burning the borderlands. Killing whoever it can't keep. We've held it about as long as holding works."],
-		["Vael", "What comes next needs something it can't match. That's you. The Authority called, and you came — and that makes you ours, and us yours. Welcome to the war, friend."],
+		["Vael", "What comes next needs something it can't match. That's you. The Throne called, and you came — and that makes you ours, and us yours. Welcome to the war, friend."],
 	])
 
 	# 5. He sends you to the squad and walks ahead to the gate.
@@ -186,8 +186,8 @@ func _meet_elena() -> void:
 
 func _meet_lyra() -> void:
 	await _conversation(_lyra, [
-		["Lyra", "—and by its light be mended. There. Try not to carry crates with a bad wrist, picket."],
-		["Lyra", "And here HE is. The Authority's own light reached across worlds and chose to carry you back. Do you understand what an honor it is to be what it wanted? ...No. You will."],
+		["Lyra", "—and by the Light be mended. There. Try not to carry crates with a bad wrist, picket."],
+		["Lyra", "And here HE is. The Throne's own Light reached across worlds and chose to carry you back. Do you understand what an honor it is to be what it wanted? ...No. You will."],
 		["Lyra", "Come bleeding, come broken — the blessing doesn't run out. That's the point of it."],
 	])
 

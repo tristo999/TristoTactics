@@ -23,10 +23,10 @@ white, and the last thing through the noise is the voice, slower, drowning under
 the light: *…Find me…*
 
 That is the Guardian, reaching across worlds to pull its champion home. And that
-is the Authority, intercepting the call — not killing the Guardian, not even
+is the Throne, intercepting the call — not killing the Guardian, not even
 touching it, but getting *between* it and you. Jamming the line. Walling your
 mind. The summoning was meant to land you at the Guardian's side, in the capital,
-at the source. Instead the Authority catches the throw and drops you somewhere
+at the source. Instead the Throne catches the throw and drops you somewhere
 else entirely.
 
 You wake in the wrong place, and you don't even know it's the wrong place,
@@ -34,7 +34,7 @@ because you don't remember there was ever supposed to be a right one.
 
 ## The warm hand
 
-You wake on a cold summoning circle in a small stone room — Authority ritual
+You wake on a cold summoning circle in a small stone room — Throne ritual
 gear around you, their insignia on the walls, scorch marks and a knocked-over
 something that suggest the ritual was a *capture*, not a welcome. One door. You
 go through it, into a war camp running like a well-oiled machine — soldiers,
@@ -44,7 +44,7 @@ And a man walks over, unhurried, like you're the next item on a long list.
 **Commander Vael.** He is warm. He is calm. He is *good* at this. *"You actually
 made it,"* he says. *"I was starting to wonder. You must be a little confused."*
 
-Vael gives you the story, and you have nothing to set against it. *The Authority
+Vael gives you the story, and you have nothing to set against it. *The Throne
 summoned you* — reached across worlds and called you here to fight for it. That
 is your origin and your purpose, as far as you're allowed to know. There is no
 mention of the kingdom calling you, no artifact, no voice that was reaching for
@@ -53,19 +53,19 @@ claimed what it stole. You are its champion because it says it made you one, and
 you have no memory to argue otherwise.
 
 The kingdom, in Vael's telling, is just the enemy: a dangerous power that has to
-be brought down, and you're the weapon the Authority called up to do it. It's a
+be brought down, and you're the weapon the Throne called up to do it. It's a
 clean story. It gives you a reason to move. You believe it, because believing it
 is the only thing on offer, and because the man telling it to you is so very
 kind.
 
 (The faint half-feeling you can't place — that somewhere a voice asked you to
-*find* it — has no object the Authority will ever let you attach to it. The
+*find* it — has no object the Throne will ever let you attach to it. The
 player heard that voice in the opening. The hero doesn't remember it, and Vael
 makes sure the hero never has cause to go looking. The only one holding that
 thread is the player.)
 
 Everything Vael shows you is true except the part that matters. The camp really
-is competent. The war really is being fought. The Authority really will treat you
+is competent. The war really is being fought. The Throne really will treat you
 well. What you can't see — what the player won't see clearly for a long time — is
 who Vael is when you're not in the room: a man who burns towns and executes
 civilians and performs warmth for assets the way you'd oil a tool. He doesn't
@@ -101,7 +101,7 @@ camp life, conversations, the building of bonds. These are the people the empire
 made — each one a true believer with a wound the belief is built on, and you'll
 come to love them without ever seeing the cracks they can't see in themselves.
 
-And the camp itself goes with you. As the Authority's line advances toward the
+And the camp itself goes with you. As the Throne's line advances toward the
 capital, the army strikes the camp, marches, and pitches it again — the same
 tents, the same fires, the same drill yard, re-raised on new ground each stage of
 the war. It is the party's home between missions for the whole act: the one
@@ -111,7 +111,7 @@ furniture — order and competence, portable, wherever the empire goes.)
 
 ## The campaign, and the cracks
 
-You march. The Authority's intelligence frames the kingdom's defenders as
+You march. The Throne's intelligence frames the kingdom's defenders as
 insurgents, terrorists, fanatics, and you fight them across the border
 territories and beyond, and you win, and it feels righteous.
 
@@ -120,7 +120,7 @@ A color that's wrong for half a breath. The edge of the world not sitting right.
 Vael calls it artifact interference — receptive minds picking up bleed from the
 dangerous thing in the kingdom — and you have no reason to doubt him, so you
 don't. The glitches get more frequent the deeper you go, because the closer the
-war grinds toward the capital, the harder it is for the Authority to keep the
+war grinds toward the capital, the harder it is for the Throne to keep the
 Guardian's voice jammed. That's what the glitches *are*: the Guardian, alive and
 uncaptured, straining across the jam to reach you. You just can't hear it yet.
 
@@ -138,7 +138,7 @@ Three things happen in this stretch of the war that you will not understand unti
 much later. They are planted here, deliberately, as ordinary beats:
 
 **Cloaked figures appear in a battle.** They move wrong. They shout things that
-come through your ears as garbled threats. The Authority labels them enemy
+come through your ears as garbled threats. The Throne labels them enemy
 saboteurs and you cut them down and move on. *(They are not saboteurs. They are
 shouting the truth, and the lie in your head is turning their words to static and
 their faces to snarls. You will stand on the other side of this exact moment one
@@ -150,7 +150,7 @@ across the broken span: cloaked figures, on the far side of the gap, watching
 you. This is the first time the two parties truly *face each other.* No blades
 meet — the collapse is between you, an impossible distance neither side can
 cross. Just a long look across the wreckage, in the rain, before the mission
-drags you onward. The Authority calls it sabotage. You curse them for the
+drags you onward. The Throne calls it sabotage. You curse them for the
 collapse and for the dead it cost, and you're too worn down to feel how *wrong*
 the moment is — too deep in a grinding war that's flattened you, too numb to
 notice that the figures across the gap stand like you, move like you, *are* you.
@@ -185,16 +185,16 @@ is unthinkable and you are not yet ready to think it.
 
 ## The march to the capital
 
-The war turns toward its end, and the Authority's true purpose comes into focus
+The war turns toward its end, and the Throne's true purpose comes into focus
 without ever being stated: every "liberation" has been a step toward the
 capital, toward the one door the empire could never open on its own. You have not
 been fighting a war adjacent to the Guardian. You have *been* the spear, and the
-Authority has been walking you, point-first, toward the thing it has wanted for
+Throne has been walking you, point-first, toward the thing it has wanted for
 centuries. You are the Guardian's own summoned champion, delivering the empire to
 the Guardian's threshold, certain the whole way that you are the righteous one.
 
 The kingdom's defense breaks. The resisting army — the people you've been calling
-insurgents — is collapsing. And you arrive, at the head of the Authority's force,
+insurgents — is collapsing. And you arrive, at the head of the Throne's force,
 at the heart of the capital: the core, and the Guardian that has guarded it
 since before memory.
 
@@ -203,7 +203,7 @@ since before memory.
 > This sequence is the heart of Act 1 and it happens in one place, in one
 > unbroken motion, at the foot of the core. It is settled canon (Tristan's).
 
-You get close enough, for the first time, to the thing the Authority has spent
+You get close enough, for the first time, to the thing the Throne has spent
 the entire war keeping from you. And proximity does what the whole campaign
 couldn't: the suppression *can't hold around you anymore.* The lie thins, and
 tears.
@@ -221,10 +221,10 @@ is *kind.* (That is its own kind of devastating: the enemy you were built to
 destroy is the only one who comforts you, and you understand, far too late, what
 you were really hearing all those times the world glitched.)
 
-The Authority feels its grip on you slip. And it does not panic — because it has
+The Throne feels its grip on you slip. And it does not panic — because it has
 *already won.* The army is broken. The core is within its reach. Your waking up
 costs it nothing. So it does the thing it has been moving toward since the
-beginning: it discards you. And because it is the Authority, the discard is an act
+beginning: it discards you. And because it is the Throne, the discard is an act
 of cruelty, prepared in advance, because the one thing that could still stand in
 its way now is *you, awake.*
 
@@ -233,7 +233,7 @@ its way now is *you, awake.*
 The trap fires. Two assassins, at once, on the two companions you hold closest —
 `[GUESS — exact staging of the trap is mine; that it's an orchestrated
 two-target strike on your two most-bonded is settled.]` an orchestrated cruelty,
-the Authority twisting the knife as it throws you away.
+the Throne twisting the knife as it throws you away.
 
 And the Guardian, newly through, gives you its first true gift: a surge of
 power — *time*, bent — but only enough to reach **one.** Enough to save one of
@@ -246,12 +246,12 @@ and you believe — you are *meant* to believe — that they are dead.
 > **two most-bonded companions** (the ones the player invested in most). Save
 > one; lose one. The cost/complexity of building this (the lost companion's whole
 > Act 2 arc) is parked on purpose — story first. The lost one is not truly dead;
-> the Authority took them alive. See Part Four — they return.
+> the Throne took them alive. See Part Four — they return.
 
 This single moment does triple duty, and it's worth seeing all three at once. It
 is the **birth of your power** — the time-fragment you'll carry into everything
 that comes after starts here, in the Guardian's hand, used first to choose your
-own grief. It is the **manufactured death** — the Authority doesn't just take
+own grief. It is the **manufactured death** — the Throne doesn't just take
 your friend, it makes you *bury* them, falsely, as part of breaking you (the same
 bereavement-lie it used on the dwarf, now turned on you). And it is the **wound
 that becomes your enemy** — the one you didn't choose will come back, and their
@@ -259,12 +259,17 @@ hatred will have a name: *you had two of us, and you didn't pick me.*
 
 ## The core, the true form, and the door
 
-And then, right there, in front of you, the Authority **takes the core.**
+And then, right there, in front of you, the Throne **takes the core.**
 
 The warmth is gone. There was never any warmth. What had been wearing the shape
 of a righteous empire stops wearing anything — its **true form** manifests, the
-thing behind every kind word Vael ever said, the empire *unmasked.* `[GUESS — the
-true form's actual appearance/nature is undefined; settled only that the final
+thing behind every kind word Vael ever said, the empire *unmasked.* *(Current
+decision 2026-06-11: the Throne has had **no body in this plane, ever** — it
+arrived as presence and was bound before its full self could follow. This is
+**the first time it has ever had a face here.** Protect that: no Act 1 character
+describes it physically, no one quotes it directly — doctrine paraphrases, Vael
+relays, nobody has seen. The first face the world gets is the one the player
+gets.)* `[open — the true form's actual appearance; settled only that the final
 boss is the empire revealed, not an abstraction.]`
 
 And as it transforms, the veil lifts — not just for you now, but **for everyone.**
@@ -291,7 +296,7 @@ her personal quest.)
 
 ## The last stand, and the throw that finally lands
 
-You are no longer the Authority's weapon. In the space of a breath you have become
+You are no longer the Throne's weapon. In the space of a breath you have become
 its last obstacle — the only thing awake and standing in its way. And so the
 party fights, here, at the foot of the core, to stop what's coming.
 
@@ -305,7 +310,7 @@ thing it has been trying to do since the very first word of the game.
 
 It completes the summoning.
 
-The original call was meant to bring you to the Guardian, and the Authority
+The original call was meant to bring you to the Guardian, and the Throne
 hijacked it and dropped you in a war camp. Now, with everything ending, the
 Guardian *lands the throw that missed* — and flings you back, before any of it
 happened, to where you were always supposed to arrive.

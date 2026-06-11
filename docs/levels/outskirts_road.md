@@ -18,7 +18,7 @@ reads as frightened for half a beat), and the birth of **bonding v1** (bonds acc
 how the squad actually fought). It also plants the **cue language** (ledger rule 4): the
 player learns "garbled = artifact bleed" cheaply, before it matters in B4.
 
-**Fiction `[GUESS]`:** Authority intel says insurgents seized a waystation on the supply
+**Fiction `[GUESS]`:** Throne intel says insurgents seized a waystation on the supply
 road out of camp; the squad sweeps it. (Unshown truth, bible-aligned: locals defending
 what's theirs. Never signposted.)
 

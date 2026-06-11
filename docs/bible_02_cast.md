@@ -12,11 +12,11 @@ You should have arrived at the Guardian. You didn't — and why is the engine of
 Act 1 (Part Three). What matters about you as a character is that your ignorance
 isn't a quirk, it's *structural*: with no memory of the descent, you have nothing
 to set against the story you're about to be told. And the story you're told is
-that **the Authority summoned you** — that the empire reached across worlds and
+that **the Throne summoned you** — that the empire reached across worlds and
 called you here to be its champion. You are never given the artifact, never told
 the kingdom reached for you, never handed a voice to chase. The empire simply
 claims your arrival as its own doing. So your motive in Act 1 is the simplest,
-most total kind: *the Authority is my purpose; I fight for the ones who made me.*
+most total kind: *the Throne is my purpose; I fight for the ones who made me.*
 The half-felt voice from the summoning has no object the empire will ever let you
 attach it to — the player holds that thread, not the hero. You are the perfect
 believer because you were emptied before you arrived, and then told who emptied
@@ -24,13 +24,13 @@ you was your maker.
 
 ## The cast doctrine — how everyone was built
 
-Six companions travel with you, each from a different kingdom the Authority
+Six companions travel with you, each from a different kingdom the Throne
 swallowed. Two rules govern every one of them, and they rhyme:
 
 **They all believe the lie — that's the floor, not the character.** You cannot
-serve in an elite Authority unit while privately seeing through it; the empire
+serve in an elite Throne unit while privately seeing through it; the empire
 isn't stupid. So belief is the *given.* What makes each companion a person is the
-*wound the belief is built on.* The Authority doesn't recruit these people
+*wound the belief is built on.* The Throne doesn't recruit these people
 *despite* their damage — it recruits *through* it. It found a hollow girl and
 called her excellent. It found a devout people and became their god. It found a
 grieving outsider and gave him a banner. Each belief is custom-fitted to a
@@ -106,24 +106,35 @@ protect her. It took her and told her she was lucky. Her belief in the empire is
 her arc isn't a shattering of faith. It's a slow *waking up.*
 
 ### The Priestess — the most faithful servant of her god's murderer
-She's the healer, and before every heal she murmurs an invocation to the
-Authority — because she believes her power is a blessing the empire lends her,
-conditional on her devotion. She believes *harder* than anyone in the party. Her
-people are blessed, central, comfortable: hers is a theocracy that didn't merely
-fall but *converted*, taking the Authority as its god — the gradient's logical
-extreme, a kingdom that folded so completely it now worships the thing that took
-it.
+She's the healer, and before every heal she murmurs an invocation to **the
+Throne's Light** — because she believes her power is a blessing the empire lends
+her, conditional on her devotion. She believes *harder* than anyone in the
+party. Her people are blessed, central, comfortable: hers is a theocracy that
+didn't merely fall but *converted*, taking the Throne as its god — the
+gradient's logical extreme, a kingdom that folded so completely it now worships
+the thing that took it.
+
+*(Her liturgy ties the two names together — "the Throne's Light," "by the Light
+the Throne wills" — per the naming strata: **the Light** is a consolidated
+god-title, an absorbed aspect. Current decision 2026-06-11: her every prayer
+welds the stolen title to the thief's name, the consolidation made audible in
+one breath of liturgy.)*
 
 Here is the truth, and she is the most literal embodiment of the whole game's
-thesis: her kingdom had its own god. The Authority wrote itself over that god and
-redacted the name. But it could not *grant* power — the Authority is never a
-source, only a thief of credit. So every heal she has ever cast came from her
-*own original god's* current, still flowing under the suppression, and the
-invocation to the Authority does *nothing* — it's a label the doctrine taught her
-to slap on a thing that was already working. She has been drawing on her own
-erased god her entire life and thanking its killer for it. The most faithful
-servant of the thing that overwrote her god is the woman still carrying its power
-in her hands.
+thesis: her kingdom had its own god. The Throne wrote itself over that god and
+redacted the name — and kept the *title*: **the Light was her people's god's own
+name-of-address**, absorbed as an "aspect" of the Throne when the theocracy
+converted. The Throne could not *grant* power — it is never a source, only a
+thief of credit. The currents of the ascended still flow into the world (that
+is the only part of a god that fits through — see Part One), so every heal she
+has ever cast came from her *own original god's* current, and the Throne-half
+of the invocation does *nothing* — it's a label the doctrine taught her to weld
+onto a thing that was already working. Which makes her prayers a fossil of the
+crime in plain sight: **when she says "the Light," she is addressing her erased
+god by its true title and crediting its killer in the same sentence.** She has
+been drawing on her own god her entire life and thanking its thief for it. The
+most faithful servant of the thing that overwrote her god is the woman still
+carrying its power in her hands.
 
 Her arc turns on a distinction between **knowing and believing.** Across Act 1
 she *accumulates* the evidence — toppled temples the empire never fully scrubbed,
@@ -132,8 +143,9 @@ out wrong — and she files it all away *without believing it*, because faith is
 broken by facts, it's broken by betrayal. The evidence reads to the *player* as
 damning even as she explains it away; the player carries her doom one beat ahead
 of her all season. When it finally breaks, nothing *arrives* — there's no vision,
-no voice (the god can't speak, by the suppression rule). She simply learns the
-true name for what she always had. Her collapse and her homecoming are the same
+no voice (her god cannot enter or speak; divinity doesn't fit inside the plane,
+and the binding shut even the thin apertures tighter — only the current itself
+gets through). She simply learns the true name for what she always had. Her collapse and her homecoming are the same
 event. She is the one companion whose reckoning ultimately *frees* her — the
 game's single pure grace, the one time the truth takes nothing away.
 
@@ -170,7 +182,7 @@ put out; the mountains turn "different is okay" into "being a dwarf is glorious.
 
 ### The Warlock — the weapon the empire built and meant to throw away
 He is the *most loyal at the start*, and the reason is the saddest in the party.
-He was a troubled orphan — and the Authority recruited him for exactly that:
+He was a troubled orphan — and the Throne recruited him for exactly that:
 *nobody would miss him.* The empire runs experimental programs that meddle with
 the world's dark powers, and one of those experiments was to **bind a child by
 pact to one of the world's dark gods** and forge him into a special weapon — a
@@ -188,9 +200,9 @@ took me because I was nobody.*
 
 Here is the horror underneath, and it pre-figures the hero's own fate: the pact
 was a *bargain*, and the dark god comes to collect its end of it — and the
-Authority's plan was always to **let it.** When the god comes for what it's owed,
+Throne's plan was always to **let it.** When the god comes for what it's owed,
 the empire simply throws him aside. He is consumable. He has *already lived the
-discard* — the exact thing the Authority does to the hero at the capital — before
+discard* — the exact thing the Throne does to the hero at the capital — before
 the game even begins. He's a warning the hero can't yet read: this is what the
 empire does to its weapons when the bill comes due.
 
@@ -231,12 +243,12 @@ may sit closer to the keystone than first assumed. Flagged, not decided.]`
 collaborators, the ones whose ancestors made the very first pact and turned on
 their neighbors to do it. His people are the most comfortable in the empire, and
 he carries that comfort as unearned pride: he's a true-believer knight, gallant,
-honorable, the model Authority soldier. The wound underneath is that his entire
+honorable, the model Throne soldier. The wound underneath is that his entire
 sense of honor is built on a foundation of the *first betrayal* — his nobility is
 real and his lineage's crime is real, and he has no idea the two are the same
 thing. **The fault line:** the more honorable he tries to be, the closer he edges
 to discovering that the founding act of his proud house was selling everyone
-else to the Authority. His belief is *honor fitted to a buried betrayal.* The
+else to the Throne. His belief is *honor fitted to a buried betrayal.* The
 truth doesn't reveal he's a villain — it reveals his goodness has been pointed at
 the wrong banner his whole life. **Class falls out:** the straight, sword-and-
 shield front-liner — the *played-straight* knight whose very classicism is the
@@ -266,7 +278,7 @@ the "cat" framing is inherited from the docs, keep or cut.]`
 Distinct from the Warlock: where the Warlock was *given* power he doesn't
 understand, the Wizard *studied* for his — earned it, the legitimate way, through
 the empire's own academies. **Wound proposal:** he's the empire's perfect
-intellectual product — he loves the Authority not as a god but as an *order*, a
+intellectual product — he loves the Throne not as a god but as an *order*, a
 system that took chaos and made sense of it, and he's grateful to it the way you're
 grateful to the thing that gave your life structure and meaning. **The fault
 line:** he is the companion most invested in the lie being *coherent*, and the

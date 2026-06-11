@@ -8,12 +8,20 @@
 > **How to read the tags.** Anything written plainly is *settled canon* — it
 > came from Tristan or from the existing docs. Anything I invented to fill a
 > blank is marked **`[GUESS]`** inline, and every guess is also listed in the
-> Manifest (final section) so you have one checklist of everything made up here.
-> Two-pass read recommended: once as a reader, once hunting only the `[GUESS]`
-> tags to *keep / kill / claim* each one. A guess you accept stops being a guess
-> — strike the tag and it's yours.
+> Manifest (final section of Part Four) so you have one checklist of everything
+> made up here. Two-pass read recommended: once as a reader, once hunting only
+> the `[GUESS]` tags to *keep / kill / claim* each one. A guess you accept stops
+> being a guess — strike the tag and it's yours.
 >
-> Draft date: 2026-06-02
+> **Cosmology revision (2026-06-11).** Part One was substantially rewritten from
+> a design session: the Throne (formerly "the Authority"), the planes and the
+> price of ascension, the core as the gate of divinity, the binding, and the
+> Guardian-as-piece. These are **Tristan's current decisions** — written at that
+> firmness, not yet hardened canon; iterate freely. Two pieces of that session
+> arrived incomplete and are tagged `[pending]` where they touch the text: the
+> VAEL section, and the final clause about the summoning's braid.
+>
+> Draft date: 2026-06-02 · Part One revised 2026-06-11
 
 ---
 
@@ -21,68 +29,163 @@
 
 ## The lie that ate the world
 
-Centuries before the game begins, something arrived from outside the world. The
-documents call it **the Authority**, and what it wanted was never territory. It
-came for one specific thing the world holds — and to reach it, it swallowed
-everything in the way.
+Centuries before the game begins, something arrived from outside the world. It
+calls itself **the Throne**, and what it wanted was never territory. It came for
+one specific thing the world holds — and to reach it, it swallowed everything in
+the way.
 
 It did not conquer like an ordinary empire. Its method was quieter and worse.
-When the Authority took a kingdom, it did not raze the temples or murder the
-gods. It **redacted** them. It slid itself into the god-shaped place in the
-existing religion and rewrote the doctrine to say it had always been there — the
-true god, the only god, the one who had always answered the prayers. The
-original deity was never destroyed. Its *authorship* was stolen, its name
-written out of scripture, and the people it had belonged to were made not just
-obedient but *grateful* — assimilated so completely they forgot they had ever
-worshipped anything else. The Authority is, at its root, a plagiarist. It has
-never made a single thing. It only ever took credit for what it stole and
-insisted the theft was creation.
+When the Throne took a kingdom, it did not raze the temples or murder the gods.
+It **redacted** them. It slid itself into the god-shaped place in the existing
+religion and rewrote the doctrine to say it had always been there — the true
+god, the only god, the one who had always answered the prayers. And it kept what
+it stole: with each kingdom taken, it absorbed the local god's *title* as an
+"aspect" of itself — the Maker, the Light, the Father — consolidating the
+pantheon Rome-style, one annexed name at a time. *Your god was always Me, by a
+smaller name.* The original deities were never destroyed. Their *authorship* was
+stolen, their names written out of scripture, and the people they had belonged
+to were made not just obedient but *grateful* — assimilated so completely they
+forgot they had ever worshipped anything else. The Throne is, at its root, a
+plagiarist. It has never made a single thing. It only ever took credit for what
+it stole and insisted the theft was creation.
 
 It did this by getting the conquered to do the conquering. The kings of old made
 pacts with it and turned on their neighbors on its behalf. Betrayal is baked into
 the foundation of the empire — every kingdom inside it was sold out by someone,
-and most of them by their own.
+and most of them by their own. (Why an entity this powerful conquers by whisper
+and pact instead of by force is the cage's story — see *The binding*, below. It
+had no other hands to use but ours.)
 
-## Where the gods went
+## What to call it (the naming strata)
 
-Here is the thing the empire's own scripture gets wrong, and the truth the whole
-story turns on: **the gods are not dead.** They were never killed. They are
-*held off.*
+How close you stand to the center is measured in vocabulary:
 
-The Authority's mere presence in the world is a kind of suppression — a weight
-laid over the divine. While the Authority is in the world, no true god can act,
-or speak, or intervene. Their old power still *flows* — it runs through the world
-like a current still humming in a cut line, which is why the magic the empire's
-servants wield still works at all. But the gods themselves are silent, not
-because they are gone but because they are *pinned.* They cannot even announce
-themselves. They can only keep humming, suppressed, mislabeled, waiting.
+1. **The Throne** — its ruling name. On the banners, in the high doctrine, in
+   the mouths of commanders. Vael says *"the Throne wills it."*
+2. **The imperial machinery** — beneath the ruling name, the empire runs on
+   lowercase human language: *imperial* roads, *the Emperor's* orders. Sergeants
+   and clerks live at this stratum and most of them have never said "the Throne"
+   aloud in their lives.
+3. **The consolidated god-titles** — the absorbed aspects (the Maker, the Light,
+   the Father, and a dozen more across the provinces). Liturgy addresses these.
+   Local titles surviving in prayer are **fossils of the crime in plain sight**
+   — and because every aspect was a different stolen face, religious iconography
+   contradicts itself from province to province. Another seam in the scripture.
+4. **`[open]` The old ugly name** — what the Guardian's people call it; the
+   smallest name it has; the word Act 2's resistance uses. Not yet chosen.
 
-They return — truly return, able to touch the world again — only when the
-Authority is gone. This is the single mercy the world has coming, and it is not
-a rescue you summon. It is a weight you lift. Win, and what was always there
-finally breathes again.
+## The planes, the gods, and the price of rising
 
-Almost nothing gets through the suppression. The rare bleed — a prayer that
-works when it shouldn't, a voice reaching across a jammed line — is costly and
-faint and easy to explain away. That is exactly why the lie holds: the truth is
-real and present and *unreachable*, all at once.
+This world's gods are not visitors from somewhere higher. They are **ascended**
+— beings who rose *from the world itself*, through the source of divinity that
+is anchored inside it (the core, below). The pantheon is the world's own
+ancestry: the dwarves' Maker may well have been a dwarf. Every god the Throne
+plagiarized was once something that walked here.
+
+But ascension has a price, and the price is **leaving.** Full divinity does not
+*fit* inside a plane. To become a god of the world is to lose the world — the
+risen cannot come back in, any more than a river fits back into its spring. So
+the gods' famous distance, their sparse and rare interaction, was never
+aloofness. It is **physics, and it is tragedy.** Only thin things fit back
+through: currents, blessings, the quiet machinery of prayer-magic. A god can
+still *hum* into the world it loved. It can never again stand in it.
+
+(This is why a certain priestess's healing works with her god sealed away — the
+current still flows in, no matter what name the doctrine slaps on it. The gods'
+power was never cut off. Only their presence, which was always the one thing the
+plane could not hold.)
+
+## The hunger from outside
+
+And here is the Throne's secret, the one that reframes everything: it is **less
+than a god — and that is its predatory niche.** Full divinity cannot enter a
+plane. The Throne *can*, precisely because it falls short: it is small enough to
+seep into a world whole, where the truly divine cannot follow. It is a greedy
+conqueror of planes — it has taken power across many of them — and in all that
+taking it has never once ascended. It is the cosmos's most powerful **pretender.**
+
+Its specific hunger is **godhood.** It hunts the one divine thing that exists
+*inside* planes (see *The core*), and all the stolen theology — the aspects, the
+redacted scriptures, the centuries of being prayed to — is **rehearsal**:
+practicing being a god while it waits to steal the real thing.
+
+It has **no body in this plane, and never has.** It arrived as presence, and was
+bound before its full self — or its army — could follow. It rules through
+doctrine and through human collaborators *(see VAEL — `[pending]`: that section
+of the 2026-06-11 decisions did not arrive; do not invent it)*. The "true form"
+that manifests at the capital at the end of Act 1 is **the first time it has
+ever had a face in this world.** Protect this: no Act 1 character describes it
+physically, no one quotes it directly — doctrine paraphrases, Vael relays,
+nobody has *seen*. The first face the world gets is the one the player gets.
+
+## The core
+
+At the center of the last kingdom sits the **core**: the true source of
+divinity, the spark through which ascension happens, anchored in the plane.
+
+Be precise about what it is *not*, because the distinction carries the war: the
+core is **not the source of the world's magic.** Magic is the world's own
+ecology — currents, pacts, arcane study — and nobody's spells route through the
+core. Only *rising* does. It is the narrow gate godhood passes through, nothing
+more and nothing less. *(This explicitly kills the earlier "renewable spring"
+`[GUESS]` — struck, 2026-06-11.)*
+
+What makes it the war's object is this: the core is the **only graspable divine
+mass inside the plane.** The gods' currents cannot be eaten — only suppressed,
+mislabeled, plagiarized. But the core is a *thing*, and a thing can be taken.
+For an entity whose whole hunger is godhood, it is the one prize in any plane
+worth centuries.
+
+And the core holds one more property, older than the war — true divinity
+**cannot be taken by the unworthy.** Grasp it wrongly and it does not yield; it
+*binds.* The gods noticed that the source of divinity was, among everything
+else, a mousetrap. Then they used it.
+
+## The binding
+
+When the Throne seeped in, the gods could not enter to fight it — the plane does
+not fit them; that is the whole tragedy of their ascension. So they made the one
+move available from outside: **the binding** — anchored in the core, built
+*through* the mousetrap property the source already had. The intruder reached
+for godhood, and the godhood held it fast.
+
+The seal works **both ways.** It caged the Throne inside, and it shut the gods'
+last thin apertures tighter than ever — the plane was always nearly closed to
+the divine, and the binding closed the remaining gap. Intruder in; gods out;
+the world locked with both of them in its walls.
+
+**Cage behavior explains the empire.** Denied its body and its army, the
+Throne's only move was conquest through the plane's own people: whispers, pacts
+with kings, forged scripture. The betrayal-built empire, the gradient of
+surrender, the sloppy speed of the forgeries (it *resents* having to forge at
+all — a god would not need to), the centuries of patience — all of it is the
+conduct of a prisoner. It has been waiting out a sentence, and working the
+guards.
+
+And the binding bars the prisoner from the core itself. That is **"the door it
+could never open"** — a lock independent of any guard standing in front of it.
+Taking the core, when it finally happens at the end of Act 1, is one event with
+three faces: **the cage breaks, the true form manifests, the door opens.** The
+endless legion that pours through is not a new invasion. It is the *original*
+one, finally arriving — always scheduled, just five centuries late.
 
 ## Seams in the scripture
 
-The Authority rewrote a great many faiths, and it did it *fast*, and it did it
+The Throne rewrote a great many faiths, and it did it *fast*, and it did it
 *sloppily.* A hastily forged doctrine contradicts itself. Passages don't cohere.
-Rituals carry a logic that points at a god the scripture no longer names. Prayers
-land when addressed wrong. There are knocked-down temples at the edges of the
-empire that were toppled but never fully scrubbed, and the rubble still
-remembers.
+Rituals carry a logic that points at a god the scripture no longer names. The
+absorbed aspects wear stolen faces, so the iconography of one province quietly
+contradicts the iconography of the next. Prayers land when addressed wrong.
+There are knocked-down temples at the edges of the empire that were toppled but
+never fully scrubbed, and the rubble still remembers.
 
 So the evidence of every murdered faith is sitting in plain sight — in the holy
-books, in the architecture, in the wrongness that a devout enough reader can
-feel but not name. The truth in this world is not mystical. It is
-*archaeological.* It is *textual.* It can be *found*, by someone faithful enough
-to keep reading after the doctrine stops making sense — which is a quiet,
-terrible thing, because it means the most devout are the ones best placed to
-discover they've been praying to a thief.
+books, in the architecture, in the fossil titles still spoken in liturgy, in the
+wrongness that a devout enough reader can feel but not name. The truth in this
+world is not mystical. It is *archaeological.* It is *textual.* It can be
+*found*, by someone faithful enough to keep reading after the doctrine stops
+making sense — which is a quiet, terrible thing, because it means the most
+devout are the ones best placed to discover they've been praying to a thief.
 
 ## The gradient of surrender
 
@@ -92,7 +195,7 @@ wretched. It does not. What it has is a **gradient of how early you gave in.**
 The kingdoms that folded fastest — that read the writing on the wall, signed on,
 turned on their neighbors, stopped resisting soonest — are simply *better off
 now.* Nicer cities. More prosperity. Treated as partners rather than spoils. And
-the kingdoms that fought longest, that made the Authority *bleed* for every mile,
+the kingdoms that fought longest, that made the Throne *bleed* for every mile,
 live in the ash: poor, looked down on, punished across generations for the sin of
 having been brave. The empire rewards capitulation and punishes courage, and it
 has done so for so long that being well-off is itself quiet evidence your
@@ -103,13 +206,13 @@ grandparents just took the obvious deal, and who wouldn't? The downtrodden aren'
 saints — they're defeated and bitter, and some of them resent the holdouts who
 kept fighting and made it worse for everyone. Everyone believes the lie. Everyone
 is just living at their own inherited distance from a surrender so old that no one
-alive remembers it was ever a choice. The Authority never needed cruelty to make
+alive remembers it was ever a choice. The Throne never needed cruelty to make
 collaborators. It made resistance unprofitable and surrender comfortable, and let
 human nature finish the job.
 
 ## The last free country
 
-There is exactly one kingdom the Authority never took. It has held for centuries
+There is exactly one kingdom the Throne never took. It has held for centuries
 behind a power the empire could not overwrite, sealed off, no contact with the
 outside world in living memory. The rest of the world barely remembers it as a
 real place — to the empire's subjects it's a myth, a den of thieves who *stole
@@ -117,49 +220,90 @@ something* long ago and have been hiding it ever since.
 
 The propaganda is exactly backwards, and the inversion is the whole story in
 miniature. The "something" the kingdom supposedly stole is the divine itself.
-The Authority, having written itself over every other god in the world, points
+The Throne, having written itself over every other god in the world, points
 at the one kingdom whose god it *never managed to overwrite* and calls them
 thieves. They didn't steal anything. They are the last place the true god was
 never taken from.
 
-And now the seal is finally failing. The kingdom is exhausted and losing. The war
-the game opens in is the empire's last push — the final march on the one door it
-has wanted for centuries — and it has triggered a mass conscription to do it.
+And now the barrier is finally failing — not because anyone breached it, but
+because the being paying for it is running out (below). The kingdom is exhausted
+and losing. The war the game opens in is the empire's last push — the final
+march on the one door it has wanted for centuries — and it has triggered a mass
+conscription to do it.
 
 > **[GUESS] — the Kingdom's name and culture are still open.** I'll need a name
 > and a one-line cultural identity for it later (it's the heart of the map). For
 > now it's just "the kingdom" / "the last free country." Flagged so it doesn't
 > get written as if it were decided.
 
-## The Guardian and the core
+## The Guardian
 
 At the center of the kingdom — at the center of everything — is the **Guardian.**
 
-The Guardian is *not* the source of all magic. Magic exists in the world on its
-own. The Guardian is something more specific and more precious: it stands watch
-over the **core of the world's magic**, a single object it has guarded in the
-kingdom's capital for as long as anyone has been alive to remember. The kingdom
-was built around the Guardian the way a city is built around the well that keeps
-it alive. Everything the kingdom is grew up in the Guardian's shadow.
+The Guardian is a deity: one of the ascended. *(Two flavors, both `[open]`: a
+god that **refused to fully leave** when it rose — or the **eldest, the first
+riser**, the one that has watched over the gate the longest. Choose later;
+everything below works with either.)* Its main presence is sealed **outside**
+with the other gods. What dwells inside the world, guarding the core, is a
+**piece**: a will-remnant, almost human in scale — weaker than the Throne —
+because person-sized is the price of admission. The same physics that lets the
+Throne seep in is what the Guardian paid in kind: only a fragment of a god fits
+where a whole god cannot go.
 
-The core is the thing the Authority has spent centuries crossing the world to
-reach. It is why this is a *war* and not an execution — the Authority cannot
-simply destroy what it wants; it has to *take* the core, intact, from the one
-power still strong enough to guard it. The core is a real object with a real
-endgame attached, not an abstraction. (Exactly *what* the core is, in its deepest
-metaphysics, is held loosely on purpose — a working idea is that it's what lets
-the world's magic *renew*, the one renewable spring while everything else slowly
-spends down, so to own it is to own the future. **[GUESS]** on that specific
-framing; settled only that it's the guarded object the whole war is for.)
+It is a being of **time.** Its foresight, the five-century binding, and the loop
+the whole game runs on are all one magic — and that magic **holds rather than
+rewrites.** The rule the player will live inside ("Act 2 cannot undo Act 1") is
+not game logic. It is cosmology: the Guardian's power fixes what *is* in place;
+it has never once changed what was.
 
-And here is the correction that the whole revised story rests on: **the Guardian
-was never captured.** It still stands in the capital. It still guards the core.
-It is still holding out against the Authority's power exactly as it always has —
-alive, on its feet, fighting. The Authority has not beaten it. What the Authority
-did was far more surgical, and you'll see it in the next part.
+Its foresight has one shadow. The Throne is from outside the plane's weave, and
+so it is a **hole in the Guardian's sight** — which is how the interception of
+the summoning succeeded, and why the Guardian's final gift at the end of Act 1
+is a *hope* and not a *plan*. It cannot see the enemy. It could only ever see
+everything else.
 
-The Guardian foresaw this war, and foresaw its likely loss. And so, as a last
-act, it reached across worlds and called for help — summoned a champion from
-somewhere else entirely, the kingdom's final hope.
+And here is the war's quiet engine: **the kingdom's barrier is failing because
+the piece is failing.** Five centuries of upkeep — the barrier, the binding's
+maintenance — paid continuously out of an almost-human reserve. The war begins
+because a small god is dying of maintenance costs, and the Throne, patient as
+only a prisoner is patient, has simply been waiting out the candle.
+
+Reframe the old line "the Guardian still stands, never beaten" accordingly: its
+combat record **is endurance.** It has kept two locks running for five hundred
+years against a thing larger than itself. Standing *is* the whole fight.
+
+One more precision, because the words matter: the god is not dead, and it did
+not fall. **The unified being is what died** — what remains is a living
+amputation: the presence outside, the core, the will-remnant within, all alive,
+none whole. In-world, almost nobody knows this. Perception inside the kingdom
+misreads the situation as *a dead god's relic and its lingering ghost* — and per
+the world's archaeological-truth principle, the real shape of it is findable but
+found by almost no one.
+
+The Guardian **cannot draw on the core.** The one weapon strong enough to beat
+the Throne is the one thing whose use frees it: drawing the core down loosens
+the cage. It has spent five hundred years standing next to the sword it must
+never pick up.
+
+## The summoning
+
+The Guardian foresaw the war's end — everywhere except the hole in its sight —
+and made its last great spend: it reached across the planes and called a
+champion. *(How a call crosses where gods cannot — and what it costs — is part
+of why it took everything the piece had left.)*
+
+And the summoning was always a **one-act plan.** Champion at the Guardian's
+side, *pre-war*, inside its defenses, ready before the march ever reached the
+capital — what the game calls Act 2 **is the original intent.** Act 1 is the
+plan *stolen*: the Throne, invisible to foresight, caught the throw mid-air and
+dropped the champion into its own camp instead. The end of Act 1 — the Guardian
+flinging you back, before any of it happened — is not a twist. It is **the throw
+finally landing.**
+
+The summoning braided a living thread between Guardian and champion, so the two
+could stand together inside the defenses — and that braid is the one
+`[pending — the 2026-06-11 decision text cut off mid-sentence here ("...the one
+cr—"). Do not invent the braid's significance; get the rest of the sentence
+from Tristan.]`
 
 That champion is you.

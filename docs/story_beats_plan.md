@@ -30,7 +30,7 @@ Collisions are **peaks, not texture** — Act 2 is mostly its own campaign.
 | # | Beat | Where | One line | Plants |
 |---|---|---|---|---|
 | 0 | OPENING | the void | Guardian's fragmented call → name → interception → "Find me" | master cue: the glitch-voice texture |
-| 1 | ARRIVAL | Authority camp | wake on the circle, walk out, Vael's warm hand | Vael's warmth; the summoning circle (→ Row 5 cue) |
+| 1 | ARRIVAL | Throne camp | wake on the circle, walk out, Vael's warm hand | Vael's warmth; the summoning circle (→ Row 5 cue) |
 | 2 | TUTORIAL | training arena | spar (Vael teaches combos) → camp raid | Row 5; camp-landmark cue; "the monster armed your bonds" |
 | 3 | EARLY CAMPAIGN | kingdom outskirts | first missions; bonds build; glitches begin | cue *language* (a cheap, low-stakes garbled encounter) |
 | 4 | SHADOWED FIGURES | battle (TBD) | cloaked "saboteurs" cut down, garbled shouts | Row 2; the exact garbled line |

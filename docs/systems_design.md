@@ -21,7 +21,7 @@ is unauthored studio-scale branching for a solo dev). Stakes come from elsewhere
 (below), not from the dice deleting someone you love. **Death in this game is
 authored, not rolled** — see the open thread for Act 2. (The one authored loss
 inside Act 1 is **Beat 7's choice**: the companion you don't save is *presumed
-dead*, though the truth — revealed in Act 2 — is the Authority took them alive
+dead*, though the truth — revealed in Act 2 — is the Throne took them alive
 and reforged them into the Unchosen. See the story beats plan.)
 
 ### What happens when a character hits 0 HP in Act 1
@@ -63,12 +63,12 @@ story.
 
 ### [open] — Act 2 death
 
-Once the Authority has discarded the party (the protection's gone), the rules
+Once the Throne has discarded the party (the protection's gone), the rules
 can change and **authored death** becomes possible — the chosen, designed losses
 (e.g. the finale's mercy-inversion). This is deliberately unresolved; it resolves
 by feel once combat is real, and it does not block any Act 1 work. The Act 1 /
 Act 2 split may eventually be framed in fiction the same way the gods are: death,
-like the divine, is held off by the Authority's presence and becomes real only
+like the divine, is held off by the Throne's presence and becomes real only
 once it's gone. Not canon yet.
 
 
@@ -103,7 +103,7 @@ breach) is wired per-scene when the combined drill→raid scene is built.
 ## The camp hub [settled 2026-06-10]
 
 The war camp is the game's **persistent social hub**: one camp, struck and
-re-pitched as the Authority's line advances, the party's home between missions for
+re-pitched as the Throne's line advances, the party's home between missions for
 all of Act 1 (Act 2 mirrors it with the party's own camp — different camp, same
 idea). The campaign loop is **mission → camp (talk, bond, breathe) → mission**, and
 the camp re-pitching on new ground each stage is the advancing line made tangible.
@@ -126,7 +126,7 @@ formalized yet. Listed so they don't get lost:
 - **Combo system** — follow-ups (the teachable atom; reach & shape express
   character), passives, and duo/team abilities, unlocking and deepening with
   relationships. Positioning-for-combos as the core tactical verb.
-- **The advancing Authority line** — the single clock. Progresses only as the
+- **The advancing Throne line** — the single clock. Progresses only as the
   player spends time on things; pushes the strategic layer (where to go, who to
   save, who to bond with) while leaving the tactical layer free. Lockouts must be
   visible choices, never silent expiries.

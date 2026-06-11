@@ -27,7 +27,7 @@ It is never canon (see *Story decisions*).
 | Your task touches… | Read |
 |---|---|
 | Orientation / what is this / why it works | `docs/overview.md` |
-| World, lore, magic, factions, the Authority/Guardian | `docs/bible_01_world.md` |
+| World, lore, magic, factions, the Throne/Guardian | `docs/bible_01_world.md` |
 | The hero + companions / cast / character arcs | `docs/bible_02_cast.md` |
 | Act 1 plot (the loyal blade) | `docs/bible_03_act1.md` |
 | Act 2 plot + the open-threads Manifest | `docs/bible_04_act2.md` |
