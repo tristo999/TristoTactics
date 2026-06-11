@@ -19,8 +19,8 @@ func is_eligible(owner, ctx: Dictionary) -> bool:
 		return false
 	if not owner.is_alive or not victim.is_alive:
 		return false
-	if victim.team != owner.team:
-		return false                          # only allies
+	if not _friendly(owner, victim):
+		return false                          # only friendlies (player↔ally included)
 	if victim.current_hp >= victim.max_hp:
 		return false                          # already at full
 	if owner.follow_up_used_this_turn:

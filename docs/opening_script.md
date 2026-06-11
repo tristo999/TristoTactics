@@ -219,7 +219,10 @@ Victory (keep, one addition — Vael's coda, warmth back on like a switch):
 ## For Tristan's ruling
 
 1. All dialogue above — edit freely; especially the lie's wording and Lyra's theology.
-2. **The hero fights** (spar student + raid unit) — keep? (Story-true; new mechanically.)
+2. ~~The hero fights~~ — **RULED (2026-06-10): the hero is the ONLY unit the player
+   controls through the spar AND the raid; everyone else is scripted/AI.** Implemented:
+   hero = sole player unit, squad/recruits = AI allies, follow-ups fire across friendly
+   teams, partners parked (`ai_enabled=false`) during the drill.
 3. Elena + Borin as the pulled pair, Lyra at the tent (her heal demoed on arrival at the
    spar) — or a different pair?
 4. The kingdom stays unnamed ("the kingdom") until the name is ruled (slice gate 5).

@@ -1,20 +1,22 @@
-## Tutorial spar — Beat 2, phase 1. A heavily SCRIPTED training match on
-## arena_drill: Vael coaches the core verbs (move, attack) and points out the
-## follow-up combo, then it ends and hands off to the raid (the true battle on
-## arena_raid). "Very scripted": buttons are gated step-by-step and the spar
-## resolves on the player's first turn, so the partners never fight back.
+## Tutorial spar — Beat 2, phase 1. A heavily SCRIPTED training drill on
+## arena_drill, per docs/opening_script.md (Scene 5).
 ##
-## Spar partners (5/6/7) are mechanically ENEMY units so the player can strike
-## them — framed as a nonlethal drill. (In the raid they fight beside you.)
+## CONTROL MODEL (settled 2026-06-10): the player controls ONLY THE HERO — the
+## student. Everyone else is scripted: Borin is the strike target (enemy team so
+## he's targetable, AI parked so he just stands there and takes it — he insists),
+## Elena is a parked ally at your shoulder whose follow-up chains LIVE off your
+## strike (the signature verb, demonstrated by the engine, never false-praised),
+## and the recruits drill in the background. Lessons: MOVE → STRIKE → TOGETHER,
+## then the raid interrupts and hands off to the true battle.
 extends BaseLevel
 
 const ROSTER := {
-	"1": {"data": "res://data/characters/archer.tres", "name": "Elena"},
-	"2": {"data": "res://data/characters/dwarf.tres", "name": "Borin"},
-	"3": {"data": "res://data/characters/healer.tres", "name": "Lyra"},
-	"5": {"data": "res://data/characters/hero.tres", "name": "Recruit", "team": "enemy"},
-	"6": {"data": "res://data/characters/hero.tres", "name": "Recruit", "team": "enemy"},
-	"7": {"data": "res://data/characters/hero.tres", "name": "Recruit", "team": "enemy"},
+	"1": {"data": "res://data/characters/hero.tres", "name": "Hero"},
+	"2": {"data": "res://data/characters/archer.tres", "name": "Elena", "team": "ally"},
+	"3": {"data": "res://data/characters/dwarf.tres", "name": "Borin", "team": "enemy"},
+	"5": {"data": "res://data/characters/hero.tres", "name": "Recruit Sten", "team": "ally"},
+	"6": {"data": "res://data/characters/hero.tres", "name": "Recruit Wynn", "team": "ally"},
+	"7": {"data": "res://data/characters/hero.tres", "name": "Recruit Bram", "team": "ally"},
 }
 
 ## Where the raid (true battle) lives — handed off to when the spar ends.
@@ -26,17 +28,16 @@ var _action_bar: Node
 var _prompt: Control
 var _fx: CanvasLayer
 var _step: int = Step.INTRO
-var _spar_attacker: Node = null   # the unit whose strike we're judging
 var _followup_fired: bool = false
 
 func _ready() -> void:
-	music_key = "battle"
+	music_key = "battle"   # TODO(opening_script): camp theme here; battle music at the breach
 	_spawn_roster()
 	var gm = $GameManager
 	if gm:
 		gm.intro_event = null      # the spar runs its own scripted intro
 		gm.victory_event = null
-		gm.player_goes_first = true  # the drill opens on your squad, not a partner
+		gm.player_goes_first = true
 	super._ready()
 	call_deferred("_begin")
 
@@ -45,7 +46,12 @@ func _spawn_roster() -> void:
 	if tm == null:
 		push_error("[TutorialSpar] no tilemap.")
 		return
-	BattleSpawner.spawn(tm, ROSTER, $PlayerTeam, $EnemyTeam, $AllyTeam)
+	var units: Array = BattleSpawner.spawn(tm, ROSTER, $PlayerTeam, $EnemyTeam, $AllyTeam)
+	# Park every AI unit: the drill owns the turn flow — partners hold still.
+	# (Reactions still fire, which is exactly how Elena's chain demo works.)
+	for u in units:
+		if u is EnemyCharacter:
+			(u as EnemyCharacter).ai_enabled = false
 
 func _begin() -> void:
 	await get_tree().process_frame
@@ -61,20 +67,23 @@ func _begin() -> void:
 	await get_tree().create_timer(0.6).timeout
 	_frame_spar()
 	await _say([
+		["Vael", "Borin. Elena. With me — bring the blunts."],
 		["Vael", "First things first. Let's see whether the circle sent us a soldier or a sack of turnips."],
-		["Vael", "Move your archer — pick a spot, get a feel for the ground. Go on."],
+		["Vael", "Ground first — pick your footing. Go on."],
 	])
 	_step = Step.MOVE
 	_lock_to_move()
 	_show("Select Move, then click a highlighted tile.")
 
-# Re-lock the bar each player turn while we're still gating to Move only.
+# Re-lock the bar each player turn while we're still gating.
 func _on_turn_started(c: CharacterBase) -> void:
 	_frame_spar()
+	if not _is_player(c):
+		return
 	if _step == Step.MOVE:
 		await get_tree().process_frame
 		_lock_to_move()
-	elif _step == Step.ATTACK and _is_player(c):
+	elif _step == Step.ATTACK:
 		await get_tree().process_frame
 		_lock_for_attack()
 
@@ -90,7 +99,7 @@ func _frame_spar() -> void:
 		return
 	var center := base.to_global(base.map_to_local(Vector2i(19, 15)))   # pad / squad
 	if "zoom" in cam:
-		cam.zoom = Vector2(4.5, 4.5)
+		cam.zoom = Vector2(4.0, 4.0)   # BATTLE register (opening_script camera grammar)
 	if cam.has_method("snap_to"):
 		cam.snap_to(center)
 	else:
@@ -101,39 +110,37 @@ func _on_character_moved(c: Node2D, _from: Vector2i, _to: Vector2i) -> void:
 		return
 	_step = Step.ATTACK
 	_hide()
-	await _say([["Vael", "Good — footwork keeps you breathing. Now bring the rest up and put steel on a partner. Attack, then pick one."]])
-	# End this unit's turn so the strike falls to the NEXT squadmate — the archer
-	# can then chain a follow-up off it (she can't follow up her own blow).
-	var gm := $GameManager
-	if gm and gm.has_method("end_player_turn"):
-		gm.end_player_turn()
-	_show("Select Attack, then strike a sparring partner.")
+	await _say([
+		["Borin", "Then come introduce yourself!"],
+		["Vael", "Now put steel on Borin — he insists. Strike — and keep Elena at your shoulder."],
+	])
+	_show("Select Attack, then strike Borin.")
 
 func _on_character_attacked(attacker: Node2D, _target: Node2D, _dmg: int, _crit: bool) -> void:
-	if not _is_player(attacker):
-		return
-	if _step == Step.ATTACK:
+	if _is_player(attacker) and _step == Step.ATTACK:
 		# The strike the player was prompted for.
 		_step = Step.DONE
-		_spar_attacker = attacker
 		_followup_fired = false
 		_resolve_attack()
-	elif _step == Step.DONE and attacker != _spar_attacker:
-		# A second player strike in the same beat == a follow-up chained off the first.
+	elif _step == Step.DONE and attacker is CharacterBase \
+			and (attacker as CharacterBase).team == Constants.TEAM_ALLY:
+		# A friendly unit's attack chained in the same beat == Elena's follow-up fired.
 		_followup_fired = true
 
 func _resolve_attack() -> void:
 	_hide()
-	await get_tree().create_timer(0.7).timeout   # give any follow-up time to chain
+	await get_tree().create_timer(0.7).timeout   # give the follow-up time to chain
 	if _followup_fired:
 		await _say([
-			["Vael", "— Hah! Catch that? One of yours chained a shot off the blow. A follow-up."],
-			["Vael", "Keep your squad shoulder to shoulder and they'll do that all day. That's the whole game, recru—"],
+			["Elena", "...clear. — w-was that... did I overdo— Borin I'm so sorry—"],
+			["Borin", "HA! That's the thing! That's the whole war, right there!"],
+			["Vael", "A follow-up. Stand close, move in concert, answer each other's strikes."],
+			["Vael", "Learn nothing else today, learn th—"],
 		])
 	else:
 		await _say([
-			["Vael", "Clean enough. But mark this, recruit —"],
-			["Vael", "keep your archer at your shoulder when someone else swings. She'll chain a free shot off it — a follow-up. You'll lean on it before the morning's out, recru—"],
+			["Borin", "Good weight! Felt that in me teeth."],
+			["Vael", "Mark this, though — keep Elena at your shoulder when you swing. She'll answer your strike with her own. A follow-up. You'll lean on it before the morning's ou—"],
 		])
 	await _raid_interrupt()
 
@@ -143,8 +150,8 @@ func _raid_interrupt() -> void:
 	await get_tree().create_timer(0.35).timeout
 	await _say([
 		["Vael", "...Those aren't ours."],
-		["Vael", "Insurgents — they're through the gate! Up, all of you! Blades out — this is no drill!"],
-		["Vael", "Recruits — you stand WITH them now, not against them. MOVE!"],
+		["Vael", "Insurgents — through the north fence! Up, ALL of you — blades out, this is no drill!"],
+		["Vael", "Recruits — fall in behind the champion. Elena, Lyra, Borin — you know your work. MOVE!"],
 	])
 	await _fade_black(0.8)
 	if next_scene_path != "":

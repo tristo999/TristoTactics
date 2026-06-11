@@ -25,7 +25,8 @@ func is_eligible(owner, ctx: Dictionary) -> bool:
 		return false
 	if owner == attacker or not owner.is_alive or not target.is_alive:
 		return false
-	if owner.team != attacker.team or target.team == owner.team:
+	# Chain off a FRIENDLY unit's attack (player↔ally both count) at a HOSTILE target.
+	if not _friendly(owner, attacker) or not Constants.is_hostile(owner.team, target.team):
 		return false
 	if owner.follow_up_used_this_turn:
 		return false

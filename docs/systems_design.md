@@ -88,9 +88,17 @@ are friendly to each other.
   count toward win/lose (battle is won when enemies are gone, lost when the player
   squad is gone). Spawn an ally via a roster entry `{ "team": "ally", ... }`.
 
-Open: a unit may *change* team mid-battle (the Beat 2 sparring partners are
-friendly duel opponents in the spar, then allies when the raid hits) — that state
-flip is a per-scene scripting concern, not yet built.
+**Control model — the opening [settled 2026-06-10]:** the player controls **only the
+Hero** through the tutorial spar and the raid; the squad (Elena/Borin/Lyra) and the
+recruits fight beside you as scripted AI **allies**. Mechanically: hero = the one
+player-team unit; companions spawn `team: "ally"`; follow-ups fire across *friendly*
+teams (player↔ally, hostility-based — not team-equality); `EnemyCharacter.ai_enabled =
+false` parks a unit so scripted scenes own the turn flow (reactions still fire).
+`[open]` when (or whether) direct squad control expands in later missions.
+
+Mid-battle team *change* is built as a primitive (`CharacterBase.set_team` /
+`TriggerAct.flip_team`); using it live in a scene (spar partners → allies at the
+breach) is wired per-scene when the combined drill→raid scene is built.
 
 ## Other systems — homed here when ready (not yet written up)
 

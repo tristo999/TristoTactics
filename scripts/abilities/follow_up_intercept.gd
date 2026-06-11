@@ -24,9 +24,9 @@ func is_eligible(owner, ctx: Dictionary) -> bool:
 		return false
 	if not is_instance_valid(victim) or not victim.is_alive:
 		return false
-	if victim.team != owner.team:
-		return false                       # only protect allies
-	if attacker.team == owner.team:
+	if not _friendly(owner, victim):
+		return false                       # only protect friendlies (player↔ally included)
+	if not Constants.is_hostile(attacker.team, owner.team):
 		return false                       # the incoming hit must be hostile
 	if owner.follow_up_used_this_turn:
 		return false

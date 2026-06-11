@@ -136,7 +136,13 @@ func _start_character_turn(character: CharacterBase) -> void:
 
 	# Any EnemyCharacter (enemy OR green ally) is AI-driven; players act manually.
 	if character is EnemyCharacter:
-		_execute_enemy_turn(character as EnemyCharacter)
+		var ai := character as EnemyCharacter
+		if not ai.ai_enabled:
+			# Parked (scripted scene): skip the whole turn — the unit holds still.
+			# Deferred so a run of parked units can't recurse the stack.
+			call_deferred("_advance_turn")
+			return
+		_execute_enemy_turn(ai)
 	else:
 		# Player turn — enter idle with movement highlights
 		_return_to_idle()

@@ -5,13 +5,14 @@ extends BaseLevel
 
 const PORTRAIT_ELENA := preload("res://assets/sprites/portraits/elena_portrait.tres")
 
-## spawn-key -> roster entry. Slots 1/2/3 = your squad; 5/6/7 = AI green allies
-## (camp recruits) fighting alongside you; E = insurgents.
+## spawn-key -> roster entry. CONTROL MODEL (settled 2026-06-10): the HERO is the
+## only player-controlled unit in the opening; the squad + recruits fight beside
+## you as scripted AI allies. E = insurgents.
 const ROSTER := {
-	"1": {"data": "res://data/characters/archer.tres", "name": "Elena"},
-	"2": {"data": "res://data/characters/dwarf.tres", "name": "Borin"},
-	"3": {"data": "res://data/characters/healer.tres", "name": "Lyra"},
-	"5": {"data": "res://data/characters/hero.tres", "name": "Recruit Sten", "team": "ally"},
+	"1": {"data": "res://data/characters/hero.tres", "name": "Hero"},
+	"2": {"data": "res://data/characters/archer.tres", "name": "Elena", "team": "ally"},
+	"3": {"data": "res://data/characters/dwarf.tres", "name": "Borin", "team": "ally"},
+	"5": {"data": "res://data/characters/healer.tres", "name": "Lyra", "team": "ally"},
 	"6": {"data": "res://data/characters/hero.tres", "name": "Recruit Wynn", "team": "ally"},
 	"7": {"data": "res://data/characters/hero.tres", "name": "Recruit Bram", "team": "ally"},
 	"E": {"data": "res://data/characters/goblin.tres", "name": "Insurgent"},

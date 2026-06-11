@@ -10,6 +10,11 @@ var ai_pause_duration: float = 1.0
 ## Lets a green ally reuse this AI without a separate scene/class.
 @export var team_override: String = ""
 
+## Scripted scenes can park a unit: when false, the unit's whole turn is skipped
+## (no move, no attack) — it just stands there. Reactions (follow-ups) still fire.
+## The spar uses this so partners hold still while the lesson owns the turn flow.
+@export var ai_enabled: bool = true
+
 func _ready() -> void:
 	team = team_override if team_override != "" else Constants.TEAM_ENEMY
 	if character_data:

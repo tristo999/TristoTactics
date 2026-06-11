@@ -44,5 +44,11 @@ func resolve(_owner, _ctx: Dictionary) -> void:
 func rolls() -> bool:
 	return trigger_chance >= 1.0 or randf() < trigger_chance
 
+## "Allied" for follow-up purposes = NOT hostile (player and ally teams are friendly
+## to each other). The hero is the only player-team unit in the opening; the squad is
+## ally-team — cross-team follow-ups are the normal case, so don't gate on team equality.
+func _friendly(a, b) -> bool:
+	return a != null and b != null and not Constants.is_hostile(a.team, b.team)
+
 func _dist(a: Vector2i, b: Vector2i) -> int:
 	return Constants.tile_distance(a, b)

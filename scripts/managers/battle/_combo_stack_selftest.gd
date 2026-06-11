@@ -63,3 +63,31 @@ func _run() -> void:
 		"reactions resolve FIFO with cascades appended in order (got %s)" % str(log))
 
 	unit.queue_free()
+
+	# --- Cross-team eligibility (the hero-is-sole-player-unit control model) ---
+	# Follow-ups must fire across FRIENDLY teams (player↔ally), not just same-team.
+	var hero := _mk_unit(Constants.TEAM_PLAYER, Vector2i(0, 0))
+	var elena := _mk_unit(Constants.TEAM_ALLY, Vector2i(1, 0))
+	var foe := _mk_unit(Constants.TEAM_ENEMY, Vector2i(2, 0))
+
+	var fua := FollowUpAttack.new()
+	_check(fua.is_eligible(elena, {"attacker": hero, "target": foe}),
+		"ally archer chains off the PLAYER hero's attack (cross-team friendly)")
+	_check(not fua.is_eligible(elena, {"attacker": foe, "target": hero}),
+		"no chain off a HOSTILE unit's attack")
+
+	var fuh := FollowUpHeal.new()
+	hero.current_hp = hero.max_hp - 5
+	_check(fuh.is_eligible(elena, {"victim": hero}),
+		"ally healer mends the hurt PLAYER hero (cross-team friendly)")
+	_check(not fuh.is_eligible(elena, {"victim": foe}),
+		"no mend for a hostile unit")
+
+	hero.queue_free(); elena.queue_free(); foe.queue_free()
+
+func _mk_unit(team: String, tile: Vector2i) -> CharacterBase:
+	var u := CharacterBase.new()
+	u.team = team
+	add_child(u)
+	u.current_tile = tile
+	return u
