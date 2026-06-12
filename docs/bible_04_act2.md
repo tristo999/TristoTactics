@@ -286,62 +286,147 @@ here — and the legion arrives **pre-familiar** *(third batch; ledger Row 7)*: 
 has spent two years being hunted by the apocalypse's advance guard. At the door,
 the endless thing pouring through has a silhouette they already know.
 
-- **The flanks — the unwinnable vigil.** The Guardian's last soldiers and the
-  Throne's *old army* — the two sides lied into hating each other — stand
-  together against the endless legion. The reconciliation is shown as a
-  **formation, not a speech**: two banners in one line *is* the lie breaking at
-  the scale of an army. (This is the seed planted at the Act 1 capital, when the
-  veil lifted for everyone at once — see Part Three.) They cannot win; the legion
-  has no bottom. Their only victory condition is **time** — hold long enough for
-  the hero to reach the door. They spend their lives as currency for minutes.
+*(The finale re-founded per the 2026-06-11 session, fourth batch — current
+decisions. SUPERSESSION: the old model — race to the door, reclose it, keystone
+unknown — is dead. There is no door to reclose and no second seal.)*
 
-- **The center — the hero and the door.** You race to the door to reclose it,
-  carrying the fragment. The legion is the clock; the flanks bleed the entire time
-  you are at the door, by definition, because the legion is endless. The player
-  feels the line thinning behind them — the cost mounting — so reclosing the door
-  is never a clean triumph, only a thing barely reached in time, over a price they
-  watched climb.
+**The door is the Throne's will.** It is not a gate someone propped open. The
+Throne — swollen with the core, mid-ascension — *is* the aperture; the legion
+pours through it the way water pours through a wound. The world's
+near-closedness to outside things (Part One) is the natural state; the Throne is
+the only thing overriding it. Kill the Throne and the door is not closed — **it
+stops being held.**
 
-- **The keystone — what the fragment does.** **[open]** — the one unwritten word,
-  the thing the whole two-act loop is built toward. It should be something only
-  *this* hero could do: the one who opened the door and carries both the guilt and
-  the cure. The doom and the cure run through the same hands. The three "gifted"
-  companions (Priestess, Warlock, dwarf) may converge on it — the empire's stolen
-  divine, reclaimed through the very people it was stolen through. Left open on
-  purpose; it sets easiest with the whole arch in view, and the arch is now built.
+**The ascension clock.** Taking the core began a *rising* that takes time — not
+a ritual the Throne performs (nothing learned, nothing recited) but a
+**digestion it endures**: the mousetrap property fighting the swallow in real
+time, unworthy hands able to swallow the spark but not become it. The graft is
+raw, half-fused, **a seam.** When the rising completes, the Throne is a true god
+of this plane and nothing inside the plane can ever fight it. The final battle
+is therefore an **interruption** — the last possible one. The window between
+"took the core" and "finished becoming" is the entire remaining history of the
+world.
+
+**The legion is the bodyguard.** Not the apocalypse itself — the apocalypse's
+bodyguard. The Throne knows exactly how vulnerable metamorphosis makes it (it
+built an empire on striking things at their weakest), and its first god-act is
+summoning the army to wall off its own chrysalis: a defensive perimeter with
+infinite depth. The flanks' unwinnable vigil is re-founded accordingly — the
+Guardian's last soldiers and the Throne's old army, two banners in one line (the
+seed from the Act 1 capital, a formation, not a speech), fighting **a siege
+through bodyguards toward a hatching god.** Every life spent is a meter of
+corridor toward the chest the spark sits in.
+
+**And it cannot flee, and cannot finish elsewhere:** the spark cannot be taken
+from where it was anchored until the rising completes. The Throne is pinned to
+the site of its own theft, mid-swallow, able neither to chew fast enough nor to
+let go. The conqueror ends **cornered by its own greed's geometry.**
+
+**Vulnerable because manifest.** For five centuries the Throne was unkillable
+because it was *nothing* — bodiless, no surface to strike. Manifesting is the
+trade it always wanted: realness. But realness is stakeable. Its triumph is the
+first time it can be touched, and the seam of its becoming is where the blade
+goes. **It wanted a body for five hundred years and dies of finally having
+one.** The terrible form is not spectacle — it is the vulnerability itself,
+worn as glory.
+
+**The anchors.** The rising stabilizes itself through physical anchor-points
+across the battlefield — `[open: the bible's name for them — graft-knots /
+conduits / "crystals" as placeholder; count set at THREE, tuning open]` — each
+channeling visibly into the chrysalis, each held by an elite, *finite* garrison.
+The endless legion is the perimeter pressure; the anchor fights are solvable
+tactics puzzles inside an unsolvable siege. Severing one slows the rising and
+thins the perimeter — minutes bought, a corridor opened, the field visibly
+slackening. **The clock is diegetic:** the rising's progress is read off the
+battlefield itself — the channeling thickening, the form accreting where the
+beams converge. No abstract timer. (Battle structure detail — garrisons,
+deployment, the simultaneous-vs-sequential question — lives in
+`systems_design.md`.)
+
+**The roster pays off as a deployment decision.** Three simultaneous objectives
+split the gathered army: who hits which anchor, who holds which approach. Every
+Act 2 gathering thread cashes out on the deployment screen — the final battle is
+the one mission where *who you saved* is read off the roster itself.
+
+**The sequence:** anchors severed → the rising stalled → the perimeter thinned →
+the monstrosity assailable → the boss fight proper — and inside it, the
+keystone.
+
+## The keystone — the braid's final crossing
+
+*(The previously-unwritten word, written 2026-06-11 — current decision. The
+mechanism and placement are resolved; the staging stays in Tristan's hands.)*
+
+Mid-ascension, the core inside the Throne is still **itself** — the Guardian's
+severed heart, unfused, recognizable; that is the mousetrap property seen from
+inside. And the braid is the one credential that crosses every barrier around
+the core (Part One) — **no wall the Throne can raise applies to a thread of the
+thing it stole.** Therefore: the fragment — the will's last splinter, carried in
+the marked hero's hands — is the only object in existence with standing to
+reach the stolen heart.
+
+**The keystone is the hero spending the fragment INTO the core, through the
+Throne: will reaching its own heart through the thief.** Planted at the
+summoning, fired at the kill — the braid clause paying off at maximum distance.
+*(Doc-facing color, not a load-bearing claim: this is severance — the
+Guardian's founding act, performed at the end on the enemy. The plagiarist,
+which only ever took and fused and claimed, ends **divided**.)* `[open — the
+in-fiction verb and staging of the act itself: cut / reach / reclaim / call
+home; touch or strike; the fragment dissolving into the seam. Tristan stages by
+hand.]`
+
+**The severance's consequences.** The Throne, cut from the spark mid-rising:
+the will holding the door open collapses — **the door dies with the override**;
+the legion's source closes. And the half-ascended body, subtracted of stolen
+divinity, is not a death animation but an **eviction** — what remains when you
+subtract theft from a thing that was never anything but theft. `[open —
+staging, Tristan's hands: possibly nothing; possibly something small and
+screaming; the Throne's true face may be vacancy.]`
+
+**The refusal — placement is load-bearing.** The reach-and-refuse temptation
+(the temptation gets an input: the player may reach, the power answers, and the
+hero lowers their hand) is placed **after the cut.** The hero stands in the
+wreckage holding the instrument that just freed the most wanted object in five
+hundred worlds — the naked ascension spark, unguarded, takeable, and nothing
+stopping a second reach. The refusal lands **post-victory**, when taking it
+would be *safe* — the only time refusal means anything. The player performs the
+temptation; the hero performs the refusal. **Protect: the refusal must never be
+skippable ceremony — the spark is mechanically offerable in that moment.**
 
 ## Mercy inverts
 
 All of Act 2 trains the player to *minimize* cost — time the detonation to kill
 fewest, take hits non-fatally, gather people instead of spending them. The finale
 is the one place that breaks: here you finally *must* spend lives. Grace is no
-longer saving everyone. Grace is **being worthy of the sacrifice** — reaching the
-door before the line they are holding runs out, so the time they bought with their
-lives doesn't go to nothing. The hardest expression of the thesis: sometimes the
-most merciful thing you can do with a sacrifice is be worth it. `[GUESS — Act 2
+longer saving everyone. Grace is **being worthy of the sacrifice** — severing
+the anchors and reaching the seam before the line they are holding runs out, so
+the time they bought with their lives doesn't go to nothing. The hardest
+expression of the thesis: sometimes the most merciful thing you can do with a
+sacrifice is be worth it. *(The bodyguard re-founding sharpens this: the lives
+are spent buying meters of corridor toward a hatching god.)* `[GUESS — Act 2
 death rules (authored, designed losses now that the Throne's no-death
 suppression is lifting in-fiction) resolve by feel once combat is real; see
 systems_design.]`
 
 ## Resolution
 
-The door is reclosed (mechanism = the keystone). The Throne's control collapses.
-And the world's locks finally come off — *(reframed per the 2026-06-11 cosmology,
-current decision)*: the gods were never pinned by the Throne's presence; they
-have been outside all along, because divinity does not fit inside a plane —
-that was the price of their rising. What the Throne and the binding choked were
-the **thin apertures**: the currents, the blessings, the quiet prayer-machinery
-that was always the only part of a god that fits back through. With the door
-shut and the pretender's grip broken, the currents run clean and *named* again
-— prayers reaching the gods they were always reaching, credited at last to the
-right names. This is the world-scale grace, and it is the truest expression of
-the whole game: *you did not summon salvation; you removed the weight on it.*
-What was always there finally breathes. **[open]** how much more than current
-comes back — whether any god can press a presence to the world's thin places
-again, and what becomes of the Throne and the binding once the door is reclosed
-(likely covered by the `[pending]` truncated portion of the 2026-06-11
-decisions — do not invent). The hero reaches, at last and for real, the
-destination the Guardian was bringing them to all along.
+The Throne is severed, and the door **dies with it** *(fourth batch — there was
+never a lock to re-set; the door was the pretender's will, and the will is
+cut)*. Its control collapses. And the world's locks finally come off — the gods
+were never pinned by the Throne's presence; they have been outside all along,
+because divinity does not fit inside a plane — that was the price of their
+rising. What the Throne and the binding choked were the **thin apertures**: the
+currents, the blessings, the quiet prayer-machinery that was always the only
+part of a god that fits back through. With the pretender evicted and its grip
+broken, the currents run clean and *named* again — prayers reaching the gods
+they were always reaching, credited at last to the right names. This is the
+world-scale grace, and it is the truest expression of the whole game: *you did
+not summon salvation; you removed the weight on it.* What was always there
+finally breathes. **[open]** how much more than current comes back — whether
+any god can press a presence to the world's thin places again. (The freed
+heart and the spent will: see the fragment's-fate fork in the Manifest — the
+last keystone question, deliberately unresolved.) The hero reaches, at last and
+for real, the destination the Guardian was bringing them to all along.
 
 ## Silent reconciliation
 
@@ -359,11 +444,35 @@ The consolidated keep/kill/claim checklist. Plain `[open]` = genuinely undecided
 `[GUESS]` = an invention proposed in these docs, awaiting your ruling.
 
 **Big keystones**
-- **[open]** The keystone — what the fragment does at the core/door (Part Four).
-  **The gate is OPEN** (2026-06-11): the braid clause is supplied — the braid is
-  the one credential that crosses the core's threshold, and the hero is a key by
-  the Throne's theft (Part One, *The braid*). The keystone now designs between
-  the mousetrap property and the braid. Still undesigned.
+- ~~The keystone~~ — **DESIGNED 2026-06-11 (fourth batch, current decision),
+  with one fork left open.** Mechanism resolved: **the braid's final crossing**
+  — the fragment spent into the core through the Throne; will reaching its own
+  heart through the thief (Part Four). Placement resolved: inside the boss
+  fight, after the anchors are severed. Refusal placement resolved:
+  post-victory, the spark mechanically offerable (the player performs the
+  temptation; the hero performs the refusal — never skippable ceremony).
+  Remaining **[open]**s: the in-fiction verb/staging of the act; the eviction
+  (what remains of the Throne — possibly vacancy); and the fork below.
+- **[open] THE FRAGMENT'S FATE — the last keystone question.** What the freed
+  heart and the spent will become. Candidate shapes, all recorded, none ruled:
+  **(a)** the will, rejoined to the heart and repowered, lives — but as a *new
+  thing*; candidate from session: alive, aware, reachable as a current/hum —
+  presence without take-back, possibly the epilogue beat (the ordinary hero, at
+  the site, feeling something aware on the far side of the severed braid:
+  *"...Welcome..."* — first word as last). **(b)** The will woven into whatever
+  the freed core becomes — present the way a person is present in everyone they
+  changed. **(c)** Converges with the reunion fork (the outside presence
+  returning) — these resolve together. **PROTECT, whatever is chosen: full
+  resurrection — the old Guardian, eyes open, standing there — is OFF the
+  table.** It refunds the gamble, breaks holds-not-rewrites at the worst
+  moment, and re-grades the vigil into a hospital stay.
+- **[open]** The anchors: the bible's name for them (graft-knots / conduits /
+  "crystals" placeholder) and count-tuning (three, current decision). The
+  simultaneous-vs-sequential assault question is routed to `systems_design.md`.
+- *Doc-facing design history (never canon):* the finale's mission design
+  preceded this cosmology by years — Tristan's original story graph already had
+  a ritual to stop, crystals to destroy, and a transformed monstrosity to kill.
+  **The lore grew into the fight, not vice versa.**
 - **[open]** The kingdom's name and cultural identity (Part One).
 - ~~The Throne's nature~~ — **DEFINED 2026-06-11** (current decision): a
   planes-conquering pretender, less than a god by predatory design, bodiless

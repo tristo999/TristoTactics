@@ -115,6 +115,37 @@ hooks) get built once, in one venue, and run all campaign. Not yet built beyond 
 arrival scene; the camp-hub scene (free walk + companion talks between missions) is
 the natural home for bonding v1's spend side.
 
+## The finale's battle structure [current decision 2026-06-11; fiction in bible_04]
+
+The final battle is an **interruption of an ascension**, fought through a
+bodyguard. Mechanical shape:
+
+- **The anchors** — three physical anchor-points (`[open]` name; count = three,
+  tuning open) channel visibly into the Throne's chrysalis. Each is a **solvable
+  tactics puzzle**: an elite, *finite* garrison on terrain-driven,
+  elevation-heavy ground — while the endless legion supplies unsolvable
+  *perimeter pressure* around them. Severing an anchor slows the rising, thins
+  the perimeter, and visibly slackens the field: minutes bought, a corridor
+  opened.
+- **The clock is diegetic.** The ascension's progress is read off the
+  battlefield — channeling thickening, the form accreting where the beams
+  converge. No abstract timer anywhere.
+- **The deployment payoff.** Three simultaneous objectives split the gathered
+  roster: who hits which anchor, who holds which approach. Every Act 2
+  gathering thread cashes out as a deployment decision — the one mission where
+  "who did you save" is read off the deployment screen.
+- **[open] Assault structure:** truly simultaneous three-squad battles vs. one
+  party hitting anchors in sequence while the line collapses behind them (the
+  shrinking-map noose recompiled into a single mission). Gameplay-budget
+  decision; resolve when the finale is scoped.
+- *Doc-facing note:* the assault may deliberately reuse the tutorial's combat
+  grammar — cover, elevation, the follow-up — the final fight conducted in the
+  language the monster taught you in lesson one.
+- Sequence: anchors severed → rising stalled → perimeter thinned → the
+  monstrosity assailable → the boss fight proper → the keystone (bible_04).
+
+## Other systems — homed here when ready (not yet written up)
+
 These were designed across recent sessions and belong in this doc, but aren't
 formalized yet. Listed so they don't get lost:
 

@@ -170,12 +170,15 @@ question that decides whether it gets told is "is the first playable piece small
 enough," not "is it good enough." It's good enough.
 
 
-## The one open keystone
+## The keystone — written (2026-06-11, current decision)
 
-What does the Guardian's fragment actually *do* at the core/door in the finale?
-It's the thing the whole two-act loop builds toward — the reason the Guardian
-summoned a champion across worlds in the first place. Whatever it is, it should
-be something only *this* hero could do: the one who opened the door, who carries
-both the guilt and the cure. The doom and the cure run through the same hands.
-Left open on purpose. It sets easiest with the whole arch in view, and the arch
-is now built.
+The question this section held open — *what does the fragment do?* — is now
+answered: **the braid's final crossing.** Mid-ascension, the core inside the
+Throne is still the Guardian's own unfused heart, and the braid is the one
+credential no wall of the thief's can refuse — so the hero spends the fragment
+*into* the core, *through* the Throne: will reaching its own heart through the
+thief. The one who opened the door carries the cure; the doom and the cure run
+through the same hands, exactly as this section always demanded. Planted at the
+summoning, fired at the kill. (Full design — the ascension clock, the
+bodyguard-legion, the anchors, the post-victory refusal, and the one remaining
+fork, the fragment's fate — in `bible_04_act2.md`.)

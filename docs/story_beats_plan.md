@@ -56,7 +56,7 @@ across B3 — resolve with the cast + recruit order (see the bible_04 Manifest).
 | woven | GATHERING THREADS | the shrinking map | dwarf's kin alive; the Warlock's pact; the Loved NPC rescue | — |
 | mid | VAEL | TBD | unmasked → wounded-pride boss → dies never knowing | — |
 | late | UNCHOSEN / REVELATION | — | pursuit → cornered at the true-form moment → sees it → defects | — |
-| end | FINALE | capital | three fronts; mercy inverts; the keystone `[open]` | — |
-| end | RESOLUTION | — | door reclosed; suppression lifts; silent reconciliation | — |
+| end | FINALE | capital | the convergence → anchors severed through the bodyguard-legion → the seam → **the keystone** (the braid's final crossing) → the refusal | Rows 6/7 pay off |
+| end | RESOLUTION | — | the Throne severed, the door dies with it; the currents run named again; silent reconciliation | — |
 
 Open threads: the consolidated Manifest at the end of `bible_04_act2.md`.
