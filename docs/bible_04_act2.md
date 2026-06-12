@@ -506,14 +506,15 @@ or **transposes** — the hum the ordinary hero feels at the site is no longer
 through the green. Possibly under the Wizard's planting hands. Flag, don't
 rule.
 
-## The ending, staged — the name, the flight, the fire
+## The ending, staged and played — the name, the flight, the fire, the walk
 
-*(Eighth batch, 2026-06-12 — current decisions. This specs the ending
-sequence the way the fourth batch specced the finale battle: staging-grade
-canon. The sequence, locked: the cut → the last breath → the fight to give it
-back → the restoration → the name → the joy and the tears → the party sweep →
-the flight → the sky-burst → the fire → the last gathering → the final image
-`[open]`. The epilogue beat above sits after all of it.)*
+*(Eighth batch staged the sequence; ninth batch — 2026-06-12 — completed the
+interaction layer. Current decisions; staging-grade canon. The sequence,
+locked and CLOSED: the cut → the last breath → the fight to give it back →
+the restoration → the name → the joy and the tears → the party sweep → the
+flight → the sky-burst → the fire → the last gathering (playable) → the walk
+→ the rise-and-follow → the march → the title `[open — the changed image]`.
+The epilogue beat above sits after all of it.)*
 
 **The name.** At the brief return, **the hero says her name.** The silent
 protagonist's only scripted utterance in the entire game `[open — staging:
@@ -620,11 +621,110 @@ the party would camp `[open — form, gated on Beat 7]`. **Presence without
 attendance**; the wound human-sized and theirs, the path their own. (This
 absence is the silent reconciliation's last honest note.)
 
-`[open — staging, two candidates, rule at storyboard]` **The final image**:
-the fire from above — the one light she left behind, small and warm in the
-restored green — or the hero's face at it. Both recorded.
+**The gathering is playable — a space, not a cutscene** *(ninth batch)*. The
+player walks the camp, talks to companions, overhears the pairs, sits as
+long as they want. The exit is held by an NPC (identity `[open]` — candidates
+below), and the game's final mechanic is **the player deciding they are
+satisfied** — the thesis handed over as an input: nobody at this fire is
+needed anymore, *including you*; staying is a choice, and so is going.
 
-**The ending's three standing PROTECTs** *(listed together, per the batch)*:
+**THE ZERO-SHAME RULE — PROTECT.** The not-yet path carries **zero shame and
+zero nudge.** No NPC impatience, no music shift, no "the others are
+waiting." The game waits as long as the player does. **A goodbye on a timer
+isn't one.**
+
+**Finite, marked, honest.** Each companion's final content is finite; once
+spent, they don't refresh into filler — they sit, present, *done talking*,
+which is itself the gathering's thesis ("we said what we needed to; now
+we're just here together"). A soft indicator marks who hasn't been heard
+yet. The exit warns it's final — though the confirm may be the walk itself
+(below). (Mechanics in `systems_design.md`.)
+
+**The two-piece structure.** **Piece one — the group scenes**: on approach,
+companions are found in small groups around the camp — fun, happy dialogue
+(or neutral-toned, by party temperature). The ensemble's payoff: eight
+people who became a family, demonstrated through **banter geometry** — who
+sits with whom, the pairs-twice map in its final positions. The warmth
+plays *first*, so the one-on-ones land against a backdrop of the family
+being okay — **the bittersweet lives in the goodbyes, not the atmosphere.**
+(Requires the everyone-placed-at-once capability flagged in the eighth
+batch — same dependency, same system.) **Piece two — the one-on-ones**:
+each companion gives their **current state in a few words** — *the
+few-words law*, the scene family's design spec: never summary, never the
+character narrating their arc ("I've learned so much..."); the payout is
+the change *running live*, the fate-tell at full breath. These are
+**audiences, not dialogues**: each is a monologue shaped by its wound's
+grammar, delivered to the one person who never graded, invoiced, argued,
+or flinched.
+
+**The template** *(doctrine)*: **neutral** = the wound's unresolved shape
+expressed as *what-they'll-do-next* — a travel plan, not a sad ending;
+neutral reads as story-that-didn't-finish-here, truer to
+outcomes-not-endings, and several neutrals may carry seeds of the world's
+unfinished business. **Bonded** = the wound's resolution expressed as a
+*present-tense fact about themselves*, in their own register — reporting
+the destination, never the journey. (The Warlock's exemplar and the derived
+sketches live in Part Two, per entry.) `[open — the conditioning boundary,
+flag for systems: group scenes vary lightly by overall party temperature;
+the full bonded/neutral split lives in the one-on-ones, where the writing
+is per-companion anyway — keeps the conditional matrix at the layer the
+fates were designed for. Lean recorded; rule at implementation.]`
+
+*(Sequencing doctrine — route to the scene-budget material: these scenes
+are written LAST, after the bond scenes exist, after the routes are
+authored. They are interest on deposits; the backward-budget specs what the
+road must deposit, the road gets built, then the fire gets written, rich.)*
+
+**The walk is the yes** *(current decision)*. The NPC at the exit asks
+*"Are you ready to go?"* — and the answer is not a dialogue choice. The
+hero has one word in the entire game, already spent. **The yes is the
+walk**: the player walks past the NPC through the exit — the summoning
+room's verb, performed again in daylight, toward people instead of a lie;
+walking away returns to the fire, unremarked. The final choice rendered as
+**movement, not menu** — the silent protagonist's grammar honored to the
+last input. *(Rhymes, doc-facing: the game opens on "...are you there..."
+and closes on "are you ready to go?" — the first question pulled the hero
+into someone else's plan; the last is answered freely. And the
+deploy-prompt grammar: the player has answered "ready?" two hundred times,
+always assigned — the 201st is the first one chosen. Collision grammar on
+the UI itself — noted as rhyme, not row.)*
+
+`[open — the exit NPC, candidates recorded]`: the kingdom's general (the
+war's voice); one of Lyra's elders (living memory inviting the future); a
+nobody-conscript the Paladin patched — the world the party saved, asking
+them back into it; the last speaking voice in the game belonging to someone
+the machine would have spent. **Lean: the conscript.** Flag, don't rule.
+
+**The rise-and-follow** *(current decision — the final blocking)*: the hero
+walks out **alone** — and the party **gets up and follows.** Nobody summons
+them; eight people watch their friend walk toward the work and rise — and
+fall in, as a unit. The game that opened with a being pulled into the world
+ends with people following by choice: **the summoning performed correctly
+at last — the only summons that was ever real was the walk itself.** The
+blocking is the bond system's last sentence: the tutorial taught the player
+to collect the squad ("a soldier who doesn't know his line dies of it");
+the ending shows they stay collected — the squad gathering *themselves*,
+unordered, around someone who never once gave an order. Zero dialogue.
+`[staging-open: rise order — who stands first, who stands last.]`
+
+**The march.** The party exits with the kingdom's forces and the old Throne
+army together — the two-banners-one-line formation persisting into
+peacetime, **reconciliation shown as logistics**: walking together toward
+rubble, the gradient's reckoning starting on-screen one column at a time.
+(Per the honest-state canon: the game ends at the threshold of the work,
+not its completion — the fire was rest; the morning is the work picked up
+by choice.)
+
+**The title transition** *(current decision)*: march → cut to **TITLE** →
+credits over the resolved motif (ledger Row 10). The post-completion title
+screen **changes** (the standing changed-title-screen device — doc-facing
+alias: the Hatsune Miku Problem's payoff): **the title card becomes the
+last shot of the film.** `[open — the changed image, candidates: the
+morning camp; the restored green; the original title image with her light
+gone warm instead of strained; the fire from above — the one light she
+left behind, inherited from the superseded final-image fork.]`
+
+**The ending's five standing PROTECTs** *(listed together)*:
 1. **The return lives inside the departure** *(seventh batch)* — reunion and
    leaving one motion; a completion, not a resurrection; brevity is the first
    line of the storyboard.
@@ -637,6 +737,13 @@ restored green — or the hero's face at it. Both recorded.
    repaired* — the grass grows up through the place where two versions of the
    same people stared across a gap, and the gap remains. **This is the shot
    that declares the game's theory of grace, seconds before the sky.**
+4. **The zero-shame rule** *(ninth batch)* — the gathering's not-yet path
+   carries zero shame and zero nudge; the game waits as long as the player
+   does. A goodbye on a timer isn't one.
+5. **The full-sincerity law** *(ninth batch — the romance model, Part Two)*
+   — ambiguity deliberate, never timid: the feeling written at 100%, only
+   the category withheld. Warmth written at 70% so it can pass as either
+   reads as flinching.
 
 ## Mercy inverts
 
@@ -883,9 +990,12 @@ identity, the land, the ending**
   itself — possibly under the Wizard's planting hands); Section E's
   critical-path fragment set (mission design); the Wizard's proper nouns (the
   alley, the teacher); the ash-kingdoms-as-older-wounds **[GUESS]**.
-- **[open] ROMANCE** — are the bond routes romantic, platonic, or deliberately
-  ambiguous? Cascades: the hero's gender question (Lyra's "And here HE is"
-  line), route gender-locking, authoring cost. Recorded, not ruled.
+- ~~ROMANCE~~ — **RESOLVED 2026-06-12 (ninth batch, current decision): the
+  Star Rail model** — bonded warmth loosely implied and interpretable, never
+  stated; no romance arcs, no confessions, no gender-locked routes; governed
+  by the full-sincerity law (Part Two doctrine). The hero-gender cascade
+  loses most of its pressure: unlabeled warmth works identically regardless
+  of who the hero is.
 
 **Eighth batch (2026-06-12) — the ending, staged**
 - The ending graduates from designed to **STAGED** — sequence locked: the cut
@@ -907,10 +1017,12 @@ identity, the land, the ending**
   `systems_design.md`; who holds which stratum of it is world-canon in Part
   One).
 - New **[open]**s: the hero's utterance form (voice line vs. text box); the
-  last face before the burst (candidate: the hero looking up); the final
-  image (fire from above vs. the hero's face — rule at storyboard); the
-  Unchosen's trace form (gated on Beat 7); the score motif's ledger row
-  (pending the proposal shown with this batch).
+  last face before the burst (candidate: the hero looking up); ~~the final
+  image~~ *(superseded by the ninth batch's title transition — the fire-from-
+  above candidate transposes into the changed-title-image fork)*; the
+  Unchosen's trace form (gated on Beat 7); ~~the score motif's ledger row~~
+  *(APPLIED as Row 10, ruled 2026-06-12 — production rules handed verbatim
+  to the composer)*.
 - New doctrine: the flight as **ledger-retrace**; the cameo **fate-tell**
   rules (mid-life, no bows, save-file-conditional, one-image deltas);
   **nobody-is-useful** as the last gathering's thesis; **budget backward
@@ -923,6 +1035,28 @@ identity, the land, the ending**
   space is engineered small (8 companions × ~2 fates, one-image deltas, text
   not VO, the eavesdrop system as the already-built delivery mechanism) —
   precision instead of volume.
+
+**Ninth batch (2026-06-12) — the ending's interaction layer; romance**
+- The ending graduates from staged to **CLOSED** — sequence + interaction
+  layer complete: the playable gate, the two-piece structure (group scenes →
+  one-on-ones), the walk-as-yes, the rise-and-follow, the march, the title
+  transition. The standing-PROTECT list grows to **five** (adds the
+  zero-shame rule and the full-sincerity law).
+- New doctrine: **the few-words law** and the **neutral/bonded template**
+  (travel plan vs. present-tense fact — destination, never journey);
+  **write-the-fire-last** sequencing (interest on deposits — appended to the
+  scene-budget method); **the walk-as-input grammar** (the final choice as
+  movement, not menu).
+- New **[open]**s: the exit NPC's identity (general / elder / patched
+  conscript — **lean: the conscript**); the rise order (who stands first,
+  who stands last); the changed title image (four candidates incl. the
+  inherited fire-from-above); the conditioning boundary (group-scene
+  temperature vs. one-on-one fates — rule at implementation); Lyra's and
+  Borin's ambiguity-tells (derive in-register at authoring; hers presumably
+  liturgical, his pending the rebuild).
+- *Doc-facing rhymes, noted not rowed (per the batch):* the opening/closing
+  question pair ("...are you there..." / "are you ready to go?") and the
+  deploy-prompt grammar (the 201st "ready?" is the first one chosen).
 
 **Companion routes (2026-06-11, fifth batch)**
 - ~~The Priestess's outcomes~~ — **RESOLVED**: bonded = faith restored by

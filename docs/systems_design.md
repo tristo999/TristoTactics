@@ -254,7 +254,39 @@ selected by save state per companion fate, the pairs-twice conversations as
 content. Minimal new systems: it reuses the eavesdrop channel's
 variant-selection machinery; what it needs is the fate flags feeding
 placement and line selection. (One new requirement: the scene must support
-*everyone placed at once* — the eavesdrop system elsewhere stages pairs.)
+*everyone placed at once* — the eavesdrop system elsewhere stages pairs.
+The ninth batch's group scenes depend on this same capability.)
+
+**The gathering's gate mechanics (ninth batch, 2026-06-12)**: the gathering
+is playable — a walkable space, not a cutscene. Mechanics:
+- **Finite content, done-talking states**: each companion's final content is
+  finite; once spent they don't refresh into filler — they sit, present,
+  done talking (a state, not a bug: it's the scene's thesis). A **soft
+  indicator** marks who hasn't been heard yet — informational, never
+  prompting.
+- **THE ZERO-SHAME RULE (PROTECT)**: no NPC impatience, no music shift, no
+  "the others are waiting." The game waits as long as the player does.
+- **The walk is the confirm**: the exit NPC asks "Are you ready to go?" and
+  the answer is movement — walking past the NPC through the exit commits;
+  turning back returns to the fire, unremarked. No dialogue choice, no menu,
+  no button prompt beyond the warning that the exit is final.
+- `[open]` **The conditioning boundary**: group scenes vary lightly by
+  overall party temperature; the full bonded/neutral split lives in the
+  one-on-ones, where writing is per-companion anyway. Keeps the conditional
+  matrix at the layer the fates were designed for; prevents combinatorial
+  explosion in ensemble banter. Lean recorded; rule at implementation.
+
+**The rise-and-follow (staging/animation note)**: the hero exits alone; the
+party rises and falls in, unordered, zero dialogue. Needs: per-companion
+rise animations (or one shared get-up with per-character timing), a follow
+formation, and the `[open]` rise order (who stands first/last) decided at
+staging. Cheap in tech, load-bearing in feel — the timing IS the writing.
+
+**The title swap (production item)**: the post-completion title screen
+changes — the title card becomes the last shot of the film. Needs: a
+completion flag persisted outside the save slot (profile-level), a second
+title composition `[open — the changed image, candidates in bible_04]`, and
+the credits rolling over the resolved motif (ledger Row 10).
 
 **The motif system (audio-design note)**: the Guardian's Act 1 glitches
 carry a musical signature — three or four corrupted notes as a plantable
@@ -270,7 +302,11 @@ scene-budget doc on the last gathering — enumerate what the fire must be
 able to say about each companion, each pair, each fate, and the hero; that
 list generates the minimum bond-scene spine the campaign must deliver to
 earn it. The ending is the spec for the VN half; the destination designs the
-road.
+road. **Sequencing corollary (ninth batch — write the fire LAST)**: the
+gathering's scenes are written after the bond scenes exist and the routes
+are authored — they are interest on deposits; the backward-budget specs what
+the road must deposit, the road gets built, then the fire gets written,
+rich.
 
 ## Other systems — homed here when ready (not yet written up)
 

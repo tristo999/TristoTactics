@@ -7,8 +7,9 @@ almost nothing — not the descent, not the voice, only the faint, placeless
 *feeling* that a voice once called you and asked you to **find it.** You have no
 name until the player gives you one, no backstory, and you never speak — save
 **once**, one word, at the very end (Part Four; the protagonist's audible
-fate). You are a silent blade, and the whole game is about whose hand you're
-in.
+fate). Even the game's final question isn't answered in words: the last
+choice is **a walk**, not a menu (Part Four — the walk-as-input grammar).
+You are a silent blade, and the whole game is about whose hand you're in.
 
 You should have arrived at the Guardian. You didn't — and why is the engine of
 Act 1 (Part Three). What matters about you as a character is that your ignorance
@@ -139,6 +140,27 @@ batch)*: at the ending's last gathering, the pairs-twice conversations are
 the scene's content — Elena and the Knight post-thaw, the casters' last
 argument softened, the healer pair's one shared datum finally agreed on
 (Part Four, the staged ending).
+
+**The romance model** *(current decision 2026-06-12, ninth batch — resolves
+the standing romance `[open]`)*: bonded routes carry romance **loosely
+implied and interpretable, never stated** — the Star Rail model. The player
+who reads a bonded warmth as love is right; the player who reads it as the
+first safe attachment of a life is right; **the game never votes.** No
+romance arcs, no confession scenes, no gender-locked routes — and the
+hero-gender question loses most of its pressure: unlabeled warmth works
+identically regardless of who the hero is.
+
+**THE FULL-SINCERITY LAW — PROTECT.** The ambiguity must be deliberate,
+never timid. The failure mode is warmth written at 70% so it can pass as
+either — **that reads as flinching.** The feeling is written at 100% —
+specific, costly, unmistakably real — and only the *category* is withheld.
+The blush works because the emotion is fully present; only the noun is
+missing. *(Scope note, doc-facing: this ruling is the cheapest possible
+resolution of the romance question — zero new arcs, zero new scenes; it is
+a WRITING DISCIPLINE applied to content already specced, and it must be
+applied consistently from the first bond scene onward — ambiguity
+retrofitted late reads as cut content. Per-character tells live in each
+entry, in-register.)*
 
 *(Doc-facing acknowledgment: the game is substantially a character drama
 delivered through scenes — roughly a Three Houses ratio — and the scene/bond
@@ -314,6 +336,16 @@ keeping the gun, discarding the girl. If she is the Unchosen, the grievance
 lands on a lifetime of evidence: "you didn't pick me" — nobody ever has; they
 pick the archer.)*
 
+**Her ambiguity-tell** *(ninth batch — the romance model, per the
+full-sincerity law)*: **a blush she doesn't apologize for.** Flustering is
+her baseline, so the tell is the *modifier* — she goes pink, notices, and
+lets it be true. Fate-tell and maybe-romance in one beat.
+
+`[GUESS — final-scene candidates, ninth batch; author per the few-words
+template]` **Neutral**: already asking what the new army needs from her —
+the lease at a new address. **Bonded**: *"I think I'll stay a while. Not for
+anything. Just—"* — unfinished, and unapologized.
+
 ### The Priestess (Lyra) — the most faithful servant of her god's murderer
 She's the healer, and before every heal she murmurs an invocation to **the
 Throne's Light** — because she believes her power is a blessing the empire lends
@@ -426,6 +458,9 @@ members while the rest are on the floor. Bonded/neutral tell, visible after
 missions where someone was lost: **vocation** (sturdy, chosen) vs. **penance**
 (frantic, self-erasing).
 
+`[open]` **Her ambiguity-tell** (the romance model, ninth batch): derive
+in-register at authoring — presumably liturgical.
+
 ### The dwarf (Borin) — the last of the makers (the Tank)
 Burly but *nimble* — his protecting is fast and active, a man who crosses the gap
 to throw himself between harm and someone else, again and again. He is one of the
@@ -462,7 +497,8 @@ returns to rough-draft for redefinition. The dive and the bereavement lie are
 welded to FUNCTIONS — a chosen-sacrifice kit beat; an empire-manufactured
 grief — and survive any redefinition that keeps the functions. The census
 flag carries: his route is thin and kin-dependent; the found kin need at
-least one face.)*
+least one face. `[open]` His ambiguity-tell — the romance model, ninth
+batch — derives at authoring, pending the rebuild.)*
 
 ### The Warlock — the weapon the empire built and meant to throw away
 He is the *most loyal at the start*, and the reason is the saddest in the party.
@@ -595,6 +631,17 @@ in the medium; his design already *is* that character. The "older
 program-survivor" alternative (altitude built from outliving everyone shaped
 like him) is recorded, not adopted.
 
+**His final scene — THE EXEMPLAR** *(ninth batch — the template the other
+seven derive from at authoring time)*. **Neutral**: a bit cold; talks about
+maybe needing to break off down the road to keep hunting the pact's exit —
+his solo search, stated as a travel plan. **Bonded**: warm to the hero,
+treats him as a good friend, thanks him — and tells him **he's not afraid of
+his power anymore.** The slip-clock, the syllogism, and the shatter,
+resolved in seven words without referencing any of it.
+
+**His ambiguity-tell** *(the romance model)*: the thanks itself, received
+and given **without flinching** — as intimate as his register gets.
+
 ### The Rogue — the act with no off switch (woman)
 
 *(Full rebuild, 2026-06-11 fifth batch — current decision. This REPLACES the
@@ -718,6 +765,17 @@ she got to be *right*. `[open]` Act 2 back-half question for the bonded
 route: rage finally aimed correctly vs. rage as the new mask; what is she when
 the empire runs out. The shapes are flagged, not fully authored.
 
+**Her ambiguity-tell** *(ninth batch — inverted by design)*: performed charm
+means nothing from her — it was the mask. Her ambiguous warmth is delivered
+**flat, unperformed, almost grudging.** *"Ask me again sometime"* already
+is it.
+
+`[GUESS — final-scene candidates, per the few-words template]` **Neutral**:
+an exit line about the score that never was — ambiguous whether she leaves
+tonight; **the ambiguity is the wound.** **Bonded**: *"worst job I ever
+took; no pay, terrible hours; ask me again sometime"* — trust phrased as
+availability.
+
 ### The Paladin — the medic who stopped praying (man, older)
 
 *(Full draft 2026-06-12, sixth batch — current decision. This pays the wound
@@ -800,6 +858,18 @@ veteran, finally unhaunted. The neutral route arrives still running
 retribution — he spends himself at the door as the sentence he decided he was
 owed, and the party never knows the difference between his heroism and his
 punishment.
+
+**His ambiguity-tell** *(ninth batch — and a ruling: he is IN the romance
+system like everyone else; the paternal exemption is struck — he's fifty,
+fighting fit, and the route-coverage doctrine cuts all ways)*: **procedural
+care held one beat too long** — the hero's gear checked one last time,
+unasked, slower than necessary; the four words upward followed by a look
+that outlasts gruff. The paternal reading stays fully available — that's
+the model — but the door stays open.
+
+`[GUESS — final-scene candidates, per the few-words template]` **Neutral**:
+already restocking — the work resumed, the audit open. **Bonded**: the four
+words upward, said in front of the hero — **that is his one-on-one.**
 
 ### The Knight — the blade of a liege who never looked (woman, young)
 
@@ -895,6 +965,13 @@ new faculty live-firing; stage it like a graduation.
 `[open]` Her name, and the order's original name — routed to the naming
 session; note the vow needs the recovered oath's actual words, which gates on
 the kingdom/order naming.
+
+**Her ambiguity-tell** *(ninth batch)*: the disagreement she's enjoying,
+**run one beat too long** — attention disguised as argument.
+
+`[GUESS — final-scene candidates, per the few-words template]` **Neutral**:
+asking what the orders are now. **Bonded**: **telling** the hero what she's
+decided to do next — unprompted.
 
 ### The Wizard — the boy who turned the screaming into field notes (man, young)
 
@@ -1028,6 +1105,9 @@ magic like a beloved, and every word lands on the Warlock as an indictment;
 the Warlock's *"power is FOR something, child"* reads to the Wizard as
 tragic. Institutional vs. folk besides — and the pair is the routeable
 double-act per the audience-coverage note (the roster material below).
+
+**His ambiguity-tell** *(ninth batch)*: the second-person narration itself —
+*"look at YOU"* is the tell and the audible fate in one object.
 
 > **The roster — EIGHT companions in role pairs** *(current decision,
 > 2026-06-11 third batch — reverses this doc's earlier Paladin-exclusion lean)*:
