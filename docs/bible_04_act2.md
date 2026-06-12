@@ -936,7 +936,12 @@ The consolidated keep/kill/claim checklist. Plain `[open]` = genuinely undecided
   worth-deficit amplified into willingness; complicity = solvency. The old
   "conscripted by the state, almost against her will" framing is superseded.
   Her Act 2 file (kept vs. wanted) and combustion (the kindness ledger — the
-  cast's only self-aimed one) are in Part Two.
+  cast's only self-aimed one) are in Part Two. **UNDER DOUBT (Tristan,
+  2026-06-12): the worth-ledger psychology and the kindness-combustion are
+  flagged — the transactional register may be the Rogue-overlap returned
+  from the other side, and it jars against her hypersensitive core. Status
+  flag in her Part Two entry; build nothing on the combustion until
+  re-ruled.**
 - New doctrine (Part Two): the **shatter prism**; **witnessing as
   counter-amplifier** `[GUESS — candidate]`; the **protect-triangle**
   (ground/people/wounded) with Borin's role split (anchor vs. intercept; his

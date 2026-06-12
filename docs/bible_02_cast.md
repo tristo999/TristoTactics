@@ -212,7 +212,8 @@ staying with the raw, present, terrified version of her anyway.
 She comes from one of the prosperous heartland kingdoms — the ones that folded
 early and have been comfortable ever since — and from a **noble house** in it
 *(foundation revised 2026-06-12, sixth batch — replaces the conscript
-framing)*. She wasn't conscripted by the state. She was **offered up.** The
+framing; NOTE: this layer is UNDER DOUBT — see the status flag before her
+Act 2 file below)*. She wasn't conscripted by the state. She was **offered up.** The
 daughter was wrong somehow — too much, too sensitive, too visibly broken for a
 house whose position depends on performing gratitude correctly — and the
 wrongness had exactly one marketable output: the trance, the impossible aim.
@@ -303,8 +304,23 @@ Possibly too cruel; possibly exactly cruel enough. Flagged, not ruled
 (candidate-note in the collision ledger; note Row 1's cue is already a red
 bridge in the rain).
 
+*(STATUS — UNDER DOUBT, Tristan 2026-06-12: the sixth-batch layer below —
+the noble-lease foundation, the worth-ledger psychology, and especially the
+kindness-combustion ("why are we helping people") — is flagged, not ruled.
+The doubt, on record: a hypersensitive empath is the last person in the
+party who'd ask why we help the unearning — that question belongs to a
+transactional psychology, which is the ROGUE's register (the overlap problem
+that killed the old Rogue proposal, returned from the other side). Likewise
+"hates being good at killing" flattens the original wound — the trance is
+anesthesia and the horror is that she's most at peace when GONE; ambivalence,
+not moral hatred. What stands regardless (her functions + Tristan's
+original core): the trance, the praise trap, the beauty channel and
+geek-out loop, the victory-bark fate, and the witnessing formula — loved by
+someone who sees the things she loves, not just the killing. The material
+below stays recorded until re-ruled; build nothing on the combustion.)*
+
 *(Act 2 file + combustion layered 2026-06-12, sixth batch — current
-decisions. This completes the route-climax doctrine for her.)*
+decisions, now subject to the status flag above.)*
 
 **Her refraction** (the shatter prism): the veil-fall **cuts the feed.** The
 amplifier's voice — *the aim is your worth* — goes quiet, and underneath, for
