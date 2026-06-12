@@ -489,8 +489,8 @@ what her faith won't admit.** And early in Act 2, in a town, the reach
 finally **finishes**: tending the fallen town's survivors, and giving
 comfort to wounded *Throne* soldiers — the ones she can't save eased anyway,
 the blessing finally unconditional in both directions. Unceremonied; her
-penance engine starting *is* the act starting. *(Proposed as a ledger row —
-shown with this batch's report, not yet applied.)*
+penance engine starting *is* the act starting. *(Applied as ledger Row 11 —
+"the reach that finishes," ruled 2026-06-12.)*
 
 **The ruins, inverted** *(ruled, tenth batch)*: in Act 1 the seams **repel**
 her — old temples and wrong doctrine read as *heresy*, sites a faithful

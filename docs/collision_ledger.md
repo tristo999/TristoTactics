@@ -5,9 +5,9 @@ thing you build from. A collision is a scene that happens twice — once in Act 
 under the lie, once in Act 2 from the other side. Each row is a small machine
 for breaking someone's heart on purpose.
 
-Last updated: 2026-06-12 — Rows 9 (the small tired thing) and 10 (the song
-that happened twice) applied; the definition amended (rule 0: a row is
-anything experienced twice); Elena cue-overlap candidate-note added (fifth
+Last updated: 2026-06-12 — Rows 9 (the small tired thing), 10 (the song
+that happened twice), and 11 (the reach that finishes) applied; the
+definition amended (rule 0: a row is anything experienced twice); Elena cue-overlap candidate-note added (fifth
 batch; not a row). Previous: Rows 6 (the smile), 7 (the silhouette), 8 ("not
 ours to ask about") added 2026-06-11; verified against the 4-part bible
 
@@ -42,12 +42,15 @@ Four columns per collision:
 | 8 | Mid-campaign, the hero's force passes "friendly special assets" at a distance — wrong in a way nobody comments on. Vael, asked: *"Not ours to ask about."* (Literally true — they aren't his, and aren't anyone's.) Filed, forgotten. | Those were the hunters — the Unchosen's quarantine force, holding the Act 2 party away from the hero's path. The hero marched past their own friend's command at a thousand yards — **while that same friend marched beside them, untaken, two years from the throw that put them there.** | None to play; the plant must stay unmarked (no ominous camera). The bible_03 plant is already written. | The silhouette again — seeded an act earlier than Row 7 needs it. |
 | 9 | *(the slow collision — the only row whose halves are an act apart in assembly, not in scene)* At the capital's end, the dying Guardian — a small, tired, almost-human thing beside its core. The player files it as "the god, spent." No one explains it; there is nothing to explain yet. | Assembled fragment by fragment across Act 2 (temples / folklore / living memory — the environmental biography, bible_04): the small tired thing is the first true deity — a girl who sacrificed herself at the core before the pantheon existed and never got to grow up. The vigil the party kept was for the *person*, not the relic. | The gathering race itself — every fragment is found on missions the clock is taxing; thoroughness is paid for in map. Discipline cost: the game never assembles it aloud (rule 3 — recognition is the player's). | Her face/form itself — seen once in Act 1, unexplained; at the brief return, finally understood. |
 | 10 | *(the song that happened twice)* The glitches carry a musical signature — three or four corrupted notes, ambient, filed by the player as sound design. Nobody is told it's a melody, because broken this far, it isn't one yet. | The ending theme is the same melody, complete — the player has spent the whole game hearing someone call for help and filing it as atmosphere. The bittersweet lives in the mechanism: the melody is beautiful, *and you only ever heard it broken.* | None to play — composed-in. The discipline cost is production-order: the glitch notes must be *derived from the finished theme* (compose together, never retrofit), and the broken version must stay below memorability — felt, not hummable — or the reveal becomes a quiz the player already passed. | The motif itself — the cue and the collision are the same object, the purest instance of the grammar in the table. |
+| 11 | *(the reach that finishes)* A repeated animation, never remarked: the healer starts toward fallen enemies — hand out, blessing half-formed — and stops herself. Filed by the player as a character tic, if noticed at all. | Early Act 2, in a town — the reach completes. Tending the fallen town's survivors, and easing wounded *Throne* soldiers she can't save — the blessing finally unconditional in both directions. Unceremonied; her penance engine starting *is* the act starting. The truth retroactively: the current was always unconditional, the heals would always have landed; the only thing that ever stopped her hand was the forged scripture. Her body knew all campaign. | None to play — the cost is authoring discipline: the Act 1 half-reach must be *frequent and unmarked* (no camera, no companion comment), and the completion must get no music sting. Quietest row in the table by design. | The gesture itself — the same hand, the same half-second, finally finishing. |
 
-Rows 1–3 and 5–10 are firm in concept (Rows 6–8 applied 2026-06-11; Rows 9
-and 10 applied 2026-06-12 under the amended definition — see rule 0, current
+Rows 1–3 and 5–11 are firm in concept (Rows 6–8 applied 2026-06-11; Rows
+9–11 applied 2026-06-12 under the amended definition — see rule 0, current
 decisions; Row 10's two production rules — derive the broken from the whole,
 never retrofit; below memorability, felt not hummable — are handed verbatim
-to whoever composes it). Row 4 is a known gap, not a placeholder to
+to whoever composes it; Row 11's discipline — frequent, unmarked, no sting
+at the completion — is the row's whole craft). Row 4 is a known gap, not a
+placeholder to
 pad the table — the set currently has a kill you regret, a destruction you must
 aim, a plea that can't land, a heist where you were your own distraction, and a
 person you watched die before you knew who she was.

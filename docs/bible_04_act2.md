@@ -1083,7 +1083,7 @@ returns, four laws**
   (see the amended sixth-batch entry above).
 - **Lyra:** the dam model **superseded** — live visible doubt all campaign;
   the half-reach (signature behavior + retrieval cue) and its Act 2
-  completion (ledger row PROPOSED with this batch's report, pending);
+  completion (**applied as ledger Row 11**, ruled 2026-06-12);
   the ruins inverted (repelled → walked toward); the temple-mission
   tripwire peak routed to the beats material as an Act 1 candidate; her
   discharge = gentleness failing, quietly **[open — target; lean: the
