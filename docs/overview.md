@@ -4,7 +4,8 @@ The north star. Read this first. It explains what the game is, why it works,
 how the documents relate, and what's still open. If you only read one file,
 read this one.
 
-Last updated: 2026-05-31 (rewrite — supersedes the old AI-conversation docs)
+Last updated: 2026-06-12 (integration pass — nine design batches folded into
+the canon docs; the cast pass is complete, the ending is staged and closed)
 
 
 ## What this is, in one breath
@@ -160,9 +161,9 @@ hours have to earn the finish without leaning on them. The premise gives you a
 strong cold open (the interception, waking in the wrong place, Vael's
 unsettling warmth) and a persistent low wrongness (the glitches). Use them.
 
-**Keep the slice small.** This is designed like a studio game — two acts, six
-companions, a branching antagonist, a three-front finale — and it's being built
-by one person. A two-act game where Act 2 recontextualizes Act 1 is, in content
+**Keep the slice small.** This is designed like a studio game — two acts, eight
+companions in role pairs, a branching antagonist, a three-front finale — and
+it's being built by one person. A two-act game where Act 2 recontextualizes Act 1 is, in content
 terms, more than one game. That's not a reason to shrink the vision. It's a
 reason to make the first playable slice small and reachable, so the project
 survives long enough to become the big thing. The story is worth telling. The
@@ -170,7 +171,7 @@ question that decides whether it gets told is "is the first playable piece small
 enough," not "is it good enough." It's good enough.
 
 
-## The keystone — written (2026-06-11, current decision)
+## The keystone — written; the ending — closed (2026-06-11/12, current decisions)
 
 The question this section held open — *what does the fragment do?* — is now
 answered: **the braid's final crossing.** Mid-ascension, the core inside the
@@ -179,6 +180,20 @@ credential no wall of the thief's can refuse — so the hero spends the fragment
 *into* the core, *through* the Throne: will reaching its own heart through the
 thief. The one who opened the door carries the cure; the doom and the cure run
 through the same hands, exactly as this section always demanded. Planted at the
-summoning, fired at the kill. (Full design — the ascension clock, the
-bodyguard-legion, the anchors, the post-victory refusal, and the one remaining
-fork, the fragment's fate — in `bible_04_act2.md`.)
+summoning, fired at the kill.
+
+And the rest of the ending followed *(seventh through ninth batches —
+staging-grade canon, all in `bible_04_act2.md`)*: the dying Throne turns the
+amplifier on the hero one last time and the refusal is fought in the player's
+hands; the restoration resolves the fragment's fate — heart and will rejoined,
+a brief joyful reunion spent into the land on her way home (a completion,
+never a resurrection); the hero says **her name** — the silent protagonist's
+only word in the game; the flight retraces the collision ledger in light; and
+the game ends at a fire, playable, where nobody has a role to perform anymore,
+and the final choice is a walk, not a menu. The cast pass is likewise
+complete: all eight companions designed (wound, refraction, routes,
+combustion, fate — `bible_02_cast.md`), the kingdom is elven, and the Guardian
+has a face (the first riser — `bible_01_world.md`). What remains open is
+christening and staging: the naming session (the Guardian's name is its crown
+item), Beat 7's ruling, Borin's redefinition, collision Row 4, and the
+storyboard-level opens.

@@ -24,7 +24,10 @@ the light: *…Find me…*
 
 That is the Guardian, reaching across worlds to pull its champion home. And that
 is the Throne, intercepting the call — not killing the Guardian, not even
-touching it, but getting *between* it and you. Jamming the line. And then — not
+touching it, but getting *between* it and you. *(Re-read per the seventh
+batch — tone, not events: the asking of your name, the held-onto "Welcome,"
+the warmth just out of reach — a person remembering being one. Who she is:
+Part One, the Guardian's identity.)* Jamming the line. And then — not
 walling your mind, nothing so crude *(amplification retcon, 2026-06-11)* — but
 turning up the volume on the one thing it was about to hand you, until nothing
 else could be heard over it. The summoning was meant to land you at the Guardian's side, in the capital,
@@ -123,7 +126,13 @@ furniture — order and competence, portable, wherever the empire goes.)
 
 You march. The Throne's intelligence frames the kingdom's defenders as
 insurgents, terrorists, fanatics, and you fight them across the border
-territories and beyond, and you win, and it feels righteous.
+territories and beyond, and you win, and it feels righteous. *(Integration
+notes, seventh batch: the kingdom is **elven** — the defenders the campaign
+cuts down are the world's last firsthand memory, Part One. And the land
+itself is part of the plant: the deeper the march, the greener and more
+*unbothered* the country — the charged kingdom, beautiful by adjacency. The
+army is burning the proof that abundance was possible; one companion feels
+it rather than watches it — Part Two, the Wizard.)*
 
 But the world keeps *glitching.* A half-sentence in a voice you almost recognize.
 A color that's wrong for half a breath. The edge of the world not sitting right.

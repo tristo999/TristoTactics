@@ -17,7 +17,9 @@ The feeling at the end should be the game's stated Act 1 emotional goal: *my
 squad is full, the campaign feels heroic, something is faintly wrong, and who is
 this strange party I keep seeing?* Curiosity, not comprehension.
 
-Last updated: 2026-06-05
+Last updated: 2026-06-12 (integration pass — beat statuses and cast brought
+current; this doc has gone stale on build state before — when in doubt,
+`implementation_status.md` and the code are the truth, not this file)
 
 
 ## The honest scope insight (read this first)
@@ -70,29 +72,24 @@ interception, "Find me," white-out. **Remaining:** the swirl-shader placeholder
 (the companion / Act 2-vision line — note this ties to the still-open question of
 whether the opening plants an unreadable end-game cue; decide before finishing).
 
-### Beat 1 — ARRIVAL / the camp — build 🟡
+### Beat 1 — ARRIVAL / the camp — build 🟡 (scene exists; polish open)
 Wake in the summoning chamber, walk out into the camp, Vael's warm greeting
-(*"You actually made it…"*). **Remaining:** the scene is currently just a walking
-room with a door — needs Vael, soldiers, torchlight, the camp atmosphere, and
-the arrival dialogue (the corrected lie: *the Throne summoned you*). No combat.
+(*"You actually made it…"*). The arrival walk + camp stations + greeting exist
+(`camp_grounds` family; script in `opening_script.md` — Lyra's invocation
+plants her entire arc in one line). **Remaining:** atmosphere/polish pass.
 - *Demonstrates:* tone, Vael's warmth, the silent hero, the world.
 
-### Beat 2 — TUTORIAL + RAID — build 🟡 (battle scaffold plays; sequencing unbuilt) — the big one
-Two phases. **Sparring:** Vael coaches the core verbs *and teaches the first
-combo* (the follow-up — stand close, chain your partner's strike). **Raid:**
-"insurgents" hit the camp, combat turns lethal, first real fight; companions
-join.
-> Status 2026-06-06: the battle itself is built and plays (`tutorial_battle_scene`
-> on `camp_v2.map`; combat + follow-up combos work). Remaining is the two-phase
-> *sequencing* — spar→raid split, Vael's coach→commander beat, the raid trigger,
-> and teaching the (already-built) follow-up. Author via `docs/levels/camp_v2.md`.
+### Beat 2 — TUTORIAL + RAID — build ✅ (machine-certified; human feel pass pending)
+One scene, three phases on `training_grounds`: **drill** (Vael coaches the
+core verbs and teaches the existing follow-up) → **breach** → **raid**
+(lethal, companions fight as AI allies; hero-only control). Status
+2026-06-11: built end-to-end and verified by the autoplay harness
+(`scenes/dev/level1_autoplay.tscn` — full playthrough to VICTORY). Remaining:
+a HUMAN playthrough for feel/pacing/balance.
 - *Demonstrates:* combat, **combos (taught here)**, the coach→commander tonal
   flip, first companions.
 - *Plants:* collision row 5 (the camp raid — the distraction the Act 2 party
   will later send). The skirmish must read as a forgettable win.
-- *Builds:* the spar→raid sequencing + TutorialManager hookups that *teach* the
-  follow-up. (The combo system + its tier-1 abilities are already built — Beat 2
-  teaches them, it doesn't build them.)
 
 ### Beat 3 — EARLY CAMPAIGN mission — build ⬜
 A standard mission against kingdom "insurgents." Bonds deepen (camp/expressive
@@ -120,14 +117,17 @@ to recognize themselves. **The slice ends here, on the stare across the gap.**
 
 ## Cast in the slice
 
-**Two companions minimum** — you need two to show a *duo combo* and the
-beginnings of bonding/preference. Almost certainly the **Archer** plus one other.
-- The Archer is the most-designed companion and her two-state design (anxious
-  mess ↔ lethal trance) reads fast and sells the "VN-depth character" pillar.
-- Second companion: open. The **dwarf** is a strong pick — his protective
-  follow-up combos beautifully with the Archer's ranged shots and shows the
-  combo system's *character-expressive* range (protect vs. strike). `[open]`
-- Their names are still open (cast open question).
+**Resolved in the build (2026-06-12):** the opening/tutorial already fields
+**Elena (Archer), Borin (dwarf Tank), and Lyra (Priestess)** — three
+companions, follow-ups demonstrated across them (archer chain / dwarf
+intercept / healer mend). The full eight-companion cast is designed in
+`bible_02_cast.md` (cast pass complete); slice bonding content should be
+written under the **full-sincerity law** from the first scene (the romance
+model — bible_02 doctrine; ambiguity retrofitted late reads as cut content).
+- The Archer's two-state design (anxious mess ↔ lethal trance) reads fast and
+  sells the "VN-depth character" pillar.
+- Working names (Elena/Borin/Lyra) are in the build; the formal naming
+  session may revisit (cast naming still open canon-side).
 
 
 ## Asset needs (for the artists this slice is meant to recruit)
@@ -149,15 +149,19 @@ beginnings of bonding/preference. Almost certainly the **Archer** plus one other
 
 ## Open gates (decide these to fully scope the slice)
 
-1. **The second companion** (identity + name) — needed for the duo combo and the
-   second bond.
-2. **Combo specifics for the slice** — which 2–3 follow-ups/passives the slice
-   actually demonstrates (enough to feel the system, not the whole kit).
+1. ~~The second companion~~ — **resolved in the build**: Elena + Borin + Lyra
+   are in the opening/tutorial.
+2. **Combo specifics for the slice** — the three tier-1 follow-ups are built
+   and taught in the tutorial; still open: whether the slice shows a *duo*
+   ability or passives.
 3. **Does the advancing line appear in the slice**, or is it deferred? (It can be
    faked/hinted for a vision build; full system can wait.)
 4. **The expressive-choice form** — wordless action/tone vs. short worded
-   responses (leaning wordless, per the silent-hero discussion).
-5. **Kingdom name** — only if any slice dialogue references the place.
+   responses (leaning wordless, per the silent-hero discussion; note the
+   ending's walk-as-input grammar in bible_04 strengthens the wordless lean —
+   the game's final choice is already movement, not menu).
+5. **Kingdom name** — only if any slice dialogue references the place (the
+   register is now constrained: elven — bible_01; the naming session owns it).
 
 
 ## The end frame

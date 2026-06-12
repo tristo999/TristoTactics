@@ -116,8 +116,8 @@ All Act 2 beats unbuilt. Scene names below are suggestions pending Act 1 impleme
 Ordered by urgency (what must be decided to unblock active work).
 
 1. **Companion identities** (names, origins, wounds). The cast pass is COMPLETE (seventh batch, 2026-06-12): all eight companions designed — wound, refraction, routes, combustion, fate (bible_02). Borin unfrozen to rough-draft (functions preserved). Remaining: companion NAMES (the naming session — now also gating the Knight's vow and the elven kingdom register), Borin's route-deepening, the faces pass.
-2. **Guardian fragment power semantics** — the finale keystone (the world bible's #1 open question). Blocks the save-one-companion mechanic (Beat 7) and the Act 2 arrival (Beat 1).
-3. **Kingdom name and cultural identity** (world bible open question). Unblocks all Act 1+2 dialogue that references the place.
+2. ~~Guardian fragment power semantics~~ — **RESOLVED** (the keystone designed 2026-06-11, the full ending staged and CLOSED 2026-06-12 — see bible_04). What still gates Beat 7 is its own ruling (who the Unchosen can be — the 4-option board in bible_04's Manifest), not the power semantics.
+3. **Kingdom name and cultural identity** (world bible open question — now constrained: the kingdom is ELVEN, register specced in bible_01; the naming session's crown item is the Guardian's name). Unblocks all Act 1+2 dialogue that references the place, the Knight's vow words, and the ending's name beat.
 4. **Mission count per beat.** Required before level design can begin on Beats 3–6.
 > **Resolved 2026-04-20:** `test_scene` kept as a reference sandbox and renamed to `dev_sandbox_scene`. It's dev-only and not on the story critical path; Beat 2 will be built fresh rather than repurposing it.
 >
@@ -173,9 +173,7 @@ Goal: turn the tutorial battle into the real two-phase beat. Shape: **sparring i
 **Why it matters:** first tactical combat — where players learn the game AND get their first taste of "real" stakes + Throne framing. The interruption beat is the tonal hinge of the early game.
 
 ### Sprint D — Companion lock-in
-Goal: resolve Open Question 6 so narrative work on Beats 2–7 can begin.
-- Not a coding sprint — a writing/design session with the creative director.
-- Deliverable: update [`bible_02_cast.md`](bible_02_cast.md) with companion names/origins/wounds.
+Goal: ~~resolve Open Question 6~~ — **largely done** (origins/wounds/routes: the cast pass completed 2026-06-12 in [`bible_02_cast.md`](bible_02_cast.md)). Remaining deliverable: the NAMING session (companion names, the kingdom, the order's oath words, the Guardian's name — the crown item).
 
 ---
 
