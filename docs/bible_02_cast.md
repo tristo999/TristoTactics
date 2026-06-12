@@ -5,8 +5,10 @@
 You are summoned across worlds by the Guardian, and you arrive remembering
 almost nothing — not the descent, not the voice, only the faint, placeless
 *feeling* that a voice once called you and asked you to **find it.** You have no
-name until the player gives you one, no backstory, and you never speak. You are a
-silent blade, and the whole game is about whose hand you're in.
+name until the player gives you one, no backstory, and you never speak — save
+**once**, one word, at the very end (Part Four; the protagonist's audible
+fate). You are a silent blade, and the whole game is about whose hand you're
+in.
 
 You should have arrived at the Guardian. You didn't — and why is the engine of
 Act 1 (Part Three). What matters about you as a character is that your ignorance
@@ -78,7 +80,12 @@ changing — or pointedly *not* changing. The Priestess's pre-heal invocation;
 the Archer's post-battle victory bark. The player hears an entire fate in
 whether one repeated sentence shifted. House signature: **the fates live in
 the barks.** Every future companion should get a candidate line. (Systems
-hook — per-outcome bark variants — in `systems_design.md`.)
+hook — per-outcome bark variants — in `systems_design.md`.) And the family
+is completed by the protagonist *(eighth batch, 2026-06-12)*: **the hero's
+audible fate is the one word** — her name, said at the ending's brief
+return, the silent protagonist's only utterance in the game. The character
+who never speaks gets a recurring line of length zero, and its single change
+is the loudest fate in the cast.
 
 **The route climax fires at you** *(current decision 2026-06-11, fifth
 batch)*. Every designed route's climax is the wound firing *at* the hero, not
@@ -127,13 +134,19 @@ theologies), Elena/Paladin (competence-as-absence at two ages), Elena/Warlock
 instrumental power — the caster antithesis, seventh batch), Wizard/Rogue (two
 mercenaries, one paid in gold, one in books). The eavesdrop channel's ~dozen
 authored relationships should draw primarily from the **wound map** — it's
-where the arguments live.
+where the arguments live. And the wound map plays one final time *(eighth
+batch)*: at the ending's last gathering, the pairs-twice conversations are
+the scene's content — Elena and the Knight post-thaw, the casters' last
+argument softened, the healer pair's one shared datum finally agreed on
+(Part Four, the staged ending).
 
 *(Doc-facing acknowledgment: the game is substantially a character drama
 delivered through scenes — roughly a Three Houses ratio — and the scene/bond
 content is a first-class half of the design, not garnish. `[open]` A
 scene-budget doc — bond scenes per companion per act, hub scenes, fork
-multipliers — is flagged as future work; noted, not created.)*
+multipliers — is flagged as future work; noted, not created. Method ruled,
+eighth batch: **budget backward from the fire** — the last gathering is the
+spec the bond spine must earn; see Part Four and `systems_design.md`.)*
 
 ---
 

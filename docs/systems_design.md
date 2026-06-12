@@ -231,6 +231,46 @@ exposition (the environmental-biography doctrine). Design rules:
 - **Three discovery channels** — temples (archaeology), folklore (the
   Wizard's stratum), living memory (the elders) — and they should *disagree
   slightly at the edges*, the way real old knowledge does.
+- **The name is the capstone (eighth batch):** the apex of the
+  optional-but-converging structure — her actual name, recoverable in pieces
+  across all three channels, assembled *last* by the thorough player. It
+  pays off as the hero's one word at the ending. `[open]` The name itself is
+  the naming session's crown item (engineering spec in bible_04's Manifest).
+
+## The ending sequence — systems notes [current decision 2026-06-12; staging in bible_04]
+
+**The conditional cameo pass** (the flight montage): every collected/saved/
+sided-with character appears as a **fate-tell** — one-image deltas, caught
+mid-life, no bows. Mechanically tractable by design: 8 companions × ~2 fates
+plus a roster of binary flags (saved/not, sided/not); each cameo is one
+composition with a bonded/neutral variant selected by save state; **text not
+VO.** The discipline is in authoring (the delta must be readable in one
+image: the haircut, the view, the planting, the still-there), not in
+plumbing.
+
+**The last gathering = the eavesdrop system's finale**: the final scene is
+the camp-hub grammar run once more, slow — placement + bark variants
+selected by save state per companion fate, the pairs-twice conversations as
+content. Minimal new systems: it reuses the eavesdrop channel's
+variant-selection machinery; what it needs is the fate flags feeding
+placement and line selection. (One new requirement: the scene must support
+*everyone placed at once* — the eavesdrop system elsewhere stages pairs.)
+
+**The motif system (audio-design note)**: the Guardian's Act 1 glitches
+carry a musical signature — three or four corrupted notes as a plantable
+**audio retrieval cue**; the ending theme resolves the same melody whole.
+**Production implication, flagged hard: the glitch SFX and the ending theme
+must be composed together** — the broken version is derived from the whole,
+not retrofitted. This decides glitch SFX work *now*: placeholder glitch
+audio is fine, but the final glitch SFX cannot be locked before the theme
+exists.
+
+**Budget backward from the fire (the scene-budget method)**: anchor the
+scene-budget doc on the last gathering — enumerate what the fire must be
+able to say about each companion, each pair, each fate, and the hero; that
+list generates the minimum bond-scene spine the campaign must deliver to
+earn it. The ending is the spec for the VN half; the destination designs the
+road.
 
 ## Other systems — homed here when ready (not yet written up)
 

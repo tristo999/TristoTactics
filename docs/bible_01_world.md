@@ -376,6 +376,25 @@ being one.** *(Doc-facing, never stated aloud in-game: the Throne has spent
 five centuries caged by a little girl who actually did the thing it's been
 faking.)*
 
+**Who holds her name** *(eighth batch, 2026-06-12 — world-canon; the
+strata)*: the eldest elves hold only **the title worn smooth** — the
+household word, the role. Five hundred generations of reverence is the
+process that sands a name into a function; the mnemonically unconquered
+people kept every name the Throne tried to steal **except the one at their
+kingdom's center** — not stolen, **outlived.** The forgetting wasn't a crime;
+it was time itself. Her actual name survives only as *data*, in the deepest
+strata: the pre-pantheon temple layer (legible to no one living);
+sound-fragments preserved in the oldest folklore — a nonsense word in a
+children's rhyme that was never nonsense (the Wizard's channel); Lyra's
+archaeology cross-referencing the two; possibly gasped at by an elder when
+two fragments meet. The other gods knew her — as the path-maker, possibly
+never as the girl — and they are sealed out; whatever they called her has
+not been said *to* her in ages. `[GUESS — ache-grade, flagged: the divine
+reunion at the game's end may be the first time in unfathomable time
+anything says her name to her face — on the far side of the light, unheard
+by the player.]` *(The name's recovery is the environmental biography's
+capstone — Part Four; the name itself is the naming session's crown item.)*
+
 `[GUESS — flagged loose, seventh batch]` **The forgotten first apocalypse.**
 The anchored heart, the binding-property, the mousetrap architecture exist
 because they were built **once before** — by her, against some first devourer,

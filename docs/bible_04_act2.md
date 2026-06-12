@@ -506,6 +506,138 @@ or **transposes** — the hum the ordinary hero feels at the site is no longer
 through the green. Possibly under the Wizard's planting hands. Flag, don't
 rule.
 
+## The ending, staged — the name, the flight, the fire
+
+*(Eighth batch, 2026-06-12 — current decisions. This specs the ending
+sequence the way the fourth batch specced the finale battle: staging-grade
+canon. The sequence, locked: the cut → the last breath → the fight to give it
+back → the restoration → the name → the joy and the tears → the party sweep →
+the flight → the sky-burst → the fire → the last gathering → the final image
+`[open]`. The epilogue beat above sits after all of it.)*
+
+**The name.** At the brief return, **the hero says her name.** The silent
+protagonist's only scripted utterance in the entire game `[open — staging:
+voice line vs. text box]`: one word, and it is not about them. The doctrine
+completes itself: she spent the story asking the hero's name across a jammed
+line and never got the answer; the ending inverts it — **she gets named
+instead.** The first word the hero ever says, the last word she hears in the
+world, and the first time in geological time anyone addresses *the girl*
+rather than the post. (The name itself is the naming session's crown item —
+engineering spec in the Manifest; who holds which stratum of it is
+world-canon in Part One.)
+
+**Her response — the beat order is load-bearing**: the name → the smile goes
+**wider than the capital's** (that joy was proof — *it worked*; this joy is
+personal — *you know me*) → she **bursts into tears** (the mantle cracking:
+the first feeling in geological time that isn't duty-shaped) → and then the
+flight begins **as celebration** — the girl who never got to grow up doing,
+in her last seconds, the most childlike thing in the game: flying loops
+around her friend before racing across the sky. The restoration PROTECT
+governs all of it: reunion and leaving are one motion; brief, or the
+no-refund rule breaks in practice.
+
+**The flight — the party sweep first.** Her loop passes *through* the
+gathered party — a wash of green-gold, each companion lit for a heartbeat —
+her last touch on the people who kept her vigil. The vigil inverts one final
+time: they watched over her sleeping for an act; her last act is one pass
+over them, awake. **The eight get the first goodbye; the world gets the
+rest.**
+
+**The flight path is the ledger retraced** *(doctrine — the final
+collision)*: the restoration wave revisits the collision table's geography —
+over the capital, survivors looking up in awe; past the kingdom's general,
+celebrating; past the **Unchosen** and the old Throne army celebrating — the
+Unchosen cracks a *brief* smile, then turns and heads down their own path;
+over the burned city — the ground restored to green even though the town is
+partially destroyed; over **the broken bridge** — and finally up, into the
+sky, a burst of green light. Every site the player bled at twice is visited a
+third time, in light: **blind, bereaved, blessed.**
+
+**The cameo pass** *(systems-grade — mechanics in `systems_design.md`)*:
+interleaved with the ledger sites, the light passes the gathered and the
+helped — every character the player collected, saved, sided with: the dwarf
+kin at their gate; the kind-trap villagers alive and unharvested *(pending
+Row 4)*; the Loved NPC wherever their thread ended; Lyra's elder at a
+scrubbed temple, **knowing** what the light is; camp staff, patched
+conscripts, resistance faces. Design rules: each cameo is the character's
+**fate-tell, not a wave at the camera** — everyone caught *mid-life*
+(planting, rebuilding, arguing, laughing; the world already moving on — the
+bittersweet doing its work: she leaves, living continues, both true); no
+bows; **save-file-conditional** — bonded fates appear in bonded form (the
+Knight short-haired, mid-disagreement; Elena at a view, unapologizing; the
+Wizard planting at the gray's edge; the Paladin's four words over a healed
+kid; the Rogue *still there* — the getaway unused), neutral fates show their
+quieter images at the same length.
+
+**Cut rhythm**: interleave, don't separate — alternate wound-site and
+person-payoff so the elegy and the harvest braid. The final ground-shot
+before the sky is the bridge (per the PROTECT below); the last *face* before
+the burst is `[open — staging]`: candidate, the hero looking up — the one
+whose fate-tell is the word they just said.
+
+**The score** *(audio note in `systems_design.md`; ledger row proposed under
+the amended rule)*: the ending theme is **her motif, broken-to-whole.** The
+Guardian's Act 1 glitches carry a musical signature — three or four corrupted
+notes, an audio retrieval cue planted all campaign; the player has been
+hearing a broken melody the whole game without knowing it was a melody. The
+ending plays it **complete** for the first time. A song that happened twice —
+the collision grammar's final execution; the bittersweet lives in the
+mechanism: the melody is beautiful, *and you only ever heard it as someone
+calling for help.*
+
+**The last gathering — the true final scene.** After the sky-burst, the
+camera descends — to a fire. The flight delivered the *world's* payoffs; the
+party's payout cannot be a cameo: eight people built across the bond system
+cash out the way they were built — sitting together, witnessed one last
+time. **The light goes up; the camera comes down.** The game ends where it
+always lived: not in the sky — at a camp, with the people.
+
+The scene's design *(doctrine)*: the camp-hub grammar played one final time,
+*slow* — the fire, the eavesdrop geometry, everyone in their places — except
+the war is over and **nobody has a role to perform.** This is every
+companion's bonded outcome described at once: the cast's shared wound was
+selves leased to functions (the aim, the climb, the mask, the rank, the
+work, the vigil), and the last gathering is the first scene in any of their
+lives where **nobody present is being useful.** No mission tomorrow. No
+lines to hold. People at a fire, staying because they're staying.
+
+The content is the fate-tells at full breath *(save-file-conditional; the
+eavesdrop channel performing its own finale — minimal new systems)*: the
+Wizard narrating something at the sky, second-person; Elena present,
+unapologizing — possibly the one who picked the view; the Rogue **there** —
+the payoff being that she hasn't left; the Knight enjoying a small
+disagreement; the Paladin's hands finally idle, maybe four words upward; the
+Warlock at the circle's edge but *in* it — the inch closed; Borin per his
+rebuild; the hero silent, done, having said the only word. Neutral fates sit
+at the same fire with their quieter tells. The pairs-twice map drives the
+final conversations (Elena and the Knight, post-thaw; the casters' last
+argument, softened; the healer pair's one shared datum, finally agreed on).
+
+**The Unchosen's trace** *(grammar borrowed from the BG3 epilogue's
+absent-companion letters)*: absent from the fire **by design** — but not
+silent: a trace arrives or is found — a message, a token, a sign left where
+the party would camp `[open — form, gated on Beat 7]`. **Presence without
+attendance**; the wound human-sized and theirs, the path their own. (This
+absence is the silent reconciliation's last honest note.)
+
+`[open — staging, two candidates, rule at storyboard]` **The final image**:
+the fire from above — the one light she left behind, small and warm in the
+restored green — or the hero's face at it. Both recorded.
+
+**The ending's three standing PROTECTs** *(listed together, per the batch)*:
+1. **The return lives inside the departure** *(seventh batch)* — reunion and
+   leaving one motion; a completion, not a resurrection; brevity is the first
+   line of the storyboard.
+2. **The Unchosen's beat stays small** — a flicker of a smile, witnessed by
+   light, then the turn — never a tearful wave, never a reconciled embrace.
+   The betrayal was real and human-sized and theirs; if the montage gets
+   warmer than a brief smile, **it is lying about the wound.**
+3. **The bridge stays broken** — the green returns; the span does not.
+   Holds-not-rewrites legible in a single image: the world is *restored, not
+   repaired* — the grass grows up through the place where two versions of the
+   same people stared across a gap, and the gap remains. **This is the shot
+   that declares the game's theory of grace, seconds before the sky.**
+
 ## Mercy inverts
 
 All of Act 2 trains the player to *minimize* cost — time the detonation to kill
@@ -553,7 +685,9 @@ The hero and the returned Unchosen. No dialogue — a look, a nod. Two people wh
 have been through an impossible amount, standing in the same place without
 fighting. Survivors stand together; some wounds healed, some permanent (which
 wounds heal is the "outcomes, not endings" payoff — see Part Two). The player
-fills in the rest.
+fills in the rest. *(The Unchosen's thread then closes in two beats of the
+staged ending, both governed by its PROTECT: the brief smile and the turn
+during the flight, and the trace-not-attendance at the last gathering.)*
 
 ---
 
@@ -753,6 +887,43 @@ identity, the land, the ending**
   ambiguous? Cascades: the hero's gender question (Lyra's "And here HE is"
   line), route gender-locking, authoring cost. Recorded, not ruled.
 
+**Eighth batch (2026-06-12) — the ending, staged**
+- The ending graduates from designed to **STAGED** — sequence locked: the cut
+  → the last breath → the fight to give it back → the restoration → the name
+  → the joy and the tears → the party sweep → the flight/montage → the
+  sky-burst → the fire → the last gathering → the final image `[open]` (the
+  epilogue beat after all of it). The three standing PROTECTs are listed
+  together in the staging spec (the return inside the departure; the
+  Unchosen's beat stays small; the bridge stays broken).
+- ~~The protagonist's audible fate~~ — **RESOLVED**: the one word — her name.
+  The silent protagonist's only utterance in the game; she gets named instead
+  of ever learning the hero's name. (Completes the audible-fates family —
+  Part Two.)
+- **[open — the naming session's CROWN ITEM]** The name itself, now fully
+  specced: short enough for a dying moment, old enough to sound pre-pantheon,
+  recoverable in fragments across the three biography channels, worth forty
+  hours of assembly. The name is the environmental biography's capstone — the
+  thing the thorough player assembles *last* (fragment rules in
+  `systems_design.md`; who holds which stratum of it is world-canon in Part
+  One).
+- New **[open]**s: the hero's utterance form (voice line vs. text box); the
+  last face before the burst (candidate: the hero looking up); the final
+  image (fire from above vs. the hero's face — rule at storyboard); the
+  Unchosen's trace form (gated on Beat 7); the score motif's ledger row
+  (pending the proposal shown with this batch).
+- New doctrine: the flight as **ledger-retrace**; the cameo **fate-tell**
+  rules (mid-life, no bows, save-file-conditional, one-image deltas);
+  **nobody-is-useful** as the last gathering's thesis; **budget backward
+  from the fire** (the scene-budget bullet above).
+- *Doc-facing design history (the BG3 lesson):* launch endings too abrupt →
+  the loudest criticism of a worshipped game → the epilogue reunion patched
+  in, because players price the whole bond system by its payout. The
+  ending's depth must match the bond system's depth or the bond system
+  retroactively feels like a scam. Ours is reachable because the conditional
+  space is engineered small (8 companions × ~2 fates, one-image deltas, text
+  not VO, the eavesdrop system as the already-built delivery mechanism) —
+  precision instead of volume.
+
 **Companion routes (2026-06-11, fifth batch)**
 - ~~The Priestess's outcomes~~ — **RESOLVED**: bonded = faith restored by
   archaeology (the excavation thread; faith without confirmation); neutral =
@@ -770,7 +941,12 @@ identity, the land, the ending**
   correctly vs. rage as the new mask; what is she when the empire runs out).
 - **[open]** A scene-budget doc (bond scenes per companion per act, hub
   scenes, fork multipliers) — flagged as future work, deliberately not
-  created.
+  created. **Method ruled (eighth batch, 2026-06-12): BUDGET BACKWARD FROM
+  THE FIRE** — anchor on the last gathering: decide what the fire must be
+  able to say about each companion, each pair, each fate, and the hero, and
+  that generates the minimum bond-scene spine the whole game must deliver to
+  earn it. The ending scene is the spec for the VN half; the destination
+  designs the road. (Working method in `systems_design.md`.)
 - Beat 7 and the roster-of-eight are **untouched by this batch** — both
   remain in their existing states above.
 
