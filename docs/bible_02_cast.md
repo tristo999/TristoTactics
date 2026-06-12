@@ -319,6 +319,26 @@ geek-out loop, the victory-bark fate, and the witnessing formula — loved by
 someone who sees the things she loves, not just the killing. The material
 below stays recorded until re-ruled; build nothing on the combustion.)*
 
+*(CANDIDATE REPLACEMENT COMBUSTION — Tristan, 2026-06-12, leaning but not
+ruled: **eventual anger at the hero for praising her for things she was
+taught don't matter — anything besides her killing ability.** The grief
+logic: if the parts of her the hero keeps seeing actually matter, the
+verdict she built her life on was wrong — and then the deletion wasn't a
+price, it was just harm; accepting the hero's valuation means admitting it.
+She defends the verdict because the alternative is unbearable. This keeps
+the retroactive-bankruptcy emotion in grief currency instead of worth-math —
+the family taught the valuation; she never prices others — and it fires at
+the witnessing itself: the seeing-what-she-loves that defines her route is
+the detonator. Sequencing: the geek-outs lengthen = pressure building → the
+detonation → the seeing survives, no retreat to praising the aim → THEN the
+unapologized whole thought, post-combustion, as proof. Boundary vs. the
+Warlock's kindness-syllogism, on record: his fury is about his FUTURE
+(concern implies the gift failing implies discarded — dread, chronic); hers
+is about her PAST (valuing her loves implies the deletion was for nothing —
+grief, acute). Candidate eavesdrop pairing. If ruled, the worth-math lines
+die with the old combustion; the noble-lease foundation survives as the
+verdict's source, not her cognition.)*
+
 *(Act 2 file + combustion layered 2026-06-12, sixth batch — current
 decisions, now subject to the status flag above.)*
 
