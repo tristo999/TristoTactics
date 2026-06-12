@@ -952,8 +952,11 @@ every fascinating anomaly in his notebook was a dying being screaming for
 help, **in a voice his folklore had been teaching him to recognize since
 childhood.** He had the decoder ring the whole time and turned the screaming
 into field notes. (Prism entry: Lyra's prayers were misaddressed; his
-*attention* was.) On the ground: he pulls out the notebook — the campaign's
-whole record of his delight — and can't look at it. And the poisoning begins
+*attention* was.) **He breaks on translation** — Lyra breaks on betrayal, the
+old Wizard proposal broke on logic; this one breaks on the notebook becoming
+**a document that changes language under him**: the same pages, suddenly
+written in screaming. On the ground: he pulls out the notebook — the
+campaign's whole record of his delight — and can't look at it. And the poisoning begins
 (Part One; Part Four for the clock), and the boy from the wasteland watches
 **a wasteland being born**: he knows exactly what he's looking at, because he
 grew up in the finished product. *"I've seen this before. I'm FROM this. It

@@ -336,6 +336,12 @@ conscription to do it.
 > and the forgotten apocalypse (below) may have a name only in the deepest
 > folklore stratum, the Wizard's grandmothers' layer. Flagged so none of it
 > gets written as if decided.
+>
+> *(Culture-session flag, endorsed 2026-06-12: "no contact with the outside
+> world in living memory" stands as ruled — but in a kingdom where living
+> memory runs five centuries deep, the phrase means something very different
+> from inside than outside. The asymmetry is available: the empire thinks the
+> kingdom is myth; the kingdom remembers the empire's founding **personally.**)*
 
 ## The Guardian
 

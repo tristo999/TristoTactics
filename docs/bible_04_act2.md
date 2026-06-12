@@ -492,6 +492,9 @@ hope answered in the final second; the reunion's embrace = five hundred years
 severed, made whole, witnessed by the people who kept her company on the way
 — the only company the watcher ever had. If the dormancy surfacings include
 *"...are you there..."* — the reunion is where the room finally answers.)
+*(Staging note, endorsed 2026-06-12: this protect holds on paper and breaks
+in staging — when this cutscene is ever storyboarded, **the brevity rule is
+the first line of the board.**)*
 Post-victory land rule (the land canon): **holds-not-rewrites** — the gray
 keeps what it took where the restoration wave doesn't reach `[open —
 staging: the wave's radius]`; the *spread* ends.
@@ -737,7 +740,10 @@ identity, the land, the ending**
 - New doctrine: **environmental biography** (her story told through temples /
   folklore / living memory, assembled by the player — collision grammar at
   biography scale; design rules doc-facing in the spine; fragment mechanics in
-  `systems_design.md`).
+  `systems_design.md`). **Applied as ledger Row 9** (ruled 2026-06-12), with
+  the ledger's definition amended to match — rule 0: *a row is anything
+  experienced twice, where the second experience completes the first* — which
+  retroactively legitimizes Row 6 and pre-clears the ending's score motif.
 - New **[open]**s: the restoration wave's radius (staging); the epilogue
   beat's transposition (dies with the superseded hum, or becomes the land
   itself — possibly under the Wizard's planting hands); Section E's
