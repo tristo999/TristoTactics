@@ -24,8 +24,9 @@ you was your maker.
 
 ## The cast doctrine — how everyone was built
 
-Six companions travel with you, each from a different kingdom the Throne
-swallowed. Two rules govern every one of them, and they rhyme:
+Eight companions travel with you (the role-pair roster — see the note at the
+end of this part), each from a kingdom the Throne swallowed. Two rules govern
+every one of them, and they rhyme:
 
 **They all believe the lie — that's the floor, not the character.** You cannot
 serve in an elite Throne unit while privately seeing through it; the empire
@@ -87,6 +88,45 @@ targeted rage. Being seen *hurts* these people, so the witnessing only counts
 because it was made expensive: the staying has to survive their best attempt
 to make it impossible. No one in this party heals politely.
 
+**The shatter prism** *(current decision, sixth batch — 2026-06-12)*. The
+capital is **one event refracted through eight wounds**: each companion's
+reaction to the veil-fall is their wound's signature, legible before anyone
+explains it. Early Act 2's "the party deals with what they learned" is a
+*system*, not a mood — the capital reveals the cast by *how each one breaks.*
+The refractions live in each entry: the Rogue's scale-fear then licensed fire;
+Lyra's contaminated prayers; Elena's severed feed; the Warlock's freefall; the
+Paladin's triage-then-spill; the Knight's self-aimed disgust.
+
+`[GUESS — candidate doctrine, flag if it overreaches]` **Witnessing as
+counter-amplifier.** The Throne's power turns one note up until it drowns the
+person; the witnessing is the inverse operation — attending to every *other*
+note until the amplified one is just an instrument again instead of the
+orchestra. The Archer is the cleanest proof (her entry).
+
+**The protect-triangle** *(current decision, sixth batch)*. Three theories of
+protection, no two redundant: the Knight defends **ground**, Borin defends
+**people**, the Paladin defends **the wounded**. The tank pair is therefore
+NOT two of the same role — the Knight is **anchor/wall** (zone control,
+defends terrain — protects *positions*, fitting a lineage defined by where the
+house stood); Borin is **intercept/bodyguard** (mobile, reaction-based — moves
+himself into harm meant for another; protects *people*, fitting the last of a
+line). And Borin's kit *is* his wound: the dive performed a hundred casual
+times across the campaign before the one scripted dive that costs everything —
+the cast's strongest **playable fate** (sibling to the audible fates, beside
+the Knight's **visible** one — her haircut; systems hooks in
+`systems_design.md`). The pair's eavesdrop argument writes itself: two
+professionals disagreeing about what defending means, neither hearing what
+their doctrine confesses.
+
+**The cast pairs twice** *(current decision, sixth batch)*: by **kit** (the
+role pairs) and by **wound** (thematic mirrors cross-cutting them) —
+Elena/Knight (talent vs. will), Rogue/Warlock (charm-distance vs.
+contempt-distance), Lyra/Paladin (grace vs. craft — one datum, two
+theologies), Elena/Paladin (competence-as-absence at two ages), Elena/Warlock
+(the kindness ledger, opposite entries). The eavesdrop channel's ~dozen
+authored relationships should draw primarily from the **wound map** — it's
+where the arguments live.
+
 *(Doc-facing acknowledgment: the game is substantially a character drama
 delivered through scenes — roughly a Three Houses ratio — and the scene/bond
 content is a first-class half of the design, not garnish. `[open]` A
@@ -118,14 +158,37 @@ un-anxious, but by someone seeing that the trance is *grief*, not talent, and
 staying with the raw, present, terrified version of her anyway.
 
 She comes from one of the prosperous heartland kingdoms — the ones that folded
-early and have been comfortable ever since. That's the colder horror than simple
-oppression: the machine doesn't even spare its favorites. She was fed into the
-war as a child, almost against her will, and *excelled* — and excellence is the
-cruelest trap, because it looks like consent. Everyone reads her skill as her
-identity; only she knows it's the place she goes to vanish. Prosperity didn't
-protect her. It took her and told her she was lucky. Her belief in the empire is
-*thin* — not devout, not invested, just never offered anything truer to hold. So
-her arc isn't a shattering of faith. It's a slow *waking up.*
+early and have been comfortable ever since — and from a **noble house** in it
+*(foundation revised 2026-06-12, sixth batch — replaces the conscript
+framing)*. She wasn't conscripted by the state. She was **offered up.** The
+daughter was wrong somehow — too much, too sensitive, too visibly broken for a
+house whose position depends on performing gratitude correctly — and the
+wrongness had exactly one marketable output: the trance, the impossible aim.
+**The family monetized its shame of her.** Her service to the Throne is why
+the family tolerated her at all — the lease, and everyone understands the
+terms, including her. So the thing she hates and the thing that purchased her
+place are the *same object*: the more of herself she deletes, the more
+acceptable she becomes. Her excellence is the wound performing its function —
+and every camp "nice shot" restates the family's transaction; accepting praise
+for the aim is re-signing the lease (the praise trap below, now with its
+origin). That's the colder horror than simple oppression: the machine doesn't
+even spare its favorites — prosperity took her and told her she was lucky.
+
+And she has **no politics.** The war is not a cause to her — it is **the
+venue**: the institution that converts her wrongness into worth at scale. She
+serves the arrangement, not the Throne.
+
+**Her veil** *(sixth batch — refines the old thin-belief note)*: the
+amplification fed on *"the aim is the only part of me worth anything,"*
+converting worth-deficit into operational diligence — serve harder, question
+less, point wherever directed. The targeting is built into the wound: keep her
+believing the aim is all she is, and **she aims herself.** The trance is hers
+— pre-empire, the family's gunmetal; the *willingness* is the amplifier's
+contribution. Her complicity is **solvency, not blindness**: every glitch ran
+into "the aim is my worth and the aim has been assigned" and lost, because
+noticing threatened the thing purchasing her existence — and the gain was
+turned up on exactly that arithmetic. So her arc still isn't a shattering of
+faith; there was never faith, only terms.
 
 *(Route mechanics layered 2026-06-11, fifth batch — current decisions. The
 wound above is unchanged; this is how it plays at camp and across her route.)*
@@ -182,6 +245,59 @@ player to find beautiful returning as the fingerprint of something terrible.
 Possibly too cruel; possibly exactly cruel enough. Flagged, not ruled
 (candidate-note in the collision ledger; note Row 1's cue is already a red
 bridge in the rain).
+
+*(Act 2 file + combustion layered 2026-06-12, sixth batch — current
+decisions. This completes the route-climax doctrine for her.)*
+
+**Her refraction** (the shatter prism): the veil-fall **cuts the feed.** The
+amplifier's voice — *the aim is your worth* — goes quiet, and underneath, for
+the first time since childhood, the original question is audible: **if not the
+aim, then what** — asked standing in the wreckage the aim made. And her
+complicity arrives *pre-dissociated*: every kill in the slaughter happened in
+the trance. The atrocity was committed by the acceptable version, the only
+self anyone ever wanted, while she was elsewhere.
+
+**Her Act 2 reason** (attention-independent): the party is the only thing she
+has left — *structurally.* The family tolerated the asset; the asset's
+employer is a revealed parasite; the venue burned. One remaining address: a
+campsite. **Neutral route** — same girl, new flag: the usefulness-economy
+intact, transactional diligence now serving the kingdom's cause, read by
+everyone as loyalty; the self-erasure risk is inherited from Borin's Act 1
+pattern (she'd die for them as the old trade). **Bonded route — the
+renegotiation:** the room that stays lit when she isn't earning it; missions
+where she's benched and *nothing happens* — nobody re-prices her; the
+migration from "nowhere else to go" to "this is where I go" — **kept vs.
+wanted**, a distinction her life never required words for. The gathering
+threads double as her counter-demonstration: an act-long proof that belonging
+was never supposed to be a transaction. (Candidate eavesdrop beat: Elena
+watching a rescued stranger welcomed at the fire — *"they just... get to
+stay? They don't do anything?"*)
+
+**Her combustion** (per the route-climax doctrine — and the cast's only
+*self-aimed* one, delivered by reflection): eventual **anger at the hero for
+showing kindness to others** — actually a reflection of the hero's kindness
+to *her*. The mechanism: kindness-to-her is processable (a pending invoice);
+kindness to the *unearning* forces the inference she's been avoiding — the
+kindness never tracked worth at all, which means the ledger she's been killing
+herself to balance **was never being kept.** Free kindness bankrupts her
+retroactively: a lifetime's payments into a nonexistent account. Surface
+expression: jealousy-shaped snippiness ("we don't even know them," "they
+haven't done anything") — misread by the camp, and half by her, as
+territorial; the tell is the family's admissions language in her mouth. The
+climax: it boils over — present and furious, **not in the trance**; the anger
+is her most undissociated moment in years — the "why are you kind to people
+who are *useless*?" question, landing, in the silence after, on its true
+target. The witnessing: the kindness not withdrawn — from her *or* the
+strangers — and **no terms offered.** The silent protagonist structurally
+cannot explain, which is perfect: an explanation is a transaction, and the
+point is the absence of one.
+
+*(Unchosen shadow — doc-facing, extends the Beat 7 design note in the
+Manifest: her reforging — the trance locked permanent — is the family's
+transaction **completed**, the Throne finishing what the household started:
+keeping the gun, discarding the girl. If she is the Unchosen, the grievance
+lands on a lifetime of evidence: "you didn't pick me" — nobody ever has; they
+pick the archer.)*
 
 ### The Priestess (Lyra) — the most faithful servant of her god's murderer
 She's the healer, and before every heal she murmurs an invocation to **the
@@ -274,7 +390,28 @@ says the line **changed** — the true name finally in it. Neutral Lyra says it
 **exactly as the tutorial taught it** — same words, uncertain object. The
 player hears her entire outcome in whether one repeated sentence shifted.
 
-### The dwarf — the last of the makers (the Tank)
+*(Refraction layered 2026-06-12, sixth batch — current decisions; per the
+shatter-prism doctrine.)*
+
+**Her refraction**: horror with a specificity no one else shares — every
+prayer she ever said was retroactively addressed to **the thing in the door.**
+Her devotional history is contaminated; she cannot grieve cleanly because the
+grief keeps snagging on revulsion at her own remembered voice. Her
+reconciliation: rebuild on the only unfalsifiable ground left — **the mending
+happened.** The healed bones are real; no cosmology unfixes them. *"Even if
+the faith was a lie, the feelings for helping people weren't."* Act 1 Lyra
+healed because she believed; early-Act-2 Lyra heals because it's the one act
+that survives the audit — **works first, faith pending.** The archaeology
+thread then lands its real payoff: her crisis-improvised theology *was the
+original god's character all along* (the unconditional current) — the
+excavation doesn't give her new faith, it gives **attribution** for the one
+her hands already rebuilt. In the early act she is the party's **mercy
+engine** opposite the Rogue's vengeance engine — the act's two functional
+members while the rest are on the floor. Bonded/neutral tell, visible after
+missions where someone was lost: **vocation** (sturdy, chosen) vs. **penance**
+(frantic, self-erasing).
+
+### The dwarf (Borin) — the last of the makers (the Tank)
 Burly but *nimble* — his protecting is fast and active, a man who crosses the gap
 to throw himself between harm and someone else, again and again. He is one of the
 last dwarves: a maker-people who held the line longest against the invasion and
@@ -316,12 +453,19 @@ it. He was too young, too alone, too disposable to refuse, and the binding was
 done *to* him.
 
 His surface is the wound's costume: the nobody who was suddenly made *somebody.*
-He wears the pact as *belonging* — proud, theatrical, almost cheerfully fanatical
-about his rank and his power, a true believer with swagger — because for the
-first time in his life something *wanted* him, and the alternative is admitting
-that what wanted him was a program that fed him to a god, and that he was always
-trash to be spent. The cheer is scar tissue over *I was nobody and they only
-took me because I was nobody.*
+*(Register revised 2026-06-12, sixth batch — replaces the earlier "cheerfully
+fanatical / swagger" read.)* He is **cold.** High and mighty, above it all —
+above the bonds, above *needing* — **altitude as insulation**: the orphan made
+somebody doesn't do warm superiority. Being above is the inverse of where he
+started, and the rank is the first floor he ever stood on. Get close to
+nobody, so that when they discover the nobody, there's nothing to lose. He
+wears the pact as *belonging* all the same — a true believer in his own
+chosen-ness — because for the first time in his life something *wanted* him,
+and the alternative is admitting that what wanted him was a program that fed
+him to a god, and that he was always trash to be spent. The contempt is scar
+tissue over *I was nobody and they only took me because I was nobody.* (His
+distance-management is the male-register mirror of the Rogue's: she calibrates
+with charm, he calibrates with contempt — same inch, opposite costume.)
 
 Here is the horror underneath, and it pre-figures the hero's own fate: the pact
 was a *bargain*, and the dark god comes to collect its end of it — and the
@@ -353,6 +497,77 @@ god retaliates or whether a freed/defecting warlock could turn his power against
 the legion at the finale, are open. Note: if the empire trains warlocks as a
 *corps*, a freed one is an inside line on the dark powers behind the door — he
 may sit closer to the keystone than first assumed. Flagged, not decided.]`
+
+*(Full draft layered 2026-06-12, sixth batch — current decisions. The
+outcomes above stand; the fork below enriches them.)*
+
+**The Act 1 control-slip** — a visible clock: the gift is fraying *on-screen*
+across the campaign — fizzled castings, uncalled surges, nights the thing on
+the other end of the pact leans on the line. The leash shortening, mission by
+mission, while he quips over the cracks. And the wit gets **sharper as the
+control gets worse** — the performance of unbothered is the only load-bearing
+he has left. The gift is his identity collateral ("I was chosen, I matter");
+every slip is evidence against the one sentence holding him up, so the
+vulnerability structurally *cannot be admitted.*
+
+**Kindness as syllogism.** The hero's caring infuriates him on mechanism:
+concern implies something wrong; something wrong implies the gift failing; the
+gift failing implies *never-chosen.* Every kindness is a proof that ends in
+"you were always trash," and he'd rather be cold than complete it. *(Doc
+note: his annoyance is Elena's anger with the polarity flipped — her fury is
+that kindness ignores worth, his is that it implies worthlessness. Same
+ledger, opposite entries — candidate eavesdrop pairing.)*
+
+**His refraction** (the shatter prism) — **chosen because susceptible**: the
+biggest and most vulnerable break in the party. Every other shatter leaves
+something standing — Lyra's god was real, Elena's skill was hers, the Rogue's
+read was accurate. His leaves *nothing*: the choosing was a targeting
+algorithm for the disposable, the gift a leash with a maturity date, the rank
+the costume they dress livestock in — *they wanted a nobody-shaped slot, and
+you fit.* He loses the floor all the way down to the orphanage cold. His
+early-Act-2 color: freefall, arrested only by the people he's been freezing
+out.
+
+**Act 2 driving force — outrun the bill.** Not revenge: revenge requires a
+self to avenge *from*, and the capital deleted his. The shatter **decodes his
+Act 1**: every slip he explained away now reads correctly as the collection
+approaching — his own campaign, reread from inside the debt (an *internal*
+collision; a character beat, not a ledger row). And here is his specific
+cruelty: **the creditor survived the revolution.** Everyone else's wound lost
+its institution at the capital; his is the only one still accruing interest.
+
+**The search.** How do you break a pact? Not from the dark god — you don't
+ask the lender how to default — but from **the empire's paperwork**: the
+experimental corps that bound children, the architects of the contract terms,
+the selectors-for-susceptibility. The program's sites, surviving handlers,
+maybe his own binder — all of it burning at the war's pace: a *personal
+shrinking map* laid over the party's. His gathering thread is interrogating
+the wreckage of the machine that built him (and the window into the corps and
+the other children). The contract's design assumption: **nobody comes back
+for the collateral** — signatories selected specifically for having no one.
+The search exists because the assumption finally failed.
+
+**The fork** (enriching the outcomes above). **Neutral** = the solo, hoarded
+search — insulation with a research agenda ("save myself, owing no one,
+proving I never needed choosing"); it ends resigned-adjacent with the will to
+fight lit — the existing lesser outcome, intact. **Bonded** = the party *in*
+the search: showing them the files, saying the contract terms aloud to people
+who'll know exactly how disposable he was priced. The pact-breaking exploit
+is **being worth returning for** — so the clause, whatever it literally is,
+only *executes* with the party in the room at the default. `[GUESS —
+mechanism details still open per the note above.]` And revenge is the bonded
+route's **inheritance**: earned last, once there's a self to stand on —
+likely spent at the door, against the things the gift was turning him into.
+
+*(Rhyme, doc-facing: he is the hero's fate pre-run — discarded when the bill
+came due — and post-shatter the only companion who can look at the hero's
+discard and say "I know exactly what that was." Candidate quiet climax: the
+contempt briefly set down — one nobody telling another the thing nobody told
+him.)*
+
+`[open]` **Demographics** — age/body unset; noted option from the
+mold-breaking audit: *older* — the program's longest-surviving asset, the
+altitude built from outliving everyone shaped like him. Flagged, not ruled.
 
 ### The Rogue — the act with no off switch (woman)
 
@@ -477,34 +692,196 @@ she got to be *right*. `[open]` Act 2 back-half question for the bonded
 route: rage finally aimed correctly vs. rage as the new mask; what is she when
 the empire runs out. The shapes are flagged, not fully authored.
 
+### The Paladin — the medic who stopped praying (man, older)
+
+*(Full draft 2026-06-12, sixth batch — current decision. This pays the wound
+the roster note owed.)*
+
+**Identity.** A war-medic veteran, older than the rest of the unit by
+decades: the frontline medic, heavy armor so the healing can stand *in the
+fire.* His kit is the third theory of protection (the protect-triangle, cast
+doctrine): the Knight defends ground, Borin defends people — **the Paladin
+defends the wounded.** Heal-primary, tank-flavored: adjacency and short-range
+mending, presence-based mitigation; deliberately no overlap with Lyra's
+backline blessing or either tank.
+
+**Power source** (satisfying the non-treading constraint via the existing
+cosmology): he draws a current — the same physics as Lyra — and he knows what
+she doesn't: **currents don't bill.** He stopped praying thirty years ago and
+the light never flickered; he cursed the god's name over a dying soldier and
+the wound still closed. He is the **walking proof of Lyra's bonded-route
+discovery, decades early** — and he read the same fact as *indifference*
+where she will read *grace*: a power that flows whether you bless or curse it
+is plumbing, not love. The healer pair is **one shared datum, two
+theologies** — and her bonded reframe is aimed straight at his armor.
+
+**The wound.** His apprentice — his son — *(keep the ambiguity, or both: a
+boy who chose the kit BECAUSE of him makes it recursive — "did I lose him, or
+did I aim him")*. The survivor's question: why would the god keep *him* going
+and not save someone who shines brighter? The current kept flowing through
+his hands the day the boy died and every day since — he has spent thirty
+years experiencing **his own unbroken usefulness as the insult.** The
+unfinished audit: if nothing was withheld, then the hands failed — a sum he
+has never let himself complete. The gruffness, the finished-counting affect,
+the procedural love (care expressed as competence: the unasked splint,
+remembering which knee is bad, who he restocks first) — all of it a
+thirty-year refusal to audit one afternoon.
+
+**The war as hiding place.** He could have mustered out a decade ago; he
+keeps re-enlisting *into* it, because as long as there's a wound in front of
+him the sum stays unfinished. Every save is a payment on a debt that never
+amortizes. **Peace is the battlefield he fears.** *(Doc note: he is Lyra's
+neutral route pre-aged — saving-as-penance, running for decades.)* His veil
+is his own triage discipline amplified: treat who's in front of you, never
+look up from the wound to the war. His complicity is Lyra's at one remove,
+dark version: she never suspected; he **decided not to look**, and called it
+professionalism. And the conscription war rhymes his wound daily — a camp
+full of doomed children, his function keeping the empire's spent ammunition
+alive long enough to be spent again.
+
+**His refraction** (the shatter prism) — **the veteran takes over, then the
+spill.** At the capital his wound *is* his function: hands that work while
+the soul waits. While the believers shatter, the faithless man moves — first
+to coax the shellshocked Priestess to her feet (their standing
+faith-vs-faithless argument notwithstanding; triage doesn't check beliefs),
+checking the party, doing intake on an apocalypse. The camp reads strength;
+the truth is dissociation with a medical license (he and Elena: the same
+mechanism at two ages). *Then* the bottled spill: **divine retribution
+theology** — the world ending as punishment for the unsaved and the unbelief.
+**Protect the reading:** retribution is *grandiose grief* and a *backdoor
+prayer* — it requires a god who noticed, who kept score; "this is aimed at
+me" is the first time in thirty years he's let himself believe he was being
+watched. The accusation is the faith escaping in the only register grief left
+available.
+
+**Redemption — re-attribution, sideways.** He never does the excavation
+(that's her thread) but he is adjacent to it, and her evidence dissolves his
+case: the god he stopped believing in was never the one holding the current —
+he prayed to the painted face, got plumbing, and concluded the universe was
+plumbing. The re-read: the current couldn't save the boy (nothing inside the
+cage could) but it **never once left his hands** — not rescue,
+**accompaniment**: the only presence a sealed-out god could offer. The loss
+stands (holds-not-rewrites; the boy stays dead); what changes is the audit:
+*"I was never alone in the tent."* Bonded beat: at some Act 2 fire, mending
+some conscript, he says something *upward* for the first time in thirty years
+— probably four words. **His audible fate: whether he ever again speaks while
+he works.**
+
+**Finale.** Mercy-inverts is **his afternoon at world scale** — the call that
+broke him, demanded again with the world on the table. The bonded route
+arrives audit-finished and makes the call *as mercy* — the thesis's living
+veteran, finally unhaunted. The neutral route arrives still running
+retribution — he spends himself at the door as the sentence he decided he was
+owed, and the party never knows the difference between his heroism and his
+punishment.
+
+### The Knight — the blade of a liege who never looked (woman, young)
+
+*(Full draft 2026-06-12, sixth batch — current decision. This REPLACES the
+old proposal wholesale: the "honor built on the first betrayal" wound and the
+gallant true-believer register are dead.)*
+
+**Identity.** Young, and not warm-gallant — **driven, exact, hungry**: the
+cast's cold female register arrives through the Knight. The loyalty-climber:
+a girl who worked through the ranks faster than anyone, past every
+intermediate loyalty — family, region, commander — to swear herself to the
+apex directly. **The Throne's blade**, by her own relentless engineering.
+
+**The wound — honor masked by loyalty.** The original order of knights was
+built on **honor**: a contract with a *code* — portable, self-owned, judges
+its master. The empire converted it to **loyalty**: a contract with a
+*someone* — obeys its master — over generations, because an institution of
+people who judge upward is the one thing a parasite can't use. It kept the
+forms (oaths, ranks, ceremony) and swapped the object. She was born with a
+genuine honor-instinct into the corrupted order and **cannot tell the
+difference** — the vocabulary was overwritten before her grandmother lived.
+She experiences honor-hunger as loyalty-hunger, climbs accordingly, becomes
+the blade. **She had the true thing all along; the empire's oldest theft made
+it illegible to her.** (Scripture-seams applied to chivalry: her Act 2
+discovery has *evidence* — old oaths that scan wrong, ceremonies whose logic
+points at a code no doctrine names, the founding charter under the
+palimpsest. Her route can find the original order the way Lyra finds the
+original god.)
+
+**The unrequited devotion** (doc-facing, cosmology-derived): her liege does
+not know she exists — *cannot*; the Throne is bodiless, ruling through
+doctrine and Vaels. Hers is the cast's only fully unrequited empire-tie:
+oaths sworn to an empty chair, a blade of a liege who never perceived the
+blade. Her veil was the cheapest in the unit: her amplifiable want — *to be
+the Throne's truest servant* — and the empire's interest were already the
+same sentence. The machine just let her wind herself.
+
+**Her refraction** (the shatter prism) — **disgust, mostly with herself.**
+The moment the liege acquires its true face, the buried judging faculty wakes
+with a lifetime of evidence already filed: loyalty never audits its master;
+honor audits *everything*, starting at home. Then **loss of direction**:
+loyalty was her entire navigation system — the seat supplied every bearing —
+and the faculty that could replace it, her own moral judgment, has never once
+been consulted. Early Act 2 she is the party's most competent lost person:
+flawless at execution, helpless at *selection*, developing at twenty-something
+the faculty most people grow at twelve. Her first self-chosen act, however
+small, should be staged with a combustion's weight — for her, it is one.
+
+**The mirror — Elena** *(current decision: deliberate — same heartland
+circle, same age-band)*: **talent vs. will.** The Archer was born with the
+thing (worth found in her, unbidden, unconsented); the Knight *built* hers
+(worth made, rep by rep, against nature). Same children-as-instruments
+economy, opposite rubrics — mutual prosecution-exhibits: the Knight proves
+Elena could have succeeded; Elena proves the Knight's grind was optional. The
+discipline she dishes Elena is scandalized incomprehension ("I *worked* for
+what you apologize for having"); Elena receives one more voice from home
+enforcing the lease. **The buried symmetry** (player-visible,
+character-invisible): they envy each other's wound, and both are missing the
+same organ — *a self prior to its usefulness* — each assuming the other has
+one. Talent and will: two machines manufacturing the identical absence. The
+thaw comes in Act 2, sideways, in the eavesdrop channel: soldiers' respect
+between co-losers of the same campaign.
+
+**The Paladin respect**: her one untainted instinct — she reads service-hours
+like scripture, and he has more than anyone alive. The payable joke: she
+respects him as the empire's most faithful servant; he's the camp's oldest
+unbeliever — her one correctly-aimed admiration pointed at a man who already
+did what she'll spend Act 2 learning. (His side: he's seen her type on his
+table before.)
+
+**The vow** *(current decision — the route's climax)*: in Act 2 she makes the
+vow to be the new person — built from the buried order's **recovered words**,
+the original oath pre-theft, sworn for the first time in five centuries by
+someone who means it at the correct address — and sworn **to no one**:
+honor's distinction from loyalty is that it requires no master. She kneels to
+nothing, says the old words, stands up *unowned.* First unsworn act and first
+true oath, same gesture. **The haircut:** she cuts her long hair to above her
+shoulders at the vow — resignation from being *regalia* (the loyalty-knight's
+presentation was always part of the service, polish for a liege who never
+looked). *(Production note: the cast's one big mid-game physical
+transformation — the flagship proof that Act 2 outcomes are visible on bodies;
+the audible-fates' sibling, **visible fates**. Hook in `systems_design.md`.)*
+
+**PROTECT:** the vow must NOT be re-swearing in disguise — if her new honor
+reads as loyalty-to-the-party-with-extra-steps, the arc collapses into "same
+faculty, new flag" (which is exactly her **neutral route's** failure shape:
+the faculty re-attaching fast and uncritically to the new cause, devotion
+indistinguishable from health). The bonded route's proof is *behavioral*:
+post-vow she **disagrees** — judges the party, pushes back where loyalty
+would comply. The first time she tells the hero *no* on moral grounds is the
+new faculty live-firing; stage it like a graduation.
+
+`[open]` Her name, and the order's original name — routed to the naming
+session; note the vow needs the recovered oath's actual words, which gates on
+the kingdom/order naming.
+
 ---
 
-## The two open companions — proposals to react to
+## The one open companion — proposal to react to
 
 > Everything in this block is invented. The roster is **eight, in role pairs**
 > (current decision — see the note at the end of this part), each built to the
-> same standard. These are my swings at the still-undesigned slots, to give you
-> something to push against — the method is always *wound first, class second.*
-> (The Rogue's proposal that used to sit here was superseded 2026-06-11, fifth
-> batch, by her full rebuild among the designed companions above.)
-
-### `[GUESS]` The Knight — the one who folded first
-**Wound:** he is from the kingdom that folded *earliest of all* — the original
-collaborators, the ones whose ancestors made the very first pact and turned on
-their neighbors to do it. His people are the most comfortable in the empire, and
-he carries that comfort as unearned pride: he's a true-believer knight, gallant,
-honorable, the model Throne soldier. The wound underneath is that his entire
-sense of honor is built on a foundation of the *first betrayal* — his nobility is
-real and his lineage's crime is real, and he has no idea the two are the same
-thing. **The fault line:** the more honorable he tries to be, the closer he edges
-to discovering that the founding act of his proud house was selling everyone
-else to the Throne. His belief is *honor fitted to a buried betrayal.* The
-truth doesn't reveal he's a villain — it reveals his goodness has been pointed at
-the wrong banner his whole life. **Class falls out:** the straight, sword-and-
-shield front-liner — the *played-straight* knight whose very classicism is the
-point (everyone else subverts their class; his subversion is that he's exactly
-what he appears, and that's the tragedy — a genuinely good man perfectly made by
-a lie). `[GUESS — gender open, leaning man but not fixed.]`
+> same standard. This is my swing at the one still-undesigned slot — the
+> method is always *wound first, class second.* (The Rogue's and the Knight's
+> proposals that used to sit here were superseded by their full drafts among
+> the designed companions above — fifth and sixth batches respectively. The
+> old Knight wound — honor built on the first betrayal, the folded-first
+> lineage — is dead with the proposal.)
 
 ### `[GUESS]` The Wizard — the believer who loves the *system*
 Distinct from the Warlock: where the Warlock was *given* power he doesn't
@@ -521,9 +898,12 @@ breaks on *logic*, the slow unbearable accumulation of a system he loves failing
 its own rules. He's the rationalist who reasons his way out of the lie and hates
 every step, because each step costs him the order he built his life on. **Class:**
 the elemental/arcane caster — pure fire-ice-lightning, the most "legible" magic
-in the game, fitting a man who needs the world to make sense. `[GUESS — gender
-open. Also flags an open question: is six companions the count, or does the
-Paladin make a seventh? See manifest.]`
+in the game, fitting a man who needs the world to make sense. *(Gender:
+**male**, current decision per the sixth-batch grid. The female-Wizard case
+from that session — the meritocracy wound-deepening — is recorded as a
+doc-facing alternative, not adopted; the Knight taking the cold-female-register
+slot resolved the gap it was meant to fill. The wound session itself remains
+`[open]` and may revisit.)*
 
 > **The roster — EIGHT companions in role pairs** *(current decision,
 > 2026-06-11 third batch — reverses this doc's earlier Paladin-exclusion lean)*:
@@ -535,12 +915,21 @@ Paladin make a seventh? See manifest.]`
 > the remaining healer you field the other one too — the role itself becomes a
 > per-battle retrieval cue at zero authoring cost.
 >
-> The Paladin still **owes a wound** — the cast doctrine stands (a slot is
-> earned through a wound, not a class gap), as does the constraint that her
-> power source must not tread on the Priestess. Note that under the new
-> cosmology (Part One) a *different erased god's current* would make the healer
-> pair **theologically rhyming rather than redundant** — two stolen lights, two
-> liturgies, one crime. Wound undesigned; flagged.
+> The Paladin's owed wound is **PAID** *(sixth batch, 2026-06-12 — his full
+> draft above: the apprentice-son, the survivor's question, the unfinished
+> audit)*, and the non-treading constraint is satisfied through the existing
+> cosmology rather than a second stolen god: the healer pair is **one shared
+> datum, two theologies** — same current physics, grace vs. plumbing. (The
+> earlier different-erased-god speculation is superseded by that resolution;
+> nothing rules it back in if a future session wants two liturgies.)
+>
+> **The gender grid** *(current decision, sixth batch — 4/4)*: women — Lyra,
+> Elena, the Rogue, the **Knight**; men — Borin, the Warlock, the **Paladin**,
+> the **Wizard**. *(Firmness note: the whole cast remains rough-draft. Wounds
+> are welded to FUNCTIONS — a mislabeled healer, a precision dissociator, a
+> lied-to survivor — not to persons; the current cast is one seating chart for
+> those functions, and demographics/slots remain shiftable. Nothing here is
+> locked; it is all current-decision.)*
 
 ---
 

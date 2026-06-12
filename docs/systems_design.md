@@ -147,6 +147,36 @@ looking at*, and the player learns the pattern (want Elena? find the view).
 Camp set-dressing becomes character content; each re-pitch needs one
 designated "the view" spot for her placement.
 
+## Companion kits & fate hooks [current decision 2026-06-12; fiction in bible_02]
+
+**The protect-triangle** (kit doctrine for the defensive roles — no two
+redundant):
+
+- **Knight = anchor/wall** — zone control, defends *terrain*: holds tiles,
+  punishes movement through her zone, rewards picking the right ground.
+  Protects positions.
+- **Borin = intercept/bodyguard** — mobile, reaction-based: moves himself
+  into harm meant for another (his existing pre-hit intercept follow-up is
+  this kit's seed). Protects people. **His kit IS his wound** — the dive
+  performed a hundred casual times across the campaign before the one
+  scripted dive that costs everything.
+- **Paladin = frontline medic** — heal-primary, tank-flavored: adjacency /
+  short-range mending, presence-based mitigation, heavy armor so the healing
+  stands in the fire. Protects the wounded. Deliberately no overlap with
+  Lyra's backline blessing or either tank.
+
+**Playable fates** (sibling to audible fates): a fate delivered through a
+*mechanic the player has used all game* recurring with new meaning — Borin's
+dive is the flagship (the same intercept verb, casual a hundred times, then
+once with everything on it). Systems hook: signature reactions need the same
+per-outcome variant support as signature lines.
+
+**Visible fates** (second sibling): Act 2 outcomes visible on bodies — the
+Knight's haircut at her vow is the flagship. Production hook: the character
+art/portrait pipeline must support a **mid-game portrait + sprite swap** per
+companion; budget at least one (the Knight) and design the pipeline so more
+are cheap.
+
 ## The finale's battle structure [current decision 2026-06-11; fiction in bible_04]
 
 The final battle is an **interruption of an ascension**, fought through a

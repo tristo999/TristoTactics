@@ -79,6 +79,19 @@ act's **counter-voltage**, true fire and *also* the new mask (Part Two:
 rage-as-purpose is still distance management; her vengeance has an end date,
 and the self it defers doesn't).
 
+And she is one face of a system *(sixth batch, 2026-06-12 — the shatter
+prism, doctrine in Part Two)*: the capital is one event refracted through
+eight wounds, and early Act 2 *is* the party processing it, each in their
+wound's signature. The Rogue ignites; **Lyra** rebuilds works-first theology
+on the only unfalsifiable ground left (the mending happened) and runs as the
+party's mercy engine opposite the Rogue's vengeance; **Elena**, the
+amplifier's feed cut, stands in the wreckage asking *if not the aim, then
+what*; **the Warlock** is in freefall — his is the only wound whose creditor
+survived the revolution; **the Paladin** does intake on an apocalypse, then
+spills retribution theology that is really a backdoor prayer; **the Knight**
+wakes the judging faculty loyalty never let her use, and aims the disgust at
+herself. Full refractions in each Part Two entry.
+
 And under the whole act runs **the vigil** *(current decision, 2026-06-11)*:
 the party spends Act 2 keeping watch over the thing that kept watch for five
 centuries — tending a comatose god whose every remaining flicker reaches past
@@ -414,7 +427,11 @@ the anchors and reaching the seam before the line they are holding runs out, so
 the time they bought with their lives doesn't go to nothing. The hardest
 expression of the thesis: sometimes the most merciful thing you can do with a
 sacrifice is be worth it. *(The bodyguard re-founding sharpens this: the lives
-are spent buying meters of corridor toward a hatching god.)* `[GUESS — Act 2
+are spent buying meters of corridor toward a hatching god.)* The inversion is
+also the Paladin's afternoon at world scale *(sixth batch)*: bonded, he
+arrives audit-finished and makes the call as mercy; neutral, he spends himself
+at the door as the sentence he decided he was owed — and the party never
+knows the difference (Part Two). `[GUESS — Act 2
 death rules (authored, designed losses now that the Throne's no-death
 suppression is lifting in-fiction) resolve by feel once combat is real; see
 systems_design.]`
@@ -525,28 +542,82 @@ The consolidated keep/kill/claim checklist. Plain `[open]` = genuinely undecided
   (the self-sealed orders, *The Unchosen apparatus*).
 
 **Cast**
-- **[GUESS]** The Knight and the Wizard — full proposals in Part Two, awaiting
-  keep/kill/claim. ~~The Rogue~~ — **RESOLVED 2026-06-11 (fifth batch, current
+- **[GUESS]** The Wizard — the last open proposal in Part Two, awaiting his
+  wound session. Gender: male (sixth-batch grid, current decision); the
+  female-Wizard alternative (the meritocracy wound-deepening) is recorded
+  doc-facing in his proposal, not adopted. ~~The Knight~~ — **RESOLVED
+  2026-06-12 (sixth batch, current decision): full draft in Part Two**
+  (woman, young; honor masked by loyalty — the order's converted contract;
+  the unrequited devotion to a bodiless liege; the Elena mirror; the vow
+  sworn to no one; the haircut). The old proposal's wound — honor built on
+  the first betrayal, the folded-first lineage — is **superseded** with the
+  proposal. ~~The Rogue~~ — **RESOLVED 2026-06-11 (fifth batch, current
   decision): full rebuild in Part Two** (beggar-born in the ash kingdoms,
   charm-as-misdirection, the heist motive, the scale-fear shatter and the
   clinging, the early-Act-2 fire, mask-fall-as-combustion, acceptance-by-
   audit, the gradient's native informant). The old "deflection-as-survival"
   proposal is **superseded** — it overlapped the Archer's defense mechanism.
   The cat-gag keep-or-cut flag is **RESOLVED: keep, weaponized** (the gag is
-  her product). *(Bookkeeping: the old proposal formally flagged her gender
-  open while writing her she/her throughout; the rebuild fixes **woman** —
-  the cat-girl product is built on her own kind's caricature.)*
+  her product).
 - ~~Roster count/composition~~ — **CURRENT DECISION 2026-06-11: EIGHT, in role
   pairs** (Priestess+Paladin / dwarf+Knight / Wizard+Warlock / Archer+Rogue) —
   pairs decontaminate Beat 7 and make the surviving half a standing absence
-  (Part Two). The Paladin's wound + non-treading power source still **[open]**
-  (a different erased god's current would make the healer pair theologically
-  rhyming).
-- **[open]** Genders of all companions except the Archer (woman) and the
-  Rogue (woman, fifth batch).
+  (Part Two). ~~The Paladin's wound + non-treading power source~~ — **PAID /
+  RESOLVED 2026-06-12 (sixth batch)**: full draft in Part Two (man, older;
+  the apprentice-son, the survivor's question, the unfinished audit; same
+  current physics as Lyra, read as plumbing — one shared datum, two
+  theologies; the different-erased-god speculation superseded).
+- ~~Genders~~ — **RESOLVED 2026-06-12 (sixth batch, current decision): the
+  4/4 grid** — women: Lyra, Elena, the Rogue, the Knight; men: Borin, the
+  Warlock, the Paladin, the Wizard. (Wizard's wound still open; grid is
+  current-decision, not locked — see the firmness note below.)
 - **[GUESS]** The Warlock's pact-breaking mechanism and his tie to the keystone.
   **[open]** (adjacent, third batch): the gift in the Unchosen — legion-seed
   remains in a freed person; the two debts rhyme, one may teach the other.
+  Sixth batch adds: the bonded fork's exploit is **being worth returning
+  for** — the clause only executes with the party in the room at the default
+  (mechanism letter still open). **[open]** Warlock demographics (age/body;
+  noted option: older — the program's longest-surviving asset). **[open]**
+  The dark god's register: does it speak / bargain / gloat?
+
+**Companion deep-texture II (2026-06-12, sixth batch)**
+- **FIRMNESS NOTE (applies to the whole cast):** everything remains
+  rough-draft. Wounds are welded to *functions* — a mislabeled healer, a
+  precision dissociator, a lied-to survivor — not to persons; the current
+  cast is **one seating chart for those functions**, and demographics/slots
+  remain shiftable. Nothing in this batch is "locked"; it is all
+  current-decision.
+- ~~Elena's foundation~~ — **REVISED**: noble house, offered up (the family
+  monetized its shame of her; the lease); the war as venue, not cause; veil =
+  worth-deficit amplified into willingness; complicity = solvency. The old
+  "conscripted by the state, almost against her will" framing is superseded.
+  Her Act 2 file (kept vs. wanted) and combustion (the kindness ledger — the
+  cast's only self-aimed one) are in Part Two.
+- New doctrine (Part Two): the **shatter prism**; **witnessing as
+  counter-amplifier** `[GUESS — candidate]`; the **protect-triangle**
+  (ground/people/wounded) with Borin's role split (anchor vs. intercept; his
+  dive as the cast's strongest **playable fate**); the cast **pairs twice**
+  (kit + wound; the eavesdrop channel draws from the wound map); **visible
+  fates** (the Knight's haircut, flagship) as the audible-fates sibling.
+- **[open]** The Knight's name and the order's original name — routed to the
+  naming session; **her vow needs the recovered oath's words, which gates on
+  the kingdom/order naming.**
+- **[GUESS]** A surviving program figure (the Warlock's binder/handler) and a
+  ruins-keeper for Lyra's excavation thread — candidate faces, unruled.
+- **Census (doc-facing):** party 9 (8 + silent hero); principals 12
+  (+ Guardian, Vael, Throne); committed-but-faceless: the Loved NPC [open],
+  the dwarf's found kin (≥1 face needed — load-bearing for Borin's thin
+  route, flagged), the Warlock's creditor (register [open]), the possible
+  program figure and ruins-keeper [GUESS], Beat 7's two camp NPCs (contingent
+  on that ruling), the hunter's squad (voiceless by design — confirm
+  deliberately). Remaining character work: the Wizard's wound session;
+  Borin's route-deepening; the Throne's old name + voice; the faces pass;
+  the Beat 7 ruling gating the Unchosen's scope.
+- **Mold-breaking audit (doc-facing):** the cast's slot-assignments defaulted
+  traditional (personality-to-class) and demographics ran young; the Paladin
+  (older) and the Knight (cold-register woman) spend some of the budget;
+  remaining deliberate-miscast budget should be considered at the Wizard
+  session and the demographics sweep **[open]**.
 
 **Companion routes (2026-06-11, fifth batch)**
 - ~~The Priestess's outcomes~~ — **RESOLVED**: bonded = faith restored by
@@ -589,7 +660,11 @@ The consolidated keep/kill/claim checklist. Plain `[open]` = genuinely undecided
   *ballistics* before any cutscene; her redemption = the trance BREAKING, the
   stammer returning mid-battlefield. Exhibit A that authored-specific outbids
   the character-agnostic skeleton; the compromise (agnostic skeleton +
-  wound-flavored voice per companion) is on the table.
+  wound-flavored voice per companion) is on the table. *(Sixth-batch
+  extension: her reforging is the family's transaction **completed** — the
+  Throne finishing what the household started, keeping the gun, discarding
+  the girl. If she is the Unchosen, the grievance lands on a lifetime of
+  evidence: "you didn't pick me" — nobody ever has; they pick the archer.)*
 - **Comparison file:** *Dispatch* (AdHoc, 2025) ships the shared skeleton —
   cut-one-of-two, defection to the villain, finale confrontation.
   Differentiation is load-bearing and must be protected in staging: **Beat 7 is
