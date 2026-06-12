@@ -111,6 +111,21 @@ person; the witnessing is the inverse operation — attending to every *other*
 note until the amplified one is just an instrument again instead of the
 orchestra. The Archer is the cleanest proof (her entry).
 
+**Witnessing is ACTIVE** *(correction, 2026-06-12 — Tristan, restoring the
+original conception; the passive drift was the silent-hero cascade)*. The
+hero's intervention is **attention and chosen trust** — *seeing what a
+companion loves*, not merely declining to mention what they hate; *trusting
+after seeing the true face*, not merely standing there. The silence is the
+**medium, never the act.** The original formulas, on record: Elena is not
+"happy the hero never brings up her killing" — she is **"happy the hero sees
+the things she loves and not just the killing."** The Rogue is not "he
+accepts me because he just stands there" — she is **"he chose to trust me
+even though he saw my true face."** Discipline rule: every route's
+witnessing beat must be statable as a verb the hero *did*; if it can only be
+stated as an absence, it has drifted, and the counter-amplifier above tells
+you why — you cannot turn the other notes up by being quiet about the loud
+one. You have to *play* them.
+
 **The protect-triangle** *(current decision, sixth batch)*. Three theories of
 protection, no two redundant: the Knight defends **ground**, Borin defends
 **people**, the Paladin defends **the wounded**. The tank pair is therefore
@@ -257,13 +272,18 @@ recovery. The route's quiet climax: she finishes a whole thought, notices the
 hero noticed, and *doesn't apologize.* The bonded outcome is counted in
 seconds of unapologized enthusiasm.
 
-**The hero's witnessing mechanic.** The hero is the one person who *never*
-brings up her shooting — the silent protagonist structurally cannot praise her
-aim. Every camp relationship routes through her skill; the hero's is the only
-one that doesn't, and she notices the absence long before she trusts it. The
-route's turn is hers, unprompted: she volunteers the unspeakable thing to the
-only person who never asked. Witnessed = *not-looked-at* where everyone else
-stares.
+**The hero's witnessing mechanic** *(corrected 2026-06-12 — the active half
+restored; the absence is real but it is not the act)*. The negative half:
+the hero is the one person who *never* brings up her shooting — every camp
+relationship routes through her skill, the hero's is the only one that
+doesn't, and she notices the absence long before she trusts it. But the
+absence only matters because of what fills it: **the hero is the one who
+shows up at the views** — who goes where she is, receives the geek-outs
+without grading them, **sees the things she loves and not just the
+killing.** Witnessed = *seen where she actually lives*, not-looked-at where
+she goes to vanish. The route's turn is hers, unprompted: she volunteers the
+unspeakable thing to the only person who knew her as the girl who loves the
+light first — and the archer second.
 
 **Her audible fate** (per the cast doctrine): the post-battle victory bark.
 All game, the bark system praises her crits — the game itself participating in
@@ -731,6 +751,17 @@ An audit she finally can't fail them on. Voiced in her native register —
 professional respect ("if it IS a con, it's a better one than I could run"),
 never "I trust you." **Bonded outcome: the inch surrendered** — in
 installments, after the bridge was burned and the person stood on the ashes.
+
+*(Correction, 2026-06-12 — the active framing restored: the audit is HER
+lens; from the hero's side the route was never passive. The hero **saw the
+true face** — the capital's clinging with the mask fully off, later the
+casing and the bait-truths confessed as bait — and **chose to trust her
+anyway**: kept handing her the back, the plan, the watch. The staying
+through the blast is one act in a chain of chosen trust, not endurance. Her
+bonded line means exactly this — not "they never happened to use my knives"
+but **"he chose to trust me even though he saw my true face"** — which is
+the one thing she could never have engineered, because a mark trusts the
+mask, and the hero trusted what was under it.)*
 
 **Story wiring.** She is the gradient's **native informant** — she knows the
 comfortable kingdoms from the service entrance, and her cynicism is accurate
