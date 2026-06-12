@@ -196,6 +196,11 @@ three faces: **the cage breaks, the true form manifests, the door opens.** The
 endless legion that pours through is not a new invasion. It is the *original*
 one, finally arriving — always scheduled, just five centuries late.
 
+And be precise about the door: it is not a mechanism that opens — it is the
+Throne itself, manifest and swollen with the core, holding the world's natural
+near-closedness apart with its own will. Kill the holder and the door is not
+closed; it stops being held.
+
 ## Vael — the knowing betrayer
 
 *(Supplied 2026-06-11, completing the second half of the truncated first batch —
