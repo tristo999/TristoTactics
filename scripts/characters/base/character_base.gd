@@ -134,11 +134,13 @@ func _process(delta: float) -> void:
 	else:
 		global_position += direction.normalized() * move_speed * delta
 
-func move_to_tile(grid_pos: Vector2i) -> void:
+## Returns true if movement STARTED. False = no path (callers must not await
+## movement_finished on a false return — it will never fire).
+func move_to_tile(grid_pos: Vector2i) -> bool:
 	var tilemap = get_tree().get_first_node_in_group("tilemap")
 	var path = tilemap.get_astar_path(current_tile, grid_pos) if tilemap else [current_tile, grid_pos]
 	if path.size() < 2:
-		return
+		return false
 	move_path = path.slice(1)
 	# Deduct terrain-weighted cost, not just tile count
 	var path_cost := 0
@@ -148,6 +150,7 @@ func move_to_tile(grid_pos: Vector2i) -> void:
 	moving = true
 	EventBus.character_movement_started.emit(self )
 	_advance_path()
+	return true
 
 func _advance_path() -> void:
 	if move_path.size() > 0:
@@ -196,8 +199,14 @@ func on_turn_started() -> void:
 func on_turn_ended() -> void:
 	pass
 
+## Scripted scenes can make a unit NONLETHAL (sparring with blunts): damage
+## works normally but HP clamps at 1 — the unit cannot die until the flag clears.
+var nonlethal: bool = false
+
 func take_damage(amount: int, source: Node2D = null) -> void:
 	current_hp = max(0, current_hp - amount)
+	if nonlethal and current_hp <= 0:
+		current_hp = 1
 	_update_health_bar()
 	EventBus.character_damaged.emit(self , amount, source)
 	if current_hp <= 0:

@@ -78,13 +78,15 @@ static func spawn(roster: Dictionary, player_parent: String = "PlayerTeam",
 ## warrant a dedicated action. The callable may take 0 args or 1 (the engine).
 static func call_fn(fn: Callable) -> Callable:
 	return func(eng) -> void:
-		var r
+		# Await the call directly: calling an async callable without await is a
+		# runtime error (4.6), and a stored coroutine state never resumes.
+		# Awaiting a sync callable's return just resumes immediately.
 		if fn.get_argument_count() >= 1:
-			r = fn.call(eng)
+			@warning_ignore("redundant_await")
+			await fn.call(eng)
 		else:
-			r = fn.call()
-		if r is Signal:
-			await r
+			@warning_ignore("redundant_await")
+			await fn.call()
 
 ## Enable another trigger by id (arm a rule that was declared disabled).
 static func enable(trigger_id: String) -> Callable:

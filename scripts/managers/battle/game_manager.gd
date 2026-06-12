@@ -41,6 +41,11 @@ var player_mode: PlayerMode = PlayerMode.MOVE
 ## the player by letting them move, not by making them watch the AI open).
 @export var player_goes_first: bool = false
 
+## When true, win/lose is NOT evaluated on deaths (scripted phases: a drill must
+## not be winnable by emptying the "enemy" team). The scene flips this off when
+## real combat starts (e.g. the breach).
+var suppress_outcome: bool = false
+
 var turn_order: Array[CharacterBase] = []
 var current_character: CharacterBase
 var selected_ability: Ability = null ## Currently selected ability for targeting
@@ -187,8 +192,8 @@ func _execute_enemy_turn(enemy: EnemyCharacter) -> void:
 		_clear_highlights()
 		if tilemap_node:
 			tilemap_node.highlight_renderer.set_current_character(enemy.current_tile)
-		enemy.move_to_tile(move_target)
-		await enemy.movement_finished
+		if enemy.move_to_tile(move_target):
+			await enemy.movement_finished
 		# Update highlight to new position
 		if tilemap_node:
 			tilemap_node.highlight_renderer.set_current_character(enemy.current_tile)
@@ -312,7 +317,11 @@ func request_move(character: CharacterBase, target_tile: Vector2i) -> bool:
 			return false
 	state = BattleState.PLAYER_MOVING
 	_clear_highlights()
-	character.move_to_tile(target_tile)
+	if not character.move_to_tile(target_tile):
+		# No path (BFS-reachable but A*-blocked, e.g. by occupied tiles): without
+		# this guard the state machine wedges in PLAYER_MOVING forever.
+		_return_to_idle()
+		return false
 	return true
 
 func request_attack(character: CharacterBase, target: CharacterBase) -> bool:
@@ -385,9 +394,9 @@ func _on_character_died(character: CharacterBase) -> void:
 	var players = turn_order.filter(func(c): return c.team == Constants.TEAM_PLAYER)
 	var enemies = turn_order.filter(func(c): return c.team == Constants.TEAM_ENEMY)
 
-	if enemies.is_empty():
+	if enemies.is_empty() and not suppress_outcome:
 		_end_battle(true)
-	elif players.is_empty():
+	elif players.is_empty() and not suppress_outcome:
 		_end_battle(false)
 	elif was_current and state != BattleState.INACTIVE:
 		_end_character_turn(character)

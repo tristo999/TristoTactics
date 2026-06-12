@@ -45,6 +45,7 @@ func _ready() -> void:
 		_gm.intro_event = null
 		_gm.victory_event = _victory_coda()
 		_gm.player_goes_first = true
+		_gm.suppress_outcome = true   # the drill is not winnable/losable; breach lifts this
 	super._ready()
 	call_deferred("_begin")
 
@@ -60,6 +61,8 @@ func _spawn_roster() -> void:
 		if u.name == "Elena": _elena = u
 		elif u.name == "Borin": _borin = u
 		elif u is PlayerCharacter: _hero = u
+	if _borin:
+		_borin.nonlethal = true   # blunts: the drill cannot kill the tutor
 
 func _begin() -> void:
 	await get_tree().process_frame
@@ -107,48 +110,59 @@ func _run_drill() -> void:
 	])
 	_gate(true, false, true)
 	_show("Select Move and reach the chalked footwork course (south-west). End Turn if you run out of steps.")
-	await _until_region("footwork_course")
+	await _until_flag("l1_footwork")
 	_hide()
 
 	# LESSON 2 — STRIKE (cross the yard to Borin at the dummy lane)
+	_engine.add("l2_strike", TriggerCond.attacked(TriggerCond.is_player),
+		[TriggerAct.set_flag("l2_strike")])
 	await _say([
 		["Borin", "Over here, lad! Mind the dummies — they're shy."],
 		["Vael", "Now cross the yard and put steel on Borin. He insists."],
 	])
 	_gate(true, true, true)
 	_show("Reach Borin at the dummy lane (east) and Attack him.")
-	await _until_player_attack()
+	await _until_flag("l2_strike")
+	_gate(true, false, true)   # re-lock attack until the next lesson arms it
 	_hide()
 	await _say([["Borin", "HA! Good weight! Felt that in me teeth."]])
 
 	# LESSON 3 — COVER (Borin steps behind a tarped stack; hit him again)
 	var cover_tile := _find_cover_near(_borin)
 	if cover_tile != Constants.INVALID_TILE and _borin:
-		_borin.move_to_tile(cover_tile)
-		await _borin.movement_finished
+		await _scripted_move(_borin, cover_tile)
+		_engine.add("l3_strike", TriggerCond.attacked(TriggerCond.is_player),
+			[TriggerAct.set_flag("l3_strike")])
 		await _say([
 			["Borin", "Again — but watch: behind the stacks, half of you disappears."],
 			["Vael", "Cover. Ground that shields is worth two soldiers. Strike him through it — feel the difference."],
 		])
+		_gate(true, true, true)
 		_show("Borin is in cover (+2 DEF). Attack him again — the number drops.")
-		await _until_player_attack()
+		await _until_flag("l3_strike")
+		_gate(true, false, true)
 		_hide()
 		await _say([["Vael", "Smaller bite, yes? Remember that when it's YOU standing in the open."]])
 
 	# LESSON 4 — TOGETHER (the pit: Elena at your shoulder, the follow-up, live)
 	if _borin:
-		_borin.move_to_tile(Vector2i(24, 18))   # pit floor
-		await _borin.movement_finished
+		await _scripted_move(_borin, Vector2i(24, 18))   # pit floor
 	if _elena:
-		_elena.move_to_tile(Vector2i(21, 18))   # pit edge — inside her link range
-		await _elena.movement_finished
+		await _scripted_move(_elena, Vector2i(21, 18))   # pit edge — inside her link range
+	_engine.add("l4_strike", TriggerCond.attacked(TriggerCond.is_player),
+		[TriggerAct.set_flag("l4_strike")])
+	_engine.add("l4_chain", TriggerCond.attacked(TriggerCond.is_ally),
+		[TriggerAct.set_flag("l4_chain")])
 	await _say([
 		["Vael", "Last lesson, and it's the one that matters. Alone you're a blade. Beside someone, you're a squad."],
 		["Vael", "Into the pit. Stand by Elena. Strike — and watch her."],
 	])
-	_engine.set_flag("lesson_together", true)
+	_gate(true, true, true)
 	_show("Enter the pit, stand NEAR Elena, and strike Borin.")
-	var chained := await _strike_and_watch_for_chain()
+	await _until_flag("l4_strike")
+	await get_tree().create_timer(0.9).timeout   # reaction queue drains in the gm flow
+	var chained: bool = _engine.get_flag("l4_chain") == true
+	_gate(true, false, true)
 	_hide()
 	if chained:
 		await _say([
@@ -169,8 +183,7 @@ func _run_drill() -> void:
 		var lyra := lyra_units[0] as CharacterBase
 		if lyra is EnemyCharacter:
 			(lyra as EnemyCharacter).ai_enabled = false
-		lyra.move_to_tile(Vector2i(23, 19))
-		await lyra.movement_finished
+		await _scripted_move(lyra, Vector2i(23, 19))
 		var missing: int = _borin.max_hp - _borin.current_hp if _borin else 0
 		if _borin and missing > 0:
 			_borin.heal(missing, lyra)
@@ -191,7 +204,13 @@ func _setup_engine() -> void:
 	_engine = TriggerEngine.new()
 	add_child(_engine)
 	# Regions (BaseGrid cell coords; see docs/levels/training_grounds.md)
-	_engine.region("footwork_course", Rect2i(9, 22, 8, 6))
+	# NB: must NOT contain the gate spawn (14,27) — the lesson requires a MOVE into it
+	_engine.region("footwork_course", Rect2i(9, 22, 5, 5))
+	# Lesson latches: the engine listens from scene start, so a qualifying event
+	# can NEVER be missed (raw `await signal` loses events that fire during a
+	# preceding dialogue — the engine latches them into flags instead).
+	_engine.add("l1_footwork", TriggerCond.enters("footwork_course", TriggerCond.is_player),
+		[TriggerAct.set_flag("l1_footwork")])
 	_engine.region("the_pit", Rect2i(20, 16, 8, 6))
 	_engine.region("lane_w", Rect2i(6, 6, 9, 10))
 	_engine.region("lane_c", Rect2i(18, 6, 9, 8))
@@ -218,6 +237,11 @@ func _setup_engine() -> void:
 func _do_breach() -> void:
 	# Battle music ENTERS here — the audio IS the coach->commander flip.
 	AudioManager.play_music("battle")
+	# Real combat begins: outcomes count again, and the blunts come off.
+	if _gm:
+		_gm.suppress_outcome = false
+	if _borin:
+		_borin.nonlethal = false
 	# Borin flips to your side, live (the spar-opponent fiction ends).
 	if _borin:
 		_borin.set_team(Constants.TEAM_ALLY)
@@ -248,34 +272,11 @@ func _victory_coda() -> DialogueEvent:
 # ---------------------------------------------------------------------------
 # Await-helpers (the drill's vocabulary)
 # ---------------------------------------------------------------------------
-func _until_region(region_name: String) -> void:
-	while true:
-		var args: Array = await EventBus.character_moved
-		var who = args[0]
-		var to: Vector2i = args[2]
-		if who is CharacterBase and (who as CharacterBase).team == Constants.TEAM_PLAYER \
-				and _engine.in_region(to, region_name):
-			return
-
-func _until_player_attack() -> void:
-	while true:
-		var args: Array = await EventBus.character_attacked
-		var who = args[0]
-		if who is CharacterBase and (who as CharacterBase).team == Constants.TEAM_PLAYER:
-			return
-
-## Wait for the player's strike, then give the reaction queue a beat and report
-## whether a FRIENDLY follow-up chained off it (never false-praised).
-func _strike_and_watch_for_chain() -> bool:
-	await _until_player_attack()
-	var chained := false
-	var watcher := func(attacker, _t, _d, _c) -> void:
-		if attacker is CharacterBase and (attacker as CharacterBase).team == Constants.TEAM_ALLY:
-			chained = true
-	EventBus.character_attacked.connect(watcher)
-	await get_tree().create_timer(0.9).timeout   # reaction queue drains in the gm flow
-	EventBus.character_attacked.disconnect(watcher)
-	return chained
+## Await a latched engine flag. Flags are set by pre-registered triggers that
+## listen from scene start — so events that fire during dialogue are never lost.
+func _until_flag(flag_name: String) -> void:
+	while _engine.get_flag(flag_name) != true:
+		await get_tree().create_timer(0.2).timeout
 
 func _find_cover_near(unit: CharacterBase) -> Vector2i:
 	if unit == null or _tm == null:
@@ -292,6 +293,18 @@ func _find_cover_near(unit: CharacterBase) -> Vector2i:
 				best_d = d
 				best = cell
 	return best
+
+## Scripted walk that cannot hang: move_to_tile silently no-ops when no path
+## exists (no movement_finished ever fires) — so only await if the walk started.
+## A failed path skips the walk; the lesson continues from where the unit stands.
+func _scripted_move(unit: CharacterBase, tile: Vector2i) -> void:
+	if unit == null:
+		return
+	unit.move_to_tile(tile)
+	if unit.moving:
+		await unit.movement_finished
+	else:
+		push_warning("[TrainingGrounds] scripted move failed (no path): %s -> %s" % [unit.name, tile])
 
 func _gate(move: bool, attack: bool, end_turn: bool) -> void:
 	_gate_state = [move, attack, end_turn]

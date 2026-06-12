@@ -109,3 +109,20 @@ func _run() -> void:
 	EventBus.character_healed.emit(stub, 5, null)   # now enabled
 	await get_tree().process_frame
 	_check(eng.get_flag("late_fired") == true, "trigger enabled by another trigger then fires")
+
+	# ASYNC actions: the queue must await coroutine actions to completion and
+	# preserve order (regression: stored-coroutine awaits never resumed — the
+	# engine hung after its first async action; caught by the level-1 autoplay).
+	var order: Array = []
+	eng.add("async_seq",
+		TriggerCond.on("battle_ended"),
+		[TriggerAct.call_fn(func() -> void:
+			order.append("a_start")
+			await get_tree().create_timer(0.15).timeout
+			order.append("a_end")),
+		 TriggerAct.wait(0.05),
+		 TriggerAct.call_fn(func() -> void: order.append("b"))])
+	EventBus.battle_ended.emit(true)
+	await get_tree().create_timer(0.6).timeout
+	_check(order == ["a_start", "a_end", "b"],
+		"async actions awaited to completion, in order (got %s)" % str(order))

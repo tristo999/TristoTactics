@@ -151,13 +151,12 @@ func _run_queue() -> void:
 		trigger_fired.emit(t.id)
 		for action in t.actions:
 			if action is Callable and action.is_valid():
-				# A coroutine action's call() returns a non-null awaitable (the
-				# cutscene code relies on this); a synchronous action returns null,
-				# which we must NOT await (it would warn every fire). So await only
-				# when there's something to wait on.
-				var r = action.call(self)
-				if r != null:
-					await r
+				# Await the CALL directly. Storing the coroutine state and awaiting
+				# it later silently never resumes (caught by the level-1 autoplay:
+				# the breach hung after its flash completed). Awaiting a sync
+				# action's null return just resumes immediately — exactly right.
+				@warning_ignore("redundant_await")
+				await action.call(self)
 	_busy = false
 
 # --- Helpers used by TriggerAct actions ------------------------------------
