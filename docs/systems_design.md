@@ -318,6 +318,17 @@ formalized yet. Listed so they don't get lost:
   Drives combos and the Beat 7 choice. **Each companion's wound only fully heals
   if the player completes their whole personal side quest** — skip it and they
   stay partly broken (see the world bible's cast doctrine).
+  **Combustion triggers (tenth batch, 2026-06-12)** — the route-climax
+  scenes fire off *different trigger types*, which is a systems fact, not
+  just a writing one: the Rogue's is **bond-meter** gated (fires when seen —
+  a relationship-state threshold), Elena's fires off accumulated
+  bond-scene progress (the geek-out counter), the Wizard's needs a
+  **battle event** (the hero badly hurt with him deployed), the Knight's is
+  a **story gate** (the POW scene), the Warlock's is **chronic** (bark-level
+  texture, no single trigger), Lyra's is a one-shot camp scene. The bond
+  system must expose at least: bond level, per-route scene counters, and
+  battle-outcome flags as trigger conditions (the trigger engine already
+  consumes all three shapes).
 - **Combo system** — follow-ups (the teachable atom; reach & shape express
   character), passives, and duo/team abilities, unlocking and deepening with
   relationships. Positioning-for-combos as the core tactical verb.

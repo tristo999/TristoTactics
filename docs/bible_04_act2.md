@@ -99,7 +99,10 @@ what*; **the Warlock** is in freefall — his is the only wound whose creditor
 survived the revolution; **the Paladin** does intake on an apocalypse, then
 spills retribution theology that is really a backdoor prayer; **the Knight**
 wakes the judging faculty loyalty never let her use, and aims the disgust at
-herself. Full refractions in each Part Two entry.
+herself; and **the Wizard's** click arrives *last* — fascination first, the
+only person on the field having a good time, until it almost kills him —
+and hits hardest (tenth batch; he enters the act as the quiet where the
+giddiness used to be). Full refractions in each Part Two entry.
 
 And under the whole act runs **the vigil** *(current decision, 2026-06-11)*:
 the party spends Act 2 keeping watch over the thing that kept watch for five
@@ -935,13 +938,12 @@ The consolidated keep/kill/claim checklist. Plain `[open]` = genuinely undecided
   monetized its shame of her; the lease); the war as venue, not cause; veil =
   worth-deficit amplified into willingness; complicity = solvency. The old
   "conscripted by the state, almost against her will" framing is superseded.
-  Her Act 2 file (kept vs. wanted) and combustion (the kindness ledger — the
-  cast's only self-aimed one) are in Part Two. **UNDER DOUBT (Tristan,
-  2026-06-12): the worth-ledger psychology and the kindness-combustion are
-  flagged — the transactional register may be the Rogue-overlap returned
-  from the other side, and it jars against her hypersensitive core. Status
-  flag in her Part Two entry; build nothing on the combustion until
-  re-ruled.**
+  Her Act 2 file (kept vs. wanted) is in Part Two. ~~UNDER DOUBT~~ —
+  **CLOSED, tenth batch: the quarantined fix is RULED.** Her combustion =
+  anger at the hero for praising the parts she was taught don't matter —
+  grief currency, not worth-math (Part Two). The worth-ledger combustion and
+  its lines are struck; the foundation stands as the verdict's source, not
+  her cognition.
 - New doctrine (Part Two): the **shatter prism**; **witnessing as
   counter-amplifier** `[GUESS — candidate]`; the **protect-triangle**
   (ground/people/wounded) with Borin's role split (anchor vs. intercept; his
@@ -993,8 +995,9 @@ identity, the land, the ending**
 - New **[open]**s: the restoration wave's radius (staging); the epilogue
   beat's transposition (dies with the superseded hum, or becomes the land
   itself — possibly under the Wizard's planting hands); Section E's
-  critical-path fragment set (mission design); the Wizard's proper nouns (the
-  alley, the teacher); the ash-kingdoms-as-older-wounds **[GUESS]**.
+  critical-path fragment set (mission design); ~~the Wizard's proper nouns
+  (the alley, the teacher)~~ *(STRUCK with the alley layer, tenth batch)*;
+  the ash-kingdoms-as-older-wounds **[GUESS]**.
 - ~~ROMANCE~~ — **RESOLVED 2026-06-12 (ninth batch, current decision): the
   Star Rail model** — bonded warmth loosely implied and interpretable, never
   stated; no romance arcs, no confessions, no gender-locked routes; governed
@@ -1056,12 +1059,60 @@ identity, the land, the ending**
   conscript — **lean: the conscript**); the rise order (who stands first,
   who stands last); the changed title image (four candidates incl. the
   inherited fire-from-above); the conditioning boundary (group-scene
-  temperature vs. one-on-one fates — rule at implementation); Lyra's and
-  Borin's ambiguity-tells (derive in-register at authoring; hers presumably
-  liturgical, his pending the rebuild).
+  temperature vs. one-on-one fates — rule at implementation); ~~Lyra's~~ and
+  Borin's ambiguity-tells *(Lyra's RESOLVED tenth batch — earned admiration,
+  the witnessing-back intimacy-species; Borin's still pending the rebuild)*.
 - *Doc-facing rhymes, noted not rowed (per the batch):* the opening/closing
   question pair ("...are you there..." / "are you ready to go?") and the
   deploy-prompt grammar (the 201st "ready?" is the first one chosen).
+
+**Tenth batch (2026-06-12/13) — the corrections: post-audit revisions, the
+returns, four laws**
+- **The Wizard:** the alley layer **STRUCK** (the literal back-alley, the
+  abandoned home/teacher, the didn't-look-back guilt, and its proper-nouns
+  [open] — unratified construction; "back-alley" was an adjective). Ruled
+  core installed: obsession that clouds the moral vision
+  (misprioritization, not avoidance); whole-party friction ("Oh,
+  EXCELLENT"); the **delayed click** refraction; Act 2 in three layers (the
+  quiet / the flinch / the conversion); neutral = suppressed, bonded =
+  converted. **[open]** the joy-return beat ("you're allowed to find things
+  beautiful still"). *Doc-facing: Tristan's least-favorite designed
+  companion — with the PARITY DISCIPLINE attached (equal depth; the test is
+  "would his fans know"); recast option preserved under rough-draft.*
+- **Elena:** the under-doubt flag **CLOSED** — the promoted fix executed
+  (see the amended sixth-batch entry above).
+- **Lyra:** the dam model **superseded** — live visible doubt all campaign;
+  the half-reach (signature behavior + retrieval cue) and its Act 2
+  completion (ledger row PROPOSED with this batch's report, pending);
+  the ruins inverted (repelled → walked toward); the temple-mission
+  tripwire peak routed to the beats material as an Act 1 candidate; her
+  discharge = gentleness failing, quietly **[open — target; lean: the
+  Paladin]**; her intimacy = earned admiration (witnessing the hero BACK —
+  a distinct intimacy-species).
+- **The Knight:** the enforcer package installed (loyal to the Throne, not
+  the hero; the berating as shouting down her own recognition); her
+  witnessing-verb **RESOLVED** (the hero's deviating itself); the
+  "graduation" framing **struck** — her no retargeted at a kingdom general
+  (the POW intervention) **[open — placement: the vow's trigger or
+  aftermath]**; leak-before-melt applied to her hardest.
+- **The returns** *(new doctrine)*: every bonded route returns the
+  witnessing; the returns are collectively **the hero's portrait** (the
+  silent protagonist characterized only by reflection). Three ruled: Lyra
+  (earned admiration), the Wizard (the sharing — "you have to see this"),
+  the Warlock (the shell down; reachable as the thank-you). **[open — THE
+  RETURNS PASS]**: the Knight, the Paladin, Elena, Borin; and the Rogue's
+  audit-respect line needs confirming as return vs. climax. Do not derive
+  them. *(The batch-8 "look at YOU" framing is struck AS his return — it
+  stays as his audible fate.)*
+- **Four authoring laws** *(cast doctrine)*: fires-in-register (only two
+  angry combustions in the cast); the love-budget / one-bad-night law;
+  leak-before-melt (generalized); the combustion taxonomy graduated to
+  doctrine (systems implication in `systems_design.md`).
+- **The audit's decision queue, updated:** the Knight's hero-verb RESOLVED;
+  **the Wizard's combustion-answer remains the one owed verb.**
+- *Bookkeeping: this batch arrived truncated mid-execution-block; the
+  routing was inferred from the section bodies (flagged in the session
+  report).*
 
 **Companion routes (2026-06-11, fifth batch)**
 - ~~The Priestess's outcomes~~ — **RESOLVED**: bonded = faith restored by

@@ -103,7 +103,9 @@ explains it. Early Act 2's "the party deals with what they learned" is a
 *system*, not a mood — the capital reveals the cast by *how each one breaks.*
 The refractions live in each entry: the Rogue's scale-fear then licensed fire;
 Lyra's contaminated prayers; Elena's severed feed; the Warlock's freefall; the
-Paladin's triage-then-spill; the Knight's self-aimed disgust.
+Paladin's triage-then-spill; the Knight's self-aimed disgust; the Wizard's
+**delayed click** *(tenth batch — fascination first, terror arriving last,
+hitting hardest)*.
 
 `[GUESS — candidate doctrine, flag if it overreaches]` **Witnessing as
 counter-amplifier.** The Throne's power turns one note up until it drowns the
@@ -125,6 +127,53 @@ witnessing beat must be statable as a verb the hero *did*; if it can only be
 stated as an absence, it has drifted, and the counter-amplifier above tells
 you why — you cannot turn the other notes up by being quiet about the loud
 one. You have to *play* them.
+
+**The returns** *(doctrine, tenth batch — current decision)*. Every bonded
+route **returns the witnessing**, in the companion's own register — and the
+returns are collectively **the hero's portrait**: the protagonist is silent,
+so the only characterization the game ever paints of them is *reflected* —
+eight returns, each describing a facet of the same unspeaking person. A
+fully-bonded run assembles the hero out of other people's gratitude. This is
+the fire scene's deepest job. **Discipline:** a return is NOT the
+route-climax wearing a gratitude costume — the wound resolving and the
+appreciation shown are *separate beats*, authored per-companion, one at a
+time, like the wounds were. **Ruled so far (three):** Lyra — the earned
+admiration, witnessing the hero *back* (her entry); the Wizard — the
+fascination gains a person to share it with, *"you have to see this"* (his
+entry); the Warlock — the shell comes down, being *reachable* as the
+thank-you (his entry). `[open — THE RETURNS PASS]`: the Knight, the Paladin,
+Elena, and Borin owe theirs — and the Rogue's audit-respect line needs
+confirming as her return vs. her climax. **Each wants its own riff; do not
+derive them.**
+
+**Fires in register** *(authoring law, tenth batch)*: "the wound fires at
+the hero" ≠ anger. Each wound discharges in its own register — the cast has
+exactly **two** angry combustions (the Rogue, Elena), and the rest are a
+quiet no, a panic at oneself, chronic frost, grief wearing theology,
+gentleness failing. Future authoring must not default to shouting.
+
+**The love-budget / one-bad-night law** *(authoring law, tenth batch)*: the
+pushback is never the relationship. Players fall in love *despite* the
+pushbacks because the pushback is **one night inside a relationship that is
+mostly warmth** — the group scenes, eavesdrops, and camp texture are the
+love-budget; the combustion is a single scene spent against that account,
+surprising a player who was having a good time. **The wound is one night;
+the character is the whole campaign.**
+
+**Leak-before-melt** *(authoring law, tenth batch — generalized from the
+Knight)*: any armored companion needs involuntary warmth visible *before*
+the thaw, or the armor plays as the character instead of the costume.
+
+**The combustion taxonomy** *(graduated from analysis to doctrine, tenth
+batch)*: **defensive artillery** (the Rogue — fires when seen; relationship-
+state trigger), **grief-acute** (Elena — re-classed from "reflected" with
+the ruled fix; fires at the witnessing itself), **self-catch** (the Wizard —
+fires when the hero bleeds; battle-event trigger), **threshold** (the
+Knight — the POW no; story-gate trigger), **chronic** (the Warlock — the
+syllogism as weather, no single scene), **quiet discharge** (Lyra —
+gentleness failing, once, softly). Different triggers are different tech —
+bond meters vs. world events vs. battle outcomes vs. story gates — noted in
+`systems_design.md`.
 
 **The protect-triangle** *(current decision, sixth batch)*. Three theories of
 protection, no two redundant: the Knight defends **ground**, Borin defends
@@ -211,9 +260,9 @@ staying with the raw, present, terrified version of her anyway.
 
 She comes from one of the prosperous heartland kingdoms — the ones that folded
 early and have been comfortable ever since — and from a **noble house** in it
-*(foundation revised 2026-06-12, sixth batch — replaces the conscript
-framing; NOTE: this layer is UNDER DOUBT — see the status flag before her
-Act 2 file below)*. She wasn't conscripted by the state. She was **offered up.** The
+*(foundation revised 2026-06-12, sixth batch; survives the tenth-batch
+ruling as the VERDICT'S SOURCE, not her cognition — the family taught the
+valuation; she never prices others)*. She wasn't conscripted by the state. She was **offered up.** The
 daughter was wrong somehow — too much, too sensitive, too visibly broken for a
 house whose position depends on performing gratitude correctly — and the
 wrongness had exactly one marketable output: the trance, the impossible aim.
@@ -271,7 +320,10 @@ smokescreen. And the route's progression is measurable in it: **the geek-outs
 lengthen.** Early, one sentence and a crash. Mid, three sentences and a softer
 recovery. The route's quiet climax: she finishes a whole thought, notices the
 hero noticed, and *doesn't apologize.* The bonded outcome is counted in
-seconds of unapologized enthusiasm.
+seconds of unapologized enthusiasm. *(Tenth batch re-timing: the quiet climax
+lands AFTER her combustion — the lengthening is also pressure building, and
+the unapologized thought is the post-combustion proof. See her combustion
+below.)*
 
 **The hero's witnessing mechanic** *(corrected 2026-06-12 — the active half
 restored; the absence is real but it is not the act)*. The negative half:
@@ -304,43 +356,15 @@ Possibly too cruel; possibly exactly cruel enough. Flagged, not ruled
 (candidate-note in the collision ledger; note Row 1's cue is already a red
 bridge in the rain).
 
-*(STATUS — UNDER DOUBT, Tristan 2026-06-12: the sixth-batch layer below —
-the noble-lease foundation, the worth-ledger psychology, and especially the
-kindness-combustion ("why are we helping people") — is flagged, not ruled.
-The doubt, on record: a hypersensitive empath is the last person in the
-party who'd ask why we help the unearning — that question belongs to a
-transactional psychology, which is the ROGUE's register (the overlap problem
-that killed the old Rogue proposal, returned from the other side). Likewise
-"hates being good at killing" flattens the original wound — the trance is
-anesthesia and the horror is that she's most at peace when GONE; ambivalence,
-not moral hatred. What stands regardless (her functions + Tristan's
-original core): the trance, the praise trap, the beauty channel and
-geek-out loop, the victory-bark fate, and the witnessing formula — loved by
-someone who sees the things she loves, not just the killing. The material
-below stays recorded until re-ruled; build nothing on the combustion.)*
-
-*(CANDIDATE REPLACEMENT COMBUSTION — Tristan, 2026-06-12, leaning but not
-ruled: **eventual anger at the hero for praising her for things she was
-taught don't matter — anything besides her killing ability.** The grief
-logic: if the parts of her the hero keeps seeing actually matter, the
-verdict she built her life on was wrong — and then the deletion wasn't a
-price, it was just harm; accepting the hero's valuation means admitting it.
-She defends the verdict because the alternative is unbearable. This keeps
-the retroactive-bankruptcy emotion in grief currency instead of worth-math —
-the family taught the valuation; she never prices others — and it fires at
-the witnessing itself: the seeing-what-she-loves that defines her route is
-the detonator. Sequencing: the geek-outs lengthen = pressure building → the
-detonation → the seeing survives, no retreat to praising the aim → THEN the
-unapologized whole thought, post-combustion, as proof. Boundary vs. the
-Warlock's kindness-syllogism, on record: his fury is about his FUTURE
-(concern implies the gift failing implies discarded — dread, chronic); hers
-is about her PAST (valuing her loves implies the deletion was for nothing —
-grief, acute). Candidate eavesdrop pairing. If ruled, the worth-math lines
-die with the old combustion; the noble-lease foundation survives as the
-verdict's source, not her cognition.)*
-
-*(Act 2 file + combustion layered 2026-06-12, sixth batch — current
-decisions, now subject to the status flag above.)*
+*(RESOLVED — tenth batch, 2026-06-12/13: the under-doubt flag is CLOSED and
+the quarantined fix is RULED. The worth-ledger combustion is struck — it
+rebuilt the Rogue-overlap from the other side and jarred against a
+hypersensitive empath. Her combustion below is the ruled replacement; the
+pre-itemized cleanup has been run: the worth-math lines and the
+kindness-to-others trigger are gone, and the noble-lease foundation stands
+as the verdict's source, not her cognition. Her safe core was never in
+question: the trance, the praise trap, the beauty channel and geek-out loop,
+the victory-bark fate, sees-what-she-loves.)*
 
 **Her refraction** (the shatter prism): the veil-fall **cuts the feed.** The
 amplifier's voice — *the aim is your worth* — goes quiet, and underneath, for
@@ -362,28 +386,28 @@ where she's benched and *nothing happens* — nobody re-prices her; the
 migration from "nowhere else to go" to "this is where I go" — **kept vs.
 wanted**, a distinction her life never required words for. The gathering
 threads double as her counter-demonstration: an act-long proof that belonging
-was never supposed to be a transaction. (Candidate eavesdrop beat: Elena
-watching a rescued stranger welcomed at the fire — *"they just... get to
-stay? They don't do anything?"*)
+was never supposed to be a transaction.
 
-**Her combustion** (per the route-climax doctrine — and the cast's only
-*self-aimed* one, delivered by reflection): eventual **anger at the hero for
-showing kindness to others** — actually a reflection of the hero's kindness
-to *her*. The mechanism: kindness-to-her is processable (a pending invoice);
-kindness to the *unearning* forces the inference she's been avoiding — the
-kindness never tracked worth at all, which means the ledger she's been killing
-herself to balance **was never being kept.** Free kindness bankrupts her
-retroactively: a lifetime's payments into a nonexistent account. Surface
-expression: jealousy-shaped snippiness ("we don't even know them," "they
-haven't done anything") — misread by the camp, and half by her, as
-territorial; the tell is the family's admissions language in her mouth. The
-climax: it boils over — present and furious, **not in the trance**; the anger
-is her most undissociated moment in years — the "why are you kind to people
-who are *useless*?" question, landing, in the silence after, on its true
-target. The witnessing: the kindness not withdrawn — from her *or* the
-strangers — and **no terms offered.** The silent protagonist structurally
-cannot explain, which is perfect: an explanation is a transaction, and the
-point is the absence of one.
+**Her combustion — RULED** *(tenth batch, executing the audited fix; grief
+currency, not worth-math)*: **eventual anger at the hero for praising her
+for the things she was taught don't matter — anything besides the
+killing.** The grief logic: if the parts of her the hero keeps seeing
+actually *matter*, the family's verdict was wrong — and then the deletion
+wasn't a price, **it was just harm.** She defends the verdict because
+admitting it is unbearable. It fires **at the witnessing itself** — the
+seeing-what-she-loves that defines her route is the detonator — and the
+geek-out progression carries it: the lengthening is also *pressure
+building* (every unapologized second is evidence against the verdict) → the
+detonation, present and furious, **not in the trance** — her most
+undissociated moment in years → the witnessing survives it: the hero keeps
+showing up at the views, and does **not** retreat to praising the aim (the
+easy exit that would end the conflict and betray her) → and *then* the
+unapologized whole thought lands, post-combustion, as the proof the seeing
+survived her demand that it stop. *(Boundary vs. the Warlock's
+kindness-syllogism, on record: his fury is about his FUTURE — concern
+implies the gift failing implies discarded; dread, chronic. Hers is about
+her PAST — valuing her loves implies the deletion was for nothing; grief,
+acute. Candidate eavesdrop pairing.)*
 
 *(Unchosen shadow — doc-facing, extends the Beat 7 design note in the
 Manifest: her reforging — the trance locked permanent — is the family's
@@ -438,18 +462,55 @@ faith. Her devotion is real — her own — and the Throne merely raises its gai
 and keeps it misaddressed. Weaponized sincerity, not mind-control. This is why
 her arc survives the retcon untouched: everything she feels was always hers.)*
 
-Her arc turns on a distinction between **knowing and believing.** Across Act 1
-she *accumulates* the evidence — toppled temples the empire never fully scrubbed,
-doctrine that won't cohere, the one time a heal works when the invocation comes
-out wrong — and she files it all away *without believing it*, because faith isn't
-broken by facts, it's broken by betrayal. The evidence reads to the *player* as
-damning even as she explains it away; the player carries her doom one beat ahead
-of her all season. When it finally breaks, nothing *arrives* — there's no vision,
-no voice (her god cannot enter or speak; divinity doesn't fit inside the plane,
-and the binding shut even the thin apertures tighter — only the current itself
-gets through). She simply learns the true name for what she always had. Her collapse and her homecoming are the same
-event. She is the one companion whose reckoning ultimately *frees* her — the
-game's single pure grace, the one time the truth takes nothing away.
+Her Act 1 is **visible doubt** *(ruled, tenth batch — this SUPERSEDES the
+earlier dam model: "faith breaks on betrayal, not facts — she files the
+wrongness away without believing it" is struck)*. The radiant believer
+**flickers in real time**: the wrestling is legible, on-screen, all
+campaign — the evidence (toppled temples the empire never fully scrubbed,
+doctrine that won't cohere, the one time a heal works when the invocation
+comes out wrong) doesn't get shelved; it gets *fought*, visibly, and the
+player watches her win the argument with herself a little less convincingly
+each time. The capital is a dam **finishing** breaking, not starting. When
+it finally goes, nothing *arrives* — there's no vision, no voice (her god
+cannot enter or speak; divinity doesn't fit inside the plane, and the
+binding shut even the thin apertures tighter — only the current itself gets
+through). She simply learns the true name for what she always had. Her
+collapse and her homecoming are the same event. She is the one companion
+whose reckoning ultimately *frees* her — the game's single pure grace, the
+one time the truth takes nothing away.
+
+**The half-reach** *(ruled, tenth batch — her signature Act 1 behavior; a
+repeatable animation and a retrieval cue)*: she starts toward fallen
+enemies — including veiled townsfolk the lie painted as monsters — hand out,
+blessing half-formed... **and stops herself.** Doctrine yanking the leash on
+her own mercy. The current is unconditional; the heals would *land*; the
+only thing stopping her is the forged scripture — **her body keeps knowing
+what her faith won't admit.** And early in Act 2, in a town, the reach
+finally **finishes**: tending the fallen town's survivors, and giving
+comfort to wounded *Throne* soldiers — the ones she can't save eased anyway,
+the blessing finally unconditional in both directions. Unceremonied; her
+penance engine starting *is* the act starting. *(Proposed as a ledger row —
+shown with this batch's report, not yet applied.)*
+
+**The ruins, inverted** *(ruled, tenth batch)*: in Act 1 the seams **repel**
+her — old temples and wrong doctrine read as *heresy*, sites a faithful
+woman recoils from. Her Act 2 archaeology walks toward what she spent Act 1
+flinching from: same locations, inverted valence — her relationship to the
+ruins is its own collision, held in this entry rather than the ledger. And
+her doubt has a **standing tripwire**: anyone who pokes the heresy gets the
+flash of quiet sharpness — with the authored peak an Act 1 mission routing
+the party through an old temple in a kingdom town: the Wizard lighting up at
+the carvings, the party curious, and the gentlest person in camp going
+*sharp* — wanting everyone out, scolding fascination as defilement. The
+player watches her doubt's perimeter defended in real time. *(Mission
+concept routed to the beats material as an Act 1 candidate.)*
+
+**Her discharge** *(ruled, tenth batch — per the fires-in-register
+doctrine; replaces "witnessed collapse, not aimed")*: the live doubt builds
+pressure, and pressure finds an address — but **quietly**; her register is
+*gentleness failing*, not volume. `[open — the target; lean recorded: the
+Paladin]` — *"you'd already stopped believing, and you watched me keep
+thanking it"* — said softly, once, almost a question.
 
 *(Outcomes and route texture layered 2026-06-11, fifth batch — current
 decisions. The "pure grace" above is scoped by the reckoning below: the truth
@@ -467,7 +528,9 @@ structurally could not touch her current; currents cannot be eaten, only
 mislabeled. Her god was never conquered, only misattributed. But the uses the
 empire made of her healed soldiers still happened, and holds-not-rewrites
 applies to moral ledgers too. Her peace, when she earns it: **"it was used,
-and I am not the use."**
+and I am not the use."** *(Sharpened by the tenth batch's live-doubt ruling:
+she **suspected and stayed** — which makes that peace harder-earned, and her
+early-Act-2 penance engine better motivated.)*
 
 **Her fork** (per the cast doctrine — outcomes, not endings). Both outcomes
 begin the same: shaken to the core that the Throne was never her god.
@@ -514,8 +577,19 @@ members while the rest are on the floor. Bonded/neutral tell, visible after
 missions where someone was lost: **vocation** (sturdy, chosen) vs. **penance**
 (frantic, self-erasing).
 
-`[open]` **Her ambiguity-tell** (the romance model, ninth batch): derive
-in-register at authoring — presumably liturgical.
+**Her intimacy — earned admiration** *(ruled, tenth batch — replaces the
+"presumably liturgical" engineered-tell `[open]`)*: three deposits. The
+hero's faith — in themselves and in *her* — never wavered: steady through
+her denial and her rock bottom, including when she was sharp and wrong. The
+hero **helped uncover the truth** — the ruins-walk verb, load-bearing for
+the relationship (and her witnessing-verb, per the active doctrine). And in
+Act 2 she watches the hero *live her own new creed* — saving as many as
+possible — and sees someone she looks up to: **ahead of her on the road she
+just chose.** She doesn't feel seen; **she sees what she's trying to
+become.** *(Doc-facing doctrine note: hers is a distinct intimacy-species —
+most bonds are being-witnessed; hers is witnessing the hero BACK. This is
+also her RETURN, per the returns doctrine.)* Her audible fate — the
+invocation, true name vs. unchanged — stands from the fifth batch.
 
 ### The dwarf (Borin) — the last of the makers (the Tank)
 Burly but *nimble* — his protecting is fast and active, a man who crosses the gap
@@ -697,6 +771,13 @@ resolved in seven words without referencing any of it.
 
 **His ambiguity-tell** *(the romance model)*: the thanks itself, received
 and given **without flinching** — as intimate as his register gets.
+
+**His return** *(ruled, tenth batch — per the returns doctrine)*: a **state
+change.** The constructed cold shell comes **down around the hero** — he
+speaks freely, gives thanks without the syllogism firing, names his fears
+out loud: the pact, the collection, what the gift was making him. **Being
+reachable is the thank-you.** His exemplar line — "not afraid of my power
+anymore" — is only *sayable* because around the hero the shell is down.
 
 ### The Rogue — the act with no off switch (woman)
 
@@ -950,6 +1031,29 @@ a girl who worked through the ranks faster than anyone, past every
 intermediate loyalty — family, region, commander — to swear herself to the
 apex directly. **The Throne's blade**, by her own relentless engineering.
 
+**Her Act 1 — the enforcer** *(ruled, tenth batch)*: she is loyal to **the
+Throne, not the hero** — the party's internal enforcement arm. She berates
+party members for not following orders to a T, the hero included, and her
+specific conflict fires when the hero acts *honorably off-script*: spares
+someone, takes an unordered mercy. Her buried honor-instinct keeps
+**recognizing the hero's deviations as right**, and her loyalty-frame files
+them as wrong — **the berating is her shouting down her own recognition.**
+The hero is the walking proof that the thing she's suppressing exists.
+*(This resolves her witnessing-verb, per the active doctrine: the hero's
+verb is **the deviating itself** — acting honorably in front of her,
+repeatedly, unapologetically. Not a kindness done to her; a demonstration
+done near her.)*
+
+**Leak-before-melt** *(authoring law — see the cast doctrine)*: the
+ice-that-melts arc requires small *involuntary* warmths the player catches
+mid-Act-1 — covering for someone she just berated; drilling Elena extra-hard
+*because* she noticed her struggling; denying both. Three or four
+eavesdrop-channel leak beats plus one group-scene running gag (everyone
+knows she cares; she alone maintains she doesn't). Without the leaks, the
+ice plays as cold *character* instead of cold *armor* — and the love-budget
+law applies to her hardest: the berating must be funny-exasperating, never
+hateful.
+
 **The wound — honor masked by loyalty.** The original order of knights was
 built on **honor**: a contract with a *code* — portable, self-owned, judges
 its master. The empire converted it to **loyalty**: a contract with a
@@ -977,7 +1081,9 @@ same sentence. The machine just let her wind herself.
 **Her refraction** (the shatter prism) — **disgust, mostly with herself.**
 The moment the liege acquires its true face, the buried judging faculty wakes
 with a lifetime of evidence already filed: loyalty never audits its master;
-honor audits *everything*, starting at home. Then **loss of direction**:
+honor audits *everything*, starting at home. And the enforcer ruling
+sharpens it *(tenth batch)*: every deviation she punished was the true
+code — **she was the lie's enforcement arm inside her own party.** Then **loss of direction**:
 loyalty was her entire navigation system — the seat supplied every bearing —
 and the faculty that could replace it, her own moral judgment, has never once
 been consulted. Early Act 2 she is the party's most competent lost person:
@@ -1026,8 +1132,19 @@ faculty, new flag" (which is exactly her **neutral route's** failure shape:
 the faculty re-attaching fast and uncritically to the new cause, devotion
 indistinguishable from health). The bonded route's proof is *behavioral*:
 post-vow she **disagrees** — judges the party, pushes back where loyalty
-would comply. The first time she tells the hero *no* on moral grounds is the
-new faculty live-firing; stage it like a graduation.
+would comply.
+
+**Her "no" — retargeted** *(ruled, tenth batch — the "graduation" framing
+is struck)*: the first self-authored refusal is aimed not at the hero but at
+a **kingdom general** — she steps in to **stop the killing of Throne POWs.**
+The test, exact: Act 1 she berated deviation-from-orders; Act 2 she
+*commits* it — against the new flag, at rank, for mercy toward people
+wearing her old uniform. The faculty proves it's hers because it fires
+**against the side she'd serve if loyalty were still the engine** — and it
+costs her standing with the army she just joined. The vow's protect-rule
+gets its proof scene built in. `[open — placement: the scene as the vow's
+trigger, or its aftermath — the no before the words, the haircut that
+night.]`
 
 `[open]` Her name, and the order's original name — routed to the naming
 session; note the vow needs the recovered oath's actual words, which gates on
@@ -1042,25 +1159,29 @@ decided to do next — unprompted.
 
 ### The Wizard — the boy who turned the screaming into field notes (man, young)
 
-*(Full draft 2026-06-12, seventh batch — current decision. This REPLACES the
-old proposal wholesale: the academy-trained system-lover who breaks on logic
-is dead. The cast pass is complete with this entry — all eight companions
-have a wound, a refraction, routes, a combustion, and a fate. Gender: male,
-per the sixth-batch grid; the female-Wizard alternative remains recorded
-doc-facing, not adopted.)*
+*(Full draft 2026-06-12, seventh batch; CORE CORRECTED 2026-06-12/13, tenth
+batch — current decision. The seventh-batch "alley layer" — the literal
+back-alley, the abandoned home and teacher, the didn't-look-back guilt, and
+its proper-nouns `[open]` — was unratified construction and is STRUCK;
+"back-alley" was only ever an adjective: rough, poor, overlooked — an ash
+kingdom. What stands from the seventh batch: the land material, the
+shatter-as-translation, the keeper role, the antithesis, the folklore
+education. Gender: male, per the sixth-batch grid; the female-Wizard
+alternative remains recorded doc-facing, not adopted.)*
 
-**Identity.** Young, from a back-alley **ash kingdom.** Elemental magic,
-*natural* in register — taught by local folklore: rhymes, weather-words,
-grandmothers, oral knowledge, because books were rare where he's from. A
-**field naturalist of magic**, not an academy product: knowledge organized in
-stories and rules-of-thumb (*"you don't cast fire angry — it remembers"*),
-which educated troops find quaint until his methods outperform doctrine. And
-he is **warm** — genuinely, unironically delighted: the camp's youngest
-energy, always doing something (sketching glitch-sites in a battered notebook,
-testing well-water after rain), narrating discoveries to whoever's nearest,
-zero status-awareness. He is the cast's **free agent**: no empire-tie — he
-never believed or disbelieved the doctrine; *he never finished reading it.*
-The empire is **access.**
+**Identity.** Young, from an **ash kingdom** — rough, poor, overlooked.
+Elemental magic, *natural* in register — taught by local folklore: rhymes,
+weather-words, grandmothers, oral knowledge, because books were rare where
+he's from. A **field naturalist of magic**, not an academy product: knowledge
+organized in stories and rules-of-thumb (*"you don't cast fire angry — it
+remembers"*), which educated troops find quaint until his methods outperform
+doctrine. And he is **warm** — genuinely, unironically delighted: the weird
+happy guy who thinks differently, the camp's youngest energy, always doing
+something (sketching glitch-sites in a battered notebook, testing well-water
+after rain), narrating discoveries to whoever's nearest, zero
+status-awareness. He is the cast's **free agent**: no empire-tie — he never
+believed or disbelieved the doctrine; *he never finished reading it.* The
+empire is **access.**
 
 **The enlistment — paid in books.** The army wanted his innate talent; he
 accepted for the promise of more books than he could dream — and at the
@@ -1074,26 +1195,31 @@ generations, then purchased him *with* knowledge. The trap built its own bait.
 His veil: amplify his want and you get a boy more absorbed in magic — pure
 curiosity, the one drive the forgery can't permanently aim.
 
-**His deflection — enthusiasm as exit.** Near anything he doesn't want to
-feel, there's suddenly a fascinating thing *over there.* Same motion as
-Elena's smokescreen, but his escape hatch is fun to be inside, so nobody —
-including him — clocks it as flight. **Eavesdrop tell:** he has never once
-mentioned home unprompted. The boy who narrates everything has one topic with
-no narration.
+**The wound — obsession that clouds the moral vision** *(ruled, tenth
+batch — replaces "the innocence of attention"; misprioritization, not
+avoidance)*. Magic prodigy, wonder so loud it drowns the ethical signal *in
+real time*: mid-crisis, he is fascinated when he should be
+afraid-for-someone. He isn't hiding in the fascinating from something he
+won't face — the puzzle simply *outranks the person*, in the moment, every
+time, and he doesn't notice the ranking happening. His Act 1 glitch-chasing
+needs no other explanation — the clouding IS the behavior: he studied the
+straining because it was the best puzzle he'd ever seen, while treating the
+Guardian's strain across the jam as *phenomena.* And the glitches keep
+feeling **familiar** — half-shaped like things his elders said (folklore is
+the pre-doctrine stratum; **he was educated by the archaeological layer
+itself and doesn't know it**) — a homesick note under the delight he never
+examines.
 
-**The wound — the innocence of attention.** Devotion to the fascinating as
-the place you live so you don't have to be where you're needed — the cast's
-recurring organ (Elena's trance, the Paladin's triage), and his is the only
-**joyful** version, which makes it the most insidious. The thing he didn't
-look at is back in the alley `[open — proper nouns: the home he left, the
-teacher whose life's knowledge he absorbed in a season]`. His
-glitch-relationship runs on the wound: the wrongness isn't a threat to him —
-it's *fascinating*, the best puzzle he's ever seen; he chases it with delight
-while treating the Guardian's strain across the jam as *phenomena.* And the
-glitches keep feeling **familiar** — half-shaped like things his elders said
-(folklore is the pre-doctrine stratum; **he was educated by the
-archaeological layer itself and doesn't know it**) — a homesick note under
-the delight he never examines.
+**His party friction** *(ruled, tenth batch)*: he is the only companion
+whose friction is with the **whole party**, not a mirror — genuinely
+calm-to-giddy at dark premises that promise magic (*"Oh, EXCELLENT"* at the
+cursed-site briefing), and the party is disturbed by it. Who snaps, who
+finds it useful, who says nothing — ambient characterization for everyone.
+And he is **the player's appetite for the game given a face**: the dark
+missions are the content the player enjoys, and the capital indicts them
+both. *(The earlier Elena-trance comparison is struck — her trance is
+absence, shut-off-and-shoot; his giddiness is presence at maximum. Opposite
+mechanisms; the rhyme was false.)*
 
 **The land** (the land canon — Part One): the ash-kingdom kid crosses into
 the elven kingdom and sees, for the first time, land *unbothered* — and the
@@ -1103,66 +1229,92 @@ he doesn't watch the burning — he **feels** it. His land-grief and his
 glitch-fascination run in parallel all campaign: two channels of the same
 unheeded signal.
 
-**His refraction** (the shatter prism): at the capital the glitches get
-retroactively **translated** — the jam breaks, the voice lands clear, and
-every fascinating anomaly in his notebook was a dying being screaming for
-help, **in a voice his folklore had been teaching him to recognize since
-childhood.** He had the decoder ring the whole time and turned the screaming
-into field notes. (Prism entry: Lyra's prayers were misaddressed; his
-*attention* was.) **He breaks on translation** — Lyra breaks on betrayal, the
-old Wizard proposal broke on logic; this one breaks on the notebook becoming
-**a document that changes language under him**: the same pages, suddenly
-written in screaming. On the ground: he pulls out the notebook — the
-campaign's whole record of his delight — and can't look at it. And the poisoning begins
-(Part One; Part Four for the clock), and the boy from the wasteland watches
-**a wasteland being born**: he knows exactly what he's looking at, because he
+**His refraction — DELAYED** *(restaged, tenth batch — current decision)*.
+At the capital, **fascination first**: the true form is the best phenomenon
+he's ever seen, and for several seconds he is the only person on the field
+having a good time — the player watching the gap between his reaction and
+reality with dawning horror *before he does* — until it **almost kills
+him**, and the click is terror finally winning a priority dispute: *"oh god,
+what is happening."* He learns empathy the way you learn a stove is hot —
+**arriving last, hitting hardest.** And what the click lands on is the
+translation *(stands from the seventh batch)*: the jam breaks, the voice
+lands clear, and every fascinating anomaly in his notebook was a dying being
+screaming for help, **in a voice his folklore had been teaching him to
+recognize since childhood.** He had the decoder ring the whole time and
+turned the screaming into field notes. (Prism entry: Lyra's prayers were
+misaddressed; his *attention* was.) **He breaks on translation** — the
+notebook becoming **a document that changes language under him**: the same
+pages, suddenly written in screaming. He pulls it out — the campaign's whole
+record of his delight — and can't look at it. And the poisoning begins (Part
+One; Part Four for the clock), and the boy from the wasteland watches **a
+wasteland being born**: he knows exactly what he's looking at, because he
 grew up in the finished product. *"I've seen this before. I'm FROM this. It
 was never natural. Somebody did this to home, too."* `[GUESS — whether the
 ash kingdoms are literally older wounds of the same kind, or a rhyme by
 mundane means; flag, don't rule.]` His shatter is shame with an exhibit in
-his own handwriting, plus recognition at landscape scale.
+his own handwriting, plus recognition at landscape scale — all of it arriving
+*after* the field watched him grin at the apocalypse.
 
-**Early Act 2 — the reshaping** (three visible degrees, subtle): **(a)** the
-notebook changes function — entries shift from phenomena to *people* (what
-Borin said, how Lyra takes her tea, the names of the rescued): documentation
-as **keeping instead of taking** — the notebook is his haircut (the
-visible-fates family). **(b)** The enthusiasm survives but gains a
-checkpoint — a half-second beat before studying anything: *is this a thing or
-a someone.* **(c)** At the vigil he becomes the Guardian's
-**keeper-of-record** — sitting with the dormant god, writing down the
-surfacings, holding dying knowledge in living memory the way his elders held
-theirs. The boy who came to raid the library becomes its last librarian, and
-nobody assigns him the job. Also: his tending goes **ecological** — the
-elemental caster works the poisoned ground the way his grandmothers worked
-the ash; the ash kingdoms' involuntary inheritance (how to live on murdered
-land) becomes the most relevant knowledge anyone has. Bonded-route final
-image: standing in the green as it grays, **planting anyway** — his
-inheritance was never poverty's consolation prize; it was the deepest library
-he was given.
+**His Act 2 — three layers** *(ruled, tenth batch — absorbs and extends the
+seventh-batch reshaping)*. **The quiet:** the giddiness doesn't return — the
+first dark briefing where he doesn't light up, and the party feels the
+missing instrument. **The flinch:** his first fear ever — he distrusts his
+favorite faculty; he starts toward an anomaly, catches himself, **checks the
+room first.** The checking is the click made ongoing *(this deepens the
+seventh batch's "checkpoint": is this a thing or a someone)*. **The
+conversion:** the intensity pours into the vigil, the keeper-of-record work,
+the land — **same wattage, re-aimed at things that need tending.** The
+standing material runs through it: the notebook's entries shift from
+phenomena to *people* (the notebook is his haircut — visible-fates family);
+at the vigil he becomes the Guardian's **keeper-of-record**, holding dying
+knowledge in living memory the way his elders held theirs — the boy who came
+to raid the library becomes its last librarian, and nobody assigns him the
+job; and his tending goes **ecological** — the elemental caster works the
+poisoned ground the way his grandmothers worked the ash; the ash kingdoms'
+involuntary inheritance (how to live on murdered land) becomes the most
+relevant knowledge anyone has. Bonded-route final image: standing in the
+green as it grays, **planting anyway** — his inheritance was never poverty's
+consolation prize; it was the deepest library he was given.
 
-**Routes.** **Neutral** — the shame wins quietly: he stops chasing;
-enthusiasm dims to competence; the notebook closes; the camp reads
-*maturity*, but it's the wound's victory — curiosity itself put on a lease,
-and the folklore line dies with his silence (he was the last one carrying
-it). **Bonded** — the hero (silent, *the* listener, the one person who
+**Routes.** **Neutral — suppressed, not converted**: a dimmed prodigy
+**rationing his own curiosity**; the camp reads maturity, but it's the
+wound's victory in a new costume — and the folklore line dies with his
+silence (he was the last one carrying it). **Bonded — converted into care at
+full wattage**: the hero (silent, *the* listener, the one person who
 receives his tangents without grading them) is where his attention learns to
-land on a person without taking. Beats: the home-silence breaking (the
-unprompted story about the alley, told *to* the hero); the notebook shown to
-someone for the first time since the capital; and his combustion (below).
-Resolution: the isn't-it-fascinating attention lands on a companion's pain
-and comes out as **care.**
+land on a person without taking. Beats: the notebook shown to someone for
+the first time since the capital; his combustion (below); and the
+conversion completing. `[open]` Whether — and how — someone gives the joy
+back: *"you're allowed to find things beautiful still."*
 
-**His combustion** (per the fires-at-the-hero doctrine): when the hero is
-badly hurt in front of him, he catches himself doing it — the clinical eye,
-the field-naturalist reflex reading the wound like a phenomenon — and
-detonates *at the hero* for being the occasion: *"don't — don't let me LOOK
-at you like that—"* Self-aimed like Elena's, but hers indicts the ledger;
-his indicts **the gaze.**
+**His combustion** (per the fires-in-register doctrine — the self-catch):
+when the hero is badly hurt in front of him, he catches himself doing it —
+the clinical eye, the field-naturalist reflex reading the wound like a
+phenomenon — and detonates *at the hero* for being the occasion: *"don't —
+don't let me LOOK at you like that—"* Self-aimed like Elena's — but hers
+grieves the verdict; his indicts **the gaze.**
 
 **His audible fate: the narration.** Act 1 — he narrates *at* the world,
 wonder broadcast. Neutral — the narration stops. Bonded — it returns changed:
 quieter, aimed, second-person. The boy who said *"look at THAT"* learns to
-say *"look at YOU."*
+say *"look at YOU."* *(Tenth batch: this is his audible fate, NOT his
+return — the earlier framing of it as gratitude is struck; the return is
+below.)*
+
+**His return** *(ruled, tenth batch — per the returns doctrine)*: his
+fascination gains **a person to share it with.** Act 1, his audience was
+interchangeable — whoever was nearest. Bonded endgame, the hero is the
+**specific** audience, sought out: *"you have to see this,"* the find
+carried across camp, the discovery incomplete until they've seen it. His
+final one-on-one obeys the few-words law by having almost no words at all:
+**he shows the hero something** — the notebook, a sprout at the gray's
+edge — instead of saying anything.
+
+*(Doc-facing, tenth batch: Tristan's least-favorite designed companion —
+recorded with the PARITY DISCIPLINE attached: his file, scenes, barks, and
+revision passes get equal depth; the test is "would his fans know." The
+recast option is preserved under the rough-draft doctrine if warranted
+later.)*
 
 **The antithesis** (caster-pair doctrine): Wizard vs. Warlock = **intrinsic
 vs. instrumental** power. The Wizard *loves* magic — the understanding is the

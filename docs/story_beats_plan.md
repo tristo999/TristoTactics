@@ -44,6 +44,7 @@ image, a melody, a person — where the second experience completes the first.)
 | 4 | SHADOWED FIGURES | battle (TBD) | cloaked "saboteurs" cut down, garbled shouts | Row 2; the exact garbled line |
 | 5 | BRIDGE INCIDENT | bridge (territory-boundary map) | collapse in the rain; the first stare across the gap — **slice capstone** | Row 1; red bridge in the rain |
 | mid | TOWN MISSION | civilian settlement | first visible cost of the war, rationalized by Vael | Row 4 candidate home `[open]`; Priestess temple-evidence candidate |
+| mid | `[candidate]` TEMPLE MISSION (tenth batch) | old temple in a kingdom town | the party routed through a scrubbed temple — the Wizard lights up at the carvings; Lyra goes sharp, defending her doubt's perimeter in real time | Lyra's tripwire peak; ruins-repulsion plant (her Act 2 archaeology inverts it); candidate half-reach site |
 | mid | CELEBRATED KILL | a standard mission | forgettable boss win — must stay unmarked | Row 3; weapon/stance/one-line cue |
 | 7 | THE CHOICE | capital (inside THE TURN) | save one of your two most-bonded; the other taken, presumed dead — `[open]` companions vs NPCs | the Unchosen |
 | end | THE TURN | capital / the core | veil shatters → the Choice fires → true form → the door opens → last stand → the throw forward | Row 6 (the smile, rendered once, unexplained); Row 9 (the small tired thing, filed) |
