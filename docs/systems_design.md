@@ -8,7 +8,7 @@ combos, the advancing line, the hero's time powers. Distinct from the story docs
 Legend: **[settled]** firm · **[for now]** working answer, deliberately not
 canon yet · **[open]** undecided.
 
-Last updated: 2026-06-01
+Last updated: 2026-06-12
 
 
 ## Death & Stakes — Act 1 [for now]
@@ -114,6 +114,38 @@ interior geography. Camp-life systems (bonding talks, expressive choices, side-q
 hooks) get built once, in one venue, and run all campaign. Not yet built beyond the
 arrival scene; the camp-hub scene (free walk + companion talks between missions) is
 the natural home for bonding v1's spend side.
+
+## Camp eavesdrops & audible fates [current decision 2026-06-11; fiction in bible_02]
+
+**The eavesdrop channel** — companion↔companion conversations the player walks
+up on in camp: the third content channel beside missions and hero-facing bond
+scenes (doctrine in bible_02's *Camp life* section). Mechanically:
+
+- **Two-character barks, no hero input** (the silent protagonist holds):
+  proximity-triggered exchanges of a few lines between two companions placed
+  in the camp scene.
+- **~A dozen authored relationships, not N²** — pair partners plus a handful
+  of cross-pair frictions. Each authored relationship gets Act 1 exchanges and
+  an Act 2 *shadow* (same pair, same subject, opposite meaning).
+- **Trigger-engine territory**: region + flag conditions select which exchange
+  plays at the current camp pitch; the plumbing is agent work, the words are
+  Tristan's.
+- `[open]` Presentation (floating text vs. dialogue box), trigger radius,
+  whether exchanges are re-listenable, and how many per camp visit.
+
+**Audible fates** — companion outcomes delivered through a recurring line
+changing (or pointedly not changing) per the bond outcome: Lyra's pre-heal
+invocation, Elena's post-battle victory bark (doctrine in bible_02). Systems
+hook: **the bark system must support per-outcome variants of a character's
+signature recurring line.** Cheap to build, but it must be designed in from
+the first bark pass — signature lines can never be hard-coded single strings,
+or the fates have nowhere to live.
+
+**Location-triggered companion scenes** — Elena's camp scenes don't sit at a
+fixed NPC spot: she is found wherever the current camp pitch is *most worth
+looking at*, and the player learns the pattern (want Elena? find the view).
+Camp set-dressing becomes character content; each re-pitch needs one
+designated "the view" spot for her placement.
 
 ## The finale's battle structure [current decision 2026-06-11; fiction in bible_04]
 

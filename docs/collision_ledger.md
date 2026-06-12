@@ -5,8 +5,9 @@ thing you build from. A collision is a scene that happens twice — once in Act 
 under the lie, once in Act 2 from the other side. Each row is a small machine
 for breaking someone's heart on purpose.
 
-Last updated: 2026-06-11 — Rows 6 (the smile), 7 (the silhouette), 8 ("not ours
-to ask about") added; verified against the 4-part bible
+Last updated: 2026-06-12 — Elena cue-overlap candidate-note added (fifth
+batch; not a row). Previous: Rows 6 (the smile), 7 (the silhouette), 8 ("not
+ours to ask about") added 2026-06-11; verified against the 4-part bible
 
 
 ## How to read this
@@ -212,3 +213,13 @@ finishable one.
   landmark — before the Act 1 training-ground map is built.
 - For every confirmed row, lock the retrieval cue *before* the Act 1 map is
   built. Cues can't be retrofitted cheaply once the maps exist.
+- **Candidate cue-note `[open — handle with care]`** *(2026-06-11, fifth
+  batch — not a row)*: **Elena's cue overlap.** Her route runs on beauty (she
+  is found wherever the camp is most worth looking at — bible_02). If a
+  specific beauty she loves in Act 1 — rain on water, mist, a red bridge —
+  doubles as a collision retrieval cue, her interests and this ledger *touch*:
+  the thing she taught the player to find beautiful returns as the fingerprint
+  of something terrible. Note Row 1's cue is already "the red bridge in the
+  rain," so the overlap exists latently whether or not it's ever aimed.
+  Possibly too cruel; possibly exactly cruel enough. Flagged, not ruled —
+  nothing in any row changes until this is decided.

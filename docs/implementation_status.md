@@ -115,7 +115,7 @@ All Act 2 beats unbuilt. Scene names below are suggestions pending Act 1 impleme
 
 Ordered by urgency (what must be decided to unblock active work).
 
-1. **Companion identities** (names, origins, wounds). See the world bible's open questions. Blocks Beats 2–10 dialogue and Beat 7 "The Choice" mechanic. Cores designed: Archer, Healer, Tank/dwarf, plus the barely-planned Warlock (distinct from the undesigned Wizard); Wizard, Knight, Rogue and the roster count/composition are open.
+1. **Companion identities** (names, origins, wounds). See the world bible's open questions. Blocks Beats 2–10 dialogue and Beat 7 "The Choice" mechanic. Cores designed: Archer, Healer, Tank/dwarf, Warlock, and (2026-06-11, fifth batch) the Rogue's full rebuild; Wizard and Knight remain proposals. Roster settled at eight in role pairs (bible_02).
 2. **Guardian fragment power semantics** — the finale keystone (the world bible's #1 open question). Blocks the save-one-companion mechanic (Beat 7) and the Act 2 arrival (Beat 1).
 3. **Kingdom name and cultural identity** (world bible open question). Unblocks all Act 1+2 dialogue that references the place.
 4. **Mission count per beat.** Required before level design can begin on Beats 3–6.

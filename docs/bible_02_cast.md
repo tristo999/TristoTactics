@@ -71,11 +71,33 @@ attention *mattered*: the people they loved come out measurably better for havin
 been loved. (This is *not* branching endings — the war resolves how it resolves.
 It's varying fates for the people inside the one ending.)
 
+**The fates are audible** *(current decision 2026-06-11, fifth batch)*. A
+companion's outcome is delivered through a recurring audio/dialogue line
+changing — or pointedly *not* changing. The Priestess's pre-heal invocation;
+the Archer's post-battle victory bark. The player hears an entire fate in
+whether one repeated sentence shifted. House signature: **the fates live in
+the barks.** Every future companion should get a candidate line. (Systems
+hook — per-outcome bark variants — in `systems_design.md`.)
+
+**The route climax fires at you** *(current decision 2026-06-11, fifth
+batch)*. Every designed route's climax is the wound firing *at* the hero, not
+opening up to them — the Archer's presence sustained through the terror of
+being perceived; the Priestess's faith collapsing mid-route; the Rogue's
+targeted rage. Being seen *hurts* these people, so the witnessing only counts
+because it was made expensive: the staying has to survive their best attempt
+to make it impossible. No one in this party heals politely.
+
+*(Doc-facing acknowledgment: the game is substantially a character drama
+delivered through scenes — roughly a Three Houses ratio — and the scene/bond
+content is a first-class half of the design, not garnish. `[open]` A
+scene-budget doc — bond scenes per companion per act, hub scenes, fork
+multipliers — is flagged as future work; noted, not created.)*
+
 ---
 
-## The three built companions
+## The designed companions
 
-### The Archer — the anxious mess who vanishes when she aims (woman)
+### The Archer (Elena) — the anxious mess who vanishes when she aims (woman)
 Out of combat she is a wreck, endearingly so: painfully shy, socially terrified,
 wound tight, prone to flustered spirals and small panics over ordinary things — a
 spilled drink, a raised voice, a question she wasn't ready for. She's the party's
@@ -105,7 +127,63 @@ protect her. It took her and told her she was lucky. Her belief in the empire is
 *thin* — not devout, not invested, just never offered anything truer to hold. So
 her arc isn't a shattering of faith. It's a slow *waking up.*
 
-### The Priestess — the most faithful servant of her god's murderer
+*(Route mechanics layered 2026-06-11, fifth batch — current decisions. The
+wound above is unchanged; this is how it plays at camp and across her route.)*
+
+**The praise trap.** The camp's whole love language toward her is built on the
+thing she hates: every "nice shot" praises the place she goes to stop
+existing. Nobody means harm — which is exactly what makes it airless. She
+can't even resent it cleanly, because it arrives as kindness.
+
+**The deflection taxonomy** (how she reads in scenes and overheard talk).
+Praised directly → the credit is launched instantly elsewhere. Asked about her
+shooting → she goes *technical* — fletching, draw weights; equipment is safely
+not-her. Asked about *herself* → the spiral, which is partly a **learned
+smokescreen**: nobody keeps interrogating a girl who's apologizing to a tent
+pole. She is most present in conversations about anything other than Elena.
+The negative space is the characterization.
+
+**The positive channel.** Her actual interests are *beauty* — art, light,
+landscapes, wherever the camp is most worth looking at. The mechanism is
+exact: her wound is feeling everything too much, and beauty is the one arena
+where oversensitivity is an *asset* — the only rooms where her wiring is
+correct. Hence **the geek-out loop**: she opens up about something beautiful,
+becomes fluent and alive, then panics on realizing she was perceived ("I —
+that was — you didn't need to hear all of—"). Comic on the surface;
+underneath, the panic is being caught *present* — unguarded, no trance, no
+smokescreen. And the route's progression is measurable in it: **the geek-outs
+lengthen.** Early, one sentence and a crash. Mid, three sentences and a softer
+recovery. The route's quiet climax: she finishes a whole thought, notices the
+hero noticed, and *doesn't apologize.* The bonded outcome is counted in
+seconds of unapologized enthusiasm.
+
+**The hero's witnessing mechanic.** The hero is the one person who *never*
+brings up her shooting — the silent protagonist structurally cannot praise her
+aim. Every camp relationship routes through her skill; the hero's is the only
+one that doesn't, and she notices the absence long before she trusts it. The
+route's turn is hers, unprompted: she volunteers the unspeakable thing to the
+only person who never asked. Witnessed = *not-looked-at* where everyone else
+stares.
+
+**Her audible fate** (per the cast doctrine): the post-battle victory bark.
+All game, the bark system praises her crits — the game itself participating in
+the wound; aimed, a feature. Her bonded route quietly changes the post-battle
+bark from praised-and-hollow to something small and present.
+
+**Placement rule:** her camp scenes are *location-triggered* — she is always
+found wherever the current camp pitch is most worth looking at, and the player
+learns the pattern (want Elena? find the view). Camp environment dressing
+becomes character content. (Mechanics in `systems_design.md`.)
+
+`[open — handle with care]` **The cue overlap.** If a specific beauty she
+loves in Act 1 — rain on water, mist, a red bridge — doubles as a collision
+retrieval cue, her interests and the ledger *touch*: the thing she taught the
+player to find beautiful returning as the fingerprint of something terrible.
+Possibly too cruel; possibly exactly cruel enough. Flagged, not ruled
+(candidate-note in the collision ledger; note Row 1's cue is already a red
+bridge in the rain).
+
+### The Priestess (Lyra) — the most faithful servant of her god's murderer
 She's the healer, and before every heal she murmurs an invocation to **the
 Throne's Light** — because she believes her power is a blessing the empire lends
 her, conditional on her devotion. She believes *harder* than anyone in the
@@ -153,6 +231,48 @@ and the binding shut even the thin apertures tighter — only the current itself
 gets through). She simply learns the true name for what she always had. Her collapse and her homecoming are the same
 event. She is the one companion whose reckoning ultimately *frees* her — the
 game's single pure grace, the one time the truth takes nothing away.
+
+*(Outcomes and route texture layered 2026-06-11, fifth batch — current
+decisions. The "pure grace" above is scoped by the reckoning below: the truth
+takes nothing from her on the metaphysical side — the power was always her
+god's — and the moral ledger it hands her is real, and stays.)*
+
+**Her complicity reckoning.** She never killed anyone — she healed the
+killers, and the mending kept the machine marching. Complicity at one remove.
+Mid-route she is shaken not only that her god was overwritten but that she was
+doing the *Throne's bidding* — every soldier she returned to the line. Where
+she lands (**PROTECT — the route goes no further into absolution than
+this**): the power was good in nature, her acts were good in nature, and the
+*routing* was the theft. The Throne never corrupted a single heal —
+structurally could not touch her current; currents cannot be eaten, only
+mislabeled. Her god was never conquered, only misattributed. But the uses the
+empire made of her healed soldiers still happened, and holds-not-rewrites
+applies to moral ledgers too. Her peace, when she earns it: **"it was used,
+and I am not the use."**
+
+**Her fork** (per the cast doctrine — outcomes, not endings). Both outcomes
+begin the same: shaken to the core that the Throne was never her god.
+
+- **Bonded outcome — faith restored, by archaeology.** Not by meeting her
+  god; the cosmology forbids it (the ascended are reachable only as currents —
+  Part One). Restored by *evidence*: she finds the proof that her original god
+  was real and good with the Throne's face painted over it — the seams, the
+  scrubbed temples, doctrine that won't cohere, iconography that contradicts
+  itself across provinces. Her personal thread is an **excavation** —
+  locations, texts, ruins — the bonded player literally walks her through the
+  proof. What she ends with is **faith without confirmation**: belief in a
+  name that has never once answered her, chosen anyway — the true article her
+  effortless Act 1 faith never was.
+- **Neutral outcome — searching.** The same shattering with fewer hands under
+  her: searching for faith after losing it. She *keeps healing* while no
+  longer sure who she's thanking — practice outliving belief. Lesser for her,
+  not lesser as writing.
+
+**Her audible fate** (the fork's delivery mechanism — per the cast doctrine):
+her invocation, *"—and by its light be mended."* Bonded Lyra at the finale
+says the line **changed** — the true name finally in it. Neutral Lyra says it
+**exactly as the tutorial taught it** — same words, uncertain object. The
+player hears her entire outcome in whether one repeated sentence shifted.
 
 ### The dwarf — the last of the makers (the Tank)
 Burly but *nimble* — his protecting is fast and active, a man who crosses the gap
@@ -234,14 +354,139 @@ the legion at the finale, are open. Note: if the empire trains warlocks as a
 *corps*, a freed one is an inside line on the dark powers behind the door — he
 may sit closer to the keystone than first assumed. Flagged, not decided.]`
 
+### The Rogue — the act with no off switch (woman)
+
+*(Full rebuild, 2026-06-11 fifth batch — current decision. This REPLACES the
+old `[GUESS]` proposal wholesale: the "deflection-as-survival" wound is dead —
+it overlapped the Archer's defense mechanism. What follows is the character.)*
+
+**Origin.** Beggar-born in the ash kingdoms — the punished holdouts. Her
+street education: always be useful, always wear the smile, because **someone
+entertained is someone distracted** — charm as literal misdirection, the
+pickpocket's mechanic made into a personality. The smile is the left hand;
+everything delightful she does is cover for what the right hand needs.
+
+**The wound.** She trusts no one and keeps everyone at a managed distance —
+close enough to be useful, just out of reach for the clean getaway —
+calibrated to the inch, a practiced discipline. Core belief: everyone is a
+tool and everyone would betray her, **because that's what she would do.**
+Self-knowledge weaponized against the world: she isn't afraid of what people
+are — she's afraid she's *right*, because she's the proof, and the gradient
+world keeps confirming it (everyone folded, everyone sold someone, prosperity
+is a confession). She is the gradient of surrender with a face. Her mask's
+true product is being **the one who isn't unnerved** — unbotherable as brand,
+armor, and professional edge. And under the "I don't care about any of it" is
+the thing the mask actually guards: **resentment** of the empire for her
+upbringing — filed away, because on the street, caring about the unfairness
+gets you killed.
+
+**Act 1 motive — the heist.** She joined the unit as a *job*. The war is
+cracking open the last sealed kingdom in the world — five centuries of
+untouched wealth, the den-of-thieves propaganda promising treasure — and she
+means to be walked to the score by the people doing the breaking, work the
+inside, and vanish in the confusion of the fall. The party is her crew of
+marks; the bonds are operational; she has been casing her own unit. Her Act 1
+cynicism has cover: the heist needs the empire intact, so she performs
+loyalty. *(Veil note, per the amplification model: her amplifiable want was
+THE SCORE — the Throne turned up the gain on greed, and her amplified want and
+her mission pointed the same direction. The most efficient veil installation
+in the party, run on pure self-interest.)*
+
+**The shatter (the capital, end of Act 1).** Not grief, not revelation —
+**scale-fear.** Her survival axiom: everything is a game, games have angles,
+and she's the best angle-player alive. The true form, the door, the legion —
+a thing with *no angle*. No exit to pick, no mark to play, no getaway distance
+from a god. The fear is obsolescence: every skill she owns is denominated in a
+currency the cosmic doesn't accept. **The clinging:** the mask drops fully,
+for the only time, and she clings to the one thing standing between her and
+the monster — the hero. Not romance, not trust: the drowning grab, the first
+*unplanned* act of her adult life, witnessed. Later she brushes it off
+("don't read into it") — but she knows they know, and the whole post-landing
+relationship is downstream of three seconds she can't repossess.
+
+**Early Act 2 — the fire.** While the party is shellshocked, she *ignites*
+(the act's counter-voltage — Part Four). The veil-fall cost the believers
+their world-model; hers got **confirmed and upgraded** — the system that built
+the gutter was actually evil, cosmically certified, and the filed-away
+resentment is finally *licensed*. Payback with a worthy target: first to
+volunteer for sabotage, gleeful at burning imperial assets, the one with a
+list. True fire — and *also* the new mask: rage-as-purpose is still distance
+management. A woman at war doesn't have to answer what the clinging meant, or
+why she stayed when the heist premise died at the capital (the kingdom is ash
+and a dying god; the job evaporated and she hasn't acknowledged she's still
+here). The vengeance has an end date; the self it defers doesn't — the
+route's back half lives in that gap.
+
+**The route — mask-fall as combustion.** Her fear is not people leaving —
+it's people leaving **not on her terms** (she pre-leaves everyone; the getaway
+is departure kept proprietary). Being truly seen = being robbed of the one
+thing she owns. So the route climax is a **fight, not a confession**:
+unresolved rage at the world aimed first at the person who saw through the
+mask — the cruelest, most precisely-aimed things she has (two years of casing
+is a sniper's information), because damage might restore the distance charm
+couldn't. Make them leave; leave first, by proxy. The hero's witnessing act:
+**absorb** the drive-away attempt — without leaving, without arguing back
+(any counter-argument is engagement on her terms, and she wins word-games),
+without performed forgiveness. Staying that survived her best attempt to make
+it impossible — the only proof her threat model accepts, because it's the one
+scenario she couldn't have engineered.
+
+**Acceptance — by audit, not epiphany.** Post-blast she re-prices ("long con,
+deeper than I thought — what's the eventual ask") and runs a conscious testing
+campaign, half-hating herself for it: small sabotages; **bait-truths** —
+telling the hero damaging true things about herself *as bait*, handing them
+knives to see if one gets used; watching what they do with private
+information. Acceptance arrives as *exhaustion*, not warmth: she catches
+herself designing the next test and can't finish it — and notices the actual
+evidence: the hero has been holding her knives for months and never sold one.
+An audit she finally can't fail them on. Voiced in her native register —
+professional respect ("if it IS a con, it's a better one than I could run"),
+never "I trust you." **Bonded outcome: the inch surrendered** — in
+installments, after the bridge was burned and the person stood on the ashes.
+
+**Story wiring.** She is the gradient's **native informant** — she knows the
+comfortable kingdoms from the service entrance, and her cynicism is accurate
+local knowledge. In Act 1 she is *right for the wrong reasons* all campaign —
+the player, carrying glitches, keeps half-agreeing with her. Act 2's
+correction: the veil-fall barely moves her — what breaks her open is the part
+her cynicism never priced: **people fought it anyway.** Her holdout bloodline
+— the courage she was taught to be ashamed of — is the counter-evidence to
+"resistance is for suckers." She re-learns pride not in a people but in a
+**strategy**: the unprofitable, getaway-burning strategy of holding the line,
+the one move she's never played. The gathering threads double as her
+counter-evidence — two years embedded in a running counter-example to her
+entire philosophy, the party repeatedly choosing the sucker's move at scale.
+Across the act her rage matures from "what they did to me" to "what they did
+to everyone shaped like me" — the first time her circle of caring holds more
+than one person. *(Beat-7 adjacency, doc-facing: the Unchosen IS her thesis
+in armor — "everyone ranks, everyone picks" — and her route must survive the
+game's central tragedy agreeing with her.)*
+
+**The eavesdrop tell.** Found alone, she is *identical* — still doing bits,
+to no one, to a campfire. The act has no off switch; it is maintained like a
+blade, alone, professionally. Four lines that reframe every joke she's told.
+
+**The cat gag** *(resolves the old keep-or-cut flag: **KEEP, weaponized**)*.
+The trope-straight cat-burglar/cat-girl bit is literally **her product** —
+built audience-tested for the comfortable, the conquerors' favorite joke about
+her own kind. The game's one allowed anime gag is retroactively the saddest
+object in the cast.
+
+`[open]` **Neutral-route sketch:** the fight happened and the hero flinched —
+she got to be *right*. `[open]` Act 2 back-half question for the bonded
+route: rage finally aimed correctly vs. rage as the new mask; what is she when
+the empire runs out. The shapes are flagged, not fully authored.
+
 ---
 
-## The three open companions — proposals to react to
+## The two open companions — proposals to react to
 
-> Everything in this block is invented. The roster is meant to be six (or more)
-> distinct characters, each built to the same standard. These are my swings at
-> the undesigned slots, to give you something to push against — the method is
-> always *wound first, class second.*
+> Everything in this block is invented. The roster is **eight, in role pairs**
+> (current decision — see the note at the end of this part), each built to the
+> same standard. These are my swings at the still-undesigned slots, to give you
+> something to push against — the method is always *wound first, class second.*
+> (The Rogue's proposal that used to sit here was superseded 2026-06-11, fifth
+> batch, by her full rebuild among the designed companions above.)
 
 ### `[GUESS]` The Knight — the one who folded first
 **Wound:** he is from the kingdom that folded *earliest of all* — the original
@@ -260,24 +505,6 @@ shield front-liner — the *played-straight* knight whose very classicism is the
 point (everyone else subverts their class; his subversion is that he's exactly
 what he appears, and that's the tragedy — a genuinely good man perfectly made by
 a lie). `[GUESS — gender open, leaning man but not fixed.]`
-
-### `[GUESS]` The Rogue — the sanctioned joke with a real edge
-The docs already flag the Rogue as the *one* allowed trope-straight character — a
-knowing wink (the "cat-burglar / cat-girl" running gag), the single light note in
-a heavy game. **The trick:** she reads as comic relief, the party's deflector,
-all quips and larceny — and the wound is that the *deflection is the survival
-mechanism.* **Wound proposal:** she's from one of the wretched, late-folding
-kingdoms — the ash, the punished holdouts — and she got out of the gutter by
-being *useful and unbotherable*, by never letting anything land, by making
-herself the joke before anyone else could make her the target. Her belief in the
-empire is the thinnest and most cynical of all: not devotion, not gratitude, just
-*this is the game and I intend to win it.* **The fault line:** a person who
-deflects everything has no defense against the *one* thing that gets through —
-and Act 2's griefs are exactly the kind of thing you can't quip away. The running
-joke is funny until the moment it isn't, and that moment is hers. **Class:** the
-rogue, played straight on the surface, so the eventual crack lands harder for
-having been the character who seemed least breakable. `[GUESS — gender open;
-the "cat" framing is inherited from the docs, keep or cut.]`
 
 ### `[GUESS]` The Wizard — the believer who loves the *system*
 Distinct from the Warlock: where the Warlock was *given* power he doesn't
@@ -314,3 +541,42 @@ Paladin make a seventh? See manifest.]`
 > cosmology (Part One) a *different erased god's current* would make the healer
 > pair **theologically rhyming rather than redundant** — two stolen lights, two
 > liturgies, one crime. Wound undesigned; flagged.
+
+---
+
+## Camp life — the eavesdrop channel
+
+*(Current decisions 2026-06-11, fifth batch. Doctrine here; mechanics in
+`systems_design.md`.)*
+
+**The third channel.** Companion↔companion conversations the player can *walk
+up on* — the rim that makes the bond-spoke system a wheel. Overheard talk is
+different content from talk performed at the hero, because people are
+different when the hero isn't the audience: Elena measurably less flustered
+with Borin than she ever is on the spot; Lyra's doctrine different comforting
+a soldier than welcoming the chosen one. The hero-facing scenes show the
+surface each companion performs; the eavesdrops show what the performance
+costs.
+
+**Worldbuilding delivery.** The eavesdrop channel is the lore-dump-free
+delivery system: the gradient, the scripture seams, homeland god-titles, the
+unnamed wrongness — all of it arrives as camp gossip. Found information suits
+an archaeology-truth world; nobody explains the world *at* the hero. The world
+leaks.
+
+**Structure.** Roughly a dozen *authored relationships*, not N². Pair
+partners banter (the Wizard and the Warlock arguing whether power should be
+earned, neither hearing the other's wound); cross-pair frictions carry the
+gradient (the Knight's comfortable honor vs. the dwarf's punished courage —
+quietly ugly, never resolved).
+
+**Act 2 shadows.** Same camp, same pairs, the lie gone — every Act 1 banter
+has an Act 2 shadow where the same two people discuss the same thing and it
+means the opposite. Camp talk as collision-grade content at conversation
+scale. The cruelest instance: the Act 1 camp scenes with the future Unchosen
+in them — chatting, alive, loved — become a graveyard the player walks back
+through in memory.
+
+*(Scope note, doc-facing: two-character barks, no hero input — the silent
+protagonist holds; trigger-engine territory. The plumbing is agent work; the
+words are Tristan's.)*

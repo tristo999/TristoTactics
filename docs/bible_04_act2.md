@@ -68,6 +68,17 @@ struck, moved, and re-pitched as the race across the shrinking map demands, the
 social home between missions. Where the Throne's camp was the lie's furniture
 (order, warmth, performance), this one is the real thing, poorer and truer.
 
+One voice in that camp runs *against* the act's grief, and the act needs her
+*(fifth batch, 2026-06-11 — current decision)*: **the Rogue ignites.** The
+veil-fall cost the believers their world-model; hers got confirmed and
+upgraded — the system that built her gutter turns out to be actually,
+cosmically certifiably evil, and the resentment she filed away her whole life
+is finally licensed. While the party is shellshocked she is first to volunteer
+for sabotage, gleeful at burning imperial assets, the one with a list — the
+act's **counter-voltage**, true fire and *also* the new mask (Part Two:
+rage-as-purpose is still distance management; her vengeance has an end date,
+and the self it defers doesn't).
+
 And under the whole act runs **the vigil** *(current decision, 2026-06-11)*:
 the party spends Act 2 keeping watch over the thing that kept watch for five
 centuries — tending a comatose god whose every remaining flicker reaches past
@@ -514,18 +525,49 @@ The consolidated keep/kill/claim checklist. Plain `[open]` = genuinely undecided
   (the self-sealed orders, *The Unchosen apparatus*).
 
 **Cast**
-- **[GUESS]** The Knight, the Rogue, the Wizard — full proposals in Part Two,
-  awaiting keep/kill/claim.
+- **[GUESS]** The Knight and the Wizard — full proposals in Part Two, awaiting
+  keep/kill/claim. ~~The Rogue~~ — **RESOLVED 2026-06-11 (fifth batch, current
+  decision): full rebuild in Part Two** (beggar-born in the ash kingdoms,
+  charm-as-misdirection, the heist motive, the scale-fear shatter and the
+  clinging, the early-Act-2 fire, mask-fall-as-combustion, acceptance-by-
+  audit, the gradient's native informant). The old "deflection-as-survival"
+  proposal is **superseded** — it overlapped the Archer's defense mechanism.
+  The cat-gag keep-or-cut flag is **RESOLVED: keep, weaponized** (the gag is
+  her product). *(Bookkeeping: the old proposal formally flagged her gender
+  open while writing her she/her throughout; the rebuild fixes **woman** —
+  the cat-girl product is built on her own kind's caricature.)*
 - ~~Roster count/composition~~ — **CURRENT DECISION 2026-06-11: EIGHT, in role
   pairs** (Priestess+Paladin / dwarf+Knight / Wizard+Warlock / Archer+Rogue) —
   pairs decontaminate Beat 7 and make the surviving half a standing absence
   (Part Two). The Paladin's wound + non-treading power source still **[open]**
   (a different erased god's current would make the healer pair theologically
   rhyming).
-- **[open]** Genders of all companions except the Archer (woman).
+- **[open]** Genders of all companions except the Archer (woman) and the
+  Rogue (woman, fifth batch).
 - **[GUESS]** The Warlock's pact-breaking mechanism and his tie to the keystone.
   **[open]** (adjacent, third batch): the gift in the Unchosen — legion-seed
   remains in a freed person; the two debts rhyme, one may teach the other.
+
+**Companion routes (2026-06-11, fifth batch)**
+- ~~The Priestess's outcomes~~ — **RESOLVED**: bonded = faith restored by
+  archaeology (the excavation thread; faith without confirmation); neutral =
+  searching, practice outliving belief. Her complicity reckoning lands at
+  "it was used, and I am not the use" — **PROTECT: no further into
+  absolution.** Her invocation is the fork's audible fate (Part Two).
+- The **audible-fates family** and the **route-climax-fires-at-you pattern**
+  are recorded as cast doctrine (Part Two); the eavesdrop channel is doctrine
+  in Part Two with mechanics in `systems_design.md`.
+- **[open — handle with care]** Elena's cue overlap: a beauty she teaches the
+  player to love doubling as a collision retrieval cue (candidate-note in the
+  ledger; Row 1's red bridge already sits adjacent).
+- **[open]** The Rogue's neutral-route shape (the fight happened and the hero
+  flinched — she got to be right) and the fire-end-date question (rage aimed
+  correctly vs. rage as the new mask; what is she when the empire runs out).
+- **[open]** A scene-budget doc (bond scenes per companion per act, hub
+  scenes, fork multipliers) — flagged as future work, deliberately not
+  created.
+- Beat 7 and the roster-of-eight are **untouched by this batch** — both
+  remain in their existing states above.
 
 **Beat 7 / the Unchosen**
 - **PARKED**, with the sharpened option board on record (2026-06-11):

@@ -128,7 +128,7 @@ tech debt when it bites · **art quarantined**.
 ### Content — Act 1 (Beats 3–10)
 - [ ] Campaign mission/level after the raid
 - [ ] First bonding moments / companion side-quest hooks
-- [ ] Companion roster build-out (Wizard, Knight, Rogue still proposals)
+- [ ] Companion roster build-out (Wizard, Knight still proposals; Rogue designed 2026-06-11)
 - [ ] Warlock arc (dark-god-pact weapon, break-the-pact outcome)
 - [ ] The Choice at the capital (Guardian breaks through)
 
