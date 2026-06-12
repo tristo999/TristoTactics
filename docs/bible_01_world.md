@@ -291,30 +291,93 @@ at the one kingdom whose god it *never managed to overwrite* and calls them
 thieves. They didn't steal anything. They are the last place the true god was
 never taken from.
 
+**The kingdom is elven** *(current decision, 2026-06-12 seventh batch)*:
+ancient beings of long — but not immortal — lives. And the structural point is
+not the ears; it is **memory.** The eldest living elders personally remember
+the world before the empire — remember the unredacted gods, the names before
+the paint. Everywhere else in the world, the forgery wins by *generational
+erosion*: five centuries outlasts human grandmothers, and the Throne's
+favorite weapon was always outwaiting the witnesses. The elves are the one
+population that weapon never finished killing. This kingdom is the only place
+the truth is held in **living memory** instead of archaeology — it is
+*mnemonically* unconquered, and the siege the game opens in is literally the
+siege of the world's last firsthand memory. The propaganda inverts once more:
+the "ancient hoarders" hoard **remembering.** *(Texture hooks, doc-facing:
+the Priestess's archaeology thread gains possible living sources — an elder
+who knew her god's true name as a contemporary; the Wizard's folklore stratum
+has its wellspring here; the gradient's final rung is the empire's resentment
+of the people time couldn't launder.)*
+
+**The land under the hand** *(current decision, seventh batch — the land
+canon)*: the land around the core is naturally **charged.** The steward's
+anchored heart rests on the world like a hand, and five centuries (and far
+more) of adjacency to concentrated divinity reads as *fertility*: greener
+grass, untouched views, a kingdom beautiful by **adjacency, not geography** —
+the standing proof that abundance was possible. And the same physics carries
+the war's ugliest consequence: when the core is taken and the rising begins,
+the emanation does not stop — it **curdles.** The same radiance, passing
+through a half-fused graft in an unworthy thief, turns from fertilizer to
+poison; the ecosystem around the capital dies fast, and the wasteland
+*spreads* — the ascension made visible at landscape scale. (The Act 2 clock
+this creates, and what stops it, live in Part Four.)
+
 And now the barrier is finally failing — not because anyone breached it, but
 because the being paying for it is running out (below). The kingdom is exhausted
 and losing. The war the game opens in is the empire's last push — the final
 march on the one door it has wanted for centuries — and it has triggered a mass
 conscription to do it.
 
-> **[GUESS] — the Kingdom's name and culture are still open.** I'll need a name
-> and a one-line cultural identity for it later (it's the heart of the map). For
-> now it's just "the kingdom" / "the last free country." Flagged so it doesn't
-> get written as if it were decided.
+> **[GUESS] — the Kingdom's name and culture are still open**, with the
+> register now constrained *(seventh batch)*: the sound is **elven** — the
+> "kept, household" register re-tuned to vigil-words in a long-memoried
+> tongue. Route to the naming session, along with: the Guardian's household
+> name may be **her name** — the girl's actual name, worn smooth by ages,
+> possibly remembered only by the eldest, possibly learned last by the hero —
+> and the forgotten apocalypse (below) may have a name only in the deepest
+> folklore stratum, the Wizard's grandmothers' layer. Flagged so none of it
+> gets written as if decided.
 
 ## The Guardian
 
 At the center of the kingdom — at the center of everything — is the **Guardian.**
 
-The Guardian is a deity: one of the ascended. *(Two flavors, both `[open]`: a
-god that **refused to fully leave** when it rose — or the **eldest, the first
-riser**, the one that has watched over the gate the longest. Choose later;
-everything below works with either.)* Its main presence is sealed **outside**
-with the other gods. What dwells inside the world, guarding the core, is a
+The Guardian is a deity: one of the ascended — and not one among many.
+*(Resolved 2026-06-12, seventh batch — current decision; the old
+two-flavors `[open]` is closed on the second flavor, and then some.)* It is
+**the first true deity: the first riser ever**, the being who created the path
+the entire pantheon later walked. Its main presence is sealed **outside** with
+the other gods. What dwells inside the world, guarding the core, is a
 **piece**: a will-remnant, almost human in scale — weaker than the Throne —
 because person-sized is the price of admission. The same physics that lets the
 Throne seep in is what the Guardian paid in kind: only a fragment of a god fits
 where a whole god cannot go.
+
+**And the piece has a face** *(current decision, seventh batch)*: the
+will-remnant keeping vigil is **a young elf girl** — because *that is how old
+she was when she did it.* She sacrificed herself at the core, as a young elf,
+in an apocalypse so long forgotten that even elven memory doesn't hold it —
+embedding herself as the plane's protector. The form is a **preservation, not
+a costume**: the mantle embedded her at that age forever; protecting the world
+is what she did *instead of growing up.* Every god owes their existence to her
+path, and she has spent unfathomable time as the only one still standing on
+the ground — **the eldest being in the cosmology wearing its youngest face.**
+The "price of admission" line above now carries its true reading: the price
+was paid *in self*, and what remained was the **start** of the self — the
+original mortal girl, doing the only contact she ever knew. Read the
+Guardian's loneliness, its asking of names, its half-spoken *"...are you
+there..."* accordingly: not a god performing humanity — **a person remembering
+being one.** *(Doc-facing, never stated aloud in-game: the Throne has spent
+five centuries caged by a little girl who actually did the thing it's been
+faking.)*
+
+`[GUESS — flagged loose, seventh batch]` **The forgotten first apocalypse.**
+The anchored heart, the binding-property, the mousetrap architecture exist
+because they were built **once before** — by her, against some first devourer,
+predating the pantheon. The Throne is the *second* thing the door was shut
+against, and never knew. Open, deliberately: whether the first apocalypse
+echoes the legion; whether her sacrifice *was* the original binding; whether
+embedding-as-protector and creating-the-ascension-path were one act. Sets best
+loose.
 
 It is a being of **time.** Its foresight, the five-century binding, and the loop
 the whole game runs on are all one magic — and that magic **holds rather than

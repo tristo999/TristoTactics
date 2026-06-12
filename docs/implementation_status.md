@@ -115,7 +115,7 @@ All Act 2 beats unbuilt. Scene names below are suggestions pending Act 1 impleme
 
 Ordered by urgency (what must be decided to unblock active work).
 
-1. **Companion identities** (names, origins, wounds). See the world bible's open questions. Blocks Beats 2–10 dialogue and Beat 7 "The Choice" mechanic. Cores designed (sixth batch, 2026-06-12): Archer, Healer, Tank/dwarf, Warlock, Rogue, Paladin, Knight — only the Wizard's wound remains a proposal. Roster settled at eight in role pairs; gender grid 4/4 (bible_02).
+1. **Companion identities** (names, origins, wounds). The cast pass is COMPLETE (seventh batch, 2026-06-12): all eight companions designed — wound, refraction, routes, combustion, fate (bible_02). Borin unfrozen to rough-draft (functions preserved). Remaining: companion NAMES (the naming session — now also gating the Knight's vow and the elven kingdom register), Borin's route-deepening, the faces pass.
 2. **Guardian fragment power semantics** — the finale keystone (the world bible's #1 open question). Blocks the save-one-companion mechanic (Beat 7) and the Act 2 arrival (Beat 1).
 3. **Kingdom name and cultural identity** (world bible open question). Unblocks all Act 1+2 dialogue that references the place.
 4. **Mission count per beat.** Required before level design can begin on Beats 3–6.

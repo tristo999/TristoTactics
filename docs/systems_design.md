@@ -205,6 +205,32 @@ bodyguard. Mechanical shape:
   language the monster taught you in lesson one.
 - Sequence: anchors severed → rising stalled → perimeter thinned → the
   monstrosity assailable → the boss fight proper → the keystone (bible_04).
+- **The last phase is an input fight (seventh batch, 2026-06-12 — staging
+  hook):** post-cut, the dying Throne turns the amplifier on the hero (the
+  fight to give the heart back — bible_04). Mechanically: the reach-and-refuse
+  gains **input resistance** — the refusal earned against active sabotage,
+  fought inside the player's hands. PROTECT carried from batch 4: the spark
+  must be genuinely mechanically takeable; the refusal is never skippable
+  ceremony. Implementation shape open (resisted stick/cursor pull, degrading
+  prompts, reversed inputs — resolve by feel; it must read as the Throne's
+  hand, not jank).
+
+## Environmental biography — the Guardian's story fragments [current decision 2026-06-12; fiction in bible_04]
+
+Her story is assembled by the player across Act 2 from world fragments, never
+exposition (the environmental-biography doctrine). Design rules:
+
+- **Optional-but-converging**: thorough players assemble more; the critical
+  path carries the minimum set for the ending's reunion to land. `[open]` The
+  minimum critical-path set — which fragments are unmissable — is a
+  mission-design question; decide it when Act 2 missions are scoped, and
+  place the unmissable fragments on mandatory routes (a shrine the party
+  camps in, not a side room).
+- **No codex dumps** — every fragment is IN the world: a frieze, a rhyme, an
+  elder's aside, a ruined shrine used as a campsite.
+- **Three discovery channels** — temples (archaeology), folklore (the
+  Wizard's stratum), living memory (the elders) — and they should *disagree
+  slightly at the edges*, the way real old knowledge does.
 
 ## Other systems — homed here when ready (not yet written up)
 
@@ -222,7 +248,13 @@ formalized yet. Listed so they don't get lost:
 - **The advancing Throne line** — the single clock. Progresses only as the
   player spends time on things; pushes the strategic layer (where to go, who to
   save, who to bond with) while leaving the tactical layer free. Lockouts must be
-  visible choices, never silent expiries.
+  visible choices, never silent expiries. **Act 2 second front (seventh batch,
+  2026-06-12):** the land-sickening — the wasteland spreading from the capital
+  as the rising proceeds (fiction in bible_01/bible_04). Mechanically it is
+  the same clock *rendered*, not a second resource: region states gain a
+  sickness tint/stage tied to clock progress, and the gray's reach IS the
+  visible timer (continuous with the finale's diegetic clock — no abstract
+  timer anywhere).
 - **Hero time powers (Guardian fragment)** — very limited, not a generic undo;
   grow stronger as the hero nears the Guardian. Rare and special, not the
   foundation of combat.

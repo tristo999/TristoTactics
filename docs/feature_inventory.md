@@ -128,7 +128,7 @@ tech debt when it bites · **art quarantined**.
 ### Content — Act 1 (Beats 3–10)
 - [ ] Campaign mission/level after the raid
 - [ ] First bonding moments / companion side-quest hooks
-- [ ] Companion roster build-out (Wizard the last open proposal; Knight/Paladin full drafts + Warlock/Elena deepened 2026-06-12)
+- [x] Companion roster design pass — COMPLETE 2026-06-12 (all eight designed in bible_02; names + Borin route-deepening remain)
 - [ ] Warlock arc (dark-god-pact weapon, break-the-pact outcome)
 - [ ] The Choice at the capital (Guardian breaks through)
 

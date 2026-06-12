@@ -57,6 +57,15 @@ will see dead — or already watched burn from the other side. The clock isn't j
 *hurry.* It's *say goodbye to everywhere you go.* This is the engine of Act 2's
 grief: the map is a list of things you are about to lose, and you are racing it.
 
+And the clock has a **second front** *(seventh batch, 2026-06-12 — the land
+canon, Part One)*: the line advances, and **the land sickens.** The core's
+emanation, curdled through the half-fused graft, kills the ecosystem outward
+from the capital — the wasteland spreads as the rising proceeds, two faces of
+the same loss. "Say goodbye to everywhere you go" gains its ecological verse:
+the green itself is on the list. And it is continuous with the finale's
+diegetic clock (fourth batch) — the player reads the Throne's digestion in
+**how far the gray has crawled.**
+
 Act 2 is *mostly its own campaign* — its own objectives, its own crew, real
 breathing room. The collisions are **peaks, not texture**; they happen where an
 Act 2 objective and Act 1 history want the same ground. The map remembers what
@@ -98,11 +107,36 @@ centuries — tending a comatose god whose every remaining flicker reaches past
 them, toward who they used to be. The love is one-way; the warmth deposits are
 all the party's, and the Guardian does not and cannot recognize the people
 making them. They guard the gate of their salvation knowing it will never once
-say their names. `[open — dormancy depth: full coma all act, vs. rationed
-surfacings — two or three moments where it half-rises, never lucid, perhaps
-re-speaking summoning fragments ("...are you there...") to the room while the
-hero stands three feet away, each surfacing visibly costing reserve. Lean:
-rationed surfacings. Flagged, not ruled.]`
+say their names. *(Re-read per the seventh batch — tone, not events: the
+loneliness, the asking of names, the "...are you there..." are a person
+remembering being one — the original mortal girl, doing the only contact she
+ever knew. See Part One, the Guardian's identity.)* `[open — dormancy depth:
+full coma all act, vs. rationed surfacings — two or three moments where it
+half-rises, never lucid, perhaps re-speaking summoning fragments ("...are you
+there...") to the room while the hero stands three feet away, each surfacing
+visibly costing reserve. Lean: rationed surfacings. Flagged, not ruled.]`
+
+**And her story is told across the act** *(seventh batch — current decision;
+environmental-biography doctrine)*: never as exposition — through **ancient
+temples and lore fragments** scattered through the elven kingdom. The
+gathering race doubles as an *excavation of her*: shrines from before the
+pantheon, carvings of a girl at a heart, the forgotten apocalypse in friezes
+nobody living can read, oldest-stratum folklore (the Wizard's channel),
+elders' fragmentary memories (the living-memory channel), Lyra's archaeology
+brushing the same truth from the theological side. The player **assembles**
+who the small tired thing in the capital is, across the whole act — so the
+ending's brief return (below) lands on a fully-built understanding the game
+never once stated aloud. Collision grammar at biography scale: the
+recognition is committed by the player.
+
+*(Design rules, doc-facing: fragments are optional-but-converging — thorough
+players assemble more; the critical path carries the minimum for the ending
+to land. No codex dumps — every fragment is IN the world: a frieze, a rhyme,
+an elder's aside, a ruined shrine the party camps in. The three discovery
+channels — temples / folklore / living memory — should disagree slightly at
+the edges, the way real old knowledge does. `[open]` The minimum
+critical-path set — which fragments are unmissable — is a mission-design
+question; noted in `systems_design.md`.)*
 
 The mission texture is the inversion of Act 1: what looked like atrocity from
 inside the lie was salvation from outside it. You burn a supply depot — Act 1
@@ -417,6 +451,58 @@ would be *safe* — the only time refusal means anything. The player performs th
 temptation; the hero performs the refusal. **Protect: the refusal must never be
 skippable ceremony — the spark is mechanically offerable in that moment.**
 
+**The Throne's last breath** *(seventh batch, 2026-06-12 — current decision;
+completes the temptation)*: post-cut, as the hero holds the freed heart, the
+dying Throne spends its final breath doing the only thing it ever knew —
+turning the amplifier on **the hero**: amplifying the need for power, for
+control, *to be the hero.* The first time the amplification touches the
+protagonist directly — Act 1's veil worked on the hero's emptiness; this
+works on the player's **fullness**, everything forty hours built. **The fight
+to give it back:** the reach-and-refuse becomes adversarial — input
+resistance, the refusal *earned* against active sabotage. The player performs
+the temptation; the Throne performs the tempting; the hero performs the
+refusal. **The final boss's true last phase is fought inside the player's
+hands.** (The protect above carries: mechanically takeable, never skippable
+ceremony. Staging hook in `systems_design.md`.)
+
+**The restoration — reunion and release** *(seventh batch — current decision;
+this RESOLVES the fragment's-fate fork)*. The power given back — heart and
+will rejoined — and the Guardian **explodes back out**: the human-like piece
+returns, *briefly* — joyful — a very brief reunion with the party that kept
+her vigil — and then she explodes outward across the landscape, **the
+restoration wave chasing the gray**, restoring the green — and finally
+**returns to the divine** after five hundred years: the reunion with her own
+greater self beyond the seal, the rise that began an unfathomable time ago
+finally completing. The world's first volunteer, relieved of post: the watch
+ending, her last gift and her first free act the same event. She gets, at the
+very end, the two things the mantle never provided: **proof it mattered, and
+permission to stop.**
+
+**PROTECT — the return lives inside the departure.** The brief return must
+never exceed the leaving — reunion and departure are **one motion.** The
+restoration *costs* the reunion: the explosion outward that heals the land
+IS the reassembled piece spending herself into the world on her way home —
+the same motion as the throw, the same motion as five centuries of vigil,
+self-expenditure performed one last time **as celebration instead of
+sacrifice.** Nothing is undone; something is **finished.** The
+no-full-resurrection rule is satisfied: the death stands, the vigil stays a
+true goodbye, nobody gets her back — the party witnesses a *completion*, not
+a restoration. (The two joys bookend the game: the capital's smile = blind
+hope answered in the final second; the reunion's embrace = five hundred years
+severed, made whole, witnessed by the people who kept her company on the way
+— the only company the watcher ever had. If the dormancy surfacings include
+*"...are you there..."* — the reunion is where the room finally answers.)
+Post-victory land rule (the land canon): **holds-not-rewrites** — the gray
+keeps what it took where the restoration wave doesn't reach `[open —
+staging: the wave's radius]`; the *spread* ends.
+
+`[open — staging]` **The epilogue beat.** The *"...Welcome..."* /
+first-word-as-last candidate either dies with the superseded woven-in version
+or **transposes** — the hum the ordinary hero feels at the site is no longer
+*her* but the restored land itself, the steward's hand back on the world
+through the green. Possibly under the Wizard's planting hands. Flag, don't
+rule.
+
 ## Mercy inverts
 
 All of Act 2 trains the player to *minimize* cost — time the detonation to kill
@@ -452,9 +538,11 @@ world-scale grace, and it is the truest expression of the whole game: *you did
 not summon salvation; you removed the weight on it.* What was always there
 finally breathes. **[open]** how much more than current comes back — whether
 any god can press a presence to the world's thin places again. (The freed
-heart and the spent will: see the fragment's-fate fork in the Manifest — the
-last keystone question, deliberately unresolved.) The hero reaches, at last and
-for real, the destination the Guardian was bringing them to all along.
+heart and the spent will: **resolved, seventh batch** — the restoration,
+above: heart and will rejoined, the brief return spent into the land on her
+way home, the rise completing. The fork's superseded candidates are recorded
+in the Manifest.) The hero reaches, at last and for real, the destination the
+Guardian was bringing them to all along.
 
 ## Silent reconciliation
 
@@ -472,28 +560,31 @@ The consolidated keep/kill/claim checklist. Plain `[open]` = genuinely undecided
 `[GUESS]` = an invention proposed in these docs, awaiting your ruling.
 
 **Big keystones**
-- ~~The keystone~~ — **DESIGNED 2026-06-11 (fourth batch, current decision),
-  with one fork left open.** Mechanism resolved: **the braid's final crossing**
-  — the fragment spent into the core through the Throne; will reaching its own
-  heart through the thief (Part Four). Placement resolved: inside the boss
-  fight, after the anchors are severed. Refusal placement resolved:
-  post-victory, the spark mechanically offerable (the player performs the
-  temptation; the hero performs the refusal — never skippable ceremony).
-  Remaining **[open]**s: the in-fiction verb/staging of the act; the eviction
-  (what remains of the Throne — possibly vacancy); and the fork below.
-- **[open] THE FRAGMENT'S FATE — the last keystone question.** What the freed
-  heart and the spent will become. Candidate shapes, all recorded, none ruled:
-  **(a)** the will, rejoined to the heart and repowered, lives — but as a *new
-  thing*; candidate from session: alive, aware, reachable as a current/hum —
-  presence without take-back, possibly the epilogue beat (the ordinary hero, at
-  the site, feeling something aware on the far side of the severed braid:
-  *"...Welcome..."* — first word as last). **(b)** The will woven into whatever
-  the freed core becomes — present the way a person is present in everyone they
-  changed. **(c)** Converges with the reunion fork (the outside presence
-  returning) — these resolve together. **PROTECT, whatever is chosen: full
-  resurrection — the old Guardian, eyes open, standing there — is OFF the
-  table.** It refunds the gamble, breaks holds-not-rewrites at the worst
-  moment, and re-grades the vigil into a hospital stay.
+- ~~The keystone~~ — **DESIGNED 2026-06-11 (fourth batch), COMPLETED
+  2026-06-12 (seventh batch — current decision).** Mechanism: **the braid's
+  final crossing** — the fragment spent into the core through the Throne; will
+  reaching its own heart through the thief (Part Four). Placement: inside the
+  boss fight, after the anchors are severed. Refusal: post-victory, the spark
+  mechanically offerable — and now **adversarial** (the Throne's last breath:
+  the amplifier turned on the hero, the refusal earned against input
+  resistance; the final boss's true last phase fought inside the player's
+  hands). Remaining **[open]**s: the in-fiction verb/staging of the act; the
+  eviction (what remains of the Throne — possibly vacancy).
+- ~~THE FRAGMENT'S FATE~~ — **RESOLVED 2026-06-12 (seventh batch, current
+  decision): THE RESTORATION — reunion and release** (Part Four). Heart and
+  will rejoined; the piece returns briefly — joyful, the vigil answered — then
+  spends herself outward as the restoration wave and **returns to the divine**,
+  the rise completing; her last gift and her first free act the same event.
+  PROTECT carried and satisfied: the return lives inside the departure —
+  reunion and departure one motion; a completion, not a resurrection; the
+  vigil stays a true goodbye. *(Superseded alternatives, recorded doc-facing:
+  **(a)** the will repowered as a new thing — alive, aware, reachable as a
+  current/hum, presence without take-back, with the epilogue candidate
+  "...Welcome..." as first-word-as-last; **(b)** the will woven into whatever
+  the freed core becomes — present the way a person is present in everyone
+  they changed. Candidate **(c)** — convergence with the reunion fork — is
+  effectively what was chosen. The "...Welcome..." epilogue beat either dies
+  with (a) or transposes — see the `[open]` in Part Four's ending.)*
 - **[open]** The anchors: the bible's name for them (graft-knots / conduits /
   "crystals" placeholder) and count-tuning (three, current decision). The
   simultaneous-vs-sequential assault question is routed to `systems_design.md`.
@@ -519,8 +610,13 @@ The consolidated keep/kill/claim checklist. Plain `[open]` = genuinely undecided
 - **DEFINED 2026-06-11** (current decision): the gods are ascended from the
   world itself; leaving is the price of rising; only currents/blessings fit back
   through. The Guardian IS one of them — a piece of one, inside (Part One).
-  Still open: **[open]** the Guardian's flavor (refused-to-fully-leave vs. the
-  eldest/first riser); **[open]** post-victory, whether anything more than clean
+  ~~The Guardian's flavor~~ — **RESOLVED 2026-06-12 (seventh batch, current
+  decision): the FIRST RISER — and more: the will-piece is a young elf girl,
+  the first true deity, embedded at the age she sacrificed herself; the form
+  is a preservation, not a costume** (Part One). Adjacent **[GUESS — loose]**:
+  the forgotten first apocalypse (the mousetrap built once before, against a
+  first devourer; the Throne the *second* thing the door was shut against).
+  Still open: **[open]** post-victory, whether anything more than clean
   current returns (see Resolution).
 
 **The amplification retcon (2026-06-11 third batch) — LOAD-BEARING**
@@ -542,10 +638,14 @@ The consolidated keep/kill/claim checklist. Plain `[open]` = genuinely undecided
   (the self-sealed orders, *The Unchosen apparatus*).
 
 **Cast**
-- **[GUESS]** The Wizard — the last open proposal in Part Two, awaiting his
-  wound session. Gender: male (sixth-batch grid, current decision); the
-  female-Wizard alternative (the meritocracy wound-deepening) is recorded
-  doc-facing in his proposal, not adopted. ~~The Knight~~ — **RESOLVED
+- ~~The Wizard~~ — **RESOLVED 2026-06-12 (seventh batch, current decision):
+  full draft in Part Two** (man, young; ash-kingdom folk-naturalist, paid in
+  books, the innocence of attention, the notebook, keeper-of-record, the
+  caster antithesis). The old proposal — the academy system-lover who breaks
+  on logic — is **superseded**. The female-Wizard alternative (the meritocracy
+  wound-deepening) stays recorded doc-facing, not adopted. **With this entry
+  the cast pass is complete: all eight companions have a wound, a refraction,
+  routes, a combustion, and a fate.** ~~The Knight~~ — **RESOLVED
   2026-06-12 (sixth batch, current decision): full draft in Part Two**
   (woman, young; honor masked by loyalty — the order's converted contract;
   the unrequited devotion to a bodiless liege; the Elena mirror; the vow
@@ -618,6 +718,34 @@ The consolidated keep/kill/claim checklist. Plain `[open]` = genuinely undecided
   (older) and the Knight (cold-register woman) spend some of the budget;
   remaining deliberate-miscast budget should be considered at the Wizard
   session and the demographics sweep **[open]**.
+
+**Seventh batch (2026-06-12) — the Wizard, the elven kingdom, the Guardian's
+identity, the land, the ending**
+- The Wizard graduates to **DESIGNED** — the cast pass is complete (all eight:
+  wound, refraction, routes, combustion, fate). **Borin is UNFROZEN** — his
+  file returns to rough-draft; the dive and the bereavement lie are welded to
+  functions (a chosen-sacrifice kit beat; an empire-manufactured grief) and
+  survive any redefinition that keeps them. ~~Warlock demographics~~ —
+  **RESOLVED: young** (audience-coverage note; the older program-survivor
+  alternative recorded, not adopted).
+- The kingdom: **ELVEN** (current decision) — the world's last firsthand
+  memory; the siege is mnemonic (Part One). The Guardian's identity: **the
+  first riser, the elf girl, the preservation** (current decision); the
+  forgotten first apocalypse **[GUESS, loose]**. Naming session gains
+  constraints: elven register; her name as the household name; the
+  apocalypse's folklore name.
+- New doctrine: **environmental biography** (her story told through temples /
+  folklore / living memory, assembled by the player — collision grammar at
+  biography scale; design rules doc-facing in the spine; fragment mechanics in
+  `systems_design.md`).
+- New **[open]**s: the restoration wave's radius (staging); the epilogue
+  beat's transposition (dies with the superseded hum, or becomes the land
+  itself — possibly under the Wizard's planting hands); Section E's
+  critical-path fragment set (mission design); the Wizard's proper nouns (the
+  alley, the teacher); the ash-kingdoms-as-older-wounds **[GUESS]**.
+- **[open] ROMANCE** — are the bond routes romantic, platonic, or deliberately
+  ambiguous? Cascades: the hero's gender question (Lyra's "And here HE is"
+  line), route gender-locking, authoring cost. Recorded, not ruled.
 
 **Companion routes (2026-06-11, fifth batch)**
 - ~~The Priestess's outcomes~~ — **RESOLVED**: bonded = faith restored by
@@ -696,14 +824,12 @@ The consolidated keep/kill/claim checklist. Plain `[open]` = genuinely undecided
   own past selves fading out — witnessing their own departure from the other
   side — or has the white-out already taken them? Real emotional weight either
   way. Flagged, not ruled.
-- **[open]** The reunion fork — whether the will-piece "survives" to be
-  reunited with its sealed-out presence when the world's locks come off.
-  Sharpened by the second batch: **the piece is SPENT at the throw**, so
-  "survives" likely means something subtler than persistence — what a god gets
-  back when the part of it that stayed behind died satisfied. Not resolved.
-  *(Bookkeeping note: this fork was referenced as "from the previous pass" but
-  appears in no doc — it was almost certainly in the TRUNCATED portion of the
-  2026-06-11 first batch. Original wording still `[pending]` from Tristan.)*
+- ~~The reunion fork~~ — **RESOLVED 2026-06-12 (seventh batch), by the same
+  stroke as the fragment's fate**: the main presence is rejoined at the rise's
+  completion — the restoration IS the reunion (Part Four). The second batch's
+  sharpening ("the piece is SPENT at the throw, so 'survives' means something
+  subtler than persistence") is honored by the staging: what returns is
+  rejoined-and-released, not persistent — a completion, witnessed, then home.
 - **[open]** The Loved NPC's identity and fate; the confiscated camp item.
 - **[GUESS]** Act 2 death rules (resolve by feel once combat is real).
 

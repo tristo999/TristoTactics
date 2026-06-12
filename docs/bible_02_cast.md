@@ -123,7 +123,9 @@ role pairs) and by **wound** (thematic mirrors cross-cutting them) —
 Elena/Knight (talent vs. will), Rogue/Warlock (charm-distance vs.
 contempt-distance), Lyra/Paladin (grace vs. craft — one datum, two
 theologies), Elena/Paladin (competence-as-absence at two ages), Elena/Warlock
-(the kindness ledger, opposite entries). The eavesdrop channel's ~dozen
+(the kindness ledger, opposite entries), Wizard/Warlock (intrinsic vs.
+instrumental power — the caster antithesis, seventh batch), Wizard/Rogue (two
+mercenaries, one paid in gold, one in books). The eavesdrop channel's ~dozen
 authored relationships should draw primarily from the **wound map** — it's
 where the arguments live.
 
@@ -442,6 +444,13 @@ life by choice, the way his ancestors did. Same motion, inverted meaning, read
 off his body and never spoken aloud. The party re-lights the ember the shunning
 put out; the mountains turn "different is okay" into "being a dwarf is glorious."
 
+*(Status note, seventh batch — 2026-06-12: Borin is **unfrozen** — his file
+returns to rough-draft for redefinition. The dive and the bereavement lie are
+welded to FUNCTIONS — a chosen-sacrifice kit beat; an empire-manufactured
+grief — and survive any redefinition that keeps the functions. The census
+flag carries: his route is thin and kin-dependent; the found kin need at
+least one face.)*
+
 ### The Warlock — the weapon the empire built and meant to throw away
 He is the *most loyal at the start*, and the reason is the saddest in the party.
 He was a troubled orphan — and the Throne recruited him for exactly that:
@@ -565,9 +574,13 @@ discard and say "I know exactly what that was." Candidate quiet climax: the
 contempt briefly set down — one nobody telling another the thing nobody told
 him.)*
 
-`[open]` **Demographics** — age/body unset; noted option from the
-mold-breaking audit: *older* — the program's longest-surviving asset, the
-altitude built from outliving everyone shaped like him. Flagged, not ruled.
+**Demographics** *(ruled 2026-06-12, seventh batch — current decision)*:
+**young.** The audience-coverage note decides it — the 4/4 grid exists for
+route coverage (including female players), the cast's men were skewing
+old/cold, and the cold wounded young man is among the most-routed archetypes
+in the medium; his design already *is* that character. The "older
+program-survivor" alternative (altitude built from outliving everyone shaped
+like him) is recorded, not adopted.
 
 ### The Rogue — the act with no off switch (woman)
 
@@ -870,40 +883,135 @@ new faculty live-firing; stage it like a graduation.
 session; note the vow needs the recovered oath's actual words, which gates on
 the kingdom/order naming.
 
----
+### The Wizard — the boy who turned the screaming into field notes (man, young)
 
-## The one open companion — proposal to react to
+*(Full draft 2026-06-12, seventh batch — current decision. This REPLACES the
+old proposal wholesale: the academy-trained system-lover who breaks on logic
+is dead. The cast pass is complete with this entry — all eight companions
+have a wound, a refraction, routes, a combustion, and a fate. Gender: male,
+per the sixth-batch grid; the female-Wizard alternative remains recorded
+doc-facing, not adopted.)*
 
-> Everything in this block is invented. The roster is **eight, in role pairs**
-> (current decision — see the note at the end of this part), each built to the
-> same standard. This is my swing at the one still-undesigned slot — the
-> method is always *wound first, class second.* (The Rogue's and the Knight's
-> proposals that used to sit here were superseded by their full drafts among
-> the designed companions above — fifth and sixth batches respectively. The
-> old Knight wound — honor built on the first betrayal, the folded-first
-> lineage — is dead with the proposal.)
+**Identity.** Young, from a back-alley **ash kingdom.** Elemental magic,
+*natural* in register — taught by local folklore: rhymes, weather-words,
+grandmothers, oral knowledge, because books were rare where he's from. A
+**field naturalist of magic**, not an academy product: knowledge organized in
+stories and rules-of-thumb (*"you don't cast fire angry — it remembers"*),
+which educated troops find quaint until his methods outperform doctrine. And
+he is **warm** — genuinely, unironically delighted: the camp's youngest
+energy, always doing something (sketching glitch-sites in a battered notebook,
+testing well-water after rain), narrating discoveries to whoever's nearest,
+zero status-awareness. He is the cast's **free agent**: no empire-tie — he
+never believed or disbelieved the doctrine; *he never finished reading it.*
+The empire is **access.**
 
-### `[GUESS]` The Wizard — the believer who loves the *system*
-Distinct from the Warlock: where the Warlock was *given* power he doesn't
-understand, the Wizard *studied* for his — earned it, the legitimate way, through
-the empire's own academies. **Wound proposal:** he's the empire's perfect
-intellectual product — he loves the Throne not as a god but as an *order*, a
-system that took chaos and made sense of it, and he's grateful to it the way you're
-grateful to the thing that gave your life structure and meaning. **The fault
-line:** he is the companion most invested in the lie being *coherent*, and the
-empire's doctrine is sloppily forged (Part One — seams). A mind that good, that
-devoted to consistency, is the mind that *cannot stop noticing the contradictions
-once it starts.* His faith doesn't break on a betrayal like the Priestess's — it
-breaks on *logic*, the slow unbearable accumulation of a system he loves failing
-its own rules. He's the rationalist who reasons his way out of the lie and hates
-every step, because each step costs him the order he built his life on. **Class:**
-the elemental/arcane caster — pure fire-ice-lightning, the most "legible" magic
-in the game, fitting a man who needs the world to make sense. *(Gender:
-**male**, current decision per the sixth-batch grid. The female-Wizard case
-from that session — the meritocracy wound-deepening — is recorded as a
-doc-facing alternative, not adopted; the Knight taking the cold-female-register
-slot resolved the gap it was meant to fill. The wound session itself remains
-`[open]` and may revisit.)*
+**The enlistment — paid in books.** The army wanted his innate talent; he
+accepted for the promise of more books than he could dream — and at the
+rainbow's end, **the core**: a kingdom built on magic and all the knowledge it
+holds. The war is *his* heist (the structural rhyme with the Rogue: two
+mercenaries in the elite unit, one paid in gold, one in books — candidate
+eavesdrop scene, mutual recognition of the angle). And the bribe is
+devastating, not cute: book-hunger from a starved place is **a starved sense
+finally fed** — the empire impoverished his home of knowledge for five
+generations, then purchased him *with* knowledge. The trap built its own bait.
+His veil: amplify his want and you get a boy more absorbed in magic — pure
+curiosity, the one drive the forgery can't permanently aim.
+
+**His deflection — enthusiasm as exit.** Near anything he doesn't want to
+feel, there's suddenly a fascinating thing *over there.* Same motion as
+Elena's smokescreen, but his escape hatch is fun to be inside, so nobody —
+including him — clocks it as flight. **Eavesdrop tell:** he has never once
+mentioned home unprompted. The boy who narrates everything has one topic with
+no narration.
+
+**The wound — the innocence of attention.** Devotion to the fascinating as
+the place you live so you don't have to be where you're needed — the cast's
+recurring organ (Elena's trance, the Paladin's triage), and his is the only
+**joyful** version, which makes it the most insidious. The thing he didn't
+look at is back in the alley `[open — proper nouns: the home he left, the
+teacher whose life's knowledge he absorbed in a season]`. His
+glitch-relationship runs on the wound: the wrongness isn't a threat to him —
+it's *fascinating*, the best puzzle he's ever seen; he chases it with delight
+while treating the Guardian's strain across the jam as *phenomena.* And the
+glitches keep feeling **familiar** — half-shaped like things his elders said
+(folklore is the pre-doctrine stratum; **he was educated by the
+archaeological layer itself and doesn't know it**) — a homesick note under
+the delight he never examines.
+
+**The land** (the land canon — Part One): the ash-kingdom kid crosses into
+the elven kingdom and sees, for the first time, land *unbothered* — and the
+green isn't scenery to him, it's **counterfactual**: this is what home would
+have been. He marches with the army that burns it, and elemental senses mean
+he doesn't watch the burning — he **feels** it. His land-grief and his
+glitch-fascination run in parallel all campaign: two channels of the same
+unheeded signal.
+
+**His refraction** (the shatter prism): at the capital the glitches get
+retroactively **translated** — the jam breaks, the voice lands clear, and
+every fascinating anomaly in his notebook was a dying being screaming for
+help, **in a voice his folklore had been teaching him to recognize since
+childhood.** He had the decoder ring the whole time and turned the screaming
+into field notes. (Prism entry: Lyra's prayers were misaddressed; his
+*attention* was.) On the ground: he pulls out the notebook — the campaign's
+whole record of his delight — and can't look at it. And the poisoning begins
+(Part One; Part Four for the clock), and the boy from the wasteland watches
+**a wasteland being born**: he knows exactly what he's looking at, because he
+grew up in the finished product. *"I've seen this before. I'm FROM this. It
+was never natural. Somebody did this to home, too."* `[GUESS — whether the
+ash kingdoms are literally older wounds of the same kind, or a rhyme by
+mundane means; flag, don't rule.]` His shatter is shame with an exhibit in
+his own handwriting, plus recognition at landscape scale.
+
+**Early Act 2 — the reshaping** (three visible degrees, subtle): **(a)** the
+notebook changes function — entries shift from phenomena to *people* (what
+Borin said, how Lyra takes her tea, the names of the rescued): documentation
+as **keeping instead of taking** — the notebook is his haircut (the
+visible-fates family). **(b)** The enthusiasm survives but gains a
+checkpoint — a half-second beat before studying anything: *is this a thing or
+a someone.* **(c)** At the vigil he becomes the Guardian's
+**keeper-of-record** — sitting with the dormant god, writing down the
+surfacings, holding dying knowledge in living memory the way his elders held
+theirs. The boy who came to raid the library becomes its last librarian, and
+nobody assigns him the job. Also: his tending goes **ecological** — the
+elemental caster works the poisoned ground the way his grandmothers worked
+the ash; the ash kingdoms' involuntary inheritance (how to live on murdered
+land) becomes the most relevant knowledge anyone has. Bonded-route final
+image: standing in the green as it grays, **planting anyway** — his
+inheritance was never poverty's consolation prize; it was the deepest library
+he was given.
+
+**Routes.** **Neutral** — the shame wins quietly: he stops chasing;
+enthusiasm dims to competence; the notebook closes; the camp reads
+*maturity*, but it's the wound's victory — curiosity itself put on a lease,
+and the folklore line dies with his silence (he was the last one carrying
+it). **Bonded** — the hero (silent, *the* listener, the one person who
+receives his tangents without grading them) is where his attention learns to
+land on a person without taking. Beats: the home-silence breaking (the
+unprompted story about the alley, told *to* the hero); the notebook shown to
+someone for the first time since the capital; and his combustion (below).
+Resolution: the isn't-it-fascinating attention lands on a companion's pain
+and comes out as **care.**
+
+**His combustion** (per the fires-at-the-hero doctrine): when the hero is
+badly hurt in front of him, he catches himself doing it — the clinical eye,
+the field-naturalist reflex reading the wound like a phenomenon — and
+detonates *at the hero* for being the occasion: *"don't — don't let me LOOK
+at you like that—"* Self-aimed like Elena's, but hers indicts the ledger;
+his indicts **the gaze.**
+
+**His audible fate: the narration.** Act 1 — he narrates *at* the world,
+wonder broadcast. Neutral — the narration stops. Bonded — it returns changed:
+quieter, aimed, second-person. The boy who said *"look at THAT"* learns to
+say *"look at YOU."*
+
+**The antithesis** (caster-pair doctrine): Wizard vs. Warlock = **intrinsic
+vs. instrumental** power. The Wizard *loves* magic — the understanding is the
+reward; he'd study it broke in a ditch. The Warlock *needs* it — rank, floor,
+proof of being chosen; he has never once enjoyed it. The Wizard talks about
+magic like a beloved, and every word lands on the Warlock as an indictment;
+the Warlock's *"power is FOR something, child"* reads to the Wizard as
+tragic. Institutional vs. folk besides — and the pair is the routeable
+double-act per the audience-coverage note (the roster material below).
 
 > **The roster — EIGHT companions in role pairs** *(current decision,
 > 2026-06-11 third batch — reverses this doc's earlier Paladin-exclusion lean)*:
