@@ -308,6 +308,22 @@ who knew her god's true name as a contemporary; the Wizard's folklore stratum
 has its wellspring here; the gradient's final rung is the empire's resentment
 of the people time couldn't launder.)*
 
+**Lifespans, and why the memory monopoly is elven** *(current decision,
+2026-06-13, eleventh batch)*. The elves' near-uniqueness here is a function
+of how long they live: long but not immortal — long enough that the *eldest
+living* remember the before. Other peoples remember the way most peoples do —
+**inherited, eroding.** **Dwarves** live only *slightly* longer than
+humans — long enough that a grandparent carries real heritage-fragments
+(half-songs, the old tongue) and a sealed enclave's isolation spans a
+handful of dwarven generations (recent enough to stay raw), but far too
+short to hold firsthand memory of the pre-Throne world. So the mnemonic
+siege stays **uniquely elven**: the dwarves lost their *history* to the same
+generational erosion that took everyone else's; what an old dwarf passes
+down is a thinning culture, not a witness's testimony. *(And the dwarves are
+nearly gone — scattered in human-city gutter communities, the culture a
+whispered secret, with a single sealed mountain holdout most of the race
+believes is a myth. See Borin, Part Two.)*
+
 **The land under the hand** *(current decision, seventh batch — the land
 canon)*: the land around the core is naturally **charged.** The steward's
 anchored heart rests on the world like a hand, and five centuries (and far

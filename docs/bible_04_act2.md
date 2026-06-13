@@ -102,7 +102,10 @@ wakes the judging faculty loyalty never let her use, and aims the disgust at
 herself; and **the Wizard's** click arrives *last* — fascination first, the
 only person on the field having a good time, until it almost kills him —
 and hits hardest (tenth batch; he enters the act as the quiet where the
-giddiness used to be). Full refractions in each Part Two entry.
+giddiness used to be). And **Borin** is the prism's counter-example
+(eleventh batch): the capital makes him *more* dangerous, not less —
+guttural protective fury — a galvanization that early Act 2 burns out into
+the fear underneath it. Full refractions in each Part Two entry.
 
 And under the whole act runs **the vigil** *(current decision, 2026-06-11)*:
 the party spends Act 2 keeping watch over the thing that kept watch for five
@@ -193,11 +196,25 @@ ledger.)
 
 Woven through the shrinking-map campaign, each an Act-2 payoff of an Act-1 wound:
 
-- **The dwarf finds his people alive** in the mountains at the kingdom's edge. The
-  bereavement lie breaks; the family and the mountains turn his Act-1 "I'm lesser"
-  dive into the Act-2 "I am a dwarf, and these are my people" dive — same motion,
-  inverted soul. His found kin likely join the final-battle roster: a reunion you
-  will then have to spend.
+- **Borin finds his kin alive — and they don't claim him** *(rebuilt
+  eleventh batch, 2026-06-13 — this REVERSES the old "they join the roster,
+  the mountains make being a dwarf glorious" payout)*. His **trajectory**
+  across the act: the capital's protective fury **burns out** under the
+  shrinking map into **fear of losing the party** (the protector watching
+  what he protects shrink); mid-act, finding the sealed mountain kin **alive**
+  relights the spark — bigger than the lie ever stole, because he thought the
+  race was dying in shanties; and then **the rejection guts it** — the kin,
+  having survived five centuries by refusing every outsider, don't recognize
+  the shaved, common-tongue, mixed-company dwarf as theirs, *and they're
+  right by their measure.* That second loss is his **route gate**: bonded,
+  the party shows him a real family and he claims the eight misfits as
+  chosen kin (the bereavement lie inverted; visible fate = the chosen
+  mustache); neutral, he leaves to file himself into the old-country dwarf
+  the kin demand (the beard regrown as surrender — the cast's bleakest
+  ending). The kin **stay out of the finale**: default the mountain seals
+  itself permanently; a bonded-effort side story can commit a small faction,
+  otherwise the seal is final — **no full kin-roster.** `[open — the kin
+  side-story scope; the permanent-seal staging.]` (Full arc: Part Two.)
 
 - **The Warlock and the debt.** The dark god comes to collect the pact the empire
   bound him to as a child and always meant to let it claim. Reached deeply enough
@@ -214,6 +231,14 @@ Woven through the shrinking-map campaign, each an Act-2 payoff of an Act-1 wound
 
 The roster *is* the shopping list. Every ally gathered is someone who will stand,
 and likely fall, at the finale.
+
+*(One thread carries no plot weight at all, by design — **the gran letter
+[memorial, load-bearing, do not explain]**: somewhere in the campaign Borin
+gets word his grandmother has died and is quietly sad for exactly one day,
+delivered through the eavesdrop channel and never narrated. `[open —
+placement: Act 1 vs. Act 2; the resonance is sharpest if it lands shortly
+before the kin reject him.]` Full note: Part Two. Do not explain it in
+prose anywhere.)*
 
 ## Vael
 
@@ -957,8 +982,9 @@ The consolidated keep/kill/claim checklist. Plain `[open]` = genuinely undecided
   ruins-keeper for Lyra's excavation thread — candidate faces, unruled.
 - **Census (doc-facing):** party 9 (8 + silent hero); principals 12
   (+ Guardian, Vael, Throne); committed-but-faceless: the Loved NPC [open],
-  the dwarf's found kin (≥1 face needed — load-bearing for Borin's thin
-  route, flagged), the Warlock's creditor (register [open]), the possible
+  the dwarf's found kin (≥1 face needed — the kin who *reject* him, now the
+  hinge of his rebuilt route, eleventh batch), the Warlock's creditor
+  (register [open]), the possible
   program figure and ruins-keeper [GUESS], Beat 7's two camp NPCs (contingent
   on that ruling), the hunter's squad (voiceless by design — confirm
   deliberately). Remaining character work: the Wizard's wound session;
@@ -1097,13 +1123,11 @@ returns, four laws**
   aftermath]**; leak-before-melt applied to her hardest.
 - **The returns** *(new doctrine)*: every bonded route returns the
   witnessing; the returns are collectively **the hero's portrait** (the
-  silent protagonist characterized only by reflection). Three ruled: Lyra
-  (earned admiration), the Wizard (the sharing — "you have to see this"),
-  the Warlock (the shell down; reachable as the thank-you). **[open — THE
-  RETURNS PASS]**: the Knight, the Paladin, Elena, Borin; and the Rogue's
-  audit-respect line needs confirming as return vs. climax. Do not derive
-  them. *(The batch-8 "look at YOU" framing is struck AS his return — it
-  stays as his audible fate.)*
+  silent protagonist characterized only by reflection). ~~Three ruled~~ —
+  **the pass is COMPLETE (all eight), closed eleventh batch** (Part Two; the
+  doctrine line: every return is the same gift in eight registers — the
+  unguarded self, given). *(The batch-8 "look at YOU" framing is struck AS
+  the Wizard's return — it stays as his audible fate.)*
 - **Four authoring laws** *(cast doctrine)*: fires-in-register (only two
   angry combustions in the cast); the love-budget / one-bad-night law;
   leak-before-melt (generalized); the combustion taxonomy graduated to
@@ -1113,6 +1137,31 @@ returns, four laws**
 - *Bookkeeping: this batch arrived truncated mid-execution-block; the
   routing was inferred from the section bodies (flagged in the session
   report).*
+
+**Eleventh batch (2026-06-13) — the Borin rebuild; the cast is closed**
+- **Borin: REBUILT and DESIGNED** — the dwarf *estranged* from dwarfness
+  (assimilated, race nearly dead in gutters, the daily shave to pass), the
+  kin who find him faded and don't claim him (reverses the old
+  roster/glorious payout), the burn-out trajectory, the route gate, both
+  fates (the chosen mustache / the surrendered beard), the dive's
+  reckless→precise playable-fate delta, the gran letter, the return, the
+  sibling-or-more tell (Part Two). **The cast is now EIGHT fully designed
+  companions — no stubs.**
+- **The returns pass: COMPLETE** (all eight — bullet above amended).
+- **The ambiguity zone: widened** — the romance ruling now covers
+  romance-or-**familial**, with Borin the proof case (sibling-or-more,
+  unlabeled); the full-sincerity law still governs (Part Two).
+- **Dwarf lifespan: world-canon** (slightly longer than human, NOT
+  elf-long — the mnemonic-siege monopoly stays elven; dwarves remember
+  inherited-and-eroding) → Part One.
+- New **[open]**s: the kin side-story (Act 2 mission scope); the
+  permanent-seal default staging; the gran letter's placement (Act 1 vs.
+  Act 2).
+- **Naming flag (escalated):** all companion names are now confirmed
+  **PROVISIONAL except Vael** — Elena, Lyra, Borin et al. were
+  placeholder code-generated names, open to rename at this last-cheap
+  moment. Route to the naming session with the crown (the Guardian's name)
+  and the kingdom/order/old-ugly-name set.
 
 **Companion routes (2026-06-11, fifth batch)**
 - ~~The Priestess's outcomes~~ — **RESOLVED**: bonded = faith restored by

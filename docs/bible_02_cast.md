@@ -105,7 +105,10 @@ The refractions live in each entry: the Rogue's scale-fear then licensed fire;
 Lyra's contaminated prayers; Elena's severed feed; the Warlock's freefall; the
 Paladin's triage-then-spill; the Knight's self-aimed disgust; the Wizard's
 **delayed click** *(tenth batch — fascination first, terror arriving last,
-hitting hardest)*.
+hitting hardest)*; and Borin's **guttural protective fury** *(eleventh batch —
+the prism's counter-example: most refractions disable, his weaponizes — the
+capital makes him* more *dangerous, fury over a terror that surfaces only
+when the fury burns out)*.
 
 `[GUESS — candidate doctrine, flag if it overreaches]` **Witnessing as
 counter-amplifier.** The Throne's power turns one note up until it drowns the
@@ -137,14 +140,28 @@ fully-bonded run assembles the hero out of other people's gratitude. This is
 the fire scene's deepest job. **Discipline:** a return is NOT the
 route-climax wearing a gratitude costume — the wound resolving and the
 appreciation shown are *separate beats*, authored per-companion, one at a
-time, like the wounds were. **Ruled so far (three):** Lyra — the earned
-admiration, witnessing the hero *back* (her entry); the Wizard — the
-fascination gains a person to share it with, *"you have to see this"* (his
-entry); the Warlock — the shell comes down, being *reachable* as the
-thank-you (his entry). `[open — THE RETURNS PASS]`: the Knight, the Paladin,
-Elena, and Borin owe theirs — and the Rogue's audit-respect line needs
-confirming as her return vs. her climax. **Each wants its own riff; do not
-derive them.**
+time, like the wounds were. **THE RETURNS PASS IS COMPLETE — all eight**
+*(closed eleventh batch, 2026-06-13, current decision)*:
+- **Lyra** — earned admiration; witnessing the hero *back* (her entry).
+- **The Wizard** — the sharing: *"you have to see this,"* a specific
+  audience sought out (his entry).
+- **The Warlock** — the shell down: being *reachable* as the thank-you (his
+  entry).
+- **The Rogue** — unfaked friendliness + voiced weakness (the charm, finally
+  not a mask). `[confirm — return vs. her audit-respect climax line; the two
+  may be one beat or two.]`
+- **Elena** — openness; less afraid to shoot, less afraid to *be herself.*
+  `[*public PDA can still mini-spike her — the openness isn't a cure.]`
+- **The Paladin** — warmth past triage; vulnerability; **talking about the
+  ones he lost.**
+- **The Knight** — leisure: *"time for things besides being the best,"* and
+  unforced kindness to Elena.
+- **Borin** — coming home to himself (his entry).
+
+**DOCTRINE LINE: every return is the same gift in eight registers — THE
+UNGUARDED SELF, GIVEN.** *(Authoring note: each register is ruled; the
+line-level scenes are still authored one at a time — the shapes above are
+not yet prose.)*
 
 **Fires in register** *(authoring law, tenth batch)*: "the wound fires at
 the hero" ≠ anger. Each wound discharges in its own register — the cast has
@@ -185,8 +202,9 @@ himself into harm meant for another; protects *people*, fitting the last of a
 line). And Borin's kit *is* his wound: the dive performed a hundred casual
 times across the campaign before the one scripted dive that costs everything —
 the cast's strongest **playable fate** (sibling to the audible fates, beside
-the Knight's **visible** one — her haircut; systems hooks in
-`systems_design.md`). The pair's eavesdrop argument writes itself: two
+the **visible** ones — the Knight's haircut and Borin's own beard, the
+shave-daily baseline that becomes a chosen mustache bonded or a
+surrendered full beard neutral; systems hooks in `systems_design.md`). The pair's eavesdrop argument writes itself: two
 professionals disagreeing about what defending means, neither hearing what
 their doctrine confesses.
 
@@ -219,7 +237,14 @@ never timid. The failure mode is warmth written at 70% so it can pass as
 either — **that reads as flinching.** The feeling is written at 100% —
 specific, costly, unmistakably real — and only the *category* is withheld.
 The blush works because the emotion is fully present; only the noun is
-missing. *(Scope note, doc-facing: this ruling is the cheapest possible
+missing.
+
+**The ambiguity zone widens** *(doctrine extension, eleventh batch —
+current decision)*: the withheld category is not only romance-or-friendship
+but romance-or-**familial.** **Borin is the proof case** — he treats the
+hero almost like a sibling, and the game never votes on whether that's
+kinship or more. The full-sincerity law still governs: the bond is written
+at 100%, only the noun left open. *(Scope note, doc-facing: this ruling is the cheapest possible
 resolution of the romance question — zero new arcs, zero new scenes; it is
 a WRITING DISCIPLINE applied to content already specced, and it must be
 applied consistently from the first bond scene onward — ambiguity
@@ -591,44 +616,157 @@ most bonds are being-witnessed; hers is witnessing the hero BACK. This is
 also her RETURN, per the returns doctrine.)* Her audible fate — the
 invocation, true name vs. unchanged — stands from the fifth batch.
 
-### The dwarf (Borin) — the last of the makers (the Tank)
-Burly but *nimble* — his protecting is fast and active, a man who crosses the gap
-to throw himself between harm and someone else, again and again. He is one of the
-last dwarves: a maker-people who held the line longest against the invasion and
-were *ended* for it — not assimilated (you can't wear a people who won't believe
-the costume), just outlasted and scattered. The empire punishes courage, and his
-shame is the specific shame of the holdouts who didn't fold and lost everything
-for it.
+### The dwarf (Borin) — the dwarf estranged from dwarfness (the Tank)
 
-But he never inherited the pride — he was raised an outsider in a human city, by
-dwarves already ground down, so what reached him was the *shame*, not the
-line-holding. To him "dwarf" means the reason people look at him sideways, a thing
-to overcome by soldiering well; his loyalty to the empire is partly a hope that
-it can *launder the dwarf out of him.* And the lie fitted to him is the cruelest
-of all — not ideology but **bereavement.** The empire let him believe his people
-are dead, so he'd have nothing left to fight for but the banner it handed him. A
-man convinced he's the last of everything will die for anyone. The truth: a small
-faction of his people is **alive in the mountains at the kingdom's edge**, slowly
-regrowing the race, having fled to the one ground the lie never reached. He
-doesn't know.
+*(REBUILT 2026-06-13, eleventh batch — current decision; fills the last
+empty companion file, closing the cast at eight fully designed. This
+OVERWRITES the seventh-batch unfrozen stub. The dive and the bereavement
+lie survive as functions; almost everything else reverses — see the
+conflict notes inline. No prior batch-11 draft ever reached the docs.)*
 
-His arc is an internal collision — the same action meaning opposite things across
-the two acts. In Act 1 he dives in front because he believes he's *lesser*:
-trade the worthless body for the real soldier. Every brave act is self-erasure,
-agreeing with the empire's verdict on his own worth. In Act 2, the same dive,
-opposite soul — now he knows the dwarves held the line, knows he's the last ember
-of something proud, knows this party is his family, and he spends a *precious*
-life by choice, the way his ancestors did. Same motion, inverted meaning, read
-off his body and never spoken aloud. The party re-lights the ember the shunning
-put out; the mountains turn "different is okay" into "being a dwarf is glorious."
+**The chassis — a dwarf estranged from dwarfness.** Borin is a dwarf raised
+in a human city, his culture worn off — *assimilation, not heritage worn
+confidently.* The dwarven race is **nearly dead** in this world: scattered
+in human-city gutter communities, the culture a whispered secret. He barely
+knows other dwarves; he learned his heritage in **fragments** — a
+grandparent's half-songs, deep-road sayings he can't fully place. To his
+knowledge his whole race is dying in shanties; the mountain kin are a
+near-myth to him. *(This REVERSES the old "last of the makers who held the
+line, ended for their courage" framing — he is not a proud holdout's heir
+who inherited shame; he is a man the city remade, who never had the pride to
+inherit.)*
 
-*(Status note, seventh batch — 2026-06-12: Borin is **unfrozen** — his file
-returns to rough-draft for redefinition. The dive and the bereavement lie are
-welded to FUNCTIONS — a chosen-sacrifice kit beat; an empire-manufactured
-grief — and survive any redefinition that keeps the functions. The census
-flag carries: his route is thin and kin-dependent; the found kin need at
-least one face. `[open]` His ambiguity-tell — the romance model, ninth
-batch — derives at authoring, pending the rebuild.)*
+**The beard — the character's spine.** Dwarven beards grow too fast; Borin
+**shaves daily to pass.** His assimilation isn't a settled state — it is
+**active daily labor against his own body**: every morning the heritage
+grows back, every morning he cuts it off to fit in. The whole character in a
+razor. And it's **safety, not vanity** — the Throne instilled hatred of the
+"difficult races," his family hid in the gutter, and a visible beard is a
+target. He shaves to survive a world taught to hate what he is.
+
+**The speed — the mark of assimilation.** Burly but *nimble* — fast and
+light where dwarves are slow and heavy. *(Reframed: this is NOT a fun
+subversion of the archetype — it is the evidence of what he lost; the city
+reshaped him down to how his body moves.)* The kit stands from the sixth
+batch: **intercept/bodyguard tank** — mobile, reaction-based, crosses the gap
+to throw himself into harm meant for another. (The protect-triangle: Borin
+defends **people**; the Knight defends **ground**; the Paladin defends **the
+wounded.**)
+
+He is **not a token** — not the army's mascot-dwarf or an exotic novelty,
+just an outsider who's strangely good at the job, from an upbringing he can't
+fully explain. *(Reconcile the as-built tutorial dialogue — "dwarf-made,
+they don't make us anymore, mind the antique" — as a man doing a
+half-remembered impression of his heritage: fragments performed, not
+fluency. The lines stand; the read shifts from confident heritage to a
+borrowed bit he half-means.)* He **enlisted for a better life** — to prove
+himself, to earn a place: the gutter-dwarf who thought the battlefield was
+the one arena that might judge him fairly. The saddest enlistment logic in
+the cast — he joined the machine killing his people because it was the only
+ladder offered.
+
+**The lie, the veil, the wound.** The empire's **bereavement lie** (kept as
+function — the Throne's signature manufactured grief) told him his people
+ended; layered on his own knowledge that the race is all-but-dead in the
+gutters, the specific lie is that the mountain holdouts ended too — so
+finding them alive is what breaks it. His **veil**: the army was the only
+place the fighting dwarf could earn acceptance, and the Throne amplified his
+want-to-**earn-a-place**, his want-for-belonging, into loyal service. And he
+was already doing the bonded-route thing *prematurely, out of need* — thrown
+into a band of misfits, he tried to **force** them into the family he never
+had. **Critical recontext:** his Act 1 is not passive bereavement. Bonded
+Borin doesn't *learn* to claim the party — he learns to do it **truly**
+(chosen, eyes open) instead of **desperately** (forced, out of a hole).
+*(Strike any stale "Borin mourns his lost people" reading — that's a
+different man.)*
+
+**The thread — the kin who don't claim him** *(replaces the old "finds his
+people, they join the roster, the mountains make being a dwarf glorious"
+payout — reversed)*. He finds his mountain kin **alive** — sealed away,
+having survived five centuries (a handful of dwarven generations — see the
+lifespan note) by refusing every outsider — and **they don't recognize him
+as theirs.** The sharpened cruelty: *they're right by their measure.* He **is**
+faded. He **did** assimilate — jokes in the common tongue, fights for the
+mixed company, shaved his face to pass, loves the people whose ancestors
+sold his. Two true things collide: he's still a dwarf in his bones / he's
+not a dwarf they recognize. Not bigotry against an innocent — a man who spent
+his life shedding the very thing that would've let him belong to the only
+family that survived. **The lie said his people ended; the truth is his
+surviving people would say he did.**
+
+**His Act 2 — the prism's counter-example, then the long burn.** His capital
+**refraction** is **guttural protective fury** — *"this is what killed my
+people, and it will not take the family I have left"* — galvanization, not
+collapse: the one companion the capital makes *more* dangerous (most
+refractions disable; his weaponizes). But the fury was never sustainable;
+under it was always terror. **The trajectory:** capital fury → early Act 2
+the fury **burns out**, ground down by the shrinking map and the losses into
+**fear of losing the party** (the protector watching what he protects
+shrink, helpless, hope draining) → mid Act 2 finding his kin **alive
+relights the spark** (a people, a home, everything the lie stole, suddenly
+real — and bigger because he thought the race was dying in shanties) → **the
+rejection guts it** → and that is the route gate.
+
+**The route gate & the fates.** In the wreckage of the second loss (kin
+alive, and rejecting), the party either shows him **real family** or doesn't.
+- **Bonded — the most literal witnessing-payoff in the cast.** Others learn
+  they're worth *witnessing*; Borin learns he's worth **keeping.** He accepts
+  the kin are alive and *not his people anymore*, and instead of mourning it
+  or filing himself down, he claims the eight misfits as family — chosen, not
+  inherited. The bereavement lie fully inverted. **Visible fate: a
+  mustache** — styled, *for fun.* Not the full reclamation-beard (that's the
+  kin's demand, the neutral surrender) but *some* of it, on his own terms:
+  the first grooming choice he's ever made for **joy** instead of safety or
+  expectation — neither passing-as-human nor performing-old-country, a third
+  thing, a city-dwarf choosing which parts of himself to wear. The only face
+  in the game shaped by neither fear nor demand.
+- **Neutral — the cast's bleakest ending.** He **leaves** the party to
+  rejoin the kin, files himself into the old-country dwarf they demand, the
+  **beard growing back** (he stops shaving), heritage reclaimed as
+  *capitulation* — becoming what they require, for people who may never fully
+  take him. He becomes "a dwarf again" by becoming **less Borin**: losing the
+  self the city made, the self-erasing dive turned inward. He trades the
+  wrong belonging (the misfit family — which was *real*) for the wrong
+  belonging (the rejecting kin), and ends alone-among-his-own. The dark
+  mirror of bonded: same crossroads, opposite step; same regrown beard,
+  opposite meaning — surrender, against bonded's chosen mustache.
+
+**The dive as playable fate** *(per the playable-fate family — sibling to
+audible and visible fates)*: Act 1, the dive means *"my life doesn't
+matter"* — self-erasure, the worthless body traded recklessly. Bonded, the
+same animation means *"their lives matter"* — devotion, the precious cargo
+covered precisely. Same motion, inverted why, **felt at the controller.**
+
+**The kin roster — scope-protected** `[open]`: the kin **stay out of the
+finale.** Default: the mountain **seals itself permanently** (the holdouts
+choosing isolation over the world one last time). Bonded-effort exception: a
+*small* faction commits, via a complete Act 2 side story (after the party
+saves them); otherwise the seal is final. **No full kin-roster.** *(Side-
+story scope + permanent-seal staging flagged in bible_04 / systems_design.)*
+
+**The gran letter** *[memorial, load-bearing, do not explain]*: at some point
+in the campaign Borin gets a letter that his grandmother has died, and is
+quietly sad for exactly one day. The gran is from the human-city gutter
+community (his actual home, **not** the mountain kin) — old by dwarf
+reckoning, the last clear voice of his **fading heritage** (the half-songs,
+the old tongue), but *not* a pre-Throne witness (heritage thinning, not
+history vanishing — the lifespan note). No plot weight, no cutscene —
+eavesdrop delivery: the party notices his quiet; someone asks; *"letter from
+home. Me gran."* — that's it. The resonance lives only in **timing** and what
+the player assembles — the last fluent voice of the old country dies right
+before the kin tell him he's already lost it — **never narrated**; the scene
+stays four lines and a sad day. Love-budget compliant; witnessed, not fixed.
+`[open — placement: Act 1 vs. Act 2.]`
+
+**His return** *(the eighth and final — closes the returns pass)*: per the
+bonded fate, **coming home to himself** — the gruff warmth, the jokes, the
+care, no longer forced or desperate but freely given, aimed at the party as
+the family he can finally *see and keep.* The unguarded self, given.
+
+**His ambiguity-tell** *(the romance model)*: he treats the hero almost like
+a **sibling** — unresolved per the ruling: love or kinship, the game never
+votes. *(This is the proof case that widens the ambiguity zone — see the
+romance doctrine.)*
 
 ### The Warlock — the weapon the empire built and meant to throw away
 He is the *most loyal at the start*, and the reason is the saddest in the party.

@@ -167,15 +167,37 @@ redundant):
 
 **Playable fates** (sibling to audible fates): a fate delivered through a
 *mechanic the player has used all game* recurring with new meaning — Borin's
-dive is the flagship (the same intercept verb, casual a hundred times, then
-once with everything on it). Systems hook: signature reactions need the same
-per-outcome variant support as signature lines.
+dive is the flagship. The dive's **delta** (eleventh batch): Act 1 it reads
+*"my life doesn't matter"* — self-erasure, the worthless body traded
+**recklessly**; bonded Act 2 the same animation reads *"their lives matter"*
+— devotion, the precious cargo covered **precisely**. Same motion, inverted
+why, felt at the controller. Systems hook: signature reactions need the same
+per-outcome variant support as signature lines (and, for the dive, a
+positioning/targeting tell — reckless vs. precise — not just a line).
 
 **Visible fates** (second sibling): Act 2 outcomes visible on bodies — the
-Knight's haircut at her vow is the flagship. Production hook: the character
-art/portrait pipeline must support a **mid-game portrait + sprite swap** per
-companion; budget at least one (the Knight) and design the pipeline so more
-are cheap.
+Knight's haircut at her vow, and **Borin's beard** (eleventh batch): the
+**shave-daily baseline** is itself characterization (daily labor to pass);
+the bonded fate is a **chosen styled mustache** (grooming for joy, a third
+thing between passing-human and performing-old-country), the neutral fate a
+**full beard grown back** (heritage as surrender). So Borin needs *three*
+facial states, not two — baseline, bonded, neutral. Production hook: the
+character art/portrait pipeline must support a **mid-game portrait + sprite
+swap** per companion (the Knight and Borin both need one; design the
+pipeline so more are cheap, and so Borin's supports the third state).
+
+**Borin content notes** (eleventh batch): (1) **the kin side-story** is
+candidate Act 2 content — a complete bonded-effort quest that, if finished,
+commits a *small* faction of his mountain kin (otherwise the mountain seals
+permanently; **no full kin-roster** either way — scope-protected). (2) **The
+tutorial dwarf read, re-framed:** the as-built tutorial dialogue
+("dwarf-made, they don't make us anymore, mind the antique") and any
+slow-dwarf-priced-as-lumbering setup now read as **assimilation camouflage
+and a half-remembered impression of heritage**, not archetype-confidence —
+the lines can stand; the performance behind them is a man doing fragments,
+not fluency. (3) **The gran letter** is eavesdrop-channel content
+[memorial, load-bearing, do not explain] — four lines and a sad day, no
+systems beyond the existing bark/quiet-state plumbing.
 
 ## The finale's battle structure [current decision 2026-06-11; fiction in bible_04]
 
