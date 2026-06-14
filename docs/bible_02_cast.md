@@ -1,5 +1,10 @@
 # PART TWO — THE HERO AND THE PARTY
 
+> *Currency: integrates design batches 1–11 (latest 2026-06-13, the Borin
+> rebuild — the cast is closed at eight, no stubs; the returns pass is
+> complete). Shared masthead and tag legend in Part One (`bible_01_world.md`);
+> open threads in the Manifest at the end of Part Four.*
+
 ## The Hero
 
 You are summoned across worlds by the Guardian, and you arrive remembering

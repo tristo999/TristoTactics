@@ -7,6 +7,10 @@
 > underneath it. The collisions are planted here, unmarked. (If the game later
 > grows a third act, it will grow out of the seam between this and what follows;
 > Act 1 stands as written.)
+>
+> *Currency: integrates design batches 1–11 (latest 2026-06-13). Shared
+> masthead and tag legend in Part One (`bible_01_world.md`); open threads in
+> the Manifest at the end of Part Four.*
 
 ## The summoning, and the wrong door
 

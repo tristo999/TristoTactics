@@ -9,6 +9,11 @@
 >
 > Tags as in the rest of the bible: plain text is settled; **`[GUESS]`** marks an
 > invention to keep/kill/claim (all collected in the Manifest at the end).
+>
+> *Currency: integrates design batches 1–11 (latest 2026-06-13). Shared
+> masthead and tag legend in Part One (`bible_01_world.md`). The Manifest
+> below is the consolidated open-threads / keep-kill-claim checklist across
+> all four parts — read it last.*
 
 ## The landing
 

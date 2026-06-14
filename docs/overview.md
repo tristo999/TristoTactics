@@ -4,8 +4,9 @@ The north star. Read this first. It explains what the game is, why it works,
 how the documents relate, and what's still open. If you only read one file,
 read this one.
 
-Last updated: 2026-06-12 (integration pass — nine design batches folded into
-the canon docs; the cast pass is complete, the ending is staged and closed)
+Last updated: 2026-06-13 (eleven design batches folded into the canon docs;
+the cast is closed at eight fully designed companions, the returns pass is
+complete, and the ending is staged and played end to end)
 
 
 ## What this is, in one breath

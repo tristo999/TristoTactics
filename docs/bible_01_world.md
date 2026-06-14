@@ -13,17 +13,22 @@
 > the `[GUESS]` tags to *keep / kill / claim* each one. A guess you accept stops
 > being a guess — strike the tag and it's yours.
 >
-> **Cosmology revision (2026-06-11).** Part One was substantially rewritten from
-> a design session: the Throne (formerly "the Authority"), the planes and the
-> price of ascension, the core as the gate of divinity, the binding, the
-> Guardian-as-piece (and its spent, dormant state), the braid, and Vael. These
-> are **Tristan's current decisions** — written at that firmness, not yet
-> hardened canon; iterate freely. (The first batch arrived truncated; the braid
-> clause and the Vael section were re-supplied later the same day. The third
-> batch — the amplification retcon, the Unchosen apparatus, the eight-pair
-> roster — landed 2026-06-11 and is integrated across all four parts.)
+> **Cosmology revision (2026-06-11), extended through the eleventh batch
+> (2026-06-13).** Part One was substantially rewritten from a design session:
+> the Throne (formerly "the Authority"), the planes and the price of
+> ascension, the core as the gate of divinity, the binding, the
+> Guardian-as-piece (and its spent, dormant state), the braid, and Vael — and
+> across the later batches the Guardian's true identity (the first riser, the
+> elf girl), the elven kingdom and its living-memory siege, the land canon,
+> and dwarf lifespan. These are **Tristan's current decisions** — written at
+> that firmness, not yet hardened canon; iterate freely. The firmness
+> metadata is load-bearing: plain text = current decision, `[GUESS]` = an
+> invention awaiting keep/kill, `[open]` = genuinely undecided; the
+> consolidated checklist is the Manifest at the end of Part Four.
 >
-> Draft date: 2026-06-02 · Part One revised 2026-06-11
+> **Currency:** all four parts integrate design batches **1 through 11**
+> (latest: the Borin rebuild, 2026-06-13). Draft date: 2026-06-02 · Part One
+> last revised 2026-06-13.
 
 ---
 
