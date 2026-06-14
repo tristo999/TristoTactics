@@ -5,8 +5,10 @@ thing you build from. A collision is a scene that happens twice — once in Act 
 under the lie, once in Act 2 from the other side. Each row is a small machine
 for breaking someone's heart on purpose.
 
-Last updated: 2026-06-12 — Rows 9 (the small tired thing), 10 (the song
-that happened twice), and 11 (the reach that finishes) applied; the
+Last updated: 2026-06-14 — co-presence collision doctrine added (the three
+modes; the loop enforced by identity not physics; the interference rule + the
+causality-guardrail PROTECT). Previous: Rows 9 (the small tired thing), 10
+(the song that happened twice), and 11 (the reach that finishes) applied; the
 definition amended (rule 0: a row is anything experienced twice); Elena cue-overlap candidate-note added (fifth
 batch; not a row). Previous: Rows 6 (the smile), 7 (the silhouette), 8 ("not
 ours to ask about") added 2026-06-11; verified against the 4-part bible
@@ -60,7 +62,7 @@ is real.
 
 ## Craft notes per row
 
-### Row 1 — the bridge face-off
+### Row 1 — the bridge face-off  *(the built **co-presence collision**, Mode 1 / veil-render — see the co-presence doctrine below)*
 
 The bridge is not only a collapse you curse — it's the first time the two parties
 *see* each other, across the broken span, in the rain. No contact; the gap is
@@ -205,6 +207,140 @@ off" — so Act 2 can reveal you were the distraction in your own heist.
    worth it.
 
 
+## Co-presence collisions — the three modes, identity-enforcement, the interference rule
+
+*(Doctrine layer, 2026-06-14 — current decision. The rows above are mostly
+**temporal** collisions: the same scene replayed, the parties *not*
+co-present — you in Act 1, then you in Act 2, alone, recognizing across time
+by retrieval cue. This subsection defines the rarer, higher-voltage case
+where **both parties occupy the same moment and can see each other**, and the
+rule that governs why the Act 2 party holds back.)*
+
+**The sub-type.** A **co-presence collision** is one where the Act 1 and
+Act 2 parties **share the same moment and perceive each other across it** —
+line-of-sight recognition, not memory-across-time. These are the
+highest-voltage collisions in the game and the **rarest**: co-presence is a
+**spice, not the default.** Overuse flattens the loop's "you are replaying
+your own past, *alone*" engine — reserve it for peaks. (Most rows stay
+temporal; only Rows 1–2 are co-presence as built.)
+
+**The governing principle — the loop is enforced by IDENTITY, not physics.**
+When the parties are co-present, the obstacle between them is not a cosmic
+forcefield — it is **the fact that they are the same people.** The Guardian
+needs no paradox-lock; the loop holds because you cannot reach, cannot harm,
+and cannot save *yourself.* "Fate getting in the way" is, mechanically,
+**identity getting in the way.** This keeps the time-magic from ever reading
+as a game-y rule — the constraint is always emotional and moral, never
+arbitrary. (Consistent with the cosmology: the Guardian's power *holds rather
+than rewrites* — bible_01. This doctrine is why the holding *feels* like
+something, from the inside.)
+
+**The three modes** (the palette — every co-presence collision is one or more):
+
+1. **VEIL-RENDER** `[BUILT — the bridge, Row 1; see also Row 2]`. The Act 1
+   party is still veiled, so it does not see the Act 2 party as themselves —
+   it sees the **enemy the veil paints.** Truth crossing the gap arrives as
+   its *opposite*: love → hatred, warning → jeer. The Act 2 party sees
+   clearly (lie gone) and grieves; the Act 1 party sees grinning assassins
+   and curses them. **The veil is the translator.** (The bridge is the cited
+   exemplar — the no-contact stare across the gap, Lyra's call heard as a
+   jeer, the asymmetric sight. **Row 2, the unheard face-off, is the purest
+   *active* veil-render** — shouting the truth, heard as threat, the garbled
+   line clearing only in Act 2 — and it is also a co-presence collision under
+   this doctrine.)
+
+2. **RECOIL** `[SEED — flagged, not authored]`. An Act 1 party member, still
+   veiled, can **strike their Act 2 self in genuine fury — and the Act 2 self
+   cannot strike back.** You cannot harm your own past self; the recoil is
+   moral impossibility (and/or paradox-horror). Consequence: in any
+   co-presence fight, the Act 2 party fights **with one hand tied** — they can
+   never damage their Act 1 selves, because Act 1 *is* them. Candidate image:
+   the Act 2 self recoiling in terror from their own past self's blade, unable
+   to raise a hand. `[open — whether this is ever a literal BATTLE constraint
+   (an objective achieved without harming Act 1 units — recoil, reposition,
+   eat hits unreturned) or stays a cutscene beat. The tactical version is
+   potent; routed to systems_design if pursued.]`
+
+3. **SHARED-SCAR** `[SEED — flagged, not authored]`. The Act 2 party watches
+   an Act 1 member take a wound — and **remembers receiving it**: the old
+   ache, the scar they still carry on the *same body.* A **somatic**
+   collision — the past isn't only witnessed, it's *felt in the flesh*,
+   because it literally happened to this body. Candidate beat: an Act 2
+   companion's hand going to an old scar as they watch their Act 1 self earn
+   it. `[open — whether shared-scar ever becomes a mechanic or stays a
+   cutscene beat.]`
+
+**What unifies them:** the Act 2 party is never watching strangers — they are
+watching *themselves*, and their **sight** (Mode 1), their **hands** (Mode 2),
+and their **bodies** (Mode 3) all know it, even when the situation forbids
+acting on it. Co-presence is the loop's identity-enforcement made visible
+three ways.
+
+### The interference rule — why the Act 2 party holds back
+
+**The problem it solves:** a smart player asks *"why don't they just warn
+their past selves, or grab the friend before the bridge?"* The party needs a
+**known, diegetic** reason to hold back, or the loop reads as an arbitrary
+forcefield.
+
+**The rule** *(current decision)*: **interference never changes the outcome —
+it reveals the Act 2 party was always the cause.** When they try to save
+someone, they fail; the person dies *exactly as recorded* — and in trying,
+they discover their interference **is** the mechanism of the death. The thing
+they did to save the person in Act 2 is what caused it in Act 1. The death
+was always theirs. The loop didn't get *changed*; it got **explained.** They
+were never outside the events looking in — they were always inside them,
+authoring the tragedy they grieve. The rescue attempt **is** the catastrophe,
+and always was.
+
+**THE CAUSALITY GUARDRAIL — PROTECT** *(load-bearing; the rule is airtight
+only with this)*: the bootstrap must be **already-true, never
+newly-created.** The Act 2 party does **not** add a death that didn't happen
+the first time — that changes the timeline, which is forbidden
+(holds-not-rewrites). They **discover their fingerprints on a death that was
+always in the Act 1 record.** Same event; recognition committed by the
+player. Phrased wrong — *"someone dies who didn't die the first time"* — it
+reads as changing the past and **breaks the loop.** Phrased right — *"the
+past already contained them; they hadn't recognized their own hand in it
+yet."* Nothing new enters the record; only the party's knowledge that they
+did it. *(Tristan's explicit ruling: we cannot have "someone dies who didn't
+die the first time"; we can have "someone dies and the Act 2 party realizes
+it's their fault in both lines because they tried to interfere.")*
+
+**How they learn it** *(trauma-forged, not handed down)*: they pay for it
+once. Early Act 2, someone breaks and tries to interfere — and it resolves
+per the rule (the death was always theirs, revealed). After that,
+non-interference is enforced **among themselves through grief**: every reach
+into Act 1 now risks discovering another death was their fault all along.
+Logical *and* visceral — they understand the loop intellectually, but it's
+the once-burned trauma that makes the restraint hold (you know not to touch a
+stove: once explained, once burned). `[open — the identity of the first death
+that teaches the rule; named ally vs. flagged-loose seed. Routed to beats; do
+not author the proper nouns here.]`
+
+**Two reaches, not one** *(reconciliation — do not conflate)*: the
+"reach back" already built for Row 2 (the unheard face-offs) is the
+**communication** reach — pushing a shard to be *heard*; its cost is the
+hero's present safety, and its result is *"it lands and changes nothing"*
+(futility, harmless to the record). The interference rule governs the
+**rescue/action** reach — trying to *save* or *alter*; its result is
+discovering you authored the death (bootstrap horror). Both are the same
+identity-lock seen from two angles; keep them distinct in authoring — one is
+futile, the other is damning.
+
+**The thematic payload — non-interference is the purest mercy-under-
+constraint.** Grace isn't intervention; grace is the agonizing restraint of
+watching yourself bleed and *not reaching*, because reaching is **how the
+wound happens.** *The kindest thing your hands can do is stay still.* For a
+party whose whole arc is learning to **witness instead of fix** — and for a
+**silent hero** whose entire grammar is restraint — this is the thesis in the
+bone. The recoil (Mode 2) and the discipline of non-interference are the
+**same muscle**: you cannot act against the loop, because the loop is the
+only reason anyone gets saved. *(Doc-facing: this pre-figures "mercy inverts"
+— bible_04 — at the level of the party's relationship to their own past. The
+finale asks them to *spend* lives worthily; Act 2 trains the restraint by
+teaching them their reaching kills.)*
+
 ## Methodology — how to build with this
 
 **Design backward from the collisions.** Figure out every "oh shit" first, then
@@ -235,6 +371,21 @@ finishable one.
   landmark — before the Act 1 training-ground map is built.
 - For every confirmed row, lock the retrieval cue *before* the Act 1 map is
   built. Cues can't be retrofitted cheaply once the maps exist.
+- **Co-presence seeds `[open]`** *(2026-06-14 — flagged shapes, not authored
+  scenes; see the co-presence doctrine)*: **Mode 2, recoil** (an Act 2 self
+  unable to strike back at its veiled Act 1 self — and the open
+  tactical-vs-cutscene question, routed to systems_design if pursued);
+  **Mode 3, shared-scar** (the somatic collision — a body remembering the
+  wound it watches being earned); and **the first death that teaches the
+  interference rule** (named ally vs. flagged-loose — routed to beats). Do
+  not author the proper nouns here.
+- **PROTECT — the causality guardrail** *(2026-06-14)*: a collision's
+  bootstrap is **already-true, never newly-created** — the Act 2 party
+  discovers their hand in a death the Act 1 record always held; they never
+  *add* a death. This is a **causality** PROTECT (distinct from the ending's
+  five staging PROTECTs in bible_04), and it carries the same weight:
+  violating it — "someone dies who didn't die the first time" — breaks the
+  loop and the whole game's logic.
 - **Candidate cue-note `[open — handle with care]`** *(2026-06-11, fifth
   batch — not a row)*: **Elena's cue overlap.** Her route runs on beauty (she
   is found wherever the camp is most worth looking at — bible_02). If a

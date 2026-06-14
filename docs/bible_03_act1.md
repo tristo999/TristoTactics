@@ -204,6 +204,14 @@ versions of the same people, staring across a gap one of them had to
 destroy — is the whole game in a single frame. The red of the bridge, the rain:
 remember them. You won't know you're remembering them until it's too late.)*
 
+*(Doc-facing: the bridge is the game's built **co-presence collision** — both
+parties sharing one moment in line of sight, the rarest and highest-voltage
+collision type — and the exemplar of **Mode 1, veil-render**: the veiled
+Act 1 party sees grinning saboteurs where the Act 2 party sees its own
+grieving self, the veil translating truth into its opposite. The doctrine —
+the three modes, the loop enforced by identity rather than physics, and the
+interference rule — lives in `collision_ledger.md`.)*
+
 **You defeat an enemy commander and you celebrate.** Clean, unremarkable, maybe
 even easy. A victory sting, a companion's *nice work*, and you move on without
 ever really looking at the face. `[GUESS — whether this figure is a fellow

@@ -157,6 +157,24 @@ and executing the kingdom's hidden resistance. **The Act 2 victory condition is
 not "defeat the enemy." It's "get out without destroying who you used to be."**
 The enemy is you.
 
+And the party holds back from the loop — never warns its past selves, never
+grabs the friend before the bridge — for a reason it **learned, not a rule it
+was handed** *(the interference rule, 2026-06-14 — doctrine in the collision
+ledger)*: **interference never changes the outcome; it reveals the party was
+always the cause.** Early in the act someone breaks and tries to save a life
+— and fails, and discovers that the reaching *was the mechanism* of a death
+the Act 1 record always held. Nothing new enters the past; only the
+knowledge that their own hand was in it (the **causality guardrail**: a
+collision's horror is always *already-true*, never newly-created — they
+discover the death was theirs, they never *add* one, because adding one would
+break the loop). After that the party enforces non-interference on itself
+**through grief**: every reach into Act 1 risks finding another death was
+its fault all along. This is the act's moral texture, not just a rule for the
+rare co-present beats — and it is **mercy-under-constraint pre-figured**: the
+kindest thing their hands can do is stay still, because reaching is how the
+wound happens. The finale will ask them to *spend* lives worthily; Act 2
+trains the restraint by teaching them their reaching kills.
+
 ## The collisions, paid off
 
 These are the heart of Act 2 and the reason the whole structure exists. None is
