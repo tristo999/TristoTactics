@@ -34,7 +34,7 @@ Four columns per collision:
 
 | # | Act 1 surface | Act 2 truth | Cost to land it | Retrieval cue |
 |---|---|---|---|---|
-| 1 | A bridge collapses mid-mission. Throne intel: kingdom terrorists, no warning, our people dead. You curse it. Maybe a town pays for it and you nod along. Dismissed in 30 seconds. | *You* are the hand on the charges. The bridge has to come down — what the Throne means to walk across it leads somewhere far worse. You know because you lived it. | Time the detonation. Too early and the convoy stops short; too late and it crosses. The "perfect" moment — the one whose smoke Act 1 will curse — is the one that kills the fewest inside a fall that was always going to happen. | The red bridge in the rain. (Pick one fixed, odd sensory fact and repeat it exactly.) |
+| 1 | A bridge collapses mid-mission. Throne intel: kingdom terrorists, no warning, our people dead. You curse it. Maybe a town pays for it and you nod along. Dismissed in 30 seconds. | *You* are the hand on the charges. The bridge has to come down — what the Throne means to walk across it leads somewhere far worse. You know because you lived it. | Time the detonation. Too early and the convoy stops short; too late and it crosses. The "perfect" moment — the one whose smoke Act 1 will curse — is the one that kills the fewest inside a fall that was always going to happen. | **Two cues** — visual: the red bridge in the rain; audio: **the jeer that was a scream** (Lyra's truth shouted across the gap, veil-rendered as mockery in Act 1, heard clean in Act 2). Pick fixed, odd sensory facts and repeat them exactly. |
 | 2 | Cloaked enemy figures hinder your advance — sneering, hostile, their shouts garbled into threats. The Throne calls them saboteurs. You cut them down and move on. | They are the Act 2 party, hoods down, faces bare, *shouting the truth.* The lie reaches into the Act 1 hero's eyes and ears and renders them as monsters. Same person, ten feet away, un-heard. | (Arc — see notes.) The grief verb: spend the Guardian's power to push a fragment *backward* to your past self. It costs your present safety. It lands as a glitch. It changes nothing. | The garbled line — the exact same phrase, heard as threat in Act 1, heard *clear* in Act 2. |
 | 3 | You defeat an enemy boss. Clean, satisfying, maybe easy. The game congratulates you. You barely look at the face. You move on, proud. | The boss was a comrade-or-trusted-NPC `[open]` of your Act 2 party, who peeled off to hold the line and buy you time — holding back *your own past self.* You were the hand that ended them. | (Two versions — see notes.) Possibly: you don't even get to watch. You're on the objective. You feel it complete and slowly understand where, and when, and that you already played the other side. | The boss's specific weapon, or fighting stance, or one line — unremarkable in Act 1, a fingerprint in Act 2. |
 | 4 | *(empty — the missing collision)* An Act 1 act that felt **good and generous** — a mercy, a gift, a kindness the game rewarded you for. | The kindness was the cruelest thing you did. A mercy that was a trap. (Undesigned — this is the shape the set is missing.) | TBD | TBD |
@@ -66,11 +66,27 @@ is real.
 
 The bridge is not only a collapse you curse — it's the first time the two parties
 *see* each other, across the broken span, in the rain. No contact; the gap is
-uncrossable; the Act 1 party is too war-worn to recognize themselves in the
-cloaked figures opposite. In Act 2 you stand on the far side and look back at your
-own exhausted past self, across the thing you had to destroy. Build the map as a
-*territory boundary* (the Act 2 objective sits mostly on the far side), not a
-symmetric arena. This is the slice's final image (see `slice_spec.md`).
+uncrossable. **The sight is asymmetric, through the one veil** *(sharpened
+2026-06-14 — this REPLACES the old "too war-worn to recognize themselves"
+mechanism; exhaustion stays as texture, never as the reason)*: the Act 1 party
+does not fail to recognize itself out of fatigue — **the veil renders the Act 2
+party as grinning cloaked assassins**, the enemy the lie paints. The Act 2
+party sees clearly, lie gone, and grieves. **The load-bearing beat:** Lyra
+screams the truth across the gap, and the amplifier twists it in real time —
+the Act 1 side hears a **jeer**, mockery, and hates them the more for it. The
+veil is the translator. In Act 2 you stand on the far side, hear the same cry
+clean, and look back at your own past self across the thing you had to destroy.
+Build the map as a *territory boundary* (the Act 2 objective sits mostly on the
+far side), not a symmetric arena. This is the slice's final image (see
+`slice_spec.md`).
+
+**Guardrail (confirmed on landing):** the Act 1 hero must never recognize the
+figures as *themselves* — "rendered as grinning assassins" satisfies this
+*better* than the old "too blurry to tell," because it gives the
+non-recognition a **cause** (the veil) instead of an accident (fatigue). And
+the plant cannot detonate early: the Act 1 hero hears only a jeer; the
+scream's true words surface only in Act 2, when the same vocal performance
+plays un-veiled. *(Mode-1 veil-render, per the co-presence doctrine below.)*
 
 ### Row 2 — the unheard face-off (the arc)
 

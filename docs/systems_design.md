@@ -319,6 +319,17 @@ not retrofitted. This decides glitch SFX work *now*: placeholder glitch
 audio is fine, but the final glitch SFX cannot be locked before the theme
 exists.
 
+**The bridge jeer/scream (audio-design note, 2026-06-14 — sibling to the
+motif rule)**: at the bridge co-presence collision (ledger Row 1), Lyra
+screams the truth across the gap; the Act 1 hero hears a **jeer**, the Act 2
+party hears it **clean.** Production implication, same shape as the motif:
+**the Act 1 jeer-render and the Act 2 clean scream are the SAME vocal
+performance** — one take, **veil-processed** for Act 1 and unprocessed for
+Act 2 — composed/recorded together, never two separate reads. (The veil is a
+real-time audio filter on a fixed line, not a different line; this is what
+makes the second cue land as recognition rather than coincidence. Placeholder
+fine now; the final processed/clean pair locks together.)
+
 **Budget backward from the fire (the scene-budget method)**: anchor the
 scene-budget doc on the last gathering — enumerate what the fire must be
 able to say about each companion, each pair, each fate, and the hero; that

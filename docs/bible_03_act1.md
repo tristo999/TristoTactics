@@ -188,21 +188,30 @@ across the broken span: cloaked figures, on the far side of the gap, watching
 you. This is the first time the two parties truly *face each other.* No blades
 meet — the collapse is between you, an impossible distance neither side can
 cross. Just a long look across the wreckage, in the rain, before the mission
-drags you onward. The Throne calls it sabotage. You curse them for the
-collapse and for the dead it cost, and you're too worn down to feel how *wrong*
-the moment is — too deep in a grinding war that's flattened you, too numb to
-notice that the figures across the gap stand like you, move like you, *are* you.
-The distance, the rain, the exhaustion, and the lie in your eyes all stack up to
-the same mercy: you cannot get a clear enough look to recognize anyone, and you
-have nothing left in you to try. *(They are the Act 2 party. They brought the
+drags you onward. The Throne calls it sabotage, and the veil does the rest:
+across the gap you do not see yourselves — you see **grinning cloaked
+assassins**, the enemy the lie paints, savoring the ruin they made. You curse
+them for the collapse and the dead it cost. And one of them — a woman, hood
+half-fallen — throws both hands up and screams something across the water,
+urgent, desperate, the whole of her behind it. The amplifier in your head
+turns it inside out before it lands: what reaches your ears is a **jeer**,
+mockery flung across the gap, and you hate them the more for it. A grinding
+war has flattened you and the rain blurs the world — but that is only texture;
+the reason you cannot know your own faces is that the veil will not *let* you.
+It has rendered the people you most need to reach as the people you most want
+dead. *(They are the Act 2 party. They brought the
 bridge down — and the second act will show you they did it knowing exactly who
 they were stranding on the far side, knowing they were sabotaging the only path
 to the people they most wanted to reach. You will stand on the far side of this
 broken span one day and look across it at your own exhausted, unreachable past
 self. The bridge you destroyed is the thing keeping you apart. That image — two
 versions of the same people, staring across a gap one of them had to
-destroy — is the whole game in a single frame. The red of the bridge, the rain:
-remember them. You won't know you're remembering them until it's too late.)*
+destroy — is the whole game in a single frame. The red of the bridge, the
+rain, and the jeer that was a scream: remember them. You won't know you're
+remembering them until it's too late. *(The woman screaming was Lyra. In Act 2
+you stand on her side of the gap and hear the words clear — the same cry that
+reached your Act 1 ears as mockery, this time the warning it always was. The
+veil was the translator; remove it and the jeer is a plea.)*)*
 
 *(Doc-facing: the bridge is the game's built **co-presence collision** — both
 parties sharing one moment in line of sight, the rarest and highest-voltage
